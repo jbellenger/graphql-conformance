@@ -1,0 +1,71 @@
+{
+  intField
+  floatField
+  stringField
+  booleanField
+  idField
+  enumField
+  nonNullInt
+  listOfStrings
+  listOfInts
+  objectField {
+    value
+    number
+  }
+  unionField {
+    ... on Alpha {
+      alphaField
+    }
+    ... on Beta {
+      betaField
+    }
+  }
+  interfaceField {
+    sharedField
+    ... on ImplA {
+      aField
+    }
+    ... on ImplB {
+      bField
+    }
+  }
+  listOfObjects {
+    value
+    number
+  }
+  listOfUnions {
+    ... on Alpha {
+      alphaField
+    }
+    ... on Beta {
+      betaField
+    }
+  }
+  listOfInterfaces {
+    sharedField
+    ... on ImplA {
+      aField
+    }
+    ... on ImplB {
+      bField
+    }
+  }
+  listOfEnums
+  caseUnionField {
+    ... on SortMB {
+      mbField
+    }
+    ... on SortMa {
+      maField
+    }
+  }
+  caseInterfaceField {
+    shared
+    ... on SortNa {
+      naField
+    }
+    ... on SortNB {
+      nbField
+    }
+  }
+}

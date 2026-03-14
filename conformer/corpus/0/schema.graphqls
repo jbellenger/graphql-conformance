@@ -1,0 +1,79 @@
+enum Color {
+  RED
+  GREEN
+  BLUE
+}
+
+union MyUnion = Alpha | Beta
+
+type Alpha {
+  alphaField: String
+}
+
+type Beta {
+  betaField: String
+}
+
+interface MyInterface {
+  sharedField: String
+}
+
+type ImplA implements MyInterface {
+  sharedField: String
+  aField: Int
+}
+
+type ImplB implements MyInterface {
+  sharedField: String
+  bField: Float
+}
+
+type Nested {
+  value: String
+  number: Int
+}
+
+union CaseUnion = SortMa | SortMB
+
+type SortMa {
+  maField: String
+}
+
+type SortMB {
+  mbField: String
+}
+
+interface CaseInterface {
+  shared: String
+}
+
+type SortNa implements CaseInterface {
+  shared: String
+  naField: Int
+}
+
+type SortNB implements CaseInterface {
+  shared: String
+  nbField: Float
+}
+
+type Query {
+  intField: Int
+  floatField: Float
+  stringField: String
+  booleanField: Boolean
+  idField: ID
+  enumField: Color
+  nonNullInt: Int!
+  listOfStrings: [String]
+  listOfInts: [Int]
+  objectField: Nested
+  unionField: MyUnion
+  interfaceField: MyInterface
+  listOfObjects: [Nested]
+  listOfUnions: [MyUnion]
+  listOfInterfaces: [MyInterface]
+  listOfEnums: [Color]
+  caseUnionField: CaseUnion
+  caseInterfaceField: CaseInterface
+}
