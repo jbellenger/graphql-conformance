@@ -2,7 +2,7 @@
 
 const { describe, it } = require('node:test');
 const assert = require('node:assert/strict');
-const { deepEqual, exactEqual } = require('./compare');
+const { deepEqual, unorderedEqual, compareResults } = require('./compare');
 
 describe('deepEqual', () => {
   it('identical primitives', () => {
@@ -82,34 +82,70 @@ describe('deepEqual', () => {
   });
 });
 
-describe('exactEqual', () => {
+describe('unorderedEqual', () => {
+  it('same-order objects', () => {
+    assert.equal(unorderedEqual({ a: 1, b: 2 }, { a: 1, b: 2 }), true);
+  });
+
+  it('different-order objects', () => {
+    assert.equal(unorderedEqual({ a: 1, b: 2 }, { b: 2, a: 1 }), true);
+  });
+
+  it('nested different-order', () => {
+    assert.equal(
+      unorderedEqual({ x: { b: 2, a: 1 } }, { x: { a: 1, b: 2 } }),
+      true
+    );
+  });
+
+  it('different values', () => {
+    assert.equal(unorderedEqual({ a: 1, b: 2 }, { a: 1, b: 3 }), false);
+  });
+
+  it('null vs absent', () => {
+    assert.equal(unorderedEqual({ a: null }, {}), false);
+    assert.equal(unorderedEqual({}, { a: null }), false);
+  });
+
+  it('arrays with different element order', () => {
+    assert.equal(unorderedEqual([1, 2, 3], [3, 2, 1]), false);
+  });
+});
+
+describe('compareResults', () => {
   it('both successful and matching', () => {
     const a = { result: { data: { x: 1 } } };
     const b = { result: { data: { x: 1 } } };
-    assert.equal(exactEqual(a, b), true);
+    assert.deepStrictEqual(compareResults(a, b), { matches: true, quirks: [] });
   });
 
-  it('both successful but different', () => {
+  it('same data, different key order', () => {
+    const a = { result: { data: { a: 1, b: 2 } } };
+    const b = { result: { data: { b: 2, a: 1 } } };
+    assert.deepStrictEqual(compareResults(a, b), { matches: true, quirks: ['object-ordering'] });
+  });
+
+  it('both successful but different data', () => {
     const a = { result: { data: { x: 1 } } };
     const b = { result: { data: { x: 2 } } };
-    assert.equal(exactEqual(a, b), false);
+    assert.deepStrictEqual(compareResults(a, b), { matches: false, quirks: [] });
   });
 
   it('reference errored', () => {
     const a = { error: 'timeout' };
     const b = { result: { data: { x: 1 } } };
-    assert.equal(exactEqual(a, b), false);
+    assert.deepStrictEqual(compareResults(a, b), { matches: false, quirks: [] });
   });
 
   it('conformant errored', () => {
     const a = { result: { data: { x: 1 } } };
     const b = { error: 'crash' };
-    assert.equal(exactEqual(a, b), false);
+    assert.deepStrictEqual(compareResults(a, b), { matches: false, quirks: [] });
   });
 
   it('both errored', () => {
     const a = { error: 'timeout' };
     const b = { error: 'crash' };
-    assert.equal(exactEqual(a, b), false);
+    assert.deepStrictEqual(compareResults(a, b), { matches: false, quirks: [] });
   });
 });

@@ -39,3 +39,4 @@ describe('runHarness', () => {
     assert.deepStrictEqual(result, { result: { args: ['a', 'b'] } });
   });
 });
+

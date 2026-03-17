@@ -7,7 +7,8 @@ See `SPEC.md` for the full specification.
 ## Quick Start
 
     cd conformer
-    make build    # build all implementations
+    make check    # verify all required tools are installed
+    make build    # check tools, install via mise if needed, build all implementations
     make test     # run all tests (coordinator + all impls)
     make run      # run conformance tests, writes results.json
 
@@ -31,5 +32,6 @@ All code lives under `conformer/`. The root only has `SPEC.md` and this file.
 
 1. Create `conformer/impls/<name>/` with native code implementing the Wiring Spec
 2. Add a `Makefile` with `build`, `test`, `clean` targets
-3. Add an entry to `conformer/config.json` with `name`, `path`, and `command`
-4. Run `make build && make test` to verify
+3. Add an entry to `conformer/config.json` with `name`, `path`, `command`, and `tools`
+4. Add required tool versions to `conformer/.mise.toml` if not already present
+5. Run `make build && make test` to verify

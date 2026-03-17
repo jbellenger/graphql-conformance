@@ -4,11 +4,13 @@ const { spawn } = require('child_process');
 
 const TIMEOUT_MS = 30_000;
 
-function runHarness(command, cwd, args) {
+function runHarness(command, cwd, args, env) {
   return new Promise((resolve) => {
     let resolved = false;
     const [cmd, ...cmdArgs] = command;
-    const child = spawn(cmd, [...cmdArgs, ...args], { cwd });
+    const opts = { cwd };
+    if (env) opts.env = env;
+    const child = spawn(cmd, [...cmdArgs, ...args], opts);
 
     let stdout = '';
     child.stdout.on('data', (d) => { stdout += d; });

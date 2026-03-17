@@ -7,34 +7,59 @@ function discoverCorpus(corpusDir) {
   const tests = [];
 
   const entries = fs.readdirSync(corpusDir, { withFileTypes: true });
-  const testDirs = entries
+  const schemaDirs = entries
     .filter(e => e.isDirectory())
     .map(e => e.name)
     .sort();
 
-  for (const testId of testDirs) {
-    const testDir = path.join(corpusDir, testId);
-    const schemaPath = path.join(testDir, 'schema.graphqls');
+  for (const schemaId of schemaDirs) {
+    const schemaDir = path.join(corpusDir, schemaId);
+    const schemaPath = path.join(schemaDir, 'schema.graphqls');
 
-    const files = fs.readdirSync(testDir);
-    const queryFiles = files
-      .filter(f => f.endsWith('-query.graphql'))
+    if (!fs.existsSync(schemaPath)) continue;
+
+    const schemaEntries = fs.readdirSync(schemaDir, { withFileTypes: true });
+    const queryDirs = schemaEntries
+      .filter(e => e.isDirectory())
+      .map(e => e.name)
       .sort();
 
-    for (const queryFile of queryFiles) {
-      const prefix = queryFile.replace(/-query\.graphql$/, '');
-      const queryPath = path.join(testDir, queryFile);
-      const variablesFile = `${prefix}-variables.json`;
-      const variablesPath = path.join(testDir, variablesFile);
-      const hasVariables = fs.existsSync(variablesPath);
+    for (const queryId of queryDirs) {
+      const queryDir = path.join(schemaDir, queryId);
+      const queryPath = path.join(queryDir, 'query.graphql');
 
-      tests.push({
-        testId,
-        queryId: prefix,
-        schemaPath,
-        queryPath,
-        variablesPath: hasVariables ? variablesPath : null,
-      });
+      if (!fs.existsSync(queryPath)) continue;
+
+      const queryEntries = fs.readdirSync(queryDir, { withFileTypes: true });
+      const varsDirs = queryEntries
+        .filter(e => e.isDirectory())
+        .map(e => e.name)
+        .sort();
+
+      if (varsDirs.length === 0) {
+        tests.push({
+          testId: schemaId,
+          queryId,
+          schemaPath,
+          queryPath,
+          variablesPath: null,
+        });
+      } else {
+        for (const varsId of varsDirs) {
+          const varsDir = path.join(queryDir, varsId);
+          const variablesPath = path.join(varsDir, 'variables.json');
+
+          if (!fs.existsSync(variablesPath)) continue;
+
+          tests.push({
+            testId: schemaId,
+            queryId: `${queryId}/${varsId}`,
+            schemaPath,
+            queryPath,
+            variablesPath,
+          });
+        }
+      }
     }
   }
 

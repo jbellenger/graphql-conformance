@@ -2,13 +2,19 @@
   "reference": {
     "name": "graphql-js",
     "path": "./impls/graphql-js",
-    "command": ["node", "index.js"]
+    "command": [
+      "node",
+      "index.js"
+    ]
   },
   "conformants": [
     {
-      "name": "graphql-java",
-      "path": "./impls/graphql-java",
-      "command": ["java", "-jar", "target/conformer-1.0.jar"]
+      "name": "graphql-js-copy",
+      "path": "./impls/graphql-js",
+      "command": [
+        "node",
+        "index.js"
+      ]
     }
   ]
 }
