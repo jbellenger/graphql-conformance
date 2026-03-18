@@ -134,18 +134,18 @@ describe('compareResults', () => {
   it('reference errored', () => {
     const a = { error: 'timeout' };
     const b = { result: { data: { x: 1 } } };
-    assert.deepStrictEqual(compareResults(a, b), { matches: false, quirks: [] });
+    assert.deepStrictEqual(compareResults(a, b), { matches: false, quirks: ['reference-errored'] });
   });
 
   it('conformant errored', () => {
     const a = { result: { data: { x: 1 } } };
     const b = { error: 'crash' };
-    assert.deepStrictEqual(compareResults(a, b), { matches: false, quirks: [] });
+    assert.deepStrictEqual(compareResults(a, b), { matches: false, quirks: ['conformant-errored'] });
   });
 
   it('both errored', () => {
     const a = { error: 'timeout' };
     const b = { error: 'crash' };
-    assert.deepStrictEqual(compareResults(a, b), { matches: false, quirks: [] });
+    assert.deepStrictEqual(compareResults(a, b), { matches: true, quirks: ['both-errored'] });
   });
 });

@@ -1,9 +1,0 @@
-query ($wjVYg: Boolean!) {
-  rX7tDu3K5R {
-    ... on Union_PsvJiD {
-      ... on Object_qq_vMWQ @include(if: $wjVYg) @Directive_ezjELUO4 {
-        fTKWL
-      }
-    }
-  }
-}

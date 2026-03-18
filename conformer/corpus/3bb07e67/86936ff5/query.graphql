@@ -1,0 +1,24 @@
+{
+  ...Fragment_RJL
+}
+
+fragment Fragment_F8X5HKjq on Object_mY7G {
+  zI6H93UX: __typename
+}
+
+fragment Fragment_H5DnhRfiF2 on Union_afAXkSbOk {
+  __typename
+}
+
+fragment Fragment_RJL on Union_afAXkSbOk @Directive_jyVJ{
+  __typename
+  ... on Object_mY7G {
+    ...Fragment_F8X5HKjq
+  }
+  ... on Union_afAXkSbOk @Directive_l4n9(m3fcs51L: 1.0071573067633133E+308) {
+    ...Fragment_H5DnhRfiF2
+    ... on Union_afAXkSbOk {
+      __typename
+    }
+  }
+}

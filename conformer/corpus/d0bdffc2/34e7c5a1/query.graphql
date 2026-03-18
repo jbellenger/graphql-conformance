@@ -1,8 +1,0 @@
-query ($mIHNSx: Boolean!) {
-  ...Fragment_hP
-  __typename @include(if: $mIHNSx)
-}
-
-fragment Fragment_hP on Object_bRkgGXo0eF {
-  __typename
-}

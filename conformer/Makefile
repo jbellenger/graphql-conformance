@@ -9,6 +9,7 @@ check:
 	node src/check.js
 
 build:
+	npm install
 	node src/build.js
 
 gen:

@@ -1,3 +1,0 @@
-query ($wf: Boolean! = true) {
-  __typename @skip(if: $wf)
-}

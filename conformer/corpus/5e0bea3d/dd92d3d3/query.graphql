@@ -1,3 +1,0 @@
-query WK @experimental_disableErrorPropagation {
-  __typename @skip(if: true)
-}

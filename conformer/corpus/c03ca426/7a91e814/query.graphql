@@ -1,0 +1,16 @@
+query XI_ {
+  ...Fragment_WWDny0B@defer(if: true, label: "R{")
+  ...Fragment_WWDny0B
+}
+
+fragment Fragment_IS8ymGAt on Union_OQsbT {
+  __typename
+  ... {
+    __typename
+  }
+}
+
+fragment Fragment_WWDny0B on Union_P_ {
+  ...Fragment_IS8ymGAt
+  __typename
+}

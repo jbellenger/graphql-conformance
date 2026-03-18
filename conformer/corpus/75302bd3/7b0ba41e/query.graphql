@@ -1,8 +1,0 @@
-query ($mmKq: Boolean!) {
-  ...Fragment_S
-}
-
-fragment Fragment_S on Union_Rxap {
-  __typename
-  __typename @skip(if: $mmKq)
-}

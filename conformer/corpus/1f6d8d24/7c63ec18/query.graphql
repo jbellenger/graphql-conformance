@@ -1,5 +1,0 @@
-query ($pBIsLb_2F: Boolean!) {
-  ... on Union_cq {
-    __typename @Directive_FYNko @skip(if: $pBIsLb_2F)
-  }
-}

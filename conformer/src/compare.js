@@ -41,7 +41,9 @@ function unorderedEqual(a, b) {
 }
 
 function compareResults(a, b) {
-  if (a.error || b.error) return { matches: false, quirks: [] };
+  if (a.error && b.error) return { matches: true, quirks: ['both-errored'] };
+  if (a.error) return { matches: false, quirks: ['reference-errored'] };
+  if (b.error) return { matches: false, quirks: ['conformant-errored'] };
 
   const quirks = [];
 

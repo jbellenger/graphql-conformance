@@ -1,9 +1,0 @@
-query ($tbDSZH1t8D: Boolean!) {
-  ...Fragment_V94YpN
-  ...Fragment_V94YpN
-  __typename
-}
-
-fragment Fragment_V94YpN on Union_kUFvvqv {
-  GFcSzns: __typename @skip(if: $tbDSZH1t8D)
-}

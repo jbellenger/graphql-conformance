@@ -1,7 +1,0 @@
-query sCKND0vYU {
-  ... on Union_kUi {
-    ... @defer(if: false, label: "PMY") {
-      __typename
-    }
-  }
-}

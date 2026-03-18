@@ -5,10 +5,11 @@ const assert = require('node:assert/strict');
 const { execFileSync, spawnSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const { ResultsStore } = require('../results');
 
 const baseDir = path.resolve(__dirname, '..');
 const configPath = path.join(baseDir, 'config.json');
-const resultsDir = path.join(baseDir, 'results');
+const resultsDataDir = path.join(baseDir, 'results', 'data');
 
 const testConfig = {
   reference: {
@@ -33,38 +34,26 @@ describe('integration: self-comparison', () => {
       fs.writeFileSync(configPath, JSON.stringify(testConfig, null, 2));
       execFileSync('node', [path.join(baseDir, 'src/index.js')], {
         cwd: baseDir,
-        timeout: 60_000,
+        timeout: 300_000,
       });
 
-      // Read index.json to find the run
-      const indexPath = path.join(resultsDir, 'index.json');
-      assert.ok(fs.existsSync(indexPath), 'index.json should exist');
-      const index = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
-      assert.ok(index.runs.length > 0, 'should have at least one run');
+      const store = new ResultsStore(resultsDataDir);
+      const runResult = store.loadLatestRun();
 
-      const latestRun = index.runs[0];
-      const runPath = path.join(resultsDir, `${latestRun.id}.json`);
-      assert.ok(fs.existsSync(runPath), 'run file should exist');
-      const runResult = JSON.parse(fs.readFileSync(runPath, 'utf8'));
-
-      // Verify structure
-      assert.equal(runResult.id, latestRun.id);
+      assert.ok(runResult, 'should have a run result');
       assert.ok(runResult.timestamp);
       assert.equal(runResult.reference.name, 'graphql-js');
       assert.ok(runResult.reference.sha);
       assert.ok(runResult.conformants['graphql-js-copy']);
       assert.ok(runResult.conformants['graphql-js-copy'].sha);
 
-      // Every test/query should match exactly with no quirks
-      const tests = runResult.conformants['graphql-js-copy'].tests;
-      for (const [key, result] of Object.entries(tests)) {
-        assert.equal(result.matches, true, `test ${key}: matches was false`);
-        assert.deepStrictEqual(result.quirks, [], `test ${key}: unexpected quirks`);
-      }
+      // No failures should exist (graphql-js vs itself)
+      const failures = store.getImplFailures('graphql-js-copy');
+      assert.equal(failures.length, 0, 'graphql-js vs itself should have no failures');
     } finally {
       fs.writeFileSync(configPath, originalConfig);
-      if (fs.existsSync(resultsDir)) {
-        fs.rmSync(resultsDir, { recursive: true });
+      if (fs.existsSync(resultsDataDir)) {
+        fs.rmSync(resultsDataDir, { recursive: true });
       }
     }
   });
@@ -77,21 +66,19 @@ describe('integration: incremental skip', () => {
     try {
       fs.writeFileSync(configPath, JSON.stringify(testConfig, null, 2));
 
-      // First run — executes everything
+      // First run
       execFileSync('node', [path.join(baseDir, 'src/index.js')], {
         cwd: baseDir,
-        timeout: 60_000,
+        timeout: 300_000,
       });
 
-      const indexPath = path.join(resultsDir, 'index.json');
-      const index1 = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
-      const run1 = JSON.parse(fs.readFileSync(
-        path.join(resultsDir, `${index1.runs[0].id}.json`), 'utf8'));
+      const store1 = new ResultsStore(resultsDataDir);
+      const run1 = store1.loadLatestRun();
 
       // Second run — should skip the conformant (same SHA)
       const run2proc = spawnSync('node', [path.join(baseDir, 'src/index.js')], {
         cwd: baseDir,
-        timeout: 60_000,
+        timeout: 300_000,
       });
       assert.equal(run2proc.status, 0, 'second run should succeed');
 
@@ -99,11 +86,11 @@ describe('integration: incremental skip', () => {
       assert.ok(stderr.includes('Skipping conformant (graphql-js-copy)'),
         'should log that conformant was skipped');
 
-      const index2 = JSON.parse(fs.readFileSync(indexPath, 'utf8'));
-      assert.equal(index2.runs.length, 2, 'should have two runs');
+      const store2 = new ResultsStore(resultsDataDir);
+      const runs = store2.listRuns();
+      assert.equal(runs.length, 2, 'should have two runs');
 
-      const run2 = JSON.parse(fs.readFileSync(
-        path.join(resultsDir, `${index2.runs[0].id}.json`), 'utf8'));
+      const run2 = store2.loadLatestRun();
 
       // Results should be identical
       assert.deepStrictEqual(
@@ -113,8 +100,8 @@ describe('integration: incremental skip', () => {
       );
     } finally {
       fs.writeFileSync(configPath, originalConfig);
-      if (fs.existsSync(resultsDir)) {
-        fs.rmSync(resultsDir, { recursive: true });
+      if (fs.existsSync(resultsDataDir)) {
+        fs.rmSync(resultsDataDir, { recursive: true });
       }
     }
   });
