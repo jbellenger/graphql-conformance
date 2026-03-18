@@ -1,0 +1,7 @@
+query ipCM3l {
+  ...Fragment_A@defer(if: false)
+}
+
+fragment Fragment_A on Union_FolI0lG27D {
+  __typename
+}

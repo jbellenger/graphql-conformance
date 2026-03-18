@@ -1,0 +1,17 @@
+{
+  ...Fragment_w1ahN0iIp
+  ... on Object_gDxA_k {
+    ...Fragment_u
+  }
+}
+
+fragment Fragment_u on Object_gDxA_k {
+  AWKonGwP: __typename
+  ... on Union_wb {
+    __typename
+  }
+}
+
+fragment Fragment_w1ahN0iIp on Union_wb {
+  ...Fragment_u
+}

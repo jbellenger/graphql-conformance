@@ -1,0 +1,45 @@
+query ($olrn: Input_Y2f5sCXdYm) {
+  __typename
+  vWDTiA {
+    ...Fragment_i2cdk
+    ...Fragment_i2cdk
+    __typename
+    ... on Interface_A_STUB {
+      ... on Interface_A_STUB {
+        v
+      }
+    }
+  }
+  kho: __typename
+  izDfOYu4p: vWDTiA {
+    doM
+  }
+  ... on Union_mWVaw0X6o {
+    ...Fragment_yj
+    ...Fragment_yj
+    ... on Object_ZNFUaZ3Z {
+      ...Fragment_Ay5WNd@Directive_e_SP8wNLw @skip(if: false)
+      __typename
+    }
+  }
+}
+
+fragment Fragment_v55defo_ on Interface_A_STUB {
+  doM
+}
+
+fragment Fragment_i2cdk on Interface_A {
+  ...Fragment_v55defo_
+  n4N(mCLUh1v: {xjy3iktMwx : "", hbdNhuh : cBd0j, u1Diz : {xjy3iktMwx : "0W", hbdNhuh : YHcHznAW9, u1Diz : {hbdNhuh : null, u1Diz : null}}}, cbLMGxg6S9: $olrn)
+  ... on Interface_A_STUB {
+    spuoM9wke
+  }
+}
+
+fragment Fragment_yj on Union_i0hfW {
+  IN1I: __typename @Directive_swSrrght5Y
+}
+
+fragment Fragment_Ay5WNd on Union_mWVaw0X6o {
+  smQBfbRn: __typename
+}

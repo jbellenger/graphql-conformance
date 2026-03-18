@@ -1,0 +1,32 @@
+query @experimental_disableErrorPropagation @Directive_m {
+  ...Fragment_hA
+  wUf85e {
+    ...Fragment_LrVLzHzs
+    ...Fragment_ATIgK
+    biNklVzF1d
+    ... on Union_dBdNzLtV {
+      __typename
+    }
+  }
+  ... on Union_Pp {
+    ahproGz: __typename
+  }
+}
+
+fragment Fragment_jF on Union_PS {
+  ... on Union_Pp {
+    __typename
+  }
+}
+
+fragment Fragment_hA on Union_Pp @Directive_m{
+  ...Fragment_jF
+}
+
+fragment Fragment_LrVLzHzs on Object_SDX8 {
+  __typename
+}
+
+fragment Fragment_ATIgK on Union_dBdNzLtV @Directive_m{
+  __typename
+}

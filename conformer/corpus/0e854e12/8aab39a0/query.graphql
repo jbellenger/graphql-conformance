@@ -1,0 +1,8 @@
+query dljGnl {
+  ...Fragment_KC
+  ...Fragment_KC
+}
+
+fragment Fragment_KC on Union_yWyjJat {
+  __typename @skip(if: true) @include(if: false)
+}

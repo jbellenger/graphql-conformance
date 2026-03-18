@@ -1,0 +1,19 @@
+{
+  __typename
+  ... on Union_G {
+    ...Fragment_R_uOtKKV
+    __typename
+  }
+}
+
+fragment Fragment_X7Bn on Union_UtrHpmj {
+  __typename
+}
+
+fragment Fragment_R_uOtKKV on Union_hfmn {
+  ...Fragment_X7Bn
+  ... on Union_UtrHpmj {
+    __typename
+    __typename
+  }
+}

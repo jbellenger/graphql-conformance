@@ -1,0 +1,29 @@
+query ($tN24: Enum_n!, $xv: Boolean!) {
+  ...Fragment_k1U0tt8
+  cRwl(ganfgmRdi8: AT3K3uZ4QR) {
+    kMk: cRwl(ganfgmRdi8: PqE) {
+      pAMP0
+    }
+    pAMP0
+    __typename
+    __typename @Directive_G0OaK7
+  }
+}
+
+fragment Fragment_is4BjP3fB on Object_vYtrdX_PB {
+  ATZ: pAMP0
+}
+
+fragment Fragment_gvT_9GF0tT on Object_vYtrdX_PB {
+  ...Fragment_is4BjP3fB
+  acuZ7o: __typename
+  ... on Object_vYtrdX_PB {
+    L: cRwl(ganfgmRdi8: $tN24) {
+      __typename @include(if: $xv)
+    }
+  }
+}
+
+fragment Fragment_k1U0tt8 on Object_vYtrdX_PB {
+  ...Fragment_gvT_9GF0tT
+}

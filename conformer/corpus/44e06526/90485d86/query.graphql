@@ -1,0 +1,44 @@
+{
+  ... on Object_Xg5x8 {
+    ...Fragment_nzP
+    gyz36s {
+      _M68emx: __typename
+    }
+    ... on Union_N {
+      ...Fragment_nzP
+      N71YmiixE: __typename
+      ... on Object_Xg5x8 @defer(if: true, label: null) {
+        gyz36s {
+          h {
+            __typename
+          }
+        }
+        gyz36s {
+          EH_iKTTi: k6pWqKt
+        }
+      }
+    }
+  }
+  ... on Object_Xg5x8 {
+    ...Fragment_nzP@Directive_M
+    gyz36s {
+      LHRYJFOkIS: k6pWqKt
+    }
+    gyz36s {
+      ... on Object_F444444444 {
+        h {
+          DYtag: __typename
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_nzP on Union_N {
+  __typename
+  __typename
+  __typename
+  ... on Union_N {
+    L: __typename
+  }
+}

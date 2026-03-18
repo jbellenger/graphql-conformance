@@ -1,0 +1,27 @@
+query K6 {
+  ...Fragment_aWHi72
+  wvxk {
+    wvxk {
+      ... on Union_Wkpsw0oe3q {
+        u0NoNmwv: __typename
+      }
+    }
+    ... on Union_r9D3BZ {
+      __typename
+    }
+  }
+  vlddl {
+    __typename
+  }
+  ... on Interface_R {
+    CM: __typename @include(if: false)
+  }
+  ... on Union_r9D3BZ {
+    ...Fragment_aWHi72
+    __typename
+  }
+}
+
+fragment Fragment_aWHi72 on Union_r9D3BZ {
+  Q: __typename
+}

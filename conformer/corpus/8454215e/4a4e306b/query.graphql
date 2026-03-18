@@ -1,0 +1,30 @@
+{
+  ...Fragment_KW7uCoBj9N
+  ... on Union_crZu7wDNd {
+    ...Fragment_B7WfeNPPk@defer(if: false, label: "")
+    ...Fragment_jsA
+    ... on Union_cN9DV {
+      __typename
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_jsA on Union_cN9DV {
+  Ne8: __typename
+}
+
+fragment Fragment_KW7uCoBj9N on Union_UJz3mF {
+  __typename
+  ... on Union_crZu7wDNd {
+    ...Fragment_jsA
+    __typename
+  }
+}
+
+fragment Fragment_B7WfeNPPk on Union_UJz3mF {
+  __typename
+  __typename
+  __typename
+}

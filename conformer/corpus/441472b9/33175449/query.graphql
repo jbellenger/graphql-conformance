@@ -1,0 +1,24 @@
+query ($s1T7_DX: Boolean!) {
+  ...Fragment_MIo5jbU
+  ...Fragment_MIo5jbU
+  ...Fragment_MIo5jbU@Directive_nCcu
+  ... on Object_c7Ol_FSZNh {
+    eul @skip(if: false) @include(if: $s1T7_DX) {
+      hYJN962u: __typename
+    }
+    __typename @skip(if: true)
+    ... on Object_c7Ol_FSZNh {
+      Tw: __typename
+      eul @include(if: true) {
+        __typename
+      }
+    }
+  }
+  ... {
+    __typename @Directive_Hs0o_9piki
+  }
+}
+
+fragment Fragment_MIo5jbU on Union_Xqjoe5y6 {
+  iZeLHef_V5: __typename
+}

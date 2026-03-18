@@ -1,0 +1,40 @@
+query ($kDOuy9lAgX: Boolean!) {
+  kI @skip(if: $kDOuy9lAgX) @Directive_yrfAwM9 @include(if: false) {
+    ...Fragment_ySnFiICz
+    fLKoqzdy {
+      ...Fragment_rj18
+      __typename
+      __typename
+      __typename @skip(if: true)
+    }
+    fLKoqzdy {
+      ...Fragment_rj18
+      ... on Union_G {
+        hX8: __typename
+      }
+    }
+  }
+  ... on Object_vTQRd {
+    ... on Union_G {
+      __typename @skip(if: false)
+    }
+  }
+}
+
+fragment Fragment_V on Object_qz {
+  n: __typename
+}
+
+fragment Fragment_ySnFiICz on Object_qz {
+  ...Fragment_V
+  bXiX: __typename
+  __typename @skip(if: false)
+  kePu: __typename
+  ... on Union_UtrHpmj {
+    __typename
+  }
+}
+
+fragment Fragment_rj18 on Union_G {
+  __typename
+}

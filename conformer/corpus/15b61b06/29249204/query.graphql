@@ -1,0 +1,9 @@
+query q6My8 {
+  ... on Union_i0hfW @defer(label: null) {
+    ...Fragment_mAfH
+  }
+}
+
+fragment Fragment_mAfH on Union_mWVaw0X6o {
+  __typename
+}

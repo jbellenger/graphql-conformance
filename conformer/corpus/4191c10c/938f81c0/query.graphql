@@ -1,0 +1,16 @@
+query SW($bMXs: Boolean!) {
+  ...Fragment_W89jj
+  ...Fragment_W89jj@include(if: $bMXs) @Directive_M
+}
+
+fragment Fragment_kZVZ on Object_SxleD_BO3b {
+  p
+  __typename
+  p
+}
+
+fragment Fragment_W89jj on Object_SxleD_BO3b {
+  ...Fragment_kZVZ
+  ...Fragment_kZVZ
+  p
+}

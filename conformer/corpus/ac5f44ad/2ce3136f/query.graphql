@@ -1,0 +1,23 @@
+query pMTDBdC {
+  ... on Object_ks2 {
+    ...Fragment_cb@skip(if: false)
+    ...Fragment_cb
+    __typename
+    ... on Union_WN9p {
+      __typename
+    }
+    ... on Union_znO9VbY1dD {
+      __typename
+      ... on Object_ks2 {
+        __typename @Directive_Ow
+      }
+    }
+  }
+}
+
+fragment Fragment_cb on Union_znO9VbY1dD @Directive_q7Epre{
+  t: __typename
+  ... on Union_Xd_ {
+    __typename
+  }
+}

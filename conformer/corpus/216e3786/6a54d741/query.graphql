@@ -1,0 +1,20 @@
+query ($y: Boolean!@Directive_IH1) {
+  hbfZv_sjP {
+    ...Fragment_F
+  }
+  ... on Union_oGY5K7 @skip(if: $y) {
+    HKsjgI2t1: __typename
+  }
+}
+
+fragment Fragment_sp0QE4wqg on Object_fS {
+  yR0lDpd
+}
+
+fragment Fragment_F on Union_va {
+  ...Fragment_sp0QE4wqg
+  mjwri08Sl: __typename
+  ... on Interface_H8H6hpt {
+    yR0lDpd
+  }
+}

@@ -1,0 +1,40 @@
+{
+  j {
+    ...Fragment_PE
+    c {
+      ...Fragment_zY
+      epreIPs {
+        __typename
+        __typename @include(if: false)
+      }
+      aWTaUnfq0 @skip(if: true)
+      ... on Interface_DlAqwjEa_STUB {
+        __typename
+        __typename
+      }
+    }
+    __typename
+    __typename
+  }
+  ... on Union_xbM9IR17l1 {
+    __typename
+    ... on Union_EFVrgqJ {
+      ...Fragment_E79IlB3Jc
+      __typename
+    }
+  }
+}
+
+fragment Fragment_PE on Interface_J_STUB {
+  ... on Interface_J {
+    __typename
+  }
+}
+
+fragment Fragment_zY on Interface_DlAqwjEa @Directive_K5uNTp(q: -1.5517746566706872E+308){
+  __typename
+}
+
+fragment Fragment_E79IlB3Jc on Union_dqwMCf {
+  __typename
+}

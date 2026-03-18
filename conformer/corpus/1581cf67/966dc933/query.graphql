@@ -1,0 +1,11 @@
+query L212PWC($wh: Boolean! = false) {
+  ...Fragment_X2u
+  __typename
+  ... on Union_sbpOWzu {
+    Du5EGO0: __typename @include(if: $wh)
+  }
+}
+
+fragment Fragment_X2u on Union_ZmCn2hoJg {
+  __typename
+}

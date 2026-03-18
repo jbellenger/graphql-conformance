@@ -1,0 +1,33 @@
+query ($lK7AFBFkzq: Boolean!@Directive_c) {
+  jlj {
+    ...Fragment_SG
+  }
+  ... on Union_qG1X8 {
+    ...Fragment_ffVQ
+    __typename
+    __typename
+  }
+  ... on Object_SqpuRS {
+    ...Fragment_ffVQ
+    jlj {
+      ...Fragment_SG
+    }
+    ... on Union_qG1X8 {
+      ... on Union_qG1X8 {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_SG on Union_o88q7Bvp {
+  ... on Union_PanmG03B_ {
+    __typename @skip(if: $lK7AFBFkzq)
+  }
+}
+
+fragment Fragment_ffVQ on Union_qG1X8 {
+  ... {
+    __typename
+  }
+}

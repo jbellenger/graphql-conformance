@@ -1,0 +1,50 @@
+{
+  ...Fragment_kg_
+  ...Fragment_kg_
+  ...Fragment_kg_
+  A: __typename
+  hkcUpqK
+  ... on Union_Tn4upaO8Lf {
+    ... on Object_K8VVER @include(if: false) {
+      ...Fragment_dkxo2
+      Sh9Bhx5c: vUPjp
+      vUPjp
+      vUPjp
+      ... on Union_WguwPIy {
+        __typename
+      }
+    }
+  }
+  ... on Object_K8VVER @defer(if: false, label: "cX") {
+    ... {
+      ...Fragment_kg_
+    }
+    ... on Object_K8VVER {
+      j7zvf {
+        hkcUpqK
+      }
+      j7zvf @Directive_ymcusL {
+        hJGB: j7zvf {
+          vUPjp
+        }
+      }
+      hkcUpqK
+    }
+  }
+}
+
+fragment Fragment_kg_ on Union_WguwPIy {
+  g_kSMVn: __typename
+  ... {
+    __typename
+  }
+  ... on Object_K8VVER @skip(if: true) {
+    hkcUpqK
+    IKfu6: hkcUpqK
+    vUPjp
+  }
+}
+
+fragment Fragment_dkxo2 on Object_K8VVER {
+  ce3Fpbnnk: vUPjp
+}

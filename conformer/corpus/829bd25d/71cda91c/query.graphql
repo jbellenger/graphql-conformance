@@ -1,0 +1,19 @@
+query @Directive_I_Hh @Directive_svv8bv3oDc {
+  ...Fragment_a74k
+  wVfeU: y5ZYD3 {
+    ... on Object_lAAVtI {
+      ... on Union_U {
+        __typename
+      }
+    }
+    ... on Object_lAAVtI {
+      __typename @Directive_svv8bv3oDc
+    }
+  }
+}
+
+fragment Fragment_a74k on Union_U {
+  __typename
+  __typename @Directive_svv8bv3oDc
+  __typename
+}

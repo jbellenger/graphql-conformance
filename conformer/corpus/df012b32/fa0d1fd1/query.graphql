@@ -1,0 +1,25 @@
+query s6lUlKBu {
+  ...Fragment_dqjkzq
+  ... on Interface_LZ7qmOzqQ3 {
+    __typename
+  }
+}
+
+fragment Fragment_SqQxV_ on Union_M2X {
+  __typename
+  iPGg05DOmN: __typename @skip(if: true)
+}
+
+fragment Fragment_btxS on Union_Gr {
+  __typename
+}
+
+fragment Fragment_dqjkzq on Union_M2X {
+  __typename
+  ... on Interface_LZ7qmOzqQ3 {
+    ...Fragment_SqQxV_
+  }
+  ... on Union_Gr {
+    ...Fragment_btxS
+  }
+}

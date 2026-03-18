@@ -1,0 +1,14 @@
+query qttv($wO7E: Boolean!) @experimental_disableErrorPropagation {
+  ... on Object_OpEDxWa @include(if: $wO7E) {
+    ... on Object_OpEDxWa @skip(if: false) {
+      ...Fragment_yeIvI
+      ... on Union_BRB3 {
+        __typename @include(if: true)
+      }
+    }
+  }
+}
+
+fragment Fragment_yeIvI on Union_BRB3 {
+  __typename
+}

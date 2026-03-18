@@ -1,0 +1,55 @@
+{
+  roXaT {
+    f4lefg {
+      RP70k: __typename
+      S7X: __typename
+      __typename
+      ... on Union_mqZlJk8rQ {
+        __typename
+      }
+    }
+    __typename
+  }
+  ... on Union_mqZlJk8rQ {
+    ... on Object_CQn5fbe {
+      ...Fragment_gKpi2I
+      eW: __typename
+      ... on Object_CQn5fbe {
+        iss
+      }
+    }
+    ... on Interface_TNsNpi8n {
+      __typename
+    }
+  }
+  ... on Union_PU7z {
+    J: __typename
+    FYgs8K: __typename
+    __typename
+    ... on Interface_TNsNpi8n {
+      ...Fragment_q
+      ... on Object_k {
+        __typename
+      }
+    }
+  }
+  ... on Union_mqZlJk8rQ {
+    ...Fragment_gKpi2I
+    __typename
+    __typename
+    ... on Object_CQn5fbe {
+      ...Fragment_gKpi2I
+    }
+  }
+}
+
+fragment Fragment_gKpi2I on Object_CQn5fbe {
+  _MtBUPuZW4
+  j {
+    __typename
+  }
+}
+
+fragment Fragment_q on Object_k {
+  __typename
+}

@@ -1,0 +1,13 @@
+{
+  ...Fragment_GUTG
+}
+
+fragment Fragment_CskU on Object_UnhMqscoMN {
+  vLraIgo
+}
+
+fragment Fragment_GUTG on Union_Y {
+  ... on Union_e {
+    ...Fragment_CskU@defer
+  }
+}

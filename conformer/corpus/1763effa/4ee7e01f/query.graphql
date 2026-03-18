@@ -1,0 +1,22 @@
+{
+  ...Fragment_y
+  ...Fragment_y
+  __typename
+}
+
+fragment Fragment_FdWQp on Union_gpT {
+  FMnRR4bD7M: __typename
+}
+
+fragment Fragment_y on Union_LCMVMgOI {
+  ...Fragment_FdWQp
+  ...Fragment_FdWQp
+  ... on Union_sQDdJbQs @include(if: false) {
+    __typename
+  }
+  ... on Object_VpP4rUTsai @include(if: false) {
+    ... on Union_gpT {
+      __typename
+    }
+  }
+}

@@ -1,0 +1,30 @@
+query QJiZraRXK {
+  ...Fragment_GU9FrdLsD
+  ...Fragment_GU9FrdLsD
+  ...Fragment__ADH
+  ... on Union_noEIVt {
+    __typename
+  }
+}
+
+fragment Fragment__ADH on Object_Phmtzq {
+  zy2Rk(aPQLkzZfC: Rx9pFC)
+  nYJ5
+  zy2Rk(aPQLkzZfC: Rx9pFC)
+}
+
+fragment Fragment_GU9FrdLsD on Union_noEIVt {
+  ...Fragment__ADH
+  ...Fragment__ADH
+  B2Qa69LLZM: __typename
+  ... {
+    ...Fragment__ADH
+    __typename
+    ... on Union_noEIVt @Directive_ziYkHleOMV {
+      __typename
+    }
+  }
+  ... on Union_WL6vP8MjU {
+    ...Fragment__ADH
+  }
+}

@@ -1,0 +1,18 @@
+{
+  ...Fragment_sxsTZP8h7
+  y4
+}
+
+fragment Fragment_ysKdJCcTOc on Union_Yft {
+  ... on Union_Yft {
+    __typename
+  }
+}
+
+fragment Fragment_sxsTZP8h7 on Union_j_huDRe {
+  ...Fragment_ysKdJCcTOc
+  ...Fragment_ysKdJCcTOc
+  ... on Union_mF4B {
+    __typename
+  }
+}

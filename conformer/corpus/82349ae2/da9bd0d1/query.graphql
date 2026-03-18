@@ -1,0 +1,10 @@
+{
+  ...Fragment_MgSf
+}
+
+fragment Fragment_MgSf on Union_u {
+  ... on Union_u {
+    nN: __typename @include(if: false)
+    __typename
+  }
+}

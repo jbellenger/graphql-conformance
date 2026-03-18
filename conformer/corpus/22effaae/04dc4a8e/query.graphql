@@ -1,0 +1,30 @@
+{
+  ...Fragment_sqG1d
+  xB(pAJ: null) {
+    ...Fragment_CZ44PiTza
+    __typename
+    ... on Union_cbg @defer(if: false, label: "!") {
+      ...Fragment_BmiIus
+    }
+  }
+}
+
+fragment Fragment_CZ44PiTza on Union_tu {
+  __typename
+}
+
+fragment Fragment_sqG1d on Object_B {
+  eE5jY_ {
+    ... on Union_MThPGqg {
+      __typename
+    }
+  }
+  eE5jY_ {
+    ...Fragment_CZ44PiTza
+    __typename
+  }
+}
+
+fragment Fragment_BmiIus on Union_MThPGqg {
+  SGOih: __typename
+}

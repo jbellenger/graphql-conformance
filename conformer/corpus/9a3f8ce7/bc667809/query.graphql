@@ -1,0 +1,43 @@
+{
+  ...Fragment_xw9eG@defer(if: true, label: "L(v")
+  ov8f7Q: g
+}
+
+fragment Fragment_Esl9 on Object_nvB {
+  p: zwuF {
+    QlM00C9Y: __typename
+  }
+  qx5DOAA
+}
+
+fragment Fragment_FOFAV9 on Interface_qzS {
+  ...Fragment_Esl9
+  __typename
+}
+
+fragment Fragment_yc_ on Object_nvB {
+  y_ZRrBd
+}
+
+fragment Fragment_mx75uWla9 on Union_jZ5NiO_Sb {
+  __typename
+}
+
+fragment Fragment_xw9eG on Union_KyY_Whd46 {
+  ...Fragment_FOFAV9
+  ... on Object_nvB {
+    ...Fragment_yc_
+    L46y: __typename
+    zwuF {
+      __typename
+    }
+    JhOJWnO: u8td {
+      q7jNYsmRh
+    }
+  }
+  ... on Union_jZ5NiO_Sb {
+    ...Fragment_mx75uWla9
+    __typename
+    __typename
+  }
+}

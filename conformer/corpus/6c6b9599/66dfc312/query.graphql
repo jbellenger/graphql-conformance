@@ -1,0 +1,28 @@
+query NRouhQq {
+  ...Fragment_vj
+  ... on Object_sEZH2lmWb {
+    ... on Object_sEZH2lmWb @defer(if: false, label: "a/!") {
+      ...Fragment_vj
+      mpKkO6nES {
+        __typename @Directive_ye
+      }
+      ... on Union_E {
+        __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_vj on Union_E {
+  ... on Object_sEZH2lmWb {
+    mpKkO6nES @Directive_ye {
+      __typename
+    }
+    ... on Object_sEZH2lmWb {
+      mpKkO6nES {
+        dw67Son7: __typename
+      }
+    }
+  }
+}

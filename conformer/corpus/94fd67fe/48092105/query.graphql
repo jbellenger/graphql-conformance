@@ -1,0 +1,56 @@
+query ($v: Float) {
+  ...Fragment_MF4z8Exrd
+  ...Fragment_cJbFlI
+  ...Fragment_t8HU0N
+  ooaqb
+  lMJOb_Mr: qmqMvk(mGKL0Lf_: null) {
+    ...Fragment_wU
+    ...Fragment_wU
+    ... on Interface_bEBx42iYw_STUB {
+      j2qC
+    }
+    ... on Interface_bEBx42iYw {
+      wB: yt9mYZMs
+      ... on Interface_bEBx42iYw {
+        yt9mYZMs
+      }
+    }
+  }
+  YH: qmqMvk(mGKL0Lf_: -1.2034446763858628E+308) {
+    ...Fragment_wU
+    ...Fragment_wU
+  }
+  HImzu: ooaqb
+}
+
+fragment Fragment_t8HU0N on Object_xRNq2c5LY {
+  ooaqb
+}
+
+fragment Fragment_MF4z8Exrd on Object_xRNq2c5LY {
+  ...Fragment_t8HU0N
+  qmqMvk(mGKL0Lf_: $v) {
+    ... on Interface_bEBx42iYw_STUB {
+      myyW: aQ4 {
+        u0ZQq {
+          yNq
+        }
+      }
+      j2qC
+    }
+  }
+  pFeaC: __typename
+  ... on Object_xRNq2c5LY {
+    ooaqb
+  }
+}
+
+fragment Fragment_cJbFlI on Object_xRNq2c5LY {
+  dP6rTXD8: ooaqb
+}
+
+fragment Fragment_wU on Interface_bEBx42iYw_STUB {
+  ... {
+    j2qC
+  }
+}

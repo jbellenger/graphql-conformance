@@ -1,0 +1,25 @@
+{
+  ...Fragment_vMTum1YA9
+  __typename
+}
+
+fragment Fragment_ItJL on Interface_G_STUB {
+  unyA9
+}
+
+fragment Fragment_I8xi71B1qs on Object_UnhMqscoMN {
+  vLraIgo
+}
+
+fragment Fragment_vMTum1YA9 on Object_UnhMqscoMN {
+  yedDrdPS {
+    ...Fragment_ItJL
+    unyA9
+    ... on Interface_G_STUB {
+      unyA9
+    }
+  }
+  ... on Union_Y {
+    ...Fragment_I8xi71B1qs
+  }
+}

@@ -1,0 +1,20 @@
+query jvr {
+  ...Fragment_inF7HkJp7Y
+  cFvy7pLtzf(ji: 1.5138130151434897E+308) {
+    ...Fragment_mYX8hMlx
+    ...Fragment_mYX8hMlx
+  }
+  __typename
+}
+
+fragment Fragment_inF7HkJp7Y on Object_AO {
+  h: cFvy7pLtzf(ji: 1.6082135179726625E+308) {
+    __typename
+  }
+}
+
+fragment Fragment_mYX8hMlx on Interface_gVhGQ {
+  ... on Interface_gVhGQ {
+    __typename
+  }
+}

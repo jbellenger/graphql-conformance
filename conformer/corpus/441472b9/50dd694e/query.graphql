@@ -1,0 +1,56 @@
+query FKPY89e5r($sXkW: Boolean!) {
+  ...Fragment_poBBWiZ
+  _A3AORVz4: y2XqgNX {
+    ... on Union_j7hwZX2g {
+      ...Fragment_UIj
+      ... on Union_j7hwZX2g {
+        iUFH9: __typename
+      }
+    }
+    ... on Union_j7hwZX2g {
+      ...Fragment_AJVLxWnrK
+      __typename
+    }
+  }
+  y2XqgNX {
+    dcPGGbZWDe: y2XqgNX {
+      __typename
+    }
+    eul {
+      y2XqgNX {
+        __typename
+      }
+    }
+    y2XqgNX {
+      __typename @skip(if: $sXkW)
+    }
+    __typename @include(if: false)
+    ... on Object_c7Ol_FSZNh {
+      ...Fragment_AJVLxWnrK
+      kWb: eul @Directive_Hs0o_9piki {
+        h9TFi6: __typename
+      }
+      ... on Union_Xqjoe5y6 {
+        __typename
+      }
+    }
+    ... on Object_c7Ol_FSZNh {
+      ... on Union_j7hwZX2g {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_poBBWiZ on Union_Xqjoe5y6 {
+  qJlq: __typename
+}
+
+fragment Fragment_UIj on Object_tcfD {
+  __typename
+  __typename
+}
+
+fragment Fragment_AJVLxWnrK on Union_j7hwZX2g {
+  C8NnH: __typename
+}

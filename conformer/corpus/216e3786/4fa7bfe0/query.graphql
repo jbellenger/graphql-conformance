@@ -1,0 +1,17 @@
+query jl6 @Directive_OKviMAt(vNid9l3ZE2: []) {
+  ...Fragment_Unfx
+  ...Fragment_Unfx
+}
+
+fragment Fragment_Rk on Union_Ky_ {
+  ... on Object_QOb7 {
+    __typename
+  }
+}
+
+fragment Fragment_Unfx on Union_oGY5K7 {
+  ...Fragment_Rk
+  ... on Union_Ky_ {
+    ...Fragment_Rk@Directive_IH1
+  }
+}

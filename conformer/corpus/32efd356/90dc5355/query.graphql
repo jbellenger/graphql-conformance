@@ -1,0 +1,32 @@
+{
+  ...Fragment_d
+  ... on Union_exW0uVl {
+    ...Fragment_d
+    ...Fragment_d
+    ... on Union_exW0uVl {
+      ... on Union_UtV2WEj {
+        __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_d on Union_exW0uVl {
+  __typename
+  __typename
+  __typename
+  ... on Union_UtV2WEj {
+    __typename
+    s: __typename @include(if: false)
+  }
+  ... on Object_bN8fygp6 {
+    tib(m7IiUIad: T_P)
+    ... on Object_bN8fygp6 {
+      u {
+        __typename
+      }
+      __typename
+    }
+  }
+}

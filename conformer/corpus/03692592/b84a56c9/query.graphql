@@ -1,0 +1,43 @@
+query K2qUH_t {
+  ...Fragment_yfm5nX
+  ...Fragment_Sxj8qnt8
+  p: hCE(n4: {bmsYFWz : {bmsYFWz : {aQeTY4 : null, f_B1wn : null}, aQeTY4 : {y : null}, f_B1wn : us4i}, f_B1wn : ma20xo_0lc})
+  fa_UOPk: hCE(n4: null)
+  __typename @Directive_b
+}
+
+fragment Fragment_m9 on Interface_UF2A @Directive_b{
+  __typename
+}
+
+fragment Fragment_yfm5nX on Union_s3KZXq {
+  ... on Interface_UF2A {
+    ...Fragment_m9
+  }
+}
+
+fragment Fragment_N6 on Union_H {
+  ...Fragment_yfm5nX
+  ... on Object_T21U {
+    hCE(n4: {bmsYFWz : null, aQeTY4 : {y : {iDEfdXw : -8.28090341951265E+307}}, f_B1wn : us4i})
+  }
+}
+
+fragment Fragment_iaD on Object_CJG0aYm {
+  __typename
+}
+
+fragment Fragment_Sxj8qnt8 on Object_T21U {
+  ...Fragment_yfm5nX
+  ...Fragment_N6
+  ... on Object_T21U {
+    __typename
+  }
+  ... on Union_s3KZXq @include(if: true) {
+    ...Fragment_iaD
+    __typename
+    ... on Union_H {
+      __typename
+    }
+  }
+}

@@ -1,0 +1,5 @@
+query o3C($skfVNyeG: Boolean!) {
+  ... {
+    ooJt_ @skip(if: $skfVNyeG)
+  }
+}

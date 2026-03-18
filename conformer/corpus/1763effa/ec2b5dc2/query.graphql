@@ -1,0 +1,37 @@
+query MgI {
+  ...Fragment_jwq1L
+  ...Fragment_jwq1L
+  __typename
+  phKsj {
+    __typename @Directive_Ya
+  }
+  ... on Union_LCMVMgOI {
+    __typename
+    __typename
+    ... on Object_TG2GIe @defer(if: false, label: "9m") {
+      q2SFz
+    }
+    ... on Object_TG2GIe {
+      ...Fragment_sk
+    }
+  }
+}
+
+fragment Fragment_Ryl9eagAG7 on Object_TG2GIe {
+  q2SFz
+}
+
+fragment Fragment_sk on Union_sQDdJbQs {
+  __typename
+  __typename
+  __typename
+  ... on Object_TG2GIe {
+    __typename @include(if: false)
+  }
+}
+
+fragment Fragment_jwq1L on Object_TG2GIe {
+  ...Fragment_Ryl9eagAG7
+  ...Fragment_sk
+  q2SFz
+}

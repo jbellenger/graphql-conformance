@@ -1,0 +1,34 @@
+query rhCE_JaL {
+  ...Fragment_m2QqG3bBk
+  ...Fragment_Q3t
+  zCZIH: d {
+    ...Fragment_JNhV@Directive_VW7Mch6kj
+    Cd: hie6 @skip(if: false) {
+      ... on Object_bEPb66bdr {
+        __typename @Directive_O92l
+      }
+    }
+  }
+  d {
+    ...Fragment_fWue_JBs
+  }
+}
+
+fragment Fragment_Q3t on Union_CZy {
+  __typename
+}
+
+fragment Fragment_m2QqG3bBk on Object_gng @Directive_O92l{
+  ...Fragment_Q3t
+}
+
+fragment Fragment_fWue_JBs on Interface_xjhyasXi {
+  w05LHS: hie6 {
+    ly4X
+  }
+}
+
+fragment Fragment_JNhV on Interface_xjhyasXi_STUB {
+  ...Fragment_fWue_JBs
+  s: __typename
+}

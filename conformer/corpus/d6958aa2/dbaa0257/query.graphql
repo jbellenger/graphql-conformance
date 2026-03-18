@@ -1,0 +1,32 @@
+query t1nQ_yG($dlSGBi: Input_am93m) {
+  c6ECTSSQH {
+    y9(tVYDQAJq: $dlSGBi) @include(if: false) {
+      ...Fragment_Yu@defer(if: true, label: "")
+      waY9zF: __typename
+      __typename
+    }
+  }
+  c6ECTSSQH {
+    ...Fragment_jjpq8
+    ... on Union_U2Bmje7mQ4 {
+      __typename
+    }
+  }
+  ... on Union_U2Bmje7mQ4 {
+    ...Fragment_Eltvg
+  }
+}
+
+fragment Fragment_Yu on Interface_KKm1Kt {
+  __typename
+}
+
+fragment Fragment_jjpq8 on Union_U2Bmje7mQ4 {
+  __typename
+}
+
+fragment Fragment_Eltvg on Union_k {
+  ... on Union_U2Bmje7mQ4 {
+    __typename
+  }
+}

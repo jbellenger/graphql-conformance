@@ -1,0 +1,17 @@
+query NHv {
+  ...Fragment_L2cTgIlL
+  __typename
+  __typename
+  ... on Union_cTd_GJe {
+    __typename
+  }
+}
+
+fragment Fragment_JdnijZK on Union_cTd_GJe {
+  __typename
+}
+
+fragment Fragment_L2cTgIlL on Union_CT {
+  ...Fragment_JdnijZK
+  ...Fragment_JdnijZK
+}

@@ -1,0 +1,16 @@
+query wot($jXCWh1b96: Boolean!) @experimental_disableErrorPropagation {
+  ...Fragment_NQ
+  ... on Object_rmx @Directive_vzPCLD3CY @include(if: $jXCWh1b96) {
+    __typename
+  }
+}
+
+fragment Fragment_NQ on Union_wnRCQxiXTX {
+  euPVHKB: __typename
+  __typename
+  __typename @include(if: false)
+  NTGmGB31: __typename
+  ... on Object_bo6ndJDa2 @defer(if: true, label: "YG") {
+    __typename
+  }
+}

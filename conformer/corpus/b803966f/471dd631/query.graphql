@@ -1,0 +1,14 @@
+query HhlJrfC {
+  ...Fragment_TMaGa
+  ... on Union_YOhRKrY5 {
+    O8nzw: __typename
+  }
+}
+
+fragment Fragment_TMaGa on Object_AO {
+  ... on Union_iGJG @defer(if: false, label: "^K") {
+    ... on Object_AO {
+      Tc: __typename
+    }
+  }
+}

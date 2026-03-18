@@ -1,0 +1,32 @@
+query ArLc7($knNwl6xK: Boolean!, $o72d: Enum_XV0PXol! = EUD4SFv) {
+  ...Fragment_YTmmNtad@skip(if: true)
+  ...Fragment_YFN@skip(if: $knNwl6xK)
+  kcW(efJjx7SqR1: $o72d) {
+    w: __typename
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_cWle on Union_i {
+  __typename
+}
+
+fragment Fragment_oOv on Object_eoF {
+  ...Fragment_cWle
+}
+
+fragment Fragment_YFN on Object_OpEDxWa {
+  __typename
+}
+
+fragment Fragment_YTmmNtad on Union_y12 {
+  ...Fragment_oOv
+  ... on Object_OpEDxWa @include(if: $knNwl6xK) {
+    ...Fragment_YFN
+    ... on Union_y12 {
+      __typename
+      __typename
+    }
+  }
+}

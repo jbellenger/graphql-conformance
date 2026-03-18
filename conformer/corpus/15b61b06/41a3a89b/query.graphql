@@ -1,0 +1,40 @@
+query t @Directive_e_SP8wNLw @Directive_swSrrght5Y {
+  ...Fragment_NgFv_fW_@Directive_e_SP8wNLw @defer(if: true, label: "Ho")
+  ...Fragment_H@Directive_e_SP8wNLw
+  ... on Union_i0hfW {
+    __typename @skip(if: true)
+    ... on Union_i0hfW @skip(if: true) {
+      ...Fragment_Wtt
+      _: __typename
+    }
+  }
+}
+
+fragment Fragment_Wtt on Union_mWVaw0X6o {
+  __typename
+}
+
+fragment Fragment_H on Union_i0hfW {
+  ...Fragment_Wtt
+  e9: __typename
+  ... on Union_mWVaw0X6o {
+    q4Kmrcuy: __typename
+  }
+}
+
+fragment Fragment_F3mQB on Object_ZNFUaZ3Z {
+  vWDTiA {
+    hTzj: __typename
+  }
+  vWDTiA {
+    __typename
+  }
+}
+
+fragment Fragment_NgFv_fW_ on Union_i0hfW {
+  ...Fragment_H
+  ...Fragment_F3mQB
+  ... on Object_xmZg @defer(if: true, label: null) {
+    eSLmd @Directive_swSrrght5Y
+  }
+}

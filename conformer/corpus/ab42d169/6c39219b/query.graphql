@@ -1,0 +1,40 @@
+query ($qzXl: Boolean!) {
+  ... on Union_i {
+    Yiv7ajOx: __typename
+  }
+  ... on Object_JQyM0 {
+    ...Fragment_Kfo1CUnEi
+    ...Fragment__jYD
+    muj8XkqA {
+      ...Fragment_B60U52
+    }
+    ... on Union_i {
+      ...Fragment_YU5rPQPSP
+      ... on Union_cwSxx @skip(if: $qzXl) {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_E on Union_i {
+  __typename
+}
+
+fragment Fragment_Kfo1CUnEi on Object_JQyM0 {
+  ...Fragment_E@include(if: $qzXl) @Directive_DCM0u(d4cF2_8qrR: -1488046927)
+}
+
+fragment Fragment_YU5rPQPSP on Object_JQyM0 {
+  __typename
+}
+
+fragment Fragment__jYD on Union_i {
+  ...Fragment_YU5rPQPSP
+  __typename
+  __typename
+}
+
+fragment Fragment_B60U52 on Union_cwSxx {
+  __typename
+}

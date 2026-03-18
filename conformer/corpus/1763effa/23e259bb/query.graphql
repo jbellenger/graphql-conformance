@@ -1,0 +1,38 @@
+{
+  ...Fragment_WxVYwoE1
+  q2SFz
+  z3To4mN2G {
+    ...Fragment_byS
+    __typename
+    ... @skip(if: true) {
+      ... on Interface_pvNKU9_STUB {
+        __typename
+      }
+    }
+    ... on Interface_pvNKU9_STUB {
+      ... {
+        rU: h
+      }
+    }
+  }
+}
+
+fragment Fragment_WxVYwoE1 on Union_LCMVMgOI {
+  ... on Object_VpP4rUTsai {
+    jZrm_scxR: zE1ZdgLGY(vK18: ["\"WU"])
+  }
+  ... on Object_VpP4rUTsai @skip(if: true) @include(if: true) {
+    ... on Union_gpT {
+      hdT: __typename
+    }
+  }
+}
+
+fragment Fragment_cWei0Or on Interface_pvNKU9_STUB {
+  rZ_CKG: gdu(bDATKe17: -1515002427)
+  gdu(bDATKe17: -2125988370)
+}
+
+fragment Fragment_byS on Interface_pvNKU9_STUB {
+  ...Fragment_cWei0Or@include(if: true)
+}

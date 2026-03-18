@@ -1,0 +1,22 @@
+query FtjWwu {
+  ...Fragment_JlvRv48n5@Directive_uOV77AvO8
+  ...Fragment_JlvRv48n5
+  wUf85e {
+    cXisyv: biNklVzF1d
+  }
+  C: wUf85e {
+    __typename
+  }
+  ... on Object_b2Gx3 {
+    __typename
+  }
+}
+
+fragment Fragment_TR_4 on Object_h9E {
+  hvBsHflG
+}
+
+fragment Fragment_JlvRv48n5 on Union_Pp @Directive_m{
+  ...Fragment_TR_4
+  ...Fragment_TR_4
+}

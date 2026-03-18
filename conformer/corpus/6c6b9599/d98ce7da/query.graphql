@@ -1,0 +1,37 @@
+{
+  zSmDZP: __typename
+  mpKkO6nES {
+    ...Fragment_izfXl
+    ...Fragment_izfXl
+    __typename
+  }
+  mpKkO6nES {
+    __typename
+  }
+  ... on Object_sEZH2lmWb {
+    ...Fragment_izfXl
+    ... on Union_E {
+      ...Fragment_izfXl
+    }
+    ... @defer(if: true, label: "=") {
+      mpKkO6nES {
+        mpKkO6nES @Directive_WfVW7ToP {
+          __typename
+        }
+      }
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_Hd on Union_Hcl5JjvB2T @Directive_ye{
+  IRUvFDH: __typename
+}
+
+fragment Fragment_izfXl on Union_E {
+  ...Fragment_Hd
+  ... on Object_sEZH2lmWb {
+    __typename
+  }
+}

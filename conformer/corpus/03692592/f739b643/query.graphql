@@ -1,0 +1,18 @@
+query ($x2vyAxbk: Input_pPtRw) {
+  ...Fragment_tUhOsey
+  hCE(n4: $x2vyAxbk)
+  ... on Union_H {
+    __typename
+    tyX6W6Vj6: __typename
+  }
+  ... on Object_T21U {
+    ...Fragment_tUhOsey
+  }
+  ... on Union_H {
+    __typename
+  }
+}
+
+fragment Fragment_tUhOsey on Object_T21U {
+  __typename
+}

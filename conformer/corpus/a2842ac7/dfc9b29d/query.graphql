@@ -1,0 +1,30 @@
+query ($vTf3YFjjL: Boolean) @experimental_disableErrorPropagation {
+  __typename
+  ... on Object__v {
+    pD_vK0d: npu {
+      ...Fragment_Dd7
+    }
+    E3xVlfJ6: npu {
+      ...Fragment_Dd7
+    }
+    ... on Union_Ke99ej {
+      ... on Union_F7 {
+        JQ: __typename
+      }
+    }
+    ... on Union_F7 {
+      ... on Object__v {
+        npu {
+          c4xUJ_ttBr(qnB3: $vTf3YFjjL)
+        }
+        npu {
+          slrhO
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_Dd7 on Union_W {
+  __typename @skip(if: false)
+}

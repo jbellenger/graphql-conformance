@@ -1,0 +1,12 @@
+query oRc {
+  ...Fragment__tdbLLr4
+}
+
+fragment Fragment__tdbLLr4 on Object_Tsb1 {
+  ... on Object_Tsb1 @skip(if: false) {
+    jLs6vdeU
+    pZTe {
+      cGI0
+    }
+  }
+}

@@ -1,0 +1,17 @@
+query Yo {
+  ...Fragment_E1z@skip(if: false)
+  pa
+  __typename
+  __typename
+  pa @skip(if: false)
+  pa
+  ... on Object_Mwwwwwwwww @defer(label: "") {
+    ... on Object_Mwwwwwwwww {
+      TkiDx65bc: pa
+    }
+  }
+}
+
+fragment Fragment_E1z on Object_Mwwwwwwwww {
+  __typename
+}

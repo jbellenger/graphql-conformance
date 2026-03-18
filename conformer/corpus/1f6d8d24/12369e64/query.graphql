@@ -1,0 +1,6 @@
+{
+  SJLeT: f @skip(if: true)
+  ... on Union_cq {
+    __typename
+  }
+}

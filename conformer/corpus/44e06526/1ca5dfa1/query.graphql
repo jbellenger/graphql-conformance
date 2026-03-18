@@ -1,0 +1,15 @@
+query B5KBEBnuxA($b4fi0eFraF: Boolean!) {
+  gyz36s {
+    k6pWqKt
+  }
+  ... on Object_Xg5x8 @skip(if: $b4fi0eFraF) {
+    ...Fragment_LUbDO7
+    ...Fragment_LUbDO7
+  }
+}
+
+fragment Fragment_LUbDO7 on Union_N {
+  ... on Object_yhY {
+    v1(jRA: {g8GJIMOAf3 : true})
+  }
+}

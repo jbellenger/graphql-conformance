@@ -1,0 +1,26 @@
+query t9 {
+  ...Fragment_se
+  ...Fragment_se
+  f58wFu4TJu {
+    ...Fragment_se
+    ...Fragment_api_Sos13C
+    ... on Interface_zV3 {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_XB7VXvEf on Interface_zV3 {
+  _g0pycC: mwgy
+}
+
+fragment Fragment_se on Object_m6jYzLh0F {
+  ... on Union_bzixNTF {
+    ...Fragment_XB7VXvEf@Directive_dx
+  }
+}
+
+fragment Fragment_api_Sos13C on Object_m6jYzLh0F @Directive_dx{
+  ...Fragment_se
+  fLwX
+}

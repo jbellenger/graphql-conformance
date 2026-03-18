@@ -1,0 +1,39 @@
+{
+  ...Fragment_btiE
+  eiI9FFF8 {
+    ... on Union_Hladobg {
+      __typename
+    }
+  }
+  ... on Union_up {
+    ...Fragment_R9VDVPOP1
+  }
+}
+
+fragment Fragment_STuU33Mt on Object_dzDmwe {
+  __typename
+}
+
+fragment Fragment_mqythAotW on Union_up {
+  ...Fragment_STuU33Mt
+}
+
+fragment Fragment_YMZUH on Object_dzDmwe {
+  ...Fragment_STuU33Mt
+}
+
+fragment Fragment_btiE on Union_up {
+  ...Fragment_mqythAotW
+  ...Fragment_YMZUH
+  __typename
+  ... on Union_up {
+    __typename
+  }
+}
+
+fragment Fragment_R9VDVPOP1 on Union_up {
+  __typename
+  ... on Object_dzDmwe {
+    kOQx: __typename
+  }
+}

@@ -1,0 +1,36 @@
+query F4 @Directive_OF {
+  ... on Union_kUFvvqv {
+    ...Fragment_x
+    ...Fragment_x
+    __typename
+    o3IOW2PSyS: __typename
+    __typename
+    __typename
+    ... on Union_kUFvvqv {
+      ...Fragment_fo9H2
+    }
+    ... on Union_sM9jbEm {
+      ... on Union_kUFvvqv {
+        F: __typename
+      }
+    }
+  }
+  ... on Object_gAMJ {
+    ...Fragment_fo9H2
+  }
+}
+
+fragment Fragment_ya23BPLd2 on Union_sM9jbEm {
+  __typename
+}
+
+fragment Fragment_x on Object_P {
+  ...Fragment_ya23BPLd2
+  sCvPTbf {
+    __typename
+  }
+}
+
+fragment Fragment_fo9H2 on Object_gAMJ {
+  __typename
+}

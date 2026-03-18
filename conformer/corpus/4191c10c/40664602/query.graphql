@@ -1,0 +1,15 @@
+query gvfO23mNp($h1gLwX4: Boolean!) {
+  ...Fragment_alRM7ZvCgl
+  ...Fragment_alRM7ZvCgl
+  ... on Object_SxleD_BO3b {
+    ...Fragment_alRM7ZvCgl
+    ...Fragment_alRM7ZvCgl
+    c1ImIg6u9P {
+      d4d: __typename
+    }
+  }
+}
+
+fragment Fragment_alRM7ZvCgl on Object_SxleD_BO3b {
+  __typename @include(if: $h1gLwX4)
+}

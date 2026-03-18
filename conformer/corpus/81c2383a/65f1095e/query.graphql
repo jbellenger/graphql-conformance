@@ -1,0 +1,31 @@
+query ($dP7c3QN: Boolean!) {
+  ...Fragment_g0fXhU
+  W: __typename
+  ... on Union_N0 @include(if: true) {
+    ...Fragment_ULiEXg8n
+    iDG3nRR: __typename @skip(if: $dP7c3QN)
+    __typename
+  }
+}
+
+fragment Fragment_ULiEXg8n on Union_UDu7rw5emu {
+  __typename
+  __typename
+  ... on Object_I1S5mQ {
+    nUi
+  }
+}
+
+fragment Fragment_g0fXhU on Union_N0 {
+  ...Fragment_ULiEXg8n@defer(if: false, label: "8")
+  XU: __typename
+  ... on Union_yDh {
+    ...Fragment_ULiEXg8n
+    __typename
+    wz0KTY: __typename
+    __typename
+  }
+  ... on Union_N0 {
+    __typename
+  }
+}

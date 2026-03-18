@@ -1,0 +1,20 @@
+{
+  ...Fragment_R
+  ...Fragment_R
+  ... on Union_Hz {
+    __typename
+  }
+}
+
+fragment Fragment_C5EMIg4u on Union_wDLn4i95Z2 {
+  __typename @Directive__tgZUU @include(if: false)
+}
+
+fragment Fragment_sHI0 on Object_bxBXF76Hq {
+  ...Fragment_C5EMIg4u
+  jnLu15dTNP
+}
+
+fragment Fragment_R on Object_bxBXF76Hq {
+  ...Fragment_sHI0@include(if: false)
+}

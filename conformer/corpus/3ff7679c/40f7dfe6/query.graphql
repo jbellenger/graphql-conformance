@@ -1,0 +1,39 @@
+{
+  ...Fragment_gAFqotL
+  ...Fragment_DdHe
+  ...Fragment_TCif
+  ... on Union_DQ {
+    ... on Union_QP @Directive_W5k3CZ3v {
+      ...Fragment_zxxhi
+    }
+    ... on Object_LrNP7l {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_DdHe on Union_DQ {
+  __typename @skip(if: false)
+}
+
+fragment Fragment_ht on Object_S {
+  ...Fragment_DdHe
+}
+
+fragment Fragment_gAFqotL on Union_QP {
+  ...Fragment_ht
+  ...Fragment_DdHe
+  __typename
+  ... on Object_LrNP7l @include(if: true) {
+    __typename
+  }
+}
+
+fragment Fragment_TCif on Object_LrNP7l {
+  __typename
+  __typename
+}
+
+fragment Fragment_zxxhi on Union_DQ {
+  __typename
+}

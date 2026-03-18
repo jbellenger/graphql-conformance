@@ -1,0 +1,36 @@
+query dV {
+  ...Fragment_B4iAFRKS
+  ...Fragment_B4iAFRKS
+  __typename
+  ... {
+    pX3KuOsMk {
+      muj8XkqA {
+        __typename @skip(if: true)
+        __typename
+      }
+    }
+    wfd_KPsEF: __typename
+    pX3KuOsMk {
+      ... on Object_JQyM0 {
+        __typename
+      }
+    }
+    ... {
+      __typename
+    }
+    ... on Object_JQyM0 {
+      ...Fragment_IPUkScz7oQ
+      ... on Union_i {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_B4iAFRKS on Object_JQyM0 {
+  __typename
+}
+
+fragment Fragment_IPUkScz7oQ on Union_i {
+  __typename
+}

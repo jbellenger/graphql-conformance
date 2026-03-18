@@ -1,0 +1,25 @@
+query rrtu {
+  ...Fragment_R6ziCo
+  ...Fragment_JLS
+}
+
+fragment Fragment_JLS on Object_VaiUdSLjny {
+  TCwz: imsEwIIa4Q {
+    __typename
+  }
+}
+
+fragment Fragment_R6ziCo on Object_VaiUdSLjny {
+  ...Fragment_JLS
+  ...Fragment_JLS
+  ... on Union_ZmCn2hoJg {
+    ...Fragment_JLS
+  }
+  ... {
+    ...Fragment_JLS@skip(if: true)
+    __typename: __typename
+    X7Ud: imsEwIIa4Q {
+      __typename
+    }
+  }
+}

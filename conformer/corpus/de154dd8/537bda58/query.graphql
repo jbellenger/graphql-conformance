@@ -1,0 +1,44 @@
+{
+  ...Fragment_vXU9@include(if: true)
+  ...Fragment_vXU9
+  ... on Union_V9Zwum1h {
+    __typename
+    ... on Union_XAH {
+      __typename
+    }
+    ... on Object_bNm6aypih {
+      ...Fragment_vXU9
+    }
+  }
+  ... on Object_bNm6aypih {
+    ip86psu: __typename
+  }
+}
+
+fragment Fragment_Zv8shAy1e2 on Union_qppdyE {
+  __typename
+  __typename
+}
+
+fragment Fragment_aYJgWy on Object_RG {
+  ...Fragment_Zv8shAy1e2
+}
+
+fragment Fragment_u on Union_V9Zwum1h {
+  __typename
+}
+
+fragment Fragment_vXU9 on Union_V9Zwum1h {
+  ...Fragment_aYJgWy@defer(if: true, label: "")
+  kL10: __typename
+  ... on Union_qppdyE {
+    ...Fragment_u
+    ... on Union_XAH {
+      __typename
+    }
+  }
+  ... on Union_XAH {
+    ...Fragment_Zv8shAy1e2
+    __typename
+  }
+}

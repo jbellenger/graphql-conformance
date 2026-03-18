@@ -1,0 +1,11 @@
+query XUr($d1JPSQIG: Boolean!) {
+  ...Fragment_iIXeiNqD
+  ...Fragment_iIXeiNqD
+  ... on Object_JTKD_V {
+    tVmsuKOS4E
+  }
+}
+
+fragment Fragment_iIXeiNqD on Object_JTKD_V {
+  __typename @Directive_zyXamlrT @skip(if: $d1JPSQIG)
+}

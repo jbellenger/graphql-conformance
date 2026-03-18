@@ -1,0 +1,13 @@
+query gbFl0TxedX {
+  ...Fragment_d
+}
+
+fragment Fragment_duJHKU on Union_wb {
+  __typename
+}
+
+fragment Fragment_d on Union_wb {
+  ... on Object_gDxA_k {
+    ...Fragment_duJHKU
+  }
+}

@@ -1,0 +1,41 @@
+query Lx($yxk: Input_B19KQ = {d9 : {vVq : 859866113}}) {
+  ...Fragment_CcpCOYoWXd
+  ... on Union_ED {
+    ... on Object_agQW5PF {
+      x @include(if: false) {
+        __typename
+      }
+      x {
+        xJNIdr_(v: null)
+        yrYESKQMS {
+          F: __typename
+        }
+      }
+      ... on Union_ED {
+        __typename @Directive_mST
+      }
+    }
+  }
+  ... {
+    ... on Union_ED {
+      __typename
+    }
+    ... on Union_ED {
+      GEbf: __typename
+    }
+  }
+  ... on Object_MxLu {
+    ... on Object_MxLu {
+      JcJ: pyaOqOjctF @skip(if: false)
+      RXNdpBVGi: pyaOqOjctF(amtY7: {d9 : null})
+      FoudZ: __typename
+    }
+    ... on Union_ED {
+      ...Fragment_CcpCOYoWXd
+    }
+  }
+}
+
+fragment Fragment_CcpCOYoWXd on Object_MxLu {
+  pyaOqOjctF(amtY7: $yxk)
+}

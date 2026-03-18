@@ -1,0 +1,12 @@
+query @Directive_I_Hh @experimental_disableErrorPropagation {
+  ...Fragment_Fyn_TQQ
+}
+
+fragment Fragment_UJifEQTUy on Union_U {
+  __typename
+}
+
+fragment Fragment_Fyn_TQQ on Union_U {
+  ...Fragment_UJifEQTUy
+  ...Fragment_UJifEQTUy
+}

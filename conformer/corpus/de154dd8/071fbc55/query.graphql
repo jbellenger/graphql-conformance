@@ -1,0 +1,34 @@
+query J {
+  ...Fragment_Ycc5gWK
+  ... on Object_bNm6aypih {
+    m: rE35miC
+  }
+  ... on Union_XAH {
+    __typename
+    ... on Union_XAH @Directive_SdSTaslPZ {
+      ...Fragment_Ycc5gWK
+    }
+  }
+  ... on Object_bNm6aypih {
+    ...Fragment_CY
+    __typename
+    ... on Union_V9Zwum1h {
+      ... on Union_XAH @Directive_SdSTaslPZ @defer(if: true, label: null) {
+        __typename
+        __typename @skip(if: true)
+      }
+    }
+  }
+}
+
+fragment Fragment_CY on Union_V9Zwum1h {
+  __typename
+  __typename
+  __typename
+}
+
+fragment Fragment_Ycc5gWK on Union_V9Zwum1h {
+  ...Fragment_CY
+  ...Fragment_CY
+  uwo5M: __typename
+}

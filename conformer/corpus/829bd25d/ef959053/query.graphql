@@ -1,0 +1,12 @@
+query @Directive_I_Hh {
+  rdP7
+  p: y5ZYD3 {
+    ... on Object_lAAVtI {
+      ...Fragment_irxMDR
+    }
+  }
+}
+
+fragment Fragment_irxMDR on Object_lAAVtI {
+  __typename @include(if: true)
+}

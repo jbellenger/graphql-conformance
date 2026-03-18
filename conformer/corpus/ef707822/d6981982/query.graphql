@@ -1,0 +1,23 @@
+{
+  ...Fragment_w6za
+}
+
+fragment Fragment_S on Union_xbM9IR17l1 {
+  __typename
+}
+
+fragment Fragment_vw9 on Union_EFVrgqJ {
+  __typename
+}
+
+fragment Fragment_USae on Union_dqwMCf @Directive_mz4SQ @Directive_K5uNTp(q: 1.5426598475967243E+308){
+  ...Fragment_vw9
+  __typename
+  __typename
+  __typename
+}
+
+fragment Fragment_w6za on Union_EFVrgqJ {
+  ...Fragment_S
+  ...Fragment_USae
+}

@@ -1,0 +1,31 @@
+query d {
+  ...Fragment_QVBivR
+  ... on Object__wiIKA @defer(if: false, label: "oR") {
+    ...Fragment_QVBivR
+  }
+}
+
+fragment Fragment_ttwuoNS on Union_P3DV {
+  __typename
+  ... on Union_CHjf5K4qO6 {
+    __typename
+  }
+}
+
+fragment Fragment_QVBivR on Union_CHjf5K4qO6 {
+  ...Fragment_ttwuoNS
+  ...Fragment_ttwuoNS
+  __typename
+  __typename
+  __typename
+  ... on Object__wiIKA {
+    ...Fragment_ttwuoNS
+    __typename
+    ... on Union_CHjf5K4qO6 {
+      __typename
+    }
+  }
+  ... on Union_P3DV {
+    __typename
+  }
+}

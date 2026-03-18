@@ -1,0 +1,14 @@
+query j($hZ_vp: Boolean! = true) {
+  y2XqgNX {
+    ...Fragment_O1gYm4PsyH
+    ... on Object_c7Ol_FSZNh {
+      ...Fragment_O1gYm4PsyH
+    }
+  }
+}
+
+fragment Fragment_O1gYm4PsyH on Union_j7hwZX2g {
+  ... on Union_QeDXr @include(if: $hZ_vp) {
+    __typename
+  }
+}

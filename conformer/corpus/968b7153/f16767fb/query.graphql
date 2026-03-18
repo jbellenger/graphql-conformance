@@ -1,0 +1,26 @@
+query ($xRq663k: Boolean!) {
+  ...Fragment_E8hgs8QI2@Directive_ESjob
+  ...Fragment_D5@skip(if: $xRq663k)
+  ...Fragment_N0
+}
+
+fragment Fragment_N0 on Union_I {
+  ... on Object_LsZuSxN6Bu {
+    NGyg: __typename
+  }
+}
+
+fragment Fragment_E8hgs8QI2 on Object_LsZuSxN6Bu {
+  ...Fragment_N0
+}
+
+fragment Fragment_D5 on Union_I {
+  ... on Union_SLZdVPap {
+    ...Fragment_N0
+  }
+  ... on Union_SLZdVPap @Directive_ESjob {
+    ... on Union_SLZdVPap {
+      __typename
+    }
+  }
+}

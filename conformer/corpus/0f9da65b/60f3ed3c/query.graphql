@@ -1,0 +1,25 @@
+query vKwpBVC9P {
+  ...Fragment_amZ3JpNE
+  ...Fragment_t
+}
+
+fragment Fragment_t on Union_BBKThXpq8Q {
+  __typename @skip(if: true)
+}
+
+fragment Fragment_eGNe4 on Object_G {
+  ...Fragment_t
+  ... on Union_BBKThXpq8Q {
+    __typename
+  }
+}
+
+fragment Fragment_amZ3JpNE on Object_G {
+  ...Fragment_eGNe4
+  ... on Object_G {
+    _9
+    ... on Union_BBKThXpq8Q {
+      __typename
+    }
+  }
+}

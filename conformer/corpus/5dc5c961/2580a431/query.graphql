@@ -1,0 +1,31 @@
+query hbWqw5 {
+  ...Fragment_Tr
+  ...Fragment_Tr
+  ...Fragment_Tr
+  pRR_: _vfjIHX
+  ... on Union_y12 {
+    ... on Object_OpEDxWa {
+      _vfjIHX
+    }
+    ... on Object_eoF {
+      __typename
+      ... on Union_y12 @Directive_kZxGpyEINs {
+        __typename
+      }
+    }
+  }
+  ... on Union_BRB3 {
+    ... on Union_i {
+      __typename
+    }
+    ... on Object_OpEDxWa @skip(if: true) {
+      ... on Union_y12 {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Tr on Union_BRB3 {
+  __typename
+}

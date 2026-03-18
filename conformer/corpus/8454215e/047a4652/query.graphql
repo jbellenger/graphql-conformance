@@ -1,0 +1,32 @@
+query DIIJ {
+  ...Fragment_O2wY_5hHk1
+}
+
+fragment Fragment_AKbouCS on Union_crZu7wDNd {
+  JGG92mD7: __typename
+}
+
+fragment Fragment_LY on Union_cN9DV {
+  ...Fragment_AKbouCS
+  __typename @Directive_sWl292JoUr
+  __typename
+}
+
+fragment Fragment_O2wY_5hHk1 on Union_crZu7wDNd @Directive_dVENk7W1Gk{
+  ...Fragment_LY
+  ...Fragment_LY
+  __typename
+  __typename
+  __typename
+  __typename
+  ... on Union_cN9DV {
+    ... {
+      YzZ3Cs2sPn: __typename
+    }
+  }
+  ... on Object_nfEqv1q {
+    t
+    XrNmNJ: __typename
+    y: t
+  }
+}

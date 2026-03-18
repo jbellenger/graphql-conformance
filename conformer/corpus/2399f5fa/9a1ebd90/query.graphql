@@ -1,0 +1,15 @@
+query NpUsyq {
+  ...Fragment_iLS@skip(if: false)
+  ... on Union_jf87 {
+    __typename
+    __typename
+  }
+  ... on Union_QTAFWhyS {
+    __typename
+  }
+}
+
+fragment Fragment_iLS on Union_QTAFWhyS {
+  __typename
+  __typename
+}

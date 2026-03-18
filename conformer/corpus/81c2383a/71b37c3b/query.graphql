@@ -1,0 +1,18 @@
+query E {
+  ...Fragment_RYIx0b
+  nUpq7lDe8
+  bDcT_62d: nUpq7lDe8
+  nUpq7lDe8
+  __typename @Directive_sTa
+}
+
+fragment Fragment_ewg on Union_yDh {
+  FRs: __typename
+  ... on Object_qDX {
+    __typename
+  }
+}
+
+fragment Fragment_RYIx0b on Object_qDX {
+  ...Fragment_ewg
+}

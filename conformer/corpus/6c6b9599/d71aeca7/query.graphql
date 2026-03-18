@@ -1,0 +1,20 @@
+query jHRii @experimental_disableErrorPropagation {
+  ...Fragment_lDmWhW
+  __typename
+  ... on Object_sEZH2lmWb {
+    ...Fragment_lDmWhW
+    mpKkO6nES {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_zZVNtCc4 on Union_Hcl5JjvB2T {
+  ... on Union_Hcl5JjvB2T {
+    __typename
+  }
+}
+
+fragment Fragment_lDmWhW on Union_E {
+  ...Fragment_zZVNtCc4
+}

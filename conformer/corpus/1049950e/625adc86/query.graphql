@@ -1,0 +1,32 @@
+query oC_ @experimental_disableErrorPropagation {
+  ... on Object_tMR5 {
+    ...Fragment_Sa6ItB
+    tA {
+      ... on Union_mHLj {
+        __typename
+      }
+    }
+    ja70l6fA
+  }
+  ... on Object_tMR5 {
+    __typename
+  }
+}
+
+fragment Fragment_rUx_Ii on Object_tMR5 {
+  tA {
+    pgnP {
+      XeGq: __typename
+    }
+  }
+}
+
+fragment Fragment_Sa6ItB on Object_tMR5 {
+  ...Fragment_rUx_Ii
+  __typename
+  ... {
+    tA {
+      __typename
+    }
+  }
+}

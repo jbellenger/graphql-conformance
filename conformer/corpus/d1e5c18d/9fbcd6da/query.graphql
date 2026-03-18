@@ -1,0 +1,22 @@
+{
+  ...Fragment_Bm0
+  __typename
+  sp
+  sp @Directive__2b2ZKdIKn
+  sp
+  sp
+  ... on Object_RmlKGO {
+    ...Fragment_Bm0
+    sp @include(if: true)
+  }
+}
+
+fragment Fragment_HQ on Object_RmlKGO {
+  ... on Union_UYo6BIPmy {
+    __typename
+  }
+}
+
+fragment Fragment_Bm0 on Union_iJ_ {
+  ...Fragment_HQ
+}

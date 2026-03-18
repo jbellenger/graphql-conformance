@@ -1,0 +1,32 @@
+query xfVYJ_Jz($oWV4HENsx: Boolean!, $ode2HW0Ig: Input_M4r7) {
+  ...Fragment_agPG
+  ...Fragment_V9BW3y1
+  gUnzJN {
+    n_t(xY: $ode2HW0Ig)
+    ... on Union_ShubX {
+      __typename
+    }
+    ... on Union_ShubX @include(if: false) {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_KAshqk on Union_ShubX @Directive_g8J2KP @Directive_QN{
+  __typename
+}
+
+fragment Fragment_V9BW3y1 on Union_bD0Tln {
+  ...Fragment_KAshqk
+  __typename
+  __typename
+  __typename
+  ... on Object_LNy8FZaKY @include(if: $oWV4HENsx) {
+    vFQ7e3
+  }
+}
+
+fragment Fragment_agPG on Object_DsDIEbI {
+  ...Fragment_V9BW3y1
+  __typename @Directive_ZV43LIuS
+}

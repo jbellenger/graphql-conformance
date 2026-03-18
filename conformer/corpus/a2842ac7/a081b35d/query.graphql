@@ -1,0 +1,21 @@
+{
+  ...Fragment_jFVhT9FHJ
+}
+
+fragment Fragment_hiqv_ on Union_F7 {
+  __typename
+}
+
+fragment Fragment_jFVhT9FHJ on Union_Ke99ej {
+  ... on Object__v {
+    __typename
+  }
+  ... on Object__v {
+    ...Fragment_hiqv_
+    npu @skip(if: false) {
+      c4xUJ_ttBr(qnB3: false)
+    }
+    __typename
+    __typename
+  }
+}

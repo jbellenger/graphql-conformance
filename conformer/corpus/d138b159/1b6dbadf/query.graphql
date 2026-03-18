@@ -1,0 +1,20 @@
+{
+  pqI7 {
+    __typename
+    ... on Object_r3xfxWG {
+      __typename
+    }
+  }
+  ... on Union_lH {
+    __typename
+  }
+  ... on Union_OJ {
+    ...Fragment_xIrwPNM
+  }
+}
+
+fragment Fragment_xIrwPNM on Interface_dyGg6bk {
+  ... on Union_OJ {
+    __typename
+  }
+}

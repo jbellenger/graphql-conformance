@@ -1,0 +1,15 @@
+query JhZ2 {
+  q1a0E
+  ... on Union_U2Bmje7mQ4 {
+    __typename
+  }
+  ... on Union_k {
+    ...Fragment_A
+  }
+}
+
+fragment Fragment_A on Interface_KKm1Kt {
+  ... on Union_lvjIj {
+    __typename
+  }
+}

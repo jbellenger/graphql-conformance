@@ -1,0 +1,19 @@
+query uT77dBi {
+  ...Fragment_c
+  fUfO0
+  fUfO0
+}
+
+fragment Fragment_u on Object_Y {
+  __typename
+}
+
+fragment Fragment_c on Union_FZlJlxz {
+  ... on Object_Y {
+    ...Fragment_u
+    ... on Union_FZlJlxz {
+      __typename
+      __typename @Directive_y
+    }
+  }
+}

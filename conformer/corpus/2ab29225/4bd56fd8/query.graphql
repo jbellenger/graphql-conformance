@@ -1,0 +1,24 @@
+query @Directive_sz6KF @experimental_disableErrorPropagation {
+  ... on Object_OhX_F1cIDo {
+    ...Fragment_dL1qvYoz4
+  }
+  ... on Object_OhX_F1cIDo @Directive_sz6KF {
+    de
+    ... on Union_fvPrZl {
+      ... on Union_is @defer(if: false, label: "iC") @skip(if: false) {
+        uTo: __typename
+      }
+    }
+    ... on Union_fvPrZl {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_X0Z on Union_fvPrZl {
+  _M: __typename
+}
+
+fragment Fragment_dL1qvYoz4 on Object_OhX_F1cIDo {
+  ...Fragment_X0Z@Directive_F
+}

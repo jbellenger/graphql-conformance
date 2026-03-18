@@ -1,0 +1,35 @@
+{
+  ... on Union_kUFvvqv {
+    ... on Union_kUFvvqv {
+      ...Fragment_k
+    }
+  }
+  ... {
+    ...Fragment_k@include(if: true)
+    pfvzAp {
+      __typename
+      ... on Object_gAMJ {
+        __typename
+      }
+    }
+    ... on Object_gAMJ @include(if: false) {
+      wG {
+        U: __typename
+      }
+      ... {
+        __typename
+      }
+    }
+  }
+  ... on Object_gAMJ {
+    ... on Object_gAMJ {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_k on Object_gAMJ @Directive_D33SWMm7{
+  uDrp3 {
+    __typename
+  }
+}

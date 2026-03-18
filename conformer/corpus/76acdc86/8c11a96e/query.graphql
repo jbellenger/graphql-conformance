@@ -1,0 +1,45 @@
+query ($gdmpyt: Boolean!) {
+  ...Fragment__BPKizB
+  ... on Object_eP8 @skip(if: false) {
+    ...Fragment__BPKizB
+    ...Fragment__BPKizB
+  }
+  ... on Object_eP8 {
+    ...Fragment_JWkvXC
+  }
+  ... on Object_eP8 {
+    ...Fragment__BPKizB
+    ...Fragment_yVwl@Directive_D9nCyihQ
+    YuX0: __typename @skip(if: $gdmpyt)
+    vNMWc {
+      aB
+      iAgo30 {
+        __typename
+      }
+    }
+    bv8 {
+      Cd1NmO: __typename
+    }
+    __typename
+    ... on Object_eP8 {
+      kg_k5iTHfn
+    }
+  }
+}
+
+fragment Fragment__BPKizB on Object_eP8 {
+  ... on Object_eP8 {
+    kg_k5iTHfn
+  }
+}
+
+fragment Fragment_JWkvXC on Object_eP8 {
+  ...Fragment__BPKizB
+  ... on Object_eP8 {
+    kg_k5iTHfn
+  }
+}
+
+fragment Fragment_yVwl on Object_eP8 {
+  __typename
+}

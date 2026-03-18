@@ -1,0 +1,12 @@
+query C {
+  UOPo2v6: oH {
+    ... @defer(if: false, label: "}$") {
+      ...Fragment_i
+    }
+  }
+}
+
+fragment Fragment_i on Union_sx {
+  __typename
+  __typename
+}

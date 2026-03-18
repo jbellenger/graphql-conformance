@@ -1,0 +1,34 @@
+query UwsdyMPQLk($yB4LOO6XfK: Boolean!, $tk: [Enum_pql]) {
+  ...Fragment_mMIk
+}
+
+fragment Fragment_n8UrIFDK_l on Object_JjMb2AmI {
+  mWhj {
+    mWhj {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_o7 on Union_nmzmidWKjs {
+  ...Fragment_n8UrIFDK_l
+  __typename
+  ... on Object_JjMb2AmI {
+    __typename
+  }
+}
+
+fragment Fragment_mMIk on Interface_yyufSLHl {
+  ...Fragment_o7
+  ...Fragment_o7
+  lTczP @include(if: $yB4LOO6XfK)
+  ... on Object_ERCXqh {
+    nPb8
+    z0mV1AAnv @skip(if: true) @Directive_D(_k73: $tk)
+  }
+  ... on Object_ERCXqh {
+    dQZgr
+    lTczP
+    N3wgnqV1z: z0mV1AAnv
+  }
+}

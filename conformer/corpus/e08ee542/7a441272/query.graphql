@@ -1,0 +1,53 @@
+query gKmVT {
+  ... on Object_lxEye {
+    ... on Object_lxEye {
+      _a: sw4NmoNdA {
+        __typename
+      }
+      sw4NmoNdA {
+        qfcn42
+      }
+      ... on Union_kDQRhSc {
+        __typename
+      }
+    }
+    ... on Union_kDQRhSc {
+      __typename
+      __typename
+    }
+  }
+  ... on Union_kDQRhSc {
+    ... on Union_kDQRhSc {
+      ... on Union_WTQOs9 @include(if: false) {
+        __typename
+        __typename
+      }
+    }
+    ... on Object_lxEye @Directive_Er9y9J {
+      ...Fragment_QCdDPt86q
+      sw4NmoNdA {
+        qfcn42
+      }
+      __typename @skip(if: true)
+    }
+  }
+  ... on Object_lxEye {
+    q4DLtIBh: sw4NmoNdA @Directive_JbrPSDFx {
+      IFGLjij_: qfcn42
+      qfcn42 @Directive_JbrPSDFx
+      __typename
+    }
+    ... on Object_lxEye {
+      ...Fragment_QCdDPt86q
+    }
+    ... on Union_kDQRhSc {
+      ...Fragment_QCdDPt86q
+    }
+  }
+}
+
+fragment Fragment_QCdDPt86q on Object_lxEye {
+  ji {
+    __typename
+  }
+}

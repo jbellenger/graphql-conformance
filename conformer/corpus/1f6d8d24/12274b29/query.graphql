@@ -1,0 +1,15 @@
+query SDUHOf @experimental_disableErrorPropagation {
+  ...Fragment_zpZ
+  ... on Union_AvJ {
+    __typename
+  }
+}
+
+fragment Fragment_zpZ on Union_cq {
+  ... on Union_cq {
+    ... on Union_ts {
+      yOO2q: __typename
+      __typename
+    }
+  }
+}

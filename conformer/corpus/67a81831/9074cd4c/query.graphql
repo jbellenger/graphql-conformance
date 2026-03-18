@@ -1,0 +1,37 @@
+query ($x: Enum_r, $rvt4yuUZ: Boolean!) {
+  kI {
+    ... on Object_qz {
+      __typename
+    }
+  }
+  Nr: sqFAL(ohSp3D: $x) {
+    ... on Interface_cmw5 {
+      ... on Interface_cmw5_STUB {
+        xQXoto
+      }
+    }
+  }
+  ... on Union_G {
+    ...Fragment_SkwuLem
+    __typename
+    AE: __typename
+    __typename
+  }
+  ... on Union_UtrHpmj @skip(if: $rvt4yuUZ) {
+    ...Fragment_O3S
+    ...Fragment_O3S
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_O3S on Union_UtrHpmj {
+  __typename @Directive_yrfAwM9 @skip(if: $rvt4yuUZ)
+}
+
+fragment Fragment_SkwuLem on Object_vTQRd {
+  ...Fragment_O3S@include(if: true)
+  ... on Union_UtrHpmj {
+    __typename
+  }
+}

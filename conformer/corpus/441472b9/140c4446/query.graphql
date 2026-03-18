@@ -1,0 +1,33 @@
+query P1_ofHWrVY {
+  D1: __typename
+  y2XqgNX {
+    __typename
+  }
+  __typename
+  cr2Z: y2XqgNX {
+    ...Fragment_No3
+    rXRYC: eul @Directive_nCcu {
+      ... on Union_Xqjoe5y6 {
+        L8oi35ImNF: __typename
+      }
+    }
+    eul @Directive_nCcu {
+      ... on Union_j7hwZX2g {
+        __typename
+      }
+    }
+  }
+  ... on Union_Xqjoe5y6 {
+    __typename
+    __typename
+    poAiBTK: __typename
+  }
+}
+
+fragment Fragment_Un on Union_QeDXr {
+  __typename
+}
+
+fragment Fragment_No3 on Union_Xqjoe5y6 {
+  ...Fragment_Un
+}

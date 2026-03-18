@@ -1,0 +1,40 @@
+{
+  ... {
+    ...Fragment_Czh
+    ...Fragment_A9Wx
+    e0hJcYOf: xcmhGnrFUN {
+      ...Fragment_K
+      wJq
+      ... on Interface_e7huv9gR_STUB {
+        keYb6v(hTKsQl: {a6W8Z06 : vkX, oZh6VENMaz : EIf, bXVrnLFL : -5.320051100038417E+307}) @skip(if: true)
+      }
+    }
+  }
+  ... on Union_XiKc @Directive_YC7VF {
+    ...Fragment_A9Wx
+  }
+  ... on Union_XiKc {
+    __typename
+  }
+}
+
+fragment Fragment_Czh on Object_nWIG3J4 {
+  ... on Object_nWIG3J4 {
+    __typename
+  }
+}
+
+fragment Fragment_A9Wx on Object_nWIG3J4 {
+  ...Fragment_Czh
+  __typename
+  xcmhGnrFUN {
+    im3O
+  }
+  ... on Object_nWIG3J4 {
+    __typename
+  }
+}
+
+fragment Fragment_K on Interface_e7huv9gR {
+  wJq
+}

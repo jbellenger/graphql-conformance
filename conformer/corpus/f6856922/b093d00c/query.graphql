@@ -1,0 +1,25 @@
+query Jzl($ft6dWw5y: Boolean!) {
+  __typename
+  eiI9FFF8 @include(if: $ft6dWw5y) {
+    __typename
+  }
+  ... on Union_up {
+    ...Fragment_x5S
+  }
+  ... on Union_cf {
+    ...Fragment_x5S
+    ... on Object_dzDmwe {
+      ... {
+        __typename
+      }
+    }
+    ... on Union_cf {
+      ...Fragment_x5S
+    }
+  }
+}
+
+fragment Fragment_x5S on Object_dzDmwe {
+  __typename
+  __typename @Directive_SKvG
+}

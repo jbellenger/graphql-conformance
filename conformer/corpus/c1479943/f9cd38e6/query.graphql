@@ -1,0 +1,23 @@
+query WbAX {
+  ... on Union_p7Vb {
+    ...Fragment_wl1V32
+    ... on Union_p7Vb {
+      U: __typename
+    }
+  }
+  ... on Object_MgcX {
+    ... on Object_MgcX {
+      j0HM0Y
+    }
+    ... on Union_p7Vb {
+      ...Fragment_wl1V32
+      __typename
+      __typename
+      __typename @Directive_TV0IBhK
+    }
+  }
+}
+
+fragment Fragment_wl1V32 on Union_p7Vb {
+  __typename
+}

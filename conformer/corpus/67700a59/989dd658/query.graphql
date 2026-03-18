@@ -1,0 +1,3 @@
+query QdfUcJYQU($uFm7: Boolean!) {
+  __typename @include(if: $uFm7)
+}

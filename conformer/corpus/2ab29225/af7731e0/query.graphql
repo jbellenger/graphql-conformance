@@ -1,0 +1,13 @@
+query I {
+  ...Fragment_VlPa
+  ...Fragment_VlPa
+}
+
+fragment Fragment_VlPa on Union_fvPrZl {
+  __typename
+  __typename
+  __typename @skip(if: false)
+  ... on Union_KOuCWM {
+    __typename
+  }
+}

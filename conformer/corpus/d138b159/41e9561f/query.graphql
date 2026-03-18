@@ -1,0 +1,10 @@
+query ZsS {
+  ...Fragment_VK
+  g5D @Directive__Zu2_ax
+}
+
+fragment Fragment_VK on Union_lH {
+  ... on Interface_dyGg6bk {
+    __typename
+  }
+}

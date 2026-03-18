@@ -1,0 +1,10 @@
+query xI0J {
+  ... on Union_lTI {
+    ... {
+      __typename
+    }
+    ... on Object_SxleD_BO3b @skip(if: true) {
+      zuYHa @skip(if: false)
+    }
+  }
+}

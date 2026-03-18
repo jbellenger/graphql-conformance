@@ -1,0 +1,39 @@
+query U7E1VwAMPV($vYUjswmh7d: Boolean!) {
+  ...Fragment_NLNHpqX
+  JCvToKi: vZQs {
+    ...Fragment_Jfzm@include(if: $vYUjswmh7d)
+  }
+  ... on Object_UqdQ9 {
+    __typename
+  }
+  ... {
+    FWsC5wb: vZQs {
+      dtOoOvVW: __typename
+      __typename
+      ... on Union_VUuR {
+        __typename
+      }
+    }
+    vZQs @include(if: true) {
+      __typename
+    }
+    __typename
+    n09FBNsA: __typename
+  }
+}
+
+fragment Fragment_VfBBZ on Object_UqdQ9 {
+  __typename
+}
+
+fragment Fragment_NLNHpqX on Object_UqdQ9 {
+  ...Fragment_VfBBZ
+}
+
+fragment Fragment_C on Union_K0szb {
+  __typename
+}
+
+fragment Fragment_Jfzm on Union_VUuR {
+  ...Fragment_C
+}

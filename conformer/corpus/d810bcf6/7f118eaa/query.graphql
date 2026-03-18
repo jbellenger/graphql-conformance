@@ -1,0 +1,24 @@
+query @Directive_NcjGTT0Af {
+  ...Fragment_i6e8_H
+  ... on Union_LJ7zkSLpNp {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_KeGubf on Union_n {
+  __typename
+}
+
+fragment Fragment_r on Object_zY {
+  ...Fragment_KeGubf
+}
+
+fragment Fragment_i6e8_H on Object_zY {
+  ...Fragment_r
+  G19CyG: j8VyHsN {
+    __typename
+    Skl8: __typename
+    __typename @Directive_X3QqMZ_Wc
+  }
+}

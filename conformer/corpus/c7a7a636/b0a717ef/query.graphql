@@ -1,0 +1,18 @@
+{
+  ...Fragment_qkM0
+}
+
+fragment Fragment_OWp0 on Interface_tok {
+  __typename
+}
+
+fragment Fragment_qkM0 on Union_f {
+  XUq: __typename
+  __typename @include(if: false)
+  ... on Interface_tok {
+    __typename
+  }
+  ... on Interface_tok {
+    ...Fragment_OWp0
+  }
+}

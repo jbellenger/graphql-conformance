@@ -1,0 +1,45 @@
+query J($v17rl: Input_zZIlyXf) {
+  efaxlNI {
+    ...Fragment_R
+    ...Fragment_R
+  }
+  ... on Object_ks2 @include(if: true) {
+    efaxlNI {
+      V4eIS6YcP: __typename
+    }
+    ... on Union_WN9p {
+      __typename @Directive_Ow
+      __typename
+    }
+    ... on Union_znO9VbY1dD {
+      ...Fragment_R
+      ... on Object_ks2 @Directive_cfgoC0 {
+        z5LkE6KSsy
+      }
+    }
+  }
+  ... on Union_WN9p {
+    ...Fragment_aSs
+    ... on Union_WN9p {
+      z: __typename
+    }
+  }
+}
+
+fragment Fragment_aSs on Union_WN9p {
+  __typename
+}
+
+fragment Fragment_R on Object_AQ4hgEYpQX {
+  ...Fragment_aSs
+  __typename
+  SbLNsuJNq: hBc(h6Z: {u : "#71", o5XMZW3 : No4T}) {
+    __typename @Directive_Ow
+  }
+  ... on Object_AQ4hgEYpQX {
+    hBc(h6Z: $v17rl) {
+      dltgXX
+    }
+    __typename
+  }
+}

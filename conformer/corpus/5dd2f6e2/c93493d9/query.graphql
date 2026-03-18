@@ -1,0 +1,37 @@
+{
+  ...Fragment_NO2TjN4@Directive_omWT
+  ...Fragment_enU
+  ... on Object_gDxA_k {
+    __typename
+  }
+}
+
+fragment Fragment_enU on Union_wb {
+  __typename
+  __typename
+}
+
+fragment Fragment_i on Object_gDxA_k {
+  l: __typename
+}
+
+fragment Fragment_NO2TjN4 on Object_gDxA_k @Directive_Fz6{
+  ...Fragment_enU
+  ... on Object_gDxA_k {
+    ...Fragment_i
+    kyg {
+      _R8gfY: m {
+        __typename
+      }
+    }
+    TH: _YS0UC @Directive_omWT {
+      o
+    }
+  }
+  ... on Object_gDxA_k {
+    ...Fragment_enU
+    ... on Object_gDxA_k {
+      lUTxlOV: vfP
+    }
+  }
+}

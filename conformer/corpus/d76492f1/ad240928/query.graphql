@@ -1,0 +1,22 @@
+query U8FvYU {
+  ... on Object_U {
+    ...Fragment_PNrzVit
+    ... on Object_U {
+      __typename
+      HsGSCqz: tOOscdB2B
+      RT: pZ @include(if: false)
+      ... on Object_U {
+        atAJv: tOOscdB2B
+      }
+    }
+  }
+}
+
+fragment Fragment_xDH5H8tMW2 on Object_U {
+  pZ
+  tOOscdB2B
+}
+
+fragment Fragment_PNrzVit on Object_U {
+  ...Fragment_xDH5H8tMW2
+}

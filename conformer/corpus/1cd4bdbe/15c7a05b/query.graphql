@@ -1,0 +1,37 @@
+query ($ciF: Boolean!) {
+  Nt: xIWoXka {
+    ...Fragment_zy
+    ...Fragment_gR
+    ... on Union_ftSmxdDP @skip(if: $ciF) {
+      ...Fragment_gR
+      ... on Union_P3DV {
+        xPp: __typename
+      }
+    }
+    ... on Object__wiIKA {
+      xIWoXka {
+        __typename
+      }
+      xIWoXka {
+        nSn: __typename
+        __typename
+      }
+      ezh5auf {
+        mk
+        m5At
+      }
+    }
+  }
+}
+
+fragment Fragment_Tocq83q on Union_P3DV {
+  teFtnex: __typename
+}
+
+fragment Fragment_zy on Object__wiIKA @Directive_g8XcdAeh{
+  ...Fragment_Tocq83q
+}
+
+fragment Fragment_gR on Object_R5de @Directive_g8XcdAeh{
+  ...Fragment_Tocq83q@defer(if: true, label: "O#")
+}

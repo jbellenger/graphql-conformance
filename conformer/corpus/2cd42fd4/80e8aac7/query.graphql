@@ -1,0 +1,36 @@
+query VxE {
+  ...Fragment_cd
+  ...Fragment_zT96YmDJ
+  ...Fragment_zZiK@include(if: false) @Directive_bahJD8S
+  ukPDT: __typename
+}
+
+fragment Fragment_zT96YmDJ on Union_D3d {
+  __typename
+}
+
+fragment Fragment_gA57ykYl on Object_EkKy9 @Directive_X72G8S @Directive_bahJD8S{
+  ...Fragment_zT96YmDJ
+}
+
+fragment Fragment_cd on Object_EkKy9 {
+  ...Fragment_gA57ykYl
+  ...Fragment_gA57ykYl
+  __typename
+  ohVZT0lOn {
+    F8ig: __typename
+  }
+  ohVZT0lOn {
+    ... on Object_EkKy9 {
+      bu9I: __typename
+    }
+  }
+  ... on Object_EkKy9 {
+    __typename
+  }
+}
+
+fragment Fragment_zZiK on Object_EkKy9 {
+  ...Fragment_gA57ykYl
+  AF8dHa0kY: __typename
+}

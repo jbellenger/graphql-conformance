@@ -1,0 +1,19 @@
+query HadsK {
+  ...Fragment_LcELFWPW8
+}
+
+fragment Fragment_XHBPxO on Object_tMR5 {
+  CHlIqw: __typename
+}
+
+fragment Fragment_LcELFWPW8 on Object_tMR5 @Directive_r7{
+  SynSNa: ja70l6fA
+  ... on Object_tMR5 {
+    ...Fragment_XHBPxO
+  }
+  ... {
+    tA @Directive_QosW {
+      y9vYdyP5a
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  ... on Object_RmlKGO {
+    __typename
+    ... on Union_iJ_ {
+      ...Fragment_DXXGBS6f_W
+      __typename
+    }
+  }
+  ... on Object_RmlKGO {
+    ... on Union_UYo6BIPmy {
+      KNS7: __typename
+    }
+  }
+  ... on Union_UYo6BIPmy @defer(if: false, label: "W") {
+    ...Fragment_Rv
+  }
+}
+
+fragment Fragment_DXXGBS6f_W on Union_iJ_ {
+  efA: __typename
+}
+
+fragment Fragment_Rv on Union_UYo6BIPmy {
+  __typename @skip(if: true)
+  ... on Object_g {
+    b: v_JUJNtMm
+  }
+}

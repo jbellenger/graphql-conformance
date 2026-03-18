@@ -1,0 +1,30 @@
+{
+  ...Fragment_DDCR@Directive_f1(fMr9cONrcw: ZSOxnq)
+  ZC1WbW4zA: sSV
+}
+
+fragment Fragment_khL1T on Object_g {
+  __typename
+}
+
+fragment Fragment_f1 on Union_CT {
+  ...Fragment_khL1T
+  __typename
+  __typename
+  ... on Object_y1U {
+    __typename
+  }
+}
+
+fragment Fragment_DDCR on Union_cTd_GJe {
+  ...Fragment_f1
+  __typename
+  ... on Union_CT {
+    D: __typename
+    iDF9: __typename
+    ... on Object_g {
+      __typename
+      gWFMg
+    }
+  }
+}

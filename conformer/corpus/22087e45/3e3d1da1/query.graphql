@@ -1,0 +1,68 @@
+query kBJL($c1gh: Boolean!) {
+  ...Fragment_Y
+  d {
+    ...Fragment_M952Nq
+    __typename
+    ... on Interface_xjhyasXi_STUB {
+      ...Fragment_M952Nq
+      hie6 {
+        vbNqKi
+      }
+      vKcgU5: jcEflKwiZF
+      __typename
+      ... on Interface_xjhyasXi_STUB @Directive_qd @defer(if: false, label: null) {
+        __typename
+      }
+    }
+  }
+  rlI6aPAaE {
+    __typename
+  }
+  rlI6aPAaE {
+    __typename
+  }
+  rlI6aPAaE @skip(if: false) {
+    ...Fragment_O
+    ...Fragment_s8Izt
+    __typename
+    __typename
+  }
+  rlI6aPAaE {
+    ... on Union_eanIOo3aR {
+      ... on Object_D {
+        __typename
+      }
+    }
+    ... on Union_eanIOo3aR {
+      __typename
+      __typename @include(if: $c1gh)
+      __typename
+    }
+  }
+}
+
+fragment Fragment_Y on Union_CZy {
+  __typename
+}
+
+fragment Fragment_YB5KE8W on Interface_xjhyasXi {
+  __typename
+}
+
+fragment Fragment_M952Nq on Interface_xjhyasXi_STUB {
+  ...Fragment_YB5KE8W@Directive_qd @skip(if: $c1gh)
+  ... on Interface_xjhyasXi {
+    __typename
+  }
+}
+
+fragment Fragment_s8Izt on Object_D {
+  kJFYZ: __typename
+}
+
+fragment Fragment_O on Object_D @Directive_O92l{
+  ...Fragment_s8Izt
+  BCEf: gmG5E {
+    __typename
+  }
+}

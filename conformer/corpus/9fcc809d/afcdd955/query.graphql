@@ -1,0 +1,25 @@
+query RC6 {
+  ...Fragment_wBqBEXD7S
+  ...Fragment_NCvAsIN
+  PBMbA_0EqW: __typename
+  ... on Union_Yft @skip(if: false) {
+    ...Fragment_wBqBEXD7S
+  }
+}
+
+fragment Fragment_NCvAsIN on Union_Yft {
+  __typename: __typename
+}
+
+fragment Fragment_iP_E6SlU on Union_Yft {
+  ...Fragment_NCvAsIN
+  ... on Union_mF4B {
+    a0JStL: __typename
+  }
+}
+
+fragment Fragment_wBqBEXD7S on Object_rM {
+  ...Fragment_iP_E6SlU
+  ...Fragment_iP_E6SlU
+  zhaIxu: __typename
+}

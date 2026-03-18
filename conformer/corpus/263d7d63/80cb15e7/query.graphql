@@ -1,0 +1,15 @@
+query R2b9eraP89($imEccy9L: Boolean! = false) {
+  ...Fragment_BA6P
+}
+
+fragment Fragment_Iy on Interface_E2df6Sj {
+  eH1OsI
+}
+
+fragment Fragment_BA6P on Object_Z {
+  qsN: eZOT
+  eZOT
+  ... {
+    ...Fragment_Iy@skip(if: $imEccy9L)
+  }
+}

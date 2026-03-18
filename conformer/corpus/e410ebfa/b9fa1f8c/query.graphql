@@ -1,0 +1,23 @@
+query VM1 {
+  ...Fragment_BCJ
+}
+
+fragment Fragment__LTeYL on Union_DYYOZiC {
+  __typename
+}
+
+fragment Fragment_BCJ on Object_lov {
+  ... on Object_lov {
+    ...Fragment__LTeYL
+    _bFCx6RPr {
+      __typename
+    }
+    ... on Object_lov {
+      co {
+        Nzag: dL9KuISIa {
+          __typename
+        }
+      }
+    }
+  }
+}

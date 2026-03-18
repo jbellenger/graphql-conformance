@@ -1,0 +1,17 @@
+query ($s9: Int!) {
+  ...Fragment_ULshxunM@Directive_MumT
+  ... on Union_jmJrJH {
+    j7v0g64D: __typename
+    ... on Union_SpHkbE @include(if: false) {
+      ...Fragment_SaU
+    }
+  }
+}
+
+fragment Fragment_ULshxunM on Union_MdODF4X8E @Directive_EOiV_Ia3K{
+  __typename
+}
+
+fragment Fragment_SaU on Union_jmJrJH @Directive_EOiV_Ia3K(kztKkki: $s9){
+  __typename
+}

@@ -1,0 +1,21 @@
+query j {
+  ...Fragment_vXYlGO3M
+  ... on Union_Vhb {
+    __typename
+  }
+}
+
+fragment Fragment_NVhob on Object_JjMb2AmI {
+  __typename
+}
+
+fragment Fragment_r9Il on Union_nmzmidWKjs @Directive_D(_k73: [rstQn_F, rstQn_F, y8]){
+  ...Fragment_NVhob
+}
+
+fragment Fragment_vXYlGO3M on Union_nmzmidWKjs {
+  ...Fragment_r9Il
+  __typename
+  __typename
+  __typename
+}

@@ -1,0 +1,33 @@
+query nL9E67ISt($_JwXpw: Boolean!) {
+  ...Fragment__IlU
+  __typename
+  ... on Union_E @include(if: true) {
+    ...Fragment_sU8nH
+    ...Fragment_sU8nH
+  }
+  ... on Object_sEZH2lmWb {
+    ... on Union_E @skip(if: $_JwXpw) {
+      __typename @Directive_ye
+    }
+  }
+  ... on Object_sEZH2lmWb {
+    mpKkO6nES {
+      Q73RpSXWP: __typename
+    }
+  }
+}
+
+fragment Fragment_EW8SPICno on Object_sEZH2lmWb {
+  __typename
+}
+
+fragment Fragment_sU8nH on Object_sEZH2lmWb {
+  ...Fragment_EW8SPICno
+}
+
+fragment Fragment__IlU on Object_sEZH2lmWb {
+  ...Fragment_sU8nH
+  ...Fragment_EW8SPICno
+  __typename
+  __typename
+}

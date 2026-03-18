@@ -1,0 +1,34 @@
+query p {
+  __typename
+  ... on Union_mWVaw0X6o {
+    __typename
+  }
+  ... on Object_ZNFUaZ3Z {
+    __typename
+    gTcLTfY9: vWDTiA {
+      ...Fragment_iFR1
+    }
+    ... on Object_ZNFUaZ3Z {
+      ...Fragment_Y8mU8wzipz
+      __typename
+      vWDTiA {
+        pD: doM
+      }
+      vWDTiA {
+        __typename
+        z: doM
+      }
+    }
+    ... on Object_ZNFUaZ3Z {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_iFR1 on Interface_A @Directive_e_SP8wNLw{
+  i_: doM
+}
+
+fragment Fragment_Y8mU8wzipz on Union_i0hfW {
+  __typename
+}

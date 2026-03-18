@@ -1,0 +1,14 @@
+query H0hHtcM {
+  ...Fragment_egJ
+  jq5n4Ks41E
+  jq5n4Ks41E
+  jq5n4Ks41E
+  jq5n4Ks41E
+}
+
+fragment Fragment_egJ on Union_FyM {
+  n1Nx: __typename
+  ... on Union_FyM @defer(if: true, label: "|cH") {
+    __typename
+  }
+}

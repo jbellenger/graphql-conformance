@@ -1,0 +1,18 @@
+query GOXM($sw: Boolean! = true) {
+  eul {
+    ...Fragment_KY
+    y2XqgNX @skip(if: $sw) {
+      ... on Object_c7Ol_FSZNh {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment__yI on Object_JrKk {
+  __typename
+}
+
+fragment Fragment_KY on Union_Xqjoe5y6 {
+  ...Fragment__yI
+}

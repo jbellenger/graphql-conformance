@@ -1,0 +1,30 @@
+query ZlQ {
+  ...Fragment_N6ibQmuG
+  hbfZv_sjP {
+    Bu0QpNO: __typename
+  }
+  ... on Object_Lekp {
+    ...Fragment_N6ibQmuG
+    ...Fragment_xRv
+    ... on Object_Lekp {
+      biGs @skip(if: true)
+      RjQWk30IYw: hbfZv_sjP {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_N6ibQmuG on Union_oGY5K7 {
+  __typename
+  ... on Union_Ky_ {
+    __typename
+  }
+}
+
+fragment Fragment_xRv on Union_oGY5K7 {
+  __typename
+  ... on Union_Ky_ {
+    __typename
+  }
+}

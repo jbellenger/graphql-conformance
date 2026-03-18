@@ -1,0 +1,21 @@
+{
+  ...Fragment_p
+  ... on Union_vVPfbS {
+    __typename
+    ... on Union_vVPfbS {
+      __typename
+    }
+  }
+  ... on Union_bD0Tln {
+    ... {
+      __typename
+    }
+  }
+  ... on Union_bD0Tln {
+    __typename
+  }
+}
+
+fragment Fragment_p on Union_vVPfbS {
+  __typename
+}

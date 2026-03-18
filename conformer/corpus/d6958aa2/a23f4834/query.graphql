@@ -1,0 +1,31 @@
+{
+  ...Fragment_SjAA7
+  __typename
+  ... on Object_Vbar3F {
+    __typename
+    q1a0E
+    dh_SUPib_
+    ... on Union_U2Bmje7mQ4 {
+      nc0KsRa8: __typename @Directive_usrg1
+      __typename
+      __typename @Directive_jy6cki
+    }
+  }
+  ... on Union_k {
+    ... on Object_BH {
+      ...Fragment_ZSGEFrR
+      nuk0kROb {
+        __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_SjAA7 on Union_U2Bmje7mQ4 {
+  __typename
+}
+
+fragment Fragment_ZSGEFrR on Object_BH {
+  n4nilDtx
+}

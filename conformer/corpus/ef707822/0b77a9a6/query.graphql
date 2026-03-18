@@ -1,0 +1,78 @@
+query T416EcLmI($u: Boolean! = false, $cSB_Dz: Enum_iddddddddd) {
+  ...Fragment_PsFBAPS@include(if: $u)
+  ...Fragment_PsFBAPS
+  ...Fragment_PsFBAPS
+  j @Directive_M2N6c {
+    ...Fragment_CMw4Sz
+    ...Fragment_CMw4Sz
+    FGrJSWJ: i(fGdH: $cSB_Dz) {
+      __typename
+    }
+    ... {
+      ...Fragment_CMw4Sz@Directive_mz4SQ
+      __typename
+    }
+    ... on Interface_J_STUB {
+      gm
+      qjFRF {
+        __typename @Directive_M2N6c
+      }
+      I4QLA: i(fGdH: $cSB_Dz) {
+        zhF9x: __typename
+        Ys_0: ld
+      }
+      ... on Interface_J_STUB {
+        __typename
+      }
+    }
+  }
+  __typename
+  SfpTNXq: bNm7x1KtM {
+    __typename
+    ... on Object_gbev {
+      ...Fragment_UnpM61C5Lp@include(if: false)
+      ... on Union_EFVrgqJ {
+        __typename
+      }
+    }
+    ... on Union_xbM9IR17l1 {
+      ...Fragment_UnpM61C5Lp
+    }
+  }
+  j {
+    __typename @include(if: false)
+  }
+}
+
+fragment Fragment_zF on Union_xbM9IR17l1 {
+  ... on Union_EFVrgqJ {
+    uTGSTjWe7e: __typename
+  }
+}
+
+fragment Fragment_PsFBAPS on Object_jSRfvXje {
+  ...Fragment_zF
+  g: __typename
+  ... on Union_xbM9IR17l1 {
+    __typename
+    ... on Union_EFVrgqJ {
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_CMw4Sz on Interface_J_STUB {
+  i(fGdH: null) {
+    gOB9W6wEQU: __typename
+  }
+  gm
+  c {
+    __typename @skip(if: true)
+  }
+}
+
+fragment Fragment_UnpM61C5Lp on Union_EFVrgqJ {
+  __typename
+  __typename @skip(if: false) @Directive_M2N6c
+}

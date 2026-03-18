@@ -1,0 +1,27 @@
+query ajrpZdq @experimental_disableErrorPropagation @Directive_SD8bK {
+  YBFe: z {
+    kw4HFsiFK: __typename
+    __typename
+    ... on Interface_FQALK {
+      fXjoIFfWk
+    }
+    ... on Interface_FQALK {
+      __typename
+    }
+  }
+  b8aNg {
+    ...Fragment_z
+  }
+  n6M9: __typename
+}
+
+fragment Fragment_BU on Object_dKPL3F6 {
+  __typename
+}
+
+fragment Fragment_z on Union_KcG1vZ {
+  ...Fragment_BU
+  ... on Union_SbO78lj {
+    __typename
+  }
+}

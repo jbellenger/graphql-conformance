@@ -1,0 +1,32 @@
+query uM3hPR_B {
+  ...Fragment_cVEz
+  ... on Union_pGXW57e1 @include(if: false) {
+    __typename
+  }
+}
+
+fragment Fragment_q on Object_UY {
+  __typename
+}
+
+fragment Fragment_H on Object_UY {
+  ...Fragment_q@Directive_Uktk7
+  ivo: wbwpPcgKVq
+  mljN5 {
+    mrZmlM6 {
+      __typename
+    }
+  }
+  __typename
+}
+
+fragment Fragment_cVEz on Union_gDj {
+  ...Fragment_H
+  ...Fragment_q
+  __typename
+  ... on Union_gDj {
+    ... on Object_UY {
+      __typename
+    }
+  }
+}

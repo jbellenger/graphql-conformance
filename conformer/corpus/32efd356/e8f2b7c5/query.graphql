@@ -1,0 +1,10 @@
+query ($w: Boolean!@Directive_TI6) {
+  tib(m7IiUIad: T_P) @Directive_TI6
+  ... on Union_exW0uVl @skip(if: $w) {
+    ...Fragment__37dtBQ
+  }
+}
+
+fragment Fragment__37dtBQ on Union_exW0uVl {
+  __typename
+}

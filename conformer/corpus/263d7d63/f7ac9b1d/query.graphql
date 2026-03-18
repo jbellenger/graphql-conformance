@@ -1,0 +1,65 @@
+query @experimental_disableErrorPropagation {
+  ...Fragment_W
+  ...Fragment_R
+  ...Fragment_R
+  eH1OsI
+  ... on Interface_E2df6Sj {
+    ... on Interface_E2df6Sj {
+      ... on Object_Z {
+        __typename
+      }
+    }
+  }
+  ... on Object_Z {
+    ... on Interface_E2df6Sj {
+      ... on Interface_E2df6Sj {
+        M: eH1OsI
+        mkhE7tUUfx {
+          __typename
+        }
+      }
+    }
+    ... on Interface_E2df6Sj {
+      eH1OsI
+    }
+  }
+  ... on Interface_E2df6Sj {
+    ...Fragment_W
+    ...Fragment_R
+    d6LGc7uL_Q: mkhE7tUUfx {
+      __typename
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_R on Object_Z {
+  ... {
+    __typename
+  }
+}
+
+fragment Fragment_fjl20d on Object_pgWV {
+  __typename
+}
+
+fragment Fragment_W on Interface_E2df6Sj {
+  ...Fragment_R
+  xZSyszCifq {
+    kYZd
+  }
+  Q_s: __typename
+  mkhE7tUUfx {
+    __typename @include(if: true)
+  }
+  mkhE7tUUfx {
+    ...Fragment_fjl20d
+  }
+  ... on Object_Z {
+    __typename
+    ... on Interface_E2df6Sj {
+      __typename
+    }
+  }
+}

@@ -1,0 +1,28 @@
+query ($sipW07: Boolean) {
+  ...Fragment_j
+  ...Fragment_UE3XEAx6
+  ...Fragment_UE3XEAx6
+}
+
+fragment Fragment_IZR6wt on Object_DyNDG1Dy {
+  c4xUJ_ttBr(qnB3: $sipW07)
+}
+
+fragment Fragment_j on Object__v {
+  npu {
+    ...Fragment_IZR6wt
+    ... on Object_DyNDG1Dy {
+      z8 {
+        z8 @skip(if: true) {
+          slrhO
+        }
+      }
+    }
+  }
+  dM: __typename
+}
+
+fragment Fragment_UE3XEAx6 on Union_F7 {
+  ...Fragment_j
+  cygVfS: __typename
+}

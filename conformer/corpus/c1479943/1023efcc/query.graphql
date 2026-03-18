@@ -1,0 +1,21 @@
+{
+  ...Fragment_AIp
+  ...Fragment_AIp
+}
+
+fragment Fragment_r9u6oolwUK on Union_p7Vb {
+  __typename
+  __typename
+}
+
+fragment Fragment_AIp on Union_p7Vb {
+  __typename
+  __typename
+  ... {
+    ...Fragment_r9u6oolwUK
+    __typename
+    ... on Object_MgcX {
+      rSJ0gw @Directive_TV0IBhK
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  ...Fragment_S2xIf@defer(if: false, label: "WDf") @include(if: true) @Directive_ye
+  ...Fragment_SdKnjfVs@Directive_ye
+  ...Fragment_SdKnjfVs
+  mpKkO6nES {
+    ...Fragment_gl2KyNp3
+    ...Fragment_mUmP6
+  }
+}
+
+fragment Fragment_S2xIf on Union_E {
+  __typename
+  ... on Object_ixR82G {
+    __typename
+  }
+}
+
+fragment Fragment_SdKnjfVs on Object_sEZH2lmWb {
+  ... on Union_E {
+    ...Fragment_S2xIf
+    ... on Object_ixR82G {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_gl2KyNp3 on Union_E {
+  __typename
+}
+
+fragment Fragment_mUmP6 on Union_E {
+  ...Fragment_S2xIf
+}

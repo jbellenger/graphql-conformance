@@ -1,0 +1,32 @@
+query mhQ {
+  ...Fragment_u0S8KNSKY@include(if: true)
+  ...Fragment_u0S8KNSKY
+  pX3KuOsMk {
+    UNBY0va: muj8XkqA {
+      __typename @skip(if: false)
+      tRp2wC: __typename
+      __typename
+      ... on Object_DDRdpWJ0 {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_LH3i7bBH on Union_cwSxx {
+  N: __typename @include(if: false)
+  Cz_fYcpwi: __typename @skip(if: true)
+}
+
+fragment Fragment_u0S8KNSKY on Object_JQyM0 {
+  __typename
+  ... on Union_i {
+    ...Fragment_LH3i7bBH
+  }
+  ... on Union_i {
+    __typename
+    ... on Union_cwSxx {
+      __typename
+    }
+  }
+}

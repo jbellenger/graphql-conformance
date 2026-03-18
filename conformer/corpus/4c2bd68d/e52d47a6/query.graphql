@@ -1,0 +1,35 @@
+query HnlQPhIf3j($aD__Y: Boolean!) @experimental_disableErrorPropagation {
+  ...Fragment_iLk
+  __typename
+  ... on Object_WA3HA2ZI7v {
+    ...Fragment_EWbUo1F
+    ... on Union_YfOXw {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_ZzZe6 on Union_YfOXw {
+  ... on Union_IIFoYv8Gc8 {
+    __typename
+  }
+}
+
+fragment Fragment_iLk on Union_IIFoYv8Gc8 {
+  ...Fragment_ZzZe6
+  ...Fragment_ZzZe6
+  t: __typename
+  ... on Object_WA3HA2ZI7v {
+    ...Fragment_ZzZe6
+  }
+  ... on Object_WA3HA2ZI7v @include(if: $aD__Y) {
+    ...Fragment_ZzZe6
+    ... {
+      dbeQ @Directive_kJ
+    }
+  }
+}
+
+fragment Fragment_EWbUo1F on Union_IIFoYv8Gc8 {
+  __typename
+}

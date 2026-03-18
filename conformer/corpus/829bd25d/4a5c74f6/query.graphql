@@ -1,0 +1,25 @@
+query CjoyB($lf: Boolean!) {
+  rdP7
+  ... on Union_U {
+    __typename @skip(if: $lf)
+  }
+  ... on Object_lAAVtI {
+    ...Fragment_J
+    __typename
+  }
+}
+
+fragment Fragment_Tr9yZtjS on Union_U {
+  __typename
+  __typename
+}
+
+fragment Fragment_J on Object_lAAVtI {
+  ...Fragment_Tr9yZtjS
+  rdP7
+  ... on Object_lAAVtI {
+    rZXgxJD4 {
+      __typename
+    }
+  }
+}

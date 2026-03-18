@@ -1,0 +1,35 @@
+{
+  jbAmxKw {
+    ...Fragment_Syp
+  }
+  ... {
+    __typename
+  }
+  ... on Object_jDhGD1x {
+    ...Fragment_d8jeDjobzC
+    ...Fragment_KHwtDB1dzD
+  }
+}
+
+fragment Fragment_xIImGD on Union_op126 @Directive_r{
+  __typename
+}
+
+fragment Fragment_Syp on Object_QbI {
+  ...Fragment_xIImGD
+  ... on Object_QbI {
+    __typename
+  }
+}
+
+fragment Fragment_d8jeDjobzC on Object_jDhGD1x {
+  ... on Object_jDhGD1x {
+    __typename
+  }
+}
+
+fragment Fragment_KHwtDB1dzD on Union_Uc4II8Qkx {
+  ... on Object_jDhGD1x {
+    __typename
+  }
+}

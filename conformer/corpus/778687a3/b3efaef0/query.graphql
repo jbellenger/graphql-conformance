@@ -1,0 +1,34 @@
+query wcGahs59 {
+  ... on Union_BMdS @Directive__DHKb7zbn {
+    ... on Union_DV3JPn {
+      __typename
+    }
+    ... on Object_U {
+      ...Fragment_trf
+    }
+  }
+  ... on Object_vYtrdX_PB {
+    ...Fragment_GIB
+    ... on Object_vYtrdX_PB {
+      ...Fragment_pg3Iyoiqgd@defer(if: false, label: "~s1")
+    }
+    ... on Union_DV3JPn {
+      ...Fragment_GIB@defer(if: false, label: "B")
+      h8qH: __typename
+    }
+  }
+}
+
+fragment Fragment_trf on Union_BMdS {
+  __typename
+}
+
+fragment Fragment_GIB on Union_BMdS {
+  ... on Object_vYtrdX_PB {
+    pAMP0
+  }
+}
+
+fragment Fragment_pg3Iyoiqgd on Union_DV3JPn {
+  __typename
+}

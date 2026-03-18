@@ -1,0 +1,53 @@
+query yB @Directive_q9VcAV {
+  ...Fragment_IfOPio
+  oUV {
+    __typename
+  }
+  __typename
+  jb {
+    ... on Union_SZr3q8IIe {
+      ...Fragment_h_Fw
+    }
+    ... on Object_n5fENB {
+      ... on Object_n5fENB {
+        jb {
+          __typename @Directive_C
+        }
+      }
+    }
+  }
+  ... {
+    ...Fragment_IfOPio@defer(if: false, label: "EC")
+    ...Fragment_h_Fw
+    ... on Union_QTAFWhyS {
+      ... on Interface_mg0 {
+        f1Cc
+        f1Cc
+      }
+    }
+  }
+  ... on Union_QTAFWhyS @Directive_m {
+    ...Fragment_WGLvQTgFx
+  }
+}
+
+fragment Fragment_j on Object_XcxKKA {
+  ... on Object_XcxKKA {
+    cw: __typename
+  }
+}
+
+fragment Fragment_IfOPio on Union_jf87 {
+  ...Fragment_j
+}
+
+fragment Fragment_h_Fw on Union_QTAFWhyS {
+  __typename
+  eclUHkzg: __typename
+}
+
+fragment Fragment_WGLvQTgFx on Union_QTAFWhyS {
+  ... {
+    __typename
+  }
+}

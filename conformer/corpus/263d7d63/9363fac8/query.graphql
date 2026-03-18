@@ -1,0 +1,15 @@
+query ZPs8IS {
+  ...Fragment_PC3@defer(if: true)
+  ...Fragment_PC3@include(if: false)
+  ...Fragment_PC3
+  ... on Interface_E2df6Sj {
+    ...Fragment_PC3
+  }
+  ... on Object_Z @skip(if: true) {
+    eH1OsI
+  }
+}
+
+fragment Fragment_PC3 on Interface_E2df6Sj {
+  Bz7gMUVK: eH1OsI
+}

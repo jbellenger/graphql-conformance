@@ -1,0 +1,25 @@
+query Ise_mnXK($j7: Input_gJri, $pk6Y: Input_Y2f5sCXdYm) {
+  ... on Object_ZNFUaZ3Z {
+    vWDTiA {
+      doM
+      ... on Interface_A_STUB {
+        n4N(mCLUh1v: $j7, cbLMGxg6S9: $pk6Y)
+      }
+    }
+  }
+  ... on Object_ZNFUaZ3Z {
+    ...Fragment_QsdWhaK5L@include(if: false)
+    __typename
+    FUnfB: vWDTiA {
+      __typename
+    }
+    ... on Object_ZNFUaZ3Z {
+      ...Fragment_QsdWhaK5L
+    }
+  }
+}
+
+fragment Fragment_QsdWhaK5L on Union_i0hfW {
+  __typename
+  __typename
+}

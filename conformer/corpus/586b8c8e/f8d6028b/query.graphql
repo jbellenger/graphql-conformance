@@ -1,0 +1,17 @@
+{
+  Jh_sbfa7H3: yCkz8VwU6 {
+    yCkz8VwU6 {
+      ...Fragment_Q9ZlgIUO
+    }
+    zz: yCkz8VwU6 {
+      ...Fragment_Q9ZlgIUO@include(if: true)
+      ... on Union_S5tN {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Q9ZlgIUO on Union_S5tN {
+  __typename
+}

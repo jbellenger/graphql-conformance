@@ -1,0 +1,137 @@
+schema {
+  query: Object_WAFy7GQ7
+}
+
+directive @Directive_EOiV_Ia3K(kztKkki: Int! = -152224006) on SUBSCRIPTION | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | SCHEMA | SCALAR | FIELD_DEFINITION | ARGUMENT_DEFINITION | UNION | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+directive @Directive_MumT on FIELD | FRAGMENT_SPREAD | SCALAR | ARGUMENT_DEFINITION | UNION | INPUT_FIELD_DEFINITION
+
+directive @Directive_ZGUs on ENUM_VALUE | INPUT_OBJECT
+
+"This directive allows results to be deferred during execution"
+directive @defer(
+    "Deferred behaviour is controlled by this argument"
+    if: Boolean! = true,
+    "A unique label that represents the fragment being deferred"
+    label: String
+  ) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Marks the field, argument, input field or enum value as deprecated"
+directive @deprecated(
+    "The reason for the deprecation"
+    reason: String! = "No longer supported"
+  ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+"This directive disables error propagation when a non nullable field returns null for the given operation."
+directive @experimental_disableErrorPropagation on QUERY | MUTATION | SUBSCRIPTION
+
+"Directs the executor to include this field or fragment only when the `if` argument is true"
+directive @include(
+    "Included when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Indicates an Input Object is a OneOf Input Object."
+directive @oneOf on INPUT_OBJECT
+
+"Directs the executor to skip this field or fragment when the `if` argument is true."
+directive @skip(
+    "Skipped when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Exposes a URL that specifies the behaviour of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behaviour of this scalar."
+    url: String!
+  ) on SCALAR
+
+interface Interface_aIgOdp1NC {
+  cPKXXPJv(ffsaZbDgUy: ID, xhT: Enum_tt4Y9bAW): Interface_zYInCBfs0
+  kZusIDKxge: Interface_aIgOdp1NC
+  z7pwbEu(pE6ArZOlhv: Input_TIrGfKHnN! = {v0WCJna6 : {v0WCJna6 : {v0WCJna6 : null, z : null, kFGfKS0Nhd : null}, z : {frsSW : QiFu}, kFGfKS0Nhd : {v0WCJna6 : null, z : null, kFGfKS0Nhd : null}}, z : {frsSW : QiFu}, kFGfKS0Nhd : {v0WCJna6 : {v0WCJna6 : null, z : null, kFGfKS0Nhd : null}, kFGfKS0Nhd : {v0WCJna6 : null, z : null, kFGfKS0Nhd : null}}}): ID
+}
+
+interface Interface_c {
+  e7mQ64U: Union_MdODF4X8E!
+  fj2a: Int
+  u1eznw9p0B: ID
+}
+
+interface Interface_zYInCBfs0 {
+  eUwzySwX9: ID
+  n3iEDozd: Union_jmJrJH
+}
+
+union Union_MdODF4X8E = Object_WAFy7GQ7
+
+union Union_SpHkbE = Object_JaIgkeYUp
+
+union Union_jmJrJH = Object_A | Object_JaIgkeYUp | Object_WAFy7GQ7
+
+type Interface_aIgOdp1NC_STUB implements Interface_aIgOdp1NC {
+  cPKXXPJv(ffsaZbDgUy: ID, xhT: Enum_tt4Y9bAW): Interface_zYInCBfs0
+  kTlzoj: Interface_c
+  kZusIDKxge: Interface_aIgOdp1NC
+  nTlaHhlA9(vMLPc8ryQE: String): ID
+  t7jX7Ac: Object_WAFy7GQ7!
+  z7pwbEu(pE6ArZOlhv: Input_TIrGfKHnN! = {v0WCJna6 : {v0WCJna6 : {v0WCJna6 : null, z : null, kFGfKS0Nhd : null}, z : {frsSW : QiFu}, kFGfKS0Nhd : {v0WCJna6 : null, z : null, kFGfKS0Nhd : null}}, z : {frsSW : QiFu}, kFGfKS0Nhd : {v0WCJna6 : {v0WCJna6 : null, z : null, kFGfKS0Nhd : null}, kFGfKS0Nhd : {v0WCJna6 : null, z : null, kFGfKS0Nhd : null}}}): ID
+}
+
+type Interface_c_STUB implements Interface_c {
+  e7mQ64U: Union_MdODF4X8E!
+  fj2a: Int
+  sulwHd: Boolean
+  u1eznw9p0B: ID
+}
+
+type Interface_zYInCBfs0_STUB implements Interface_zYInCBfs0 {
+  eUwzySwX9: ID
+  emW3o: Union_MdODF4X8E
+  n3iEDozd: Union_jmJrJH
+}
+
+type Object_A {
+  n7iy: ID! @deprecated(reason : "%!1")
+  qfrQd0: [[Int]!]
+}
+
+type Object_JaIgkeYUp {
+  bTVtkYsnJf: Object_WAFy7GQ7
+  jci: Union_MdODF4X8E
+  yGFpJYi2: Interface_aIgOdp1NC!
+}
+
+type Object_WAFy7GQ7 {
+  _euvP50: [Object_WAFy7GQ7]
+  g3qT3(x7: Input_d! = {frsSW : KL9J1OBQ}): String
+  pIuIs(vPH: Enum_J!): Enum_RJt51EHpTb
+}
+
+enum Enum_J {
+  QM8F
+}
+
+enum Enum_RJt51EHpTb {
+  hnxmPYT9ov
+}
+
+enum Enum_tt4Y9bAW {
+  KL9J1OBQ
+  QiFu
+}
+
+input Input_TIrGfKHnN {
+  kFGfKS0Nhd: Input_TIrGfKHnN @Directive_EOiV_Ia3K(kztKkki : -1700321000)
+  v0WCJna6: Input_TIrGfKHnN
+  z: Input_d = {frsSW : QiFu}
+}
+
+input Input_d {
+  frsSW: Enum_tt4Y9bAW!
+}
+
+input Input_lINMukcl {
+  vb: Input_TIrGfKHnN
+  zc_0iXHzt_: Enum_tt4Y9bAW
+}

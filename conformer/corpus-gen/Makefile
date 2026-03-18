@@ -3,7 +3,7 @@
 build:
 	./gradlew -q shadowJar
 
-SCHEMAS ?= 1
+SCHEMAS ?= 100
 DOCS_PER_SCHEMA ?= 10
 VARS_PER_DOC ?= 10
 

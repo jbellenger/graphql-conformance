@@ -1,0 +1,12 @@
+query j {
+  ...Fragment_jJDtRFK
+  ...Fragment_jJDtRFK
+  __typename
+  zS @include(if: false) {
+    ct
+  }
+}
+
+fragment Fragment_jJDtRFK on Union_FolI0lG27D {
+  __typename
+}

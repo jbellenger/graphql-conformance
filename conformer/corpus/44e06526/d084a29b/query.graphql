@@ -1,0 +1,31 @@
+query W {
+  ...Fragment_vx10Ri
+  ... on Object_Xg5x8 {
+    ...Fragment_UHDXoWFITl
+  }
+  ... on Union_N {
+    ... on Union_N {
+      ...Fragment_UHDXoWFITl
+      __typename
+      __typename
+      __typename
+    }
+    ... on Object_yhY {
+      nj02Ww6we3(tfb5HuZ: "")
+    }
+  }
+}
+
+fragment Fragment_UHDXoWFITl on Object_Xg5x8 {
+  __typename
+}
+
+fragment Fragment_VgLGpnTf on Object_Xg5x8 {
+  ...Fragment_UHDXoWFITl
+  bQ6KQuH9FV
+}
+
+fragment Fragment_vx10Ri on Object_Xg5x8 {
+  ...Fragment_VgLGpnTf
+  ...Fragment_VgLGpnTf
+}

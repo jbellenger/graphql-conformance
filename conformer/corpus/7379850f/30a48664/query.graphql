@@ -1,0 +1,21 @@
+{
+  ...Fragment_my8e
+  bBIP: d
+}
+
+fragment Fragment_T6bo on Union_GeNFrNXzYz {
+  ... on Union_SWeEovZ {
+    __typename @Directive_Z0cJ
+  }
+}
+
+fragment Fragment_my8e on Union_Zi {
+  ...Fragment_T6bo
+  ... on Interface_lPPAn26cXc {
+    acFLJRcIV4: sICdB
+    ... on Interface_K5d @Directive_oSztfYu {
+      d
+      hi: d
+    }
+  }
+}

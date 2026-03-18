@@ -1,0 +1,31 @@
+query N_r3($fL5l2q0: Enum_J! = QM8F, $xU: Input_d!) {
+  jOH2fIsEO: _euvP50 {
+    srEUq1ri5: pIuIs(vPH: QM8F)
+    _euvP50 {
+      ...Fragment_haldECmPTZ
+      pIuIs(vPH: $fL5l2q0)
+      ... on Union_jmJrJH {
+        __typename
+      }
+    }
+    g3qT3(x7: {frsSW : KL9J1OBQ})
+    ... on Union_jmJrJH {
+      ...Fragment_haldECmPTZ@include(if: true)
+      ... {
+        __typename
+      }
+    }
+  }
+  g3qT3(x7: $xU)
+}
+
+fragment Fragment_haldECmPTZ on Object_WAFy7GQ7 {
+  _euvP50 {
+    oQIYDK3: _euvP50 {
+      __typename
+    }
+  }
+  _euvP50 {
+    g3qT3(x7: {frsSW : QiFu})
+  }
+}

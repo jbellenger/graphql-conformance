@@ -1,0 +1,42 @@
+{
+  ...Fragment_Rz7KK6lf
+  ...Fragment_erE
+}
+
+fragment Fragment_Cygr172I on Union_qG1X8 {
+  __typename
+}
+
+fragment Fragment_Rz7KK6lf on Object_SqpuRS {
+  ...Fragment_Cygr172I
+  ... on Object_SqpuRS {
+    ...Fragment_Cygr172I
+    jlj {
+      __typename
+      __typename
+    }
+    __typename
+  }
+  ... {
+    jlj {
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_erE on Object_SqpuRS {
+  ... on Object_SqpuRS {
+    ... on Union_qG1X8 {
+      __typename
+    }
+  }
+  ... on Object_SqpuRS {
+    __typename
+    __typename
+    __typename @skip(if: false)
+    ... on Union_qG1X8 {
+      __typename
+    }
+  }
+}

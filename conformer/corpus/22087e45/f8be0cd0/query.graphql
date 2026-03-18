@@ -1,0 +1,12 @@
+query ivTHcMRH @Directive_qd {
+  ...Fragment_q168rf4lCM
+  fH7skeWWP
+}
+
+fragment Fragment_q168rf4lCM on Object_gng {
+  ... on Object_gng {
+    ... on Union_CZy {
+      cSr: __typename @include(if: true)
+    }
+  }
+}

@@ -1,0 +1,29 @@
+query bcahn {
+  ...Fragment_r
+  ...Fragment_jHK
+  __typename
+  ... on Union_MvQm73yR_ {
+    __typename
+  }
+}
+
+fragment Fragment_r on Union_MvQm73yR_ {
+  ZZL2Xb0l: __typename
+}
+
+fragment Fragment_jHK on Object_UKH7ego {
+  ... on Object_UKH7ego {
+    ...Fragment_r
+    cyFDsKZmEq {
+      t: __typename
+      xIlWpmXv {
+        h {
+          __typename
+        }
+      }
+    }
+    ... on Union_MvQm73yR_ {
+      IuCitV: __typename
+    }
+  }
+}

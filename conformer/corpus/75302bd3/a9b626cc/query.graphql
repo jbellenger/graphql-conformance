@@ -1,0 +1,19 @@
+query ge($cnf: Boolean!) @Directive_WY {
+  __typename
+  ... on Object_EU {
+    awU96qdKv1 {
+      iUykK: __typename
+      ... on Union_C @skip(if: $cnf) {
+        __typename
+      }
+    }
+    awU96qdKv1 {
+      ...Fragment_JDFUw6OULx
+      __typename
+    }
+  }
+}
+
+fragment Fragment_JDFUw6OULx on Union_t {
+  __typename @include(if: false)
+}

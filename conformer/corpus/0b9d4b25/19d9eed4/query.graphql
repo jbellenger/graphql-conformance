@@ -1,0 +1,11 @@
+query lji66 {
+  ...Fragment_Q@skip(if: true)
+}
+
+fragment Fragment__wAsF on Union_jLiwY {
+  gkuJT: __typename
+}
+
+fragment Fragment_Q on Union_jLiwY {
+  ...Fragment__wAsF@defer(if: true, label: "v")
+}

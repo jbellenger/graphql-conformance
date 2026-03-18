@@ -1,0 +1,23 @@
+query RZH6d2gjUS {
+  ... on Union_jmJrJH {
+    TjBFhDXm4T: __typename
+  }
+  ... on Union_MdODF4X8E {
+    ...Fragment_JJ
+    __typename
+    ... on Union_jmJrJH {
+      ...Fragment_JJ
+    }
+  }
+}
+
+fragment Fragment_WSr9EfzK on Object_WAFy7GQ7 {
+  gBN9A: __typename
+}
+
+fragment Fragment_JJ on Union_MdODF4X8E {
+  ...Fragment_WSr9EfzK
+  __typename
+  __typename @Directive_MumT
+  __typename
+}

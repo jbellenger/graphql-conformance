@@ -1,0 +1,34 @@
+query Z($sGcObHbL: Boolean!) {
+  ... on Union_UtV2WEj {
+    ...Fragment_ek1q4b
+    ...Fragment_ek1q4b
+    __typename
+    ... on Object_vdZD4P2Szm {
+      ... {
+        lzrHZ
+      }
+    }
+  }
+  ... on Union_UtV2WEj {
+    ...Fragment_ek1q4b
+    ...Fragment_ek1q4b
+    WUA6k3n3: __typename
+    ... on Object_vdZD4P2Szm {
+      lzrHZ
+    }
+  }
+  ... on Object_bN8fygp6 {
+    ... on Object_bN8fygp6 {
+      ...Fragment_ek1q4b
+    }
+    ... on Object_bN8fygp6 {
+      tib(m7IiUIad: T_P)
+      __typename
+      dAOSTy0pZr: __typename @Directive_TI6 @include(if: $sGcObHbL)
+    }
+  }
+}
+
+fragment Fragment_ek1q4b on Object_bN8fygp6 {
+  __typename
+}

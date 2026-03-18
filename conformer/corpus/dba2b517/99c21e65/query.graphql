@@ -1,0 +1,17 @@
+query is {
+  z0mV1AAnv
+  ... on Union_nmzmidWKjs {
+    ... on Object_ERCXqh {
+      ...Fragment_JX1kvDx
+    }
+  }
+  ... on Union_Vhb {
+    ... on Interface_yyufSLHl {
+      z0mV1AAnv
+    }
+  }
+}
+
+fragment Fragment_JX1kvDx on Union_Vhb {
+  __typename
+}

@@ -1,0 +1,18 @@
+query UTglBoYra($jHC: Boolean!) {
+  ...Fragment_bgjA7tY@skip(if: $jHC) @Directive_P5X_H4
+  ...Fragment_gJ7
+  ...Fragment_bgjA7tY
+  ... on Union_ZmCn2hoJg {
+    KtwaFl: __typename
+  }
+}
+
+fragment Fragment_gJ7 on Union_ZmCn2hoJg {
+  __typename
+}
+
+fragment Fragment_bgjA7tY on Object_VaiUdSLjny {
+  ...Fragment_gJ7
+  ...Fragment_gJ7
+  r: __typename
+}

@@ -1,0 +1,17 @@
+query Hs1XUTX @Directive_ESjob {
+  ...Fragment_COy3SwV82
+  ...Fragment_VX2zVZb
+  ...Fragment_BLlC0Dg6ZU@Directive_ESjob
+}
+
+fragment Fragment_COy3SwV82 on Object_LsZuSxN6Bu {
+  dW4Y9P
+}
+
+fragment Fragment_VX2zVZb on Object_LsZuSxN6Bu {
+  __typename
+}
+
+fragment Fragment_BLlC0Dg6ZU on Union_I {
+  neDS: __typename @Directive_uZ99OVoAzm
+}

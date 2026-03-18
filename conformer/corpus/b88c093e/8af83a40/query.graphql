@@ -1,0 +1,33 @@
+query wR3Bt1y($x7MfoMV6q: Enum__hMmn!) {
+  ...Fragment_fSt
+  zy2Rk(aPQLkzZfC: $x7MfoMV6q)
+  x8PdhN
+  ... on Union_noEIVt {
+    __typename
+  }
+  ... {
+    ... on Union_WL6vP8MjU {
+      ...Fragment_fSt
+      gsRTRSps6U: __typename
+      qUDA: __typename
+      omf: __typename
+      ... on Union_noEIVt {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_SIy on Object_Phmtzq {
+  nYJ5
+}
+
+fragment Fragment_wo4ug6 on Union_WL6vP8MjU {
+  ...Fragment_SIy
+}
+
+fragment Fragment_fSt on Object_Phmtzq {
+  ...Fragment_wo4ug6@Directive_ziYkHleOMV
+  b: x8PdhN
+  Pj0e4Aiaq5: x8PdhN
+}

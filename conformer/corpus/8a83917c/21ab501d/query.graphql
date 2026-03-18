@@ -1,0 +1,19 @@
+{
+  ... on Object_ZESfIV {
+    mqiB9x @skip(if: true) {
+      ... on Union_j1mu58I {
+        __typename
+      }
+    }
+  }
+  ... on Object_ZESfIV {
+    ... on Union_N9MIYI {
+      ...Fragment_I
+      __typename
+    }
+  }
+}
+
+fragment Fragment_I on Union_QZrp {
+  __typename
+}

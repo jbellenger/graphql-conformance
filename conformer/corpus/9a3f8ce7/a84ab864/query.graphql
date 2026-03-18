@@ -1,0 +1,33 @@
+query BdyxdF6s {
+  ...Fragment_N6haIe51N
+  ...Fragment_N6haIe51N
+  ...Fragment_N6haIe51N@defer(if: false, label: "`")
+  ... on Object_qd6Pdu4lyF {
+    ...Fragment_N6haIe51N
+    kA {
+      y_ZRrBd
+    }
+  }
+  ... on Union_KyY_Whd46 {
+    ...Fragment_N6haIe51N
+    ... on Union_jZ5NiO_Sb {
+      ...Fragment_lys3
+    }
+  }
+  ... on Union_VO9NtPy {
+    __typename
+    Ab9V5NH3O: __typename
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_N6haIe51N on Union_jZ5NiO_Sb {
+  vR17XG8gN: __typename
+  __typename @Directive_Y
+  __typename
+}
+
+fragment Fragment_lys3 on Union_jZ5NiO_Sb @Directive_NC1IsZZg{
+  __typename
+}

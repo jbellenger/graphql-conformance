@@ -1,0 +1,21 @@
+query So_s18jx {
+  ...Fragment_hu_KXuV
+}
+
+fragment Fragment_js on Union_bzixNTF {
+  __typename
+}
+
+fragment Fragment_XH6lR0 on Union_OI_iPPq @Directive_dx{
+  __typename
+}
+
+fragment Fragment_hu_KXuV on Object_m6jYzLh0F {
+  ...Fragment_js
+  ... on Union_fBI {
+    __typename
+  }
+  ... on Union_bzixNTF {
+    ...Fragment_XH6lR0
+  }
+}

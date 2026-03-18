@@ -1,0 +1,21 @@
+{
+  __typename
+  ... on Union_i0hfW {
+    ...Fragment_cl_Gs3
+    ...Fragment_cl_Gs3
+  }
+  ... on Union_mWVaw0X6o @include(if: false) {
+    ...Fragment_cl_Gs3
+  }
+  ... on Object_ZNFUaZ3Z {
+    ...Fragment_WA@include(if: true)
+  }
+}
+
+fragment Fragment_cl_Gs3 on Object_xmZg {
+  __typename
+}
+
+fragment Fragment_WA on Union_mWVaw0X6o {
+  ...Fragment_cl_Gs3
+}

@@ -1,0 +1,17 @@
+query jI {
+  ...Fragment_fEN3eg
+}
+
+fragment Fragment_QlD8hAVse3 on Union_Ky_ {
+  __typename
+}
+
+fragment Fragment_c on Union_Ky_ {
+  ...Fragment_QlD8hAVse3
+}
+
+fragment Fragment_fEN3eg on Union_oGY5K7 {
+  ...Fragment_c
+  __typename @skip(if: true)
+  yu: __typename
+}

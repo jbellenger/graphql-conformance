@@ -1,0 +1,12 @@
+query ($dVznqTTc: Boolean!) {
+  ... on Object_JQyM0 {
+    muj8XkqA {
+      __typename
+      SZXBq1k6b2: __typename @include(if: $dVznqTTc)
+      __typename
+    }
+  }
+  ... on Union_i @defer(if: false, label: "") {
+    C252kijze: __typename
+  }
+}

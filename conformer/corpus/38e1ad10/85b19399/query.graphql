@@ -1,0 +1,31 @@
+query jdwrs($uLuq29gy3q: Enum_uBrzI) {
+  ... on Object_zfGfAF4 {
+    ... on Union_Yo5Uz_gdB @Directive_VNSrJVw(rffe1AccW: $uLuq29gy3q) {
+      PR74_z3W: __typename
+      __typename
+      __typename
+    }
+  }
+  ... {
+    ...Fragment_MK
+    ixAwKFX9 @skip(if: true) {
+      ...Fragment_R_KoNkW4h
+      ... on Object_jEW8qokZFM {
+        z_
+      }
+    }
+  }
+  ... on Union_Yo5Uz_gdB {
+    _VEzvbu_C: __typename
+  }
+}
+
+fragment Fragment_MK on Union_Yo5Uz_gdB {
+  __typename
+  __typename
+  __typename
+}
+
+fragment Fragment_R_KoNkW4h on Union_vcbCQwK {
+  lQSQa: __typename
+}

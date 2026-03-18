@@ -1,0 +1,7 @@
+query b7k4NUS {
+  ...Fragment_or
+}
+
+fragment Fragment_or on Union_i {
+  __typename
+}

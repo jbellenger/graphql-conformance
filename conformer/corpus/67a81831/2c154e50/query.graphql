@@ -1,0 +1,17 @@
+query IH9Yde5gG {
+  ...Fragment_uBD
+}
+
+fragment Fragment_ARU1hMY_ on Union_hfmn {
+  __typename
+  __typename
+}
+
+fragment Fragment_pwG_ on Union_hfmn {
+  ...Fragment_ARU1hMY_
+}
+
+fragment Fragment_uBD on Object_vTQRd {
+  ...Fragment_pwG_
+  ...Fragment_ARU1hMY_
+}

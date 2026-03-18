@@ -1,0 +1,22 @@
+query @experimental_disableErrorPropagation {
+  ...Fragment_t8E@defer(if: true, label: "B")
+  ...Fragment_t8E
+  bJrRILR
+  uX7xc97L: k_s9aFu
+  ... on Union_OJ @Directive__Zu2_ax {
+    __typename
+    ... on Union_OJ {
+      __typename @Directive_hgpGE1
+    }
+  }
+  ... on Interface_dyGg6bk {
+    g5D
+  }
+  ... on Object_UVZyI @defer(label: "N1") {
+    NrjvvVM: g5D
+  }
+}
+
+fragment Fragment_t8E on Union_szE {
+  VbkS8: __typename
+}

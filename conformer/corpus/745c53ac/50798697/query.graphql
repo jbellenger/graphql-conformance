@@ -1,0 +1,34 @@
+query ($rqhoH6R: Boolean!) {
+  APq_JS: bQbfPRer
+  ... on Union_dZTe3s {
+    Oma8u2: __typename @skip(if: true) @Directive_fpGAkKXdEI
+    __typename
+    ... on Union_PU7z {
+      ... on Interface_TNsNpi8n {
+        roXaT {
+          sNTXBTxZeE
+        }
+      }
+    }
+  }
+  ... on Interface_TNsNpi8n {
+    ...Fragment__bg0Ot
+    ...Fragment_IVzrK9@include(if: false)
+    ... on Union_dZTe3s {
+      ...Fragment__bg0Ot
+    }
+  }
+  ... on Interface_TNsNpi8n @include(if: true) {
+    __typename
+  }
+}
+
+fragment Fragment__bg0Ot on Union_dZTe3s {
+  ... on Union_dZTe3s {
+    __typename
+  }
+}
+
+fragment Fragment_IVzrK9 on Interface_TNsNpi8n {
+  ...Fragment__bg0Ot@skip(if: $rqhoH6R)
+}

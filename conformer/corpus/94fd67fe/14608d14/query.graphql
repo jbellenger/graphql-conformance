@@ -1,0 +1,17 @@
+query Y79I5_w($eU3Glq6ezj: Boolean! = false) {
+  ...Fragment_Hbw76C
+  ooaqb
+}
+
+fragment Fragment_lSPsXzwc on Object_xRNq2c5LY {
+  __typename
+}
+
+fragment Fragment_w5 on Object_xRNq2c5LY {
+  ...Fragment_lSPsXzwc
+}
+
+fragment Fragment_Hbw76C on Object_xRNq2c5LY @Directive_BE9B{
+  ...Fragment_w5@Directive_DT34epG2
+  ...Fragment_w5@skip(if: $eU3Glq6ezj)
+}

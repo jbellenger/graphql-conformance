@@ -1,0 +1,43 @@
+query cim7ApqlRO($yc7c: Boolean! = false) {
+  ...Fragment_yK
+  ...Fragment_yK@include(if: $yc7c)
+  ... on Union_N9MIYI {
+    ... on Union_QZrp {
+      ... on Union_QZrp {
+        CvmblbUte: __typename
+      }
+    }
+    ... on Union_QZrp {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_V6bQl5p on Union_QZrp {
+  __typename
+  __typename
+}
+
+fragment Fragment_tui on Object_ZESfIV {
+  ...Fragment_V6bQl5p
+  __typename
+  PI: mqiB9x {
+    __typename
+  }
+  mqiB9x @include(if: true) {
+    __typename
+  }
+}
+
+fragment Fragment_yK on Union_N9MIYI @Directive_W0(uCoLSS: ovN62WuY){
+  ...Fragment_tui
+  __typename
+  ... on Union_N9MIYI {
+    ...Fragment_tui
+  }
+  ... on Union_QZrp {
+    ... on Union_QZrp {
+      __typename
+    }
+  }
+}

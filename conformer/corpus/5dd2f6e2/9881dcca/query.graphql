@@ -1,0 +1,15 @@
+{
+  ... on Union_wb @Directive_omWT {
+    ...Fragment_qoNqzdVb@Directive_Fz6
+    ...Fragment_oI8AHQY
+  }
+}
+
+fragment Fragment_qoNqzdVb on Object_gDxA_k {
+  vfP
+}
+
+fragment Fragment_oI8AHQY on Union_wb {
+  ...Fragment_qoNqzdVb
+  __typename
+}

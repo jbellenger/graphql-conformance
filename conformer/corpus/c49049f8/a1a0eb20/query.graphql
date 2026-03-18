@@ -1,0 +1,41 @@
+query xPM3pELonp($aweVhTX15: Input_GW9F) {
+  ...Fragment_bHpY4b@defer(if: true, label: null)
+  gpG @Directive_Q1Hv3(rKXQxPhVY: $aweVhTX15) {
+    __typename
+    AC: fXjoIFfWk
+    ... {
+      ... {
+        JHv: __typename
+      }
+    }
+    ... {
+      __typename
+    }
+  }
+  ... on Union_KcG1vZ {
+    __typename
+    ... on Object_sAn7z {
+      ...Fragment_pNMpzxpFz
+    }
+  }
+}
+
+fragment Fragment_QmK on Union_SbO78lj {
+  __typename
+  __typename
+}
+
+fragment Fragment_pNMpzxpFz on Union_KcG1vZ {
+  ...Fragment_QmK
+}
+
+fragment Fragment_bHpY4b on Object_sAn7z {
+  ...Fragment_pNMpzxpFz
+  ...Fragment_pNMpzxpFz
+  z {
+    __typename
+  }
+  ... on Union_SbO78lj {
+    ...Fragment_QmK
+  }
+}

@@ -1,0 +1,31 @@
+query JkICclp($bgdznMxYvc: Enum_Fm = ghsf) {
+  yCkz8VwU6 {
+    __typename
+  }
+  yCkz8VwU6 {
+    ...Fragment_R5NJi1gRr6
+    ...Fragment_R5NJi1gRr6
+    ijo5VkL: yCkz8VwU6 {
+      ...Fragment_Xe_
+      yCkz8VwU6 {
+        __typename
+      }
+      ... on Object_QjbFv5964q {
+        vb1xY2M: yCkz8VwU6 {
+          __typename
+        }
+        __typename
+      }
+    }
+  }
+  __typename
+}
+
+fragment Fragment_Xe_ on Object_QjbFv5964q {
+  __typename
+  __typename
+}
+
+fragment Fragment_R5NJi1gRr6 on Object_QjbFv5964q @Directive_crF(x_J3YiuFsz: $bgdznMxYvc){
+  ...Fragment_Xe_
+}

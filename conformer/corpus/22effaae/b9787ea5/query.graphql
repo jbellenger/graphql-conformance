@@ -1,0 +1,26 @@
+query EE9s1xJM {
+  ...Fragment_rrk3m3YBe@Directive_SD2pdGvI(gNu: true)
+  ...Fragment_rrk3m3YBe
+  ...Fragment_rrk3m3YBe
+  ... @Directive_Ramr {
+    __typename
+    __typename
+    ooJt_
+    ... on Object_B {
+      ooJt_
+    }
+    ... on Object_B {
+      __typename
+      ... on Object_B {
+        ooJt_
+      }
+    }
+  }
+  ... on Object_B @Directive_Ramr {
+    ooJt_
+  }
+}
+
+fragment Fragment_rrk3m3YBe on Object_B {
+  N1TUZQhbn: __typename
+}

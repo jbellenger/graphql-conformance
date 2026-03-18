@@ -1,0 +1,31 @@
+query ($u4h2w: Boolean!) {
+  ...Fragment_zo6W0tzw3T
+  ...Fragment_yq3IteZW
+  ...Fragment_zo6W0tzw3T
+  ... on Object_zfGfAF4 {
+    ... on Object_zfGfAF4 {
+      __typename
+    }
+    ... on Union_Yo5Uz_gdB {
+      LYhRl: __typename
+    }
+  }
+}
+
+fragment Fragment_zo6W0tzw3T on Object_zfGfAF4 {
+  __typename
+}
+
+fragment Fragment_ODD on Object_zfGfAF4 {
+  ... on Object_zfGfAF4 {
+    z
+  }
+}
+
+fragment Fragment_yq3IteZW on Object_zfGfAF4 {
+  ...Fragment_zo6W0tzw3T
+  ...Fragment_ODD
+  ... on Object_zfGfAF4 {
+    z @include(if: $u4h2w)
+  }
+}

@@ -1,0 +1,14 @@
+query ($xbFhWVp: Boolean! = true) {
+  ...Fragment_H9@skip(if: $xbFhWVp)
+  ...Fragment_H9
+  HNT5FULNI: wwA
+}
+
+fragment Fragment_H9 on Union_o {
+  ... on Union_M2X {
+    __typename
+  }
+  ... on Object_VQWH {
+    u
+  }
+}

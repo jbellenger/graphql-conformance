@@ -1,0 +1,19 @@
+{
+  ... on Object_bxBXF76Hq {
+    jnLu15dTNP
+  }
+  ... {
+    ...Fragment_a4Fvx3cVHM@skip(if: true)
+    ...Fragment_a4Fvx3cVHM
+    ... on Union_wDLn4i95Z2 @defer(if: true, label: "|") {
+      ...Fragment_a4Fvx3cVHM
+      ... on Object_bxBXF76Hq {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_a4Fvx3cVHM on Object_bxBXF76Hq {
+  jd
+}

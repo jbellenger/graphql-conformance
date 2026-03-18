@@ -1,0 +1,17 @@
+query ($eCBgsgw4z2: Boolean! = true) @Directive_QosW {
+  ...Fragment_ETDEX
+}
+
+fragment Fragment_b on Object_tMR5 {
+  ... on Object_tMR5 {
+    CoajTysnd: ja70l6fA
+    ja70l6fA
+  }
+}
+
+fragment Fragment_ETDEX on Object_tMR5 {
+  ...Fragment_b
+  tA @skip(if: $eCBgsgw4z2) {
+    y9vYdyP5a
+  }
+}

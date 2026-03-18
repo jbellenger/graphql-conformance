@@ -1,0 +1,29 @@
+query @Directive_kZxGpyEINs {
+  ...Fragment_p
+  ...Fragment_SwyLBSVyOZ
+  gl_SXV: mY3SUSwhRb {
+    ... on Interface_Qyb @defer(if: false, label: "") {
+      ... on Interface_Qyb_STUB {
+        ryyY3Ldgp
+      }
+    }
+    ... on Interface_Qyb_STUB {
+      wR1 {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_SwyLBSVyOZ on Union_BRB3 {
+  __typename
+  __typename
+}
+
+fragment Fragment_p on Object_OpEDxWa {
+  ...Fragment_SwyLBSVyOZ@skip(if: true) @Directive_dbntTgV
+  y: __typename
+  ... on Union_y12 {
+    __typename
+  }
+}

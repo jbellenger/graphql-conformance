@@ -1,0 +1,23 @@
+{
+  ... on Union_aUree {
+    ...Fragment_bGvF
+    ...Fragment_PO5boKme3
+  }
+  ... on Union_aUree {
+    ...Fragment_PO5boKme3
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_PO5boKme3 on Object_JTKD_V {
+  tVmsuKOS4E
+}
+
+fragment Fragment_bGvF on Object_JTKD_V {
+  ...Fragment_PO5boKme3
+  neBM2Stu: tVmsuKOS4E
+  ... on Union_aUree {
+    __typename
+  }
+}

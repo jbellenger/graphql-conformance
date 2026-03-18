@@ -1,0 +1,43 @@
+{
+  ...Fragment_z
+  ...Fragment_z
+  ...Fragment_z
+  tSLTbRiR {
+    ...Fragment_wOpAeUd7
+    ...Fragment_z
+  }
+  tSLTbRiR {
+    ...Fragment_wOpAeUd7
+    ...Fragment_z
+    xkZ {
+      ...Fragment_wOpAeUd7
+    }
+  }
+  ... on Union_B3A0C {
+    ... on Object_D5rH4 {
+      ...Fragment_z
+      __typename
+    }
+    ... on Object_yMz9Tt0 {
+      B: xkZ @include(if: true) {
+        XhWB: __typename
+      }
+      ... on Union_v {
+        __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_z on Union_v {
+  ... on Object_yMz9Tt0 {
+    __typename
+  }
+}
+
+fragment Fragment_wOpAeUd7 on Interface_nJk {
+  ... on Union_v {
+    __typename
+  }
+}

@@ -1,0 +1,7 @@
+query ($x7trF3Bi: Boolean!) {
+  ...Fragment_nb
+}
+
+fragment Fragment_nb on Object_Tsb1 {
+  aFu: __typename @skip(if: $x7trF3Bi)
+}

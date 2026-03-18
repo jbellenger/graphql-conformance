@@ -1,0 +1,10 @@
+query F {
+  ...Fragment_SmpfET
+}
+
+fragment Fragment_SmpfET on Union_I @Directive_ESjob{
+  ... on Union_SLZdVPap {
+    __typename
+    T4h06ai: __typename
+  }
+}

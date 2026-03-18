@@ -1,0 +1,36 @@
+query lmE86Oq {
+  ...Fragment_BxREoU
+  ... on Union_PU7z {
+    ... on Union_PU7z {
+      ...Fragment_xpUi7Y
+    }
+    ... on Interface_TNsNpi8n {
+      ...Fragment_AG
+      ... on Union_dZTe3s @Directive_fpGAkKXdEI {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_AG on Union_dZTe3s {
+  __typename
+}
+
+fragment Fragment_YJZue0N on Interface_TNsNpi8n {
+  ...Fragment_AG
+  roXaT {
+    sNTXBTxZeE
+  }
+  MgsoD6q: roXaT {
+    sNTXBTxZeE
+  }
+}
+
+fragment Fragment_BxREoU on Union_PU7z {
+  ...Fragment_YJZue0N
+}
+
+fragment Fragment_xpUi7Y on Union_dZTe3s {
+  __typename
+}

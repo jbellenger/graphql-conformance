@@ -1,0 +1,9 @@
+query @Directive_XfZUl {
+  ...Fragment_zw
+}
+
+fragment Fragment_zw on Object_rM {
+  ... @defer(if: false, label: "Ix") {
+    woIdJ: __typename
+  }
+}

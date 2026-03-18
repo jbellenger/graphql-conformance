@@ -1,0 +1,40 @@
+query D {
+  tNMc5H: __typename
+  ... on Union_KyY_Whd46 {
+    ... on Object_nvB {
+      ... on Union_KyY_Whd46 {
+        __typename
+      }
+    }
+    ... on Union_VO9NtPy {
+      ...Fragment_PKOlPWB
+      ... on Union_VO9NtPy {
+        __typename
+      }
+    }
+  }
+  ... on Union_VO9NtPy {
+    __typename
+    ... on Union_jZ5NiO_Sb {
+      ...Fragment_PKOlPWB@defer(label: "9L")
+      ... on Object_qd6Pdu4lyF {
+        __typename
+      }
+    }
+  }
+  ... on Object_qd6Pdu4lyF {
+    ...Fragment_PKOlPWB
+    ...Fragment_PKOlPWB
+    ... on Union_VO9NtPy {
+      __typename
+      ... on Union_KyY_Whd46 {
+        __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_PKOlPWB on Union_KyY_Whd46 @Directive_NC1IsZZg{
+  __typename
+}

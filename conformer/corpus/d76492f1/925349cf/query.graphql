@@ -1,0 +1,34 @@
+query S3wUs9K($dDp7C: ID) @experimental_disableErrorPropagation {
+  hoPBtv: pZ
+  zML6o1h: tOOscdB2B
+  ... on Object_U {
+    iBqu_ {
+      ...Fragment_MTwom
+      vxC7rl @skip(if: false) @Directive_T5qy8
+      lj(bjTH5zny7: $dDp7C) {
+        NUruW: lj(bjTH5zny7: "/") {
+          __typename
+        }
+        nB @include(if: false) {
+          n {
+            __typename
+          }
+        }
+      }
+      m5tiy4wEA: lj(bjTH5zny7: "") {
+        nB {
+          __typename
+        }
+      }
+    }
+    __typename
+    tOOscdB2B
+    ... on Object_U {
+      pZ
+    }
+  }
+}
+
+fragment Fragment_MTwom on Interface_R_STUB {
+  vxC7rl
+}

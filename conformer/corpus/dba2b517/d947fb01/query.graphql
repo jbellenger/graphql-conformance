@@ -1,0 +1,20 @@
+query GcV @experimental_disableErrorPropagation {
+  ...Fragment_P
+  ...Fragment_wMq0WFdG8
+  ... on Union_nmzmidWKjs {
+    __typename @Directive_D(_k73: [y8])
+    ... on Interface_yyufSLHl {
+      ... on Union_Vhb {
+        shzH: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_wMq0WFdG8 on Object_ERCXqh {
+  __typename
+}
+
+fragment Fragment_P on Object_ERCXqh {
+  ...Fragment_wMq0WFdG8
+}

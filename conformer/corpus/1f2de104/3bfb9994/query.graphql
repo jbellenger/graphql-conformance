@@ -1,0 +1,29 @@
+query jG($nNz: Boolean!) {
+  ... {
+    ...Fragment_Q4hEZcQNs
+    ...Fragment_LCEFnUJp3
+    __typename
+    ... on Object_Tsb1 @skip(if: $nNz) {
+      DNhE0nQx: rX7tDu3K5R @skip(if: false) {
+        __typename
+      }
+      __typename
+      ... on Object_Tsb1 {
+        pZTe @Directive_OagreOJ {
+          __typename
+        }
+        pZTe {
+          __typename
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_Q4hEZcQNs on Object_Tsb1 {
+  B1Fyx5Al: jLs6vdeU
+}
+
+fragment Fragment_LCEFnUJp3 on Union_ltikj1sVg {
+  __typename
+}

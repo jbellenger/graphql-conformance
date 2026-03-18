@@ -1,0 +1,24 @@
+query Wutyc @Directive_bB0GEENzGW {
+  lJI7 {
+    ... on Interface_QV_STUB {
+      ...Fragment_CyG
+      ... on Interface_QV @include(if: false) {
+        __typename
+        om6Ofke {
+          __typename
+        }
+      }
+    }
+  }
+  juxGY
+  ... on Union_a9vVgiu {
+    d0D_nSfxa: __typename
+  }
+  ... on Interface_EvW7s9L {
+    __typename
+  }
+}
+
+fragment Fragment_CyG on Interface_QV {
+  __typename
+}

@@ -1,0 +1,28 @@
+query GtB($k6Aa: Boolean!) {
+  cFvy7pLtzf(ji: -1.4560094732843179E+308) {
+    __typename @include(if: $k6Aa)
+  }
+  ... on Union_iGJG {
+    __typename
+    __typename @Directive_Qqky2XQ @include(if: false)
+  }
+  ... on Object_AO {
+    __typename
+  }
+  ... on Union_YOhRKrY5 {
+    ...Fragment_Oc06
+    __typename
+    __typename
+    __typename
+    ... on Object_AO {
+      ...Fragment_Oc06
+      ... on Union_iGJG {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Oc06 on Object_AO {
+  __typename
+}
