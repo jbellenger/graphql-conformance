@@ -16,9 +16,9 @@ function makeRun(overrides = {}) {
       'graphql-java': {
         sha: 'def456',
         tests: {
-          'a/b/c': { matches: true, quirks: [] },
-          'd/e/f': { matches: true, quirks: [] },
-          'g/h/i': { matches: false, quirks: [] },
+          'a/b/c': { matches: true },
+          'd/e/f': { matches: true },
+          'g/h/i': { matches: false },
         },
       },
     },
@@ -69,9 +69,9 @@ describe('ResultsStore', () => {
           'graphql-java': {
             sha: 'def456',
             tests: {
-              'a/b/c': { matches: true, quirks: [] },
-              'd/e/f': { matches: true, quirks: [] },
-              'g/h/i': { matches: true, quirks: [] },
+              'a/b/c': { matches: true },
+              'd/e/f': { matches: true },
+              'g/h/i': { matches: true },
             },
           },
         },
@@ -102,7 +102,7 @@ describe('ResultsStore', () => {
         conformants: {
           'graphql-java': {
             sha: 'x',
-            tests: { 'a/b/c': { matches: true, quirks: [] } },
+            tests: { 'a/b/c': { matches: true } },
           },
         },
       }));
@@ -118,11 +118,11 @@ describe('ResultsStore', () => {
         conformants: {
           'graphql-java': {
             sha: 'a',
-            tests: { 'x/y/z': { matches: true, quirks: [] } },
+            tests: { 'x/y/z': { matches: true } },
           },
           'graphql-go': {
             sha: 'b',
-            tests: { 'x/y/z': { matches: false, quirks: ['object-ordering'] } },
+            tests: { 'x/y/z': { matches: false } },
           },
         },
       }));
@@ -135,7 +135,7 @@ describe('ResultsStore', () => {
 
       const go = status.find((s) => s.impl === 'graphql-go');
       assert.equal(go.passes, false);
-      assert.deepStrictEqual(go.quirks, ['object-ordering']);
+      assert.equal(go.passes, false);
     });
   });
 
@@ -150,7 +150,7 @@ describe('ResultsStore', () => {
           'graphql-java': {
             sha: 'def456',
             tests: {
-              'g/h/i': { matches: false, quirks: [] },
+              'g/h/i': { matches: false },
             },
             total: 3,
             passed: 2,
@@ -267,7 +267,7 @@ describe('FileData', () => {
       conformants: {
         'graphql-java': {
           sha: 'def456',
-          tests: { 'a/b/c': { matches: true, quirks: [] } },
+          tests: { 'a/b/c': { matches: true } },
         },
       },
     }));

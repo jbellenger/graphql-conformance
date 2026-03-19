@@ -1,0 +1,23 @@
+query FTZ8DEq {
+  ...Fragment_s5KXKI
+  ...Fragment_s5KXKI
+  ...Fragment_s5KXKI
+  ... on Object_uROLMBIuj {
+    ...Fragment_s5KXKI
+    __typename @include(if: true)
+    ... on Object_uROLMBIuj {
+      ... on Union_aB5EMm {
+        __typename @Directive_pE8w1F8fzT
+      }
+    }
+  }
+}
+
+fragment Fragment_s5KXKI on Union_aB5EMm {
+  ... on Object_uROLMBIuj {
+    ... on Object_uROLMBIuj {
+      __typename
+      __typename
+    }
+  }
+}

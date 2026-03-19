@@ -1,0 +1,25 @@
+query ($wXNRI: [Input_B] = null) {
+  ... on Union__J_KL {
+    ...Fragment_EcbUJ
+    ... on Union_uzhqL1H {
+      ... on Object_MS1tBw {
+        __typename
+      }
+    }
+  }
+  ... on Union__J_KL @include(if: true) {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_SxTKrdW on Union__J_KL {
+  __typename
+}
+
+fragment Fragment_EcbUJ on Union_uzhqL1H @Directive_gLzO(maX6_YE: $wXNRI){
+  ...Fragment_SxTKrdW
+  __typename @skip(if: false)
+  __typename @include(if: false)
+  __typename
+}

@@ -92,12 +92,20 @@ async function main() {
 
       if (refResult.error) {
         process.stderr.write(`    reference failed: ${refResult.error}\n`);
-        referenceFailures.push({ testKey: `${testId}/${queryId}`, error: refResult.error });
+        const failure = { testKey: `${testId}/${queryId}`, error: refResult.error };
+        if (refResult.stderr) failure.stderr = refResult.stderr;
+        referenceFailures.push(failure);
       }
 
       await Promise.all(conformantsToRun.map(async (conformant) => {
         const conformantResult = await runImpl(conformant, rootDir, args, env);
         const result = compareResults(refResult, conformantResult);
+        if (!result.matches) {
+          if (refResult.result) result.expected = refResult.result;
+          if (conformantResult.result) result.actual = conformantResult.result;
+          if (conformantResult.error) result.error = conformantResult.error;
+          if (conformantResult.stderr) result.stderr = conformantResult.stderr;
+        }
         conformantTests[conformant.name][`${testId}/${queryId}`] = result;
       }));
     }

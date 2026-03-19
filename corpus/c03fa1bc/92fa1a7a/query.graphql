@@ -1,0 +1,23 @@
+query ($nrw5: Boolean!) {
+  ...Fragment_SOuh0xh
+  ...Fragment_SOuh0xh@Directive_v1vTa
+  ... on Union_Q3JM16C {
+    ...Fragment_o
+    __typename
+  }
+  ... on Object_dRC2MwEjT0 @Directive_v1vTa @skip(if: $nrw5) {
+    __typename
+  }
+}
+
+fragment Fragment_T on Union_BlPRDA {
+  __typename @skip(if: $nrw5)
+}
+
+fragment Fragment_o on Union_Q3JM16C {
+  ...Fragment_T
+}
+
+fragment Fragment_SOuh0xh on Union_TFZywwbe_D {
+  ...Fragment_o
+}

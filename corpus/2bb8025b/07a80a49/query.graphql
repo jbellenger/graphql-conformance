@@ -1,0 +1,18 @@
+query jtEjMzWeyy {
+  ...Fragment_qoAz
+  ...Fragment_qoAz
+}
+
+fragment Fragment_GwRn03 on Object_rZVAn1nXhn {
+  __typename
+}
+
+fragment Fragment_b on Union_gTc1VpNfs7 {
+  ...Fragment_GwRn03
+  __typename @include(if: true)
+  __typename
+}
+
+fragment Fragment_qoAz on Object_wn {
+  ...Fragment_b
+}

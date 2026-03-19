@@ -1,0 +1,13 @@
+query pdgA($k94: Enum_XQbpqT!) {
+  ... on Union_XxXDPF53zX @defer(if: true, label: "Fiu") {
+    __typename
+  }
+  ... on Object_byiSfgPRd {
+    __typename
+    q
+  }
+  ... on Object_byiSfgPRd {
+    hQFS7VtkdC(u3n: $k94) @skip(if: false)
+    pvkYLmp9s0: __typename
+  }
+}

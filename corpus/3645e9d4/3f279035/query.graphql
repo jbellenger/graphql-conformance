@@ -1,0 +1,34 @@
+{
+  ...Fragment_GFj9Iwn
+  ...Fragment_t
+  ... on Union_K0eQ6Ott {
+    ...Fragment_t
+    ...Fragment_t
+    ... on Union_FnEwUPA {
+      ...Fragment_EG4
+      __typename
+      ... on Union_OV {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_t on Object_LBWPM8fJ {
+  __typename
+}
+
+fragment Fragment_GFj9Iwn on Object_LBWPM8fJ {
+  ...Fragment_t
+  ...Fragment_t@Directive_y
+  ... on Union_OV {
+    ...Fragment_t
+  }
+  ... on Union_OV {
+    __typename
+  }
+}
+
+fragment Fragment_EG4 on Union_OV {
+  tv: __typename
+}

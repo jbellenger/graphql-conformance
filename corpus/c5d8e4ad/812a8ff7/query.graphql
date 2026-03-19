@@ -1,0 +1,28 @@
+query @Directive_uvj1OdT_v {
+  ...Fragment_pRKng
+  ... on Union_qV6M4XSoV {
+    __typename
+    ... on Union_OH {
+      ... on Object_E {
+        mQvN
+      }
+    }
+  }
+  ... on Union_qV6M4XSoV {
+    BLQP3SPjj: __typename
+  }
+  ... on Union_qV6M4XSoV {
+    __typename
+  }
+}
+
+fragment Fragment_e on Union_qV6M4XSoV {
+  __typename
+}
+
+fragment Fragment_pRKng on Union_qV6M4XSoV {
+  ...Fragment_e
+  __typename
+  __typename
+  __typename
+}

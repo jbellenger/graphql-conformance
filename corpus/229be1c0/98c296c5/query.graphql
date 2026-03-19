@@ -1,0 +1,41 @@
+query YuS {
+  ...Fragment_ZHBBZ6ieCa
+  ...Fragment_fXTIMz
+  ...Fragment_fXTIMz
+  rA: __typename
+  bHb7bboKf: __typename
+  ... on Object_vvce8I3 {
+    ...Fragment_ZHBBZ6ieCa
+    ... on Union_oJgeH9 {
+      ...Fragment_fXTIMz
+      __typename
+      ... on Union_hnhVOtwYz {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_C on Union_hnhVOtwYz {
+  __typename
+  __typename
+}
+
+fragment Fragment_ZHBBZ6ieCa on Union_hnhVOtwYz {
+  ... on Object_n {
+    ...Fragment_C
+    gIblc
+    bA8_TW2s: rVdJ
+    __typename @include(if: true)
+  }
+  ... {
+    ...Fragment_C
+    __typename
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_fXTIMz on Union_oJgeH9 {
+  __typename
+}

@@ -1,0 +1,30 @@
+query ($yKb69: Boolean! = true) {
+  ...Fragment_yR8fMpBd
+}
+
+fragment Fragment_l8hUmC9 on Union_OxTLLC {
+  __typename
+}
+
+fragment Fragment_KNwS on Union_OxTLLC {
+  ...Fragment_l8hUmC9
+  __typename
+  __typename
+}
+
+fragment Fragment_KAjD on Object_viD4 @Directive_n2S_b4{
+  ...Fragment_KNwS
+  unj_ewEH6p: c
+}
+
+fragment Fragment_yR8fMpBd on Union_OxTLLC {
+  ...Fragment_KNwS
+  ...Fragment_KAjD
+  ... on Union_OxTLLC {
+    sq: __typename @skip(if: $yKb69)
+    __typename
+  }
+  ... {
+    ...Fragment_KAjD
+  }
+}

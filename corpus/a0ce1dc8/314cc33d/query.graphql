@@ -1,0 +1,23 @@
+query e($oWZ4ak: Boolean! = false) {
+  ...Fragment_zf
+  ...Fragment_sQh
+  ...Fragment_sQh
+  fbgs2uL: __typename @skip(if: $oWZ4ak)
+  ... on Union_MSIBaJ3atp @skip(if: $oWZ4ak) {
+    vDrf5TOq: __typename
+  }
+}
+
+fragment Fragment_QbXC9ZtMpC on Object_tG {
+  __typename
+}
+
+fragment Fragment_sQh on Union_HtS1 {
+  ...Fragment_QbXC9ZtMpC
+}
+
+fragment Fragment_zf on Union_HtS1 {
+  ...Fragment_sQh
+  __typename
+  __typename
+}

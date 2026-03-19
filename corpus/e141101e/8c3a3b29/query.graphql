@@ -1,0 +1,9 @@
+query JnJcZm6mt0 {
+  ...Fragment_f
+  ...Fragment_f
+  ...Fragment_f
+}
+
+fragment Fragment_f on Union_aB5EMm {
+  r: __typename
+}

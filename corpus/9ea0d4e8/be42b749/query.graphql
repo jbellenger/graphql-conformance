@@ -1,0 +1,21 @@
+query b731JlEj1 @Directive_Pzeixwt {
+  ... on Union_M4c4SBf {
+    __typename
+    ... on Union_go6vILf06P {
+      ...Fragment_ZDZejtOGdy
+      ... on Object_hgJxxT3l {
+        __typename @skip(if: false)
+      }
+    }
+    ... on Object_hgJxxT3l @skip(if: true) {
+      ...Fragment_ZDZejtOGdy
+      ... on Union_M4c4SBf {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_ZDZejtOGdy on Union_M4c4SBf {
+  eQ: __typename
+}

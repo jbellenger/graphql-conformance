@@ -1,0 +1,21 @@
+query F8fWmtE {
+  y6eyCwI15z
+  CT7oCJdP: __typename
+  ... on Object_Nzf331HDsL {
+    ...Fragment_DNTxgAVOAU
+    ...Fragment_S_
+  }
+}
+
+fragment Fragment_DNTxgAVOAU on Object_Nzf331HDsL @Directive_rv{
+  y6eyCwI15z
+  ... on Object_Nzf331HDsL {
+    y6eyCwI15z
+  }
+}
+
+fragment Fragment_S_ on Object_Nzf331HDsL {
+  ... on Union_ZI {
+    __typename
+  }
+}

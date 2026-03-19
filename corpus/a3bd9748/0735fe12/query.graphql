@@ -1,0 +1,26 @@
+query a($wk: Boolean! = false) {
+  ...Fragment_zPfCJshk@defer(if: false, label: "bfX")
+  ...Fragment_f
+  ...Fragment_f
+}
+
+fragment Fragment_ODyY6gGr on Object_V {
+  ktfQ
+}
+
+fragment Fragment_f on Union_Xv {
+  ...Fragment_ODyY6gGr
+  __typename
+  ... on Union_Tmk @defer(if: false, label: ".+") {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_zPfCJshk on Object_V {
+  ...Fragment_f@include(if: $wk)
+  YDTmq: __typename
+  ... on Union_Tmk {
+    __typename
+  }
+}

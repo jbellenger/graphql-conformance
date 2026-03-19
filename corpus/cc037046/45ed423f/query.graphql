@@ -1,0 +1,42 @@
+query AKUNeaFOq {
+  jvBTAGcDZD {
+    __typename
+    ... on Union_zZt7 {
+      __typename
+      HSg: __typename
+      ... {
+        iNKh: __typename
+      }
+    }
+  }
+  cPFDzC {
+    ... {
+      kIEVBQuZlN: uDht {
+        __typename
+      }
+    }
+    ... on Union_zZt7 {
+      __typename
+    }
+  }
+  ... on Object_x {
+    ...Fragment_YqY
+    cPFDzC {
+      __typename
+    }
+    jvBTAGcDZD {
+      ...Fragment_YqY
+      ... on Union_Ke {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_vI on Union_znAydUBwk {
+  __typename @Directive_CU
+}
+
+fragment Fragment_YqY on Union_zZt7 {
+  ...Fragment_vI
+}

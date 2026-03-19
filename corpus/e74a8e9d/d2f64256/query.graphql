@@ -1,0 +1,32 @@
+query l @experimental_disableErrorPropagation {
+  ... on Union_odS {
+    ...Fragment_Muds9U
+    ...Fragment_s
+  }
+  ... on Union_OxTLLC @skip(if: true) {
+    ...Fragment_EdLV
+    ...Fragment_s
+    __typename
+  }
+  ... on Union_odS @include(if: false) {
+    __typename @Directive_M8NYOtW
+    ... on Union_C3 {
+      ...Fragment_s
+    }
+  }
+}
+
+fragment Fragment_s on Object_viD4 {
+  Q: __typename
+}
+
+fragment Fragment_Muds9U on Union_C3 {
+  ...Fragment_s
+  __typename
+  ke_Lkm: __typename
+  __typename
+}
+
+fragment Fragment_EdLV on Union_C3 {
+  __typename
+}

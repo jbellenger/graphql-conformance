@@ -1,0 +1,22 @@
+query dbdmnrWju {
+  ...Fragment_IVW9dP
+  ... on Union_K0eQ6Ott @skip(if: true) {
+    __typename
+  }
+  ... on Union_OV {
+    __typename
+  }
+}
+
+fragment Fragment_Rd2X on Object_LBWPM8fJ {
+  __typename
+}
+
+fragment Fragment_IVW9dP on Object_LBWPM8fJ {
+  ...Fragment_Rd2X
+  ...Fragment_Rd2X
+  ... on Union_K0eQ6Ott {
+    __typename
+    i: __typename
+  }
+}

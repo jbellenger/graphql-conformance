@@ -1,0 +1,50 @@
+{
+  y7RyZ: k {
+    ... on Union_J {
+      __typename
+      ... on Union_J {
+        __typename
+        __typename
+      }
+    }
+    ... on Union_K2B {
+      ...Fragment_t4
+      ... on Union_E25uk5 {
+        __typename
+      }
+    }
+  }
+  ... on Object_nQ7uc4Dy2l @Directive_NwTL {
+    ...Fragment_R4dm5Wg8Yb
+    __typename
+    ... on Object_nQ7uc4Dy2l @include(if: false) {
+      ...Fragment_R4dm5Wg8Yb
+    }
+  }
+  ... on Object_nQ7uc4Dy2l {
+    ...Fragment_R4dm5Wg8Yb
+    ...Fragment_R4dm5Wg8Yb
+    ... {
+      ...Fragment_R4dm5Wg8Yb
+      ... on Object_nQ7uc4Dy2l {
+        jWoY: g_0Ses0oF {
+          aON
+        }
+      }
+    }
+  }
+  ... {
+    __typename
+  }
+}
+
+fragment Fragment_t4 on Interface_qx7U {
+  heTFr6A2(lJbkTY: [])
+  Y86i7qVO: heTFr6A2(lJbkTY: [{fe_W : ctspX7cbl}])
+}
+
+fragment Fragment_R4dm5Wg8Yb on Object_nQ7uc4Dy2l {
+  ... {
+    __typename
+  }
+}

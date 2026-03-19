@@ -1,0 +1,24 @@
+query UxpwX6IB {
+  ...Fragment_ZuHYFqOix
+  ...Fragment_BB
+}
+
+fragment Fragment_BB on Union_TFZywwbe_D {
+  L: __typename
+  VBgzea: __typename
+}
+
+fragment Fragment_oe1IeJFoQ on Object_z111111111 {
+  K_jwybsU: olEiUQulo
+}
+
+fragment Fragment_ZuHYFqOix on Object_dRC2MwEjT0 {
+  ...Fragment_BB
+  ...Fragment_BB
+  ... on Union_TFZywwbe_D {
+    ...Fragment_oe1IeJFoQ
+    __typename @skip(if: true)
+    __typename
+    YQNGp8wj: __typename
+  }
+}

@@ -1,0 +1,44 @@
+query X {
+  ...Fragment_F
+  ...Fragment_t
+  ...Fragment_fjaEK
+}
+
+fragment Fragment_wtmu on Object_HT {
+  vO
+  vO
+}
+
+fragment Fragment_F on Object_HT {
+  ...Fragment_wtmu
+  ... on Object_HT {
+    ...Fragment_wtmu@Directive_Lz
+    fpEg8APPBw
+    ... on Object_HT {
+      NIs: __typename
+    }
+  }
+  ... {
+    ... on Object_HT {
+      fpEg8APPBw
+    }
+  }
+}
+
+fragment Fragment_G_ on Union_t {
+  __typename
+  ... on Union_t {
+    __typename
+  }
+}
+
+fragment Fragment_t on Union_Eh8tM {
+  ...Fragment_G_
+}
+
+fragment Fragment_fjaEK on Object_HT {
+  ...Fragment_wtmu
+  ... on Object_HT {
+    __typename
+  }
+}

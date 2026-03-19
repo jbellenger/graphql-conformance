@@ -1,0 +1,31 @@
+query jtvYr6_Bz($wh0: Boolean!@Directive_cWXLP @Directive_r0) {
+  ...Fragment_J7v1UKsXjM
+  ...Fragment_J7v1UKsXjM
+  ...Fragment_J7v1UKsXjM
+  ... on Union_hPaiG @skip(if: $wh0) {
+    __typename
+    __typename
+  }
+  ... on Union_hPaiG {
+    ...Fragment_J7v1UKsXjM
+    ... on Union_NT1F {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_zbpyq on Union_NT1F {
+  __typename
+  __typename
+}
+
+fragment Fragment_J7v1UKsXjM on Union_hPaiG {
+  __typename
+  k3C5J: __typename
+  ... on Object_zDM8joQHy @Directive_cWXLP @defer(if: false, label: ":n") {
+    ...Fragment_zbpyq
+    ... on Union_NT1F {
+      vbBCRZVe: __typename
+    }
+  }
+}

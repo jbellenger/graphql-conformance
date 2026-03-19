@@ -1,0 +1,26 @@
+query @experimental_disableErrorPropagation {
+  ...Fragment_mzrSpg@defer(if: true, label: "Vd")
+}
+
+fragment Fragment_Rkdf on Object_HT {
+  vO
+}
+
+fragment Fragment_mzrSpg on Object_HT {
+  __typename
+  ... on Union_Eh8tM {
+    ...Fragment_Rkdf
+    __typename
+    __typename
+    __typename
+  }
+  ... on Object_HT {
+    ...Fragment_Rkdf
+    ... on Object_HT @skip(if: false) {
+      _QJ7Or {
+        __typename
+      }
+      SNE5: __typename @skip(if: true)
+    }
+  }
+}

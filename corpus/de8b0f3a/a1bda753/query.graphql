@@ -1,0 +1,25 @@
+query lXpePTu($pU3Ni: Boolean!@Directive_jgUl1tE(yiV: kcS9_e)) @Directive_y(yN: $pU3Ni) @Directive_R {
+  ...Fragment_HfpA0
+  ... on Union_mgMfBNLT {
+    ...Fragment_HfpA0
+    ...Fragment_HfpA0
+    __typename
+    __typename @include(if: $pU3Ni)
+  }
+}
+
+fragment Fragment_oA on Union_mgMfBNLT {
+  __typename
+  __typename
+}
+
+fragment Fragment_SgKMoB on Object_zy {
+  ...Fragment_oA
+}
+
+fragment Fragment_HfpA0 on Object_zy {
+  ...Fragment_SgKMoB
+  ...Fragment_SgKMoB
+  nfzLj16N: __typename
+  __typename @skip(if: $pU3Ni)
+}

@@ -1,0 +1,37 @@
+query REEMD($r: Boolean!) {
+  ...Fragment_LmzXU6
+  ...Fragment_LVyAiRAtng
+  ...Fragment_LVyAiRAtng
+  LPOGDk1V: n @include(if: $r) {
+    ...Fragment_LVyAiRAtng@skip(if: $r)
+    ...Fragment_LVyAiRAtng
+  }
+  ... on Object_vt {
+    ... on Union_hrqFB {
+      __typename @include(if: true)
+    }
+    ... on Union_jwz {
+      ...Fragment_LVyAiRAtng
+    }
+  }
+}
+
+fragment Fragment_LmzXU6 on Union_jwz {
+  ... on Union_hrqFB {
+    __typename
+  }
+  ... on Object_BOu3FD {
+    ... on Union_jwz {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_LVyAiRAtng on Union_hrqFB {
+  __typename
+  ... on Union_c {
+    ... on Object_BOu3FD @defer(if: false, label: ",y") {
+      v @skip(if: false)
+    }
+  }
+}

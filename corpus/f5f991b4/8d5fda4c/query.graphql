@@ -1,0 +1,24 @@
+{
+  ps42YL {
+    ...Fragment_Mg
+    ...Fragment_Mg
+  }
+  B0zXMj: hg(tb: -6.211965141928635E+307)
+  hg(tb: -2.716612238277017E+307)
+  ps42YL {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_C8PP9W on Object_zDM8joQHy {
+  hg
+  __typename
+}
+
+fragment Fragment_Mg on Union_hPaiG {
+  ...Fragment_C8PP9W
+  ... on Union_hPaiG {
+    __typename
+  }
+}

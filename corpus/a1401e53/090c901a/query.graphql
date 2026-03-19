@@ -1,0 +1,23 @@
+query ($i4AQ: Boolean! = false) {
+  ... on Object_POe @defer(if: false) {
+    fXOd {
+      __typename
+      __typename
+    }
+    fXOd {
+      ...Fragment_Fy@skip(if: $i4AQ) @include(if: $i4AQ)
+      __typename @skip(if: $i4AQ)
+      ... on Union_uTO1qX {
+        hWYhRoKb4j: __typename
+      }
+    }
+    __typename
+    Ami: __typename @include(if: $i4AQ)
+  }
+}
+
+fragment Fragment_Fy on Object_uG {
+  k1dMy(uw7O: false) {
+    __typename
+  }
+}

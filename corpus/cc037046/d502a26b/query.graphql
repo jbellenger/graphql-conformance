@@ -1,0 +1,20 @@
+query CU6 {
+  SfcEB: cPFDzC {
+    ... on Object__vO0hZz {
+      __typename
+      uDht {
+        __typename
+        ro9 {
+          __typename @Directive_CU
+        }
+      }
+      ... on Union_zZt7 {
+        GYa7: __typename
+        __typename
+      }
+    }
+  }
+  ... {
+    __typename
+  }
+}

@@ -1,0 +1,26 @@
+{
+  ...Fragment_c
+  ...Fragment_c
+  ... on Union_M4c4SBf @defer(if: false, label: "x!") {
+    __typename
+  }
+  ... on Object_e {
+    gwpsP: urh(aTHjmKtKF: -1405624899)
+  }
+  ... {
+    SJY0ly_o: __typename
+  }
+}
+
+fragment Fragment_nY on Interface_GeTesoB {
+  __typename
+}
+
+fragment Fragment_Ycs2gr5UL on Union_M4c4SBf {
+  ...Fragment_nY
+  hZ0af: __typename
+}
+
+fragment Fragment_c on Object_e {
+  ...Fragment_Ycs2gr5UL
+}

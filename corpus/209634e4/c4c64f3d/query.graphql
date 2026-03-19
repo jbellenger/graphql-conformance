@@ -1,0 +1,36 @@
+query ($hDY: Boolean! = true) {
+  ...Fragment_Rm1HT
+  ...Fragment_Rm1HT
+  ...Fragment_AWbZaK
+  ... on Object_dfQZ {
+    ... on Object_dfQZ @skip(if: $hDY) @Directive_uhQ(e_K: true) {
+      ...Fragment_Xmk
+      zv6OKB
+      ... on Object_dfQZ {
+        zv6OKB
+      }
+    }
+  }
+}
+
+fragment Fragment_AWbZaK on Object_dfQZ {
+  __typename
+}
+
+fragment Fragment_Rm1HT on Object_dfQZ {
+  ... on Object_dfQZ {
+    ...Fragment_AWbZaK
+    ... {
+      Ssbr: zv6OKB
+    }
+  }
+  ... on Object_dfQZ @include(if: true) @Directive_uhQ {
+    ... on Object_dfQZ {
+      zv6OKB
+    }
+  }
+}
+
+fragment Fragment_Xmk on Object_dfQZ {
+  __typename
+}

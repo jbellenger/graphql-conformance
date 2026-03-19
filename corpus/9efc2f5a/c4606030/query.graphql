@@ -1,0 +1,44 @@
+query ($rNdWHp: Boolean!) {
+  ...Fragment_MLpc
+  __typename
+  zUv0vlD3 {
+    mJYnxEZ3 @skip(if: $rNdWHp) {
+      ...Fragment_CNtu
+      a6nqZybr
+      nDcfZi6cwe: zUv0vlD3 {
+        __typename
+      }
+    }
+    ... on Interface_MoQ {
+      ...Fragment_Hd
+      kfU3 {
+        qiJYXI62U: __typename
+      }
+      __typename
+    }
+  }
+}
+
+fragment Fragment_MLpc on Union_OYyS3AT6rG {
+  ruC: __typename @skip(if: false)
+  ... on Object_DoFamU {
+    __typename
+    ... on Object_DoFamU @Directive_LfiOSiw {
+      zUv0vlD3 {
+        kfU3 {
+          __typename
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_CNtu on Interface_Wy {
+  frvYE_q7do: __typename
+}
+
+fragment Fragment_Hd on Interface_MoQ_STUB {
+  EE: r {
+    qMHa: __typename
+  }
+}

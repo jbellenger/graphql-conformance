@@ -1,0 +1,13 @@
+query S0W1z {
+  uw {
+    ...Fragment_Krk
+  }
+}
+
+fragment Fragment_Re on Object_j8dX {
+  g8: j4yh
+}
+
+fragment Fragment_Krk on Union_vvvvvvvvvv {
+  ...Fragment_Re@defer(if: false, label: "")
+}

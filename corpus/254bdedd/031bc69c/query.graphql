@@ -1,0 +1,17 @@
+{
+  ...Fragment_lusxB
+  ...Fragment_lusxB
+  ...Fragment_lusxB
+}
+
+fragment Fragment_xhcKR on Union_Eh8tM {
+  __typename
+}
+
+fragment Fragment_lusxB on Union_Eh8tM {
+  ... on Union_t {
+    ...Fragment_xhcKR
+    __typename
+    H: __typename
+  }
+}

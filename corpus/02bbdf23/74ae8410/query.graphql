@@ -1,0 +1,34 @@
+query Quvzv {
+  rVjWpQm(d: DDSBYE) {
+    ...Fragment__Pbh
+    ...Fragment__Pbh
+    e5zycM {
+      ...Fragment_y12
+      ... on Union_m9 {
+        __typename @skip(if: false)
+      }
+    }
+    ... on Interface_s21Tqj_STUB {
+      ... on Interface_s21Tqj {
+        __typename @Directive_Y_Q1YIpy
+      }
+    }
+  }
+}
+
+fragment Fragment__Pbh on Interface_s21Tqj_STUB {
+  e5zycM {
+    n8MDRiPam
+  }
+  __typename
+  ... on Interface_s21Tqj {
+    z2OsNex: __typename
+    e5zycM {
+      lp7xKhR: __typename
+    }
+  }
+}
+
+fragment Fragment_y12 on Object_IE4YKbGU0L {
+  n8MDRiPam
+}

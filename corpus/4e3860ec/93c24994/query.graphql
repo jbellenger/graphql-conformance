@@ -1,0 +1,22 @@
+{
+  ... on Union_zdl {
+    ...Fragment_y_JMiA_08
+    __typename
+    _GwUx: __typename
+  }
+  ... on Object_Eamw {
+    __typename
+    ... on Union_SEPZQ {
+      ... on Object_l8H9ox {
+        vV: nkabfiR
+      }
+    }
+  }
+  ... on Union_SEPZQ @defer(if: true, label: "") {
+    __typename
+  }
+}
+
+fragment Fragment_y_JMiA_08 on Union_k {
+  __typename
+}

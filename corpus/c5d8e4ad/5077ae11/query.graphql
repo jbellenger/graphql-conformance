@@ -1,0 +1,13 @@
+query Apxr {
+  ...Fragment_D7wNKz
+  ...Fragment_SsI5ol5
+}
+
+fragment Fragment_SsI5ol5 on Union_OH {
+  __typename
+}
+
+fragment Fragment_D7wNKz on Union_qV6M4XSoV {
+  ...Fragment_SsI5ol5
+  ...Fragment_SsI5ol5
+}

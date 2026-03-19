@@ -1,0 +1,9 @@
+query OYHP14hd {
+  ...Fragment_GytX
+  ...Fragment_GytX@skip(if: true)
+  ...Fragment_GytX@defer(if: true, label: "-+")
+}
+
+fragment Fragment_GytX on Object_vt {
+  __typename
+}

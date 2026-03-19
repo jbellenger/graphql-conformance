@@ -1,0 +1,18 @@
+query wUj3R7a {
+  __typename
+  dbU: uw {
+    ...Fragment_IAm
+  }
+}
+
+fragment Fragment_J on Object_j8dX {
+  __typename
+}
+
+fragment Fragment_IAm on Union_nbhQSy44de {
+  ...Fragment_J
+  pfdYZBaqMu: __typename
+  ... on Object_UQBqGxAdYc @skip(if: true) {
+    fv97Prtp: __typename @include(if: true)
+  }
+}

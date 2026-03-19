@@ -1,0 +1,38 @@
+query @Directive_mq6sWYXKB {
+  rLo7nH
+  ... on Union_RqfDcZ22Im {
+    ... on Union_RqfDcZ22Im {
+      ... on Union_RqfDcZ22Im {
+        __typename
+      }
+    }
+  }
+  ... on Object_DnqDMe80OU {
+    ... on Union_RqfDcZ22Im {
+      ... on Object_DnqDMe80OU {
+        __typename @include(if: true)
+        rLo7nH
+      }
+    }
+    ... on Union_RqfDcZ22Im {
+      __typename
+    }
+  }
+  ... on Union_RqfDcZ22Im {
+    ... on Object_DnqDMe80OU {
+      ...Fragment_F
+    }
+    ... on Object_DnqDMe80OU {
+      __typename
+      __typename
+      __typename
+      ... on Union_RqfDcZ22Im {
+        XCMLHwhDu: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_F on Object_DnqDMe80OU {
+  __typename
+}

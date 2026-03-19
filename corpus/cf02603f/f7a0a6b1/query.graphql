@@ -1,0 +1,21 @@
+query v {
+  ...Fragment_o
+  ... on Union_u512 @include(if: false) {
+    ...Fragment_KC2kKppOR@Directive_yYAc6rPyx
+    ...Fragment_o
+    __typename
+  }
+}
+
+fragment Fragment_KC2kKppOR on Union_u512 @Directive_t9{
+  __typename
+}
+
+fragment Fragment_o on Union_u512 {
+  ... on Object_L5z1 {
+    ...Fragment_KC2kKppOR@Directive_yYAc6rPyx
+    i18VCZys @include(if: false)
+    tL4BSNDL
+    i18VCZys @skip(if: false)
+  }
+}

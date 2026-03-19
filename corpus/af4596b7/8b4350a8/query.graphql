@@ -1,0 +1,28 @@
+query tWfQr5DmVV {
+  ... on Union_RqfDcZ22Im {
+    ... on Union_RqfDcZ22Im {
+      ... on Union_RqfDcZ22Im {
+        __typename
+      }
+    }
+  }
+  ... {
+    ... on Object_DnqDMe80OU {
+      tT: __typename
+    }
+    ... {
+      ... on Object_DnqDMe80OU {
+        __typename
+        __typename
+      }
+    }
+  }
+  ... {
+    ...Fragment_FsOM7Aslvh
+    Uu: rLo7nH
+  }
+}
+
+fragment Fragment_FsOM7Aslvh on Union_RqfDcZ22Im {
+  __typename
+}

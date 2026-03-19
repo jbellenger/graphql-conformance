@@ -1,0 +1,22 @@
+query Em4cLA0 {
+  zUv0vlD3 {
+    ...Fragment__w8J
+    ... on Interface_MoQ {
+      ...Fragment__w8J
+      ... on Interface_MoQ {
+        __typename @include(if: false)
+      }
+    }
+  }
+}
+
+fragment Fragment_RvuDUnLc on Interface_MoQ {
+  __typename
+}
+
+fragment Fragment__w8J on Interface_MoQ {
+  ...Fragment_RvuDUnLc
+  ... on Interface_MoQ {
+    __typename
+  }
+}

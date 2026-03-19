@@ -1,0 +1,15 @@
+{
+  ... on Object_r {
+    ...Fragment_hjJo
+    ...Fragment_hjJo
+    ... @defer(if: true) {
+      arS {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_hjJo on Union_HtS1 {
+  __typename @skip(if: false)
+}

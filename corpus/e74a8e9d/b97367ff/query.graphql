@@ -1,0 +1,28 @@
+query ($oNEKSKUP: Boolean!) {
+  ...Fragment_l
+  ...Fragment_yCYD
+  ...Fragment_l
+  ... on Object_viD4 {
+    ...Fragment_yCYD
+    ... on Union_C3 @defer(if: false, label: "G") {
+      ...Fragment_l
+      ... on Union_odS @defer(if: true, label: "2zO") @include(if: false) {
+        __typename
+      }
+    }
+  }
+  ... on Union_odS {
+    __typename
+  }
+  ... on Union_odS {
+    V: __typename
+  }
+}
+
+fragment Fragment_yCYD on Union_C3 {
+  wdfh9HN9O: __typename
+}
+
+fragment Fragment_l on Object_viD4 {
+  ...Fragment_yCYD@include(if: $oNEKSKUP)
+}

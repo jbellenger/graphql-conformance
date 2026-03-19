@@ -1,0 +1,26 @@
+query ($v: Boolean! = true) {
+  ...Fragment_gLf@include(if: $v)
+  ...Fragment_fD0cfrdyqr
+  ...Fragment_fD0cfrdyqr
+  m
+  ... on Union_H7Cua3z {
+    __typename
+  }
+}
+
+fragment Fragment_q on Union_H7Cua3z {
+  __typename
+}
+
+fragment Fragment_fD0cfrdyqr on Union_rhG77 {
+  __typename
+}
+
+fragment Fragment_gLf on Union_q {
+  ...Fragment_q
+  ...Fragment_fD0cfrdyqr
+  __typename
+  Sy_bu3: __typename
+  __typename @Directive_St
+  __typename
+}

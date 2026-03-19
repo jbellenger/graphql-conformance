@@ -1,0 +1,24 @@
+query @Directive_nT0QIEhQCA {
+  ...Fragment_k
+}
+
+fragment Fragment_yy_ on Object_fbrsKfE6NH @Directive_nT0QIEhQCA{
+  __typename
+}
+
+fragment Fragment_TVmqz on Object_fbrsKfE6NH {
+  __typename
+}
+
+fragment Fragment_k on Object_fbrsKfE6NH {
+  ...Fragment_yy_@Directive_nT0QIEhQCA
+  YsMv: bAICOTs9bo
+  ... on Object_fbrsKfE6NH {
+    ... {
+      __typename
+    }
+  }
+  ... on Object_fbrsKfE6NH @skip(if: true) {
+    ...Fragment_TVmqz
+  }
+}

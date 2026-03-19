@@ -1,0 +1,23 @@
+query TIJRDCx {
+  sPjKTx(sC2t82x: {eu4Q : sJeI_Dfo}) {
+    ... on Interface_v8RLRc_QBN {
+      l9i00LEokU
+    }
+  }
+  __typename
+  ... on Object_rRKsn8 {
+    VmrfBh: sPjKTx {
+      ...Fragment_u5U
+      ... on Interface_v8RLRc_QBN_STUB {
+        __typename
+      }
+    }
+  }
+  ... on Object_rRKsn8 {
+    e6K1Th
+  }
+}
+
+fragment Fragment_u5U on Interface_v8RLRc_QBN {
+  __typename @include(if: true)
+}

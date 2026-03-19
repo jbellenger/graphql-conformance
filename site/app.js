@@ -25,6 +25,31 @@ function formatTestKey(testKey) {
   return `corpus/${schemaLink}/${queryLink}${varsLink}`;
 }
 
+function escapeHtml(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function formatFailureDetails(f) {
+  const summary = f.error || (f.expected && f.actual ? 'output differs' : 'failed');
+
+  const parts = [];
+  if (f.stderr) {
+    parts.push(`<div class="detail-label">stderr</div><pre class="detail-pre">${escapeHtml(f.stderr.trim())}</pre>`);
+  }
+  if (f.expected) {
+    parts.push(`<div class="detail-label">expected</div><pre class="detail-pre">${escapeHtml(JSON.stringify(f.expected, null, 2))}</pre>`);
+  }
+  if (f.actual) {
+    parts.push(`<div class="detail-label">actual</div><pre class="detail-pre">${escapeHtml(JSON.stringify(f.actual, null, 2))}</pre>`);
+  }
+
+  if (parts.length === 0) {
+    return `<span>${escapeHtml(summary)}</span>`;
+  }
+
+  return `<details><summary>${escapeHtml(summary)}</summary><div class="detail-body">${parts.join('')}</div></details>`;
+}
+
 function barClass(pct) {
   if (pct >= 95) return 'bar-pass';
   if (pct >= 80) return 'bar-warn';
@@ -86,7 +111,11 @@ function renderImplDetail(name, history, failures) {
     ${failures.length === 0
       ? '<p class="empty">All tests passing.</p>'
       : `
-        <table>
+        <table class="failures">
+          <colgroup>
+            <col class="test-id">
+            <col class="details">
+          </colgroup>
           <thead>
             <tr><th>Test ID</th><th>Details</th></tr>
           </thead>
@@ -94,7 +123,7 @@ function renderImplDetail(name, history, failures) {
             ${failures.map((f) => `
               <tr>
                 <td class="mono">${formatTestKey(f.testKey)}</td>
-                <td>${f.error ? f.error : f.quirks && f.quirks.length > 0 ? f.quirks.join(', ') : '—'}</td>
+                <td>${formatFailureDetails(f)}</td>
               </tr>
             `).join('')}
           </tbody>

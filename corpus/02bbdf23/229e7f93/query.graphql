@@ -1,0 +1,43 @@
+query ($hussTHI5yn: Boolean! = true) {
+  ...Fragment_X@include(if: $hussTHI5yn)
+  ... on Union_Z {
+    ... on Object_XNKXofhi @defer(label: "]M") {
+      pCXEW {
+        FVx: __typename
+      }
+    }
+    ... on Union_m9 {
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_plZq on Object_IE4YKbGU0L {
+  __typename @Directive_Y_Q1YIpy
+  YgkSp: n8MDRiPam
+}
+
+fragment Fragment_BBB1cw on Union_m9 {
+  ...Fragment_plZq
+  __typename
+  __typename @include(if: $hussTHI5yn)
+  pRyZGsLs: __typename
+}
+
+fragment Fragment_vLJIUnNOF on Object_XNKXofhi {
+  __typename
+}
+
+fragment Fragment_X on Union_Z {
+  ...Fragment_BBB1cw
+  ... on Object_XNKXofhi {
+    ...Fragment_vLJIUnNOF
+  }
+  ... on Object_IE4YKbGU0L {
+    __typename
+    ... on Union_Z {
+      __typename
+    }
+  }
+}

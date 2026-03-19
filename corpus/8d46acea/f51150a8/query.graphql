@@ -1,0 +1,38 @@
+{
+  ...Fragment_M2_cnKy
+  gmgB9rnh6a
+  ... on Interface_W_ {
+    __typename
+  }
+  ... on Object_E18 {
+    ...Fragment_M2_cnKy
+    ...Fragment_uST
+    x @Directive_B {
+      ...Fragment_oCCpyVt
+      ... {
+        MWGMG2: o2Yy8
+      }
+    }
+  }
+}
+
+fragment Fragment_uST on Object_E18 {
+  x {
+    __typename
+  }
+}
+
+fragment Fragment_M2_cnKy on Union_AQmrD5 @Directive_B{
+  __typename
+  ... {
+    ...Fragment_uST
+    ... on Object_E18 {
+      nb: __typename
+      zfk
+    }
+  }
+}
+
+fragment Fragment_oCCpyVt on Interface_raZ {
+  o2Yy8
+}

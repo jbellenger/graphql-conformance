@@ -1,0 +1,23 @@
+{
+  ...Fragment_FoS
+  ...Fragment_C_4o
+}
+
+fragment Fragment_C_4o on Object_byiSfgPRd {
+  q @Directive_UIgIU
+}
+
+fragment Fragment_FoS on Union_XxXDPF53zX {
+  __typename
+  F: __typename
+  ... on Union_S_j2V6s6Z {
+    ...Fragment_C_4o
+    __typename
+  }
+  ... on Union_S_j2V6s6Z {
+    ... on Object_byiSfgPRd {
+      q
+      cp_XdTuso: vYe7
+    }
+  }
+}

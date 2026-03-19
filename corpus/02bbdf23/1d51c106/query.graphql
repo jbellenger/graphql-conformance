@@ -1,0 +1,65 @@
+query ($wAoAZIUE: Boolean!) {
+  nyHeN @Directive_Y_Q1YIpy {
+    ...Fragment_Vwn
+    ...Fragment_Vwn
+    __typename
+  }
+  pCXEW {
+    __typename @include(if: $wAoAZIUE)
+  }
+  nyHeN {
+    ... on Object_IE4YKbGU0L {
+      ...Fragment_Vwn
+    }
+  }
+  rVjWpQm(d: omLmk) {
+    ... on Interface_s21Tqj_STUB {
+      ... on Interface_s21Tqj_STUB {
+        trCGDGEi: iVDWj25XWT
+      }
+    }
+    ... on Interface_s21Tqj {
+      e5zycM {
+        __typename: __typename
+        n8MDRiPam
+      }
+      e5zycM {
+        Bmo3aT4x: __typename
+      }
+    }
+  }
+  DC8d: rVjWpQm(d: AxJmVn3) @include(if: false) {
+    e5zycM {
+      ...Fragment_t
+    }
+    ... on Interface_s21Tqj {
+      __typename
+    }
+    ... on Interface_s21Tqj_STUB @include(if: false) {
+      e5zycM @skip(if: false) {
+        n8MDRiPam
+        oacEocYcE: n8MDRiPam @skip(if: true)
+      }
+    }
+  }
+  ... on Object_XNKXofhi {
+    ... on Object_XNKXofhi {
+      __typename
+    }
+    ... on Object_XNKXofhi {
+      ...Fragment_t@skip(if: false)
+      ... on Union_Z {
+        __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Vwn on Object_IE4YKbGU0L {
+  oYe: n8MDRiPam @Directive_Y_Q1YIpy
+}
+
+fragment Fragment_t on Union_Z {
+  __typename
+}

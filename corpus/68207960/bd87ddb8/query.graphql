@@ -1,0 +1,25 @@
+query wUXJs {
+  ...Fragment_qwT
+  ...Fragment_k3
+  ...Fragment_qwT
+  ... on Union_Lqy_oRn {
+    __typename
+  }
+}
+
+fragment Fragment_k3 on Object_rRKsn8 {
+  __typename
+}
+
+fragment Fragment_qwT on Object_rRKsn8 @Directive_Iov6gK{
+  ... on Object_rRKsn8 {
+    GszLH: __typename
+  }
+  ... on Union_Lqy_oRn {
+    ...Fragment_k3@defer(if: false, label: "")
+    __typename
+    ... on Union_Lqy_oRn {
+      __typename @skip(if: true)
+    }
+  }
+}

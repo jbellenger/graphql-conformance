@@ -1,0 +1,15 @@
+query qAYc @experimental_disableErrorPropagation {
+  ...Fragment_ImZEoCV5bE
+  ...Fragment_wzo9uU
+  ...Fragment_ImZEoCV5bE
+}
+
+fragment Fragment_ImZEoCV5bE on Union_vpA6THh {
+  __typename
+}
+
+fragment Fragment_wzo9uU on Union_vpA6THh {
+  ... on Object_r6uazNyKos {
+    ...Fragment_ImZEoCV5bE
+  }
+}

@@ -1,0 +1,16 @@
+query @experimental_disableErrorPropagation {
+  ...Fragment_QCK0D0e6lt
+}
+
+fragment Fragment_hjmv7X on Union_k {
+  __typename
+  ... on Union_zdl {
+    T6mynY: __typename
+    xJoQxoo: __typename
+  }
+}
+
+fragment Fragment_QCK0D0e6lt on Object_Eamw {
+  ...Fragment_hjmv7X
+  __typename
+}

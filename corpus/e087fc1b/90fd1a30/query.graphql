@@ -1,0 +1,40 @@
+query bi6 {
+  ...Fragment_BVCEt
+  zieQpu {
+    __typename
+  }
+  lKOtA {
+    ...Fragment_BVCEt
+    iAFFTby0oo @Directive_jI_1kMNkNC {
+      __typename
+    }
+    ... on Union_r {
+      __typename
+    }
+    ... on Object_PLTDJ {
+      ... on Union_r {
+        __typename
+      }
+    }
+  }
+  zieQpu {
+    __typename
+  }
+  ... on Union_r {
+    __typename @skip(if: true)
+    ... on Interface_Fe8Q {
+      ... on Union_A4ZcxWs5D {
+        __typename
+      }
+    }
+    ... on Union_A4ZcxWs5D {
+      f: __typename
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_BVCEt on Interface_JRv6T9 {
+  __typename
+}

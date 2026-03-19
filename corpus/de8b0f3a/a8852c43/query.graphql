@@ -1,0 +1,14 @@
+query wQF_JOe4M($oxshWkwC: Boolean!@Directive_jgUl1tE(yiV: null)) {
+  ...Fragment_Ytv9MThi
+  ...Fragment_Ytv9MThi
+  __typename
+  __typename
+}
+
+fragment Fragment_eU67x6ICS on Union_mgMfBNLT {
+  __typename @include(if: $oxshWkwC)
+}
+
+fragment Fragment_Ytv9MThi on Union_mgMfBNLT {
+  ...Fragment_eU67x6ICS
+}

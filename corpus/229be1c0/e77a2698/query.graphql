@@ -1,0 +1,66 @@
+query jBi($v7: Boolean! = false) {
+  ...Fragment__ZxLA
+  ...Fragment_w_LrnoPxO
+  ...Fragment_bk80tWir5
+  __typename
+  ... on Object_vvce8I3 {
+    zTt {
+      ...Fragment_bk80tWir5
+    }
+    ... on Object_vvce8I3 @defer(if: false, label: "") {
+      ...Fragment_VsJVhtWwy
+    }
+    ... on Union_oJgeH9 {
+      ...Fragment_bk80tWir5@Directive_ECg
+      i8: __typename
+    }
+  }
+}
+
+fragment Fragment_jH4YB7U on Union_hnhVOtwYz {
+  __typename
+}
+
+fragment Fragment_VsJVhtWwy on Union_oJgeH9 {
+  __typename
+}
+
+fragment Fragment_bk80tWir5 on Union_oJgeH9 {
+  __typename
+}
+
+fragment Fragment__ZxLA on Object_vvce8I3 {
+  ...Fragment_jH4YB7U
+  ...Fragment_jH4YB7U
+  ... on Union_hnhVOtwYz {
+    ...Fragment_VsJVhtWwy
+    uw: __typename @Directive_CyM
+    __typename
+    ... on Object_vvce8I3 @include(if: $v7) @Directive_CZQwtBsu @skip(if: true) {
+      __typename
+    }
+  }
+  ... on Object_vvce8I3 {
+    ...Fragment_bk80tWir5
+    uXDyMRe: zTt {
+      gIblc @skip(if: true)
+    }
+    b: zTt {
+      __typename
+      gIblc
+    }
+    zMlGzgRQ: zTt {
+      rVdJ
+    }
+    ... on Union_hnhVOtwYz {
+      Cru: __typename
+    }
+  }
+}
+
+fragment Fragment_w_LrnoPxO on Union_HxzA {
+  __typename
+  __typename
+  __typename
+  __typename @Directive_CZQwtBsu
+}

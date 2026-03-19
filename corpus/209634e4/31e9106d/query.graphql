@@ -1,0 +1,21 @@
+query C0($bgV6ghd: Boolean!) {
+  ...Fragment_Hcq
+  IRDN: zv6OKB
+}
+
+fragment Fragment_yLoX on Object_dfQZ {
+  zv6OKB
+}
+
+fragment Fragment_o5R on Object_dfQZ {
+  ...Fragment_yLoX
+}
+
+fragment Fragment_Hcq on Object_dfQZ {
+  ...Fragment_o5R@skip(if: $bgV6ghd)
+  ...Fragment_yLoX
+  zv6OKB
+  ... on Object_dfQZ {
+    __typename @skip(if: $bgV6ghd)
+  }
+}

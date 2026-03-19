@@ -1,0 +1,18 @@
+query tM168WY($k17D: Boolean!, $r7: Enum_WGIOlu = jFKKihGT8S) {
+  ... on Union_sPDF @skip(if: $k17D) @Directive_M8uBN(kClg4: $r7) {
+    ... on Object_w6 {
+      lUZV @Directive_M8uBN(kClg4: NP9Nk) {
+        __typename
+        __typename
+      }
+      w_hUSJmuTD
+    }
+    ... on Union_SGHAZuV @include(if: $k17D) {
+      ...Fragment_Xr6
+    }
+  }
+}
+
+fragment Fragment_Xr6 on Union_SGHAZuV @Directive_M8uBN(kClg4: jFKKihGT8S){
+  __typename
+}

@@ -1,0 +1,18 @@
+{
+  gOXMTtb {
+    __typename @Directive_rv @skip(if: false)
+  }
+  ... on Union_ZI {
+    ... on Object_Nzf331HDsL @skip(if: false) {
+      ...Fragment_tGdR0niR
+      ... on Union_E2lnm1647y {
+        tZKN: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_tGdR0niR on Union_E2lnm1647y {
+  __typename
+  cgJkwGypZ: __typename
+}

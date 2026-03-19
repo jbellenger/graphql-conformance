@@ -41,21 +41,18 @@ function unorderedEqual(a, b) {
 }
 
 function compareResults(a, b) {
-  if (a.error && b.error) return { matches: true, quirks: ['both-errored'] };
-  if (a.error) return { matches: false, quirks: ['reference-errored'] };
-  if (b.error) return { matches: false, quirks: ['conformant-errored'] };
-
-  const quirks = [];
+  if (a.error && b.error) return { matches: true };
+  if (a.error) return { matches: false };
+  if (b.error) return { matches: false };
 
   if (!deepEqual(a.result, b.result)) {
     if (unorderedEqual(a.result, b.result)) {
-      quirks.push('object-ordering');
-    } else {
-      return { matches: false, quirks: [] };
+      return { matches: true };
     }
+    return { matches: false };
   }
 
-  return { matches: true, quirks };
+  return { matches: true };
 }
 
 module.exports = { deepEqual, unorderedEqual, compareResults };

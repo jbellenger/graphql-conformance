@@ -1,0 +1,24 @@
+query zKWH8 {
+  urh(aTHjmKtKF: 776577948)
+  __typename
+  __typename
+  ... on Union_M4c4SBf {
+    ...Fragment_XC2kH
+    mqF4x: __typename
+  }
+  ... on Union_M4c4SBf {
+    __typename
+  }
+  ... {
+    ...Fragment_i_cBQ
+    __typename
+  }
+}
+
+fragment Fragment_XC2kH on Union_M4c4SBf {
+  BGn: __typename
+}
+
+fragment Fragment_i_cBQ on Union_M4c4SBf {
+  ...Fragment_XC2kH
+}

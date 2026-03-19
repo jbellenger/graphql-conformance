@@ -1,0 +1,24 @@
+{
+  __typename
+  jo {
+    w: __typename @Directive__pZyEEX
+    __typename
+    ... on Union_ZWWYotfrf {
+      ...Fragment_dVoLli6Px
+      __typename
+      __typename
+      YUq2y: __typename
+      ... on Union_d3gqrE4ad4 {
+        __typename
+        __typename @Directive__pZyEEX
+      }
+    }
+    ... on Union_LXWKP {
+      gSQ3kHHQUc: __typename @skip(if: false) @include(if: true) @Directive__pZyEEX
+    }
+  }
+}
+
+fragment Fragment_dVoLli6Px on Object_uQFpENxJNM @Directive_el_QkEypse{
+  __typename
+}

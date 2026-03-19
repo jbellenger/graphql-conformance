@@ -1,0 +1,4 @@
+query ($hlk: Boolean!@Directive_yYAc6rPyx) @Directive_t9 {
+  __typename @skip(if: $hlk)
+  __typename
+}

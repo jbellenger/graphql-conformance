@@ -62,7 +62,12 @@ class ResultsStore {
       const failures = [];
       for (const [testKey, result] of Object.entries(tests)) {
         if (!result.matches) {
-          failures.push({ testKey, quirks: result.quirks });
+          const failure = { testKey };
+          if (result.expected) failure.expected = result.expected;
+          if (result.actual) failure.actual = result.actual;
+          if (result.error) failure.error = result.error;
+          if (result.stderr) failure.stderr = result.stderr;
+          failures.push(failure);
         }
       }
 
@@ -150,7 +155,6 @@ class ResultsStore {
       results.push({
         impl: name,
         passes: !failure,
-        quirks: failure ? failure.quirks : [],
       });
     }
 
@@ -177,7 +181,7 @@ class ResultsStore {
       const failures = this.getImplFailures(cName);
       const tests = {};
       for (const f of failures) {
-        tests[f.testKey] = { matches: false, quirks: f.quirks };
+        tests[f.testKey] = { matches: false };
       }
       result.conformants[cName] = { sha: c.sha, tests, total: c.total, passed: c.passed };
     }

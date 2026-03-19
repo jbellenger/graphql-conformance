@@ -1,0 +1,18 @@
+query QXhItY {
+  ...Fragment_GP8PQ
+}
+
+fragment Fragment_Tal8rSt3 on Object_dRC2MwEjT0 {
+  xNWfpktX {
+    wVZFIkg
+  }
+}
+
+fragment Fragment_K4M on Union_TFZywwbe_D {
+  ...Fragment_Tal8rSt3
+  __typename
+}
+
+fragment Fragment_GP8PQ on Union_TFZywwbe_D @Directive_v1vTa{
+  ...Fragment_K4M
+}

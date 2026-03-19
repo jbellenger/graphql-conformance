@@ -1,0 +1,14 @@
+query ANh5 {
+  ...Fragment_Ji
+}
+
+fragment Fragment_oyr on Union_TFZywwbe_D {
+  __typename
+}
+
+fragment Fragment_Ji on Union_TFZywwbe_D {
+  ...Fragment_oyr
+  ...Fragment_oyr
+  wgf1XjBywJ: __typename
+  __typename
+}

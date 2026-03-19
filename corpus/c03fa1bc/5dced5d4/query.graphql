@@ -1,0 +1,9 @@
+query pTz @experimental_disableErrorPropagation {
+  ... on Object_dRC2MwEjT0 @Directive_nv1M {
+    ...Fragment_iOGzNI
+  }
+}
+
+fragment Fragment_iOGzNI on Object_dRC2MwEjT0 {
+  __typename
+}

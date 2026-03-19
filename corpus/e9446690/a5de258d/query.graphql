@@ -1,0 +1,21 @@
+{
+  ...Fragment_MTmFyYObI
+  VPGVCH: b5pB2k {
+    bOor2xMXt
+    __typename
+  }
+}
+
+fragment Fragment_m5f4qii on Object_w6 {
+  uFN {
+    __typename
+  }
+}
+
+fragment Fragment_L on Union_SGHAZuV {
+  ...Fragment_m5f4qii
+}
+
+fragment Fragment_MTmFyYObI on Union_sPDF {
+  ...Fragment_L
+}

@@ -1,0 +1,15 @@
+query @experimental_disableErrorPropagation {
+  ... on Object_x8jA {
+    __typename @Directive_M8uBN(kClg4: jFKKihGT8S)
+  }
+  ... on Union_SGHAZuV {
+    ... on Union_SGHAZuV {
+      __typename
+    }
+    ... on Union_MAeLHLzCF {
+      sgPl: __typename
+      __typename
+      __typename
+    }
+  }
+}

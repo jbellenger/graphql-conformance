@@ -1,0 +1,32 @@
+query V5 {
+  ...Fragment_IPhWI9
+}
+
+fragment Fragment_SXVwpt5hWH on Object_vvce8I3 @Directive_CZQwtBsu{
+  nV: __typename
+}
+
+fragment Fragment_b0ygl1Nb on Object_vvce8I3 @Directive_CZQwtBsu{
+  ...Fragment_SXVwpt5hWH
+  __typename
+  ... on Object_vvce8I3 {
+    __typename
+  }
+}
+
+fragment Fragment_IIMqybsGVh on Union_hnhVOtwYz {
+  __typename
+}
+
+fragment Fragment_IPhWI9 on Object_vvce8I3 {
+  ...Fragment_b0ygl1Nb
+  ...Fragment_SXVwpt5hWH
+  zTt @skip(if: true) {
+    ...Fragment_IIMqybsGVh@skip(if: true)
+    __typename
+    ... on Union_hnhVOtwYz {
+      __typename
+    }
+  }
+  __typename
+}

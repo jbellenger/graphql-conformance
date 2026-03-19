@@ -1,0 +1,26 @@
+{
+  ...Fragment_CSdEV_D6
+  ...Fragment_uVT
+  ...Fragment_NlpQhN@Directive_k5EF
+  __typename
+}
+
+fragment Fragment_uVT on Union_kCj6 {
+  __typename
+}
+
+fragment Fragment_CSdEV_D6 on Union_kCj6 {
+  ... on Object_ww_8 {
+    ...Fragment_uVT
+    ... {
+      __typename
+    }
+  }
+  ... on Object_ww_8 {
+    mcHA_qkU5(tXgOozp: VMM, _: NV5kXB)
+  }
+}
+
+fragment Fragment_NlpQhN on Union_KeeKrd0Fq {
+  __typename
+}

@@ -1,0 +1,23 @@
+query @Directive_Wd {
+  ...Fragment_Jr9Xj
+  ...Fragment_E8W7XESpL
+}
+
+fragment Fragment_X on Object_axBow {
+  __typename
+}
+
+fragment Fragment_ei on Union_rY7 {
+  ...Fragment_X
+  __typename
+  HUQgJd5sWT: __typename
+}
+
+fragment Fragment_Jr9Xj on Union_FBBBBBBBBB {
+  ...Fragment_ei
+  __typename
+}
+
+fragment Fragment_E8W7XESpL on Object_axBow {
+  ohq2Ec3n
+}

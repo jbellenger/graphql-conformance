@@ -1,0 +1,22 @@
+{
+  ...Fragment_WNFD
+  p {
+    __typename
+  }
+}
+
+fragment Fragment_uNyWGFi on Object_sDK_oreW8 @Directive_vvMhwv9Y{
+  __typename
+  kfyjvWHAV(rufEu: [[], [{ys292cf : null, pciAi72A : null, cxecX2 : null}, {ys292cf : null, pciAi72A : null, cxecX2 : null}]]) {
+    xj
+  }
+  ... on Union_dK1d__98 @defer(if: false, label: "b") {
+    __typename
+  }
+}
+
+fragment Fragment_WNFD on Union_dK1d__98 {
+  ...Fragment_uNyWGFi
+  ...Fragment_uNyWGFi
+  __typename
+}

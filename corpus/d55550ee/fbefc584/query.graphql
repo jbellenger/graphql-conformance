@@ -1,0 +1,21 @@
+query jYVAYP {
+  ... on Union_NmtroyR {
+    ...Fragment_AtmAAi
+    ... on Union_tigLxP8 {
+      __typename
+    }
+    ... on Object_PoIQ9 {
+      pT {
+        __typename
+      }
+      ... on Object_PoIQ9 @include(if: false) {
+        __typename
+        SoTj59A: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_AtmAAi on Union_tigLxP8 {
+  lCciPyd: __typename
+}

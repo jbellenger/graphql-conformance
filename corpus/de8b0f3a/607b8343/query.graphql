@@ -1,0 +1,25 @@
+query @Directive_y(yN: false) {
+  ... on Object_zy @include(if: true) {
+    yDSgHUU
+  }
+  ... on Object_zy {
+    ...Fragment_bj0g5ntR
+    ...Fragment_bj0g5ntR
+    yDSgHUU
+    ... on Union_mgMfBNLT {
+      __typename
+    }
+  }
+  ... on Object_zy {
+    ...Fragment_bj0g5ntR
+    ...Fragment_bj0g5ntR
+    I: yDSgHUU @include(if: true)
+    ... on Union_mgMfBNLT {
+      ...Fragment_bj0g5ntR
+    }
+  }
+}
+
+fragment Fragment_bj0g5ntR on Union_mgMfBNLT {
+  __typename
+}

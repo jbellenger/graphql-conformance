@@ -1,0 +1,11 @@
+query beK {
+  ...Fragment_ec072
+  ...Fragment_ec072@skip(if: true)
+  ... on Union_Ke {
+    e: __typename
+  }
+}
+
+fragment Fragment_ec072 on Object_x {
+  __typename
+}

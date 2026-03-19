@@ -1,0 +1,20 @@
+query ($uU: Boolean!) {
+  ...Fragment_ToBHm@defer(if: false, label: "")
+  mNwnj @skip(if: $uU)
+  mQvN
+  mQvN
+  ... on Object_E {
+    ... on Union_OH {
+      ... on Union_qV6M4XSoV {
+        __typename @Directive_uvj1OdT_v
+      }
+    }
+  }
+  ... on Union_OH {
+    __typename
+  }
+}
+
+fragment Fragment_ToBHm on Object_E {
+  __typename
+}

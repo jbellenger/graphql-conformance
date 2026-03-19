@@ -1,0 +1,20 @@
+query fd {
+  ...Fragment_jlzdT
+  ... on Union_BAX4 {
+    ...Fragment_o8fFRzOdI
+  }
+}
+
+fragment Fragment_jlzdT on Union_BAX4 {
+  ... {
+    __typename
+  }
+}
+
+fragment Fragment_o8fFRzOdI on Union_BAX4 {
+  ...Fragment_jlzdT
+  ... on Union_kD4iXi {
+    __typename
+    __typename
+  }
+}

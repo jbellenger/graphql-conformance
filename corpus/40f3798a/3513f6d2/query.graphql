@@ -1,0 +1,13 @@
+query e7YZa94 {
+  ...Fragment_GkT
+}
+
+fragment Fragment_V0Wb on Object_UI7rV {
+  ... on Object_UI7rV {
+    nBWYc: nBWYc @include(if: true)
+  }
+}
+
+fragment Fragment_GkT on Union_R6QmIw_ {
+  ...Fragment_V0Wb
+}

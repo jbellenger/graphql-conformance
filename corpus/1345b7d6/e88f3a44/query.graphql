@@ -1,0 +1,22 @@
+{
+  ...Fragment_hr3jDW
+  ...Fragment_hr3jDW
+}
+
+fragment Fragment_Ljma6mOaN on Object_vr7T {
+  __typename
+}
+
+fragment Fragment_c285 on Object_vr7T {
+  ...Fragment_Ljma6mOaN
+  __typename
+}
+
+fragment Fragment_R4srnaCZ on Object_vr7T {
+  pZeo @Directive_npxHO
+}
+
+fragment Fragment_hr3jDW on Union_ABqkhE8dj @Directive_P9b2TlFc22(rd1j: 1217257333){
+  ...Fragment_c285
+  ...Fragment_R4srnaCZ
+}

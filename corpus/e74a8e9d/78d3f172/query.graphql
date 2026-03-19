@@ -1,0 +1,20 @@
+query Z {
+  ...Fragment_Vk11ZBtVVy
+}
+
+fragment Fragment_Ezwoo on Union_C3 {
+  __typename
+}
+
+fragment Fragment_Vk11ZBtVVy on Union_C3 {
+  ... on Union_odS @Directive_n2S_b4 {
+    NHuc: __typename
+    __typename
+  }
+  ... on Union_C3 {
+    ...Fragment_Ezwoo
+    ... on Union_odS {
+      __typename
+    }
+  }
+}

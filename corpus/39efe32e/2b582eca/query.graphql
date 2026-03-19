@@ -1,0 +1,14 @@
+query VU1eIPIA @experimental_disableErrorPropagation {
+  ...Fragment_CAAzgMV1
+  ... on Interface_loUwCbGI9n {
+    uZFeAn
+    uZFeAn
+  }
+  ... on Object_ms3 {
+    xj @include(if: true)
+  }
+}
+
+fragment Fragment_CAAzgMV1 on Union_dK1d__98 @Directive_vvMhwv9Y{
+  OI1: __typename
+}

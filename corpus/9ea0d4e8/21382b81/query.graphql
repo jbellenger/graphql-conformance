@@ -1,0 +1,13 @@
+query ZMuf {
+  ...Fragment_RCRZuzf4L7
+}
+
+fragment Fragment_mHgUI3nw on Interface_GeTesoB {
+  __typename
+}
+
+fragment Fragment_RCRZuzf4L7 on Union_M4c4SBf {
+  ...Fragment_mHgUI3nw
+  ...Fragment_mHgUI3nw
+  __typename
+}

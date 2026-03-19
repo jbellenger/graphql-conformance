@@ -1,0 +1,13 @@
+query CWdDjR {
+  ... on Union_gTc1VpNfs7 {
+    __typename
+    ... on Union_T4JiLpD08 {
+      ...Fragment_XwS90Hp
+      __typename
+    }
+  }
+}
+
+fragment Fragment_XwS90Hp on Union_T4JiLpD08 {
+  __typename
+}

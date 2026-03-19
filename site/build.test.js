@@ -33,8 +33,8 @@ function seedResults(overrides = {}) {
       'impl-a': {
         sha: 'def456',
         tests: {
-          'x/y/z': { matches: true, quirks: [] },
-          'a/b/c': { matches: false, quirks: [] },
+          'x/y/z': { matches: true },
+          'a/b/c': { matches: false },
         },
       },
     },
@@ -120,7 +120,7 @@ describe('site/build.js', () => {
         'impl-a': {
           sha: 'def456',
           tests: {
-            'x/y/z': { matches: true, quirks: [] },
+            'x/y/z': { matches: true },
           },
         },
       },

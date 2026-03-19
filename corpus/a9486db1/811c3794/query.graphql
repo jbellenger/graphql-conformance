@@ -1,0 +1,25 @@
+query @Directive_HP {
+  nN9TOGz {
+    __typename
+    ... on Interface_JZeVyBnOKo_STUB {
+      ...Fragment_E8ZRx
+      IqV: nW9SrK95g {
+        __typename
+      }
+      ... on Interface_JZeVyBnOKo {
+        NxVvy: u {
+          __typename
+        }
+      }
+    }
+    ... on Interface_JZeVyBnOKo_STUB {
+      ...Fragment_E8ZRx
+    }
+  }
+  __typename
+  b
+}
+
+fragment Fragment_E8ZRx on Interface_JZeVyBnOKo {
+  __typename @skip(if: false)
+}

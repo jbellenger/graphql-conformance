@@ -1,0 +1,24 @@
+query @Directive_TM89_p6Mh {
+  ...Fragment_Er
+  ... on Object_DnqDMe80OU {
+    ... on Union_RqfDcZ22Im {
+      Iat1MW: __typename
+    }
+    ... on Union_RqfDcZ22Im {
+      ... on Union_RqfDcZ22Im {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_bvIa4Flc on Union_RqfDcZ22Im {
+  __typename
+}
+
+fragment Fragment_Er on Union_RqfDcZ22Im {
+  ...Fragment_bvIa4Flc
+  ... on Object_DnqDMe80OU {
+    ...Fragment_bvIa4Flc
+  }
+}

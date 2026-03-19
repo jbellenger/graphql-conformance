@@ -1,0 +1,35 @@
+query eJ_hpONuR {
+  ...Fragment_p05Lf
+  __typename
+  ... on Object_dfQZ {
+    ...Fragment_k
+    __typename
+  }
+  ... on Object_dfQZ {
+    ... {
+      ...Fragment_CQdIY6
+    }
+  }
+}
+
+fragment Fragment_CQdIY6 on Object_dfQZ @Directive_ilZZqbCG{
+  zv6OKB
+  ICOqk: __typename
+}
+
+fragment Fragment_k on Object_dfQZ {
+  ...Fragment_CQdIY6
+  ... on Object_dfQZ {
+    __typename
+  }
+}
+
+fragment Fragment_p05Lf on Object_dfQZ {
+  ...Fragment_k
+  ...Fragment_CQdIY6
+  ... {
+    ... on Object_dfQZ {
+      aQa: zv6OKB @Directive_uhQ
+    }
+  }
+}

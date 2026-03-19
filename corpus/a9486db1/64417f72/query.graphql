@@ -1,0 +1,36 @@
+query Q {
+  ...Fragment_d4f500E
+  ...Fragment_Hg2
+  nN9TOGz {
+    ...Fragment_rdGiSO
+    ... on Interface_JZeVyBnOKo_STUB {
+      ... on Interface_JZeVyBnOKo_STUB {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_d4f500E on Union__J_KL {
+  __typename
+  ... on Object_hN {
+    ... on Union__J_KL {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_Hg2 on Union_uzhqL1H {
+  __typename
+}
+
+fragment Fragment_rdGiSO on Interface_JZeVyBnOKo {
+  ... on Interface_JZeVyBnOKo_STUB {
+    eKSFAlwdL3: nW9SrK95g {
+      __typename
+    }
+    u {
+      __typename @include(if: true)
+    }
+  }
+}

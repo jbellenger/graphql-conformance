@@ -1,0 +1,22 @@
+query ubncfWki {
+  ...Fragment_V9cRCa1
+  bERR79V
+  ... on Object_nQ7uc4Dy2l {
+    ... on Object_nQ7uc4Dy2l @Directive_JSmY4fQ1 {
+      ws8xT: __typename
+    }
+    ... on Object_nQ7uc4Dy2l {
+      ...Fragment_V9cRCa1
+    }
+  }
+}
+
+fragment Fragment_V9cRCa1 on Object_nQ7uc4Dy2l {
+  ... on Object_nQ7uc4Dy2l {
+    __typename
+    bERR79V
+    ... on Object_nQ7uc4Dy2l {
+      __typename
+    }
+  }
+}

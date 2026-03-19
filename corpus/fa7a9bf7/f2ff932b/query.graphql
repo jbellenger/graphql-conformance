@@ -1,0 +1,19 @@
+{
+  ... on Union_vN {
+    ...Fragment_ZK
+    ...Fragment_s
+  }
+  ... on Union_vN {
+    ... on Object_b @skip(if: false) {
+      rEpnOaW1
+    }
+  }
+}
+
+fragment Fragment_s on Union_vN {
+  __typename
+}
+
+fragment Fragment_ZK on Union_vN {
+  ...Fragment_s
+}

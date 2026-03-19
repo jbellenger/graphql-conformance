@@ -1,0 +1,22 @@
+{
+  ...Fragment_scOsJ
+  ...Fragment_scOsJ@Directive_CZQwtBsu
+  ...Fragment_scOsJ
+  Wqv8OO: zTt {
+    ...Fragment_scOsJ
+  }
+}
+
+fragment Fragment_scOsJ on Union_oJgeH9 {
+  __typename
+  ... on Union_hnhVOtwYz {
+    ... on Union_oJgeH9 {
+      zPUIm: __typename
+    }
+  }
+  ... on Union_oJgeH9 {
+    ... on Object_n @include(if: false) {
+      Z: rVdJ
+    }
+  }
+}

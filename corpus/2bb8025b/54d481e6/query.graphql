@@ -1,0 +1,18 @@
+query B {
+  ...Fragment_J
+  kpeZI5i: __typename
+  ... on Object_wn {
+    Ng: __typename
+  }
+}
+
+fragment Fragment_clDkJqZgb on Union_T4JiLpD08 {
+  __typename
+}
+
+fragment Fragment_J on Object_wn {
+  ... on Union_gTc1VpNfs7 {
+    ...Fragment_clDkJqZgb
+    __typename
+  }
+}

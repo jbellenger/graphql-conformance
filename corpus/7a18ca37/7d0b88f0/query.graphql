@@ -1,0 +1,14 @@
+query R {
+  ... on Union_Qd6Q {
+    ... on Object_mI @Directive_EIov @include(if: true) {
+      ...Fragment_Y0sj8W5dF
+      ... {
+        ldOtBb0: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Y0sj8W5dF on Object_mI {
+  __typename
+}

@@ -1,0 +1,17 @@
+query Kb4lkCU_d {
+  c
+  ... on Union_C3 {
+    y: __typename
+  }
+  ... on Union_odS {
+    ...Fragment_WOr6gW
+  }
+}
+
+fragment Fragment_qyiCXUy on Union_C3 {
+  __typename
+}
+
+fragment Fragment_WOr6gW on Union_OxTLLC {
+  ...Fragment_qyiCXUy@defer(if: true, label: null)
+}

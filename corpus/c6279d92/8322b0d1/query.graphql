@@ -1,0 +1,20 @@
+{
+  ...Fragment_zqGwJwNwHt
+}
+
+fragment Fragment_nyfj1G on Union_SzbF2Jvce {
+  __typename
+}
+
+fragment Fragment_eIuvAAB on Object_cbc0 {
+  ...Fragment_nyfj1G
+  ... {
+    __typename
+  }
+}
+
+fragment Fragment_zqGwJwNwHt on Object_cbc0 {
+  ...Fragment_eIuvAAB
+  ...Fragment_nyfj1G
+  KqxIwKqC2D: __typename
+}

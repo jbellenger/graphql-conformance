@@ -9,7 +9,8 @@ describe('runHarness', () => {
     const result = await runHarness(
       ['node', '-e', 'console.log(JSON.stringify({data:{x:1}}))'], '/tmp', []
     );
-    assert.deepStrictEqual(result, { result: { data: { x: 1 } } });
+    assert.deepStrictEqual(result.result, { data: { x: 1 } });
+    assert.equal(result.error, undefined);
   });
 
   it('returns error on non-zero exit', async () => {
@@ -22,7 +23,15 @@ describe('runHarness', () => {
     const result = await runHarness(
       ['node', '-e', 'console.log("not json")'], '/tmp', []
     );
-    assert.deepStrictEqual(result, { error: 'invalid JSON output' });
+    assert.equal(result.error, 'invalid JSON output');
+  });
+
+  it('captures stderr', async () => {
+    const result = await runHarness(
+      ['node', '-e', 'console.error("oops"); process.exit(1)'], '/tmp', []
+    );
+    assert.ok(result.error);
+    assert.equal(result.stderr.trim(), 'oops');
   });
 
   it('returns error when command does not exist', async () => {
@@ -36,7 +45,6 @@ describe('runHarness', () => {
       '/tmp',
       ['a', 'b']
     );
-    assert.deepStrictEqual(result, { result: { args: ['a', 'b'] } });
+    assert.deepStrictEqual(result.result, { args: ['a', 'b'] });
   });
 });
-

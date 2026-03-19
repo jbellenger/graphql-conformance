@@ -1,0 +1,33 @@
+query pQ {
+  ...Fragment_mQn6yXV
+  ...Fragment_mQn6yXV
+  ...Fragment_ITk4s
+  g_D
+  ... on Union_vpA6THh {
+    __typename
+    __typename
+    __typename
+    ... on Object_tDfqltKP {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_vs on Interface_pS1dvnUt {
+  vRmsRV
+}
+
+fragment Fragment_ITk4s on Object_r6uazNyKos {
+  g_D
+}
+
+fragment Fragment_mQn6yXV on Object_r6uazNyKos {
+  ...Fragment_vs
+  ... on Object_r6uazNyKos {
+    ...Fragment_ITk4s
+    g_D
+    ... on Union_vpA6THh {
+      __typename
+    }
+  }
+}

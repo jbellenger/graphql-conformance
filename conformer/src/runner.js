@@ -13,13 +13,15 @@ function runHarness(command, cwd, args, env) {
     const child = spawn(cmd, [...cmdArgs, ...args], opts);
 
     let stdout = '';
+    let stderr = '';
     child.stdout.on('data', (d) => { stdout += d; });
+    child.stderr.on('data', (d) => { stderr += d; });
 
     const timer = setTimeout(() => {
       if (!resolved) {
         resolved = true;
         child.kill('SIGKILL');
-        resolve({ error: 'timeout' });
+        resolve({ error: 'timeout', stderr });
       }
     }, TIMEOUT_MS);
 
@@ -28,12 +30,12 @@ function runHarness(command, cwd, args, env) {
         resolved = true;
         clearTimeout(timer);
         if (code !== 0) {
-          resolve({ error: `process exited with code ${code}` });
+          resolve({ error: `process exited with code ${code}`, stderr });
         } else {
           try {
             resolve({ result: JSON.parse(stdout) });
           } catch {
-            resolve({ error: 'invalid JSON output' });
+            resolve({ error: 'invalid JSON output', stderr });
           }
         }
       }
@@ -43,7 +45,7 @@ function runHarness(command, cwd, args, env) {
       if (!resolved) {
         resolved = true;
         clearTimeout(timer);
-        resolve({ error: err.message });
+        resolve({ error: err.message, stderr });
       }
     });
   });

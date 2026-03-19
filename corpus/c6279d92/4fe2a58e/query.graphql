@@ -1,0 +1,33 @@
+query ($pFwt7ZIr: Boolean! = false) {
+  ...Fragment_NqBXSKI
+  bwXF4RJ @skip(if: $pFwt7ZIr) {
+    ...Fragment__se
+  }
+  bwXF4RJ {
+    XaI5x: __typename
+    w: __typename
+    __typename
+  }
+  bwXF4RJ {
+    o6Yyb7V: __typename
+  }
+  ... on Object_cbc0 {
+    ... on Object_cbc0 {
+      ...Fragment_NqBXSKI
+      ... {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment__se on Union_XsB6ztBa {
+  __typename
+}
+
+fragment Fragment_NqBXSKI on Object_cbc0 {
+  aKl9P2X5: bwXF4RJ {
+    ...Fragment__se
+    __typename
+  }
+}
