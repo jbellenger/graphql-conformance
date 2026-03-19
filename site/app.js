@@ -8,6 +8,23 @@ async function fetchJSON(url) {
   return res.json();
 }
 
+const REPO_URL = 'https://github.com/jbellenger/graphql-conformance/blob/master';
+
+function formatTestKey(testKey) {
+  const parts = testKey.split('/');
+  const schema = parts[0];
+  const query = parts[1];
+  const vars = parts[2];
+
+  const schemaLink = `<a href="${REPO_URL}/corpus/${schema}/schema.graphqls">${schema}</a>`;
+  const queryLink = `<a href="${REPO_URL}/corpus/${schema}/${query}/query.graphql">${query}</a>`;
+  const varsLink = vars
+    ? `/<a href="${REPO_URL}/corpus/${schema}/${query}/${vars}/variables.json">${vars}</a>`
+    : '';
+
+  return `corpus/${schemaLink}/${queryLink}${varsLink}`;
+}
+
 function barClass(pct) {
   if (pct >= 95) return 'bar-pass';
   if (pct >= 80) return 'bar-warn';
@@ -76,7 +93,7 @@ function renderImplDetail(name, history, failures) {
           <tbody>
             ${failures.map((f) => `
               <tr>
-                <td class="mono">${f.testKey}</td>
+                <td class="mono">${formatTestKey(f.testKey)}</td>
                 <td>${f.quirks.length > 0 ? f.quirks.join(', ') : '—'}</td>
               </tr>
             `).join('')}
