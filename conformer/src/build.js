@@ -7,6 +7,7 @@ const { FRAMEWORK_TOOLS, ensureTools } = require('./tools');
 
 async function main() {
   const baseDir = path.resolve(__dirname, '..');
+  const rootDir = path.resolve(baseDir, '..');
   const configPath = path.join(baseDir, 'config.json');
   const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 
@@ -16,7 +17,7 @@ async function main() {
   const allTools = [...new Set([...FRAMEWORK_TOOLS, ...implTools])];
 
   process.stderr.write('Checking tools...\n');
-  const { results: toolResults, installed, failed } = ensureTools(allTools, baseDir);
+  const { results: toolResults, installed, failed } = ensureTools(allTools, rootDir);
   for (const r of toolResults) {
     if (r.found) {
       process.stderr.write(`  ✓ ${r.name.padEnd(8)} ${r.version}\n`);
@@ -33,7 +34,7 @@ async function main() {
   process.stderr.write('\n');
 
   process.stderr.write('Building all implementations...\n');
-  const results = await buildAll(config, baseDir);
+  const results = await buildAll(config, rootDir);
 
   const succeeded = results.filter((r) => r.ok).length;
   const buildFailed = results.filter((r) => !r.ok).length;

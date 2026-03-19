@@ -3,6 +3,7 @@
     "name": "graphql-js",
     "path": "./impls/graphql-js",
     "repo": "https://github.com/graphql/graphql-js",
+    "branch": "16.x.x",
     "command": ["node", "index.js"]
   },
   "conformants": [
@@ -10,24 +11,28 @@
       "name": "graphql-java",
       "path": "./impls/graphql-java",
       "repo": "https://github.com/graphql-java/graphql-java",
+      "branch": "master",
       "command": ["java", "-jar", "target/conformer-1.0.jar"]
     },
     {
       "name": "graphql-go",
       "path": "./impls/graphql-go",
       "repo": "https://github.com/graphql-go/graphql",
+      "branch": "master",
       "command": ["./conformer"]
     },
     {
       "name": "hot-chocolate",
       "path": "./impls/hot-chocolate",
       "repo": "https://github.com/ChilliCream/graphql-platform",
+      "branch": "main",
       "command": ["dotnet", "out/Conformer.dll"]
     },
     {
       "name": "async-graphql",
       "path": "./impls/async-graphql",
       "repo": "https://github.com/async-graphql/async-graphql",
+      "branch": "master",
       "command": ["./target/release/conformer"]
     }
   ]

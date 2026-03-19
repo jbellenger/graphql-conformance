@@ -14,16 +14,17 @@ function generateRunId() {
   return now.toISOString().replace(/:/g, '-').replace(/\.\d+Z$/, 'Z');
 }
 
-async function runImpl(impl, baseDir, args, env) {
-  const implDir = path.resolve(baseDir, impl.path);
+async function runImpl(impl, rootDir, args, env) {
+  const implDir = path.resolve(rootDir, impl.path);
   return runHarness(impl.command, implDir, args, env);
 }
 
 async function main() {
   const baseDir = path.resolve(__dirname, '..');
+  const rootDir = path.resolve(baseDir, '..');
   const configPath = path.join(baseDir, 'config.json');
   const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-  const corpusDir = path.join(baseDir, 'corpus');
+  const corpusDir = path.join(rootDir, 'corpus');
   const tests = discoverCorpus(corpusDir);
 
   if (tests.length === 0) {
@@ -34,13 +35,13 @@ async function main() {
   process.stderr.write(`Found ${tests.length} test case(s)\n`);
 
   // Get versions
-  const refDir = path.resolve(baseDir, config.reference.path);
+  const refDir = path.resolve(rootDir, config.reference.path);
   process.stderr.write(`Getting version for reference (${config.reference.name})...\n`);
   const refSha = getVersion(refDir);
 
   const conformantVersions = {};
   for (const conformant of config.conformants) {
-    const implDir = path.resolve(baseDir, conformant.path);
+    const implDir = path.resolve(rootDir, conformant.path);
     process.stderr.write(`Getting version for conformant (${conformant.name})...\n`);
     conformantVersions[conformant.name] = getVersion(implDir);
   }
@@ -51,7 +52,7 @@ async function main() {
     conformantTests[conformant.name] = {};
   }
 
-  const env = getToolEnv(baseDir);
+  const env = getToolEnv(rootDir);
 
   // Determine which conformants to skip (incremental runs)
   const resultsDir = path.join(baseDir, 'results', 'data');
@@ -85,14 +86,14 @@ async function main() {
         : [schemaPath, queryPath];
 
       process.stderr.write(`  test ${testId}/${queryId}: running reference (${config.reference.name})...\n`);
-      const refResult = await runImpl(config.reference, baseDir, args, env);
+      const refResult = await runImpl(config.reference, rootDir, args, env);
 
       if (refResult.error) {
         process.stderr.write(`    reference failed: ${refResult.error}\n`);
       }
 
       await Promise.all(conformantsToRun.map(async (conformant) => {
-        const conformantResult = await runImpl(conformant, baseDir, args, env);
+        const conformantResult = await runImpl(conformant, rootDir, args, env);
         const result = compareResults(refResult, conformantResult);
         conformantTests[conformant.name][`${testId}/${queryId}`] = result;
       }));

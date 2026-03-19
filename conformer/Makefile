@@ -1,7 +1,7 @@
-IMPLS_DIR := impls
+IMPLS_DIR := ../impls
 IMPL_DIRS := $(wildcard $(IMPLS_DIR)/*)
 
-.PHONY: check build gen run test clean
+.PHONY: check build run test clean
 
 .DEFAULT_GOAL := build
 
@@ -11,9 +11,6 @@ check:
 build:
 	npm install
 	node src/build.js
-
-gen:
-	$(MAKE) -C corpus-gen gen
 
 run:
 	node src/index.js

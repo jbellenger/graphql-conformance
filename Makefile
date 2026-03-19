@@ -2,14 +2,14 @@
 
 build:
 	$(MAKE) -C conformer build
-	$(MAKE) -C conformer/corpus-gen build
+	$(MAKE) -C corpus-gen build
 
 test:
-	$(MAKE) -C conformer/corpus-gen test
+	$(MAKE) -C corpus-gen test
 	$(MAKE) -C conformer test
 
 gen-corpus:
-	$(MAKE) -C conformer/corpus-gen gen
+	$(MAKE) -C corpus-gen gen
 
 run-conformer:
 	$(MAKE) -C conformer run
@@ -22,4 +22,4 @@ serve-site:
 
 clean:
 	$(MAKE) -C conformer clean
-	$(MAKE) -C conformer/corpus-gen clean
+	$(MAKE) -C corpus-gen clean
