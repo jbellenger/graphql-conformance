@@ -48,8 +48,14 @@ class ResultsStore {
     const conformants = {};
     for (const [name, conformant] of Object.entries(runResult.conformants)) {
       const tests = conformant.tests;
-      const total = Object.keys(tests).length;
-      const passed = Object.values(tests).filter((t) => t.matches).length;
+      // Use pre-computed totals if provided (e.g. for skipped conformants
+      // whose tests map only contains failures).
+      const total = conformant.total != null
+        ? conformant.total
+        : Object.keys(tests).length;
+      const passed = conformant.passed != null
+        ? conformant.passed
+        : Object.values(tests).filter((t) => t.matches).length;
 
       conformants[name] = { sha: conformant.sha, total, passed };
 
@@ -65,10 +71,21 @@ class ResultsStore {
       }
     }
 
+    // Store reference failures if any
+    const ref = runResult.reference;
+    if (ref.failures && ref.failures.length > 0) {
+      this._data.put(`failures/${ref.name}/${runResult.id}`, ref.failures);
+    }
+
     this._data.put(`runs/${runResult.id}`, {
       id: runResult.id,
       timestamp: runResult.timestamp,
-      reference: runResult.reference,
+      reference: {
+        name: ref.name,
+        sha: ref.sha,
+        total: ref.total || 0,
+        errors: ref.errors || 0,
+      },
       conformants,
     });
   }
@@ -145,10 +162,14 @@ class ResultsStore {
     if (runs.length === 0) return null;
 
     const latest = runs[0];
+    // Reconstruct reference failures from stored data
+    const refFailures = latest.reference.name
+      ? (this._data.get(`failures/${latest.reference.name}/${latest.id}`) || [])
+      : [];
     const result = {
       id: latest.id,
       timestamp: latest.timestamp,
-      reference: latest.reference,
+      reference: { ...latest.reference, failures: refFailures },
       conformants: {},
     };
 

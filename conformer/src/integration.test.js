@@ -9,16 +9,20 @@ const os = require('os');
 const { ResultsStore } = require('../../results');
 
 const baseDir = path.resolve(__dirname, '..');
-const configPath = path.join(baseDir, 'config.json');
 
+let tmpDir;
 let tmpResultsDir;
+let tmpConfigPath;
 
 beforeEach(() => {
-  tmpResultsDir = fs.mkdtempSync(path.join(os.tmpdir(), 'conformer-integration-'));
+  tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'conformer-integration-'));
+  tmpResultsDir = path.join(tmpDir, 'results');
+  fs.mkdirSync(tmpResultsDir);
+  tmpConfigPath = path.join(tmpDir, 'config.json');
 });
 
 afterEach(() => {
-  fs.rmSync(tmpResultsDir, { recursive: true, force: true });
+  fs.rmSync(tmpDir, { recursive: true, force: true });
 });
 
 const testConfig = {
@@ -43,72 +47,60 @@ function runConformer(env = {}) {
     opts: {
       cwd: baseDir,
       timeout: 300_000,
-      env: { ...process.env, RESULTS_DIR: tmpResultsDir, ...env },
+      env: { ...process.env, RESULTS_DIR: tmpResultsDir, CONFIG_PATH: tmpConfigPath, ...env },
     },
   };
 }
 
 describe('integration: self-comparison', () => {
   it('graphql-js vs itself produces all true', () => {
-    const originalConfig = fs.readFileSync(configPath, 'utf8');
+    fs.writeFileSync(tmpConfigPath, JSON.stringify(testConfig, null, 2));
 
-    try {
-      fs.writeFileSync(configPath, JSON.stringify(testConfig, null, 2));
+    const { cmd, args, opts } = runConformer();
+    execFileSync(cmd, args, opts);
 
-      const { cmd, args, opts } = runConformer();
-      execFileSync(cmd, args, opts);
+    const store = ResultsStore.fromDirectory(tmpResultsDir);
+    const runResult = store.loadLatestRun();
 
-      const store = ResultsStore.fromDirectory(tmpResultsDir);
-      const runResult = store.loadLatestRun();
+    assert.ok(runResult, 'should have a run result');
+    assert.ok(runResult.timestamp);
+    assert.equal(runResult.reference.name, 'graphql-js');
+    assert.ok(runResult.reference.sha);
+    assert.ok(runResult.conformants['graphql-js-copy']);
+    assert.ok(runResult.conformants['graphql-js-copy'].sha);
 
-      assert.ok(runResult, 'should have a run result');
-      assert.ok(runResult.timestamp);
-      assert.equal(runResult.reference.name, 'graphql-js');
-      assert.ok(runResult.reference.sha);
-      assert.ok(runResult.conformants['graphql-js-copy']);
-      assert.ok(runResult.conformants['graphql-js-copy'].sha);
-
-      const failures = store.getImplFailures('graphql-js-copy');
-      assert.equal(failures.length, 0, 'graphql-js vs itself should have no failures');
-    } finally {
-      fs.writeFileSync(configPath, originalConfig);
-    }
+    const failures = store.getImplFailures('graphql-js-copy');
+    assert.equal(failures.length, 0, 'graphql-js vs itself should have no failures');
   });
 });
 
 describe('integration: incremental skip', () => {
   it('second run skips unchanged conformant and produces same results', () => {
-    const originalConfig = fs.readFileSync(configPath, 'utf8');
+    fs.writeFileSync(tmpConfigPath, JSON.stringify(testConfig, null, 2));
 
-    try {
-      fs.writeFileSync(configPath, JSON.stringify(testConfig, null, 2));
+    const { cmd, args, opts } = runConformer();
+    execFileSync(cmd, args, opts);
 
-      const { cmd, args, opts } = runConformer();
-      execFileSync(cmd, args, opts);
+    const store1 = ResultsStore.fromDirectory(tmpResultsDir);
+    const run1 = store1.loadLatestRun();
 
-      const store1 = ResultsStore.fromDirectory(tmpResultsDir);
-      const run1 = store1.loadLatestRun();
+    const run2proc = spawnSync(cmd, args, opts);
+    assert.equal(run2proc.status, 0, 'second run should succeed');
 
-      const run2proc = spawnSync(cmd, args, opts);
-      assert.equal(run2proc.status, 0, 'second run should succeed');
+    const stderr = run2proc.stderr.toString();
+    assert.ok(stderr.includes('Skipping conformant (graphql-js-copy)'),
+      'should log that conformant was skipped');
 
-      const stderr = run2proc.stderr.toString();
-      assert.ok(stderr.includes('Skipping conformant (graphql-js-copy)'),
-        'should log that conformant was skipped');
+    const store2 = ResultsStore.fromDirectory(tmpResultsDir);
+    const runs = store2.listRuns();
+    assert.equal(runs.length, 2, 'should have two runs');
 
-      const store2 = ResultsStore.fromDirectory(tmpResultsDir);
-      const runs = store2.listRuns();
-      assert.equal(runs.length, 2, 'should have two runs');
+    const run2 = store2.loadLatestRun();
 
-      const run2 = store2.loadLatestRun();
-
-      assert.deepStrictEqual(
-        run2.conformants['graphql-js-copy'].tests,
-        run1.conformants['graphql-js-copy'].tests,
-        'skipped conformant should have same test results as prior run',
-      );
-    } finally {
-      fs.writeFileSync(configPath, originalConfig);
-    }
+    assert.deepStrictEqual(
+      run2.conformants['graphql-js-copy'].tests,
+      run1.conformants['graphql-js-copy'].tests,
+      'skipped conformant should have same test results as prior run',
+    );
   });
 });

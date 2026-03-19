@@ -34,6 +34,13 @@
       "repo": "https://github.com/async-graphql/async-graphql",
       "branch": "master",
       "command": ["./target/release/conformer"]
+    },
+    {
+      "name": "gqlgen",
+      "path": "./impls/gqlgen",
+      "repo": "https://github.com/99designs/gqlgen",
+      "branch": "master",
+      "command": ["./conformer"]
     }
   ]
 }

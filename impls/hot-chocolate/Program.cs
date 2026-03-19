@@ -12,8 +12,28 @@ if (args.Length < 2)
     return 1;
 }
 
-var schemaText = File.ReadAllText(args[0]);
+var rawSchemaText = File.ReadAllText(args[0]);
 var queryText = File.ReadAllText(args[1]);
+
+// Strip built-in directive declarations that Hot Chocolate already registers
+// internally. Corpus schemas may redeclare these, causing "name already
+// registered" errors. We also strip @defer/@stream declarations since HC
+// handles them via opt-in options rather than SDL declarations.
+var schemaDoc = Utf8GraphQLParser.Parse(rawSchemaText);
+var stripDirectives = new HashSet<string>
+{
+    "skip", "include", "deprecated", "specifiedBy", "oneOf",
+    "experimental_disableErrorPropagation", "defer", "stream",
+};
+var declaredDirectives = new HashSet<string>(
+    schemaDoc.Definitions.OfType<DirectiveDefinitionNode>().Select(d => d.Name.Value));
+var enableDefer = declaredDirectives.Contains("defer");
+var enableStream = declaredDirectives.Contains("stream");
+var filteredDefs = schemaDoc.Definitions
+    .Where(d => d is not DirectiveDefinitionNode dir || !stripDirectives.Contains(dir.Name.Value))
+    .ToList();
+var schemaText = schemaDoc.WithDefinitions(filteredDefs).ToString();
+
 Dictionary<string, object?>? variables = null;
 if (args.Length >= 3)
 {
@@ -43,9 +63,22 @@ static object? ConvertJsonElement(JsonElement element)
 }
 
 // Build request executor from SDL
-var executor = await new ServiceCollection()
+var builder = new ServiceCollection()
     .AddGraphQL()
-    .AddDocumentFromString(schemaText)
+    .AddDocumentFromString(schemaText);
+
+// Enable @defer/@stream if the schema declared them, so HC accepts their
+// usage in queries without returning a validation error.
+if (enableDefer || enableStream)
+{
+    builder.ModifyOptions(o =>
+    {
+        o.EnableDefer = enableDefer;
+        o.EnableStream = enableStream;
+    });
+}
+
+var executor = await builder
     .UseField(next => context =>
     {
         // Skip introspection fields — let HC handle __typename etc.
@@ -72,9 +105,6 @@ var executor = await new ServiceCollection()
 
         if (parentType is InterfaceType iface)
         {
-            // Need to find implementing ObjectTypes from the schema
-            // iface.Implements returns interfaces (what this interface implements),
-            // but we need the ObjectTypes that implement this interface.
             var schema = context.Schema;
             var names = new List<string>();
             foreach (var type in schema.Types)
@@ -102,8 +132,49 @@ if (variables != null)
 
 var result = await executor.ExecuteAsync(requestBuilder.Build());
 
-// Serialize result
-if (result is IOperationResult opResult)
+// When @defer/@stream is active, HC returns an IResponseStream instead of a
+// single IOperationResult. Collect all chunks — our resolvers are synchronous
+// so the stream completes immediately. The last chunk has the final data.
+IOperationResult? opResult = null;
+if (result is IResponseStream stream)
+{
+    // @defer returns incremental chunks: the initial result in Data, and
+    // deferred fields in Incremental entries on subsequent chunks.
+    // Merge everything into a single flat data map.
+    Dictionary<string, object?>? merged = null;
+    await foreach (var chunk in stream.ReadResultsAsync())
+    {
+        opResult = chunk;
+        if (chunk.Data != null)
+        {
+            merged ??= new Dictionary<string, object?>();
+            foreach (var kv in chunk.Data)
+                merged[kv.Key] = kv.Value;
+        }
+        if (chunk.Incremental != null)
+        {
+            merged ??= new Dictionary<string, object?>();
+            foreach (var inc in chunk.Incremental)
+            {
+                if (inc.Data != null)
+                {
+                    foreach (var kv in inc.Data)
+                        merged[kv.Key] = kv.Value;
+                }
+            }
+        }
+    }
+    if (merged != null)
+    {
+        opResult = OperationResultBuilder.FromResult(opResult!).SetData(merged).Build();
+    }
+}
+else if (result is IOperationResult single)
+{
+    opResult = single;
+}
+
+if (opResult != null)
 {
     var output = new Dictionary<string, object?>();
     output["data"] = opResult.Data;

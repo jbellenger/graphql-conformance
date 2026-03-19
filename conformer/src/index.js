@@ -22,7 +22,7 @@ async function runImpl(impl, rootDir, args, env) {
 async function main() {
   const baseDir = path.resolve(__dirname, '..');
   const rootDir = path.resolve(baseDir, '..');
-  const configPath = path.join(baseDir, 'config.json');
+  const configPath = process.env.CONFIG_PATH || path.join(baseDir, 'config.json');
   const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
   const corpusDir = path.join(rootDir, 'corpus');
   const tests = discoverCorpus(corpusDir);
@@ -75,6 +75,8 @@ async function main() {
     return true;
   });
 
+  const referenceFailures = [];
+
   if (conformantsToRun.length === 0) {
     process.stderr.write('All conformants unchanged, skipping test execution.\n');
   } else {
@@ -90,6 +92,7 @@ async function main() {
 
       if (refResult.error) {
         process.stderr.write(`    reference failed: ${refResult.error}\n`);
+        referenceFailures.push({ testKey: `${testId}/${queryId}`, error: refResult.error });
       }
 
       await Promise.all(conformantsToRun.map(async (conformant) => {
@@ -111,10 +114,25 @@ async function main() {
 
   const conformants = {};
   for (const conformant of config.conformants) {
-    conformants[conformant.name] = {
+    const entry = {
       sha: conformantVersions[conformant.name],
       tests: conformantTests[conformant.name],
     };
+    // For skipped conformants, carry forward stored total/passed since the
+    // tests map only contains failures (passing tests are not reconstructed).
+    if (skippedConformants[conformant.name] && priorRun) {
+      const prior = priorRun.conformants[conformant.name];
+      if (prior) {
+        entry.total = prior.total;
+        entry.passed = prior.passed;
+      }
+    }
+    conformants[conformant.name] = entry;
+  }
+
+  // For skipped runs, carry forward prior reference failures
+  if (conformantsToRun.length === 0 && priorRun && priorRun.reference.failures) {
+    referenceFailures.push(...priorRun.reference.failures);
   }
 
   const runResult = {
@@ -123,6 +141,9 @@ async function main() {
     reference: {
       name: config.reference.name,
       sha: refSha,
+      total: tests.length,
+      errors: referenceFailures.length,
+      failures: referenceFailures,
     },
     conformants,
   };
@@ -130,6 +151,37 @@ async function main() {
   // Write results
   store.recordRun(runResult);
   process.stderr.write(`Results written to ${resultsDir}\n`);
+
+  // Print summary using store data (accurate for both fresh and skipped conformants)
+  const summary = store.getSummary();
+  if (summary.length > 0) {
+    const refName = config.reference.name;
+    const refTotal = runResult.reference.total || 0;
+    const refErrors = runResult.reference.errors || 0;
+    const refPassed = refTotal - refErrors;
+    const refPct = refTotal > 0 ? ((refPassed / refTotal) * 100).toFixed(1) : '100.0';
+
+    const allRows = [
+      { impl: refName, passed: refPassed, total: refTotal, pct: refPct, failed: refErrors },
+      ...summary.map((s) => ({
+        impl: s.impl, passed: s.total - s.failed, total: s.total,
+        pct: s.passPct.toFixed(1), failed: s.failed,
+      })),
+    ];
+    const nameWidth = Math.max(...allRows.map((r) => r.impl.length));
+    process.stderr.write('\n');
+    process.stderr.write(
+      `  ${'Impl'.padEnd(nameWidth)}  ${'Pass'.padStart(4)}/${'Total'.padStart(5)}   ${'Rate'.padStart(5)}  Status\n`,
+    );
+    process.stderr.write(`  ${'-'.repeat(nameWidth)}  ${'-'.repeat(4)} ${'-'.repeat(5)}  ${'-'.repeat(6)}  ${'-'.repeat(6)}\n`);
+    for (const r of allRows) {
+      const status = r.failed === 0 ? 'PASS' : 'FAIL';
+      process.stderr.write(
+        `  ${r.impl.padEnd(nameWidth)}  ${String(r.passed).padStart(4)}/${String(r.total).padStart(5)}  ${r.pct.padStart(6)}%  ${status}\n`,
+      );
+    }
+    process.stderr.write('\n');
+  }
 }
 
 main().catch((err) => {

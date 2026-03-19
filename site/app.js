@@ -32,7 +32,7 @@ function barClass(pct) {
 }
 
 function renderDashboard(summary) {
-  summary.sort((a, b) => a.impl.localeCompare(b.impl));
+  summary.sort((a, b) => b.passPct - a.passPct || a.impl.localeCompare(b.impl));
 
   app.innerHTML = `
     <h2>Conformance Summary</h2>
@@ -88,13 +88,13 @@ function renderImplDetail(name, history, failures) {
       : `
         <table>
           <thead>
-            <tr><th>Test ID</th><th>Quirks</th></tr>
+            <tr><th>Test ID</th><th>Details</th></tr>
           </thead>
           <tbody>
             ${failures.map((f) => `
               <tr>
                 <td class="mono">${formatTestKey(f.testKey)}</td>
-                <td>${f.quirks.length > 0 ? f.quirks.join(', ') : '—'}</td>
+                <td>${f.error ? f.error : f.quirks && f.quirks.length > 0 ? f.quirks.join(', ') : '—'}</td>
               </tr>
             `).join('')}
           </tbody>

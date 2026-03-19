@@ -42,24 +42,41 @@ if (runs.length === 0) {
 
 const outDir = process.env.SITE_DATA_DIR || path.join(__dirname, 'data');
 
-// summary.json
+// summary.json — include reference impl with actual error tracking
 const latest = runs[0];
-const summary = Object.entries(latest.conformants).map(([name, c]) => ({
-  impl: name,
-  passPct: c.total > 0 ? Math.round((c.passed / c.total) * 1000) / 10 : 100,
-  total: c.total,
-  failed: c.total - c.passed,
-  lastRun: latest.timestamp,
-  sha: c.sha,
-  repo: repoByName[name] || null,
-}));
+const ref = latest.reference;
+const refTotal = ref.total || Object.values(latest.conformants)[0]?.total || 0;
+const refErrors = ref.errors || 0;
+const refPassed = refTotal - refErrors;
+const summary = [
+  {
+    impl: ref.name,
+    passPct: refTotal > 0 ? Math.round((refPassed / refTotal) * 1000) / 10 : 100,
+    total: refTotal,
+    failed: refErrors,
+    lastRun: latest.timestamp,
+    sha: ref.sha,
+    repo: repoByName[ref.name] || null,
+    isReference: true,
+  },
+  ...Object.entries(latest.conformants).map(([name, c]) => ({
+    impl: name,
+    passPct: c.total > 0 ? Math.round((c.passed / c.total) * 1000) / 10 : 100,
+    total: c.total,
+    failed: c.total - c.passed,
+    lastRun: latest.timestamp,
+    sha: c.sha,
+    repo: repoByName[name] || null,
+  })),
+];
 
 fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(outDir, 'summary.json'), JSON.stringify(summary, null, 2) + '\n');
 console.log(`Wrote summary.json (${summary.length} impl(s))`);
 
-// Per-impl data
+// Per-impl data (include reference)
 const implNames = new Set();
+implNames.add(ref.name);
 for (const run of runs) {
   for (const name of Object.keys(run.conformants)) {
     implNames.add(name);
@@ -71,10 +88,22 @@ for (const name of implNames) {
   fs.mkdirSync(implDir, { recursive: true });
 
   // history.json
+  const isRef = name === ref.name;
   const history = runs
-    .filter((r) => r.conformants[name])
+    .filter((r) => isRef || r.conformants[name])
     .reverse()
     .map((r) => {
+      if (isRef) {
+        const total = r.reference.total || Object.values(r.conformants)[0]?.total || 0;
+        const errors = r.reference.errors || 0;
+        const passed = total - errors;
+        return {
+          date: r.timestamp.slice(0, 10),
+          passPct: total > 0 ? Math.round((passed / total) * 1000) / 10 : 100,
+          total,
+          failed: errors,
+        };
+      }
       const c = r.conformants[name];
       return {
         date: r.timestamp.slice(0, 10),

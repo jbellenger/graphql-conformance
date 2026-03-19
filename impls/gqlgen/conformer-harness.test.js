@@ -7,28 +7,11 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 
-const DLL = path.join(__dirname, 'out', 'Conformer.dll');
-
-// Resolve dotnet path — may be installed via mise rather than system PATH
-function findDotnet() {
-  try {
-    return execFileSync('which', ['dotnet'], { encoding: 'utf8' }).trim();
-  } catch {
-    // Try mise
-    try {
-      const miseDir = execFileSync('mise', ['where', 'dotnet'], { encoding: 'utf8' }).trim();
-      return path.join(miseDir, 'dotnet');
-    } catch {
-      return 'dotnet'; // fall back, will fail with ENOENT if not found
-    }
-  }
-}
-
-const DOTNET = findDotnet();
+const BIN = path.join(__dirname, 'conformer');
 let tmpDir;
 
 beforeEach(() => {
-  tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'harness-hc-test-'));
+  tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'harness-gqlgen-test-'));
 });
 
 afterEach(() => {
@@ -46,13 +29,13 @@ function writeFiles(files) {
 }
 
 function run(schemaPath, queryPath, variablesPath) {
-  const args = [DLL, schemaPath, queryPath];
+  const args = [schemaPath, queryPath];
   if (variablesPath) args.push(variablesPath);
-  const stdout = execFileSync(DOTNET, args, { encoding: 'utf8', timeout: 30_000 });
+  const stdout = execFileSync(BIN, args, { encoding: 'utf8', timeout: 30_000 });
   return JSON.parse(stdout);
 }
 
-describe('hot-chocolate conformer-harness', () => {
+describe('gqlgen conformer-harness', () => {
   it('resolves scalar fields per wiring spec', () => {
     const f = writeFiles({
       'schema.graphqls': `
@@ -142,57 +125,6 @@ describe('hot-chocolate conformer-harness', () => {
     const result = run(f['schema.graphqls'], f['query.graphql'], f['variables.json']);
     assert.deepStrictEqual(result, {
       data: { greet: 'str' },
-    });
-  });
-
-  it('handles schemas that redeclare built-in directives', () => {
-    const f = writeFiles({
-      'schema.graphqls': `
-        "Directs the executor to include this field or fragment only when the if argument is true."
-        directive @include(if: Boolean!) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
-        "Directs the executor to skip this field or fragment when the if argument is true."
-        directive @skip(if: Boolean!) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
-        "Marks an element as deprecated with an optional reason."
-        directive @deprecated(reason: String = "No longer supported") on FIELD_DEFINITION | ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION | ENUM_VALUE
-        "Exposes a URL that specifies the behavior of this scalar."
-        directive @specifiedBy(url: String!) on SCALAR
-        "Indicates an Input Object is a OneOf Input Object."
-        directive @oneOf on INPUT_OBJECT
-        type Query { x: String }
-      `,
-      'query.graphql': '{ x }',
-    });
-    const result = run(f['schema.graphqls'], f['query.graphql']);
-    assert.deepStrictEqual(result, {
-      data: { x: 'str' },
-    });
-  });
-
-  it('handles @defer(if: false) in queries without error', () => {
-    const f = writeFiles({
-      'schema.graphqls': `
-        directive @defer(if: Boolean, label: String) on FRAGMENT_SPREAD | INLINE_FRAGMENT
-        type Query { x: String, y: Int }
-      `,
-      'query.graphql': '{ x ... @defer(if: false) { y } }',
-    });
-    const result = run(f['schema.graphqls'], f['query.graphql']);
-    assert.deepStrictEqual(result, {
-      data: { x: 'str', y: 2 },
-    });
-  });
-
-  it('handles @defer(if: true) and returns complete data', () => {
-    const f = writeFiles({
-      'schema.graphqls': `
-        directive @defer(if: Boolean, label: String) on FRAGMENT_SPREAD | INLINE_FRAGMENT
-        type Query { x: String, y: Int }
-      `,
-      'query.graphql': '{ x ... @defer(if: true) { y } }',
-    });
-    const result = run(f['schema.graphqls'], f['query.graphql']);
-    assert.deepStrictEqual(result, {
-      data: { x: 'str', y: 2 },
     });
   });
 

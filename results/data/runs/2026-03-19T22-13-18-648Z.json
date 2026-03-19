@@ -1,0 +1,37 @@
+{
+  "id": "2026-03-19T22-13-18-648Z",
+  "timestamp": "2026-03-19T22:13:18.649Z",
+  "reference": {
+    "name": "graphql-js",
+    "sha": "6ca59e128fe6cf26f1335fbd81d2f4a30bf9fce1",
+    "total": 59,
+    "errors": 13
+  },
+  "conformants": {
+    "graphql-java": {
+      "sha": "58aaa22b07bd3451f6103e4cbfc1171000b5ebce",
+      "total": 59,
+      "passed": 46
+    },
+    "graphql-go": {
+      "sha": "d5f8f3c54f31e6dac071859058b26b6b70d521da",
+      "total": 59,
+      "passed": 44
+    },
+    "hot-chocolate": {
+      "sha": "8135564908c4652e4c6b44909fbb9c4181a6701b",
+      "total": 59,
+      "passed": 43
+    },
+    "async-graphql": {
+      "sha": "e9ad5b511dee2d95cace35fcf33d037906ea9d1c",
+      "total": 59,
+      "passed": 24
+    },
+    "gqlgen": {
+      "sha": "82bf8457f1df0a7073b5f45ef70e8b95eb09cba8",
+      "total": 59,
+      "passed": 46
+    }
+  }
+}

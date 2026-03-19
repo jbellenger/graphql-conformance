@@ -139,6 +139,87 @@ describe('ResultsStore', () => {
     });
   });
 
+  describe('recordRun with pre-computed totals', () => {
+    it('uses provided total and passed instead of recomputing from tests', () => {
+      const store = ResultsStore.inMemory();
+      // Simulate a skipped conformant: the tests map only contains failures
+      // (passing tests are not reconstructed by loadLatestRun), but the caller
+      // provides the correct total/passed from the prior run.
+      store.recordRun(makeRun({
+        conformants: {
+          'graphql-java': {
+            sha: 'def456',
+            tests: {
+              'g/h/i': { matches: false, quirks: [] },
+            },
+            total: 3,
+            passed: 2,
+          },
+        },
+      }));
+
+      const summary = store.getSummary();
+      assert.equal(summary.length, 1);
+      assert.equal(summary[0].total, 3);
+      assert.equal(summary[0].failed, 1);
+      assert.equal(summary[0].passPct, 66.7);
+    });
+
+    it('falls back to computing from tests when total/passed not provided', () => {
+      const store = ResultsStore.inMemory();
+      store.recordRun(makeRun());
+
+      const summary = store.getSummary();
+      assert.equal(summary[0].total, 3);
+      assert.equal(summary[0].failed, 1);
+    });
+  });
+
+  describe('reference failures', () => {
+    it('stores and retrieves reference failures', () => {
+      const store = ResultsStore.inMemory();
+      store.recordRun(makeRun({
+        reference: {
+          name: 'graphql-js',
+          sha: 'abc123',
+          total: 3,
+          errors: 1,
+          failures: [{ testKey: 'x/y/z', error: 'stack overflow' }],
+        },
+      }));
+
+      const failures = store.getImplFailures('graphql-js');
+      assert.equal(failures.length, 1);
+      assert.equal(failures[0].testKey, 'x/y/z');
+    });
+
+    it('reconstructs reference failures in loadLatestRun', () => {
+      const store = ResultsStore.inMemory();
+      store.recordRun(makeRun({
+        reference: {
+          name: 'graphql-js',
+          sha: 'abc123',
+          total: 3,
+          errors: 1,
+          failures: [{ testKey: 'x/y/z', error: 'stack overflow' }],
+        },
+      }));
+
+      const run = store.loadLatestRun();
+      assert.equal(run.reference.errors, 1);
+      assert.equal(run.reference.failures.length, 1);
+      assert.equal(run.reference.failures[0].testKey, 'x/y/z');
+    });
+
+    it('does not write failures file when reference has no errors', () => {
+      const store = ResultsStore.inMemory();
+      store.recordRun(makeRun());
+
+      const failures = store.getImplFailures('graphql-js');
+      assert.deepStrictEqual(failures, []);
+    });
+  });
+
   describe('loadLatestRun', () => {
     it('reconstructs run with failures', () => {
       const store = ResultsStore.inMemory();
