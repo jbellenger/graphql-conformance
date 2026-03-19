@@ -21,8 +21,8 @@ describe('getVersion', () => {
 
   it('returns SHA from git repo in build/', () => {
     const buildDir = path.join(tmpDir, 'build');
-    execFileSync('git', ['init', buildDir]);
-    execFileSync('git', ['commit', '--allow-empty', '-m', 'init'], { cwd: buildDir });
+    execFileSync('git', ['init', '--quiet', buildDir]);
+    execFileSync('git', ['commit', '--quiet', '--allow-empty', '-m', 'init'], { cwd: buildDir });
     const expected = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: buildDir }).toString().trim();
 
     const sha = getVersion(tmpDir);
@@ -47,15 +47,15 @@ describe('buildImpl', () => {
     tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'builder-test-'));
     // Create a bare repo to clone from
     repoDir = path.join(tmpDir, 'repo.git');
-    execFileSync('git', ['init', '--bare', repoDir]);
+    execFileSync('git', ['init', '--quiet', '--bare', repoDir]);
 
     // Create a temporary working copy to make commits
     const workDir = path.join(tmpDir, 'work');
-    execFileSync('git', ['clone', repoDir, workDir]);
+    execFileSync('git', ['clone', '--quiet', repoDir, workDir], { stdio: 'pipe' });
     fs.writeFileSync(path.join(workDir, 'hello.txt'), 'hello\n');
     execFileSync('git', ['add', '.'], { cwd: workDir });
-    execFileSync('git', ['commit', '-m', 'init'], { cwd: workDir });
-    execFileSync('git', ['push'], { cwd: workDir });
+    execFileSync('git', ['commit', '--quiet', '-m', 'init'], { cwd: workDir });
+    execFileSync('git', ['push', '--quiet'], { cwd: workDir });
   });
 
   afterEach(() => {

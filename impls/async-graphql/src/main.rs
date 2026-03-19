@@ -64,7 +64,8 @@ fn build_schema_v2(
         .as_ref()
         .and_then(|s| s.mutation.as_ref().map(|n| n.node.to_string()));
 
-    let mut builder = Schema::build(&query_name, mutation_name.as_deref(), None);
+    let mut builder = Schema::build(&query_name, mutation_name.as_deref(), None)
+        .validation_mode(async_graphql::ValidationMode::Fast);
 
     for td in &type_defs {
         let name = td.name.node.to_string();

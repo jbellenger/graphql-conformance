@@ -40,7 +40,7 @@ if (runs.length === 0) {
   process.exit(1);
 }
 
-const outDir = path.join(__dirname, 'data');
+const outDir = process.env.SITE_DATA_DIR || path.join(__dirname, 'data');
 
 // summary.json
 const latest = runs[0];

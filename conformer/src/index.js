@@ -7,11 +7,11 @@ const { runHarness } = require('./runner');
 const { getVersion } = require('./builder');
 const { compareResults } = require('./compare');
 const { getToolEnv } = require('./tools');
-const { ResultsStore } = require('../results');
+const { ResultsStore } = require('../../results');
 
 function generateRunId() {
   const now = new Date();
-  return now.toISOString().replace(/:/g, '-').replace(/\.\d+Z$/, 'Z');
+  return now.toISOString().replace(/:/g, '-').replace(/\./g, '-').replace(/Z$/, 'Z');
 }
 
 async function runImpl(impl, rootDir, args, env) {
@@ -55,8 +55,8 @@ async function main() {
   const env = getToolEnv(rootDir);
 
   // Determine which conformants to skip (incremental runs)
-  const resultsDir = path.join(baseDir, 'results', 'data');
-  const store = new ResultsStore(resultsDir);
+  const resultsDir = process.env.RESULTS_DIR || path.join(rootDir, 'results', 'data');
+  const store = ResultsStore.fromDirectory(resultsDir);
   const skippedConformants = {};
   const priorRun = store.loadLatestRun();
 

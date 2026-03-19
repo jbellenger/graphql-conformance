@@ -7,18 +7,6 @@ const path = require('path');
 const os = require('os');
 const { ResultsStore } = require('./index');
 
-let tmpDir;
-let store;
-
-beforeEach(() => {
-  tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'results-test-'));
-  store = new ResultsStore(tmpDir);
-});
-
-afterEach(() => {
-  fs.rmSync(tmpDir, { recursive: true, force: true });
-});
-
 function makeRun(overrides = {}) {
   return {
     id: overrides.id || '2026-03-17T22-42-11Z',
@@ -38,40 +26,9 @@ function makeRun(overrides = {}) {
 }
 
 describe('ResultsStore', () => {
-  describe('recordRun', () => {
-    it('writes run metadata and failures', () => {
-      store.recordRun(makeRun());
-
-      const runFile = path.join(tmpDir, 'runs', '2026-03-17T22-42-11Z.json');
-      assert.ok(fs.existsSync(runFile));
-      const run = JSON.parse(fs.readFileSync(runFile, 'utf8'));
-      assert.equal(run.conformants['graphql-java'].total, 3);
-      assert.equal(run.conformants['graphql-java'].passed, 2);
-
-      const failFile = path.join(tmpDir, 'failures', 'graphql-java', '2026-03-17T22-42-11Z.json');
-      assert.ok(fs.existsSync(failFile));
-      const failures = JSON.parse(fs.readFileSync(failFile, 'utf8'));
-      assert.equal(failures.length, 1);
-      assert.equal(failures[0].testKey, 'g/h/i');
-    });
-
-    it('does not write failures file when all tests pass', () => {
-      store.recordRun(makeRun({
-        conformants: {
-          'graphql-java': {
-            sha: 'def456',
-            tests: { 'a/b/c': { matches: true, quirks: [] } },
-          },
-        },
-      }));
-
-      const failDir = path.join(tmpDir, 'failures', 'graphql-java');
-      assert.ok(!fs.existsSync(failDir));
-    });
-  });
-
-  describe('listRuns', () => {
-    it('returns runs in reverse chronological order', () => {
+  describe('recordRun + listRuns', () => {
+    it('records and lists runs in reverse chronological order', () => {
+      const store = ResultsStore.inMemory();
       store.recordRun(makeRun({ id: 'run-1', timestamp: '2026-03-15T00:00:00Z' }));
       store.recordRun(makeRun({ id: 'run-2', timestamp: '2026-03-16T00:00:00Z' }));
 
@@ -82,12 +39,13 @@ describe('ResultsStore', () => {
     });
 
     it('returns empty for no runs', () => {
-      assert.deepStrictEqual(store.listRuns(), []);
+      assert.deepStrictEqual(ResultsStore.inMemory().listRuns(), []);
     });
   });
 
   describe('getSummary', () => {
     it('returns pass percentage for each impl', () => {
+      const store = ResultsStore.inMemory();
       store.recordRun(makeRun());
 
       const summary = store.getSummary();
@@ -102,6 +60,7 @@ describe('ResultsStore', () => {
 
   describe('getImplHistory', () => {
     it('returns history across runs', () => {
+      const store = ResultsStore.inMemory();
       store.recordRun(makeRun({ id: 'run-1', timestamp: '2026-03-15T00:00:00Z' }));
       store.recordRun(makeRun({
         id: 'run-2',
@@ -129,6 +88,7 @@ describe('ResultsStore', () => {
 
   describe('getImplFailures', () => {
     it('returns failures for latest run', () => {
+      const store = ResultsStore.inMemory();
       store.recordRun(makeRun());
 
       const failures = store.getImplFailures('graphql-java');
@@ -137,6 +97,7 @@ describe('ResultsStore', () => {
     });
 
     it('returns empty when all tests pass', () => {
+      const store = ResultsStore.inMemory();
       store.recordRun(makeRun({
         conformants: {
           'graphql-java': {
@@ -152,6 +113,7 @@ describe('ResultsStore', () => {
 
   describe('getTestStatus', () => {
     it('returns per-impl status for a test', () => {
+      const store = ResultsStore.inMemory();
       store.recordRun(makeRun({
         conformants: {
           'graphql-java': {
@@ -179,6 +141,7 @@ describe('ResultsStore', () => {
 
   describe('loadLatestRun', () => {
     it('reconstructs run with failures', () => {
+      const store = ResultsStore.inMemory();
       store.recordRun(makeRun());
 
       const run = store.loadLatestRun();
@@ -193,7 +156,41 @@ describe('ResultsStore', () => {
     });
 
     it('returns null when no runs exist', () => {
-      assert.equal(store.loadLatestRun(), null);
+      assert.equal(ResultsStore.inMemory().loadLatestRun(), null);
     });
+  });
+});
+
+describe('FileData', () => {
+  let tmpDir;
+
+  beforeEach(() => {
+    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'results-test-'));
+  });
+
+  afterEach(() => {
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+  });
+
+  it('writes run and failure files to disk', () => {
+    const store = ResultsStore.fromDirectory(tmpDir);
+    store.recordRun(makeRun());
+
+    assert.ok(fs.existsSync(path.join(tmpDir, 'runs', '2026-03-17T22-42-11Z.json')));
+    assert.ok(fs.existsSync(path.join(tmpDir, 'failures', 'graphql-java', '2026-03-17T22-42-11Z.json')));
+  });
+
+  it('does not write failures file when all tests pass', () => {
+    const store = ResultsStore.fromDirectory(tmpDir);
+    store.recordRun(makeRun({
+      conformants: {
+        'graphql-java': {
+          sha: 'def456',
+          tests: { 'a/b/c': { matches: true, quirks: [] } },
+        },
+      },
+    }));
+
+    assert.ok(!fs.existsSync(path.join(tmpDir, 'failures', 'graphql-java')));
   });
 });

@@ -20,7 +20,7 @@ test:
 	GIT_CONFIG_COUNT=2 \
 	GIT_CONFIG_KEY_0=advice.defaultBranchName GIT_CONFIG_VALUE_0=false \
 	GIT_CONFIG_KEY_1=init.defaultBranch GIT_CONFIG_VALUE_1=main \
-	node --test src/*.test.js
+	node --test src/*.test.js ../results/index.test.js
 	for dir in $(IMPL_DIRS); do \
 		if [ -f "$$dir/Makefile" ]; then \
 			echo "Testing $$dir..."; \

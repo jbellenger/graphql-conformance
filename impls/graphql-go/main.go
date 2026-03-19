@@ -146,6 +146,28 @@ func (sb *SchemaBuilder) Build() (graphql.Schema, error) {
 		}
 	}
 
+	// Register custom directives from the schema.
+	for name, dir := range sb.astSchema.Directives {
+		if dir.Position != nil && dir.Position.Src != nil && dir.Position.Src.BuiltIn {
+			continue
+		}
+		var locations []string
+		for _, loc := range dir.Locations {
+			locations = append(locations, string(loc))
+		}
+		args := graphql.FieldConfigArgument{}
+		for _, arg := range dir.Arguments {
+			args[arg.Name] = &graphql.ArgumentConfig{
+				Type: sb.resolveInputType(arg.Type),
+			}
+		}
+		config.Directives = append(config.Directives, graphql.NewDirective(graphql.DirectiveConfig{
+			Name:      name,
+			Locations: locations,
+			Args:      args,
+		}))
+	}
+
 	return graphql.NewSchema(config)
 }
 

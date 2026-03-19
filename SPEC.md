@@ -231,8 +231,48 @@ Each test result is an object `{ "matches": <bool>, "quirks": [<string>, ...] }`
 
 ## Results
 
-The coordinator writes results to `conformer/results/`. Each run creates a new JSON
-file and updates an index.
+The coordinator writes results to `results/data/` using a failures-only storage model
+(passing tests are not stored; absence from the failures file means pass). The
+`ResultsStore` class (`results/index.js`) provides a read/write API over this data.
+
+**`results/data/` is semi-sacred.** External systems (dashboards, links) may reference
+specific run IDs. Deleting or modifying this data constitutes a breaking change. Tests
+must never write to or delete from `results/data/` — use `MemoryResultsStore`
+(`results/memory.js`) or a temporary directory with `RESULTS_DIR` env var instead.
+
+### On-disk format
+
+```
+results/data/
+  runs/
+    <run-id>.json              # run metadata + per-conformant summary
+  failures/
+    <conformant-name>/
+      <run-id>.json            # array of failing test keys
+```
+
+### ResultsStore API
+
+```js
+const { ResultsStore, MemoryResultsStore } = require('./results');
+
+// Production: file-backed
+const store = new ResultsStore('results/data');
+
+// Tests: in-memory (same API, no disk I/O)
+const testStore = new MemoryResultsStore();
+
+store.recordRun(runResult);       // write a run
+store.listRuns();                 // [{id, timestamp, reference}]
+store.getSummary();               // [{impl, passPct, total, failed, lastRun, sha}]
+store.getImplHistory(name);       // [{date, passPct, total, failed}]
+store.getImplFailures(name);      // [{testKey, quirks}]
+store.getTestStatus(testKey);     // [{impl, passes, quirks}]
+store.loadLatestRun();            // full run object with failures reconstructed
+```
+
+The conformer respects a `RESULTS_DIR` environment variable to override the default
+results location, used by integration tests to avoid touching production data.
 
 ### Run ID format
 

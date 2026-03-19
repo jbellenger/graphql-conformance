@@ -1,3 +1,6 @@
+directive @customSchemaDirective(reason: String) on FIELD_DEFINITION
+directive @customQueryDirective(label: String) on FIELD
+
 enum Color {
   RED
   GREEN
@@ -60,7 +63,7 @@ type SortNB implements CaseInterface {
 type Query {
   intField: Int
   floatField: Float
-  stringField: String
+  stringField: String @customSchemaDirective(reason: "test")
   booleanField: Boolean
   idField: ID
   enumField: Color

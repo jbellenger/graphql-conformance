@@ -1,5 +1,5 @@
 {
-  intField
+  intField @customQueryDirective(label: "test")
   floatField
   stringField
   booleanField

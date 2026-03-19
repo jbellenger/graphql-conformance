@@ -2,17 +2,49 @@
 
 const fs = require('fs');
 const path = require('path');
+const { MemoryData } = require('./memory');
 
-class ResultsStore {
+class FileData {
   constructor(baseDir) {
     this.baseDir = baseDir;
-    this.runsDir = path.join(baseDir, 'runs');
-    this.failuresDir = path.join(baseDir, 'failures');
+  }
+
+  get(key) {
+    const filePath = path.join(this.baseDir, `${key}.json`);
+    if (!fs.existsSync(filePath)) return null;
+    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  }
+
+  put(key, value) {
+    const filePath = path.join(this.baseDir, `${key}.json`);
+    fs.mkdirSync(path.dirname(filePath), { recursive: true });
+    fs.writeFileSync(filePath, JSON.stringify(value, null, 2) + '\n');
+  }
+
+  list(prefix) {
+    const dir = path.join(this.baseDir, prefix);
+    if (!fs.existsSync(dir)) return [];
+    return fs.readdirSync(dir)
+      .filter((f) => f.endsWith('.json'))
+      .map((f) => f.replace(/\.json$/, ''))
+      .sort();
+  }
+}
+
+class ResultsStore {
+  constructor(data) {
+    this._data = data;
+  }
+
+  static fromDirectory(baseDir) {
+    return new ResultsStore(new FileData(baseDir));
+  }
+
+  static inMemory() {
+    return new ResultsStore(new MemoryData());
   }
 
   recordRun(runResult) {
-    fs.mkdirSync(this.runsDir, { recursive: true });
-
     const conformants = {};
     for (const [name, conformant] of Object.entries(runResult.conformants)) {
       const tests = conformant.tests;
@@ -29,37 +61,23 @@ class ResultsStore {
       }
 
       if (failures.length > 0) {
-        const implFailuresDir = path.join(this.failuresDir, name);
-        fs.mkdirSync(implFailuresDir, { recursive: true });
-        fs.writeFileSync(
-          path.join(implFailuresDir, `${runResult.id}.json`),
-          JSON.stringify(failures, null, 2) + '\n'
-        );
+        this._data.put(`failures/${name}/${runResult.id}`, failures);
       }
     }
 
-    const runFile = {
+    this._data.put(`runs/${runResult.id}`, {
       id: runResult.id,
       timestamp: runResult.timestamp,
       reference: runResult.reference,
       conformants,
-    };
-
-    fs.writeFileSync(
-      path.join(this.runsDir, `${runResult.id}.json`),
-      JSON.stringify(runFile, null, 2) + '\n'
-    );
+    });
   }
 
   listRuns() {
-    if (!fs.existsSync(this.runsDir)) return [];
-
-    return fs.readdirSync(this.runsDir)
-      .filter((f) => f.endsWith('.json'))
-      .sort()
+    return this._data.list('runs')
       .reverse()
-      .map((f) => {
-        const run = JSON.parse(fs.readFileSync(path.join(this.runsDir, f), 'utf8'));
+      .map((id) => {
+        const run = this._data.get(`runs/${id}`);
         return { id: run.id, timestamp: run.timestamp, reference: run.reference };
       });
   }
@@ -85,12 +103,11 @@ class ResultsStore {
       .reverse()
       .map((r) => {
         const c = r.conformants[name];
-        const failed = c.total - c.passed;
         return {
           date: r.timestamp.slice(0, 10),
           passPct: c.total > 0 ? Math.round((c.passed / c.total) * 1000) / 10 : 100,
           total: c.total,
-          failed,
+          failed: c.total - c.passed,
         };
       });
   }
@@ -100,10 +117,7 @@ class ResultsStore {
     if (runs.length === 0) return [];
 
     const latestRun = runs[0];
-    const failuresFile = path.join(this.failuresDir, name, `${latestRun.id}.json`);
-    if (!fs.existsSync(failuresFile)) return [];
-
-    return JSON.parse(fs.readFileSync(failuresFile, 'utf8'));
+    return this._data.get(`failures/${name}/${latestRun.id}`) || [];
   }
 
   getTestStatus(testKey) {
@@ -144,7 +158,6 @@ class ResultsStore {
       for (const f of failures) {
         tests[f.testKey] = { matches: false, quirks: f.quirks };
       }
-
       result.conformants[cName] = { sha: c.sha, tests, total: c.total, passed: c.passed };
     }
 
@@ -152,14 +165,10 @@ class ResultsStore {
   }
 
   _loadAllRuns() {
-    if (!fs.existsSync(this.runsDir)) return [];
-
-    return fs.readdirSync(this.runsDir)
-      .filter((f) => f.endsWith('.json'))
-      .sort()
+    return this._data.list('runs')
       .reverse()
-      .map((f) => JSON.parse(fs.readFileSync(path.join(this.runsDir, f), 'utf8')));
+      .map((id) => this._data.get(`runs/${id}`));
   }
 }
 
-module.exports = { ResultsStore };
+module.exports = { ResultsStore, FileData, MemoryData };
