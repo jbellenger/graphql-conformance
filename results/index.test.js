@@ -205,7 +205,7 @@ describe('ResultsStore', () => {
         },
       }));
 
-      const run = store.loadLatestRun();
+      const run = store.loadLatestRunSummary();
       assert.equal(run.reference.errors, 1);
       assert.equal(run.reference.failures.length, 1);
       assert.equal(run.reference.failures[0].testKey, 'x/y/z');
@@ -221,23 +221,48 @@ describe('ResultsStore', () => {
   });
 
   describe('loadLatestRun', () => {
-    it('reconstructs run with failures', () => {
+    it('returns an explicit failure-only summary', () => {
       const store = ResultsStore.inMemory();
       store.recordRun(makeRun());
 
-      const run = store.loadLatestRun();
+      const run = store.loadLatestRunSummary();
       assert.equal(run.id, '2026-03-17T22-42-11Z');
       assert.equal(run.reference.name, 'graphql-js');
 
       const java = run.conformants['graphql-java'];
       assert.equal(java.total, 3);
       assert.equal(java.passed, 2);
-      assert.ok(java.tests['g/h/i']);
-      assert.equal(java.tests['g/h/i'].matches, false);
+      assert.ok(java.failuresByTestKey['g/h/i']);
+      assert.equal(java.failuresByTestKey['g/h/i'].testKey, 'g/h/i');
     });
 
     it('returns null when no runs exist', () => {
-      assert.equal(ResultsStore.inMemory().loadLatestRun(), null);
+      assert.equal(ResultsStore.inMemory().loadLatestRunSummary(), null);
+    });
+  });
+
+  describe('getReferenceHistory', () => {
+    it('returns history for the reference implementation', () => {
+      const store = ResultsStore.inMemory();
+      store.recordRun(makeRun({
+        id: 'run-1',
+        timestamp: '2026-03-15T00:00:00Z',
+        reference: { name: 'graphql-js', sha: 'abc123', total: 4, errors: 1 },
+      }));
+      store.recordRun(makeRun({
+        id: 'run-2',
+        timestamp: '2026-03-16T00:00:00Z',
+        reference: { name: 'graphql-js', sha: 'def456', total: 4, errors: 0 },
+      }));
+
+      const history = store.getReferenceHistory();
+      assert.equal(history.length, 2);
+      assert.equal(history[0].date, '2026-03-15');
+      assert.equal(history[0].failed, 1);
+      assert.equal(history[0].passPct, 75);
+      assert.equal(history[1].date, '2026-03-16');
+      assert.equal(history[1].failed, 0);
+      assert.equal(history[1].passPct, 100);
     });
   });
 });

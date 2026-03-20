@@ -2,7 +2,7 @@
 
 const { describe, it } = require('node:test');
 const assert = require('node:assert/strict');
-const { deepEqual, unorderedEqual, compareResults } = require('./compare');
+const { deepEqual, unorderedEqual, normalizeHarnessError, compareResults } = require('./compare');
 
 describe('deepEqual', () => {
   it('identical primitives', () => {
@@ -143,9 +143,47 @@ describe('compareResults', () => {
     assert.deepStrictEqual(compareResults(a, b), { matches: false });
   });
 
-  it('both errored', () => {
-    const a = { error: 'timeout' };
-    const b = { error: 'crash' };
+  it('matching harness errors match', () => {
+    const a = { error: 'process exited with code 1' };
+    const b = { error: 'process exited with code 1' };
     assert.deepStrictEqual(compareResults(a, b), { matches: true });
+  });
+
+  it('different exit codes do not match', () => {
+    const a = { error: 'process exited with code 1' };
+    const b = { error: 'process exited with code 2' };
+    assert.deepStrictEqual(compareResults(a, b), { matches: false });
+  });
+
+  it('timeout vs crash do not match', () => {
+    const a = { error: 'timeout' };
+    const b = { error: 'spawn foo ENOENT' };
+    assert.deepStrictEqual(compareResults(a, b), { matches: false });
+  });
+
+  it('invalid JSON vs exit do not match', () => {
+    const a = { error: 'invalid JSON output' };
+    const b = { error: 'process exited with code 1' };
+    assert.deepStrictEqual(compareResults(a, b), { matches: false });
+  });
+});
+
+describe('normalizeHarnessError', () => {
+  it('normalizes timeout', () => {
+    assert.deepStrictEqual(normalizeHarnessError({ error: 'timeout' }), { kind: 'timeout' });
+  });
+
+  it('normalizes process exits', () => {
+    assert.deepStrictEqual(
+      normalizeHarnessError({ error: 'process exited with code 17' }),
+      { kind: 'exit', code: 17 },
+    );
+  });
+
+  it('normalizes invalid JSON output', () => {
+    assert.deepStrictEqual(
+      normalizeHarnessError({ error: 'invalid JSON output' }),
+      { kind: 'invalid-json' },
+    );
   });
 });

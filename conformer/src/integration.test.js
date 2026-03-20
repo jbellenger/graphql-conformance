@@ -7,8 +7,11 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 const { ResultsStore } = require('../../results');
+const { getVersion } = require('./builder');
+const { discoverCorpus } = require('./corpus');
 
 const baseDir = path.resolve(__dirname, '..');
+const rootDir = path.resolve(baseDir, '..');
 
 let tmpDir;
 let tmpResultsDir;
@@ -59,7 +62,7 @@ describe('integration: self-comparison', () => {
     execFileSync(cmd, args, opts);
 
     const store = ResultsStore.fromDirectory(tmpResultsDir);
-    const runResult = store.loadLatestRun();
+    const runResult = store.loadLatestRunSummary();
 
     assert.ok(runResult, 'should have a run result');
     assert.ok(runResult.timestamp);
@@ -81,7 +84,7 @@ describe('integration: incremental skip', () => {
     execFileSync(cmd, args, opts);
 
     const store1 = ResultsStore.fromDirectory(tmpResultsDir);
-    const run1 = store1.loadLatestRun();
+    const run1 = store1.loadLatestRunSummary();
 
     const run2proc = spawnSync(cmd, args, opts);
     assert.equal(run2proc.status, 0, 'second run should succeed');
@@ -97,9 +100,51 @@ describe('integration: incremental skip', () => {
     const run2 = store2.loadLatestRun();
 
     assert.deepStrictEqual(
-      run2.conformants['graphql-js-copy'].tests,
-      run1.conformants['graphql-js-copy'].tests,
+      run2.conformants['graphql-js-copy'].failuresByTestKey,
+      run1.conformants['graphql-js-copy'].failuresByTestKey,
       'skipped conformant should have same test results as prior run',
+    );
+  });
+
+  it('reuses failure-only skipped results without persisting passing test rows', () => {
+    fs.writeFileSync(tmpConfigPath, JSON.stringify(testConfig, null, 2));
+
+    const corpusTotal = discoverCorpus(path.join(rootDir, 'corpus')).length;
+    const refSha = getVersion(path.join(rootDir, 'impls', 'graphql-js-16'));
+    const conformantSha = getVersion(path.join(rootDir, 'impls', 'graphql-js-16'));
+    const store = ResultsStore.fromDirectory(tmpResultsDir);
+    store.recordRun({
+      id: 'prior-run',
+      timestamp: '2026-03-18T00:00:00.000Z',
+      reference: {
+        name: 'graphql-js-16',
+        sha: refSha,
+        total: corpusTotal,
+        errors: 0,
+      },
+      conformants: {
+        'graphql-js-copy': {
+          sha: conformantSha,
+          total: corpusTotal,
+          passed: corpusTotal - 1,
+          failuresByTestKey: {
+            '0/0': { testKey: '0/0', error: 'seeded mismatch' },
+          },
+        },
+      },
+    });
+
+    const { cmd, args, opts } = runConformer();
+    const result = spawnSync(cmd, args, opts);
+    assert.equal(result.status, 0, `stderr: ${result.stderr.toString()}`);
+    assert.match(result.stderr.toString(), /Skipping conformant \(graphql-js-copy\)/);
+
+    const latestRun = ResultsStore.fromDirectory(tmpResultsDir).loadLatestRunSummary();
+    assert.equal(latestRun.conformants['graphql-js-copy'].total, corpusTotal);
+    assert.equal(latestRun.conformants['graphql-js-copy'].passed, corpusTotal - 1);
+    assert.deepStrictEqual(
+      Object.keys(latestRun.conformants['graphql-js-copy'].failuresByTestKey),
+      ['0/0'],
     );
   });
 });

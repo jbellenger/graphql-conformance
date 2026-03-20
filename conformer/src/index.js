@@ -64,7 +64,7 @@ async function main() {
   const resultsDir = process.env.RESULTS_DIR || path.join(rootDir, 'results', 'data');
   const store = ResultsStore.fromDirectory(resultsDir);
   const skippedConformants = {};
-  const priorRun = store.loadLatestRun();
+  const priorRun = store.loadLatestRunSummary();
 
   const conformantsToRun = conformants.filter((conformant) => {
     const currentSha = conformantVersions[conformant.name];
@@ -75,7 +75,7 @@ async function main() {
       priorRun.conformants[conformant.name].sha === currentSha
     ) {
       process.stderr.write(`Skipping conformant (${conformant.name}): unchanged (sha ${currentSha.slice(0, 7)})\n`);
-      skippedConformants[conformant.name] = priorRun.conformants[conformant.name].tests;
+      skippedConformants[conformant.name] = priorRun.conformants[conformant.name].failuresByTestKey;
       return false;
     }
     return true;
@@ -119,7 +119,9 @@ async function main() {
 
   // Merge skipped conformant results
   for (const [name, tests] of Object.entries(skippedConformants)) {
-    conformantTests[name] = tests;
+    conformantTests[name] = Object.fromEntries(
+      Object.keys(tests).map((testKey) => [testKey, { matches: false }]),
+    );
   }
 
   // Build results object
@@ -128,16 +130,16 @@ async function main() {
 
   const conformantResults = {};
   for (const conformant of conformants) {
-    const entry = {
-      sha: conformantVersions[conformant.name],
-      tests: conformantTests[conformant.name],
-    };
+    const entry = { sha: conformantVersions[conformant.name] };
     if (skippedConformants[conformant.name] && priorRun) {
       const prior = priorRun.conformants[conformant.name];
       if (prior) {
         entry.total = prior.total;
         entry.passed = prior.passed;
+        entry.failuresByTestKey = prior.failuresByTestKey;
       }
+    } else {
+      entry.tests = conformantTests[conformant.name];
     }
     conformantResults[conformant.name] = entry;
   }

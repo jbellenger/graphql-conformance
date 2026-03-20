@@ -66,6 +66,6 @@ site/             static dashboard (reads from site/data/)
 
 1. Create `impls/<name>/` with code that implements the [Wiring Spec](SPEC.md)
 2. Add a `Makefile` with `build`, `test`, `clean` targets
-3. Add an entry to `conformer/config.json`
+3. Add an entry to `config.json`
 4. Add any new tool versions to `.mise.toml`
 5. Run `make build && make test`

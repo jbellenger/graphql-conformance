@@ -52,10 +52,11 @@ describe('buildImpl', () => {
     // Create a temporary working copy to make commits
     const workDir = path.join(tmpDir, 'work');
     execFileSync('git', ['clone', '--quiet', repoDir, workDir], { stdio: 'pipe' });
+    execFileSync('git', ['checkout', '-b', 'main'], { cwd: workDir });
     fs.writeFileSync(path.join(workDir, 'hello.txt'), 'hello\n');
     execFileSync('git', ['add', '.'], { cwd: workDir });
     execFileSync('git', ['commit', '--quiet', '-m', 'init'], { cwd: workDir });
-    execFileSync('git', ['push', '--quiet'], { cwd: workDir });
+    execFileSync('git', ['push', '--quiet', '--set-upstream', 'origin', 'main'], { cwd: workDir });
   });
 
   afterEach(() => {
@@ -119,5 +120,17 @@ describe('buildImpl', () => {
 
     assert.equal(result.ok, false);
     assert.ok(result.error);
+  });
+
+  it('returns error when branch does not exist', async () => {
+    const implDir = path.join(tmpDir, 'impl');
+    fs.mkdirSync(implDir);
+    fs.writeFileSync(path.join(implDir, 'Makefile'), '.PHONY: build\nbuild:\n\t@echo "built"\n');
+
+    const impl = { name: 'test', path: implDir, repo: repoDir, branch: 'missing-branch' };
+    const result = await buildImpl(impl, '/');
+
+    assert.equal(result.ok, false);
+    assert.match(result.error, /missing-branch|couldn't find remote ref|not our ref/i);
   });
 });

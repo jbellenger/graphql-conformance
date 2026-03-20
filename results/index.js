@@ -47,29 +47,19 @@ class ResultsStore {
   recordRun(runResult) {
     const conformants = {};
     for (const [name, conformant] of Object.entries(runResult.conformants)) {
-      const tests = conformant.tests;
-      // Use pre-computed totals if provided (e.g. for skipped conformants
-      // whose tests map only contains failures).
+      const tests = conformant.tests || null;
+      const failuresByTestKey = conformant.failuresByTestKey || {};
+      const failures = Object.keys(failuresByTestKey).length > 0
+        ? Object.values(failuresByTestKey)
+        : (tests ? this._collectFailuresFromTests(tests) : []);
       const total = conformant.total != null
         ? conformant.total
-        : Object.keys(tests).length;
+        : (tests ? Object.keys(tests).length : failures.length);
       const passed = conformant.passed != null
         ? conformant.passed
-        : Object.values(tests).filter((t) => t.matches).length;
+        : (tests ? Object.values(tests).filter((t) => t.matches).length : total - failures.length);
 
       conformants[name] = { sha: conformant.sha, total, passed };
-
-      const failures = [];
-      for (const [testKey, result] of Object.entries(tests)) {
-        if (!result.matches) {
-          const failure = { testKey };
-          if (result.expected) failure.expected = result.expected;
-          if (result.actual) failure.actual = result.actual;
-          if (result.error) failure.error = result.error;
-          if (result.stderr) failure.stderr = result.stderr;
-          failures.push(failure);
-        }
-      }
 
       if (failures.length > 0) {
         this._data.put(`failures/${name}/${runResult.id}`, failures);
@@ -139,7 +129,7 @@ class ResultsStore {
     if (runs.length === 0) return [];
 
     const latestRun = runs[0];
-    return this._data.get(`failures/${name}/${latestRun.id}`) || [];
+    return this._getFailuresForRun(name, latestRun.id);
   }
 
   getTestStatus(testKey) {
@@ -161,14 +151,13 @@ class ResultsStore {
     return results;
   }
 
-  loadLatestRun() {
+  loadLatestRunSummary() {
     const runs = this._loadAllRuns();
     if (runs.length === 0) return null;
 
     const latest = runs[0];
-    // Reconstruct reference failures from stored data
     const refFailures = latest.reference.name
-      ? (this._data.get(`failures/${latest.reference.name}/${latest.id}`) || [])
+      ? this._getFailuresForRun(latest.reference.name, latest.id)
       : [];
     const result = {
       id: latest.id,
@@ -178,21 +167,63 @@ class ResultsStore {
     };
 
     for (const [cName, c] of Object.entries(latest.conformants)) {
-      const failures = this.getImplFailures(cName);
-      const tests = {};
-      for (const f of failures) {
-        tests[f.testKey] = { matches: false };
-      }
-      result.conformants[cName] = { sha: c.sha, tests, total: c.total, passed: c.passed };
+      const failures = this._getFailuresForRun(cName, latest.id);
+      result.conformants[cName] = {
+        sha: c.sha,
+        total: c.total,
+        passed: c.passed,
+        failuresByTestKey: this._indexFailuresByTestKey(failures),
+      };
     }
 
     return result;
+  }
+
+  loadLatestRun() {
+    return this.loadLatestRunSummary();
+  }
+
+  getReferenceHistory() {
+    return this._loadAllRuns().reverse().map((r) => {
+      const total = r.reference.total || 0;
+      const errors = r.reference.errors || 0;
+      const passed = total - errors;
+      return {
+        date: r.timestamp.slice(0, 10),
+        passPct: total > 0 ? Math.round((passed / total) * 1000) / 10 : 100,
+        total,
+        failed: errors,
+      };
+    });
   }
 
   _loadAllRuns() {
     return this._data.list('runs')
       .reverse()
       .map((id) => this._data.get(`runs/${id}`));
+  }
+
+  _getFailuresForRun(name, runId) {
+    return this._data.get(`failures/${name}/${runId}`) || [];
+  }
+
+  _collectFailuresFromTests(tests) {
+    const failures = [];
+    for (const [testKey, result] of Object.entries(tests)) {
+      if (!result.matches) {
+        const failure = { testKey };
+        if (result.expected) failure.expected = result.expected;
+        if (result.actual) failure.actual = result.actual;
+        if (result.error) failure.error = result.error;
+        if (result.stderr) failure.stderr = result.stderr;
+        failures.push(failure);
+      }
+    }
+    return failures;
+  }
+
+  _indexFailuresByTestKey(failures) {
+    return Object.fromEntries(failures.map((failure) => [failure.testKey, failure]));
   }
 }
 

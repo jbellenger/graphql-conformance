@@ -1,9 +1,12 @@
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
-const { spawnSync } = require('child_process');
-const { getToolEnv } = require('./tools');
+const {
+  getRootDir,
+  loadConfig,
+  resolveImpl,
+  parseCorpusTestPath,
+  spawnImplSync,
+} = require('./impl-cli');
 
 const implName = process.argv[2];
 const testPath = process.argv[3];
@@ -14,47 +17,28 @@ if (!implName || !testPath) {
   process.exit(1);
 }
 
-const baseDir = path.resolve(__dirname, '..');
-const rootDir = path.resolve(baseDir, '..');
-const config = JSON.parse(fs.readFileSync(path.join(rootDir, 'config.json'), 'utf8'));
+const rootDir = getRootDir();
+const config = loadConfig(rootDir);
 
-const impl = config.impls[implName];
-if (!impl) {
+let impl;
+try {
+  impl = resolveImpl(config, implName);
+} catch (err) {
   process.stderr.write(`Unknown impl: ${implName}\n`);
-  process.stderr.write(`Available: ${Object.keys(config.impls).join(', ')}\n`);
+  process.stderr.write(`Available: ${err.available.join(', ')}\n`);
   process.exit(1);
 }
 
-// Decompose test path: corpus/<schema>/<query>[/<variables>]
-const absTestPath = path.resolve(rootDir, testPath);
-const parts = path.relative(path.join(rootDir, 'corpus'), absTestPath).split(path.sep);
-
-if (parts.length < 2) {
+let test;
+try {
+  test = parseCorpusTestPath(rootDir, testPath);
+} catch {
   process.stderr.write(`Invalid test path: ${testPath}\n`);
   process.stderr.write('Expected: corpus/<schema-hash>/<query-hash>[/<variables-hash>]\n');
   process.exit(1);
 }
 
-const schemaPath = path.join(rootDir, 'corpus', parts[0], 'schema.graphqls');
-const queryPath = path.join(rootDir, 'corpus', parts[0], parts[1], 'query.graphql');
-const variablesPath = parts.length >= 3
-  ? path.join(rootDir, 'corpus', parts[0], parts[1], parts[2], 'variables.json')
-  : null;
-
-const args = variablesPath
-  ? [schemaPath, queryPath, variablesPath]
-  : [schemaPath, queryPath];
-
-const implDir = path.resolve(rootDir, impl.path);
-const [cmd, ...cmdArgs] = impl.command;
-
-const env = getToolEnv(rootDir);
-const result = spawnSync(cmd, [...cmdArgs, ...args], {
-  cwd: implDir,
-  env,
-  stdio: ['pipe', 'pipe', 'pipe'],
-  timeout: 30_000,
-});
+const result = spawnImplSync(impl, rootDir, test.args);
 
 if (result.error) {
   process.stderr.write(`${result.error.message}\n`);

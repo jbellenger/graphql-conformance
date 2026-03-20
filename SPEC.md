@@ -109,7 +109,7 @@ The top-level `conformer/Makefile` orchestrates everything:
 
 ## Configuration
 
-The coordinator reads `conformer/config.json`:
+The coordinator reads root `config.json`:
 
     {
       "reference": {
@@ -254,21 +254,22 @@ results/data/
 ### ResultsStore API
 
 ```js
-const { ResultsStore, MemoryResultsStore } = require('./results');
+const { ResultsStore } = require('./results');
 
 // Production: file-backed
-const store = new ResultsStore('results/data');
+const store = ResultsStore.fromDirectory('results/data');
 
 // Tests: in-memory (same API, no disk I/O)
-const testStore = new MemoryResultsStore();
+const testStore = ResultsStore.inMemory();
 
 store.recordRun(runResult);       // write a run
 store.listRuns();                 // [{id, timestamp, reference}]
 store.getSummary();               // [{impl, passPct, total, failed, lastRun, sha}]
 store.getImplHistory(name);       // [{date, passPct, total, failed}]
-store.getImplFailures(name);      // [{testKey, quirks}]
-store.getTestStatus(testKey);     // [{impl, passes, quirks}]
-store.loadLatestRun();            // full run object with failures reconstructed
+store.getReferenceHistory();      // [{date, passPct, total, failed}]
+store.getImplFailures(name);      // [{testKey, error|expected|actual|stderr}]
+store.getTestStatus(testKey);     // [{impl, passes}]
+store.loadLatestRunSummary();     // latest run metadata + failure-only summaries
 ```
 
 The conformer respects a `RESULTS_DIR` environment variable to override the default
@@ -323,7 +324,7 @@ To add a new implementation:
 1. Create a directory under `conformer/impls/<name>/`
 2. Implement the Wiring Spec (below) using the target GraphQL library
 3. Create a `Makefile` with `build`, `test`, and `clean` targets
-4. Add an entry to `conformer/config.json` with `name`, `path`, `repo`, `branch`, and `command`
+4. Add an entry to `config.json` with `name`, `path`, `repo`, `branch`, and `command`
 
 The `Makefile` should have:
 - `build`: compile the conformer harness against the library source in `build/` (the

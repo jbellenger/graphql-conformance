@@ -16,6 +16,7 @@ async function buildImpl(impl, baseDir) {
   const implDir = path.resolve(baseDir, impl.path);
   const buildDir = path.join(implDir, 'build');
   const stampFile = path.join(implDir, '.built-sha');
+  const remoteRef = `refs/remotes/origin/${impl.branch}`;
 
   try {
     // Clone if not already cloned
@@ -23,15 +24,16 @@ async function buildImpl(impl, baseDir) {
       await execFileAsync('git', ['clone', '--quiet', impl.repo, buildDir], { timeout: BUILD_TIMEOUT_MS });
     }
 
-    // Fetch latest from remote
-    await execFileAsync('git', ['fetch', '--all', '--quiet'], { cwd: buildDir, timeout: BUILD_TIMEOUT_MS });
+    // Fetch the target branch explicitly so checkout does not depend on the remote HEAD layout.
+    await execFileAsync(
+      'git',
+      ['fetch', '--quiet', 'origin', `+refs/heads/${impl.branch}:${remoteRef}`],
+      { cwd: buildDir, timeout: BUILD_TIMEOUT_MS },
+    );
 
-    // Checkout detached HEAD at latest remote tip
-    await execFileAsync('git', ['checkout', '--quiet', `origin/${impl.branch}`], { cwd: buildDir, timeout: BUILD_TIMEOUT_MS });
-
-    // Read HEAD SHA
-    const { stdout: shaOut } = await execFileAsync('git', ['rev-parse', 'HEAD'], { cwd: buildDir });
+    const { stdout: shaOut } = await execFileAsync('git', ['rev-parse', remoteRef], { cwd: buildDir });
     const sha = shaOut.trim();
+    await execFileAsync('git', ['checkout', '--detach', '--quiet', sha], { cwd: buildDir, timeout: BUILD_TIMEOUT_MS });
 
     // Check stamp — skip build if already built at this SHA
     if (fs.existsSync(stampFile) && fs.readFileSync(stampFile, 'utf8').trim() === sha) {

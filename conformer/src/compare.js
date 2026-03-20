@@ -1,5 +1,20 @@
 'use strict';
 
+function normalizeHarnessError(result) {
+  if (!result || !result.error) return null;
+
+  const error = String(result.error);
+  if (error === 'timeout') return { kind: 'timeout' };
+  if (error === 'invalid JSON output') return { kind: 'invalid-json' };
+
+  const exitMatch = error.match(/^process exited with code (-?\d+)$/);
+  if (exitMatch) {
+    return { kind: 'exit', code: Number(exitMatch[1]) };
+  }
+
+  return { kind: 'runtime', message: error };
+}
+
 function deepEqual(a, b) {
   if (a === b) return true;
   if (a === null || b === null) return a === b;
@@ -41,9 +56,14 @@ function unorderedEqual(a, b) {
 }
 
 function compareResults(a, b) {
-  if (a.error && b.error) return { matches: true };
-  if (a.error) return { matches: false };
-  if (b.error) return { matches: false };
+  const errorA = normalizeHarnessError(a);
+  const errorB = normalizeHarnessError(b);
+
+  if (errorA && errorB) {
+    return { matches: deepEqual(errorA, errorB) };
+  }
+  if (errorA) return { matches: false };
+  if (errorB) return { matches: false };
 
   if (!deepEqual(a.result, b.result)) {
     if (unorderedEqual(a.result, b.result)) {
@@ -55,4 +75,4 @@ function compareResults(a, b) {
   return { matches: true };
 }
 
-module.exports = { deepEqual, unorderedEqual, compareResults };
+module.exports = { deepEqual, unorderedEqual, normalizeHarnessError, compareResults };
