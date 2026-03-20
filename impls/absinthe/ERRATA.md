@@ -46,15 +46,23 @@ Harness policy:
 
 This dedupe is treated as host-library import normalization, not as conformance leniency.
 
-### 5. Some corpus SDL files fail in Absinthe's SDL parser before directive semantics are reached
+### 5. Valid directive definitions can fail to parse because directive-location atoms must already exist in the VM
 
-Several corpus schemas fail with:
+Absinthe's parser converts directive locations in directive definitions using `binary_to_existing_atom/2` in `src/absinthe_parser.yrl`.
 
-`import_sdl could not parse SDL: syntax error before: ')'`
+Observed behavior on upstream `absinthe` commit `8e451950ea87083f50a06abf7b4246284bbe347d`:
+- valid SDL such as `directive @x on FRAGMENT_SPREAD` can fail during parsing with `not an already existing atom`
+- the failure depends on VM state; if a module has already loaded atoms such as `:fragment_spread` or `:input_field_definition`, the same SDL can parse successfully
+- this affects standard built-in executable/type-system directive locations such as `FRAGMENT_DEFINITION`, `FRAGMENT_SPREAD`, `INLINE_FRAGMENT`, `OBJECT`, and `INPUT_FIELD_DEFINITION`
 
-This happens in directive-heavy built-in SDL blocks before the harness's directive resolution logic runs.
+Important clarification:
+- multiline directive argument definitions are allowed by the GraphQL spec
+- Absinthe does parse multiline directive argument lists, including per-argument descriptions, when the directive uses a location such as `FIELD`
+- the corpus failure is therefore not a multiline-formatting issue; it is a parser bug in directive-location atom conversion
 
-This remains a separate parser limitation and should still count as an implementation failure unless a narrower, syntax-preserving workaround is justified.
+Harness policy:
+- do not "prime" the VM with these atoms as a silent workaround
+- treat this as a real parser defect in Absinthe's SDL handling
 
 ## Harness Policy
 
