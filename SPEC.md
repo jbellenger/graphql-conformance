@@ -77,7 +77,7 @@ build tools). When `make build` is run from `conformer/`, the coordinator:
 3. Runs `git fetch --all` to get latest from remote
 4. Checks out `origin/<branch>` (detached HEAD at latest remote tip)
 5. Compares HEAD SHA to `.built-sha` stamp — skips build if they match
-6. Runs `make build` in the impl directory (5-minute timeout)
+6. Runs `make build` in the impl directory (5-minute timeout by default; overrideable per impl)
 7. Writes the SHA to `.built-sha` on success
 
 Builds run in parallel (bounded by CPU count). A failed build is reported but does
@@ -139,6 +139,8 @@ Each entry has:
   are relative to the impl directory
 - `tools`: array of tool names required to build and run the impl (e.g. `["java", "maven"]`).
   These correspond to mise tool names. The coordinator checks availability before building.
+- `buildTimeoutMs` (optional): override for the impl build timeout in milliseconds. If omitted,
+  the coordinator uses the 5-minute default.
 
 Multiple impls can point at the same repo on different branches, e.g. to test both
 `main` and a release branch.
@@ -172,8 +174,11 @@ The command must:
    schema may use custom root type names via `schema { query: MyRoot }` — implementations
    must not assume the query root type is named `Query` (likewise for `Mutation` and
    `Subscription`).
-2. Parse and execute the query (with variables if provided)
-3. Print the GraphQL result as JSON to stdout
+2. Parse and execute the query (with variables if provided). Queries may include
+   `@defer` and `@stream`.
+3. Print a single synchronous GraphQL result as JSON to stdout. Implementations must
+   not emit multipart or streamed output; if the underlying library supports
+   incremental delivery, the harness must normalize it to one JSON result.
 4. Exit with code 0 on success
 
 For example, the graphql-js reference implementation runs `node index.js` which
@@ -369,3 +374,6 @@ Each implementation will wire its schema such that:
 - every interface is resolved as the lexicographically last implementing type
 - every list field returns exactly 2 items
 - every enum field returns its first declared value
+- queries may include `@defer` and `@stream`, but execution for this framework is
+  always synchronous: the implementation must produce one final JSON result rather
+  than incremental patches or streamed payloads

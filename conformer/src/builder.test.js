@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 const { execFileSync } = require('child_process');
-const { getVersion, buildImpl } = require('./builder');
+const { DEFAULT_BUILD_TIMEOUT_MS, getVersion, buildImpl, getBuildTimeoutMs } = require('./builder');
 
 describe('getVersion', () => {
   let tmpDir;
@@ -132,5 +132,15 @@ describe('buildImpl', () => {
 
     assert.equal(result.ok, false);
     assert.match(result.error, /missing-branch|couldn't find remote ref|not our ref/i);
+  });
+});
+
+describe('getBuildTimeoutMs', () => {
+  it('uses the default timeout when impl does not override it', () => {
+    assert.equal(getBuildTimeoutMs({}), DEFAULT_BUILD_TIMEOUT_MS);
+  });
+
+  it('uses the impl-specific timeout override when provided', () => {
+    assert.equal(getBuildTimeoutMs({ buildTimeoutMs: 1234 }), 1234);
   });
 });

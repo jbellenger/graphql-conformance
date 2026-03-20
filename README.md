@@ -11,9 +11,11 @@ Implementations tested:
 - [graphql-js 16](https://github.com/graphql/graphql-js/tree/16.x.x) (reference)
 - [graphql-js 17](https://github.com/graphql/graphql-js/tree/17.x.x)
 - [graphql-java](https://github.com/graphql-java/graphql-java)
+- [Viaduct](https://github.com/airbnb/viaduct)
 - [graphql-go](https://github.com/graphql-go/graphql)
 - [gqlgen](https://github.com/99designs/gqlgen)
 - [Hot Chocolate](https://github.com/ChilliCream/graphql-platform)
+- [graphql-dotnet](https://github.com/graphql-dotnet/graphql-dotnet)
 - [async-graphql](https://github.com/async-graphql/async-graphql)
 - [Juniper](https://github.com/graphql-rust/juniper)
 

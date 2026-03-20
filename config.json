@@ -13,10 +13,23 @@
       "branch": "17.x.x",
       "command": ["node", "index.js"]
     },
+    "grafast": {
+      "path": "./impls/grafast",
+      "repo": "https://github.com/graphile/crystal",
+      "branch": "main",
+      "command": ["node", "index.js"],
+      "buildTimeoutMs": 600000
+    },
     "graphql-java": {
       "path": "./impls/graphql-java",
       "repo": "https://github.com/graphql-java/graphql-java",
       "branch": "master",
+      "command": ["java", "-jar", "target/conformer-1.0.jar"]
+    },
+    "viaduct": {
+      "path": "./impls/viaduct",
+      "repo": "https://github.com/airbnb/viaduct",
+      "branch": "main",
       "command": ["java", "-jar", "target/conformer-1.0.jar"]
     },
     "graphql-go": {
@@ -29,6 +42,12 @@
       "path": "./impls/hot-chocolate",
       "repo": "https://github.com/ChilliCream/graphql-platform",
       "branch": "main",
+      "command": ["dotnet", "out/Conformer.dll"]
+    },
+    "graphql-dotnet": {
+      "path": "./impls/graphql-dotnet",
+      "repo": "https://github.com/graphql-dotnet/graphql-dotnet",
+      "branch": "master",
       "command": ["dotnet", "out/Conformer.dll"]
     },
     "async-graphql": {
