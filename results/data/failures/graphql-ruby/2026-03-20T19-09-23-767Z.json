@@ -1,0 +1,1470 @@
+[
+  {
+    "testKey": "01b1eb27/23a38766/44136fa3",
+    "expected": {
+      "data": {
+        "Vn2PZKtLf": "Object_xhMJK"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:165:in 'block in GraphQL::Schema::Directive#initialize': @Directive_G0tdye6eFQ.ccMXh on Object_xCPzW6AhOH.xOjIDym is invalid ({zz_l9bd_nfex: true}): 'Input_d19S4VSNGB' requires exactly one argument, but 0 were provided. (GraphQL::Schema::Directive::InvalidArgumentError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:131:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:131:in 'GraphQL::Schema::Directive#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:43:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:43:in 'GraphQL::Schema::Member::HasDirectives.add_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:24:in 'GraphQL::Schema::Member::HasDirectives#directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/field.rb:357:in 'block in GraphQL::Schema::Field#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/field.rb:356:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/field.rb:356:in 'GraphQL::Schema::Field#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_fields.rb:89:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_fields.rb:89:in 'GraphQL::Schema::Member::HasFields#field'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:503:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_fields'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:501:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:501:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_fields'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:412:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:406:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:406:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:406:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:260:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:102:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:85:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:85:in 'GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "01b1eb27/5f87fe9a/44136fa3",
+    "expected": {
+      "data": {
+        "y2f": {
+          "jml": {
+            "__typename": "Object_xhMJK"
+          }
+        }
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:165:in 'block in GraphQL::Schema::Directive#initialize': @Directive_G0tdye6eFQ.ccMXh on Object_xCPzW6AhOH.xOjIDym is invalid ({zz_l9bd_nfex: true}): 'Input_d19S4VSNGB' requires exactly one argument, but 0 were provided. (GraphQL::Schema::Directive::InvalidArgumentError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:131:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:131:in 'GraphQL::Schema::Directive#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:43:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:43:in 'GraphQL::Schema::Member::HasDirectives.add_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:24:in 'GraphQL::Schema::Member::HasDirectives#directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/field.rb:357:in 'block in GraphQL::Schema::Field#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/field.rb:356:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/field.rb:356:in 'GraphQL::Schema::Field#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_fields.rb:89:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_fields.rb:89:in 'GraphQL::Schema::Member::HasFields#field'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:503:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_fields'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:501:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:501:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_fields'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:412:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:406:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:406:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:406:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:260:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:102:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:85:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:85:in 'GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "01b1eb27/88221b41/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_xhMJK",
+        "jml": {
+          "__typename": "Object_xhMJK"
+        },
+        "lc6h": {
+          "__typename": "Object_rdgMD"
+        }
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:165:in 'block in GraphQL::Schema::Directive#initialize': @Directive_G0tdye6eFQ.ccMXh on Object_xCPzW6AhOH.xOjIDym is invalid ({zz_l9bd_nfex: true}): 'Input_d19S4VSNGB' requires exactly one argument, but 0 were provided. (GraphQL::Schema::Directive::InvalidArgumentError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:131:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:131:in 'GraphQL::Schema::Directive#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:43:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:43:in 'GraphQL::Schema::Member::HasDirectives.add_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:24:in 'GraphQL::Schema::Member::HasDirectives#directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/field.rb:357:in 'block in GraphQL::Schema::Field#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/field.rb:356:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/field.rb:356:in 'GraphQL::Schema::Field#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_fields.rb:89:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_fields.rb:89:in 'GraphQL::Schema::Member::HasFields#field'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:503:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_fields'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:501:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:501:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_fields'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:412:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:406:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:406:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:406:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:260:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:102:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:85:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:85:in 'GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "01b1eb27/b6789d3e/541fdb1a",
+    "expected": {
+      "data": {
+        "__typename": "Object_xhMJK"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:165:in 'block in GraphQL::Schema::Directive#initialize': @Directive_G0tdye6eFQ.ccMXh on Object_xCPzW6AhOH.xOjIDym is invalid ({zz_l9bd_nfex: true}): 'Input_d19S4VSNGB' requires exactly one argument, but 0 were provided. (GraphQL::Schema::Directive::InvalidArgumentError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:131:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:131:in 'GraphQL::Schema::Directive#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:43:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:43:in 'GraphQL::Schema::Member::HasDirectives.add_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:24:in 'GraphQL::Schema::Member::HasDirectives#directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/field.rb:357:in 'block in GraphQL::Schema::Field#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/field.rb:356:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/field.rb:356:in 'GraphQL::Schema::Field#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_fields.rb:89:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_fields.rb:89:in 'GraphQL::Schema::Member::HasFields#field'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:503:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_fields'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:501:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:501:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_fields'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:412:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:406:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:406:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:406:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:260:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:102:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:85:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:85:in 'GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "01b1eb27/b6789d3e/80b14989",
+    "expected": {
+      "data": {
+        "__typename": "Object_xhMJK"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:165:in 'block in GraphQL::Schema::Directive#initialize': @Directive_G0tdye6eFQ.ccMXh on Object_xCPzW6AhOH.xOjIDym is invalid ({zz_l9bd_nfex: true}): 'Input_d19S4VSNGB' requires exactly one argument, but 0 were provided. (GraphQL::Schema::Directive::InvalidArgumentError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:131:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:131:in 'GraphQL::Schema::Directive#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:43:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:43:in 'GraphQL::Schema::Member::HasDirectives.add_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:24:in 'GraphQL::Schema::Member::HasDirectives#directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/field.rb:357:in 'block in GraphQL::Schema::Field#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/field.rb:356:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/field.rb:356:in 'GraphQL::Schema::Field#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_fields.rb:89:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_fields.rb:89:in 'GraphQL::Schema::Member::HasFields#field'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:503:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_fields'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:501:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:501:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_fields'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:412:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:406:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:406:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:406:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:260:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:102:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:85:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:85:in 'GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "01b1eb27/f9864e67/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_xhMJK"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:165:in 'block in GraphQL::Schema::Directive#initialize': @Directive_G0tdye6eFQ.ccMXh on Object_xCPzW6AhOH.xOjIDym is invalid ({zz_l9bd_nfex: true}): 'Input_d19S4VSNGB' requires exactly one argument, but 0 were provided. (GraphQL::Schema::Directive::InvalidArgumentError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:131:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:131:in 'GraphQL::Schema::Directive#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:43:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:43:in 'GraphQL::Schema::Member::HasDirectives.add_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:24:in 'GraphQL::Schema::Member::HasDirectives#directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/field.rb:357:in 'block in GraphQL::Schema::Field#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/field.rb:356:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/field.rb:356:in 'GraphQL::Schema::Field#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_fields.rb:89:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_fields.rb:89:in 'GraphQL::Schema::Member::HasFields#field'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:503:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_fields'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:501:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:501:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_fields'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:412:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:406:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:406:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:406:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:260:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:102:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:85:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:85:in 'GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "071edbbb/48d27e15/44136fa3",
+    "expected": {
+      "data": {}
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object__U4m7"
+      }
+    }
+  },
+  {
+    "testKey": "071edbbb/5eb2c409/8df24850",
+    "expected": {
+      "data": {
+        "__typename": "Object__U4m7",
+        "JD": "Object__U4m7",
+        "hLoFFj9Y": 3.14
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object__U4m7",
+        "OHX3ya7SL": "Object__U4m7",
+        "JD": "Object__U4m7",
+        "hLoFFj9Y": 3.14
+      }
+    }
+  },
+  {
+    "testKey": "071edbbb/5eb2c409/d17ea730",
+    "expected": {
+      "data": {
+        "__typename": "Object__U4m7",
+        "JD": "Object__U4m7",
+        "hLoFFj9Y": 3.14
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object__U4m7",
+        "OHX3ya7SL": "Object__U4m7",
+        "JD": "Object__U4m7",
+        "hLoFFj9Y": 3.14
+      }
+    }
+  },
+  {
+    "testKey": "071edbbb/7aca73ae/44136fa3",
+    "expected": {
+      "data": {
+        "d": 3.14,
+        "zVgPWdy": {
+          "ZTmvjGTJ": 3.14,
+          "__typename": "Object_o3Zl4gj"
+        },
+        "__typename": "Object__U4m7"
+      }
+    },
+    "actual": {
+      "data": {
+        "d": 3.14,
+        "zVgPWdy": {
+          "ZTmvjGTJ": 3.14,
+          "__typename": "Object_o3Zl4gj"
+        },
+        "UGCWau": "Gpb",
+        "__typename": "Object__U4m7"
+      }
+    }
+  },
+  {
+    "testKey": "4c25e818/732a6b2c/34acf720",
+    "expected": {
+      "data": {
+        "kw6Q": {
+          "__typename": "Interface_wdU_STUB"
+        },
+        "__typename": "Object_m",
+        "vfVX": {
+          "__typename": "Interface_wdU_STUB",
+          "wx4CE3a": {
+            "wx4CE3a": {
+              "wx4CE3a": {
+                "kRhnf": "Interface_wdU_STUB"
+              }
+            },
+            "__typename": "Interface_wdU_STUB"
+          }
+        }
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_lG, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 33,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_B9"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_lG"
+          }
+        },
+        {
+          "message": "Fragment Fragment_Ox_ was defined, but not used",
+          "locations": [
+            {
+              "line": 29,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_Ox_"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_Ox_"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "4c25e818/732a6b2c/7dd6a1cb",
+    "expected": {
+      "data": {
+        "kw6Q": {
+          "__typename": "Interface_wdU_STUB"
+        },
+        "__typename": "Object_m",
+        "vfVX": {
+          "__typename": "Interface_wdU_STUB",
+          "wx4CE3a": {
+            "wx4CE3a": {
+              "wx4CE3a": {
+                "kRhnf": "Interface_wdU_STUB"
+              }
+            },
+            "__typename": "Interface_wdU_STUB"
+          }
+        }
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_lG, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 33,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_B9"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_lG"
+          }
+        },
+        {
+          "message": "Fragment Fragment_Ox_ was defined, but not used",
+          "locations": [
+            {
+              "line": 29,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_Ox_"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_Ox_"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "4c25e818/8072b453/690b1bca",
+    "expected": {
+      "data": {}
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_m"
+      }
+    }
+  },
+  {
+    "testKey": "4c25e818/8f516221/6fa59515",
+    "expected": {
+      "data": {
+        "kw6Q": {
+          "__typename": "Interface_wdU_STUB"
+        },
+        "__typename": "Object_m"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_lG, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 12,
+              "column": 5
+            }
+          ],
+          "path": [
+            "query",
+            "...",
+            "... on Union_lG"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_lG"
+          }
+        },
+        {
+          "message": "No such type Union_lG, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 23,
+              "column": 7
+            }
+          ],
+          "path": [
+            "query",
+            "...",
+            "... on Object_m",
+            "... on Union_lG"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_lG"
+          }
+        },
+        {
+          "message": "No such type Union_lG, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 38,
+              "column": 3
+            }
+          ],
+          "path": [
+            "fragment Fragment_GF59Y",
+            "... on Union_lG"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_lG"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "4c25e818/8f516221/bba7bdf0",
+    "expected": {
+      "data": {
+        "kw6Q": {
+          "__typename": "Interface_wdU_STUB",
+          "ekLI59de": "IOK_IVc2K"
+        },
+        "__typename": "Object_m"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_lG, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 12,
+              "column": 5
+            }
+          ],
+          "path": [
+            "query",
+            "...",
+            "... on Union_lG"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_lG"
+          }
+        },
+        {
+          "message": "No such type Union_lG, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 23,
+              "column": 7
+            }
+          ],
+          "path": [
+            "query",
+            "...",
+            "... on Object_m",
+            "... on Union_lG"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_lG"
+          }
+        },
+        {
+          "message": "No such type Union_lG, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 38,
+              "column": 3
+            }
+          ],
+          "path": [
+            "fragment Fragment_GF59Y",
+            "... on Union_lG"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_lG"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "4c25e818/a3afdcbc/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_m",
+        "kw6Q": {
+          "aa": "Interface_wdU_STUB"
+        }
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_lG, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 9,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_LLLx78P"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_lG"
+          }
+        },
+        {
+          "message": "No such type Union_lG, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 13,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_h"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_lG"
+          }
+        },
+        {
+          "message": "Fragment Fragment_mc was defined, but not used",
+          "locations": [
+            {
+              "line": 5,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_mc"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_mc"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "4c25e818/b5d6338c/72afca11",
+    "expected": {
+      "data": {
+        "IDXqaw3": {
+          "x": {
+            "wx4CE3a": {
+              "__typename": "Interface_wdU_STUB"
+            }
+          },
+          "__typename": "Interface_wdU_STUB"
+        },
+        "kw6Q": {
+          "x": {
+            "wx4CE3a": {
+              "__typename": "Interface_wdU_STUB"
+            }
+          },
+          "__typename": "Interface_wdU_STUB",
+          "wx4CE3a": {
+            "x": {
+              "wx4CE3a": {
+                "__typename": "Interface_wdU_STUB"
+              }
+            },
+            "__typename": "Interface_wdU_STUB",
+            "wx4CE3a": {
+              "wx4CE3a": {
+                "wx4CE3a": {}
+              },
+              "Djymzs6": "Interface_wdU_STUB",
+              "__typename": "Interface_wdU_STUB"
+            }
+          }
+        },
+        "omUX0IIqho": "Object_m"
+      }
+    },
+    "actual": {
+      "data": {
+        "IDXqaw3": {
+          "x": {
+            "wx4CE3a": {
+              "__typename": "Interface_wdU_STUB"
+            }
+          },
+          "__typename": "Interface_wdU_STUB"
+        },
+        "kw6Q": {
+          "x": {
+            "wx4CE3a": {
+              "__typename": "Interface_wdU_STUB"
+            }
+          },
+          "__typename": "Interface_wdU_STUB",
+          "wx4CE3a": {
+            "x": {
+              "wx4CE3a": {
+                "__typename": "Interface_wdU_STUB"
+              }
+            },
+            "__typename": "Interface_wdU_STUB",
+            "wx4CE3a": {
+              "wx4CE3a": {
+                "wx4CE3a": {
+                  "bM": "Interface_wdU_STUB"
+                }
+              },
+              "Djymzs6": "Interface_wdU_STUB",
+              "__typename": "Interface_wdU_STUB"
+            }
+          }
+        },
+        "omUX0IIqho": "Object_m"
+      }
+    }
+  },
+  {
+    "testKey": "592bff7e/5fbfa180/44136fa3",
+    "expected": {
+      "data": {
+        "hn4SuKX": "Object__wy7l4o",
+        "__typename": "Object__wy7l4o",
+        "DRLf": "Object__wy7l4o",
+        "e4": "Object__wy7l4o",
+        "_iyLlw2": "Object__wy7l4o"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_SEFPA, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 2,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query",
+            "... on Union_SEFPA"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_SEFPA"
+          }
+        },
+        {
+          "message": "No such type Union_SEFPA, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 9,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query",
+            "... on Union_SEFPA"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_SEFPA"
+          }
+        },
+        {
+          "message": "No such type Union_SEFPA, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 15,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query",
+            "... on Union_SEFPA"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_SEFPA"
+          }
+        },
+        {
+          "message": "No such type Union_SEFPA, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 27,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_q4"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_SEFPA"
+          }
+        },
+        {
+          "message": "Fragment Fragment_kjW was defined, but not used",
+          "locations": [
+            {
+              "line": 23,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_kjW"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_kjW"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "592bff7e/99034007/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object__wy7l4o"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_SEFPA, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 2,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query",
+            "... on Union_SEFPA"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_SEFPA"
+          }
+        },
+        {
+          "message": "No such type Union_SEFPA, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 8,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_lSMcYQluR"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_SEFPA"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "592bff7e/cf9ad1ab/44136fa3",
+    "expected": {
+      "data": {
+        "jNwQo": "Object__wy7l4o",
+        "__typename": "Object__wy7l4o",
+        "Su": "D7OQ7HBK0"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_SEFPA, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 6,
+              "column": 5
+            }
+          ],
+          "path": [
+            "query",
+            "... on Object__wy7l4o",
+            "... on Union_SEFPA"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_SEFPA"
+          }
+        },
+        {
+          "message": "No such type Union_SEFPA, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 10,
+              "column": 5
+            }
+          ],
+          "path": [
+            "query",
+            "... on Object__wy7l4o",
+            "... on Union_SEFPA"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_SEFPA"
+          }
+        },
+        {
+          "message": "No such type Union_SEFPA, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 21,
+              "column": 3
+            }
+          ],
+          "path": [
+            "fragment Fragment_JLrIdqAn4",
+            "... on Union_SEFPA"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_SEFPA"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "78aa1766/7bb5b78b/a7635f85",
+    "expected": {
+      "data": {
+        "__typename": "Object_PvSlQb",
+        "wG8N43tVu1": {
+          "__typename": "Object_PvSlQb"
+        },
+        "vXXAITiVwj": "Object_PvSlQb"
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_PvSlQb",
+        "tggzk9jNQr": "Object_PvSlQb",
+        "wG8N43tVu1": {
+          "__typename": "Object_PvSlQb"
+        },
+        "vXXAITiVwj": "Object_PvSlQb"
+      }
+    }
+  },
+  {
+    "testKey": "92f414cc/59c0c6d4/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_CyCoDNg"
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_CyCoDNg",
+        "qsTA_": "oYtB"
+      }
+    }
+  },
+  {
+    "testKey": "92f414cc/c0116a2c/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_CyCoDNg",
+        "qsTA_": "oYtB"
+      }
+    },
+    "actual": {
+      "data": {
+        "vUT2kZQk": "Object_CyCoDNg",
+        "__typename": "Object_CyCoDNg",
+        "qsTA_": "oYtB"
+      }
+    }
+  },
+  {
+    "testKey": "a38d071b/1e189a4d/70c04251",
+    "expected": {
+      "data": {
+        "bcvJ7Rd": 2,
+        "__typename": "Object_f4Mb6"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_I, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 21,
+              "column": 3
+            }
+          ],
+          "path": [
+            "fragment Fragment_CjFh",
+            "... on Union_I"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_I"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "a38d071b/1e189a4d/fb4c1bf7",
+    "expected": {
+      "data": {
+        "bcvJ7Rd": 2,
+        "__typename": "Object_f4Mb6"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_I, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 21,
+              "column": 3
+            }
+          ],
+          "path": [
+            "fragment Fragment_CjFh",
+            "... on Union_I"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_I"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "a38d071b/b2c78ab2/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_f4Mb6",
+        "lchCDMtFXy": "FrWo"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_I, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 8,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_A"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_I"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "d1433593/5b727097/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_A",
+        "MP5qeSYfHU": "Object_A"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union__7, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 5,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_Ug3N"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union__7"
+          }
+        },
+        {
+          "message": "No such type Union__7, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 9,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_qSijtNm4pP"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union__7"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "d1433593/e3e1ebba/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_A"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union__7, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 2,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query",
+            "... on Union__7"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union__7"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "db00fff2/7199eb1d/0969c8b2",
+    "expected": {
+      "data": {
+        "__typename": "Object_Ks",
+        "hhxL": true,
+        "oQ": {
+          "s9w": {
+            "__typename": "Interface_Bac4E_STUB"
+          },
+          "__typename": "Interface_Bac4E_STUB",
+          "vnznSe9p": {
+            "__typename": "Object_gTSRLQl",
+            "sL1wqQ": "hGO9k"
+          },
+          "wpZC": {},
+          "q1zRn": {
+            "lA": [
+              2,
+              2
+            ]
+          }
+        },
+        "lA": [
+          2,
+          2
+        ],
+        "kS": true
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_Ks",
+        "hhxL": true,
+        "oQ": {
+          "s9w": {
+            "__typename": "Interface_Bac4E_STUB"
+          },
+          "__typename": "Interface_Bac4E_STUB",
+          "vnznSe9p": {
+            "__typename": "Object_gTSRLQl",
+            "sL1wqQ": "hGO9k"
+          },
+          "wpZC": {
+            "jKAMuj6d4n": "str"
+          },
+          "q1zRn": {
+            "lA": [
+              2,
+              2
+            ]
+          }
+        },
+        "lA": [
+          2,
+          2
+        ],
+        "kS": true
+      }
+    }
+  },
+  {
+    "testKey": "db00fff2/7199eb1d/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Ks",
+        "hhxL": true,
+        "oQ": {
+          "s9w": {
+            "__typename": "Interface_Bac4E_STUB"
+          },
+          "__typename": "Interface_Bac4E_STUB",
+          "vnznSe9p": {
+            "__typename": "Object_gTSRLQl",
+            "sL1wqQ": "hGO9k"
+          },
+          "wpZC": {},
+          "q1zRn": {
+            "lA": [
+              2,
+              2
+            ]
+          }
+        },
+        "lA": [
+          2,
+          2
+        ],
+        "kS": true
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "Variable $pfDuu of type Boolean! was provided invalid value",
+          "locations": [
+            {
+              "line": 1,
+              "column": 8
+            }
+          ],
+          "extensions": {
+            "value": null,
+            "problems": [
+              {
+                "path": [],
+                "explanation": "Expected value to not be null"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "db00fff2/8316757d/01bca76d",
+    "expected": {
+      "data": {
+        "__typename": "Object_Ks",
+        "oQ": {
+          "__typename": "Interface_Bac4E_STUB"
+        }
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_Ks",
+        "oQ": {
+          "__typename": "Interface_Bac4E_STUB"
+        },
+        "jaj": {
+          "q1zRn": {
+            "gJprixxppc": "Object_Ks"
+          }
+        },
+        "bJdu": {
+          "wP": "Interface_Bac4E_STUB"
+        }
+      }
+    }
+  },
+  {
+    "testKey": "db00fff2/8316757d/b78ae51f",
+    "expected": {
+      "data": {
+        "__typename": "Object_Ks",
+        "oQ": {
+          "__typename": "Interface_Bac4E_STUB"
+        }
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_Ks",
+        "oQ": {
+          "__typename": "Interface_Bac4E_STUB"
+        },
+        "jaj": {
+          "q1zRn": {
+            "gJprixxppc": "Object_Ks"
+          }
+        },
+        "bJdu": {
+          "wP": "Interface_Bac4E_STUB"
+        }
+      }
+    }
+  },
+  {
+    "testKey": "db00fff2/8316757d/d20b0eac",
+    "expected": {
+      "data": {
+        "__typename": "Object_Ks",
+        "oQ": {
+          "__typename": "Interface_Bac4E_STUB"
+        }
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_Ks",
+        "oQ": {
+          "__typename": "Interface_Bac4E_STUB"
+        },
+        "jaj": {
+          "q1zRn": {
+            "gJprixxppc": "Object_Ks"
+          }
+        },
+        "bJdu": {
+          "wP": "Interface_Bac4E_STUB"
+        }
+      }
+    }
+  },
+  {
+    "testKey": "db00fff2/8316757d/db01fec3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Ks",
+        "oQ": {
+          "__typename": "Interface_Bac4E_STUB"
+        }
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_Ks",
+        "oQ": {
+          "__typename": "Interface_Bac4E_STUB"
+        },
+        "jaj": {
+          "q1zRn": {
+            "gJprixxppc": "Object_Ks"
+          }
+        },
+        "bJdu": {
+          "wP": "Interface_Bac4E_STUB"
+        }
+      }
+    }
+  },
+  {
+    "testKey": "e134e73f/2059933d/5e82f944",
+    "expected": {
+      "data": {
+        "qZizkmA": [
+          "cpRX",
+          "cpRX"
+        ],
+        "u7azLZbVh": [
+          {
+            "__typename": "Object_h5u"
+          },
+          {
+            "__typename": "Object_h5u"
+          }
+        ],
+        "tPOOzk": [
+          {
+            "__typename": "Object_h5u",
+            "iMQYC": "Object_h5u",
+            "lpAR": {
+              "h6eoupfy": [
+                {
+                  "__typename": "Interface_Xx54s_STUB"
+                },
+                {
+                  "__typename": "Interface_Xx54s_STUB"
+                }
+              ]
+            },
+            "VI": "Object_h5u"
+          },
+          {
+            "__typename": "Object_h5u",
+            "iMQYC": "Object_h5u",
+            "lpAR": {
+              "h6eoupfy": [
+                {
+                  "__typename": "Interface_Xx54s_STUB"
+                },
+                {
+                  "__typename": "Interface_Xx54s_STUB"
+                }
+              ]
+            },
+            "VI": "Object_h5u"
+          }
+        ],
+        "__typename": "Object_gmEG"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_ZAmDj5ZcHq, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 11,
+              "column": 5
+            }
+          ],
+          "path": [
+            "query n9wFXI2i",
+            "tPOOzk",
+            "... on Union_ZAmDj5ZcHq"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_ZAmDj5ZcHq"
+          }
+        },
+        {
+          "message": "No such type Union_ZAmDj5ZcHq, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 40,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_w_y"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_ZAmDj5ZcHq"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "e134e73f/2059933d/63dc7322",
+    "expected": {
+      "data": {
+        "qZizkmA": [
+          "cpRX",
+          "cpRX"
+        ],
+        "u7azLZbVh": [
+          {
+            "__typename": "Object_h5u"
+          },
+          {
+            "__typename": "Object_h5u"
+          }
+        ],
+        "tPOOzk": [
+          {
+            "__typename": "Object_h5u",
+            "iMQYC": "Object_h5u",
+            "lpAR": {
+              "h6eoupfy": [
+                {
+                  "__typename": "Interface_Xx54s_STUB"
+                },
+                {
+                  "__typename": "Interface_Xx54s_STUB"
+                }
+              ]
+            },
+            "VI": "Object_h5u",
+            "tDxY6L": "Object_h5u"
+          },
+          {
+            "__typename": "Object_h5u",
+            "iMQYC": "Object_h5u",
+            "lpAR": {
+              "h6eoupfy": [
+                {
+                  "__typename": "Interface_Xx54s_STUB"
+                },
+                {
+                  "__typename": "Interface_Xx54s_STUB"
+                }
+              ]
+            },
+            "VI": "Object_h5u",
+            "tDxY6L": "Object_h5u"
+          }
+        ],
+        "__typename": "Object_gmEG"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_ZAmDj5ZcHq, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 11,
+              "column": 5
+            }
+          ],
+          "path": [
+            "query n9wFXI2i",
+            "tPOOzk",
+            "... on Union_ZAmDj5ZcHq"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_ZAmDj5ZcHq"
+          }
+        },
+        {
+          "message": "No such type Union_ZAmDj5ZcHq, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 40,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_w_y"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_ZAmDj5ZcHq"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "e134e73f/379e4bf1/44136fa3",
+    "expected": {
+      "data": {
+        "ULEhLpNEfW": "Object_gmEG",
+        "__typename": "Object_gmEG"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_ZAmDj5ZcHq, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 2,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query au_aW",
+            "... on Union_ZAmDj5ZcHq"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_ZAmDj5ZcHq"
+          }
+        },
+        {
+          "message": "No such type Union_ZAmDj5ZcHq, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 10,
+              "column": 3
+            }
+          ],
+          "path": [
+            "fragment Fragment_K",
+            "... on Union_ZAmDj5ZcHq"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_ZAmDj5ZcHq"
+          }
+        },
+        {
+          "message": "Fragment Fragment_K was defined, but not used",
+          "locations": [
+            {
+              "line": 8,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_K"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_K"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "e134e73f/7550d7b6/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_gmEG"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_ZAmDj5ZcHq, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 5,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_AoHkS9"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_ZAmDj5ZcHq"
+          }
+        }
+      ]
+    }
+  }
+]

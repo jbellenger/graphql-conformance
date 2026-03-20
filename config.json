@@ -38,6 +38,27 @@
       "branch": "master",
       "command": ["./conformer"]
     },
+    "graphql-php": {
+      "path": "./impls/graphql-php",
+      "repo": "https://github.com/webonyx/graphql-php",
+      "branch": "master",
+      "command": ["php", "index.php"],
+      "tools": ["php"]
+    },
+    "graphql-core": {
+      "path": "./impls/graphql-core",
+      "repo": "https://github.com/graphql-python/graphql-core",
+      "branch": "main",
+      "command": ["python3", "index.py"],
+      "tools": ["python"]
+    },
+    "graphql-ruby": {
+      "path": "./impls/graphql-ruby",
+      "repo": "https://github.com/rmosolgo/graphql-ruby",
+      "branch": "master",
+      "command": ["bundle", "exec", "ruby", "index.rb"],
+      "tools": ["ruby"]
+    },
     "hot-chocolate": {
       "path": "./impls/hot-chocolate",
       "repo": "https://github.com/ChilliCream/graphql-platform",
@@ -55,6 +76,13 @@
       "repo": "https://github.com/async-graphql/async-graphql",
       "branch": "master",
       "command": ["./target/release/conformer"]
+    },
+    "absinthe": {
+      "path": "./impls/absinthe",
+      "repo": "https://github.com/absinthe-graphql/absinthe",
+      "branch": "main",
+      "command": ["mix", "run", "index.exs"],
+      "tools": ["erlang", "elixir"]
     },
     "gqlgen": {
       "path": "./impls/gqlgen",

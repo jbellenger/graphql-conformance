@@ -1,4 +1,5 @@
 IMPL_DIRS := $(wildcard */)
+RUN_IMPL_MAKE := node ../conformer/src/impl-make.js
 
 .PHONY: build test clean
 
@@ -6,7 +7,7 @@ build:
 	@for dir in $(IMPL_DIRS); do \
 		if [ -f "$$dir/Makefile" ]; then \
 			echo "Building $$dir..."; \
-			mise exec -- $(MAKE) -C "$$dir" build || exit 1; \
+			$(RUN_IMPL_MAKE) "$$dir" build || exit 1; \
 		fi; \
 	done
 
@@ -14,7 +15,7 @@ test:
 	@for dir in $(IMPL_DIRS); do \
 		if [ -f "$$dir/Makefile" ]; then \
 			echo "Testing $$dir..."; \
-			mise exec -- $(MAKE) -C "$$dir" test || exit 1; \
+			$(RUN_IMPL_MAKE) "$$dir" test || exit 1; \
 		fi; \
 	done
 

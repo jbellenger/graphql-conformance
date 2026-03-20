@@ -1,0 +1,121 @@
+[
+  {
+    "testKey": "db00fff2/7199eb1d/0969c8b2",
+    "expected": {
+      "data": {
+        "__typename": "Object_Ks",
+        "hhxL": true,
+        "oQ": {
+          "s9w": {
+            "__typename": "Interface_Bac4E_STUB"
+          },
+          "__typename": "Interface_Bac4E_STUB",
+          "vnznSe9p": {
+            "__typename": "Object_gTSRLQl",
+            "sL1wqQ": "hGO9k"
+          },
+          "wpZC": {},
+          "q1zRn": {
+            "lA": [
+              2,
+              2
+            ]
+          }
+        },
+        "lA": [
+          2,
+          2
+        ],
+        "kS": true
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 26, line: 0, col: 26 }], message: \"Argument \\\"pfDuu\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "db00fff2/7199eb1d/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Ks",
+        "hhxL": true,
+        "oQ": {
+          "s9w": {
+            "__typename": "Interface_Bac4E_STUB"
+          },
+          "__typename": "Interface_Bac4E_STUB",
+          "vnznSe9p": {
+            "__typename": "Object_gTSRLQl",
+            "sL1wqQ": "hGO9k"
+          },
+          "wpZC": {},
+          "q1zRn": {
+            "lA": [
+              2,
+              2
+            ]
+          }
+        },
+        "lA": [
+          2,
+          2
+        ],
+        "kS": true
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 26, line: 0, col: 26 }], message: \"Argument \\\"pfDuu\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "db00fff2/7199eb1d/deb9f4f9",
+    "expected": {
+      "data": {
+        "__typename": "Object_Ks",
+        "hhxL": true,
+        "oQ": {
+          "s9w": {
+            "__typename": "Interface_Bac4E_STUB"
+          },
+          "__typename": "Interface_Bac4E_STUB",
+          "vnznSe9p": {
+            "__typename": "Object_gTSRLQl",
+            "sL1wqQ": "hGO9k"
+          },
+          "wpZC": {
+            "jKAMuj6d4n": "str"
+          },
+          "q1zRn": {
+            "lA": [
+              2,
+              2
+            ]
+          }
+        },
+        "lA": [
+          2,
+          2
+        ],
+        "kS": true
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 26, line: 0, col: 26 }], message: \"Argument \\\"pfDuu\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  }
+]

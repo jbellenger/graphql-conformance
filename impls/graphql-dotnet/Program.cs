@@ -146,7 +146,7 @@ static object? ConvertJsonElement(JsonElement element)
     return element.ValueKind switch
     {
         JsonValueKind.String => element.GetString(),
-        JsonValueKind.Number => element.TryGetInt32(out var i) ? i : element.GetDouble(),
+        JsonValueKind.Number => element.TryGetInt32(out var i) ? (object)i : element.GetDouble(),
         JsonValueKind.True => true,
         JsonValueKind.False => false,
         JsonValueKind.Null => null,

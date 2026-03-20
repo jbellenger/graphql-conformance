@@ -1,0 +1,239 @@
+[
+  {
+    "testKey": "db00fff2/7199eb1d/0969c8b2",
+    "expected": {
+      "data": {
+        "__typename": "Object_Ks",
+        "hhxL": true,
+        "oQ": {
+          "s9w": {
+            "__typename": "Interface_Bac4E_STUB"
+          },
+          "__typename": "Interface_Bac4E_STUB",
+          "vnznSe9p": {
+            "__typename": "Object_gTSRLQl",
+            "sL1wqQ": "hGO9k"
+          },
+          "wpZC": {},
+          "q1zRn": {
+            "lA": [
+              2,
+              2
+            ]
+          }
+        },
+        "lA": [
+          2,
+          2
+        ],
+        "kS": true
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Variable \"$pfDuu\" of type \"Boolean!\" is required and will not use the default value. Perhaps you meant to use type \"Boolean\".",
+          "locations": [
+            {
+              "line": 1,
+              "column": 27
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "db00fff2/7199eb1d/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Ks",
+        "hhxL": true,
+        "oQ": {
+          "s9w": {
+            "__typename": "Interface_Bac4E_STUB"
+          },
+          "__typename": "Interface_Bac4E_STUB",
+          "vnznSe9p": {
+            "__typename": "Object_gTSRLQl",
+            "sL1wqQ": "hGO9k"
+          },
+          "wpZC": {},
+          "q1zRn": {
+            "lA": [
+              2,
+              2
+            ]
+          }
+        },
+        "lA": [
+          2,
+          2
+        ],
+        "kS": true
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Variable \"$pfDuu\" of type \"Boolean!\" is required and will not use the default value. Perhaps you meant to use type \"Boolean\".",
+          "locations": [
+            {
+              "line": 1,
+              "column": 27
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "db00fff2/7199eb1d/deb9f4f9",
+    "expected": {
+      "data": {
+        "__typename": "Object_Ks",
+        "hhxL": true,
+        "oQ": {
+          "s9w": {
+            "__typename": "Interface_Bac4E_STUB"
+          },
+          "__typename": "Interface_Bac4E_STUB",
+          "vnznSe9p": {
+            "__typename": "Object_gTSRLQl",
+            "sL1wqQ": "hGO9k"
+          },
+          "wpZC": {
+            "jKAMuj6d4n": "str"
+          },
+          "q1zRn": {
+            "lA": [
+              2,
+              2
+            ]
+          }
+        },
+        "lA": [
+          2,
+          2
+        ],
+        "kS": true
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Variable \"$pfDuu\" of type \"Boolean!\" is required and will not use the default value. Perhaps you meant to use type \"Boolean\".",
+          "locations": [
+            {
+              "line": 1,
+              "column": 27
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "db00fff2/8316757d/01bca76d",
+    "expected": {
+      "data": {
+        "__typename": "Object_Ks",
+        "oQ": {
+          "__typename": "Interface_Bac4E_STUB"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Syntax Error GraphQL request (16:52) Unexpected Name \"null\"\n\n15:     ... on Object_Ks @include(if: false) {\n16:       ...Fragment_VT25RSwZ@defer(if: false, label: null)\n                                                       ^\n17:       __typename\n",
+          "locations": [
+            {
+              "line": 16,
+              "column": 52
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "db00fff2/8316757d/b78ae51f",
+    "expected": {
+      "data": {
+        "__typename": "Object_Ks",
+        "oQ": {
+          "__typename": "Interface_Bac4E_STUB"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Syntax Error GraphQL request (16:52) Unexpected Name \"null\"\n\n15:     ... on Object_Ks @include(if: false) {\n16:       ...Fragment_VT25RSwZ@defer(if: false, label: null)\n                                                       ^\n17:       __typename\n",
+          "locations": [
+            {
+              "line": 16,
+              "column": 52
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "db00fff2/8316757d/d20b0eac",
+    "expected": {
+      "data": {
+        "__typename": "Object_Ks",
+        "oQ": {
+          "__typename": "Interface_Bac4E_STUB"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Syntax Error GraphQL request (16:52) Unexpected Name \"null\"\n\n15:     ... on Object_Ks @include(if: false) {\n16:       ...Fragment_VT25RSwZ@defer(if: false, label: null)\n                                                       ^\n17:       __typename\n",
+          "locations": [
+            {
+              "line": 16,
+              "column": 52
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "db00fff2/8316757d/db01fec3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Ks",
+        "oQ": {
+          "__typename": "Interface_Bac4E_STUB"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Syntax Error GraphQL request (16:52) Unexpected Name \"null\"\n\n15:     ... on Object_Ks @include(if: false) {\n16:       ...Fragment_VT25RSwZ@defer(if: false, label: null)\n                                                       ^\n17:       __typename\n",
+          "locations": [
+            {
+              "line": 16,
+              "column": 52
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

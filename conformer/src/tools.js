@@ -1,19 +1,23 @@
 'use strict';
 
+const fs = require('fs');
+const path = require('path');
 const { execFileSync } = require('child_process');
 
 const FRAMEWORK_TOOLS = ['node', 'git', 'make'];
+const TOOL_REQUIREMENT_CACHE = new Map();
 
-function checkTool(name) {
+function checkTool(name, baseDir) {
+  const requiredVersion = getRequiredVersion(name, baseDir);
   // Try mise first
   try {
-    const version = execFileSync('mise', ['where', name], {
+    const installDir = execFileSync('mise', ['where', name], {
       encoding: 'utf8',
       timeout: 10_000,
       stdio: ['pipe', 'pipe', 'pipe'],
     }).trim();
-    if (version) {
-      return { name, found: true, version: getVersion(name) };
+    if (installDir) {
+      return { name, found: true, version: getVersionFromInstall(name, installDir) };
     }
   } catch {
     // mise doesn't have it — fall back to which
@@ -27,7 +31,11 @@ function checkTool(name) {
       timeout: 5_000,
       stdio: ['pipe', 'pipe', 'pipe'],
     });
-    return { name, found: true, version: getVersion(name) };
+    const version = getVersion(name);
+    if (requiredVersion && !versionSatisfiesRequirement(version, requiredVersion)) {
+      return { name, found: false, version };
+    }
+    return { name, found: true, version };
   } catch {
     return { name, found: false, version: null };
   }
@@ -37,6 +45,8 @@ function checkTool(name) {
 const TOOL_BINARIES = {
   maven: 'mvn',
   rust: 'cargo',
+  python: 'python3',
+  erlang: 'erl',
 };
 
 function toolBinary(name) {
@@ -45,46 +55,11 @@ function toolBinary(name) {
 
 function getVersion(name) {
   const bin = toolBinary(name);
-  const versionCommands = {
-    node: [bin, '--version'],
-    git: [bin, '--version'],
-    make: [bin, '--version'],
-    go: [bin, 'version'],
-    java: [bin, '-version'],
-    mvn: [bin, '--version'],
-    cargo: [bin, '--version'],
-    dotnet: [bin, '--version'],
-    ruby: [bin, '--version'],
-    php: [bin, '--version'],
-    elixir: [bin, '--version'],
-    python: ['python3', '--version'],
-    sbt: [bin, '--version'],
-    lein: [bin, '--version'],
-  };
-
-  const cmd = versionCommands[name] || versionCommands[bin] || [bin, '--version'];
-
-  // Try running directly first, then via `mise exec` for mise-managed tools
-  for (const args of [cmd, ['mise', 'exec', '--', ...cmd]]) {
-    try {
-      const result = require('child_process').spawnSync(args[0], args.slice(1), {
-        encoding: 'utf8',
-        timeout: 10_000,
-        stdio: ['pipe', 'pipe', 'pipe'],
-      });
-      // Combine stdout and stderr — some tools (like java) write to stderr
-      const output = (result.stdout || '') + (result.stderr || '');
-      const line = output.split('\n').find((l) => l.trim());
-      if (line && result.status === 0) return line.trim();
-    } catch {
-      // try next approach
-    }
-  }
-  return 'unknown';
+  return getVersionForCommand(versionCommand(name, bin));
 }
 
-function checkTools(names) {
-  return names.map((name) => checkTool(name));
+function checkTools(names, baseDir) {
+  return names.map((name) => checkTool(name, baseDir));
 }
 
 function checkMise() {
@@ -100,9 +75,9 @@ function checkMise() {
   }
 }
 
-function miseInstall(cwd) {
+function miseInstall(cwd, toolNames = []) {
   try {
-    execFileSync('mise', ['install', '-y'], {
+    execFileSync('mise', ['install', '-y', ...toolNames], {
       cwd,
       timeout: 5 * 60 * 1000,
       stdio: ['pipe', 'pipe', 'pipe'],
@@ -115,7 +90,7 @@ function miseInstall(cwd) {
 }
 
 function ensureTools(toolNames, baseDir) {
-  const results = checkTools(toolNames);
+  const results = checkTools(toolNames, baseDir);
   const missing = results.filter((r) => !r.found);
 
   if (missing.length === 0) {
@@ -128,7 +103,7 @@ function ensureTools(toolNames, baseDir) {
     return { results, installed: [], failed: missing.map((r) => r.name) };
   }
 
-  const installResult = miseInstall(baseDir);
+  const installResult = miseInstall(baseDir, missing.map((r) => r.name));
   if (!installResult.ok) {
     process.stderr.write(`  mise install failed: ${installResult.error}\n`);
     return { results, installed: [], failed: missing.map((r) => r.name) };
@@ -138,7 +113,7 @@ function ensureTools(toolNames, baseDir) {
   const installed = [];
   const failed = [];
   for (const m of missing) {
-    const recheck = checkTool(m.name);
+    const recheck = checkTool(m.name, baseDir);
     if (recheck.found) {
       installed.push(m.name);
     } else {
@@ -176,6 +151,122 @@ function getToolEnv(baseDir) {
   }
 }
 
+function getVersionFromInstall(name, installDir) {
+  const bin = toolBinary(name);
+  const candidates = [
+    path.join(installDir, 'bin', bin),
+    path.join(installDir, bin),
+  ];
+
+  for (const candidate of candidates) {
+    const version = getVersionForCommand(versionCommand(name, candidate));
+    if (version !== 'unknown') return version;
+  }
+
+  return getVersion(name);
+}
+
+function versionCommand(name, executable) {
+  const versionCommands = {
+    node: [executable, '--version'],
+    git: [executable, '--version'],
+    make: [executable, '--version'],
+    go: [executable, 'version'],
+    java: [executable, '-version'],
+    mvn: [executable, '--version'],
+    cargo: [executable, '--version'],
+    dotnet: [executable, '--version'],
+    ruby: [executable, '--version'],
+    php: [executable, '--version'],
+    elixir: [executable, '--version'],
+    erlang: [executable, '-version'],
+    python: [executable, '--version'],
+    sbt: [executable, '--version'],
+    lein: [executable, '--version'],
+  };
+
+  return versionCommands[name] || [executable, '--version'];
+}
+
+function getVersionForCommand(cmd) {
+  try {
+    const result = require('child_process').spawnSync(cmd[0], cmd.slice(1), {
+      encoding: 'utf8',
+      timeout: 10_000,
+      stdio: ['pipe', 'pipe', 'pipe'],
+    });
+    const output = (result.stdout || '') + (result.stderr || '');
+    const line = output.split('\n').find((l) => l.trim());
+    if (line && result.status === 0) return line.trim();
+  } catch {
+    // ignore and fall through
+  }
+
+  return 'unknown';
+}
+
+function getRequiredVersion(name, baseDir) {
+  if (!baseDir) return null;
+  return loadToolRequirements(baseDir)[name] || null;
+}
+
+function loadToolRequirements(baseDir) {
+  const configPath = path.join(baseDir, '.mise.toml');
+  if (TOOL_REQUIREMENT_CACHE.has(configPath)) {
+    return TOOL_REQUIREMENT_CACHE.get(configPath);
+  }
+
+  const requirements = {};
+  try {
+    const text = fs.readFileSync(configPath, 'utf8');
+    let inTools = false;
+    for (const rawLine of text.split('\n')) {
+      const line = rawLine.trim();
+      if (!line || line.startsWith('#')) continue;
+      if (line === '[tools]') {
+        inTools = true;
+        continue;
+      }
+      if (inTools && line.startsWith('[')) break;
+
+      if (inTools) {
+        const match = line.match(/^([A-Za-z0-9_-]+)\s*=\s*"([^"]+)"/);
+        if (match) {
+          requirements[match[1]] = match[2];
+        }
+      }
+    }
+  } catch {
+    // ignore parse failures and fall back to presence-only checks
+  }
+
+  TOOL_REQUIREMENT_CACHE.set(configPath, requirements);
+  return requirements;
+}
+
+function versionSatisfiesRequirement(versionText, requiredVersion) {
+  const installed = parseNumericVersion(versionText);
+  const required = parseNumericVersion(requiredVersion);
+
+  if (!installed || !required) return true;
+
+  const width = Math.max(installed.length, required.length);
+  for (let i = 0; i < width; i += 1) {
+    const left = installed[i] || 0;
+    const right = required[i] || 0;
+    if (left > right) return true;
+    if (left < right) return false;
+  }
+  return true;
+}
+
+function parseNumericVersion(text) {
+  if (!text) return null;
+  const match = text.match(/(\d+(?:\.\d+)+|\d+)/);
+  if (!match) return null;
+  return match[1].split('.').map((part) => Number.parseInt(part, 10));
+}
+
 module.exports = {
   FRAMEWORK_TOOLS,
   checkMise,
@@ -183,4 +274,7 @@ module.exports = {
   checkTools,
   ensureTools,
   getToolEnv,
+  parseNumericVersion,
+  toolBinary,
+  versionSatisfiesRequirement,
 };

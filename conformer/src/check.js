@@ -25,7 +25,7 @@ function main() {
   // Check framework tools
   process.stderr.write('Checking framework tools...\n');
   for (const name of FRAMEWORK_TOOLS) {
-    const result = checkTool(name);
+    const result = checkTool(name, rootDir);
     if (result.found) {
       process.stderr.write(`  ✓ ${name.padEnd(8)} ${result.version}\n`);
     } else {
@@ -44,7 +44,7 @@ function main() {
     for (const name of tools) {
       if (FRAMEWORK_TOOLS.includes(name) || checked.has(name)) continue;
       checked.add(name);
-      const result = checkTool(name);
+      const result = checkTool(name, rootDir);
       const impls = allImpls
         .filter((i) => (i.tools || []).includes(name))
         .map((i) => i.name)

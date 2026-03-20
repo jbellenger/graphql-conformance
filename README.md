@@ -13,10 +13,13 @@ Implementations tested:
 - [graphql-java](https://github.com/graphql-java/graphql-java)
 - [Viaduct](https://github.com/airbnb/viaduct)
 - [graphql-go](https://github.com/graphql-go/graphql)
+- [graphql-php](https://github.com/webonyx/graphql-php)
+- [graphql-core](https://github.com/graphql-python/graphql-core)
 - [gqlgen](https://github.com/99designs/gqlgen)
 - [Hot Chocolate](https://github.com/ChilliCream/graphql-platform)
 - [graphql-dotnet](https://github.com/graphql-dotnet/graphql-dotnet)
 - [async-graphql](https://github.com/async-graphql/async-graphql)
+- [Absinthe](https://github.com/absinthe-graphql/absinthe)
 - [Juniper](https://github.com/graphql-rust/juniper)
 
 ## How it works
@@ -29,9 +32,10 @@ A coordinator runs every test case against every implementation, compares output
 
 ## Requirements
 
-- [mise](https://mise.jdx.dev/) — manages tool versions (Node.js, Go, Java, .NET, Rust)
+- [mise](https://mise.jdx.dev/) — manages tool versions (Node.js, Go, Java, .NET, Rust, Python)
 
 That's it. `mise` handles installing the right versions of everything else.
+On macOS, `mise install php` may require a newer `bison` on `PATH` than the system default.
 
 ## Quick start
 
