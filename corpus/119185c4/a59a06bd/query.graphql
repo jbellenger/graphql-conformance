@@ -1,0 +1,19 @@
+query Yzb($e: Boolean!) {
+  ...Fragment_hU
+}
+
+fragment Fragment_wi4 on Object_sP {
+  snx
+}
+
+fragment Fragment_L6FYATRu on Union_fE9y75NdEV {
+  __typename @include(if: $e)
+}
+
+fragment Fragment_hU on Union_fE9y75NdEV {
+  ...Fragment_wi4
+  __typename
+  ... on Union_AMXDoJ {
+    ...Fragment_L6FYATRu
+  }
+}

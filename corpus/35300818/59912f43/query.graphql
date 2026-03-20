@@ -1,0 +1,9 @@
+query ($jo4y5: Boolean!) {
+  ...Fragment_DLQ0xTtY
+}
+
+fragment Fragment_DLQ0xTtY on Union_KpS {
+  __typename @skip(if: $jo4y5)
+  __typename
+  Qm4Zkti: __typename
+}

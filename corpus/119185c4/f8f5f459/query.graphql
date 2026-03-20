@@ -1,0 +1,33 @@
+query f7J12q3W {
+  ... on Union_fE9y75NdEV {
+    Q1i: __typename
+    __typename
+    X13: __typename
+    __typename
+    ... on Object_sP {
+      ... on Union_AMXDoJ {
+        __typename
+      }
+    }
+  }
+  ... on Union_fE9y75NdEV {
+    ...Fragment_K
+    ...Fragment_K
+    __typename
+    ... on Union_cxvf {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_rU on Union_cxvf {
+  ppX0bCC2Ss: __typename
+  __typename
+}
+
+fragment Fragment_K on Union_AMXDoJ {
+  ...Fragment_rU
+  ... on Union_cxvf {
+    __typename
+  }
+}

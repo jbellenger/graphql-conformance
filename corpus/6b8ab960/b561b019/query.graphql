@@ -1,0 +1,16 @@
+query Spw6hPvgX {
+  ... on Object_ReSvl {
+    ...Fragment_psRw5rG
+    ...Fragment_YzxVhlY
+  }
+}
+
+fragment Fragment_psRw5rG on Object_ReSvl {
+  ... on Object_ReSvl {
+    __typename
+  }
+}
+
+fragment Fragment_YzxVhlY on Object_ReSvl {
+  ...Fragment_psRw5rG
+}

@@ -1,0 +1,21 @@
+{
+  __typename
+  ... on Object_SlbKzO @skip(if: true) {
+    __typename
+  }
+  ... on Union_pAE {
+    ... on Object_QL0vs {
+      ...Fragment_qS_9wI
+      ... on Object_QL0vs {
+        q29vNQb8we @skip(if: false)
+      }
+    }
+  }
+}
+
+fragment Fragment_qS_9wI on Interface_nd1pJBgazz {
+  __typename
+  hdBy {
+    __typename
+  }
+}

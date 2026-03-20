@@ -6,9 +6,9 @@ build:
 # SCHEMAS ?= 10
 # DOCS_PER_SCHEMA ?= 10
 # VARS_PER_DOC ?= 10
-SCHEMAS ?= 10
-DOCS_PER_SCHEMA ?= 5
-VARS_PER_DOC ?= 5
+SCHEMAS ?= 20
+DOCS_PER_SCHEMA ?= 10 
+VARS_PER_DOC ?= 3
 
 test:
 	./gradlew -q test

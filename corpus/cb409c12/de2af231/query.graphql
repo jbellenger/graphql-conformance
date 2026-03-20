@@ -1,0 +1,34 @@
+query U9Ac {
+  ... on Object_o {
+    __typename
+    __typename
+  }
+  ... on Object_o {
+    ...Fragment_wCLy_g
+    ke0JZ4 @include(if: false) {
+      ux {
+        __typename
+      }
+      ZWBNQm: __typename
+      ... on Interface_bu7_STUB @defer(if: true, label: "VU") {
+        yEJiIf: __typename
+      }
+    }
+    zUfdAae: ke0JZ4 {
+      ...Fragment_Fd7U90hC
+    }
+    ke0JZ4 {
+      FBvEA: __typename
+      Wr9fnv_v0: __typename @skip(if: true)
+    }
+    __typename
+  }
+}
+
+fragment Fragment_wCLy_g on Object_o {
+  __typename
+}
+
+fragment Fragment_Fd7U90hC on Interface_bu7_STUB {
+  __typename
+}

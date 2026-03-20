@@ -1,0 +1,87 @@
+query ($yAgY: Boolean!) {
+  ...Fragment_JLQicX
+  __typename
+  ke0JZ4 {
+    ...Fragment_E0KC
+    ... on Interface_bu7_STUB {
+      ...Fragment_Eoqd
+    }
+  }
+  ke0JZ4 {
+    ... on Interface_bu7 {
+      __typename
+    }
+    ... on Interface_bu7_STUB {
+      ...Fragment_E0KC
+    }
+  }
+  xCGf: ke0JZ4 {
+    __typename @include(if: false) @skip(if: false)
+  }
+  ... on Object_o {
+    ... on Object_o {
+      ...Fragment_y28cxnl1
+    }
+  }
+  ... on Object_o {
+    ...Fragment_JLQicX
+    ...Fragment_JLQicX
+  }
+  ... {
+    ...Fragment_JLQicX
+    ...Fragment_hH6isIo
+  }
+}
+
+fragment Fragment_hH6isIo on Object_o {
+  __typename
+}
+
+fragment Fragment_E0KC on Interface_bu7 {
+  __typename
+}
+
+fragment Fragment_JLQicX on Object_o {
+  ...Fragment_hH6isIo
+  __typename
+  ke0JZ4 @skip(if: false) @include(if: false) {
+    ...Fragment_E0KC
+    ... on Interface_bu7 {
+      IYBztYVp9: ux {
+        s
+      }
+    }
+  }
+  eRTVj: ke0JZ4 {
+    ...Fragment_E0KC
+  }
+  ... on Object_o {
+    ...Fragment_hH6isIo
+    ke0JZ4 @skip(if: $yAgY) {
+      __typename
+    }
+    ... on Object_o {
+      __typename @include(if: $yAgY) @skip(if: $yAgY)
+      __typename
+    }
+  }
+  ... {
+    __typename
+    ... on Object_o {
+      TSRtE: __typename
+    }
+  }
+}
+
+fragment Fragment_Eoqd on Interface_bu7_STUB {
+  uEh {
+    ux: __typename
+  }
+  i_2N {
+    __typename
+  }
+}
+
+fragment Fragment_y28cxnl1 on Object_o @Directive_sKI3WtI0{
+  __typename
+}

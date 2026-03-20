@@ -1,0 +1,19 @@
+query n_MBw {
+  ...Fragment_DS
+  ...Fragment__
+  ... on Union_NGmvZ1P {
+    ...Fragment__
+    ...Fragment_DS@include(if: false)
+    __typename
+  }
+}
+
+fragment Fragment__ on Union_cCXw8 {
+  __typename
+  __typename
+}
+
+fragment Fragment_DS on Object_l4X {
+  ...Fragment__
+  __typename
+}

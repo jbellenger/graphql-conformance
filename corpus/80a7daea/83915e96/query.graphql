@@ -1,0 +1,30 @@
+query ($yp: Boolean!) {
+  ... on Object_sY7_hUvJn {
+    ...Fragment_GuOfvHwWn
+    sAKQ2
+    sAKQ2
+    ... on Object_sY7_hUvJn {
+      ...Fragment_flvToWnM
+      ... on Object_sY7_hUvJn {
+        kKPrUmC: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Xu on Union_gFRVe {
+  __typename
+}
+
+fragment Fragment_GuOfvHwWn on Object_sY7_hUvJn {
+  ...Fragment_Xu
+  wZFE2cDxIH @include(if: $yp) {
+    sjlucb {
+      IKNViRJW: zAw9MUtvnq
+    }
+  }
+}
+
+fragment Fragment_flvToWnM on Union_gFRVe {
+  __typename
+}

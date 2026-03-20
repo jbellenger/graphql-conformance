@@ -1,0 +1,22 @@
+query ($qMjq: Input_WDE0EaT8j2) {
+  ...Fragment_D
+  ...Fragment_D@skip(if: true)
+}
+
+fragment Fragment_Njy on Object_bxo4dk9C {
+  zgQ1lDOB(qIh3PdQQiO: $qMjq)
+}
+
+fragment Fragment_D on Union__9o {
+  ...Fragment_Njy
+  ... on Union__9o {
+    ...Fragment_Njy
+    jn2pei6jax: __typename
+    __typename
+  }
+  ... on Union_Wj8Y03pC {
+    ... on Union_UfBRk9 {
+      Bb: __typename
+    }
+  }
+}

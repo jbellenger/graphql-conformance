@@ -1,0 +1,31 @@
+query k7($xGBMC: Enum_y0Bxa8LPkw) {
+  pNTi4
+  F: __typename @Directive_heDtf @Directive_UAjR5udRi(piiWxAUEdE: $xGBMC)
+  ... on Object_TKVgN {
+    pNTi4
+  }
+  ... {
+    ... on Object_TKVgN {
+      ...Fragment_IOg
+    }
+    ... on Union_AqHVXdH {
+      __typename
+    }
+  }
+  ... {
+    ... on Object_TKVgN {
+      ... on Object_TKVgN {
+        __typename
+      }
+    }
+    ... on Object_TKVgN {
+      ...Fragment_IOg@include(if: true)
+      Ege: __typename
+      _: __typename
+    }
+  }
+}
+
+fragment Fragment_IOg on Object_TKVgN @Directive_vB{
+  Wk5g: __typename
+}

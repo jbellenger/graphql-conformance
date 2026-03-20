@@ -1,0 +1,30 @@
+query _F41uuDO($sRi_sh: Boolean!) {
+  XbZ8B: kK {
+    ...Fragment_MMQ@include(if: $sRi_sh)
+    ...Fragment_MMQ@Directive_kk
+    ... on Object_oqgz8xv {
+      ... on Union_hL {
+        __typename @Directive_E9DYnLiUuH
+      }
+    }
+    ... on Object_rH0gV {
+      ...Fragment_xN4@defer(if: true, label: null)
+      dmA08Nf {
+        V: tcojlkyqv
+      }
+    }
+  }
+  ... on Object_rH0gV {
+    kK {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_MMQ on Union_hL {
+  __typename
+}
+
+fragment Fragment_xN4 on Union_qSnvvHv5R {
+  __typename
+}

@@ -1,0 +1,17 @@
+query jkdBSKMj {
+  ...Fragment_infcaFi4q3
+  ...Fragment_infcaFi4q3
+}
+
+fragment Fragment_xUfyno2 on Union_X4OX3m {
+  __typename
+}
+
+fragment Fragment_infcaFi4q3 on Union_X4OX3m {
+  ... on Union_eFe {
+    ...Fragment_xUfyno2
+    ... on Union_PNv5sw2gO9 {
+      __typename
+    }
+  }
+}

@@ -1,0 +1,23 @@
+query CdJsmx {
+  w: __typename
+  __typename @include(if: false)
+  amS5H0p {
+    ...Fragment_Dwf
+  }
+  amS5H0p {
+    ...Fragment_Dwf
+    __typename
+    __typename
+    PhJuL: __typename
+    ... on Object__IMF2 {
+      rBATUrLz0: _8Ne
+    }
+    ... on Union_K9lT {
+      ...Fragment_Dwf
+    }
+  }
+}
+
+fragment Fragment_Dwf on Union_LsNGLZL {
+  __typename
+}

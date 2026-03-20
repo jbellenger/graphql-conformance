@@ -1,0 +1,19 @@
+{
+  ...Fragment_yk4CRgNk
+}
+
+fragment Fragment_P5h on Object_rH0gV {
+  __typename
+}
+
+fragment Fragment_f on Object_rH0gV {
+  ...Fragment_P5h
+  kK {
+    __typename
+  }
+}
+
+fragment Fragment_yk4CRgNk on Object_rH0gV {
+  ...Fragment_f@defer(if: false, label: "^")
+  ...Fragment_f
+}

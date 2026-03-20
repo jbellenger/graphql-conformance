@@ -1,0 +1,32 @@
+query P {
+  k5HeEAt {
+    ...Fragment_KTFZ
+    ... on Interface_tdYBZ8h4 {
+      hBPo
+    }
+    ... on Interface_tdYBZ8h4 @defer(label: "u+") {
+      d {
+        __typename
+      }
+      O: lUMbXvBR {
+        cX8thV
+      }
+    }
+  }
+  __typename
+  k5HeEAt {
+    __typename
+  }
+  ... on Union_fE9y75NdEV {
+    L: __typename
+    s: __typename
+    __typename
+    z: __typename
+  }
+}
+
+fragment Fragment_KTFZ on Interface_tdYBZ8h4_STUB {
+  ... on Interface_tdYBZ8h4_STUB {
+    hBPo
+  }
+}

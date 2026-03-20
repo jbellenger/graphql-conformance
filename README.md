@@ -8,8 +8,8 @@ This project tests whether open-source GraphQL implementations behave the same w
 
 Implementations tested:
 
-- [graphql-js 16](https://github.com/graphql/graphql-js/tree/16.x.x) (reference)
-- [graphql-js 17](https://github.com/graphql/graphql-js/tree/17.x.x)
+- [graphql-js 17](https://github.com/graphql/graphql-js/tree/17.x.x) (reference)
+- [graphql-js 16](https://github.com/graphql/graphql-js/tree/16.x.x)
 - [graphql-java](https://github.com/graphql-java/graphql-java)
 - [Viaduct](https://github.com/airbnb/viaduct)
 - [graphql-go](https://github.com/graphql-go/graphql)

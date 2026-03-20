@@ -1,0 +1,36 @@
+{
+  ...Fragment_BTE3WLEr
+  kK @Directive_kk {
+    ... on Object_oqgz8xv {
+      ... on Union_qSnvvHv5R {
+        __typename
+      }
+    }
+    ... on Union_qSnvvHv5R {
+      __typename
+    }
+  }
+  dmA08Nf {
+    ...Fragment_pgxNu6AL
+    tcojlkyqv
+    ... on Interface_T @Directive_x {
+      __typename
+    }
+  }
+  ... on Union_qSnvvHv5R {
+    __typename
+  }
+}
+
+fragment Fragment_BTE3WLEr on Object_rH0gV {
+  __typename
+}
+
+fragment Fragment_RU1kDlJk on Interface_T_STUB {
+  tcojlkyqv
+  nB9
+}
+
+fragment Fragment_pgxNu6AL on Interface_T {
+  ...Fragment_RU1kDlJk@include(if: true)
+}

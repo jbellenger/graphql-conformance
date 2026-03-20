@@ -1,0 +1,46 @@
+query ($yBUikR: Boolean! = false) @Directive_YqkAuqe {
+  ...Fragment_U
+  ...Fragment_vvKt
+}
+
+fragment Fragment_lV on Union_gFRVe @Directive_FVFoBJeU{
+  e_NE3n6AX: __typename
+  __typename
+}
+
+fragment Fragment_H_n7F_ on Object_sY7_hUvJn {
+  ...Fragment_lV
+}
+
+fragment Fragment_U on Object_sY7_hUvJn {
+  ...Fragment_H_n7F_
+  Idlibz1: vwxnjW_ {
+    __typename
+  }
+  vwxnjW_ {
+    ...Fragment_lV
+    ... {
+      __typename
+      ytAi {
+        gbtA: __typename
+      }
+    }
+  }
+  a6: wZFE2cDxIH {
+    x1F: oUwPZ
+  }
+  vwxnjW_ {
+    u7xcx {
+      __typename @skip(if: $yBUikR)
+    }
+    ... on Union_mIXjVb7h7a @defer(if: true, label: "lJ") {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_vvKt on Union_gFRVe {
+  ...Fragment_lV
+  __typename
+  UmnLXJo: __typename
+}

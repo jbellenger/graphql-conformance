@@ -1,0 +1,49 @@
+{
+  r7Xh1b5 {
+    ...Fragment_uOTBsKVJs
+    wxiQsw51fS
+    wxiQsw51fS
+    w76Au: wxiQsw51fS
+    ... on Object_blu {
+      wxiQsw51fS
+      ... on Interface_GMpwWP {
+        __typename
+      }
+    }
+  }
+  __typename
+  uo: r7Xh1b5 {
+    ...Fragment_i
+  }
+  ... on Object_iqYLxHI @defer(if: true, label: null) {
+    ...Fragment_MD8O2Tl
+    ...Fragment_QTAih
+    r7Xh1b5 {
+      wxiQsw51fS
+    }
+    __typename @include(if: true)
+  }
+}
+
+fragment Fragment_QhB1r9R on Object_blu {
+  __typename
+}
+
+fragment Fragment_uOTBsKVJs on Object_blu {
+  ...Fragment_QhB1r9R
+}
+
+fragment Fragment_i on Interface_GMpwWP {
+  ... on Object_blu {
+    wxiQsw51fS @skip(if: false)
+  }
+}
+
+fragment Fragment_QTAih on Union_kVezIJfNEP {
+  __typename
+}
+
+fragment Fragment_MD8O2Tl on Union_kVezIJfNEP {
+  ...Fragment_QTAih
+  __typename
+}

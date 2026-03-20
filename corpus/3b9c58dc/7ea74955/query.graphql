@@ -1,0 +1,30 @@
+query u_ooYiL {
+  lfI {
+    ...Fragment_Tsnva
+    AVUbCx: lfI {
+      ...Fragment_Tsnva
+      lfI {
+        pEI: __typename
+      }
+      ... on Union_pg {
+        __typename
+      }
+    }
+    lfI @include(if: true) {
+      j0fclZO
+      W126Qg68ZG: __typename
+      j0fclZO
+    }
+    ... on Object_P1qC {
+      j0fclZO
+      _ie6LZ: __typename
+      ... on Union_rWc1c {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Tsnva on Union_rWc1c {
+  ZA0bg_Q5uz: __typename
+}

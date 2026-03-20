@@ -1,0 +1,32 @@
+{
+  ...Fragment_nW
+  ... on Union_Jc31 {
+    ...Fragment_K0HOWD24
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_K0HOWD24 on Object_noPPq {
+  __typename
+}
+
+fragment Fragment_aAlE6uj on Object_noPPq {
+  k3SKRgUp {
+    __typename @Directive_HFH45GKh
+  }
+}
+
+fragment Fragment_nW on Object_noPPq {
+  ...Fragment_K0HOWD24
+  ...Fragment_K0HOWD24
+  ... on Union_Jc31 {
+    ...Fragment_aAlE6uj
+    __typename @Directive_Sa
+    __typename
+    __typename @Directive_yqsDwo02
+    ... on Union_Jc31 {
+      __typename
+    }
+  }
+}

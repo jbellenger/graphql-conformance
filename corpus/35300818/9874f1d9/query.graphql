@@ -1,0 +1,20 @@
+{
+  ...Fragment_v
+  ...Fragment_d3@defer(if: true, label: "La/")
+}
+
+fragment Fragment_RJ4fqhfoc on Union_acO2I_s {
+  __typename
+}
+
+fragment Fragment_d3 on Union_KpS {
+  ...Fragment_RJ4fqhfoc
+  ... on Object_pwh9r {
+    zjB4L @include(if: false) @Directive_K6wJhSx1cl
+  }
+}
+
+fragment Fragment_v on Union_KpS {
+  ...Fragment_d3
+  ...Fragment_RJ4fqhfoc
+}

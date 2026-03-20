@@ -1,0 +1,29 @@
+{
+  ... on Union_kVezIJfNEP {
+    ...Fragment_x8lJNCTHbN
+    ... on Object_iqYLxHI {
+      __typename @Directive_ED56u
+    }
+    ... on Union_kVezIJfNEP {
+      ... on Union_kVezIJfNEP {
+        __typename
+      }
+    }
+  }
+  ... on Union_kVezIJfNEP {
+    __typename
+  }
+}
+
+fragment Fragment_PdxFL7g on Object_iqYLxHI {
+  __typename
+}
+
+fragment Fragment_x8lJNCTHbN on Union_kVezIJfNEP {
+  ...Fragment_PdxFL7g@defer(label: "T")
+  ... on Object_iqYLxHI {
+    r7Xh1b5 {
+      wxiQsw51fS
+    }
+  }
+}

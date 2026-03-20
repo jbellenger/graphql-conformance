@@ -1,0 +1,23 @@
+{
+  __typename
+  ... on Union_XTg {
+    __typename
+    __typename
+  }
+  ... on Union_kLt3bb {
+    ... on Union_Sg {
+      ...Fragment_s@Directive__KG
+      __typename @Directive_a0Lgxn
+    }
+    ... on Object_LbQr6rg31 {
+      ...Fragment_s
+      ... on Object_LbQr6rg31 {
+        tE: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_s on Union_XTg {
+  __typename
+}

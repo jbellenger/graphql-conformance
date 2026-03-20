@@ -1,0 +1,20 @@
+query Rwcs2 {
+  ...Fragment_ER1A
+}
+
+fragment Fragment_ER1A on Union_pAE {
+  ... on Interface_nd1pJBgazz {
+    SMrd3v: pJ {
+      q29vNQb8we
+    }
+    hdBy {
+      __typename
+    }
+    pJ {
+      oCKRFzwLFu @Directive_AUt9a
+    }
+  }
+  ... on Interface_nd1pJBgazz {
+    Fj04RO: zg7P9l0
+  }
+}

@@ -1,0 +1,9 @@
+query qDBd {
+  __typename
+  ... on Union_pAE @defer(if: true, label: "") {
+    __typename
+  }
+  ... on Union_G {
+    __typename
+  }
+}

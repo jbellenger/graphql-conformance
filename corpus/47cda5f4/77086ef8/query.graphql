@@ -1,0 +1,15 @@
+query VS3cf {
+  ...Fragment_C0Hx1Bhvd
+  r7Xh1b5 @Directive_ED56u {
+    wxiQsw51fS
+  }
+}
+
+fragment Fragment_EmRw on Union_kVezIJfNEP {
+  __typename
+}
+
+fragment Fragment_C0Hx1Bhvd on Union_kVezIJfNEP {
+  ...Fragment_EmRw
+  ...Fragment_EmRw
+}

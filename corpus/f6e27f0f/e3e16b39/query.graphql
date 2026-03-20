@@ -1,0 +1,12 @@
+query DLOtbJzs {
+  ...Fragment_jhQuN_
+}
+
+fragment Fragment_KCoW8TjgH on Union_AqHVXdH {
+  __typename
+  __typename @include(if: true)
+}
+
+fragment Fragment_jhQuN_ on Object_TKVgN {
+  ...Fragment_KCoW8TjgH@defer(if: true, label: "")
+}

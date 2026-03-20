@@ -1,0 +1,27 @@
+query e5Da_ydeD($f6R89RkmGa: [[String!]]! = [[], ["?", "~E"]]) {
+  ...Fragment_DoVx3W3M
+  eT9: eW(yxK: $f6R89RkmGa)
+  ... on Union_XTg {
+    ... on Union_Sg {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_NPE on Interface__0zEPI2R {
+  __typename
+}
+
+fragment Fragment_DoVx3W3M on Object_LbQr6rg31 {
+  z_ {
+    ...Fragment_NPE
+    __typename
+    waRAeA {
+      n
+    }
+    __typename
+    ... on Interface__0zEPI2R_STUB @defer(if: false, label: "![") {
+      __typename
+    }
+  }
+}

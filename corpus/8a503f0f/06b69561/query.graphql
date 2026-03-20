@@ -1,0 +1,22 @@
+query ($pk: Boolean!) {
+  ...Fragment_fVH
+}
+
+fragment Fragment_sV on Object_SlbKzO {
+  __typename
+}
+
+fragment Fragment_fVH on Union_G {
+  ...Fragment_sV
+  ... on Union_pAE {
+    __typename
+  }
+  ... on Object_SlbKzO {
+    ...Fragment_sV
+    __typename
+    pL1E4Jp9v
+    ... on Union_pAE @include(if: $pk) {
+      __typename
+    }
+  }
+}

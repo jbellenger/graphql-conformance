@@ -1,0 +1,34 @@
+query ($zagfN9gIxd: Enum_h) {
+  ...Fragment_m
+  ...Fragment_m
+  ... on Union_NGmvZ1P {
+    __typename
+    __typename
+  }
+  ... on Union_NGmvZ1P {
+    ... on Union_cCXw8 @Directive_UeUaulWx91(fG8oRAStTY: hu) {
+      ...Fragment_tRjgp0
+      ... on Object_l4X @include(if: false) {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_m on Union_NGmvZ1P @Directive_UeUaulWx91(fG8oRAStTY: $zagfN9gIxd){
+  ... on Object_cMPKqUHc {
+    sixfj: h {
+      __typename
+    }
+    __typename
+  }
+}
+
+fragment Fragment_tRjgp0 on Object_cMPKqUHc {
+  h {
+    __typename
+  }
+  h {
+    DHP6F: __typename
+  }
+}

@@ -1,0 +1,19 @@
+query XaNv12iTlG($fYKTslcH4: Boolean!) @experimental_disableErrorPropagation @Directive_RjqDzh8(rD8x07PW: 1927110672) {
+  URD48pc1MU: __typename
+  __typename
+  ... on Union_EGV {
+    ... on Union_EGV {
+      ... @include(if: false) @skip(if: false) {
+        __typename
+        __typename
+      }
+    }
+    ... {
+      ...Fragment_pUyw2OOWw
+    }
+  }
+}
+
+fragment Fragment_pUyw2OOWw on Union_EGV {
+  __typename @skip(if: $fYKTslcH4)
+}

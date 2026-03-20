@@ -1,0 +1,48 @@
+query rCC0 {
+  eW(yxK: [])
+  ... on Object_LbQr6rg31 {
+    __typename
+    ... on Union_XTg {
+      __typename
+    }
+  }
+  ... on Object_LbQr6rg31 {
+    ...Fragment_jka9sN7Z
+    ...Fragment_jka9sN7Z
+    z_ {
+      ...Fragment_wREZ9zx
+      ... on Interface__0zEPI2R_STUB {
+        tRkwPBAn6: __typename
+      }
+    }
+    ... on Object_LbQr6rg31 @include(if: false) @defer(if: false, label: "&@") {
+      ... on Union_XTg {
+        __typename
+        __typename
+      }
+    }
+    ... on Union_Sg {
+      __typename
+      ... on Object_LbQr6rg31 @skip(if: false) {
+        wciYhTbHu5: eW(yxK: [["W5Q", "e", "Qa"], ["-", "Y>t", "!"]])
+        z_ {
+          __typename
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_sx4WDULp on Union_XTg {
+  __typename
+}
+
+fragment Fragment_jka9sN7Z on Union_Sg {
+  ...Fragment_sx4WDULp
+}
+
+fragment Fragment_wREZ9zx on Interface__0zEPI2R_STUB {
+  C5OXry: waRAeA {
+    n
+  }
+}

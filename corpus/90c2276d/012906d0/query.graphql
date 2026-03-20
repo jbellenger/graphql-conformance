@@ -1,0 +1,23 @@
+query P {
+  ...Fragment_Hkt6
+}
+
+fragment Fragment_poZWkCKo4 on Union_UfBRk9 {
+  fh2OsDfby: __typename
+}
+
+fragment Fragment_s on Union__9o {
+  ...Fragment_poZWkCKo4
+  jkflI: __typename
+  __typename
+}
+
+fragment Fragment_E4ROypiL2 on Union__9o {
+  __typename
+}
+
+fragment Fragment_Hkt6 on Union_UfBRk9 {
+  ...Fragment_s
+  ...Fragment_E4ROypiL2
+  __typename
+}

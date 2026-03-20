@@ -29,14 +29,14 @@ afterEach(() => {
 });
 
 const testConfig = {
-  reference: 'graphql-js-16',
+  reference: 'graphql-js-17',
   impls: {
-    'graphql-js-16': {
-      path: './impls/graphql-js-16',
+    'graphql-js-17': {
+      path: './impls/graphql-js-17',
       command: ['node', 'index.js'],
     },
     'graphql-js-copy': {
-      path: './impls/graphql-js-16',
+      path: './impls/graphql-js-17',
       command: ['node', 'index.js'],
     },
   },
@@ -66,7 +66,7 @@ describe('integration: self-comparison', () => {
 
     assert.ok(runResult, 'should have a run result');
     assert.ok(runResult.timestamp);
-    assert.equal(runResult.reference.name, 'graphql-js-16');
+    assert.equal(runResult.reference.name, 'graphql-js-17');
     assert.ok(runResult.reference.sha);
     assert.ok(runResult.conformants['graphql-js-copy']);
     assert.ok(runResult.conformants['graphql-js-copy'].sha);
@@ -110,14 +110,14 @@ describe('integration: incremental skip', () => {
     fs.writeFileSync(tmpConfigPath, JSON.stringify(testConfig, null, 2));
 
     const corpusTotal = discoverCorpus(path.join(rootDir, 'corpus')).length;
-    const refSha = getVersion(path.join(rootDir, 'impls', 'graphql-js-16'));
-    const conformantSha = getVersion(path.join(rootDir, 'impls', 'graphql-js-16'));
+    const refSha = getVersion(path.join(rootDir, 'impls', 'graphql-js-17'));
+    const conformantSha = getVersion(path.join(rootDir, 'impls', 'graphql-js-17'));
     const store = ResultsStore.fromDirectory(tmpResultsDir);
     store.recordRun({
       id: 'prior-run',
       timestamp: '2026-03-18T00:00:00.000Z',
       reference: {
-        name: 'graphql-js-16',
+        name: 'graphql-js-17',
         sha: refSha,
         total: corpusTotal,
         errors: 0,

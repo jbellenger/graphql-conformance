@@ -1,0 +1,143 @@
+schema {
+  query: Object_ZevdS9T8
+}
+
+directive @Directive_IR65VD2D9 on QUERY | MUTATION | FRAGMENT_SPREAD | OBJECT | UNION | ENUM
+
+directive @Directive__xSD2ZAWM on SUBSCRIPTION | FIELD | FRAGMENT_DEFINITION | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCHEMA | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM_VALUE | INPUT_OBJECT
+
+directive @Directive_tZom41bzK on QUERY | MUTATION | SUBSCRIPTION | FIELD | FRAGMENT_SPREAD | VARIABLE_DEFINITION | SCHEMA | SCALAR | OBJECT | ARGUMENT_DEFINITION | INTERFACE | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+"This directive allows results to be deferred during execution"
+directive @defer(
+    "Deferred behaviour is controlled by this argument"
+    if: Boolean! = true,
+    "A unique label that represents the fragment being deferred"
+    label: String
+  ) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Marks the field, argument, input field or enum value as deprecated"
+directive @deprecated(
+    "The reason for the deprecation"
+    reason: String! = "No longer supported"
+  ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+"This directive disables error propagation when a non nullable field returns null for the given operation."
+directive @experimental_disableErrorPropagation on QUERY | MUTATION | SUBSCRIPTION
+
+"Directs the executor to include this field or fragment only when the `if` argument is true"
+directive @include(
+    "Included when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Indicates an Input Object is a OneOf Input Object."
+directive @oneOf on INPUT_OBJECT
+
+"Directs the executor to skip this field or fragment when the `if` argument is true."
+directive @skip(
+    "Skipped when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Exposes a URL that specifies the behaviour of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behaviour of this scalar."
+    url: String!
+  ) on SCALAR
+
+interface Interface__xj implements Interface_ufZN1sa2 {
+  an2ANL: Enum_FCTAr
+  dzVKLZq2: Union_xS!
+  jwvSBuhfN: Enum_g2I5K!
+  jyO4TtHUTu: Enum_FCTAr @deprecated(reason : "Ke")
+  lR7rcHdp(yG: [Input_Lu0TeiWT]!): Interface__xj @Directive__xSD2ZAWM
+  mtk7M: Enum_g2I5K
+}
+
+interface Interface_fCwYia4 {
+  jt: Union_xS!
+  y8s1OfFN: Object_WdjsB
+}
+
+interface Interface_ufZN1sa2 {
+  jwvSBuhfN: Enum_g2I5K!
+  jyO4TtHUTu: Enum_FCTAr @deprecated(reason : "Ke")
+  mtk7M: Enum_g2I5K
+}
+
+union Union_osAzff = Object_ZevdS9T8
+
+union Union_xS = Object_ubOn_
+
+union Union_zf5G1ht = Object_WdjsB | Object_ZevdS9T8 | Object_ubOn_
+
+type Interface__xj_STUB implements Interface__xj & Interface_ufZN1sa2 {
+  an2ANL: Enum_FCTAr
+  dzVKLZq2: Union_xS!
+  jf_: Union_osAzff
+  jwvSBuhfN: Enum_g2I5K!
+  jyO4TtHUTu: Enum_FCTAr @deprecated(reason : "Ke")
+  lR7rcHdp(yG: [Input_Lu0TeiWT]!): Interface__xj @Directive__xSD2ZAWM
+  mtk7M: Enum_g2I5K
+  ocw: Int
+}
+
+type Interface_fCwYia4_STUB implements Interface_fCwYia4 {
+  eM_B1e: Object_ubOn_ @deprecated(reason : "")
+  jt: Union_xS!
+  lx8ilsOmY: Union_xS!
+  y8s1OfFN: Object_WdjsB
+  zRh9mo: Int!
+}
+
+type Interface_ufZN1sa2_STUB implements Interface_ufZN1sa2 {
+  ch0uipMV(vVw4Q00: Enum_FCTAr = NZZuFgZ): Enum_n
+  fqBgdy0AT: [Union_osAzff]!
+  jNVqF: Interface_fCwYia4
+  jwvSBuhfN: Enum_g2I5K!
+  jyO4TtHUTu: Enum_FCTAr @deprecated(reason : "Ke")
+  mtk7M: Enum_g2I5K
+}
+
+type Object_WdjsB {
+  jAfa3g: Union_xS
+  osygamrEa: Enum_FCTAr!
+}
+
+type Object_ZevdS9T8 {
+  u1oG_pA: Int @Directive__xSD2ZAWM
+  znRX1: Enum_FCTAr
+}
+
+type Object_ubOn_ @Directive_IR65VD2D9 {
+  bd: Boolean
+  qeM_EoJM: Enum_FCTAr
+}
+
+enum Enum_FCTAr {
+  NZZuFgZ
+  UbtQYUuuok
+}
+
+enum Enum_g2I5K {
+  jLFDkxif
+}
+
+enum Enum_n @Directive_tZom41bzK {
+  AY
+  fPu12
+}
+
+input Input_J3OyoK {
+  rReW1_Fm: ID!
+  vE6wc_ZdYC: Input_k1spIfD7LM
+}
+
+input Input_Lu0TeiWT {
+  dPMhXGRHb: Input_k1spIfD7LM = {woOc_0UIU : -1620178129} @deprecated(reason : "")
+}
+
+input Input_k1spIfD7LM {
+  woOc_0UIU: Int!
+}

@@ -1,0 +1,10 @@
+query GvxKH0zN @experimental_disableErrorPropagation {
+  ...Fragment_fF
+  __typename
+}
+
+fragment Fragment_fF on Union_kVezIJfNEP {
+  ... on Object_iqYLxHI {
+    __typename
+  }
+}

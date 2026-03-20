@@ -1,0 +1,3293 @@
+[
+  {
+    "testKey": "119185c4/3054d349/44136fa3",
+    "expected": {
+      "data": {
+        "VFgNEs": "Object_uP_8"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "119185c4/32a39e9e/44136fa3",
+    "expected": {
+      "data": {
+        "k5HeEAt": {
+          "hBPo": "FYlQU_AA",
+          "d": {
+            "__typename": "Object_sP"
+          },
+          "O": {
+            "cX8thV": "ChNSK"
+          },
+          "__typename": "Interface_tdYBZ8h4_STUB"
+        },
+        "__typename": "Object_uP_8",
+        "L": "Object_uP_8",
+        "s": "Object_uP_8",
+        "z": "Object_uP_8"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "119185c4/54532554/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_uP_8",
+        "AOj550": "Object_uP_8"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "119185c4/a59a06bd/455622b9",
+    "expected": {
+      "data": {
+        "__typename": "Object_uP_8"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "119185c4/af25aed7/06b62211",
+    "expected": {
+      "data": {
+        "k5HeEAt": {
+          "lUMbXvBR": {
+            "cX8thV": "ChNSK",
+            "UK5N1VV": {
+              "hb93GF": "Interface_tdYBZ8h4_STUB"
+            },
+            "hyKFX": {
+              "a6fnElc": "Interface_tdYBZ8h4_STUB"
+            },
+            "mg1pl": "ChNSK"
+          }
+        },
+        "__typename": "Object_uP_8",
+        "jzYZV43": "Object_uP_8"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "119185c4/af25aed7/6f795cf8",
+    "expected": {
+      "data": {
+        "__typename": "Object_uP_8",
+        "k5HeEAt": {
+          "lUMbXvBR": {
+            "ioIwB7": "ChNSK",
+            "cX8thV": "ChNSK",
+            "UK5N1VV": {
+              "hb93GF": "Interface_tdYBZ8h4_STUB"
+            },
+            "hyKFX": {
+              "a6fnElc": "Interface_tdYBZ8h4_STUB"
+            },
+            "mg1pl": "ChNSK"
+          }
+        },
+        "jzYZV43": "Object_uP_8"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "119185c4/b2b6acc0/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_uP_8"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "119185c4/bfd1854a/44136fa3",
+    "expected": {
+      "data": {
+        "fuT_h6kH": "Object_uP_8",
+        "__typename": "Object_uP_8"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "119185c4/e608d5da/44136fa3",
+    "expected": {
+      "data": {
+        "iFDz": "Object_uP_8"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "119185c4/e98a4a88/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_uP_8"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "119185c4/f8f5f459/44136fa3",
+    "expected": {
+      "data": {
+        "Q1i": "Object_uP_8",
+        "__typename": "Object_uP_8",
+        "X13": "Object_uP_8"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "1dc40c00/7e33a890/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_rH0gV",
+        "qgybBzaayH": {
+          "fq": "id"
+        },
+        "dmA08Nf": [
+          {
+            "ITN8FNjJ": "str"
+          },
+          {
+            "ITN8FNjJ": "str"
+          }
+        ]
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_rH0gV",
+        "qgybBzaayH": {
+          "fq": "id"
+        },
+        "dmA08Nf": [
+          {
+            "ITN8FNjJ": "str"
+          },
+          {
+            "ITN8FNjJ": "str"
+          }
+        ],
+        "kK": {
+          "__typename": "Object_oqgz8xv"
+        }
+      }
+    }
+  },
+  {
+    "testKey": "20ac27b6/3237b589/44136fa3",
+    "expected": {
+      "data": {}
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_vIZzdJ, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 6,
+              "column": 3
+            }
+          ],
+          "path": [
+            "fragment Fragment_EiN538Usl",
+            "... on Union_vIZzdJ"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_vIZzdJ"
+          }
+        },
+        {
+          "message": "No such type Union_vIZzdJ, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 10,
+              "column": 5
+            }
+          ],
+          "path": [
+            "fragment Fragment_EiN538Usl",
+            "... on Union_rF",
+            "... on Union_vIZzdJ"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_vIZzdJ"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "20ac27b6/66362418/44136fa3",
+    "expected": {
+      "data": {}
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_vIZzdJ, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 6,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_rgNFdaI"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_vIZzdJ"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "2961309f/1a2c4d26/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_noPPq",
+        "k3SKRgUp": {
+          "__typename": "Object_wNhadfOl0"
+        }
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_Jc31, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 3,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query",
+            "... on Union_Jc31"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_Jc31"
+          }
+        },
+        {
+          "message": "No such type Union_Jc31, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 23,
+              "column": 3
+            }
+          ],
+          "path": [
+            "fragment Fragment_nW",
+            "... on Union_Jc31"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_Jc31"
+          }
+        },
+        {
+          "message": "Fragment Fragment_aAlE6uj was defined, but not used",
+          "locations": [
+            {
+              "line": 14,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_aAlE6uj"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_aAlE6uj"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "2961309f/39280772/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_noPPq"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_Jc31, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 2,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query",
+            "... on Union_Jc31"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_Jc31"
+          }
+        },
+        {
+          "message": "No such type Union_Jc31, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 27,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_hvqVC5"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_Jc31"
+          }
+        },
+        {
+          "message": "Fragment Fragment_Zwo5MGqcJ was defined, but not used",
+          "locations": [
+            {
+              "line": 23,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_Zwo5MGqcJ"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_Zwo5MGqcJ"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "2961309f/3fdd6d77/75788cd9",
+    "expected": {
+      "data": {}
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_noPPq"
+      }
+    }
+  },
+  {
+    "testKey": "2961309f/5ecc6487/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_noPPq",
+        "k3q": "pV73Km"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_Jc31, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 6,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_UtmKwkS"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_Jc31"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "2961309f/cafec505/44136fa3",
+    "expected": {
+      "data": {
+        "i2C": {
+          "V1ygO7aIq": true,
+          "ddWA5": "Object_wNhadfOl0",
+          "__typename": "Object_wNhadfOl0",
+          "KM0uGES3": "Object_wNhadfOl0"
+        },
+        "k3q": "pV73Km",
+        "__typename": "Object_noPPq"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_Jc31, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 16,
+              "column": 7
+            }
+          ],
+          "path": [
+            "query",
+            "... on Object_noPPq",
+            "... on Object_noPPq",
+            "... on Union_Jc31"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_Jc31"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "2961309f/dd5dcae1/cc070196",
+    "expected": {
+      "data": {}
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_Jc31, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 5,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_XqD8d"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_Jc31"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "2961309f/dd5dcae1/ee9074d7",
+    "expected": {
+      "data": {
+        "__typename": "Object_noPPq"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_Jc31, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 5,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_XqD8d"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_Jc31"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "35300818/9874f1d9/44136fa3",
+    "expected": {
+      "data": {}
+    },
+    "actual": {
+      "data": {
+        "zjB4L": "str"
+      }
+    }
+  },
+  {
+    "testKey": "35300818/b085d2a9/a43c8caa",
+    "expected": {
+      "data": {
+        "__typename": "Object_pwh9r"
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_pwh9r",
+        "jq1": {
+          "jagNH": "str"
+        }
+      }
+    }
+  },
+  {
+    "testKey": "35300818/f5f4d282/14cdcf4b",
+    "expected": {
+      "data": {
+        "jq1": {
+          "jagNH": "str",
+          "gAqhTt7B": {}
+        },
+        "f71NOptyKe": {
+          "__typename": "Object_lIG",
+          "imLcba": "Object_lIG"
+        },
+        "__typename": "Object_pwh9r",
+        "vU3": "Object_pwh9r",
+        "zjB4L": "str"
+      }
+    },
+    "actual": {
+      "data": {
+        "jq1": {
+          "jagNH": "str",
+          "gAqhTt7B": {
+            "L0KZ": [
+              "A",
+              "A"
+            ]
+          }
+        },
+        "f71NOptyKe": {
+          "__typename": "Object_lIG",
+          "imLcba": "Object_lIG"
+        },
+        "__typename": "Object_pwh9r",
+        "vU3": "Object_pwh9r",
+        "zjB4L": "str"
+      }
+    }
+  },
+  {
+    "testKey": "3b9c58dc/102e5011/44136fa3",
+    "expected": {
+      "data": {
+        "gZEB4hCu": "Object_P1qC",
+        "mlH": "Object_P1qC",
+        "__typename": "Object_P1qC",
+        "lfI": {
+          "j0fclZO": "o9oE"
+        },
+        "j0fclZO": "o9oE"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_rWc1c, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 13,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_oRdhivSk"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_rWc1c"
+          }
+        },
+        {
+          "message": "No such type Union_rWc1c, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 24,
+              "column": 3
+            }
+          ],
+          "path": [
+            "fragment Fragment_aRlgdWLd0y",
+            "... on Union_rWc1c"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_rWc1c"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3b9c58dc/70c65447/4f4b1cae",
+    "expected": {
+      "data": {
+        "__typename": "Object_P1qC",
+        "lfI": {
+          "lfI": {
+            "__typename": "Object_P1qC"
+          },
+          "j0fclZO": "o9oE"
+        },
+        "KyvdH": "Object_P1qC"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_rWc1c, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 31,
+              "column": 3
+            }
+          ],
+          "path": [
+            "fragment Fragment_VAb2BiAJ0v",
+            "... on Union_rWc1c"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_rWc1c"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3b9c58dc/70c65447/5526736f",
+    "expected": {
+      "data": {
+        "__typename": "Object_P1qC",
+        "lfI": {
+          "j0fclZO": "o9oE"
+        },
+        "KyvdH": "Object_P1qC"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_rWc1c, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 31,
+              "column": 3
+            }
+          ],
+          "path": [
+            "fragment Fragment_VAb2BiAJ0v",
+            "... on Union_rWc1c"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_rWc1c"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3b9c58dc/7ea74955/44136fa3",
+    "expected": {
+      "data": {
+        "lfI": {
+          "ZA0bg_Q5uz": "Object_P1qC",
+          "AVUbCx": {
+            "ZA0bg_Q5uz": "Object_P1qC",
+            "lfI": {
+              "pEI": "Object_P1qC"
+            },
+            "__typename": "Object_P1qC"
+          },
+          "lfI": {
+            "j0fclZO": "o9oE",
+            "W126Qg68ZG": "Object_P1qC"
+          },
+          "j0fclZO": "o9oE",
+          "_ie6LZ": "Object_P1qC",
+          "__typename": "Object_P1qC"
+        }
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_rWc1c, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 21,
+              "column": 7
+            }
+          ],
+          "path": [
+            "query u_ooYiL",
+            "lfI",
+            "... on Object_P1qC",
+            "... on Union_rWc1c"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_rWc1c"
+          }
+        },
+        {
+          "message": "No such type Union_rWc1c, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 28,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_Tsnva"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_rWc1c"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3b9c58dc/b2cb6f62/2540d385",
+    "expected": {
+      "data": {
+        "E18o": "Object_P1qC",
+        "__typename": "Object_P1qC",
+        "SPAbjMHj9": "Object_P1qC",
+        "j0fclZO": "o9oE"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_rWc1c, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 5,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_rhSVch5"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_rWc1c"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3b9c58dc/b2cb6f62/f6d3c2d3",
+    "expected": {
+      "data": {
+        "E18o": "Object_P1qC",
+        "__typename": "Object_P1qC",
+        "SPAbjMHj9": "Object_P1qC"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_rWc1c, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 5,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_rhSVch5"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_rWc1c"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3b9c58dc/d61497cc/44136fa3",
+    "expected": {
+      "data": {
+        "j0fclZO": "o9oE",
+        "lfI": {
+          "j0fclZO": "o9oE",
+          "TsS": "Object_P1qC"
+        },
+        "__typename": "Object_P1qC"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_rWc1c, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 3,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query",
+            "... on Union_rWc1c"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_rWc1c"
+          }
+        },
+        {
+          "message": "No such type Union_rWc1c, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 13,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query",
+            "... on Union_rWc1c"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_rWc1c"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "410c173a/185190d6/44136fa3",
+    "expected": {
+      "data": {
+        "eW": "PwEqr2",
+        "__typename": "Object_LbQr6rg31",
+        "z_": {
+          "C5OXry": {
+            "n": "id"
+          },
+          "tRkwPBAn6": "Interface__0zEPI2R_STUB",
+          "__typename": "Interface__0zEPI2R_STUB"
+        },
+        "wciYhTbHu5": "PwEqr2"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_XTg, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 5,
+              "column": 5
+            }
+          ],
+          "path": [
+            "query rCC0",
+            "... on Object_LbQr6rg31",
+            "... on Union_XTg"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_XTg"
+          }
+        },
+        {
+          "message": "No such type Union_XTg, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 19,
+              "column": 7
+            }
+          ],
+          "path": [
+            "query rCC0",
+            "... on Object_LbQr6rg31",
+            "... on Object_LbQr6rg31",
+            "... on Union_XTg"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_XTg"
+          }
+        },
+        {
+          "message": "No such type Union_XTg, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 36,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_sx4WDULp"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_XTg"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "410c173a/8a375d33/20d2e715",
+    "expected": {
+      "data": {
+        "z_": {
+          "__typename": "Interface__0zEPI2R_STUB",
+          "waRAeA": {
+            "n": "id"
+          }
+        },
+        "eT9": "PwEqr2",
+        "__typename": "Object_LbQr6rg31"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_XTg, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 4,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query e5Da_ydeD",
+            "... on Union_XTg"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_XTg"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "410c173a/8a375d33/d9a76da8",
+    "expected": {
+      "data": {
+        "z_": {
+          "__typename": "Interface__0zEPI2R_STUB",
+          "waRAeA": {
+            "n": "id"
+          }
+        },
+        "eT9": "PwEqr2",
+        "__typename": "Object_LbQr6rg31"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_XTg, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 4,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query e5Da_ydeD",
+            "... on Union_XTg"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_XTg"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "410c173a/8a375d33/fb47085d",
+    "expected": {
+      "data": {
+        "z_": {
+          "__typename": "Interface__0zEPI2R_STUB",
+          "waRAeA": {
+            "n": "id"
+          }
+        },
+        "eT9": "PwEqr2",
+        "__typename": "Object_LbQr6rg31"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_XTg, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 4,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query e5Da_ydeD",
+            "... on Union_XTg"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_XTg"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "410c173a/967e4b8d/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_LbQr6rg31",
+        "tE": "Object_LbQr6rg31"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_XTg, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 3,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query",
+            "... on Union_XTg"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_XTg"
+          }
+        },
+        {
+          "message": "No such type Union_XTg, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 21,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_s"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_XTg"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "410c173a/9ca5466a/44136fa3",
+    "expected": {
+      "data": {
+        "bnnrceiR": true,
+        "jl": "Object_LbQr6rg31",
+        "__typename": "Object_LbQr6rg31",
+        "IIpzY4": "Object_LbQr6rg31"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_XTg, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 15,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_d"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_XTg"
+          }
+        },
+        {
+          "message": "No such type Union_XTg, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 26,
+              "column": 3
+            }
+          ],
+          "path": [
+            "fragment Fragment_DiJNa4",
+            "... on Union_XTg"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_XTg"
+          }
+        },
+        {
+          "message": "No such type Union_XTg, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 35,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_PTU9Y7f3"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_XTg"
+          }
+        },
+        {
+          "message": "Fragment Fragment_R6HPO was defined, but not used",
+          "locations": [
+            {
+              "line": 31,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_R6HPO"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_R6HPO"
+          }
+        },
+        {
+          "message": "Fragment Fragment_DiJNa4 was defined, but not used",
+          "locations": [
+            {
+              "line": 24,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_DiJNa4"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_DiJNa4"
+          }
+        },
+        {
+          "message": "Fragment Fragment_l was defined, but not used",
+          "locations": [
+            {
+              "line": 11,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_l"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_l"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "410c173a/cb7e67b7/607ac560",
+    "expected": {
+      "data": {
+        "__typename": "Object_LbQr6rg31",
+        "deZSwV": "Object_LbQr6rg31",
+        "HQ": "Object_LbQr6rg31"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_XTg, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 7,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_j7Xbx"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_XTg"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "410c173a/d6996949/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_LbQr6rg31"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_XTg, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 8,
+              "column": 3
+            }
+          ],
+          "path": [
+            "fragment Fragment_VvavOaBvo1",
+            "... on Union_XTg"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_XTg"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "410c173a/ed0a8e70/8cdadda9",
+    "expected": {
+      "data": {
+        "dHuSlUS": "Object_LbQr6rg31",
+        "z6ACPa": "PwEqr2",
+        "eW": "PwEqr2",
+        "fjEv": true,
+        "Oevx8": "PwEqr2"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_XTg, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 10,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_P3E_gtWxsu"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_XTg"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "410c173a/ed0a8e70/97f0f04e",
+    "expected": {
+      "data": {
+        "dHuSlUS": "Object_LbQr6rg31",
+        "z6ACPa": "PwEqr2",
+        "eW": "PwEqr2",
+        "fjEv": true,
+        "Oevx8": "PwEqr2"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_XTg, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 10,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_P3E_gtWxsu"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_XTg"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "410c173a/ed0a8e70/b549c3e2",
+    "expected": {
+      "data": {
+        "dHuSlUS": "Object_LbQr6rg31",
+        "z6ACPa": "PwEqr2",
+        "eW": "PwEqr2",
+        "fjEv": true,
+        "Oevx8": "PwEqr2"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_XTg, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 10,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_P3E_gtWxsu"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_XTg"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "47cda5f4/4edfc861/44136fa3",
+    "actual": {
+      "data": {
+        "GykA9A_": {
+          "wxiQsw51fS": "va",
+          "zlqqe2C": "va",
+          "z8FUqhov": "saD",
+          "cVcej5C": "saD",
+          "__typename": "Object_blu"
+        }
+      }
+    }
+  },
+  {
+    "testKey": "47cda5f4/77086ef8/44136fa3",
+    "actual": {
+      "data": {
+        "__typename": "Object_iqYLxHI",
+        "r7Xh1b5": {
+          "wxiQsw51fS": "va"
+        }
+      }
+    }
+  },
+  {
+    "testKey": "47cda5f4/85f4222c/44136fa3",
+    "actual": {
+      "data": {
+        "W0dMyG": "Object_iqYLxHI",
+        "r7Xh1b5": {
+          "wxiQsw51fS": "va",
+          "__typename": "Object_blu"
+        }
+      }
+    }
+  },
+  {
+    "testKey": "47cda5f4/8d8f7365/44136fa3",
+    "actual": {
+      "data": {
+        "__typename": "Object_iqYLxHI"
+      }
+    }
+  },
+  {
+    "testKey": "47cda5f4/9f02d279/44136fa3",
+    "actual": {
+      "data": {
+        "r7Xh1b5": {
+          "oGdeACBrOY": "va",
+          "FLrvUxuZ": "Object_blu",
+          "gFkXFQYvYu": "Object_blu"
+        }
+      }
+    }
+  },
+  {
+    "testKey": "47cda5f4/c0762506/44136fa3",
+    "actual": {
+      "data": {
+        "__typename": "Object_iqYLxHI"
+      }
+    }
+  },
+  {
+    "testKey": "47cda5f4/c16a6c51/44136fa3",
+    "actual": {
+      "data": {
+        "__typename": "Object_iqYLxHI",
+        "r7Xh1b5": {
+          "wxiQsw51fS": "va"
+        }
+      }
+    }
+  },
+  {
+    "testKey": "47cda5f4/cfb36bcc/44136fa3",
+    "actual": {
+      "data": {
+        "__typename": "Object_iqYLxHI"
+      }
+    }
+  },
+  {
+    "testKey": "47cda5f4/d78d55be/44136fa3",
+    "actual": {
+      "data": {
+        "r7Xh1b5": {
+          "__typename": "Object_blu",
+          "wxiQsw51fS": "va",
+          "w76Au": "va"
+        },
+        "__typename": "Object_iqYLxHI",
+        "uo": {
+          "wxiQsw51fS": "va"
+        }
+      }
+    }
+  },
+  {
+    "testKey": "5a97b197/027da7d0/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_l4X"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "5a97b197/03a1c0a5/44136fa3",
+    "expected": {
+      "data": {
+        "mS6": "hu"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "5a97b197/59e3dc04/d69671ac",
+    "expected": {
+      "data": {
+        "__typename": "Object_l4X"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "5a97b197/794f5977/44136fa3",
+    "expected": {
+      "data": {
+        "_": {
+          "__typename": "Interface_eYpo3TXWHp_STUB",
+          "h": {
+            "__typename": "Object_Aq",
+            "EBvXsnuz": "Object_Aq",
+            "s8sN2aG": "id"
+          },
+          "I5_lKJ": "Interface_eYpo3TXWHp_STUB"
+        },
+        "__typename": "Object_l4X"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "5a97b197/84b1ab54/4f70d623",
+    "expected": {
+      "data": {
+        "DCon": "Object_l4X",
+        "__typename": "Object_l4X",
+        "PNuLMwro": "Object_l4X"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "5a97b197/84b1ab54/ab6f61af",
+    "expected": {
+      "data": {
+        "__typename": "Object_l4X",
+        "PNuLMwro": "Object_l4X"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "5a97b197/997233d5/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_l4X"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "5a97b197/9d256d7d/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_l4X",
+        "GysXy": "Object_l4X"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "5a97b197/f253b1d4/44136fa3",
+    "expected": {
+      "data": {}
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "5a97b197/f3499d6b/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_l4X"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "5a97b197/f421af18/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_l4X"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_ast_node.rb:12:in 'GraphQL::Schema::Member::HasAstNode#inherited': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_directives.rb:13:in 'GraphQL::Schema::Member::HasDirectives#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_arguments.rb:121:in 'GraphQL::Schema::Member::HasArguments::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/member/has_validators.rb:26:in 'GraphQL::Schema::Member::HasValidators::ClassConfigured#inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/directive.rb:106:in 'GraphQL::Schema::Directive.inherited'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:474:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_directive'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:270:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_definition_from_node'\n\t ... 9956 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "6b8ab960/4c125670/44136fa3",
+    "expected": {
+      "data": {
+        "w": "Object_ReSvl",
+        "amS5H0p": [
+          {
+            "__typename": "Object__IMF2",
+            "PhJuL": "Object__IMF2",
+            "rBATUrLz0": "N18WWovVq"
+          },
+          {
+            "__typename": "Object__IMF2",
+            "PhJuL": "Object__IMF2",
+            "rBATUrLz0": "N18WWovVq"
+          }
+        ]
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_K9lT, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 15,
+              "column": 5
+            }
+          ],
+          "path": [
+            "query CdJsmx",
+            "amS5H0p",
+            "... on Union_K9lT"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_K9lT"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "6b8ab960/73ffe364/4a6d9b03",
+    "expected": {
+      "data": {
+        "amS5H0p": [
+          {
+            "__typename": "Object__IMF2",
+            "q35h8U0n": [
+              "CXHYkH",
+              "CXHYkH"
+            ]
+          },
+          {
+            "__typename": "Object__IMF2",
+            "q35h8U0n": [
+              "CXHYkH",
+              "CXHYkH"
+            ]
+          }
+        ],
+        "__typename": "Object_ReSvl",
+        "BZarh_": [
+          {
+            "__typename": "Object__IMF2"
+          },
+          {
+            "__typename": "Object__IMF2"
+          }
+        ]
+      }
+    },
+    "actual": {
+      "data": {
+        "amS5H0p": [
+          {
+            "__typename": "Object__IMF2",
+            "q35h8U0n": [
+              "CXHYkH",
+              "CXHYkH"
+            ]
+          },
+          {
+            "__typename": "Object__IMF2",
+            "q35h8U0n": [
+              "CXHYkH",
+              "CXHYkH"
+            ]
+          }
+        ],
+        "BdfB30MY": "Object_ReSvl",
+        "__typename": "Object_ReSvl",
+        "BZarh_": [
+          {
+            "__typename": "Object__IMF2"
+          },
+          {
+            "__typename": "Object__IMF2"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "testKey": "80a7daea/003226d1/44136fa3",
+    "expected": {
+      "data": {
+        "i": "Object_sY7_hUvJn",
+        "Huo": "Object_sY7_hUvJn"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Array#each': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Enumerable#find'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:549:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_resolve_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:460:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:429:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_input_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:424:in 'Class#initialize'\n\t ... 9966 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "80a7daea/38045e54/341a3cd1",
+    "expected": {
+      "data": {
+        "sAKQ2": 2,
+        "__typename": "Object_sY7_hUvJn",
+        "wZFE2cDxIH": {
+          "ny4bPIC": true,
+          "oUwPZ": "egDB__"
+        }
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Array#each': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Enumerable#find'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:549:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_resolve_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:460:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:429:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_input_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:424:in 'Class#initialize'\n\t ... 9966 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "80a7daea/38045e54/49b767e1",
+    "expected": {
+      "data": {
+        "__typename": "Object_sY7_hUvJn",
+        "wZFE2cDxIH": {
+          "ny4bPIC": true,
+          "oUwPZ": "egDB__"
+        },
+        "sAKQ2": 2
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Array#each': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Enumerable#find'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:549:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_resolve_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:460:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:429:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_input_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:424:in 'Class#initialize'\n\t ... 9966 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "80a7daea/562f39d1/44136fa3",
+    "expected": {
+      "data": {
+        "vwxnjW_": {
+          "qh_": 2
+        }
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Array#each': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Enumerable#find'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:549:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_resolve_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:460:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:429:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_input_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:424:in 'Class#initialize'\n\t ... 9966 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "80a7daea/7564a01a/3329c2e0",
+    "expected": {
+      "data": {
+        "__typename": "Object_sY7_hUvJn"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Array#each': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Enumerable#find'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:549:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_resolve_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:460:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:429:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_input_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:424:in 'Class#initialize'\n\t ... 9966 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "80a7daea/7564a01a/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_sY7_hUvJn"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Array#each': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Enumerable#find'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:549:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_resolve_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:460:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:429:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_input_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:424:in 'Class#initialize'\n\t ... 9966 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "80a7daea/7564a01a/5794929d",
+    "expected": {
+      "data": {
+        "__typename": "Object_sY7_hUvJn"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Array#each': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Enumerable#find'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:549:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_resolve_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:460:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:429:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_input_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:424:in 'Class#initialize'\n\t ... 9966 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "80a7daea/83915e96/409f3c64",
+    "expected": {
+      "data": {
+        "__typename": "Object_sY7_hUvJn",
+        "wZFE2cDxIH": {
+          "sjlucb": {
+            "IKNViRJW": "bJH74"
+          }
+        },
+        "sAKQ2": 2,
+        "kKPrUmC": "Object_sY7_hUvJn"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Array#each': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Enumerable#find'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:549:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_resolve_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:460:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:429:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_input_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:424:in 'Class#initialize'\n\t ... 9966 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "80a7daea/83915e96/902b63b7",
+    "expected": {
+      "data": {
+        "__typename": "Object_sY7_hUvJn",
+        "sAKQ2": 2,
+        "kKPrUmC": "Object_sY7_hUvJn"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Array#each': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Enumerable#find'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:549:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_resolve_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:460:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:429:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_input_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:424:in 'Class#initialize'\n\t ... 9966 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "80a7daea/a679f475/2c3a585e",
+    "expected": {
+      "data": {
+        "e_NE3n6AX": "Object_sY7_hUvJn",
+        "__typename": "Object_sY7_hUvJn",
+        "Idlibz1": {
+          "__typename": "Object_t5"
+        },
+        "vwxnjW_": {
+          "e_NE3n6AX": "Object_t5",
+          "__typename": "Object_t5",
+          "ytAi": {
+            "gbtA": "Object_t5"
+          },
+          "u7xcx": {}
+        },
+        "a6": {
+          "x1F": "egDB__"
+        },
+        "UmnLXJo": "Object_sY7_hUvJn"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Array#each': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Enumerable#find'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:549:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_resolve_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:460:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:429:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_input_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:424:in 'Class#initialize'\n\t ... 9966 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "80a7daea/a679f475/ac357cc0",
+    "expected": {
+      "data": {
+        "e_NE3n6AX": "Object_sY7_hUvJn",
+        "__typename": "Object_sY7_hUvJn",
+        "Idlibz1": {
+          "__typename": "Object_t5"
+        },
+        "vwxnjW_": {
+          "e_NE3n6AX": "Object_t5",
+          "__typename": "Object_t5",
+          "ytAi": {
+            "gbtA": "Object_t5"
+          },
+          "u7xcx": {
+            "__typename": "Object_XBLHgh9Vs"
+          }
+        },
+        "a6": {
+          "x1F": "egDB__"
+        },
+        "UmnLXJo": "Object_sY7_hUvJn"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Array#each': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Enumerable#find'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:549:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_resolve_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:460:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:429:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_input_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:424:in 'Class#initialize'\n\t ... 9966 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "80a7daea/cdfc16bd/44136fa3",
+    "expected": {
+      "data": {
+        "wZFE2cDxIH": {
+          "oUwPZ": "egDB__",
+          "__typename": "Interface_bqW5j4_STUB",
+          "dlx7hrL": "egDB__",
+          "fZFU4s": "Interface_bqW5j4_STUB"
+        }
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Array#each': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Enumerable#find'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:549:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_resolve_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:460:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:429:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_input_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:424:in 'Class#initialize'\n\t ... 9966 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "80a7daea/d9fce0a3/44136fa3",
+    "expected": {
+      "data": {
+        "Exjo": 2,
+        "OfEg": "Object_sY7_hUvJn",
+        "__typename": "Object_sY7_hUvJn"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Array#each': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Enumerable#find'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:549:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_resolve_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:460:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:429:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_input_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:424:in 'Class#initialize'\n\t ... 9966 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "80a7daea/e012c9e9/44136fa3",
+    "expected": {
+      "data": {
+        "sAKQ2": 2
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Array#each': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Enumerable#find'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:549:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_resolve_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:460:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:429:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_input_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:424:in 'Class#initialize'\n\t ... 9966 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "80a7daea/e03288df/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_sY7_hUvJn"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Array#each': stack level too deep (SystemStackError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'Enumerable#find'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:63:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:549:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_resolve_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:460:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:451:in 'GraphQL::Schema::BuildFromDefinition::Builder#build_arguments'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:429:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build_input_object_type'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:424:in 'Class#initialize'\n\t ... 9966 levels...\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "82d674ff/40f5c972/44136fa3",
+    "expected": {
+      "data": {
+        "ybof7AI": [
+          {
+            "__typename": "Object_B0_Hbh"
+          },
+          {
+            "__typename": "Object_B0_Hbh"
+          }
+        ]
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_KMgD3kVhz, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 3,
+              "column": 5
+            }
+          ],
+          "path": [
+            "query mTtpth9i6",
+            "ybof7AI",
+            "... on Union_KMgD3kVhz"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_KMgD3kVhz"
+          }
+        },
+        {
+          "message": "No such type Union_KMgD3kVhz, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 6,
+              "column": 5
+            }
+          ],
+          "path": [
+            "query mTtpth9i6",
+            "ybof7AI",
+            "... on Union_KMgD3kVhz"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_KMgD3kVhz"
+          }
+        },
+        {
+          "message": "No such type Union_KMgD3kVhz, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 12,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_u1Q3"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_KMgD3kVhz"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "82d674ff/a4c6f7a5/44136fa3",
+    "expected": {
+      "data": {
+        "ybof7AI": [
+          {
+            "__typename": "Object_B0_Hbh"
+          },
+          {
+            "__typename": "Object_B0_Hbh"
+          }
+        ],
+        "__typename": "Object_B0_Hbh",
+        "ycGd": 3.14,
+        "D": [
+          {
+            "__typename": "Object_B0_Hbh"
+          },
+          {
+            "__typename": "Object_B0_Hbh"
+          }
+        ],
+        "rhgFrmK_B": "Object_B0_Hbh"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_KMgD3kVhz, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 8,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query qZ4aTQ9",
+            "... on Union_KMgD3kVhz"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_KMgD3kVhz"
+          }
+        },
+        {
+          "message": "No such type Union_KMgD3kVhz, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 28,
+              "column": 5
+            }
+          ],
+          "path": [
+            "fragment Fragment_f0RRwwgy",
+            "ybof7AI",
+            "... on Union_KMgD3kVhz"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_KMgD3kVhz"
+          }
+        },
+        {
+          "message": "No such type Union_KMgD3kVhz, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 32,
+              "column": 3
+            }
+          ],
+          "path": [
+            "fragment Fragment_f0RRwwgy",
+            "... on Union_KMgD3kVhz"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_KMgD3kVhz"
+          }
+        },
+        {
+          "message": "Fragment Fragment_VmmyeA9jBK was defined, but not used",
+          "locations": [
+            {
+              "line": 37,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_VmmyeA9jBK"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_VmmyeA9jBK"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "82d674ff/db76b26d/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_B0_Hbh"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_KMgD3kVhz, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 2,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query",
+            "... on Union_KMgD3kVhz"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_KMgD3kVhz"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "82d674ff/ffcc2b8c/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_B0_Hbh",
+        "ycGd": 3.14
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_KMgD3kVhz, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 4,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query UHj",
+            "... on Union_KMgD3kVhz"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_KMgD3kVhz"
+          }
+        },
+        {
+          "message": "No such type Union_KMgD3kVhz, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 10,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_hPaV10qyF"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_KMgD3kVhz"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "8a503f0f/06b69561/0fdb34cc",
+    "expected": {
+      "data": {
+        "__typename": "Object_SlbKzO",
+        "pL1E4Jp9v": "hpjw8Ufqn"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_pAE, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 11,
+              "column": 3
+            }
+          ],
+          "path": [
+            "fragment Fragment_fVH",
+            "... on Union_pAE"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_pAE"
+          }
+        },
+        {
+          "message": "No such type Union_pAE, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 18,
+              "column": 5
+            }
+          ],
+          "path": [
+            "fragment Fragment_fVH",
+            "... on Object_SlbKzO",
+            "... on Union_pAE"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_pAE"
+          }
+        },
+        {
+          "message": "Variable $pk is declared by anonymous query but not used",
+          "locations": [
+            {
+              "line": 1,
+              "column": 1
+            }
+          ],
+          "path": [
+            "query"
+          ],
+          "extensions": {
+            "code": "variableNotUsed",
+            "variableName": "pk"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "8a503f0f/06b69561/da4e9cc1",
+    "expected": {
+      "data": {
+        "__typename": "Object_SlbKzO",
+        "pL1E4Jp9v": "hpjw8Ufqn"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_pAE, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 11,
+              "column": 3
+            }
+          ],
+          "path": [
+            "fragment Fragment_fVH",
+            "... on Union_pAE"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_pAE"
+          }
+        },
+        {
+          "message": "No such type Union_pAE, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 18,
+              "column": 5
+            }
+          ],
+          "path": [
+            "fragment Fragment_fVH",
+            "... on Object_SlbKzO",
+            "... on Union_pAE"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_pAE"
+          }
+        },
+        {
+          "message": "Variable $pk is declared by anonymous query but not used",
+          "locations": [
+            {
+              "line": 1,
+              "column": 1
+            }
+          ],
+          "path": [
+            "query"
+          ],
+          "extensions": {
+            "code": "variableNotUsed",
+            "variableName": "pk"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "8a503f0f/27cdd4b4/44136fa3",
+    "expected": {
+      "data": {
+        "pL1E4Jp9v": "hpjw8Ufqn",
+        "__typename": "Object_SlbKzO"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_pAE, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 15,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_VlPoRV"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_pAE"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "8a503f0f/4b4abe94/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_SlbKzO"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_pAE, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 3,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query qDBd",
+            "... on Union_pAE"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_pAE"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "8a503f0f/597d2620/44136fa3",
+    "expected": {
+      "data": {}
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_pAE, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 5,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_ER1A"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_pAE"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "8a503f0f/ad879e91/44136fa3",
+    "expected": {
+      "data": {
+        "TjX_": "Object_SlbKzO",
+        "__typename": "Object_SlbKzO"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_pAE, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 10,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_e"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_pAE"
+          }
+        },
+        {
+          "message": "Fragment Fragment_nWGUJi was defined, but not used",
+          "locations": [
+            {
+              "line": 6,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_nWGUJi"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_nWGUJi"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "8a503f0f/b75aa9db/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_SlbKzO",
+        "pL1E4Jp9v": "hpjw8Ufqn"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_pAE, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 3,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query vp",
+            "... on Union_pAE"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_pAE"
+          }
+        },
+        {
+          "message": "No such type Union_pAE, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 12,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query vp",
+            "... on Union_pAE"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_pAE"
+          }
+        },
+        {
+          "message": "No such type Union_pAE, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 39,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_rGx3XtvAG"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_pAE"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "8a503f0f/fa511417/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_SlbKzO"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_pAE, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 6,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query",
+            "... on Union_pAE"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_pAE"
+          }
+        },
+        {
+          "message": "Fragment Fragment_qS_9wI was defined, but not used",
+          "locations": [
+            {
+              "line": 16,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_qS_9wI"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_qS_9wI"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "90c2276d/da467e7e/e1ca02a4",
+    "expected": {
+      "data": {
+        "__typename": "Object_RcktNkhG"
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_RcktNkhG",
+        "qvzoG6_UTw": {
+          "__typename": "Interface_JOPU9v_STUB"
+        }
+      }
+    }
+  },
+  {
+    "testKey": "a1fb78b3/62697d40/7ac36f80",
+    "expected": {
+      "data": {
+        "iBOREQ": "Object_Yl52F",
+        "EU5tZjih_": "bL_jekGKC",
+        "__typename": "Object_Yl52F",
+        "tNMStQabsV": "bL_jekGKC"
+      }
+    },
+    "actual": {
+      "data": {
+        "iBOREQ": "Object_Yl52F",
+        "kTGa7wf7": "Object_Yl52F",
+        "EU5tZjih_": "bL_jekGKC",
+        "__typename": "Object_Yl52F",
+        "tNMStQabsV": "bL_jekGKC"
+      }
+    }
+  },
+  {
+    "testKey": "a1fb78b3/633ef561/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Yl52F"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_IA3O282x, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 14,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_uPz"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_IA3O282x"
+          }
+        },
+        {
+          "message": "Fragment Fragment_Rm1wrl was defined, but not used",
+          "locations": [
+            {
+              "line": 10,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_Rm1wrl"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_Rm1wrl"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "b2824725/1be7ce40/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_ZevdS9T8",
+        "u1oG_pA": 2,
+        "znRX1": "NZZuFgZ"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/argument.rb:405:in 'GraphQL::Schema::Argument#validate_default_value': `Input_Lu0TeiWT.dPMhXGRHb` has an invalid default value: `{\"woOc_0UIU\" => -1620178129}` isn't accepted by `Input_k1spIfD7LM`; update the default value or the argument type. (GraphQL::Schema::Argument::InvalidDefaultValueError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1977:in 'block in GraphQL::Schema.add_type_and_traverse'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1976:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1976:in 'GraphQL::Schema.add_type_and_traverse'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:177:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "b2824725/2bee3219/44136fa3",
+    "expected": {
+      "data": {
+        "u1oG_pA": 2
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/argument.rb:405:in 'GraphQL::Schema::Argument#validate_default_value': `Input_Lu0TeiWT.dPMhXGRHb` has an invalid default value: `{\"woOc_0UIU\" => -1620178129}` isn't accepted by `Input_k1spIfD7LM`; update the default value or the argument type. (GraphQL::Schema::Argument::InvalidDefaultValueError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1977:in 'block in GraphQL::Schema.add_type_and_traverse'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1976:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1976:in 'GraphQL::Schema.add_type_and_traverse'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:177:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "b2824725/2df9dbf1/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_ZevdS9T8"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/argument.rb:405:in 'GraphQL::Schema::Argument#validate_default_value': `Input_Lu0TeiWT.dPMhXGRHb` has an invalid default value: `{\"woOc_0UIU\" => -1620178129}` isn't accepted by `Input_k1spIfD7LM`; update the default value or the argument type. (GraphQL::Schema::Argument::InvalidDefaultValueError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1977:in 'block in GraphQL::Schema.add_type_and_traverse'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1976:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1976:in 'GraphQL::Schema.add_type_and_traverse'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:177:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "b2824725/4367b898/44136fa3",
+    "expected": {
+      "data": {
+        "MfBp8ZaWk": "Object_ZevdS9T8"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/argument.rb:405:in 'GraphQL::Schema::Argument#validate_default_value': `Input_Lu0TeiWT.dPMhXGRHb` has an invalid default value: `{\"woOc_0UIU\" => -1620178129}` isn't accepted by `Input_k1spIfD7LM`; update the default value or the argument type. (GraphQL::Schema::Argument::InvalidDefaultValueError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1977:in 'block in GraphQL::Schema.add_type_and_traverse'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1976:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1976:in 'GraphQL::Schema.add_type_and_traverse'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:177:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "b2824725/5a0e7aac/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_ZevdS9T8"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/argument.rb:405:in 'GraphQL::Schema::Argument#validate_default_value': `Input_Lu0TeiWT.dPMhXGRHb` has an invalid default value: `{\"woOc_0UIU\" => -1620178129}` isn't accepted by `Input_k1spIfD7LM`; update the default value or the argument type. (GraphQL::Schema::Argument::InvalidDefaultValueError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1977:in 'block in GraphQL::Schema.add_type_and_traverse'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1976:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1976:in 'GraphQL::Schema.add_type_and_traverse'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:177:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "b2824725/604c63ea/44136fa3",
+    "expected": {
+      "data": {
+        "znRX1": "NZZuFgZ"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/argument.rb:405:in 'GraphQL::Schema::Argument#validate_default_value': `Input_Lu0TeiWT.dPMhXGRHb` has an invalid default value: `{\"woOc_0UIU\" => -1620178129}` isn't accepted by `Input_k1spIfD7LM`; update the default value or the argument type. (GraphQL::Schema::Argument::InvalidDefaultValueError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1977:in 'block in GraphQL::Schema.add_type_and_traverse'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1976:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1976:in 'GraphQL::Schema.add_type_and_traverse'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:177:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "b2824725/dc346b51/44136fa3",
+    "expected": {
+      "data": {
+        "u1oG_pA": 2
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/argument.rb:405:in 'GraphQL::Schema::Argument#validate_default_value': `Input_Lu0TeiWT.dPMhXGRHb` has an invalid default value: `{\"woOc_0UIU\" => -1620178129}` isn't accepted by `Input_k1spIfD7LM`; update the default value or the argument type. (GraphQL::Schema::Argument::InvalidDefaultValueError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1977:in 'block in GraphQL::Schema.add_type_and_traverse'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1976:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1976:in 'GraphQL::Schema.add_type_and_traverse'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:177:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "b2824725/ea7827c5/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_ZevdS9T8"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/argument.rb:405:in 'GraphQL::Schema::Argument#validate_default_value': `Input_Lu0TeiWT.dPMhXGRHb` has an invalid default value: `{\"woOc_0UIU\" => -1620178129}` isn't accepted by `Input_k1spIfD7LM`; update the default value or the argument type. (GraphQL::Schema::Argument::InvalidDefaultValueError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1977:in 'block in GraphQL::Schema.add_type_and_traverse'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1976:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1976:in 'GraphQL::Schema.add_type_and_traverse'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:177:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "b2824725/fe242e78/44136fa3",
+    "expected": {
+      "data": {
+        "RSs_qqbq": "Object_ZevdS9T8",
+        "azU": "Object_ZevdS9T8"
+      }
+    },
+    "error": "process exited with code 1",
+    "stderr": "/Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/argument.rb:405:in 'GraphQL::Schema::Argument#validate_default_value': `Input_Lu0TeiWT.dPMhXGRHb` has an invalid default value: `{\"woOc_0UIU\" => -1620178129}` isn't accepted by `Input_k1spIfD7LM`; update the default value or the argument type. (GraphQL::Schema::Argument::InvalidDefaultValueError)\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1977:in 'block in GraphQL::Schema.add_type_and_traverse'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1976:in 'Array#each'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:1976:in 'GraphQL::Schema.add_type_and_traverse'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:177:in 'block in GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'Class#initialize'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'Class#new'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:174:in 'GraphQL::Schema::BuildFromDefinition::Builder#build'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:24:in 'GraphQL::Schema::BuildFromDefinition.from_document'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema/build_from_definition.rb:13:in 'GraphQL::Schema::BuildFromDefinition.from_definition'\n\tfrom /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-ruby/build/lib/graphql/schema.rb:127:in 'GraphQL::Schema.from_definition'\n\tfrom index.rb:81:in '<main>'\n"
+  },
+  {
+    "testKey": "cb409c12/ac6a5ec8/9ff3a1dd",
+    "expected": {
+      "data": {
+        "__typename": "Object_o",
+        "eRTVj": {
+          "__typename": "Interface_bu7_STUB"
+        },
+        "ke0JZ4": {
+          "__typename": "Interface_bu7_STUB",
+          "uEh": {
+            "ux": "Interface_bu7_STUB"
+          },
+          "i_2N": {
+            "__typename": "Object_R"
+          }
+        },
+        "TSRtE": "Object_o",
+        "xCGf": {}
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_o",
+        "ke0JZ4": {
+          "__typename": "Interface_bu7_STUB",
+          "IYBztYVp9": [
+            {
+              "s": 3.14
+            },
+            {
+              "s": 3.14
+            }
+          ],
+          "uEh": {
+            "ux": "Interface_bu7_STUB"
+          },
+          "i_2N": {
+            "__typename": "Object_R"
+          }
+        },
+        "eRTVj": {
+          "__typename": "Interface_bu7_STUB"
+        },
+        "TSRtE": "Object_o",
+        "xCGf": {
+          "__typename": "Interface_bu7_STUB"
+        }
+      }
+    }
+  },
+  {
+    "testKey": "cb409c12/c9420af8/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_o",
+        "ke0JZ4": {
+          "__typename": "Interface_bu7_STUB",
+          "ux": [
+            {
+              "_t10n1": "Object_R"
+            },
+            {
+              "_t10n1": "Object_R"
+            }
+          ]
+        },
+        "IB": "Object_o"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "Variable $eIESQa of type Boolean! was provided invalid value",
+          "locations": [
+            {
+              "line": 1,
+              "column": 16
+            }
+          ],
+          "extensions": {
+            "value": null,
+            "problems": [
+              {
+                "path": [],
+                "explanation": "Expected value to not be null"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "cb409c12/de2af231/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_o",
+        "zUfdAae": {
+          "__typename": "Interface_bu7_STUB"
+        },
+        "ke0JZ4": {
+          "FBvEA": "Interface_bu7_STUB"
+        }
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_o",
+        "ke0JZ4": {
+          "ux": [
+            {
+              "__typename": "Object_R"
+            },
+            {
+              "__typename": "Object_R"
+            }
+          ],
+          "ZWBNQm": "Interface_bu7_STUB",
+          "yEJiIf": "Interface_bu7_STUB",
+          "FBvEA": "Interface_bu7_STUB",
+          "Wr9fnv_v0": "Interface_bu7_STUB"
+        },
+        "zUfdAae": {
+          "__typename": "Interface_bu7_STUB"
+        }
+      }
+    }
+  },
+  {
+    "testKey": "ff6a18e3/199fc015/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_x"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_EGV, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 11,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_FD5dDT_S"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_EGV"
+          }
+        },
+        {
+          "message": "No such type Union_EGV, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 18,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_OOYv"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_EGV"
+          }
+        },
+        {
+          "message": "Fragment Fragment_y3YS1LopnT was defined, but not used",
+          "locations": [
+            {
+              "line": 7,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_y3YS1LopnT"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_y3YS1LopnT"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "ff6a18e3/5f92fc67/44136fa3",
+    "expected": {
+      "data": {
+        "HDa0DEW": "Object_x",
+        "__typename": "Object_x"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_EGV, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 8,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_Y2TanYPlRn"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_EGV"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "ff6a18e3/95de7579/5e1c7ac9",
+    "expected": {
+      "data": {
+        "__typename": "Object_x",
+        "aOreYs6Qv": {
+          "z": "u0m8KYKuo"
+        }
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_EGV, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 7,
+              "column": 3
+            }
+          ],
+          "path": [
+            "fragment Fragment_fIecBVkJ1",
+            "... on Union_EGV"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_EGV"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "ff6a18e3/95de7579/f534f294",
+    "expected": {
+      "data": {
+        "__typename": "Object_x"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_EGV, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 7,
+              "column": 3
+            }
+          ],
+          "path": [
+            "fragment Fragment_fIecBVkJ1",
+            "... on Union_EGV"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_EGV"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "ff6a18e3/aaba7292/44136fa3",
+    "expected": {
+      "data": {
+        "aOreYs6Qv": {
+          "__typename": "Object__E8vT"
+        },
+        "__typename": "Object_x"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_EGV, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 5,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query",
+            "... on Union_EGV"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_EGV"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "ff6a18e3/ae9f77f3/466f1f17",
+    "expected": {
+      "data": {
+        "URD48pc1MU": "Object_x",
+        "__typename": "Object_x"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_EGV, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 4,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query XaNv12iTlG",
+            "... on Union_EGV"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_EGV"
+          }
+        },
+        {
+          "message": "No such type Union_EGV, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 17,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_pUyw2OOWw"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_EGV"
+          }
+        },
+        {
+          "message": "Variable $fYKTslcH4 is declared by XaNv12iTlG but not used",
+          "locations": [
+            {
+              "line": 1,
+              "column": 1
+            }
+          ],
+          "path": [
+            "query XaNv12iTlG"
+          ],
+          "extensions": {
+            "code": "variableNotUsed",
+            "variableName": "fYKTslcH4"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "ff6a18e3/ae9f77f3/4dfb1feb",
+    "expected": {
+      "data": {
+        "URD48pc1MU": "Object_x",
+        "__typename": "Object_x"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_EGV, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 4,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query XaNv12iTlG",
+            "... on Union_EGV"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_EGV"
+          }
+        },
+        {
+          "message": "No such type Union_EGV, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 17,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_pUyw2OOWw"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_EGV"
+          }
+        },
+        {
+          "message": "Variable $fYKTslcH4 is declared by XaNv12iTlG but not used",
+          "locations": [
+            {
+              "line": 1,
+              "column": 1
+            }
+          ],
+          "path": [
+            "query XaNv12iTlG"
+          ],
+          "extensions": {
+            "code": "variableNotUsed",
+            "variableName": "fYKTslcH4"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "ff6a18e3/bc1e000e/6c9c9732",
+    "expected": {
+      "data": {
+        "__typename": "Object_x",
+        "QdVdWZmu1y": "Object_x",
+        "aOreYs6Qv": {
+          "LhTe7": "Object__E8vT"
+        }
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_EGV, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 5,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_I3gjPCsKwS"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_EGV"
+          }
+        },
+        {
+          "message": "No such type Union_EGV, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 18,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_ew"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_EGV"
+          }
+        },
+        {
+          "message": "Variable $zvc4PG0N is declared by kS8x66xu but not used",
+          "locations": [
+            {
+              "line": 1,
+              "column": 1
+            }
+          ],
+          "path": [
+            "query kS8x66xu"
+          ],
+          "extensions": {
+            "code": "variableNotUsed",
+            "variableName": "zvc4PG0N"
+          }
+        },
+        {
+          "message": "Fragment Fragment_z was defined, but not used",
+          "locations": [
+            {
+              "line": 9,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_z"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_z"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "ff6a18e3/bc1e000e/ad13c908",
+    "expected": {
+      "data": {
+        "QdVdWZmu1y": "Object_x",
+        "__typename": "Object_x",
+        "aOreYs6Qv": {
+          "LhTe7": "Object__E8vT"
+        }
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_EGV, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 5,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_I3gjPCsKwS"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_EGV"
+          }
+        },
+        {
+          "message": "No such type Union_EGV, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 18,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_ew"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_EGV"
+          }
+        },
+        {
+          "message": "Variable $zvc4PG0N is declared by kS8x66xu but not used",
+          "locations": [
+            {
+              "line": 1,
+              "column": 1
+            }
+          ],
+          "path": [
+            "query kS8x66xu"
+          ],
+          "extensions": {
+            "code": "variableNotUsed",
+            "variableName": "zvc4PG0N"
+          }
+        },
+        {
+          "message": "Fragment Fragment_z was defined, but not used",
+          "locations": [
+            {
+              "line": 9,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_z"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_z"
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,12 @@
+query @experimental_disableErrorPropagation {
+  ... on Union_pg @defer(if: false, label: "/^") {
+    ... on Object_P1qC {
+      ... on Object_P1qC @Directive_UZ04i {
+        j0fclZO
+      }
+    }
+    ... on Union_pg {
+      __typename
+    }
+  }
+}

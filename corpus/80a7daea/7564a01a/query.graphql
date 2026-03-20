@@ -1,0 +1,29 @@
+query NF($oOY_nl7hc: Input_CV) {
+  ... on Union_gFRVe {
+    ...Fragment_MiSw
+    ... on Union_gFRVe {
+      __typename
+    }
+    ... on Object_t5 {
+      ...Fragment_MiSw
+      ytAi(mT9_: $oOY_nl7hc) {
+        qfx1: ytAi(mT9_: {litQU1xlQJ : "", dQfEUJp : bJH74}) {
+          qd5zkv1z22: qh_
+        }
+        __typename
+      }
+      tobQ: u7xcx {
+        __typename
+      }
+      Czff8db7n0: ytAi(mT9_: {tl0EYF : "", litQU1xlQJ : "~_L", dQfEUJp : bJH74}) {
+        ytAi(mT9_: $oOY_nl7hc) {
+          qh_
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_MiSw on Object_t5 {
+  qh_
+}
