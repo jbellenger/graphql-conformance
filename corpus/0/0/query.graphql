@@ -1,5 +1,7 @@
 {
-  intField @customQueryDirective(label: "test")
+  a:intField @customQueryDirective(label: "test")
+  b:intField @skip(if:true)
+  c:intField @include(if:true)
   floatField
   stringField
   booleanField

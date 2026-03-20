@@ -1,0 +1,36 @@
+query ($gjWN5iJBGe: Boolean!) {
+  kw6Q {
+    __typename
+  }
+  __typename @include(if: $gjWN5iJBGe)
+  __typename
+  __typename
+  vfVX: kw6Q {
+    ... on Interface_wdU {
+      __typename
+      wx4CE3a {
+        wx4CE3a {
+          wx4CE3a {
+            kRhnf: __typename
+          }
+        }
+        __typename
+      }
+      ... on Interface_wdU_STUB {
+        __typename
+      }
+    }
+  }
+  ... on Object_m {
+    ...Fragment_B9@Directive_v
+  }
+}
+
+fragment Fragment_Ox_ on Union_W {
+  __typename
+}
+
+fragment Fragment_B9 on Union_lG {
+  ...Fragment_Ox_
+  __typename
+}

@@ -59,7 +59,7 @@ async function buildImpl(impl, baseDir) {
 }
 
 async function buildAll(config, baseDir) {
-  const allImpls = [config.reference, ...config.conformants];
+  const allImpls = Object.entries(config.impls).map(([name, impl]) => ({ name, ...impl }));
   const results = [];
   let i = 0;
   const concurrency = os.cpus().length;
@@ -78,7 +78,7 @@ async function buildAll(config, baseDir) {
 function getVersion(implDir) {
   const buildDir = path.join(implDir, 'build');
   try {
-    return execFileSync('git', ['rev-parse', 'HEAD'], { cwd: buildDir }).toString().trim();
+    return execFileSync('git', ['rev-parse', 'HEAD'], { cwd: buildDir, stdio: ['pipe', 'pipe', 'pipe'] }).toString().trim();
   } catch {
     return 'unknown';
   }

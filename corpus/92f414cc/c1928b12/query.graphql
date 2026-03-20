@@ -1,0 +1,9 @@
+query ($p4or7_W: Boolean!) {
+  ...Fragment_EJF8_vr
+  ...Fragment_EJF8_vr@skip(if: $p4or7_W) @defer(if: true, label: "tv")
+  ...Fragment_EJF8_vr
+}
+
+fragment Fragment_EJF8_vr on Union_F {
+  __typename
+}

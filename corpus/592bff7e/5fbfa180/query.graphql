@@ -1,0 +1,29 @@
+{
+  ... on Union_SEFPA {
+    ...Fragment_q4
+    ...Fragment_kjW@defer(if: true, label: "")
+    hn4SuKX: __typename
+    __typename
+    __typename
+  }
+  ... on Union_SEFPA {
+    DRLf: __typename
+    e4: __typename
+    __typename @Directive_j7ds @include(if: false)
+    __typename
+  }
+  ... on Union_SEFPA {
+    __typename @Directive_K
+    __typename
+    _iyLlw2: __typename
+    __typename
+  }
+}
+
+fragment Fragment_kjW on Union_HhR {
+  __typename
+}
+
+fragment Fragment_q4 on Union_SEFPA {
+  ...Fragment_kjW
+}

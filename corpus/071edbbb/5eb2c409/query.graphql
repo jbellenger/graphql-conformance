@@ -1,0 +1,27 @@
+query ($aOTtuwPfmK: Boolean!) {
+  ...Fragment_U
+  ...Fragment_U
+  ...Fragment_xk
+}
+
+fragment Fragment_U on Union_ji @Directive_YT85oFXjsF{
+  ... {
+    __typename
+  }
+  ... on Union_ji @skip(if: true) {
+    ... on Object__U4m7 {
+      OHX3ya7SL: __typename
+    }
+  }
+}
+
+fragment Fragment_xk on Object__U4m7 {
+  JD: __typename
+  __typename @skip(if: $aOTtuwPfmK)
+  ... on Object__U4m7 {
+    hLoFFj9Y: d
+  }
+  ... on Union_ji {
+    ...Fragment_U
+  }
+}

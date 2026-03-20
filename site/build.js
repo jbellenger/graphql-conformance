@@ -27,11 +27,11 @@ function loadFailures(baseDir, implName, runId) {
 }
 
 // Load config for repo URLs
-const configPath = path.join(__dirname, '..', 'conformer', 'config.json');
+const configPath = path.join(__dirname, '..', 'config.json');
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 const repoByName = {};
-for (const impl of [config.reference, ...config.conformants]) {
-  if (impl.repo) repoByName[impl.name] = impl.repo;
+for (const [name, impl] of Object.entries(config.impls)) {
+  if (impl.repo) repoByName[name] = impl.repo;
 }
 
 const runs = loadAllRuns(resultsDir);

@@ -1,0 +1,12 @@
+{
+  "name": "graphql-js-conformer",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "build": "^0.1.4",
+    "graphql": "^16.13.1"
+  },
+  "scripts": {
+    "test": "node --test conformer-harness.test.js"
+  }
+}

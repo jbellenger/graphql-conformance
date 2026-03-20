@@ -24,7 +24,7 @@ describe('make run-impl', () => {
   });
 
   it('prints usage when TEST is missing', () => {
-    const result = make(['run-impl', 'IMPL=graphql-js']);
+    const result = make(['run-impl', 'IMPL=graphql-js-16']);
     assert.notEqual(result.status, 0);
     assert.ok(result.stdout.includes('Usage: make run-impl'));
   });
@@ -36,20 +36,20 @@ describe('make run-impl', () => {
   });
 
   it('prints error for invalid test path', () => {
-    const result = make(['run-impl', 'IMPL=graphql-js', 'TEST=corpus/0']);
+    const result = make(['run-impl', 'IMPL=graphql-js-16', 'TEST=corpus/0']);
     assert.notEqual(result.status, 0);
     assert.ok(result.stderr.includes('Invalid test path'));
   });
 
   it('runs graphql-js on corpus/0 and returns valid JSON', () => {
-    const result = make(['run-impl', 'IMPL=graphql-js', 'TEST=corpus/0/0']);
+    const result = make(['run-impl', 'IMPL=graphql-js-16', 'TEST=corpus/0/0']);
     assert.equal(result.status, 0, `stderr: ${result.stderr}`);
     const json = JSON.parse(result.stdout);
     assert.ok(json.data, 'output should have a data field');
   });
 
   it('pretty-prints the JSON output', () => {
-    const result = make(['run-impl', 'IMPL=graphql-js', 'TEST=corpus/0/0']);
+    const result = make(['run-impl', 'IMPL=graphql-js-16', 'TEST=corpus/0/0']);
     assert.equal(result.status, 0);
     assert.ok(result.stdout.includes('\n'), 'output should be multi-line');
     assert.ok(result.stdout.startsWith('{\n'), 'output should start with formatted JSON');
@@ -64,7 +64,7 @@ describe('make diff-impl', () => {
   });
 
   it('prints usage when TEST is missing', () => {
-    const result = make(['diff-impl', 'IMPL=graphql-js']);
+    const result = make(['diff-impl', 'IMPL=graphql-js-16']);
     assert.notEqual(result.status, 0);
     assert.ok(result.stdout.includes('Usage: make diff-impl'));
   });

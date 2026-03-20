@@ -1,0 +1,26 @@
+{
+  ...Fragment_Q3gbV
+  ... on Union_L4_G {
+    ...Fragment_A
+  }
+}
+
+fragment Fragment_A on Union_I {
+  __typename @skip(if: false)
+}
+
+fragment Fragment_mu7KOpJri on Union_L4_G {
+  ...Fragment_A
+  __typename
+}
+
+fragment Fragment_Q3gbV on Union_cExKOIYcmR {
+  ...Fragment_mu7KOpJri
+  ... on Union_L4_G {
+    __typename
+    __typename
+    ... on Object_f4Mb6 {
+      lchCDMtFXy: rnQhQQS @include(if: true)
+    }
+  }
+}

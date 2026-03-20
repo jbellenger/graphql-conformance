@@ -15,15 +15,16 @@ if (!implName || !testPath) {
 
 const baseDir = path.resolve(__dirname, '..');
 const rootDir = path.resolve(baseDir, '..');
-const config = JSON.parse(fs.readFileSync(path.join(baseDir, 'config.json'), 'utf8'));
+const config = JSON.parse(fs.readFileSync(path.join(rootDir, 'config.json'), 'utf8'));
 
-const allImpls = [config.reference, ...config.conformants];
-const impl = allImpls.find((i) => i.name === implName);
+const impl = config.impls[implName];
 if (!impl) {
   process.stderr.write(`Unknown impl: ${implName}\n`);
-  process.stderr.write(`Available: ${allImpls.map((i) => i.name).join(', ')}\n`);
+  process.stderr.write(`Available: ${Object.keys(config.impls).join(', ')}\n`);
   process.exit(1);
 }
+const refName = config.reference;
+const reference = config.impls[refName];
 
 // Decompose test path
 const absTestPath = path.resolve(rootDir, testPath);
@@ -64,11 +65,11 @@ function run(implDef) {
   }
 }
 
-const refResult = run(config.reference);
+const refResult = run(reference);
 const implResult = run(impl);
 
 if (refResult.error) {
-  process.stderr.write(`reference (${config.reference.name}): ${refResult.error}\n`);
+  process.stderr.write(`reference (${refName}): ${refResult.error}\n`);
 }
 if (implResult.error) {
   process.stderr.write(`${implName}: ${implResult.error}\n`);
@@ -88,7 +89,7 @@ if (refJson === implJson) {
 // Write to temp files and diff
 const os = require('os');
 const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'diff-impl-'));
-const refFile = path.join(tmpDir, `${config.reference.name}.json`);
+const refFile = path.join(tmpDir, `${refName}.json`);
 const implFile = path.join(tmpDir, `${implName}.json`);
 fs.writeFileSync(refFile, refJson + '\n');
 fs.writeFileSync(implFile, implJson + '\n');

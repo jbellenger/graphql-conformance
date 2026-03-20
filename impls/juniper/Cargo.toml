@@ -1,0 +1,9 @@
+[package]
+name = "conformer"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+juniper = { path = "./build/juniper" }
+graphql-parser = "0.4"
+serde_json = "1"

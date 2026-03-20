@@ -1,0 +1,26 @@
+{
+  ...Fragment_h
+}
+
+fragment Fragment_mc on Object_m @Directive_v{
+  __typename
+}
+
+fragment Fragment_LLLx78P on Union_lG {
+  ...Fragment_mc
+}
+
+fragment Fragment_h on Union_lG {
+  ...Fragment_LLLx78P
+  __typename
+  ... on Object_m {
+    ...Fragment_mc
+    __typename
+    kw6Q {
+      aa: __typename
+    }
+  }
+  ... on Union_Uu {
+    ...Fragment_LLLx78P
+  }
+}

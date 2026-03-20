@@ -1,0 +1,13 @@
+query au_aW {
+  ... on Union_ZAmDj5ZcHq {
+    ...Fragment_K
+    __typename @Directive_QwWge
+  }
+}
+
+fragment Fragment_K on Object_gmEG {
+  ULEhLpNEfW: __typename
+  ... on Union_ZAmDj5ZcHq {
+    __typename
+  }
+}

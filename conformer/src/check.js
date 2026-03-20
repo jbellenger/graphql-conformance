@@ -6,7 +6,8 @@ const { FRAMEWORK_TOOLS, checkMise, checkTool } = require('./tools');
 
 function main() {
   const baseDir = path.resolve(__dirname, '..');
-  const configPath = path.join(baseDir, 'config.json');
+  const rootDir = path.resolve(baseDir, '..');
+  const configPath = path.join(rootDir, 'config.json');
   const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 
   let allOk = true;
@@ -35,7 +36,7 @@ function main() {
 
   // Collect all impl tools
   process.stderr.write('\nChecking implementation tools...\n');
-  const allImpls = [config.reference, ...config.conformants];
+  const allImpls = Object.entries(config.impls).map(([name, impl]) => ({ name, ...impl }));
   const checked = new Set();
 
   for (const impl of allImpls) {

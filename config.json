@@ -1,0 +1,53 @@
+{
+  "reference": "graphql-js-16",
+  "impls": {
+    "graphql-js-16": {
+      "path": "./impls/graphql-js-16",
+      "repo": "https://github.com/graphql/graphql-js",
+      "branch": "16.x.x",
+      "command": ["node", "index.js"]
+    },
+    "graphql-js-17": {
+      "path": "./impls/graphql-js-17",
+      "repo": "https://github.com/graphql/graphql-js",
+      "branch": "17.x.x",
+      "command": ["node", "index.js"]
+    },
+    "graphql-java": {
+      "path": "./impls/graphql-java",
+      "repo": "https://github.com/graphql-java/graphql-java",
+      "branch": "master",
+      "command": ["java", "-jar", "target/conformer-1.0.jar"]
+    },
+    "graphql-go": {
+      "path": "./impls/graphql-go",
+      "repo": "https://github.com/graphql-go/graphql",
+      "branch": "master",
+      "command": ["./conformer"]
+    },
+    "hot-chocolate": {
+      "path": "./impls/hot-chocolate",
+      "repo": "https://github.com/ChilliCream/graphql-platform",
+      "branch": "main",
+      "command": ["dotnet", "out/Conformer.dll"]
+    },
+    "async-graphql": {
+      "path": "./impls/async-graphql",
+      "repo": "https://github.com/async-graphql/async-graphql",
+      "branch": "master",
+      "command": ["./target/release/conformer"]
+    },
+    "gqlgen": {
+      "path": "./impls/gqlgen",
+      "repo": "https://github.com/99designs/gqlgen",
+      "branch": "master",
+      "command": ["./conformer"]
+    },
+    "juniper": {
+      "path": "./impls/juniper",
+      "repo": "https://github.com/graphql-rust/juniper",
+      "branch": "master",
+      "command": ["./target/release/conformer"]
+    }
+  }
+}

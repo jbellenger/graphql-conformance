@@ -1,0 +1,24 @@
+{
+  ... on Object__wy7l4o {
+    ...Fragment_JLrIdqAn4
+    __typename
+    Su: d3pYs5PAk @Directive_HAEuR01
+    ... on Union_SEFPA {
+      __typename
+      __typename
+    }
+    ... on Union_SEFPA {
+      ...Fragment_JLrIdqAn4
+      __typename
+      ... on Union_cRZ @defer(if: true, label: "") {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_JLrIdqAn4 on Object__wy7l4o {
+  ... on Union_SEFPA {
+    jNwQo: __typename
+  }
+}

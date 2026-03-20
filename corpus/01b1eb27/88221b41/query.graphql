@@ -1,0 +1,17 @@
+query gBwY {
+  ...Fragment_mTna
+  jml {
+    __typename
+  }
+  lc6h {
+    __typename
+  }
+  __typename
+  ... on Union_TCizTJG_ {
+    ...Fragment_mTna@defer(if: true, label: "Ym")
+  }
+}
+
+fragment Fragment_mTna on Union_Zy {
+  __typename
+}

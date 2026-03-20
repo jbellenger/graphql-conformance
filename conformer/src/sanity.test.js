@@ -9,12 +9,13 @@ const { getToolEnv } = require('./tools');
 
 const baseDir = path.resolve(__dirname, '..');
 const rootDir = path.resolve(baseDir, '..');
-const configPath = path.join(baseDir, 'config.json');
+const configPath = path.join(rootDir, 'config.json');
 const corpusDir = path.join(rootDir, 'corpus', '0');
 
 const EXPECTED = {
   data: {
-    intField: 2,
+    a: 2,
+    c: 2,
     floatField: 3.14,
     stringField: 'str',
     booleanField: true,
@@ -45,7 +46,7 @@ const EXPECTED = {
 };
 
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-const allImpls = [config.reference, ...config.conformants];
+const allImpls = Object.entries(config.impls).map(([name, impl]) => ({ name, ...impl }));
 
 const schemaPath = path.join(corpusDir, 'schema.graphqls');
 const queryPath = path.join(corpusDir, '0', 'query.graphql');

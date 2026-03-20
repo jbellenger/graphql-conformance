@@ -22,10 +22,16 @@ async function runImpl(impl, rootDir, args, env) {
 async function main() {
   const baseDir = path.resolve(__dirname, '..');
   const rootDir = path.resolve(baseDir, '..');
-  const configPath = process.env.CONFIG_PATH || path.join(baseDir, 'config.json');
+  const configPath = process.env.CONFIG_PATH || path.join(rootDir, 'config.json');
   const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
   const corpusDir = path.join(rootDir, 'corpus');
   const tests = discoverCorpus(corpusDir);
+
+  const refName = config.reference;
+  const reference = { name: refName, ...config.impls[refName] };
+  const conformants = Object.entries(config.impls)
+    .filter(([name]) => name !== refName)
+    .map(([name, impl]) => ({ name, ...impl }));
 
   if (tests.length === 0) {
     process.stderr.write('No test cases found in corpus.\n');
@@ -35,12 +41,12 @@ async function main() {
   process.stderr.write(`Found ${tests.length} test case(s)\n`);
 
   // Get versions
-  const refDir = path.resolve(rootDir, config.reference.path);
-  process.stderr.write(`Getting version for reference (${config.reference.name})...\n`);
+  const refDir = path.resolve(rootDir, reference.path);
+  process.stderr.write(`Getting version for reference (${reference.name})...\n`);
   const refSha = getVersion(refDir);
 
   const conformantVersions = {};
-  for (const conformant of config.conformants) {
+  for (const conformant of conformants) {
     const implDir = path.resolve(rootDir, conformant.path);
     process.stderr.write(`Getting version for conformant (${conformant.name})...\n`);
     conformantVersions[conformant.name] = getVersion(implDir);
@@ -48,7 +54,7 @@ async function main() {
 
   // Run tests
   const conformantTests = {};
-  for (const conformant of config.conformants) {
+  for (const conformant of conformants) {
     conformantTests[conformant.name] = {};
   }
 
@@ -60,7 +66,7 @@ async function main() {
   const skippedConformants = {};
   const priorRun = store.loadLatestRun();
 
-  const conformantsToRun = config.conformants.filter((conformant) => {
+  const conformantsToRun = conformants.filter((conformant) => {
     const currentSha = conformantVersions[conformant.name];
     if (
       priorRun &&
@@ -87,8 +93,8 @@ async function main() {
         ? [schemaPath, queryPath, variablesPath]
         : [schemaPath, queryPath];
 
-      process.stderr.write(`  test ${testId}/${queryId}: running reference (${config.reference.name})...\n`);
-      const refResult = await runImpl(config.reference, rootDir, args, env);
+      process.stderr.write(`  test ${testId}/${queryId}: running reference (${reference.name})...\n`);
+      const refResult = await runImpl(reference, rootDir, args, env);
 
       if (refResult.error) {
         process.stderr.write(`    reference failed: ${refResult.error}\n`);
@@ -120,14 +126,12 @@ async function main() {
   const runId = generateRunId();
   const timestamp = new Date().toISOString();
 
-  const conformants = {};
-  for (const conformant of config.conformants) {
+  const conformantResults = {};
+  for (const conformant of conformants) {
     const entry = {
       sha: conformantVersions[conformant.name],
       tests: conformantTests[conformant.name],
     };
-    // For skipped conformants, carry forward stored total/passed since the
-    // tests map only contains failures (passing tests are not reconstructed).
     if (skippedConformants[conformant.name] && priorRun) {
       const prior = priorRun.conformants[conformant.name];
       if (prior) {
@@ -135,7 +139,7 @@ async function main() {
         entry.passed = prior.passed;
       }
     }
-    conformants[conformant.name] = entry;
+    conformantResults[conformant.name] = entry;
   }
 
   // For skipped runs, carry forward prior reference failures
@@ -147,30 +151,29 @@ async function main() {
     id: runId,
     timestamp,
     reference: {
-      name: config.reference.name,
+      name: reference.name,
       sha: refSha,
       total: tests.length,
       errors: referenceFailures.length,
       failures: referenceFailures,
     },
-    conformants,
+    conformants: conformantResults,
   };
 
   // Write results
   store.recordRun(runResult);
   process.stderr.write(`Results written to ${resultsDir}\n`);
 
-  // Print summary using store data (accurate for both fresh and skipped conformants)
+  // Print summary
   const summary = store.getSummary();
   if (summary.length > 0) {
-    const refName = config.reference.name;
     const refTotal = runResult.reference.total || 0;
     const refErrors = runResult.reference.errors || 0;
     const refPassed = refTotal - refErrors;
     const refPct = refTotal > 0 ? ((refPassed / refTotal) * 100).toFixed(1) : '100.0';
 
     const allRows = [
-      { impl: refName, passed: refPassed, total: refTotal, pct: refPct, failed: refErrors },
+      { impl: reference.name, passed: refPassed, total: refTotal, pct: refPct, failed: refErrors },
       ...summary.map((s) => ({
         impl: s.impl, passed: s.total - s.failed, total: s.total,
         pct: s.passPct.toFixed(1), failed: s.failed,

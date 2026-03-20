@@ -1,0 +1,28 @@
+{
+  ... on Union_ji {
+    ...Fragment_mbhvI
+    __typename
+  }
+  ... on Union_ji {
+    ... on Union_ji {
+      __typename
+      __typename
+      ... {
+        __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_RVPyB2opoL on Union_ji {
+  __typename
+}
+
+fragment Fragment_mbhvI on Union_ji {
+  ...Fragment_RVPyB2opoL
+  __typename
+  ... on Union_ji {
+    __typename
+  }
+}

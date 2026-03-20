@@ -1,3 +1,0 @@
-query hP59P($vBo6a: Boolean!) {
-  __typename @skip(if: $vBo6a) @include(if: false)
-}

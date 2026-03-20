@@ -146,9 +146,20 @@ func (sb *SchemaBuilder) Build() (graphql.Schema, error) {
 		}
 	}
 
-	// Register custom directives from the schema.
+	// Start with built-in directives, then add custom ones from the schema.
+	// graphql-go replaces all directives when config.Directives is set,
+	// so we must include the built-ins explicitly.
+	config.Directives = append(config.Directives,
+		graphql.IncludeDirective,
+		graphql.SkipDirective,
+		graphql.DeprecatedDirective,
+	)
 	for name, dir := range sb.astSchema.Directives {
 		if dir.Position != nil && dir.Position.Src != nil && dir.Position.Src.BuiltIn {
+			continue
+		}
+		// Skip directives we already added as built-ins
+		if name == "include" || name == "skip" || name == "deprecated" {
 			continue
 		}
 		var locations []string

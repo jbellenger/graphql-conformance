@@ -1,0 +1,20 @@
+{
+  ...Fragment_yJrhYi4
+}
+
+fragment Fragment_Ug3N on Union__7 {
+  __typename
+}
+
+fragment Fragment_qSijtNm4pP on Union__7 {
+  ...Fragment_Ug3N
+  MP5qeSYfHU: __typename
+  ... on Union_zgRhh {
+    __typename
+  }
+}
+
+fragment Fragment_yJrhYi4 on Object_A {
+  ...Fragment_qSijtNm4pP
+  ...Fragment_Ug3N
+}

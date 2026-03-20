@@ -26,18 +26,17 @@ afterEach(() => {
 });
 
 const testConfig = {
-  reference: {
-    name: 'graphql-js',
-    path: './impls/graphql-js',
-    command: ['node', 'index.js'],
-  },
-  conformants: [
-    {
-      name: 'graphql-js-copy',
-      path: './impls/graphql-js',
+  reference: 'graphql-js-16',
+  impls: {
+    'graphql-js-16': {
+      path: './impls/graphql-js-16',
       command: ['node', 'index.js'],
     },
-  ],
+    'graphql-js-copy': {
+      path: './impls/graphql-js-16',
+      command: ['node', 'index.js'],
+    },
+  },
 };
 
 function runConformer(env = {}) {
@@ -64,7 +63,7 @@ describe('integration: self-comparison', () => {
 
     assert.ok(runResult, 'should have a run result');
     assert.ok(runResult.timestamp);
-    assert.equal(runResult.reference.name, 'graphql-js');
+    assert.equal(runResult.reference.name, 'graphql-js-16');
     assert.ok(runResult.reference.sha);
     assert.ok(runResult.conformants['graphql-js-copy']);
     assert.ok(runResult.conformants['graphql-js-copy'].sha);

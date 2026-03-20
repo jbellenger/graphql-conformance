@@ -1,0 +1,25 @@
+query ($pRDWa2CS: Boolean!) {
+  __typename
+  ... on Object_PvSlQb {
+    tggzk9jNQr: __typename @include(if: $pRDWa2CS)
+  }
+  ... on Object_PvSlQb {
+    ... on Object_PvSlQb {
+      wG8N43tVu1 {
+        __typename
+      }
+      __typename
+    }
+    ... {
+      ...Fragment_hFpJ2ylqnn
+      __typename @include(if: true)
+      wG8N43tVu1 {
+        __typename @Directive_tEKf
+      }
+    }
+  }
+}
+
+fragment Fragment_hFpJ2ylqnn on Object_PvSlQb {
+  vXXAITiVwj: __typename
+}

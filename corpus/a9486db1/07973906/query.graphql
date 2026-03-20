@@ -1,8 +1,0 @@
-query _ACUa {
-  ... on Object_MS1tBw {
-    __typename
-  }
-  ... on Union__J_KL @include(if: false) {
-    __typename
-  }
-}

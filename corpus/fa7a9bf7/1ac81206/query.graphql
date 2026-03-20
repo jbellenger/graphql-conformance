@@ -1,8 +1,0 @@
-query @experimental_disableErrorPropagation {
-  ...Fragment_IvrvNKS@defer(if: false, label: null)
-  y
-}
-
-fragment Fragment_IvrvNKS on Union_qGclox_jw {
-  __typename
-}

@@ -1,0 +1,37 @@
+query dHCyUHV($j_ldnV6cg: Input_D) @Directive_Z666666666 {
+  ... on Union_FJ {
+    __typename
+    __typename
+    __typename @include(if: true)
+    ... on Object_Ks {
+      ...Fragment_VT25RSwZ
+      oQ(xZAv1dPZ7: $j_ldnV6cg) {
+        __typename
+      }
+      ... on Union_FJ {
+        __typename
+      }
+    }
+    ... on Object_Ks @include(if: false) {
+      ...Fragment_VT25RSwZ@defer(if: false, label: null)
+      __typename
+      ... {
+        jaj: oQ(xZAv1dPZ7: {l5QFsa : {bXgoldyw1W : true, b3gJLq4l : []}, azaebTd : hGO9k}) {
+          q1zRn @Directive_Z666666666 {
+            gJprixxppc: __typename
+          }
+        }
+        bJdu: oQ(xZAv1dPZ7: {l5QFsa : {bXgoldyw1W : true, b3gJLq4l : []}, azaebTd : hGO9k}) {
+          wP: __typename
+        }
+      }
+    }
+  }
+  ... on Union_FJ {
+    __typename
+  }
+}
+
+fragment Fragment_VT25RSwZ on Union_FJ {
+  __typename
+}

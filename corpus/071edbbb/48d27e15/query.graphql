@@ -1,0 +1,13 @@
+query _24Gtf {
+  ...Fragment_bG36vAqXJ
+}
+
+fragment Fragment_KTD7 on Union_ji {
+  ... on Object__U4m7 {
+    __typename
+  }
+}
+
+fragment Fragment_bG36vAqXJ on Union_ji {
+  ...Fragment_KTD7@skip(if: false) @include(if: false)
+}

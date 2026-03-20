@@ -1,0 +1,42 @@
+query ($rF4sYpCU_: Boolean!) {
+  IDXqaw3: kw6Q {
+    ... on Interface_wdU_STUB {
+      ...Fragment_krBLmLJFE
+      __typename
+    }
+    ... on Interface_wdU {
+      ...Fragment_krBLmLJFE
+      ... on Interface_wdU {
+        __typename
+      }
+    }
+  }
+  kw6Q {
+    ...Fragment_krBLmLJFE
+    __typename
+    wx4CE3a {
+      ...Fragment_krBLmLJFE
+      wx4CE3a {
+        wx4CE3a {
+          wx4CE3a {
+            bM: __typename @skip(if: $rF4sYpCU_)
+          }
+        }
+        Djymzs6: __typename
+      }
+      wx4CE3a {
+        __typename
+      }
+    }
+  }
+  omUX0IIqho: __typename
+}
+
+fragment Fragment_krBLmLJFE on Interface_wdU {
+  x: wx4CE3a @skip(if: false) {
+    wx4CE3a {
+      __typename
+    }
+  }
+  __typename
+}

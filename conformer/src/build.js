@@ -8,11 +8,11 @@ const { FRAMEWORK_TOOLS, ensureTools } = require('./tools');
 async function main() {
   const baseDir = path.resolve(__dirname, '..');
   const rootDir = path.resolve(baseDir, '..');
-  const configPath = path.join(baseDir, 'config.json');
+  const configPath = path.join(rootDir, 'config.json');
   const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 
   // Collect all required tools from config
-  const allImpls = [config.reference, ...config.conformants];
+  const allImpls = Object.entries(config.impls).map(([name, impl]) => ({ name, ...impl }));
   const implTools = [...new Set(allImpls.flatMap((i) => i.tools || []))];
   const allTools = [...new Set([...FRAMEWORK_TOOLS, ...implTools])];
 
