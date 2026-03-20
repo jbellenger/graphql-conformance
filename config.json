@@ -95,6 +95,13 @@
       "repo": "https://github.com/graphql-rust/juniper",
       "branch": "master",
       "command": ["./target/release/conformer"]
+    },
+    "lacinia": {
+      "path": "./impls/lacinia",
+      "repo": "https://github.com/walmartlabs/lacinia",
+      "branch": "master",
+      "command": ["node", "run.js"],
+      "tools": ["clojure"]
     }
   }
 }
