@@ -359,8 +359,57 @@ details summary:hover { text-decoration: underline; }
   word-break: break-word;
 }
 
+.failure-card-title-row {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  max-width: 100%;
+}
+
 .failure-card-title a {
   color: inherit;
+}
+
+.failure-card-copy {
+  flex: 0 0 auto;
+  width: 1.55rem;
+  height: 1.55rem;
+  border: 1px solid #d0d7de;
+  border-radius: 0.38rem;
+  background: #fff;
+  color: #57606a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 1px 0 rgba(27, 31, 36, 0.04);
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.failure-card-copy:hover {
+  background: #f6f8fa;
+  border-color: #afb8c1;
+  color: #24292f;
+}
+
+.failure-card-copy:focus-visible {
+  outline: none;
+  border-color: #748ffc;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.14);
+}
+
+.failure-card-copy.is-copied {
+  background: #ebfbee;
+  border-color: #b2f2bb;
+  color: #2b8a3e;
+}
+
+.failure-card-copy svg {
+  width: 0.82rem;
+  height: 0.82rem;
+  display: block;
+  fill: currentColor;
 }
 
 .failure-card-chip {
@@ -541,6 +590,10 @@ details summary:hover { text-decoration: underline; }
   .failure-card-header,
   .failure-json-grid {
     grid-template-columns: 1fr;
+  }
+
+  .failure-card-title-row {
+    align-items: center;
   }
 
   .json-diff {

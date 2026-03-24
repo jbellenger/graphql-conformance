@@ -62,6 +62,87 @@ static object? ConvertJsonElement(JsonElement element)
     };
 }
 
+static object? NormalizeResultValue(object? value)
+{
+    if (value is null)
+    {
+        return null;
+    }
+
+    using var doc = JsonDocument.Parse(JsonSerializer.Serialize(value));
+    return ConvertJsonElement(doc.RootElement);
+}
+
+static object? ApplyDeferredPatch(object? root, HotChocolate.Path? path, object? patch)
+{
+    if (patch is not Dictionary<string, object?> patchMap)
+    {
+        return root;
+    }
+
+    if (root is null)
+    {
+        return patchMap;
+    }
+
+    var target = ResolvePathTarget(root, path);
+    if (target is not Dictionary<string, object?> targetMap)
+    {
+        return root;
+    }
+
+    foreach (var kv in patchMap)
+    {
+        targetMap[kv.Key] = kv.Value;
+    }
+
+    return root;
+}
+
+static object? ResolvePathTarget(object? value, HotChocolate.Path? path)
+{
+    if (value is null || path is null || path.IsRoot)
+    {
+        return value;
+    }
+
+    object? current = value;
+    foreach (var segment in path.ToList())
+    {
+        current = segment switch
+        {
+            string key => current is Dictionary<string, object?> map && map.TryGetValue(key, out var item)
+                ? item
+                : null,
+            int index => current is List<object?> list && index >= 0 && index < list.Count
+                ? list[index]
+                : null,
+            _ => null,
+        };
+
+        if (current is null)
+        {
+            return null;
+        }
+    }
+
+    return current;
+}
+
+static void AddErrors(ref List<object>? errors, IReadOnlyList<IError>? source)
+{
+    if (source is not { Count: > 0 })
+    {
+        return;
+    }
+
+    errors ??= new List<object>();
+    foreach (var error in source)
+    {
+        errors.Add(new { message = error.Message });
+    }
+}
+
 // Build request executor from SDL
 var builder = new ServiceCollection()
     .AddGraphQL()
@@ -132,55 +213,55 @@ if (variables != null)
 
 var result = await executor.ExecuteAsync(requestBuilder.Build());
 
-// When @defer/@stream is active, HC returns an IResponseStream instead of a
-// single IOperationResult. Collect all chunks — our resolvers are synchronous
-// so the stream completes immediately. The last chunk has the final data.
-IOperationResult? opResult = null;
+// When @defer is active, HC returns an IResponseStream instead of a single
+// IOperationResult. In this harness all resolvers are synchronous, so HC emits
+// one base payload plus one final payload containing every deferred patch.
 if (result is IResponseStream stream)
 {
-    // @defer returns incremental chunks: the initial result in Data, and
-    // deferred fields in Incremental entries on subsequent chunks.
-    // Merge everything into a single flat data map.
-    Dictionary<string, object?>? merged = null;
+    object? mergedData = null;
+    List<object>? errors = null;
+
     await foreach (var chunk in stream.ReadResultsAsync())
     {
-        opResult = chunk;
-        if (chunk.Data != null)
+        mergedData ??= NormalizeResultValue(chunk.Data);
+        AddErrors(ref errors, chunk.Errors);
+
+        if (chunk.Incremental == null)
         {
-            merged ??= new Dictionary<string, object?>();
-            foreach (var kv in chunk.Data)
-                merged[kv.Key] = kv.Value;
+            continue;
         }
-        if (chunk.Incremental != null)
+
+        foreach (var inc in chunk.Incremental)
         {
-            merged ??= new Dictionary<string, object?>();
-            foreach (var inc in chunk.Incremental)
+            AddErrors(ref errors, inc.Errors);
+
+            if (inc.Data != null)
             {
-                if (inc.Data != null)
-                {
-                    foreach (var kv in inc.Data)
-                        merged[kv.Key] = kv.Value;
-                }
+                mergedData = ApplyDeferredPatch(
+                    mergedData,
+                    inc.Path,
+                    NormalizeResultValue(inc.Data));
             }
         }
     }
-    if (merged != null)
+
+    var output = new Dictionary<string, object?> { ["data"] = mergedData };
+    if (errors is { Count: > 0 })
     {
-        opResult = OperationResultBuilder.FromResult(opResult!).SetData(merged).Build();
+        output["errors"] = errors;
     }
-}
-else if (result is IOperationResult single)
-{
-    opResult = single;
+
+    Console.Write(JsonSerializer.Serialize(output));
+    return 0;
 }
 
-if (opResult != null)
+if (result is IOperationResult single)
 {
     var output = new Dictionary<string, object?>();
-    output["data"] = opResult.Data;
-    if (opResult.Errors is { Count: > 0 })
+    output["data"] = single.Data;
+    if (single.Errors is { Count: > 0 })
     {
-        output["errors"] = opResult.Errors.Select(e => new { message = e.Message }).ToList();
+        output["errors"] = single.Errors.Select(e => new { message = e.Message }).ToList();
     }
     var json = JsonSerializer.Serialize(output);
     Console.Write(json);

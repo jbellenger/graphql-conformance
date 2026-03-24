@@ -196,6 +196,28 @@ describe('hot-chocolate conformer-harness', () => {
     });
   });
 
+  it('merges nested deferred fields at their patch path', () => {
+    const f = writeFiles({
+      'schema.graphqls': `
+        directive @defer(if: Boolean, label: String) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+        type Query { hero: Hero }
+        type Hero { friend: Friend }
+        type Friend { value: String }
+      `,
+      'query.graphql': '{ hero { friend { ... @defer(if: true) { value } } } }',
+    });
+    const result = run(f['schema.graphqls'], f['query.graphql']);
+    assert.deepStrictEqual(result, {
+      data: {
+        hero: {
+          friend: {
+            value: 'str',
+          },
+        },
+      },
+    });
+  });
+
   it('resolves nested objects', () => {
     const f = writeFiles({
       'schema.graphqls': `

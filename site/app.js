@@ -44,6 +44,10 @@ function formatTestKey(testKey) {
   return `corpus/${schemaLink}/${queryLink}${varsLink}`;
 }
 
+function getTestPathText(testKey) {
+  return `corpus/${testKey}`;
+}
+
 function escapeHtml(s) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
@@ -337,6 +341,7 @@ function formatFailureCard(failure) {
   const content = formatFailureContent(failure, expanded);
   const summary = failure.error || (failure.expected && failure.actual ? 'Output differs' : 'Failed');
   const collapsed = expandable && !expanded;
+  const testPath = getTestPathText(failure.testKey);
 
   return `
     <article
@@ -348,7 +353,21 @@ function formatFailureCard(failure) {
       <div class="failure-card-header">
         <div class="failure-card-heading">
           <div class="failure-card-label">Test</div>
-          <div class="failure-card-title mono">${formatTestKey(failure.testKey)}</div>
+          <div class="failure-card-title-row">
+            <div class="failure-card-title mono">${formatTestKey(failure.testKey)}</div>
+            <button
+              type="button"
+              class="failure-card-copy"
+              data-copy-text="${escapeHtml(testPath)}"
+              aria-label="Copy ${escapeHtml(testPath)}"
+              title="Copy test path"
+            >
+              <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                <path d="M7 3.5A2.5 2.5 0 0 1 9.5 1h5A2.5 2.5 0 0 1 17 3.5v7A2.5 2.5 0 0 1 14.5 13h-5A2.5 2.5 0 0 1 7 10.5z" />
+                <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H6v1.5h-.5A1 1 0 0 0 4.5 7.5v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V14H13v.5A2.5 2.5 0 0 1 10.5 17h-5A2.5 2.5 0 0 1 3 14.5z" />
+              </svg>
+            </button>
+          </div>
         </div>
         ${expandable ? `<span class="failure-card-chip">${expanded ? 'Collapse' : 'Expand'}</span>` : ''}
       </div>
@@ -590,6 +609,58 @@ function getEventElement(event) {
   return null;
 }
 
+async function copyText(text) {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.setAttribute('readonly', '');
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textarea);
+}
+
+let copyResetTimer = null;
+let copiedButton = null;
+
+function resetCopyButton(button) {
+  if (!button) return;
+  const text = button.dataset.copyText;
+  button.classList.remove('is-copied');
+  if (text) {
+    button.setAttribute('aria-label', `Copy ${text}`);
+  }
+  button.setAttribute('title', 'Copy test path');
+}
+
+async function handleCopyButton(button) {
+  const text = button.dataset.copyText;
+  if (!text) return;
+
+  try {
+    if (copyResetTimer) window.clearTimeout(copyResetTimer);
+    if (copiedButton && copiedButton !== button) resetCopyButton(copiedButton);
+
+    await copyText(text);
+    button.classList.add('is-copied');
+    button.setAttribute('aria-label', `Copied ${text}`);
+    button.setAttribute('title', 'Copied');
+    copiedButton = button;
+    copyResetTimer = window.setTimeout(() => {
+      resetCopyButton(button);
+      if (copiedButton === button) copiedButton = null;
+    }, 1200);
+  } catch {
+    button.setAttribute('title', 'Copy failed');
+  }
+}
+
 function shouldToggleFailureCard(card, target) {
   if (!card || !target) return false;
 
@@ -704,8 +775,16 @@ app.addEventListener('click', (event) => {
   if (!target) return;
   if (!target.closest('.dashboard-row') && target.closest('a')) return;
 
+  const copyButton = target.closest('.failure-card-copy');
+  if (copyButton) {
+    event.preventDefault();
+    handleCopyButton(copyButton);
+    return;
+  }
+
   const dashboardRow = target.closest('.dashboard-row');
   if (dashboardRow) {
+    if (target.closest('a')) return;
     location.hash = `#/impl/${decodeURIComponent(dashboardRow.dataset.impl)}`;
     return;
   }
@@ -721,6 +800,7 @@ app.addEventListener('keydown', (event) => {
   const target = getEventElement(event);
   if (!target) return;
   if (event.key !== 'Enter' && event.key !== ' ') return;
+  if (target.closest('.failure-card-copy')) return;
 
   const dashboardRow = target.closest('.dashboard-row');
   if (dashboardRow) {
