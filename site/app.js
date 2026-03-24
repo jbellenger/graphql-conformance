@@ -5,9 +5,24 @@ const expandedFailureKeys = new Set();
 const FAILURE_PREVIEW_ROWS = 4;
 const STDERR_PREVIEW_LINES = 3;
 let currentDetailState = null;
+const BUILD_VERSION = (() => {
+  const scriptSrc = document.currentScript?.src;
+  if (!scriptSrc) return '';
+  try {
+    return new URL(scriptSrc, window.location.href).searchParams.get('v') || '';
+  } catch {
+    return '';
+  }
+})();
+
+function withBuildVersion(url) {
+  if (!BUILD_VERSION) return url;
+  const separator = url.includes('?') ? '&' : '?';
+  return `${url}${separator}v=${encodeURIComponent(BUILD_VERSION)}`;
+}
 
 async function fetchJSON(url) {
-  const res = await fetch(url);
+  const res = await fetch(withBuildVersion(url));
   if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
   return res.json();
 }
