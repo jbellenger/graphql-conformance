@@ -1,6 +1,10 @@
 'use strict';
 
 const app = document.getElementById('app');
+const expandedFailureKeys = new Set();
+const FAILURE_PREVIEW_ROWS = 4;
+const STDERR_PREVIEW_LINES = 3;
+let currentDetailState = null;
 
 async function fetchJSON(url) {
   const res = await fetch(url);
@@ -36,8 +40,12 @@ function formatTimestamp(timestamp) {
   return escapeHtml(date.toLocaleString());
 }
 
-function formatJsonWithHighlight(value) {
-  const json = escapeHtml(JSON.stringify(value, null, 2));
+function getFailureKey(failure) {
+  return failure.testKey;
+}
+
+function highlightJsonText(text) {
+  const json = escapeHtml(text);
   return json.replace(
     /("(\\u[a-fA-F0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\btrue\b|\bfalse\b|\bnull\b|-?\d+(?:\.\d+)?(?:[eE][+\-]?\d+)?)/g,
     (match) => {
@@ -54,25 +62,319 @@ function formatJsonWithHighlight(value) {
   );
 }
 
-function formatFailureDetails(f) {
-  const summary = f.error || (f.expected && f.actual ? 'output differs' : 'failed');
+function formatJsonWithHighlight(value) {
+  return highlightJsonText(JSON.stringify(value, null, 2));
+}
 
+function buildJsonDiffRows(expected, actual) {
+  const leftLines = JSON.stringify(expected, null, 2).split('\n');
+  const rightLines = JSON.stringify(actual, null, 2).split('\n');
+  const dp = Array.from({ length: leftLines.length + 1 }, () => Array(rightLines.length + 1).fill(0));
+
+  for (let i = leftLines.length - 1; i >= 0; i -= 1) {
+    for (let j = rightLines.length - 1; j >= 0; j -= 1) {
+      if (leftLines[i] === rightLines[j]) {
+        dp[i][j] = dp[i + 1][j + 1] + 1;
+      } else {
+        dp[i][j] = Math.max(dp[i + 1][j], dp[i][j + 1]);
+      }
+    }
+  }
+
+  const ops = [];
+  let i = 0;
+  let j = 0;
+  while (i < leftLines.length && j < rightLines.length) {
+    if (leftLines[i] === rightLines[j]) {
+      ops.push({ type: 'same', leftText: leftLines[i], rightText: rightLines[j] });
+      i += 1;
+      j += 1;
+    } else if (dp[i + 1][j] >= dp[i][j + 1]) {
+      ops.push({ type: 'removed', leftText: leftLines[i], rightText: '' });
+      i += 1;
+    } else {
+      ops.push({ type: 'added', leftText: '', rightText: rightLines[j] });
+      j += 1;
+    }
+  }
+
+  while (i < leftLines.length) {
+    ops.push({ type: 'removed', leftText: leftLines[i], rightText: '' });
+    i += 1;
+  }
+
+  while (j < rightLines.length) {
+    ops.push({ type: 'added', leftText: '', rightText: rightLines[j] });
+    j += 1;
+  }
+
+  const rows = [];
+  for (let index = 0; index < ops.length; index += 1) {
+    const op = ops[index];
+    if (op.type !== 'removed') {
+      if (op.type === 'same') {
+        rows.push({
+          leftText: op.leftText,
+          rightText: op.rightText,
+          leftClass: 'diff-same',
+          rightClass: 'diff-same',
+          mode: 'same',
+        });
+      } else {
+        rows.push({
+          leftText: '',
+          rightText: op.rightText,
+          leftClass: 'diff-empty',
+          rightClass: 'diff-added',
+          mode: 'added',
+        });
+      }
+      continue;
+    }
+
+    const removedBlock = [];
+    while (index < ops.length && ops[index].type === 'removed') {
+      removedBlock.push(ops[index].leftText);
+      index += 1;
+    }
+
+    const addedBlock = [];
+    while (index < ops.length && ops[index].type === 'added') {
+      addedBlock.push(ops[index].rightText);
+      index += 1;
+    }
+
+    const paired = Math.min(removedBlock.length, addedBlock.length);
+    for (let pairIndex = 0; pairIndex < paired; pairIndex += 1) {
+      rows.push({
+        leftText: removedBlock[pairIndex],
+        rightText: addedBlock[pairIndex],
+        leftClass: 'diff-removed',
+        rightClass: 'diff-added',
+        mode: 'modified',
+      });
+    }
+
+    for (let pairIndex = paired; pairIndex < removedBlock.length; pairIndex += 1) {
+      rows.push({
+        leftText: removedBlock[pairIndex],
+        rightText: '',
+        leftClass: 'diff-removed',
+        rightClass: 'diff-empty',
+        mode: 'removed',
+      });
+    }
+
+    for (let pairIndex = paired; pairIndex < addedBlock.length; pairIndex += 1) {
+      rows.push({
+        leftText: '',
+        rightText: addedBlock[pairIndex],
+        leftClass: 'diff-empty',
+        rightClass: 'diff-added',
+        mode: 'added',
+      });
+    }
+
+    index -= 1;
+  }
+
+  return rows;
+}
+
+function renderCharDiff(text, otherText, variant) {
+  let prefix = 0;
+  while (
+    prefix < text.length &&
+    prefix < otherText.length &&
+    text[prefix] === otherText[prefix]
+  ) {
+    prefix += 1;
+  }
+
+  let suffix = 0;
+  while (
+    suffix < text.length - prefix &&
+    suffix < otherText.length - prefix &&
+    text[text.length - 1 - suffix] === otherText[otherText.length - 1 - suffix]
+  ) {
+    suffix += 1;
+  }
+
+  const start = text.slice(0, prefix);
+  const changed = text.slice(prefix, text.length - suffix);
+  const end = suffix > 0 ? text.slice(text.length - suffix) : '';
+
+  return [
+    start ? highlightJsonText(start) : '',
+    changed ? `<span class="diff-char diff-char-${variant}">${highlightJsonText(changed)}</span>` : '',
+    end ? highlightJsonText(end) : '',
+  ].join('');
+}
+
+function renderJsonDiffLine(text, otherText, mode) {
+  if (!text) return '&nbsp;';
+  if (mode === 'modified-left') return renderCharDiff(text, otherText, 'removed');
+  if (mode === 'modified-right') return renderCharDiff(text, otherText, 'added');
+  return highlightJsonText(text);
+}
+
+function formatJsonDiff(expected, actual, options = {}) {
+  const rows = buildJsonDiffRows(expected, actual);
+  const maxRows = Number.isInteger(options.maxRows) ? options.maxRows : null;
+  const visibleRows = maxRows === null ? rows : rows.slice(0, maxRows);
+  const hiddenRows = rows.length - visibleRows.length;
+  const truncated = hiddenRows > 0;
+  return {
+    truncated,
+    html: `
+      <div class="json-diff">
+        <div class="json-diff-header">Expected</div>
+        <div class="json-diff-header">Actual</div>
+        ${visibleRows.map((row) => `
+          <div class="json-diff-line ${row.leftClass}">${renderJsonDiffLine(row.leftText, row.rightText, row.mode === 'modified' ? 'modified-left' : row.mode)}</div>
+          <div class="json-diff-line ${row.rightClass}">${renderJsonDiffLine(row.rightText, row.leftText, row.mode === 'modified' ? 'modified-right' : row.mode)}</div>
+        `).join('')}
+      </div>
+    `,
+  };
+}
+
+function formatTextPreview(text, options = {}) {
+  const lines = text.trim().split('\n');
+  const maxLines = Number.isInteger(options.maxLines) ? options.maxLines : null;
+  const visibleLines = maxLines === null ? lines : lines.slice(0, maxLines);
+  const hiddenLines = lines.length - visibleLines.length;
+  const truncated = hiddenLines > 0;
+
+  return {
+    truncated,
+    html: `<pre class="${options.className || 'detail-pre'}">${escapeHtml(visibleLines.join('\n'))}</pre>`,
+  };
+}
+
+function canExpandFailure(failure) {
+  if (failure.expected && failure.actual) {
+    const diffRows = buildJsonDiffRows(failure.expected, failure.actual);
+    if (diffRows.length > FAILURE_PREVIEW_ROWS) return true;
+  }
+
+  if (failure.stderr) {
+    const stderrLines = failure.stderr.trim().split('\n');
+    if (stderrLines.length > STDERR_PREVIEW_LINES) return true;
+  }
+
+  return false;
+}
+
+function formatFailureContent(failure, expanded) {
   const parts = [];
-  if (f.stderr) {
-    parts.push(`<div class="detail-label">stderr</div><pre class="detail-pre">${escapeHtml(f.stderr.trim())}</pre>`);
-  }
-  if (f.expected) {
-    parts.push(`<div class="detail-label">expected</div><pre class="detail-pre detail-json">${formatJsonWithHighlight(f.expected)}</pre>`);
-  }
-  if (f.actual) {
-    parts.push(`<div class="detail-label">actual</div><pre class="detail-pre detail-json">${formatJsonWithHighlight(f.actual)}</pre>`);
+
+  if (failure.expected && failure.actual) {
+    const diff = formatJsonDiff(failure.expected, failure.actual, {
+      maxRows: expanded ? null : FAILURE_PREVIEW_ROWS,
+    });
+    parts.push(`<div class="failure-diff-block">${diff.html}</div>`);
+  } else {
+    const jsonParts = [];
+
+    if (failure.expected) {
+      jsonParts.push(`
+        <div class="failure-json-block">
+          <div class="detail-label">Expected</div>
+          <pre class="detail-pre detail-json">${formatJsonWithHighlight(failure.expected)}</pre>
+        </div>
+      `);
+    }
+
+    if (failure.actual) {
+      jsonParts.push(`
+        <div class="failure-json-block">
+          <div class="detail-label">Actual</div>
+          <pre class="detail-pre detail-json">${formatJsonWithHighlight(failure.actual)}</pre>
+        </div>
+      `);
+    }
+
+    if (jsonParts.length > 0) {
+      parts.push(`<div class="failure-json-grid">${jsonParts.join('')}</div>`);
+    }
   }
 
-  if (parts.length === 0) {
-    return `<span>${escapeHtml(summary)}</span>`;
+  if (failure.stderr) {
+    const stderr = formatTextPreview(failure.stderr, {
+      maxLines: expanded ? null : STDERR_PREVIEW_LINES,
+    });
+    parts.push(`
+      <div class="failure-extra-block">
+        <div class="detail-label">stderr</div>
+        ${stderr.html}
+      </div>
+    `);
   }
 
-  return `<details><summary>${escapeHtml(summary)}</summary><div class="detail-body">${parts.join('')}</div></details>`;
+  return { html: parts.join('') };
+}
+
+function formatFailureCard(failure) {
+  const failureKey = getFailureKey(failure);
+  const expanded = expandedFailureKeys.has(failureKey);
+  const expandable = canExpandFailure(failure);
+  const content = formatFailureContent(failure, expanded);
+  const summary = failure.error || (failure.expected && failure.actual ? 'Output differs' : 'Failed');
+  const collapsed = expandable && !expanded;
+
+  return `
+    <article
+      class="failure-card${expanded ? ' is-expanded' : ''}${collapsed ? ' is-collapsed' : ''}${expandable ? ' is-interactive' : ''}"
+      data-failure-key="${encodeURIComponent(failureKey)}"
+      data-expandable="${expandable ? 'true' : 'false'}"
+      ${expandable ? `tabindex="0" role="button" aria-expanded="${expanded ? 'true' : 'false'}"` : 'role="group"'}
+    >
+      <div class="failure-card-header">
+        <div class="failure-card-heading">
+          <div class="failure-card-label">Test</div>
+          <div class="failure-card-title mono">${formatTestKey(failure.testKey)}</div>
+        </div>
+        ${expandable ? `<span class="failure-card-chip">${expanded ? 'Collapse' : 'Expand'}</span>` : ''}
+      </div>
+      <div class="failure-card-summary">${escapeHtml(summary)}</div>
+      ${content.html ? `<div class="failure-card-body">${content.html}</div>` : ''}
+    </article>
+  `;
+}
+
+function renderNoFailuresSection() {
+  return `
+    <section class="detail-section-card zero-failures-card">
+      <div class="zero-failures-art" aria-hidden="true">
+        <svg viewBox="0 0 96 96" role="presentation">
+          <defs>
+            <linearGradient id="zero-failures-glow" x1="0%" x2="100%" y1="0%" y2="100%">
+              <stop offset="0%" stop-color="#d3f9d8" />
+              <stop offset="100%" stop-color="#e7f5ff" />
+            </linearGradient>
+            <linearGradient id="zero-failures-face" x1="0%" x2="100%" y1="0%" y2="100%">
+              <stop offset="0%" stop-color="#fffef5" />
+              <stop offset="100%" stop-color="#f8fff8" />
+            </linearGradient>
+          </defs>
+          <circle cx="48" cy="48" r="34" fill="url(#zero-failures-glow)" />
+          <circle cx="48" cy="48" r="23" fill="url(#zero-failures-face)" stroke="#2b8a3e" stroke-width="3" />
+          <circle cx="39.5" cy="43" r="2.7" fill="#1a1a2e" />
+          <circle cx="56.5" cy="43" r="2.7" fill="#1a1a2e" />
+          <path d="M39 53.5c2.2 3 5.5 4.5 9 4.5s6.8-1.5 9-4.5" fill="none" stroke="#1a1a2e" stroke-linecap="round" stroke-width="3.4" />
+          <circle cx="33.5" cy="50" r="3" fill="#ffa8a8" opacity="0.7" />
+          <circle cx="62.5" cy="50" r="3" fill="#ffa8a8" opacity="0.7" />
+          <path d="M28.5 28.5 34.5 34.5 45 24" fill="none" stroke="#3b5bdb" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.5" />
+          <path d="M24 68h8M28 64v8M67 25h6M70 22v6M70 69h8M74 65v8" fill="none" stroke="#3b5bdb" stroke-linecap="round" stroke-width="3.5" />
+        </svg>
+      </div>
+      <div class="zero-failures-copy">
+        <h3>No failures in this run</h3>
+        <p>All tests passed.</p>
+      </div>
+    </section>
+  `;
 }
 
 function barClass(pct) {
@@ -89,7 +391,6 @@ function renderDashboard(summary) {
 
   app.innerHTML = `
     <h2>Conformance Summary</h2>
-    <p>Pass rate is scored on runnable reference cases only.</p>
     <div class="dashboard-layout">
       ${reference ? `
         <section class="reference-card">
@@ -119,7 +420,7 @@ function renderDashboard(summary) {
           </thead>
           <tbody>
             ${implementations.map((s) => `
-              <tr>
+              <tr class="dashboard-row" data-impl="${encodeURIComponent(s.impl)}" tabindex="0" role="link" aria-label="View ${escapeHtml(s.impl)} details">
                 <td><a href="#/impl/${s.impl}">${s.impl}</a></td>
                 <td class="pass-rate-cell">
                   <div class="pass-rate-value">${s.passPct}%</div>
@@ -138,13 +439,16 @@ function renderDashboard(summary) {
   `;
 }
 
-function renderImplDetail(name, history, failures, summaryItem, exclusions = []) {
+function renderImplDetail(name, history, failures, summaryItem, exclusions = [], options = {}) {
+  if (options.resetExpanded) expandedFailureKeys.clear();
+  currentDetailState = { name, history, failures, summaryItem, exclusions };
   const hasChart = history.length > 1;
   const latest = history.length > 0 ? history[history.length - 1] : null;
   const isReference = !!summaryItem?.isReference;
   const items = isReference ? exclusions : failures;
   const heading = isReference ? 'Excluded Tests' : 'Failing Tests';
   const emptyMessage = isReference ? 'No tests were excluded in the latest run.' : 'All runnable tests passing.';
+  const itemLabel = isReference ? 'exclusions' : 'failures';
   const summaryRate = latest ? `${latest.passPct}%` : 'No data';
   const summarySubtext = latest
     ? (isReference
@@ -168,6 +472,24 @@ function renderImplDetail(name, history, failures, summaryItem, exclusions = [])
   const repoLink = summaryItem?.repo
     ? `<a href="${summaryItem.repo}/commit/${summaryItem.sha}">${summaryItem.sha.slice(0, 7)}</a>`
     : (summaryItem?.sha ? summaryItem.sha.slice(0, 7) : 'unknown');
+  const detailsSection = !isReference && items.length === 0
+    ? renderNoFailuresSection()
+    : `
+      <section class="detail-section-card">
+        <div class="detail-section-header">
+          <h3>${heading}</h3>
+          <p>${items.length} ${itemLabel} in the latest run.</p>
+        </div>
+        ${items.length === 0
+          ? `<p class="empty">${emptyMessage}</p>`
+          : `
+            <div class="failure-list">
+              ${items.map((f) => formatFailureCard(f)).join('')}
+            </div>
+          `
+        }
+      </section>
+    `;
 
   app.innerHTML = `
     <div class="detail-page">
@@ -177,7 +499,7 @@ function renderImplDetail(name, history, failures, summaryItem, exclusions = [])
         <div class="detail-summary-header">
           <div>
             <h2>${name}${isReference ? ' <span class="reference-pill inline-pill">Reference</span>' : ''}</h2>
-            <p class="detail-subtitle">${isReference ? 'Reference implementation scored on runnable corpus cases.' : 'Implementation conformance on runnable reference cases.'}</p>
+            ${isReference ? '<p class="detail-subtitle">Reference implementation scored on runnable corpus cases.</p>' : ''}
           </div>
         </div>
 
@@ -220,38 +542,48 @@ function renderImplDetail(name, history, failures, summaryItem, exclusions = [])
         </section>
       ` : ''}
 
-      <section class="detail-section-card">
-        <div class="detail-section-header">
-          <h3>${heading}</h3>
-          <p>${items.length} failure${items.length === 1 ? '' : 's'} in the latest run.</p>
-        </div>
-        ${items.length === 0
-          ? `<p class="empty">${emptyMessage}</p>`
-          : `
-            <table class="failures">
-              <colgroup>
-                <col class="test-id">
-                <col class="details">
-              </colgroup>
-              <thead>
-                <tr><th>Test ID</th><th>Details</th></tr>
-              </thead>
-              <tbody>
-                ${items.map((f) => `
-                  <tr>
-                    <td class="mono">${formatTestKey(f.testKey)}</td>
-                    <td>${formatFailureDetails(f)}</td>
-                  </tr>
-                `).join('')}
-              </tbody>
-            </table>
-          `
-        }
-      </section>
+      ${detailsSection}
     </div>
   `;
 
   if (hasChart) drawChart(history);
+}
+
+function rerenderCurrentDetail() {
+  if (!currentDetailState) return;
+  renderImplDetail(
+    currentDetailState.name,
+    currentDetailState.history,
+    currentDetailState.failures,
+    currentDetailState.summaryItem,
+    currentDetailState.exclusions,
+    { resetExpanded: false },
+  );
+}
+
+function toggleFailureCard(failureKey) {
+  if (expandedFailureKeys.has(failureKey)) expandedFailureKeys.delete(failureKey);
+  else expandedFailureKeys.add(failureKey);
+  rerenderCurrentDetail();
+  const card = document.querySelector(`[data-failure-key="${encodeURIComponent(failureKey)}"]`);
+  if (card && typeof card.focus === 'function') card.focus();
+}
+
+function getEventElement(event) {
+  if (event.target instanceof Element) return event.target;
+  if (event.target && event.target.parentElement) return event.target.parentElement;
+  return null;
+}
+
+function shouldToggleFailureCard(card, target) {
+  if (!card || !target) return false;
+
+  const expanded = card.getAttribute('aria-expanded') === 'true';
+  if (!expanded) return true;
+
+  if (target.closest('.failure-card-chip')) return true;
+  if (target.closest('.json-diff') || target.closest('.detail-pre')) return false;
+  return true;
 }
 
 function drawChart(history) {
@@ -339,15 +671,56 @@ async function route() {
           ? fetchJSON(`data/impls/${name}/exclusions.json`)
           : Promise.resolve([]),
       ]);
-      renderImplDetail(name, history, failures, summaryItem, exclusions);
+      renderImplDetail(name, history, failures, summaryItem, exclusions, { resetExpanded: true });
     } else {
+      currentDetailState = null;
+      expandedFailureKeys.clear();
       const summary = await fetchJSON('data/summary.json');
       renderDashboard(summary);
     }
   } catch (err) {
+    currentDetailState = null;
     app.innerHTML = `<p class="empty">Error loading data: ${err.message}</p>`;
   }
 }
+
+app.addEventListener('click', (event) => {
+  const target = getEventElement(event);
+  if (!target) return;
+  if (!target.closest('.dashboard-row') && target.closest('a')) return;
+
+  const dashboardRow = target.closest('.dashboard-row');
+  if (dashboardRow) {
+    location.hash = `#/impl/${decodeURIComponent(dashboardRow.dataset.impl)}`;
+    return;
+  }
+
+  if (target.closest('a')) return;
+  const card = target.closest('.failure-card');
+  if (!card || card.dataset.expandable !== 'true') return;
+  if (!shouldToggleFailureCard(card, target)) return;
+  toggleFailureCard(decodeURIComponent(card.dataset.failureKey));
+});
+
+app.addEventListener('keydown', (event) => {
+  const target = getEventElement(event);
+  if (!target) return;
+  if (event.key !== 'Enter' && event.key !== ' ') return;
+
+  const dashboardRow = target.closest('.dashboard-row');
+  if (dashboardRow) {
+    if (target.closest('a')) return;
+    event.preventDefault();
+    location.hash = `#/impl/${decodeURIComponent(dashboardRow.dataset.impl)}`;
+    return;
+  }
+
+  if (target.closest('a')) return;
+  const card = target.closest('.failure-card');
+  if (!card || card.dataset.expandable !== 'true') return;
+  event.preventDefault();
+  toggleFailureCard(decodeURIComponent(card.dataset.failureKey));
+});
 
 window.addEventListener('hashchange', route);
 route();
