@@ -11,7 +11,14 @@ function makeRun(overrides = {}) {
   return {
     id: overrides.id || '2026-03-17T22-42-11Z',
     timestamp: overrides.timestamp || '2026-03-17T22:42:11.609Z',
-    reference: overrides.reference || { name: 'graphql-js', sha: 'abc123' },
+    reference: overrides.reference || {
+      name: 'graphql-js',
+      sha: 'abc123',
+      total: 3,
+      errors: 0,
+      corpusTotal: 3,
+      excluded: 0,
+    },
     conformants: overrides.conformants || {
       'graphql-java': {
         sha: 'def456',
@@ -193,6 +200,25 @@ describe('ResultsStore', () => {
       assert.equal(failures[0].testKey, 'x/y/z');
     });
 
+    it('stores and retrieves reference exclusions separately', () => {
+      const store = ResultsStore.inMemory();
+      store.recordRun(makeRun({
+        reference: {
+          name: 'graphql-js',
+          sha: 'abc123',
+          total: 2,
+          errors: 0,
+          corpusTotal: 3,
+          excluded: 1,
+          exclusions: [{ testKey: 'x/y/z', error: 'timeout' }],
+        },
+      }));
+
+      const exclusions = store.getReferenceExclusions();
+      assert.equal(exclusions.length, 1);
+      assert.equal(exclusions[0].testKey, 'x/y/z');
+    });
+
     it('reconstructs reference failures in loadLatestRun', () => {
       const store = ResultsStore.inMemory();
       store.recordRun(makeRun({
@@ -211,12 +237,55 @@ describe('ResultsStore', () => {
       assert.equal(run.reference.failures[0].testKey, 'x/y/z');
     });
 
+    it('reconstructs reference exclusions in loadLatestRun', () => {
+      const store = ResultsStore.inMemory();
+      store.recordRun(makeRun({
+        reference: {
+          name: 'graphql-js',
+          sha: 'abc123',
+          total: 2,
+          errors: 0,
+          corpusTotal: 3,
+          excluded: 1,
+          exclusions: [{ testKey: 'x/y/z', error: 'stack overflow' }],
+        },
+      }));
+
+      const run = store.loadLatestRunSummary();
+      assert.equal(run.reference.total, 2);
+      assert.equal(run.reference.excluded, 1);
+      assert.equal(run.reference.corpusTotal, 3);
+      assert.equal(run.reference.exclusions.length, 1);
+      assert.equal(run.reference.exclusions[0].testKey, 'x/y/z');
+    });
+
     it('does not write failures file when reference has no errors', () => {
       const store = ResultsStore.inMemory();
       store.recordRun(makeRun());
 
       const failures = store.getImplFailures('graphql-js');
       assert.deepStrictEqual(failures, []);
+    });
+
+    it('defaults missing exclusion metadata for older runs', () => {
+      const store = ResultsStore.inMemory();
+      store.recordRun({
+        id: 'legacy-run',
+        timestamp: '2026-03-17T22:42:11.609Z',
+        reference: {
+          name: 'graphql-js',
+          sha: 'abc123',
+          total: 3,
+          errors: 1,
+          failures: [{ testKey: 'x/y/z', error: 'legacy failure' }],
+        },
+        conformants: {},
+      });
+
+      const run = store.loadLatestRunSummary();
+      assert.equal(run.reference.corpusTotal, 3);
+      assert.equal(run.reference.excluded, 0);
+      assert.deepStrictEqual(run.reference.exclusions, []);
     });
   });
 
@@ -260,9 +329,35 @@ describe('ResultsStore', () => {
       assert.equal(history[0].date, '2026-03-15');
       assert.equal(history[0].failed, 1);
       assert.equal(history[0].passPct, 75);
+      assert.equal(history[0].excluded, 0);
+      assert.equal(history[0].corpusTotal, 4);
       assert.equal(history[1].date, '2026-03-16');
       assert.equal(history[1].failed, 0);
       assert.equal(history[1].passPct, 100);
+      assert.equal(history[1].excluded, 0);
+      assert.equal(history[1].corpusTotal, 4);
+    });
+
+    it('includes excluded counts for runnable-set reference runs', () => {
+      const store = ResultsStore.inMemory();
+      store.recordRun(makeRun({
+        reference: {
+          name: 'graphql-js',
+          sha: 'abc123',
+          total: 2,
+          errors: 0,
+          corpusTotal: 3,
+          excluded: 1,
+          exclusions: [{ testKey: 'x/y/z', error: 'timeout' }],
+        },
+      }));
+
+      const history = store.getReferenceHistory();
+      assert.equal(history.length, 1);
+      assert.equal(history[0].passPct, 100);
+      assert.equal(history[0].total, 2);
+      assert.equal(history[0].excluded, 1);
+      assert.equal(history[0].corpusTotal, 3);
     });
   });
 });
@@ -284,6 +379,23 @@ describe('FileData', () => {
 
     assert.ok(fs.existsSync(path.join(tmpDir, 'runs', '2026-03-17T22-42-11Z.json')));
     assert.ok(fs.existsSync(path.join(tmpDir, 'failures', 'graphql-java', '2026-03-17T22-42-11Z.json')));
+  });
+
+  it('writes reference exclusions to disk', () => {
+    const store = ResultsStore.fromDirectory(tmpDir);
+    store.recordRun(makeRun({
+      reference: {
+        name: 'graphql-js',
+        sha: 'abc123',
+        total: 2,
+        errors: 0,
+        corpusTotal: 3,
+        excluded: 1,
+        exclusions: [{ testKey: 'x/y/z', error: 'timeout' }],
+      },
+    }));
+
+    assert.ok(fs.existsSync(path.join(tmpDir, 'exclusions', 'graphql-js', '2026-03-17T22-42-11Z.json')));
   });
 
   it('does not write failures file when all tests pass', () => {

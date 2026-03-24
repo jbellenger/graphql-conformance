@@ -71,6 +71,9 @@ class ResultsStore {
     if (ref.failures && ref.failures.length > 0) {
       this._data.put(`failures/${ref.name}/${runResult.id}`, ref.failures);
     }
+    if (ref.exclusions && ref.exclusions.length > 0) {
+      this._data.put(`exclusions/${ref.name}/${runResult.id}`, ref.exclusions);
+    }
 
     this._data.put(`runs/${runResult.id}`, {
       id: runResult.id,
@@ -78,8 +81,11 @@ class ResultsStore {
       reference: {
         name: ref.name,
         sha: ref.sha,
+        scoringModel: ref.scoringModel || null,
+        corpusTotal: ref.corpusTotal != null ? ref.corpusTotal : (ref.total || 0),
         total: ref.total || 0,
         errors: ref.errors || 0,
+        excluded: ref.excluded || 0,
       },
       conformants,
     });
@@ -132,6 +138,16 @@ class ResultsStore {
     return this._getFailuresForRun(name, latestRun.id);
   }
 
+  getReferenceExclusions() {
+    const runs = this._loadAllRuns();
+    if (runs.length === 0) return [];
+
+    const latestRun = runs[0];
+    const refName = latestRun.reference?.name;
+    if (!refName) return [];
+    return this._getExclusionsForRun(refName, latestRun.id);
+  }
+
   getTestStatus(testKey) {
     const runs = this._loadAllRuns();
     if (runs.length === 0) return [];
@@ -159,10 +175,22 @@ class ResultsStore {
     const refFailures = latest.reference.name
       ? this._getFailuresForRun(latest.reference.name, latest.id)
       : [];
+    const refExclusions = latest.reference.name
+      ? this._getExclusionsForRun(latest.reference.name, latest.id)
+      : [];
     const result = {
       id: latest.id,
       timestamp: latest.timestamp,
-      reference: { ...latest.reference, failures: refFailures },
+      reference: {
+        ...latest.reference,
+        hasExclusionMetadata: latest.reference.scoringModel === 'runnable-set-v1',
+        corpusTotal: latest.reference.corpusTotal != null
+          ? latest.reference.corpusTotal
+          : (latest.reference.total || 0),
+        excluded: latest.reference.excluded != null ? latest.reference.excluded : refExclusions.length,
+        failures: refFailures,
+        exclusions: refExclusions,
+      },
       conformants: {},
     };
 
@@ -188,11 +216,15 @@ class ResultsStore {
       const total = r.reference.total || 0;
       const errors = r.reference.errors || 0;
       const passed = total - errors;
+      const excluded = r.reference.excluded || 0;
+      const corpusTotal = r.reference.corpusTotal != null ? r.reference.corpusTotal : total;
       return {
         date: r.timestamp.slice(0, 10),
         passPct: total > 0 ? Math.round((passed / total) * 1000) / 10 : 100,
         total,
         failed: errors,
+        excluded,
+        corpusTotal,
       };
     });
   }
@@ -205,6 +237,10 @@ class ResultsStore {
 
   _getFailuresForRun(name, runId) {
     return this._data.get(`failures/${name}/${runId}`) || [];
+  }
+
+  _getExclusionsForRun(name, runId) {
+    return this._data.get(`exclusions/${name}/${runId}`) || [];
   }
 
   _collectFailuresFromTests(tests) {

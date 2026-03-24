@@ -1,0 +1,164 @@
+[
+  {
+    "testKey": "119185c4/32a39e9e/44136fa3",
+    "expected": {
+      "data": {
+        "k5HeEAt": {
+          "hBPo": "FYlQU_AA",
+          "d": {
+            "__typename": "Object_sP"
+          },
+          "O": {
+            "cX8thV": "ChNSK"
+          },
+          "__typename": "Interface_tdYBZ8h4_STUB"
+        },
+        "__typename": "Object_uP_8",
+        "L": "Object_uP_8",
+        "s": "Object_uP_8",
+        "z": "Object_uP_8"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "Argument 'if' of type 'Boolean!' is required for directive 'defer' but not provided.",
+          "locations": [
+            {
+              "line": 7,
+              "column": 31
+            }
+          ],
+          "extensions": {
+            "code": "PROVIDED_NON_NULL_ARGUMENTS",
+            "codes": [
+              "PROVIDED_NON_NULL_ARGUMENTS"
+            ],
+            "number": "5.4.2.1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "35300818/94acff9c/44136fa3",
+    "expected": {
+      "data": {
+        "zjB4L": "str"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "Argument 'if' of type 'Boolean!' is required for directive 'defer' but not provided.",
+          "locations": [
+            {
+              "line": 3,
+              "column": 23
+            }
+          ],
+          "extensions": {
+            "code": "PROVIDED_NON_NULL_ARGUMENTS",
+            "codes": [
+              "PROVIDED_NON_NULL_ARGUMENTS"
+            ],
+            "number": "5.4.2.1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "b2824725/1be7ce40/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_ZevdS9T8",
+        "u1oG_pA": 2,
+        "znRX1": "NZZuFgZ"
+      }
+    },
+    "error": "process exited with code null",
+    "stderr": "Unhandled exception. System.InvalidOperationException: The default value of Input Object type field 'Input_Lu0TeiWT.dPMhXGRHb' is invalid.\n   at GraphQL.Utilities.SchemaValidationVisitor.Run(ISchema schema) in /_/src/GraphQL/Utilities/Visitors/SchemaValidationVisitor.cs:line 28\n   at GraphQL.Types.Schema.Validate() in /_/src/GraphQL/Types/Schema.cs:line 542\n   at GraphQL.Types.Schema.CreateAndInitializeSchemaTypes() in /_/src/GraphQL/Types/Schema.cs:line 493\n   at GraphQL.Types.Schema.Initialize() in /_/src/GraphQL/Types/Schema.cs:line 207\n   at GraphQL.Types.Schema.get_AllTypes() in /_/src/GraphQL/Types/Schema.cs:line 267\n   at Program.<Main>$(String[] args) in /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-dotnet/Program.cs:line 44\n   at Program.<Main>(String[] args)\n"
+  },
+  {
+    "testKey": "b2824725/2bee3219/44136fa3",
+    "expected": {
+      "data": {
+        "u1oG_pA": 2
+      }
+    },
+    "error": "process exited with code null",
+    "stderr": "Unhandled exception. System.InvalidOperationException: The default value of Input Object type field 'Input_Lu0TeiWT.dPMhXGRHb' is invalid.\n   at GraphQL.Utilities.SchemaValidationVisitor.Run(ISchema schema) in /_/src/GraphQL/Utilities/Visitors/SchemaValidationVisitor.cs:line 28\n   at GraphQL.Types.Schema.Validate() in /_/src/GraphQL/Types/Schema.cs:line 542\n   at GraphQL.Types.Schema.CreateAndInitializeSchemaTypes() in /_/src/GraphQL/Types/Schema.cs:line 493\n   at GraphQL.Types.Schema.Initialize() in /_/src/GraphQL/Types/Schema.cs:line 207\n   at GraphQL.Types.Schema.get_AllTypes() in /_/src/GraphQL/Types/Schema.cs:line 267\n   at Program.<Main>$(String[] args) in /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-dotnet/Program.cs:line 44\n   at Program.<Main>(String[] args)\n"
+  },
+  {
+    "testKey": "b2824725/2df9dbf1/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_ZevdS9T8"
+      }
+    },
+    "error": "process exited with code null",
+    "stderr": "Unhandled exception. System.InvalidOperationException: The default value of Input Object type field 'Input_Lu0TeiWT.dPMhXGRHb' is invalid.\n   at GraphQL.Utilities.SchemaValidationVisitor.Run(ISchema schema) in /_/src/GraphQL/Utilities/Visitors/SchemaValidationVisitor.cs:line 28\n   at GraphQL.Types.Schema.Validate() in /_/src/GraphQL/Types/Schema.cs:line 542\n   at GraphQL.Types.Schema.CreateAndInitializeSchemaTypes() in /_/src/GraphQL/Types/Schema.cs:line 493\n   at GraphQL.Types.Schema.Initialize() in /_/src/GraphQL/Types/Schema.cs:line 207\n   at GraphQL.Types.Schema.get_AllTypes() in /_/src/GraphQL/Types/Schema.cs:line 267\n   at Program.<Main>$(String[] args) in /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-dotnet/Program.cs:line 44\n   at Program.<Main>(String[] args)\n"
+  },
+  {
+    "testKey": "b2824725/4367b898/44136fa3",
+    "expected": {
+      "data": {
+        "MfBp8ZaWk": "Object_ZevdS9T8"
+      }
+    },
+    "error": "process exited with code null",
+    "stderr": "Unhandled exception. System.InvalidOperationException: The default value of Input Object type field 'Input_Lu0TeiWT.dPMhXGRHb' is invalid.\n   at GraphQL.Utilities.SchemaValidationVisitor.Run(ISchema schema) in /_/src/GraphQL/Utilities/Visitors/SchemaValidationVisitor.cs:line 28\n   at GraphQL.Types.Schema.Validate() in /_/src/GraphQL/Types/Schema.cs:line 542\n   at GraphQL.Types.Schema.CreateAndInitializeSchemaTypes() in /_/src/GraphQL/Types/Schema.cs:line 493\n   at GraphQL.Types.Schema.Initialize() in /_/src/GraphQL/Types/Schema.cs:line 207\n   at GraphQL.Types.Schema.get_AllTypes() in /_/src/GraphQL/Types/Schema.cs:line 267\n   at Program.<Main>$(String[] args) in /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-dotnet/Program.cs:line 44\n   at Program.<Main>(String[] args)\n"
+  },
+  {
+    "testKey": "b2824725/5a0e7aac/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_ZevdS9T8"
+      }
+    },
+    "error": "process exited with code null",
+    "stderr": "Unhandled exception. System.InvalidOperationException: The default value of Input Object type field 'Input_Lu0TeiWT.dPMhXGRHb' is invalid.\n   at GraphQL.Utilities.SchemaValidationVisitor.Run(ISchema schema) in /_/src/GraphQL/Utilities/Visitors/SchemaValidationVisitor.cs:line 28\n   at GraphQL.Types.Schema.Validate() in /_/src/GraphQL/Types/Schema.cs:line 542\n   at GraphQL.Types.Schema.CreateAndInitializeSchemaTypes() in /_/src/GraphQL/Types/Schema.cs:line 493\n   at GraphQL.Types.Schema.Initialize() in /_/src/GraphQL/Types/Schema.cs:line 207\n   at GraphQL.Types.Schema.get_AllTypes() in /_/src/GraphQL/Types/Schema.cs:line 267\n   at Program.<Main>$(String[] args) in /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-dotnet/Program.cs:line 44\n   at Program.<Main>(String[] args)\n"
+  },
+  {
+    "testKey": "b2824725/604c63ea/44136fa3",
+    "expected": {
+      "data": {
+        "znRX1": "NZZuFgZ"
+      }
+    },
+    "error": "process exited with code null",
+    "stderr": "Unhandled exception. System.InvalidOperationException: The default value of Input Object type field 'Input_Lu0TeiWT.dPMhXGRHb' is invalid.\n   at GraphQL.Utilities.SchemaValidationVisitor.Run(ISchema schema) in /_/src/GraphQL/Utilities/Visitors/SchemaValidationVisitor.cs:line 28\n   at GraphQL.Types.Schema.Validate() in /_/src/GraphQL/Types/Schema.cs:line 542\n   at GraphQL.Types.Schema.CreateAndInitializeSchemaTypes() in /_/src/GraphQL/Types/Schema.cs:line 493\n   at GraphQL.Types.Schema.Initialize() in /_/src/GraphQL/Types/Schema.cs:line 207\n   at GraphQL.Types.Schema.get_AllTypes() in /_/src/GraphQL/Types/Schema.cs:line 267\n   at Program.<Main>$(String[] args) in /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-dotnet/Program.cs:line 44\n   at Program.<Main>(String[] args)\n"
+  },
+  {
+    "testKey": "b2824725/dc346b51/44136fa3",
+    "expected": {
+      "data": {
+        "u1oG_pA": 2
+      }
+    },
+    "error": "process exited with code null",
+    "stderr": "Unhandled exception. System.InvalidOperationException: The default value of Input Object type field 'Input_Lu0TeiWT.dPMhXGRHb' is invalid.\n   at GraphQL.Utilities.SchemaValidationVisitor.Run(ISchema schema) in /_/src/GraphQL/Utilities/Visitors/SchemaValidationVisitor.cs:line 28\n   at GraphQL.Types.Schema.Validate() in /_/src/GraphQL/Types/Schema.cs:line 542\n   at GraphQL.Types.Schema.CreateAndInitializeSchemaTypes() in /_/src/GraphQL/Types/Schema.cs:line 493\n   at GraphQL.Types.Schema.Initialize() in /_/src/GraphQL/Types/Schema.cs:line 207\n   at GraphQL.Types.Schema.get_AllTypes() in /_/src/GraphQL/Types/Schema.cs:line 267\n   at Program.<Main>$(String[] args) in /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-dotnet/Program.cs:line 44\n   at Program.<Main>(String[] args)\n"
+  },
+  {
+    "testKey": "b2824725/ea7827c5/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_ZevdS9T8"
+      }
+    },
+    "error": "process exited with code null",
+    "stderr": "Unhandled exception. System.InvalidOperationException: The default value of Input Object type field 'Input_Lu0TeiWT.dPMhXGRHb' is invalid.\n   at GraphQL.Utilities.SchemaValidationVisitor.Run(ISchema schema) in /_/src/GraphQL/Utilities/Visitors/SchemaValidationVisitor.cs:line 28\n   at GraphQL.Types.Schema.Validate() in /_/src/GraphQL/Types/Schema.cs:line 542\n   at GraphQL.Types.Schema.CreateAndInitializeSchemaTypes() in /_/src/GraphQL/Types/Schema.cs:line 493\n   at GraphQL.Types.Schema.Initialize() in /_/src/GraphQL/Types/Schema.cs:line 207\n   at GraphQL.Types.Schema.get_AllTypes() in /_/src/GraphQL/Types/Schema.cs:line 267\n   at Program.<Main>$(String[] args) in /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-dotnet/Program.cs:line 44\n   at Program.<Main>(String[] args)\n"
+  },
+  {
+    "testKey": "b2824725/fe242e78/44136fa3",
+    "expected": {
+      "data": {
+        "RSs_qqbq": "Object_ZevdS9T8",
+        "azU": "Object_ZevdS9T8"
+      }
+    },
+    "error": "process exited with code null",
+    "stderr": "Unhandled exception. System.InvalidOperationException: The default value of Input Object type field 'Input_Lu0TeiWT.dPMhXGRHb' is invalid.\n   at GraphQL.Utilities.SchemaValidationVisitor.Run(ISchema schema) in /_/src/GraphQL/Utilities/Visitors/SchemaValidationVisitor.cs:line 28\n   at GraphQL.Types.Schema.Validate() in /_/src/GraphQL/Types/Schema.cs:line 542\n   at GraphQL.Types.Schema.CreateAndInitializeSchemaTypes() in /_/src/GraphQL/Types/Schema.cs:line 493\n   at GraphQL.Types.Schema.Initialize() in /_/src/GraphQL/Types/Schema.cs:line 207\n   at GraphQL.Types.Schema.get_AllTypes() in /_/src/GraphQL/Types/Schema.cs:line 267\n   at Program.<Main>$(String[] args) in /Users/james_bellenger/workspace/graphql-conformance/impls/graphql-dotnet/Program.cs:line 44\n   at Program.<Main>(String[] args)\n"
+  }
+]

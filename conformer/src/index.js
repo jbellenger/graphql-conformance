@@ -24,7 +24,7 @@ async function main() {
   const rootDir = path.resolve(baseDir, '..');
   const configPath = process.env.CONFIG_PATH || path.join(rootDir, 'config.json');
   const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-  const corpusDir = path.join(rootDir, 'corpus');
+  const corpusDir = process.env.CORPUS_DIR || path.join(rootDir, 'corpus');
   const tests = discoverCorpus(corpusDir);
 
   const refName = config.reference;
@@ -70,6 +70,7 @@ async function main() {
     const currentSha = conformantVersions[conformant.name];
     if (
       priorRun &&
+      priorRun.reference.hasExclusionMetadata &&
       priorRun.reference.sha === refSha &&
       priorRun.conformants[conformant.name] &&
       priorRun.conformants[conformant.name].sha === currentSha
@@ -81,7 +82,8 @@ async function main() {
     return true;
   });
 
-  const referenceFailures = [];
+  const referenceExclusions = [];
+  let runnableCount = 0;
 
   if (conformantsToRun.length === 0) {
     process.stderr.write('All conformants unchanged, skipping test execution.\n');
@@ -97,12 +99,14 @@ async function main() {
       const refResult = await runImpl(reference, rootDir, args, env);
 
       if (refResult.error) {
-        process.stderr.write(`    reference failed: ${refResult.error}\n`);
-        const failure = { testKey: `${testId}/${queryId}`, error: refResult.error };
-        if (refResult.stderr) failure.stderr = refResult.stderr;
-        referenceFailures.push(failure);
+        process.stderr.write(`    reference excluded: ${refResult.error}\n`);
+        const exclusion = { testKey: `${testId}/${queryId}`, error: refResult.error };
+        if (refResult.stderr) exclusion.stderr = refResult.stderr;
+        referenceExclusions.push(exclusion);
+        continue;
       }
 
+      runnableCount += 1;
       await Promise.all(conformantsToRun.map(async (conformant) => {
         const conformantResult = await runImpl(conformant, rootDir, args, env);
         const result = compareResults(refResult, conformantResult);
@@ -144,9 +148,12 @@ async function main() {
     conformantResults[conformant.name] = entry;
   }
 
-  // For skipped runs, carry forward prior reference failures
-  if (conformantsToRun.length === 0 && priorRun && priorRun.reference.failures) {
-    referenceFailures.push(...priorRun.reference.failures);
+  // For skipped runs, carry forward prior reference exclusions and runnable count.
+  if (conformantsToRun.length === 0 && priorRun) {
+    runnableCount = priorRun.reference.total || 0;
+    if (priorRun.reference.exclusions) {
+      referenceExclusions.push(...priorRun.reference.exclusions);
+    }
   }
 
   const runResult = {
@@ -155,9 +162,12 @@ async function main() {
     reference: {
       name: reference.name,
       sha: refSha,
-      total: tests.length,
-      errors: referenceFailures.length,
-      failures: referenceFailures,
+      scoringModel: 'runnable-set-v1',
+      corpusTotal: tests.length,
+      total: runnableCount,
+      errors: 0,
+      excluded: referenceExclusions.length,
+      exclusions: referenceExclusions,
     },
     conformants: conformantResults,
   };
@@ -170,12 +180,11 @@ async function main() {
   const summary = store.getSummary();
   if (summary.length > 0) {
     const refTotal = runResult.reference.total || 0;
-    const refErrors = runResult.reference.errors || 0;
-    const refPassed = refTotal - refErrors;
-    const refPct = refTotal > 0 ? ((refPassed / refTotal) * 100).toFixed(1) : '100.0';
+    const refExcluded = runResult.reference.excluded || 0;
+    const refPct = refTotal > 0 ? '100.0' : '100.0';
 
     const allRows = [
-      { impl: reference.name, passed: refPassed, total: refTotal, pct: refPct, failed: refErrors },
+      { impl: reference.name, passed: refTotal, total: refTotal, pct: refPct, failed: 0 },
       ...summary.map((s) => ({
         impl: s.impl, passed: s.total - s.failed, total: s.total,
         pct: s.passPct.toFixed(1), failed: s.failed,
@@ -193,7 +202,11 @@ async function main() {
         `  ${r.impl.padEnd(nameWidth)}  ${String(r.passed).padStart(4)}/${String(r.total).padStart(5)}  ${r.pct.padStart(6)}%  ${status}\n`,
       );
     }
-    process.stderr.write('\n');
+    if (refExcluded > 0) {
+      process.stderr.write(`  Reference excluded ${refExcluded}/${tests.length} test(s) from scoring.\n\n`);
+    } else {
+      process.stderr.write('\n');
+    }
   }
 }
 

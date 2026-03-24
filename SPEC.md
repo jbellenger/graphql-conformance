@@ -191,9 +191,16 @@ in the `<impl-dir>/build/` directory.
 
 ## Execution Model
 
-For each test case, the coordinator runs the reference impl first, then runs all
-conformants **in parallel** (each as an independent subprocess). Conformants have
-no dependencies on each other, so their execution order is non-deterministic.
+For each test case, the coordinator runs the reference impl first.
+
+- If the reference succeeds, the test is considered **runnable** for that run and
+  all conformants are then run **in parallel** (each as an independent subprocess).
+- If the reference crashes, times out, or emits invalid JSON, the test is
+  considered **excluded by reference** for that run. No conformant is run for that
+  test, and the test does not count toward conformance totals.
+
+Conformants have no dependencies on each other, so their execution order is
+non-deterministic.
 
 ### Incremental runs
 
@@ -204,20 +211,24 @@ Before running tests, the coordinator loads the most recent prior run from
 - Its current SHA matches the prior run's SHA
 - The reference SHA also matches the prior run's reference SHA
 
-Skipped conformants reuse their test results from the prior run. This avoids
-re-executing unchanged implementations against the same reference.
+Skipped conformants reuse their test results from the prior run. If every
+conformant is skipped, the prior run's runnable/excluded reference split is
+also reused. This avoids re-executing unchanged implementations against the
+same reference.
 
 ## Error Handling and Timeouts
 
-- If a command exits with a non-zero exit code, the test is marked as a conformance failure.
-- If a command does not complete within 30 seconds, it is killed and the test is marked
-  as a conformance failure.
-- If a command produces output that is not valid JSON, the test is marked as a conformance failure.
+- If the reference command exits with a non-zero exit code, does not complete
+  within 30 seconds, or produces output that is not valid JSON, the test is
+  excluded from scoring for that run.
+- If a conformant command exits with a non-zero exit code, does not complete
+  within 30 seconds, or produces output that is not valid JSON for a runnable
+  reference case, that test is marked as a conformance failure for that conformant.
 
 ## Comparison
 
-The coordinator compares the response from each conformant impl against the reference
-impl in two steps:
+The coordinator compares the response from each conformant impl against the
+reference impl on runnable reference cases in two steps:
 
 1. **Unordered match**: the responses are compared as JSON, ignoring object key ordering
    but preserving array element order. `null` values are treated as distinct from absent
@@ -271,8 +282,9 @@ store.recordRun(runResult);       // write a run
 store.listRuns();                 // [{id, timestamp, reference}]
 store.getSummary();               // [{impl, passPct, total, failed, lastRun, sha}]
 store.getImplHistory(name);       // [{date, passPct, total, failed}]
-store.getReferenceHistory();      // [{date, passPct, total, failed}]
+store.getReferenceHistory();      // [{date, passPct, total, failed, excluded, corpusTotal}]
 store.getImplFailures(name);      // [{testKey, error|expected|actual|stderr}]
+store.getReferenceExclusions();   // [{testKey, error, stderr}]
 store.getTestStatus(testKey);     // [{impl, passes}]
 store.loadLatestRunSummary();     // latest run metadata + failure-only summaries
 ```
@@ -291,7 +303,11 @@ Filesystem-safe ISO 8601: `2026-03-14T14-30-00Z` (colons replaced with hyphens).
       "timestamp": "2026-03-14T14:30:00Z",
       "reference": {
         "name": "graphql-js",
-        "sha": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2"
+        "sha": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
+        "corpusTotal": 241,
+        "total": 232,
+        "errors": 0,
+        "excluded": 9
       },
       "conformants": {
         "graphql-java": {
@@ -303,6 +319,10 @@ Filesystem-safe ISO 8601: `2026-03-14T14-30-00Z` (colons replaced with hyphens).
         }
       }
     }
+
+`reference.total` is the runnable-set denominator for that run. `reference.excluded`
+counts the corpus cases that were skipped because the reference did not produce a
+result.
 
 Each conformant entry includes the library SHA and a `tests` object. The keys use
 dotted notation `<testId>.<queryId>` (e.g. `"1.1"` for test directory 1, query prefix

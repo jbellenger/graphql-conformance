@@ -29,6 +29,31 @@ function escapeHtml(s) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
+function formatTimestamp(timestamp) {
+  if (!timestamp) return 'Unknown';
+  const date = new Date(timestamp);
+  if (Number.isNaN(date.getTime())) return escapeHtml(String(timestamp));
+  return escapeHtml(date.toLocaleString());
+}
+
+function formatJsonWithHighlight(value) {
+  const json = escapeHtml(JSON.stringify(value, null, 2));
+  return json.replace(
+    /("(\\u[a-fA-F0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\btrue\b|\bfalse\b|\bnull\b|-?\d+(?:\.\d+)?(?:[eE][+\-]?\d+)?)/g,
+    (match) => {
+      let cls = 'json-number';
+      if (match.startsWith('"')) {
+        cls = match.endsWith(':') ? 'json-key' : 'json-string';
+      } else if (match === 'true' || match === 'false') {
+        cls = 'json-boolean';
+      } else if (match === 'null') {
+        cls = 'json-null';
+      }
+      return `<span class="${cls}">${match}</span>`;
+    },
+  );
+}
+
 function formatFailureDetails(f) {
   const summary = f.error || (f.expected && f.actual ? 'output differs' : 'failed');
 
@@ -37,10 +62,10 @@ function formatFailureDetails(f) {
     parts.push(`<div class="detail-label">stderr</div><pre class="detail-pre">${escapeHtml(f.stderr.trim())}</pre>`);
   }
   if (f.expected) {
-    parts.push(`<div class="detail-label">expected</div><pre class="detail-pre">${escapeHtml(JSON.stringify(f.expected, null, 2))}</pre>`);
+    parts.push(`<div class="detail-label">expected</div><pre class="detail-pre detail-json">${formatJsonWithHighlight(f.expected)}</pre>`);
   }
   if (f.actual) {
-    parts.push(`<div class="detail-label">actual</div><pre class="detail-pre">${escapeHtml(JSON.stringify(f.actual, null, 2))}</pre>`);
+    parts.push(`<div class="detail-label">actual</div><pre class="detail-pre detail-json">${formatJsonWithHighlight(f.actual)}</pre>`);
   }
 
   if (parts.length === 0) {
@@ -57,79 +82,173 @@ function barClass(pct) {
 }
 
 function renderDashboard(summary) {
-  summary.sort((a, b) => b.passPct - a.passPct || a.impl.localeCompare(b.impl));
+  const reference = summary.find((item) => item.isReference) || null;
+  const implementations = summary
+    .filter((item) => !item.isReference)
+    .sort((a, b) => b.passPct - a.passPct || a.impl.localeCompare(b.impl));
 
   app.innerHTML = `
     <h2>Conformance Summary</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Implementation</th>
-          <th>Pass Rate</th>
-          <th></th>
-          <th>Tests</th>
-          <th>Failed</th>
-          <th>SHA</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${summary.map((s) => `
-          <tr>
-            <td><a href="#/impl/${s.impl}">${s.impl}</a></td>
-            <td>${s.passPct}%</td>
-            <td>
-              <div class="bar-container">
-                <div class="bar-fill ${barClass(s.passPct)}" style="width: ${s.passPct}%"></div>
-              </div>
-            </td>
-            <td>${s.total}</td>
-            <td>${s.failed}</td>
-            <td class="mono">${s.repo ? `<a href="${s.repo}/commit/${s.sha}">${s.sha.slice(0, 7)}</a>` : s.sha.slice(0, 7)}</td>
-          </tr>
-        `).join('')}
-      </tbody>
-    </table>
-  `;
-}
-
-function renderImplDetail(name, history, failures) {
-  const hasChart = history.length > 1;
-
-  app.innerHTML = `
-    <a class="back" href="#">&larr; Back to summary</a>
-    <h2>${name}</h2>
-
-    ${hasChart ? `
-      <div class="chart-container">
-        <canvas id="history-chart" height="200"></canvas>
-      </div>
-    ` : `
-      <p>Pass rate: <strong>${history.length > 0 ? history[history.length - 1].passPct : '—'}%</strong></p>
-    `}
-
-    <h3>Failing Tests (${failures.length})</h3>
-    ${failures.length === 0
-      ? '<p class="empty">All tests passing.</p>'
-      : `
-        <table class="failures">
-          <colgroup>
-            <col class="test-id">
-            <col class="details">
-          </colgroup>
+    <p>Pass rate is scored on runnable reference cases only.</p>
+    <div class="dashboard-layout">
+      ${reference ? `
+        <section class="reference-card">
+          <div class="reference-card-header">
+            <span class="reference-pill">Reference</span>
+            <a class="reference-link" href="#/impl/${reference.impl}">${reference.impl}</a>
+          </div>
+          <div class="reference-rate">${reference.passPct}%</div>
+          <div class="reference-subtext">${reference.total} runnable · ${reference.excluded || 0} excluded</div>
+          <div class="bar-container reference-bar">
+            <div class="bar-fill ${barClass(reference.passPct)}" style="width: ${reference.passPct}%"></div>
+          </div>
+          <div class="reference-meta">
+            <div><span>Corpus</span><strong>${reference.corpusTotal ?? reference.total}</strong></div>
+            <div><span>SHA</span><strong class="mono">${reference.repo ? `<a href="${reference.repo}/commit/${reference.sha}">${reference.sha.slice(0, 7)}</a>` : reference.sha.slice(0, 7)}</strong></div>
+          </div>
+        </section>
+      ` : ''}
+      <div class="results-table-card">
+        <table>
           <thead>
-            <tr><th>Test ID</th><th>Details</th></tr>
+            <tr>
+              <th>Implementation</th>
+              <th class="pass-rate-column">Pass Rate</th>
+              <th>SHA</th>
+            </tr>
           </thead>
           <tbody>
-            ${failures.map((f) => `
+            ${implementations.map((s) => `
               <tr>
-                <td class="mono">${formatTestKey(f.testKey)}</td>
-                <td>${formatFailureDetails(f)}</td>
+                <td><a href="#/impl/${s.impl}">${s.impl}</a></td>
+                <td class="pass-rate-cell">
+                  <div class="pass-rate-value">${s.passPct}%</div>
+                  <div class="pass-rate-meta">${s.total} runnable · ${s.failed} failed</div>
+                  <div class="bar-container full-width-bar">
+                    <div class="bar-fill ${barClass(s.passPct)}" style="width: ${s.passPct}%"></div>
+                  </div>
+                </td>
+                <td class="mono">${s.repo ? `<a href="${s.repo}/commit/${s.sha}">${s.sha.slice(0, 7)}</a>` : s.sha.slice(0, 7)}</td>
               </tr>
             `).join('')}
           </tbody>
         </table>
-      `
-    }
+      </div>
+    </div>
+  `;
+}
+
+function renderImplDetail(name, history, failures, summaryItem, exclusions = []) {
+  const hasChart = history.length > 1;
+  const latest = history.length > 0 ? history[history.length - 1] : null;
+  const isReference = !!summaryItem?.isReference;
+  const items = isReference ? exclusions : failures;
+  const heading = isReference ? 'Excluded Tests' : 'Failing Tests';
+  const emptyMessage = isReference ? 'No tests were excluded in the latest run.' : 'All runnable tests passing.';
+  const summaryRate = latest ? `${latest.passPct}%` : 'No data';
+  const summarySubtext = latest
+    ? (isReference
+      ? `${latest.total} runnable · ${latest.excluded || 0} excluded`
+      : `${latest.total} runnable · ${latest.failed} failed`)
+    : 'No history available';
+  const metaItems = latest
+    ? (isReference
+      ? [
+        { label: 'Run', value: formatTimestamp(summaryItem?.lastRun) },
+        { label: 'Runnable', value: latest.total },
+        { label: 'Excluded', value: latest.excluded || 0 },
+        { label: 'Corpus', value: latest.corpusTotal ?? latest.total },
+      ]
+      : [
+        { label: 'Run', value: formatTimestamp(summaryItem?.lastRun) },
+        { label: 'Runnable', value: latest.total },
+        { label: 'Failed', value: latest.failed },
+      ])
+    : [];
+  const repoLink = summaryItem?.repo
+    ? `<a href="${summaryItem.repo}/commit/${summaryItem.sha}">${summaryItem.sha.slice(0, 7)}</a>`
+    : (summaryItem?.sha ? summaryItem.sha.slice(0, 7) : 'unknown');
+
+  app.innerHTML = `
+    <div class="detail-page">
+      <a class="back" href="#">&larr; Back to summary</a>
+
+      <section class="detail-summary-card">
+        <div class="detail-summary-header">
+          <div>
+            <h2>${name}${isReference ? ' <span class="reference-pill inline-pill">Reference</span>' : ''}</h2>
+            <p class="detail-subtitle">${isReference ? 'Reference implementation scored on runnable corpus cases.' : 'Implementation conformance on runnable reference cases.'}</p>
+          </div>
+        </div>
+
+        <div class="detail-rate-row">
+          <div>
+            <div class="detail-rate">${summaryRate}</div>
+            <div class="detail-subtext">${summarySubtext}</div>
+          </div>
+        </div>
+
+        ${latest ? `
+          <div class="bar-container detail-bar">
+            <div class="bar-fill ${barClass(latest.passPct)}" style="width: ${latest.passPct}%"></div>
+          </div>
+        ` : ''}
+
+        <div class="detail-meta-grid">
+          ${metaItems.map((item) => `
+            <div class="detail-meta-card">
+              <span>${item.label}</span>
+              <strong>${item.value}</strong>
+            </div>
+          `).join('')}
+          <div class="detail-meta-card">
+            <span>SHA</span>
+            <strong class="mono">${repoLink}</strong>
+          </div>
+        </div>
+      </section>
+
+      ${hasChart ? `
+        <section class="detail-section-card chart-card">
+          <div class="detail-section-header">
+            <h3>History</h3>
+            <p>Pass rate over recorded runs.</p>
+          </div>
+          <div class="chart-container">
+            <canvas id="history-chart" height="200"></canvas>
+          </div>
+        </section>
+      ` : ''}
+
+      <section class="detail-section-card">
+        <div class="detail-section-header">
+          <h3>${heading}</h3>
+          <p>${items.length} failure${items.length === 1 ? '' : 's'} in the latest run.</p>
+        </div>
+        ${items.length === 0
+          ? `<p class="empty">${emptyMessage}</p>`
+          : `
+            <table class="failures">
+              <colgroup>
+                <col class="test-id">
+                <col class="details">
+              </colgroup>
+              <thead>
+                <tr><th>Test ID</th><th>Details</th></tr>
+              </thead>
+              <tbody>
+                ${items.map((f) => `
+                  <tr>
+                    <td class="mono">${formatTestKey(f.testKey)}</td>
+                    <td>${formatFailureDetails(f)}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          `
+        }
+      </section>
+    </div>
   `;
 
   if (hasChart) drawChart(history);
@@ -211,11 +330,16 @@ async function route() {
   try {
     if (hash.startsWith('#/impl/')) {
       const name = decodeURIComponent(hash.slice(7));
-      const [history, failures] = await Promise.all([
+      const summary = await fetchJSON('data/summary.json');
+      const summaryItem = summary.find((item) => item.impl === name) || null;
+      const [history, failures, exclusions] = await Promise.all([
         fetchJSON(`data/impls/${name}/history.json`),
         fetchJSON(`data/impls/${name}/failures.json`),
+        summaryItem?.isReference
+          ? fetchJSON(`data/impls/${name}/exclusions.json`)
+          : Promise.resolve([]),
       ]);
-      renderImplDetail(name, history, failures);
+      renderImplDetail(name, history, failures, summaryItem, exclusions);
     } else {
       const summary = await fetchJSON('data/summary.json');
       renderDashboard(summary);

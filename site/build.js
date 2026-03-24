@@ -38,6 +38,8 @@ const summary = [
     passPct: refTotal > 0 ? Math.round((refPassed / refTotal) * 1000) / 10 : 100,
     total: refTotal,
     failed: refErrors,
+    excluded: ref.excluded || 0,
+    corpusTotal: ref.corpusTotal != null ? ref.corpusTotal : refTotal + refErrors,
     lastRun: latest.timestamp,
     sha: ref.sha,
     repo: repoByName[ref.name] || null,
@@ -74,6 +76,11 @@ for (const name of implNames) {
   // failures.json
   const failures = isRef ? ref.failures : store.getImplFailures(name);
   fs.writeFileSync(path.join(implDir, 'failures.json'), JSON.stringify(failures, null, 2) + '\n');
+
+  if (isRef) {
+    const exclusions = ref.exclusions || store.getReferenceExclusions();
+    fs.writeFileSync(path.join(implDir, 'exclusions.json'), JSON.stringify(exclusions, null, 2) + '\n');
+  }
 
   console.log(`Wrote ${name}: ${history.length} history entries, ${failures.length} failures`);
 }

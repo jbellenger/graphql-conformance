@@ -28,7 +28,7 @@ Each implementation is wrapped in a small harness that accepts a schema file and
 
 Test cases are generated randomly using the [Viaduct Arbitrary toolkit](https://github.com/airbnb/viaduct/tree/main/shared/arbitrary). This produces arbitrary GraphQL schemas, documents, and variables, which are stored in [corpus](corpus).
 
-A coordinator runs every test case against every implementation, compares outputs to the reference, and records the results.
+A coordinator runs every test case against the reference first. If the reference produces a result, the test is runnable and every implementation is compared against that result. If the reference crashes, times out, or emits invalid JSON, the test is excluded from scoring for that run and is not attempted on any other implementation.
 
 ## Requirements
 

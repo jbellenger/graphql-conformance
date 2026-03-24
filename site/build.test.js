@@ -28,7 +28,7 @@ function seedResults(overrides = {}) {
   store.recordRun({
     id: overrides.id || 'run-1',
     timestamp: overrides.timestamp || '2026-03-19T00:00:00.000Z',
-    reference: { name: 'graphql-js', sha: 'abc123', total: 2, errors: 0 },
+    reference: { name: 'graphql-js', sha: 'abc123', total: 2, errors: 0, corpusTotal: 2, excluded: 0 },
     conformants: overrides.conformants || {
       'impl-a': {
         sha: 'def456',
@@ -56,6 +56,8 @@ describe('site/build.js', () => {
     assert.equal(ref.total, 2);
     assert.equal(ref.failed, 0);
     assert.equal(ref.passPct, 100);
+    assert.equal(ref.excluded, 0);
+    assert.equal(ref.corpusTotal, 2);
     assert.equal(ref.sha, 'abc123');
     assert.equal(ref.isReference, true);
 
@@ -94,14 +96,20 @@ describe('site/build.js', () => {
     assert.equal(refHistory.length, 1);
     assert.equal(refHistory[0].passPct, 100);
     assert.equal(refHistory[0].failed, 0);
+    assert.equal(refHistory[0].excluded, 0);
 
     const refFailures = JSON.parse(
       fs.readFileSync(path.join(tmpSiteDataDir, 'impls', 'graphql-js', 'failures.json'), 'utf8')
     );
     assert.deepStrictEqual(refFailures, []);
+
+    const refExclusions = JSON.parse(
+      fs.readFileSync(path.join(tmpSiteDataDir, 'impls', 'graphql-js', 'exclusions.json'), 'utf8')
+    );
+    assert.deepStrictEqual(refExclusions, []);
   });
 
-  it('shows reference errors when reference fails some tests', () => {
+  it('shows reference exclusions separately when the reference excludes some tests', () => {
     const store = ResultsStore.fromDirectory(tmpResultsDir);
     store.recordRun({
       id: 'run-ref-errors',
@@ -109,9 +117,11 @@ describe('site/build.js', () => {
       reference: {
         name: 'graphql-js',
         sha: 'abc123',
-        total: 5,
-        errors: 2,
-        failures: [
+        total: 3,
+        errors: 0,
+        corpusTotal: 5,
+        excluded: 2,
+        exclusions: [
           { testKey: 'p/q/r', error: 'stack overflow' },
           { testKey: 's/t/u', error: 'process exited with code 1' },
         ],
@@ -131,18 +141,25 @@ describe('site/build.js', () => {
 
     const summary = JSON.parse(fs.readFileSync(path.join(tmpSiteDataDir, 'summary.json'), 'utf8'));
     const ref = summary.find((s) => s.impl === 'graphql-js');
-    assert.equal(ref.total, 5);
-    assert.equal(ref.failed, 2);
-    assert.equal(ref.passPct, 60);
+    assert.equal(ref.total, 3);
+    assert.equal(ref.failed, 0);
+    assert.equal(ref.excluded, 2);
+    assert.equal(ref.corpusTotal, 5);
+    assert.equal(ref.passPct, 100);
 
-    // Reference failures should be written with error fields (not quirks)
+    // Reference failures remain empty; exclusions are stored separately.
     const refFailures = JSON.parse(
       fs.readFileSync(path.join(tmpSiteDataDir, 'impls', 'graphql-js', 'failures.json'), 'utf8')
     );
-    assert.equal(refFailures.length, 2);
-    assert.equal(refFailures[0].testKey, 'p/q/r');
-    assert.equal(refFailures[0].error, 'stack overflow');
-    assert.equal(refFailures[1].testKey, 's/t/u');
+    assert.deepStrictEqual(refFailures, []);
+
+    const refExclusions = JSON.parse(
+      fs.readFileSync(path.join(tmpSiteDataDir, 'impls', 'graphql-js', 'exclusions.json'), 'utf8')
+    );
+    assert.equal(refExclusions.length, 2);
+    assert.equal(refExclusions[0].testKey, 'p/q/r');
+    assert.equal(refExclusions[0].error, 'stack overflow');
+    assert.equal(refExclusions[1].testKey, 's/t/u');
   });
 
   it('exits with error when no runs exist', () => {

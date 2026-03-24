@@ -50,12 +50,13 @@ const refResult = run(reference);
 const implResult = run(impl);
 
 if (refResult.error) {
-  process.stderr.write(`reference (${refName}): ${refResult.error}\n`);
+  process.stderr.write(`reference (${refName}) excluded this test: ${refResult.error}\n`);
+  if (refResult.stderr) process.stderr.write(refResult.stderr);
+  process.stderr.write('No diff available because the reference did not produce a result.\n');
+  process.exit(1);
 }
 if (implResult.error) {
   process.stderr.write(`${implName}: ${implResult.error}\n`);
-}
-if (refResult.error || implResult.error) {
   process.exit(1);
 }
 
