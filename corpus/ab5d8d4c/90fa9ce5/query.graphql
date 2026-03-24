@@ -1,0 +1,18 @@
+query ($zSVX6dN5K: Boolean!@Directive_KRQR) {
+  ... {
+    ...Fragment_vrT
+  }
+  ... on Object_Fpsww {
+    __typename
+  }
+  ... on Object_Fpsww {
+    ...Fragment_vrT
+    ... on Object_Fpsww @Directive__INm {
+      __typename @include(if: $zSVX6dN5K)
+    }
+  }
+}
+
+fragment Fragment_vrT on Object_Fpsww {
+  __typename
+}

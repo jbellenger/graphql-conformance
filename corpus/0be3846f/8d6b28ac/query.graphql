@@ -1,0 +1,29 @@
+query qM2Y4lb54Z {
+  ...Fragment_mBt
+  ... on Union_oUbZw {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_YTb8 on Union_r5qzLthUMJ {
+  __typename
+  __typename
+}
+
+fragment Fragment_HZIoaxBEPW on Union_oUbZw {
+  ...Fragment_YTb8
+  __typename
+  __typename
+}
+
+fragment Fragment_mBt on Object_ApwfNHZGC {
+  ...Fragment_HZIoaxBEPW
+  ...Fragment_HZIoaxBEPW
+  ... on Union_oUbZw {
+    ...Fragment_HZIoaxBEPW
+  }
+  ... {
+    __typename
+  }
+}

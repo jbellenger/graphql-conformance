@@ -1,0 +1,11 @@
+query RmF5Rp @Directive_XlEBxbQN {
+  ... on Union_Smh @Directive_ZdabI(a: W_3t3l) {
+    ...Fragment_ySc
+  }
+}
+
+fragment Fragment_ySc on Union_Smh {
+  ... on Union_Smh {
+    __typename
+  }
+}

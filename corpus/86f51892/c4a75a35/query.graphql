@@ -1,0 +1,27 @@
+query lN($b: Boolean!@Directive_shG(j: {x11e : {k6FrMCfw : 984589810, o : -7.687082157219801E+307}, rlycIB : {x11e : {k6FrMCfw : null, o : null}, rlycIB : {x11e : null, rlycIB : null}}})) {
+  ...Fragment_g
+  ...Fragment__P0BirxZfm
+  _hdt: __typename
+  L4pdej: rnpPvC1F {
+    __typename
+  }
+  QEN1HGP: __typename
+  rnpPvC1F {
+    ... on Union_qPHYWu {
+      ...Fragment_g
+      kx: __typename
+      ZWCul6Sj: __typename
+      ... on Object_kX {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_g on Union_ulsO {
+  SfKpG78OrF: __typename @include(if: $b) @skip(if: false)
+}
+
+fragment Fragment__P0BirxZfm on Union_qPHYWu {
+  ...Fragment_g
+}

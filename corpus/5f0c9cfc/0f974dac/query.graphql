@@ -1,0 +1,23 @@
+{
+  ...Fragment_J
+  __typename
+  ... on Union_U {
+    __typename
+  }
+  ... on Union_U {
+    ... on Union_U {
+      __typename
+    }
+    ... on Object_IM {
+      __typename
+    }
+  }
+  ... on Union_U {
+    __typename
+  }
+}
+
+fragment Fragment_J on Object_IM {
+  xEeSVg1: __typename
+  sd71iPC1
+}

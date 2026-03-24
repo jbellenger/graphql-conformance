@@ -1,0 +1,24 @@
+query scKQXx6ar {
+  ... on Object_l2szMSq {
+    ...Fragment_oinQfTJ
+    ...Fragment_oinQfTJ
+    _brP @skip(if: true)
+    _brP
+    gvbrfN {
+      ...Fragment_JyThsKux
+      ... on Object_l_aaqqg0 {
+        YP40: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_oinQfTJ on Object_l2szMSq {
+  ... on Object_l2szMSq {
+    __typename
+  }
+}
+
+fragment Fragment_JyThsKux on Union_Q94M {
+  __typename
+}

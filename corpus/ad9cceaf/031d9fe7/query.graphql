@@ -1,6 +1,0 @@
-query J3aS($aMNP: Boolean!) @Directive_oSW3x {
-  ... on Union_X4OX3m {
-    __typename @include(if: $aMNP)
-    __typename @skip(if: $aMNP)
-  }
-}

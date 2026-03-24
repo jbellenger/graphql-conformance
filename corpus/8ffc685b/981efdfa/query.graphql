@@ -1,0 +1,23 @@
+query a75i8o @Directive_bY8Wzu {
+  ...Fragment_j
+}
+
+fragment Fragment_ZS on Object_u {
+  __typename
+}
+
+fragment Fragment_j on Object_u {
+  ... on Object_u {
+    ...Fragment_ZS
+    ... on Object_u {
+      x
+    }
+  }
+  ... on Object_u {
+    __typename
+    jfgZrD: __typename
+    ... on Object_u {
+      xtGKS: x
+    }
+  }
+}

@@ -1,0 +1,43 @@
+query ($a1eemD: Boolean!) @Directive_EqJL {
+  ...Fragment_RA@defer(if: true, label: null)
+  __typename @include(if: true)
+  oHbWqY8gt
+  ... on Union_l8Gn9 @Directive_EqJL @defer(if: true, label: "z~") {
+    ...Fragment_RA@include(if: true)
+  }
+  ... on Object_zoR @include(if: true) {
+    pcX_
+  }
+  ... on Union_l8Gn9 {
+    ...Fragment_txjJ
+    ... on Union_qT {
+      ... on Object_k_494QiU {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_txjJ on Object_PhdvD1V0i {
+  uXEJYWZh
+}
+
+fragment Fragment_iNjfFWW0E on Union_v6 {
+  ...Fragment_txjJ
+  BYCskuO: __typename
+  BTs_tOi: __typename
+  __typename
+  ... on Object_PhdvD1V0i {
+    __typename
+  }
+}
+
+fragment Fragment_RA on Union_l8Gn9 {
+  ...Fragment_iNjfFWW0E
+  O5: __typename @include(if: $a1eemD) @skip(if: $a1eemD)
+  ... on Object_zoR {
+    ... on Object_zoR {
+      pcX_
+    }
+  }
+}

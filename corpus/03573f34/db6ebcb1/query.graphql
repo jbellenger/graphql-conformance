@@ -1,0 +1,19 @@
+query L5eXabPF($rbEuY2: Boolean! = false) {
+  ...Fragment_fDp_gsnf@Directive_RtXxkf
+  ... @include(if: $rbEuY2) {
+    oM: __typename
+  }
+}
+
+fragment Fragment_ETpXgs1xl on Union_V1o7oS {
+  P: __typename
+}
+
+fragment Fragment_i on Union_V1o7oS {
+  ...Fragment_ETpXgs1xl
+}
+
+fragment Fragment_fDp_gsnf on Union_LwpriNm {
+  ...Fragment_i
+  ...Fragment_ETpXgs1xl
+}

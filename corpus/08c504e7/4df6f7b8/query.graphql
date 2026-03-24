@@ -1,0 +1,3 @@
+query Zz2ZX {
+  __typename @include(if: true) @skip(if: false)
+}

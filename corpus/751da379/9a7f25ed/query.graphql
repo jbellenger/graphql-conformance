@@ -1,0 +1,26 @@
+{
+  ... on Object_jHAw1p {
+    ... on Object_jHAw1p @include(if: true) {
+      ...Fragment_jyZCTpjRQ
+      ... on Object_jHAw1p {
+        __typename
+      }
+    }
+    ... on Object_jHAw1p {
+      ... @Directive_YTuALY {
+        ZW38sikO0: d1jJl4ACGJ
+      }
+    }
+  }
+  ... on Object_jHAw1p {
+    O: d1jJl4ACGJ @skip(if: false)
+  }
+}
+
+fragment Fragment_jyZCTpjRQ on Object_jHAw1p @Directive_YTuALY{
+  s66: pruhXB {
+    iDTbLOv9nK {
+      __typename
+    }
+  }
+}

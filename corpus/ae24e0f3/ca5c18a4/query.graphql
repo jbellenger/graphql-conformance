@@ -1,0 +1,23 @@
+query BA6dFiwVGv {
+  ...Fragment_wH
+  ...Fragment_Wj
+  ... on Object_K0b5ePiHN {
+    ...Fragment_OpabL
+    __typename
+    ... on Object_K0b5ePiHN {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_Wj on Union_riXZ4INezI {
+  Zf: __typename @skip(if: false)
+}
+
+fragment Fragment_wH on Object_K0b5ePiHN {
+  ...Fragment_Wj
+}
+
+fragment Fragment_OpabL on Object_K0b5ePiHN @Directive_M5YTMsc{
+  A1ZZ: __typename
+}

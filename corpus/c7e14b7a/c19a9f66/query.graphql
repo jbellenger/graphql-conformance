@@ -1,0 +1,18 @@
+{
+  ...Fragment_k9x_1AV@Directive_G(ms: "o")
+  ...Fragment_PnrXz4dxmt
+  ...Fragment_PnrXz4dxmt
+}
+
+fragment Fragment_PnrXz4dxmt on Union_t07S57S @Directive_G{
+  __typename
+}
+
+fragment Fragment_k9x_1AV on Object_A {
+  ... on Object_A {
+    ...Fragment_PnrXz4dxmt
+    ... on Union_t07S57S @skip(if: true) {
+      __typename
+    }
+  }
+}

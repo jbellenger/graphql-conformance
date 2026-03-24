@@ -1,0 +1,30 @@
+query CQDDCAq9f9 {
+  ...Fragment_a
+  ...Fragment_a
+  ...Fragment_a
+  tWGtbkPgN
+  ... on Object_kCfY {
+    KFty: tWGtbkPgN
+    e_L
+    ... on Object_kCfY {
+      e_L
+    }
+  }
+}
+
+fragment Fragment_yfys6IlAb on Union_RNkVKT {
+  __typename
+}
+
+fragment Fragment_a on Object_kCfY {
+  e_L
+  ... on Union_Xj {
+    ...Fragment_yfys6IlAb@include(if: true)
+  }
+  ... {
+    tWGtbkPgN @skip(if: false)
+    ... on Union_Xj {
+      __typename
+    }
+  }
+}

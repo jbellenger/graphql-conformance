@@ -1,0 +1,7 @@
+query HPqWslmXZc($jLSKYyqI: Boolean!) {
+  ...Fragment_lcZB
+}
+
+fragment Fragment_lcZB on Union_JDbbTXHncn {
+  __typename @include(if: $jLSKYyqI)
+}

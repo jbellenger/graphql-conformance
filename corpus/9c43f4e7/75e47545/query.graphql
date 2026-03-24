@@ -1,0 +1,17 @@
+query @Directive_KRt {
+  ... on Union_pFvq4l93u {
+    ...Fragment_Dae3mShScL
+    ... on Union_DsVOy {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_Dae3mShScL on Object_KEEeFM {
+  G4FkCfbAD: __typename
+  __typename
+  __typename
+  ... on Object_KEEeFM @include(if: true) {
+    __typename
+  }
+}

@@ -1,0 +1,24 @@
+{
+  ... on Union_oUbZw {
+    ...Fragment_suXETQaNy
+    ...Fragment_cSQgxn@defer(if: false, label: "&z")
+    ... on Union_r5qzLthUMJ @Directive_bMwwlKOTf @include(if: true) {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_suXETQaNy on Union_r5qzLthUMJ {
+  __typename
+}
+
+fragment Fragment_UUkCgd on Union_oUbZw {
+  V810xW: __typename
+}
+
+fragment Fragment_cSQgxn on Union_r5qzLthUMJ {
+  ...Fragment_UUkCgd
+  ... on Interface_BuzdrGe {
+    __typename
+  }
+}

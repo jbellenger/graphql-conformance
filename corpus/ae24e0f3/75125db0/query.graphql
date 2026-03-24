@@ -1,0 +1,26 @@
+query I3ET {
+  ...Fragment_j1x8YMu
+  ... on Union_riXZ4INezI {
+    ... on Object_K0b5ePiHN {
+      ...Fragment_uB
+      ... {
+        aZ4fK1deRM @Directive_OTH9izghou
+      }
+    }
+  }
+}
+
+fragment Fragment_uB on Union_ATXQDAj {
+  __typename
+}
+
+fragment Fragment_ry0AHFzeL on Object_Q2Rm4 @Directive_M5YTMsc(la5Yj4P: {lun : RZMnxYhzh}){
+  ...Fragment_uB
+  ... on Union_kMwusUJ {
+    __typename
+  }
+}
+
+fragment Fragment_j1x8YMu on Union_ATXQDAj {
+  ...Fragment_ry0AHFzeL
+}

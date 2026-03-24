@@ -1,0 +1,49 @@
+query @Directive_q {
+  ...Fragment_h7Uj4n9Sml
+  ...Fragment_poQ9D
+  ... on Object_KJDYJkCZK {
+    ...Fragment_poQ9D
+    ...Fragment_poQ9D
+    ... on Object_KJDYJkCZK {
+      H50: __typename
+    }
+    ... {
+      ...Fragment_h7Uj4n9Sml
+      ... on Object_KJDYJkCZK {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_V on Object_KJDYJkCZK {
+  ... on Union_q7_Ay_TgQs {
+    __typename
+  }
+}
+
+fragment Fragment_h7Uj4n9Sml on Object_KJDYJkCZK {
+  ...Fragment_V
+  ... on Object_KJDYJkCZK {
+    __typename
+    nJtm {
+      a
+    }
+    nJtm {
+      I7: tBeX
+    }
+  }
+}
+
+fragment Fragment_xG on Object_Tyb {
+  a
+}
+
+fragment Fragment_poQ9D on Object_KJDYJkCZK {
+  nJtm {
+    ...Fragment_xG
+    tBeX
+    __typename @Directive_uWXh5i(rbllm: TO)
+  }
+  __typename @Directive_uWXh5i(rbllm: gVO3vLBZ6f)
+}

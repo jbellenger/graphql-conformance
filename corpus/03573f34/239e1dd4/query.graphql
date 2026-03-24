@@ -1,0 +1,12 @@
+query iAM33 {
+  ...Fragment_wqCh5_b8@Directive_RtXxkf
+  ... {
+    ... on Union_LwpriNm {
+      ...Fragment_wqCh5_b8
+    }
+  }
+}
+
+fragment Fragment_wqCh5_b8 on Object_lpJFn {
+  __typename
+}

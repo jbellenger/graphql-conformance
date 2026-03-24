@@ -1,0 +1,16 @@
+query asZ {
+  __typename
+  ... {
+    ...Fragment_r4dS
+    ...Fragment_r4dS
+  }
+  ... on Object_RICPUv {
+    w3j
+  }
+}
+
+fragment Fragment_r4dS on Object_RICPUv {
+  ... on Union_Qa {
+    __typename
+  }
+}

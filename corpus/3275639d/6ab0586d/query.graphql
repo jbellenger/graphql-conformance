@@ -1,0 +1,35 @@
+query ($bTyWV2ExwR: Input_xBufFb0 = {uAu_7LWo2 : "?="}, $lDhOts: Boolean!@Directive_t) {
+  ...Fragment_Q
+}
+
+fragment Fragment_oV on Object_Yeeu {
+  gw4aVFsyRl(_Ko3: $bTyWV2ExwR)
+}
+
+fragment Fragment_DuOraSze7 on Object_Yeeu {
+  ...Fragment_oV
+}
+
+fragment Fragment_WENnhx1GQ on Interface_jY {
+  ...Fragment_DuOraSze7
+}
+
+fragment Fragment_B on Object_k2FH @Directive_t{
+  __typename
+  __typename
+}
+
+fragment Fragment_Q on Interface_jY {
+  ...Fragment_DuOraSze7
+  ...Fragment_WENnhx1GQ@skip(if: true)
+  F: gw4aVFsyRl(_Ko3: {})
+  uBHV {
+    ...Fragment_B
+    qF
+    ... on Union_DvQeDk0t {
+      __typename
+    }
+  }
+  p12Ux2g: __typename @include(if: $lDhOts)
+  AY: gw4aVFsyRl(_Ko3: {uAu_7LWo2 : "X:V"})
+}

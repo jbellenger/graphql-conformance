@@ -1,0 +1,30 @@
+{
+  ...Fragment_RmcX
+  xsTsIOm
+  ... on Object_Q {
+    xsTsIOm
+  }
+}
+
+fragment Fragment_bpGBh43qG on Union_dwkjJ {
+  __typename
+}
+
+fragment Fragment_vIu8HZwUK on Object_Q {
+  ...Fragment_bpGBh43qG
+  ... on Union_dwkjJ {
+    __typename
+  }
+}
+
+fragment Fragment_RmcX on Object_Q {
+  ...Fragment_vIu8HZwUK@defer(label: "r") @Directive_Z6n
+  ... on Union_dwkjJ {
+    __typename
+    __typename
+  }
+  ... {
+    ...Fragment_vIu8HZwUK
+    __typename
+  }
+}

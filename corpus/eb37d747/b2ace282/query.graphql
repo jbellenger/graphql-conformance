@@ -1,0 +1,16 @@
+query ($bIE: Boolean!) {
+  v1Dxj @skip(if: $bIE) {
+    ... on Object_kxCztsiP {
+      ... on Union_fV {
+        __typename
+      }
+    }
+    ... on Union_fV @include(if: true) {
+      ...Fragment_wTb0inPfWh
+    }
+  }
+}
+
+fragment Fragment_wTb0inPfWh on Union_fV {
+  __typename
+}

@@ -1,0 +1,38 @@
+query Uk51S($b: Boolean! = false) {
+  ... on Union_PY9m {
+    ...Fragment_dC
+    ...Fragment_dC
+    ... on Union_PY9m {
+      __typename
+      __typename
+      __typename
+    }
+    ... on Object_gXths {
+      ... on Union_PY9m {
+        p: __typename
+        __typename
+      }
+    }
+  }
+  ... on Union_PY9m {
+    ... on Union_PY9m {
+      ...Fragment_dC
+    }
+    ... on Object_gXths {
+      ...Fragment_LrX7D
+      Tw5y0JFaCs: jk @skip(if: $b)
+    }
+  }
+}
+
+fragment Fragment_dC on Object_ARs @Directive_Dh{
+  k @Directive_J0qCdX1o77
+  sn6N8tbgL
+  ... on Union_PY9m {
+    __typename
+  }
+}
+
+fragment Fragment_LrX7D on Object_gXths {
+  __typename
+}

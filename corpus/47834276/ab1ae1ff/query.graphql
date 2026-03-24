@@ -1,0 +1,22 @@
+query gdq {
+  ...Fragment_MNMcc
+  ...Fragment_oZbPo
+  ...Fragment_MNMcc@defer(if: true, label: "")
+  LJ6JZgS: sa
+  sa
+}
+
+fragment Fragment_KkcNN3m on Object_Aa96 {
+  ... on Object_Aa96 {
+    __typename
+  }
+}
+
+fragment Fragment_MNMcc on Union_vaw @Directive_J52m_6PHv8{
+  ...Fragment_KkcNN3m
+  ...Fragment_KkcNN3m
+}
+
+fragment Fragment_oZbPo on Union_vaw {
+  __typename
+}

@@ -1,0 +1,8 @@
+{
+  ... on Union_MWG {
+    __typename
+    ... on Union_MWG @defer(if: false, label: "}>?") {
+      __typename
+    }
+  }
+}

@@ -1,0 +1,17 @@
+query @Directive_V {
+  j5YWqY9 {
+    ... on Union_QKwi {
+      KClF8rF0: __typename
+      ... on Union_Jg {
+        __typename
+      }
+    }
+    ... on Union_Jg {
+      ...Fragment_wR
+    }
+  }
+}
+
+fragment Fragment_wR on Union_TYkr_ {
+  __typename
+}

@@ -1,0 +1,17 @@
+query dbk {
+  voy0z1a {
+    oes0KszcxF {
+      ...Fragment_eVH27bL
+      ... on Interface_HVXwjPG1i {
+        srG905: __typename
+      }
+    }
+    ... on Interface_HVXwjPG1i_STUB {
+      ...Fragment_eVH27bL
+    }
+  }
+}
+
+fragment Fragment_eVH27bL on Interface_HVXwjPG1i {
+  __typename
+}

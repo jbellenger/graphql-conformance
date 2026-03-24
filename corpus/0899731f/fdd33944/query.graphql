@@ -1,0 +1,18 @@
+query fA6NKkwXi {
+  ...Fragment_cPAaysK
+  ...Fragment_JGYc6uru
+  KQtPe: sn6N8tbgL
+}
+
+fragment Fragment_JGYc6uru on Union_PY9m {
+  __typename
+}
+
+fragment Fragment_wXQXzrX_ on Object_ARs {
+  ...Fragment_JGYc6uru
+  __typename
+}
+
+fragment Fragment_cPAaysK on Object_ARs {
+  ...Fragment_wXQXzrX_
+}

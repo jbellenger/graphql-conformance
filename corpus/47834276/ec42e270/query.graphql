@@ -1,0 +1,27 @@
+{
+  sa
+  ... on Union_vaw {
+    ...Fragment_ADYC
+    ...Fragment_ADYC@skip(if: true)
+    __typename
+    ... on Union_L2D {
+      __typename
+    }
+    ... on Union_L2D {
+      ...Fragment_cn
+      ... on Union_Kw @Directive_J52m_6PHv8 {
+        __typename
+        __typename @skip(if: true)
+      }
+    }
+  }
+}
+
+fragment Fragment_ADYC on Union_vaw {
+  jin: __typename
+}
+
+fragment Fragment_cn on Union_L2D @Directive_DYxHb{
+  __typename
+  iBiwqmExa: __typename
+}

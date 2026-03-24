@@ -1,0 +1,24 @@
+{
+  j2K5pYV2v {
+    ... on Union_bF6GKhAkVy {
+      ...Fragment_v2DR8WVY
+    }
+    ... on Object_fT2 {
+      ...Fragment_hpa_hVp
+      vfJ {
+        __typename
+      }
+      ... on Object_fT2 {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_v2DR8WVY on Object_fT2 {
+  __typename
+}
+
+fragment Fragment_hpa_hVp on Object_fT2 {
+  __typename
+}

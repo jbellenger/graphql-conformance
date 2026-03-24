@@ -1,0 +1,14 @@
+{
+  ... on Object_Q @defer(if: false, label: "Ke") @include(if: true) {
+    ...Fragment_g9b3
+    ...Fragment_g9b3
+    ... on Object_Q {
+      __typename
+      vFWEhUYvoP: xsTsIOm
+    }
+  }
+}
+
+fragment Fragment_g9b3 on Object_Q {
+  Hy: xsTsIOm
+}

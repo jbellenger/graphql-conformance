@@ -1,0 +1,130 @@
+schema {
+  query: Object_JqX
+}
+
+directive @Directive_YCTz3 on QUERY | INLINE_FRAGMENT | SCHEMA | SCALAR | ARGUMENT_DEFINITION | INTERFACE | INPUT_OBJECT
+
+directive @Directive_pUus(uO: Input_QV4DHDhZz!) on MUTATION | SCALAR | UNION | INPUT_FIELD_DEFINITION
+
+directive @Directive_shG(j: Input_QV4DHDhZz) on QUERY | MUTATION | SUBSCRIPTION | FIELD | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCHEMA | SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+"This directive allows results to be deferred during execution"
+directive @defer(
+    "Deferred behaviour is controlled by this argument"
+    if: Boolean! = true,
+    "A unique label that represents the fragment being deferred"
+    label: String
+  ) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Marks the field, argument, input field or enum value as deprecated"
+directive @deprecated(
+    "The reason for the deprecation"
+    reason: String! = "No longer supported"
+  ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+"This directive disables error propagation when a non nullable field returns null for the given operation."
+directive @experimental_disableErrorPropagation on QUERY | MUTATION | SUBSCRIPTION
+
+"Directs the executor to include this field or fragment only when the `if` argument is true"
+directive @include(
+    "Included when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Indicates an Input Object is a OneOf Input Object."
+directive @oneOf on INPUT_OBJECT
+
+"Directs the executor to skip this field or fragment when the `if` argument is true."
+directive @skip(
+    "Skipped when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Exposes a URL that specifies the behaviour of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behaviour of this scalar."
+    url: String!
+  ) on SCALAR
+
+interface Interface_C27LTj {
+  c(d7: Enum_m, i2INyp: [Enum_Qs5wtSi]): Boolean
+  fg7ehIz8: Enum_Qs5wtSi @deprecated(reason : "7E")
+  vzqPr5: Interface_C27LTj
+}
+
+interface Interface_fjju {
+  v: Object_P6Gx_!
+}
+
+interface Interface_u99VGsh {
+  c7QsvEpTs: Object_P6Gx_
+  svj: Int @Directive_shG(j : {x11e : {k6FrMCfw : -1025939852, o : -1.2103712294573632E+308}, rlycIB : {x11e : {k6FrMCfw : null, o : null}, rlycIB : {x11e : null, rlycIB : null}}})
+}
+
+union Union_Il1WP @Directive_pUus(uO : {x11e : {k6FrMCfw : -518248724, o : -1.2515285570444513E+308}, rlycIB : {rlycIB : {x11e : null, rlycIB : null}}}) = Object_JqX | Object_P6Gx_ | Object_kX
+
+union Union_qPHYWu = Object_JqX | Object_kX
+
+union Union_ulsO = Object_JqX
+
+type Interface_C27LTj_STUB implements Interface_C27LTj {
+  c(d7: Enum_m, i2INyp: [Enum_Qs5wtSi]): Boolean
+  fg7ehIz8: Enum_Qs5wtSi @deprecated(reason : "7E")
+  mA: Interface_u99VGsh
+  vLoIhwF: Object_kX
+  vzqPr5: Interface_C27LTj
+}
+
+type Interface_u99VGsh_STUB implements Interface_u99VGsh {
+  c7QsvEpTs: Object_P6Gx_
+  iglEiR6mgP(nL: Enum_m!): Interface_C27LTj
+  js112ItBGX: Interface_C27LTj
+  svj: Int @Directive_shG(j : {x11e : {k6FrMCfw : -1025939852, o : -1.2103712294573632E+308}, rlycIB : {x11e : {k6FrMCfw : null, o : null}, rlycIB : {x11e : null, rlycIB : null}}})
+}
+
+type Object_JqX {
+  rnpPvC1F: Object_kX
+}
+
+type Object_P6Gx_ @Directive_shG(j : {x11e : {k6FrMCfw : -1842516037, o : -1.7022057654499687E+307}, rlycIB : {x11e : {k6FrMCfw : null, o : null}, rlycIB : {rlycIB : null}}}) {
+  wgS9C: Union_Il1WP
+}
+
+type Object_kX implements Interface_fjju {
+  j: Object_JqX
+  meOs2b: Union_Il1WP
+  v: Object_P6Gx_!
+}
+
+enum Enum_H0EaFW5M {
+  XL22
+  fvv_3QZ
+  r3MG_OKb
+}
+
+enum Enum_Qs5wtSi {
+  H
+  h7MqDuWH5
+  ixtD
+}
+
+enum Enum_m {
+  HB3PewgnQ
+  bJkIz @deprecated(reason : "0_")
+}
+
+input Input_QV4DHDhZz {
+  rlycIB: Input_QV4DHDhZz
+  x11e: Input_tVZD2Ff
+}
+
+input Input__Qnz {
+  bOj: Input__Qnz
+  cLUc9: Input_QV4DHDhZz
+  qIYMrnZHc: Enum_H0EaFW5M
+}
+
+input Input_tVZD2Ff {
+  k6FrMCfw: Int
+  o: Float = 9.376755874505531E+307
+}

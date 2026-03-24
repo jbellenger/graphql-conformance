@@ -1,0 +1,27 @@
+query ($lzEprm: Enum_llWH_PeGh) {
+  ...Fragment_DMNyzMUPD
+  H: upC {
+    ...Fragment_zxlADQSPp
+    ...Fragment_zxlADQSPp
+  }
+  ... on Object_uyYc {
+    __typename
+  }
+}
+
+fragment Fragment_KNxpsZNjJu on Union_m580UMe49 {
+  __typename
+}
+
+fragment Fragment_DMNyzMUPD on Object_uyYc {
+  ... {
+    ...Fragment_KNxpsZNjJu
+    ... on Union_m580UMe49 {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_zxlADQSPp on Interface_m0zkN0ul_STUB {
+  qGywMh7r(xUYsJ: $lzEprm)
+}

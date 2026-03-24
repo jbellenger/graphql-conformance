@@ -1,0 +1,23 @@
+query r_($gwg7OmF: Boolean!) @experimental_disableErrorPropagation {
+  ... on Object_qYPyO {
+    ...Fragment_vrGgKI
+    ...Fragment_G
+  }
+  ... on Union_Odg {
+    lt: __typename
+  }
+  ... on Union_s {
+    ...Fragment_vrGgKI
+  }
+}
+
+fragment Fragment_G on Union_g {
+  pNxWCT: __typename
+}
+
+fragment Fragment_vrGgKI on Union_Odg {
+  ...Fragment_G
+  ... on Union_Odg {
+    __typename @include(if: $gwg7OmF)
+  }
+}

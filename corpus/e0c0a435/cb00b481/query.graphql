@@ -1,0 +1,27 @@
+query BMV($_a: String = "", $csfHcI: ID!@Directive_ujwVY5Y) {
+  ... on Object_aaghjtY @Directive_FnYp7DONp(kKENv5G: $csfHcI) {
+    ...Fragment_GnRmwsnb
+    ...Fragment_GnRmwsnb
+    ... on Union_b {
+      ... on Object_Teu @Directive_ujwVY5Y {
+        aPai
+      }
+    }
+    ... on Union_x {
+      ... on Object_aaghjtY {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_FlW1 on Object_aaghjtY {
+  U2MBdh2aO: __typename
+  pfqX2IwOA(el: $_a) {
+    __typename
+  }
+}
+
+fragment Fragment_GnRmwsnb on Object_aaghjtY {
+  ...Fragment_FlW1
+}

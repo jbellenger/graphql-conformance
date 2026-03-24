@@ -1,0 +1,11 @@
+query ($auu5: Boolean!) {
+  ... {
+    ...Fragment_jMwOrP@include(if: $auu5)
+  }
+}
+
+fragment Fragment_jMwOrP on Object_LAxf3ovFFr {
+  ... on Object_LAxf3ovFFr {
+    v @Directive_pfS13nA(rHUwZCcMCU: null)
+  }
+}

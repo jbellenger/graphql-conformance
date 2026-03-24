@@ -1,0 +1,22 @@
+query ZUEa0e {
+  ... on Interface_Kl5Z {
+    __typename
+  }
+  ... on Interface_XVRBXbnSAy {
+    ... on Interface_Kl5Z {
+      ... on Interface_XVRBXbnSAy {
+        CVPVBnyGF: dJczP8Cs {
+          __typename
+        }
+      }
+    }
+  }
+  ... on Interface_Kl5Z {
+    ...Fragment_zAFGhM62k
+    ...Fragment_zAFGhM62k
+  }
+}
+
+fragment Fragment_zAFGhM62k on Interface_XVRBXbnSAy {
+  __typename
+}

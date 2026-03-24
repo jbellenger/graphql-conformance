@@ -1,0 +1,23 @@
+query fNct($ha4w: Boolean!) {
+  ...Fragment_fGFAsJIjuQ
+  ...Fragment_fGFAsJIjuQ
+  ... on Union_GIBVAg @include(if: $ha4w) {
+    ...Fragment_fGFAsJIjuQ
+    ...Fragment_fGFAsJIjuQ
+  }
+  ... on Object_o_SYRxMp6k {
+    pokXp {
+      XFs3: __typename
+    }
+    ... on Union_GIBVAg {
+      ...Fragment_fGFAsJIjuQ
+      __typename
+    }
+  }
+}
+
+fragment Fragment_fGFAsJIjuQ on Union_GIBVAg {
+  ... on Object_o_SYRxMp6k {
+    __typename
+  }
+}

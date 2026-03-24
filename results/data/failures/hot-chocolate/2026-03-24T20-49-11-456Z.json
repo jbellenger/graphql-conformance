@@ -1,0 +1,1291 @@
+[
+  {
+    "testKey": "03573f34/2e32a08b/08277c86",
+    "expected": {
+      "data": {
+        "__typename": "Object_lpJFn",
+        "H3Nl_": "Object_lpJFn",
+        "puaq39dlg": {
+          "deWZL": "XtCw_c"
+        }
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_lpJFn",
+        "H3Nl_": "Object_lpJFn",
+        "puaq39dlg": {},
+        "deWZL": "XtCw_c"
+      }
+    }
+  },
+  {
+    "testKey": "03573f34/2e32a08b/179ab86c",
+    "expected": {
+      "data": {
+        "__typename": "Object_lpJFn",
+        "H3Nl_": "Object_lpJFn",
+        "puaq39dlg": {
+          "deWZL": "XtCw_c"
+        }
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_lpJFn",
+        "H3Nl_": "Object_lpJFn",
+        "puaq39dlg": {
+          "deWZL": "XtCw_c"
+        },
+        "deWZL": "XtCw_c"
+      }
+    }
+  },
+  {
+    "testKey": "03573f34/844439df/3cbd2fee",
+    "expected": {
+      "data": {
+        "__typename": "Object_lpJFn"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: u4jGeH6z."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "03573f34/844439df/64d17f61",
+    "expected": {
+      "data": {
+        "__typename": "Object_lpJFn"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: u4jGeH6z."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "0eed9e38/d7405a9f/0841d763",
+    "expected": {
+      "data": {}
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: jLSKYyqI."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "0eed9e38/d7405a9f/69789827",
+    "expected": {
+      "data": {
+        "__typename": "Object_IY6OS5"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: jLSKYyqI."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "0eed9e38/e7f853d8/0bab813f",
+    "expected": {
+      "data": {
+        "__typename": "Object_IY6OS5"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Int cannot deserialize the given value."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "0eed9e38/e7f853d8/41ff2dbb",
+    "expected": {
+      "data": {
+        "__typename": "Object_IY6OS5"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Int cannot deserialize the given value."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "0eed9e38/e7f853d8/d6398d96",
+    "expected": {
+      "data": {
+        "__typename": "Object_IY6OS5"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Int cannot deserialize the given value."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "1ca6b2ac/70522189/44136fa3",
+    "expected": {
+      "data": {
+        "lj": "UruN2Q"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "1ca6b2ac/9964f5db/44136fa3",
+    "expected": {
+      "data": {
+        "BAvi9OFQ": "UruN2Q"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "1ca6b2ac/ee2de24b/9e6441f4",
+    "expected": {
+      "data": {
+        "__typename": "Object_X",
+        "N93dfesE6o": "Object_X"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: kFfi3N."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "260aa9c0/3db04ec7/44136fa3",
+    "expected": {
+      "data": {
+        "lSwApAg14J": "Qqdt4w"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3275639d/6ab0586d/ad322a74",
+    "expected": {
+      "data": {
+        "gw4aVFsyRl": 2,
+        "F": 2,
+        "uBHV": {
+          "__typename": "Object_k2FH",
+          "qF": 3.14
+        },
+        "p12Ux2g": "Object_Yeeu",
+        "AY": 2
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: lDhOts."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3275639d/6ab0586d/e4fd7053",
+    "expected": {
+      "data": {
+        "gw4aVFsyRl": 2,
+        "F": 2,
+        "uBHV": {
+          "__typename": "Object_k2FH",
+          "qF": 3.14
+        },
+        "AY": 2
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: lDhOts."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3275639d/8541eccc/3bcdbb31",
+    "expected": {
+      "data": {
+        "__typename": "Object_Yeeu",
+        "uBHV": {
+          "__typename": "Object_k2FH"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: _9J62F5s."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3275639d/8541eccc/8c48d46d",
+    "expected": {
+      "data": {
+        "__typename": "Object_Yeeu",
+        "uBHV": {}
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: _9J62F5s."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3275639d/e1e0f6af/bdfd558e",
+    "expected": {
+      "data": {
+        "__typename": "Object_Yeeu",
+        "Nk": "Object_Yeeu",
+        "Ke": "Object_Yeeu",
+        "dGIrtw6e6D": "id"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3275639d/e1e0f6af/fad39b65",
+    "expected": {
+      "data": {
+        "Ke": "Object_Yeeu",
+        "dGIrtw6e6D": "id",
+        "__typename": "Object_Yeeu",
+        "Nk": "Object_Yeeu"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3369ca5b/ca3604cb/3bf58b42",
+    "expected": {
+      "data": {
+        "pcX_": "str",
+        "__typename": "Object_zoR",
+        "oHbWqY8gt": "str"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: a1eemD."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3369ca5b/ca3604cb/5227c73d",
+    "expected": {
+      "data": {
+        "pcX_": "str",
+        "__typename": "Object_zoR",
+        "oHbWqY8gt": "str"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: a1eemD."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3a31b195/62221936/3d1e23d4",
+    "expected": {
+      "data": {
+        "zrMWeATm": "Object_E0NcK8",
+        "mB0": "Object_E0NcK8"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3a31b195/62221936/87f4f246",
+    "expected": {
+      "data": {
+        "zrMWeATm": "Object_E0NcK8",
+        "mB0": "Object_E0NcK8"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3a31b195/62221936/abd54625",
+    "expected": {
+      "data": {
+        "zrMWeATm": "Object_E0NcK8",
+        "mB0": "Object_E0NcK8"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3a31b195/8ff4d783/0d859ed2",
+    "expected": {
+      "data": {
+        "kQAYnKy4fG": "str",
+        "H": {
+          "__typename": "Object_wpUzMaqzh"
+        },
+        "jJX7yzJmiH": "str",
+        "__typename": "Object_E0NcK8",
+        "nGUXr9vR38": "str"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: kVMgrEO."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3a31b195/8ff4d783/47352bc2",
+    "expected": {
+      "data": {
+        "kQAYnKy4fG": "str",
+        "H": {
+          "__typename": "Object_wpUzMaqzh"
+        },
+        "jJX7yzJmiH": "str",
+        "__typename": "Object_E0NcK8",
+        "nGUXr9vR38": "str"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: kVMgrEO."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3a31b195/8ff4d783/fa918d73",
+    "expected": {
+      "data": {
+        "kQAYnKy4fG": "str",
+        "H": {
+          "__typename": "Object_wpUzMaqzh"
+        },
+        "jJX7yzJmiH": "str",
+        "__typename": "Object_E0NcK8",
+        "nGUXr9vR38": "str"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: kVMgrEO."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3a31b195/a43fb156/1416c4fb",
+    "expected": {
+      "data": {
+        "__typename": "Object_E0NcK8"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: oL2AvsKdBj."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "3a31b195/a43fb156/b20a2513",
+    "expected": {
+      "data": {}
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: oL2AvsKdBj."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "587ef7ad/fea56c03/734dbd06",
+    "expected": {
+      "data": {
+        "lqhE": {
+          "gxn": 2,
+          "woGR8": "id",
+          "dc": {
+            "__typename": "Object_l2szMSq",
+            "TC": "G2k1nHbO"
+          },
+          "__typename": "Interface_Dx_STUB",
+          "do44j40irh": "lBokrUWW",
+          "haxq": 2
+        },
+        "AbmAL": "Object_l2szMSq",
+        "__typename": "Object_l2szMSq",
+        "_brP": "G2k1nHbO"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Int cannot deserialize the given value."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "587ef7ad/fea56c03/84548244",
+    "expected": {
+      "data": {
+        "lqhE": {
+          "gxn": 2,
+          "woGR8": "id",
+          "dc": {
+            "__typename": "Object_l2szMSq",
+            "TC": "G2k1nHbO"
+          },
+          "__typename": "Interface_Dx_STUB",
+          "do44j40irh": "lBokrUWW",
+          "haxq": 2
+        },
+        "AbmAL": "Object_l2szMSq",
+        "__typename": "Object_l2szMSq",
+        "_brP": "G2k1nHbO"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Int cannot deserialize the given value."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "64d808be/daa5fec9/2552ba7b",
+    "expected": {
+      "data": {
+        "pNxWCT": "Object_qYPyO",
+        "__typename": "Object_qYPyO",
+        "lt": "Object_qYPyO"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        },
+        {
+          "message": "The following variables were not used: gwg7OmF."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "64dd8f5e/0bbd1e82/122f9449",
+    "expected": {
+      "data": {}
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: bqVqmj."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "64dd8f5e/0bbd1e82/c0c1b480",
+    "expected": {
+      "data": {
+        "__typename": "Object_yzOmN"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: bqVqmj."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "64dd8f5e/1e6130a5/ca40dbed",
+    "expected": {
+      "data": {
+        "m": "q0Gy7",
+        "dTZ": [
+          {
+            "__typename": "Object_syM",
+            "fAGy_": 2,
+            "jQfLD8opF2": "Object_syM"
+          },
+          {
+            "__typename": "Object_syM",
+            "fAGy_": 2,
+            "jQfLD8opF2": "Object_syM"
+          }
+        ],
+        "__typename": "Object_yzOmN",
+        "Kfc": "Object_yzOmN"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: wB3MTw4."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "751da379/a93b7a72/44136fa3",
+    "expected": {
+      "data": {
+        "d1jJl4ACGJ": "CG5we"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "86f51892/32183bf6/57b9cd6b",
+    "expected": {
+      "data": {
+        "__typename": "Object_JqX"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: bXWjY."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "86f51892/32183bf6/83702d1c",
+    "expected": {
+      "data": {
+        "__typename": "Object_JqX"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: bXWjY."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "86f51892/953ae764/0578f81e",
+    "expected": {
+      "data": {}
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: tyE4ovZ."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "86f51892/953ae764/7dc7fa15",
+    "expected": {
+      "data": {
+        "__typename": "Object_JqX"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: tyE4ovZ."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "86f51892/c4a75a35/7d1ec464",
+    "expected": {
+      "data": {
+        "_hdt": "Object_JqX",
+        "L4pdej": {
+          "__typename": "Object_kX"
+        },
+        "QEN1HGP": "Object_JqX",
+        "rnpPvC1F": {
+          "kx": "Object_kX",
+          "ZWCul6Sj": "Object_kX",
+          "__typename": "Object_kX"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: b."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "86f51892/c4a75a35/fc0f22db",
+    "expected": {
+      "data": {
+        "SfKpG78OrF": "Object_JqX",
+        "_hdt": "Object_JqX",
+        "L4pdej": {
+          "__typename": "Object_kX"
+        },
+        "QEN1HGP": "Object_JqX",
+        "rnpPvC1F": {
+          "kx": "Object_kX",
+          "ZWCul6Sj": "Object_kX",
+          "__typename": "Object_kX"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: b."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "8ffc685b/5735547a/44136fa3",
+    "expected": {
+      "data": {
+        "x": "b",
+        "__typename": "Object_u"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "989abafa/81edb036/43bbcaf7",
+    "expected": {
+      "data": {
+        "__typename": "Object_k"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: sBoVkTLe."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "989abafa/81edb036/88f576c5",
+    "expected": {
+      "data": {
+        "__typename": "Object_k"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: sBoVkTLe."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "989abafa/a04f33bb/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_k"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "9c43f4e7/55d1afce/44136fa3",
+    "expected": {
+      "data": {
+        "qHpki6a": "id",
+        "grFOPvI": {
+          "yF": "FZLXylYNy"
+        },
+        "snL": {
+          "__typename": "Interface_t_STUB",
+          "l": "VbH23o85nO"
+        },
+        "__typename": "Object_IlyM5C"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "ab5d8d4c/56fadf7d/03936f8b",
+    "expected": {
+      "data": {
+        "__typename": "Object_Fpsww",
+        "j2K5pYV2v": {
+          "__typename": "Object_fT2",
+          "M9Of": "Object_fT2",
+          "BiWUHzVgA": "Object_fT2"
+        }
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_Fpsww",
+        "j2K5pYV2v": {
+          "__typename": "Object_fT2",
+          "M9Of": "Object_fT2"
+        },
+        "BiWUHzVgA": "Object_fT2"
+      }
+    }
+  },
+  {
+    "testKey": "ab5d8d4c/56fadf7d/a05766e1",
+    "expected": {
+      "data": {
+        "__typename": "Object_Fpsww",
+        "j2K5pYV2v": {
+          "__typename": "Object_fT2",
+          "M9Of": "Object_fT2",
+          "BiWUHzVgA": "Object_fT2"
+        }
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_Fpsww",
+        "j2K5pYV2v": {
+          "__typename": "Object_fT2",
+          "M9Of": "Object_fT2"
+        },
+        "BiWUHzVgA": "Object_fT2"
+      }
+    }
+  },
+  {
+    "testKey": "ab5d8d4c/90fa9ce5/0170db43",
+    "expected": {
+      "data": {
+        "__typename": "Object_Fpsww"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: zSVX6dN5K."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "ab5d8d4c/90fa9ce5/6c1a6ab0",
+    "expected": {
+      "data": {
+        "__typename": "Object_Fpsww"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: zSVX6dN5K."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "ae24e0f3/f802d4ad/44136fa3",
+    "expected": {
+      "data": {
+        "aZ4fK1deRM": "str",
+        "__typename": "Object_K0b5ePiHN"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "c7e14b7a/467a135a/e616ae07",
+    "expected": {
+      "data": {
+        "o": "str"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: jZcxHtl."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "c7e14b7a/610d2793/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_A"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "ca8b9739/a10fa7b0/2db84a2d",
+    "expected": {
+      "data": {
+        "__typename": "Object_hEw",
+        "sg2E": {
+          "ni1bbI5AU": [
+            "pGn",
+            "pGn"
+          ],
+          "o8": "xBA40RkVs"
+        },
+        "dJczP8Cs": {
+          "__typename": "Object_XlToXN8uz"
+        },
+        "ni1bbI5AU": [
+          "pGn",
+          "pGn"
+        ],
+        "o8": "xBA40RkVs",
+        "lZ6SY": [
+          "pGn",
+          "pGn"
+        ],
+        "V3pF": [
+          "pGn",
+          "pGn"
+        ]
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        },
+        {
+          "message": "The following variables were not used: xiOfTU."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "ca8b9739/a10fa7b0/6e4febb4",
+    "expected": {
+      "data": {
+        "__typename": "Object_hEw",
+        "sg2E": {
+          "ni1bbI5AU": [
+            "pGn",
+            "pGn"
+          ],
+          "o8": "xBA40RkVs"
+        },
+        "dJczP8Cs": {
+          "__typename": "Object_XlToXN8uz"
+        },
+        "ni1bbI5AU": [
+          "pGn",
+          "pGn"
+        ],
+        "o8": "xBA40RkVs",
+        "lZ6SY": [
+          "pGn",
+          "pGn"
+        ],
+        "V3pF": [
+          "pGn",
+          "pGn"
+        ]
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        },
+        {
+          "message": "The following variables were not used: xiOfTU."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "d0f72165/de641c8a/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_g",
+        "wqzAC": "Object_g",
+        "vec0R_Q6u": {
+          "__typename": "Interface_kOFJI_STUB",
+          "a0Olo1N_": {
+            "__typename": "Object_g"
+          }
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "e0b58892/c54f687e/5cd40cde",
+    "expected": {
+      "data": {
+        "EEss1lAESO": "Object_Xni5coG",
+        "xeem_4RbX": 2,
+        "__typename": "Object_Xni5coG"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: a."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "e0b58892/c54f687e/5daa0644",
+    "expected": {
+      "data": {
+        "EEss1lAESO": "Object_Xni5coG",
+        "xeem_4RbX": 2,
+        "__typename": "Object_Xni5coG"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: a."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "e0c0a435/1140b341/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_aaghjtY"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "e254fdcd/b2ce683f/27586576",
+    "expected": {
+      "data": {
+        "tL9uCuZ": "Y",
+        "__typename": "Object_Am_AlXm",
+        "hcPuv0V": {
+          "__typename": "Object_Go"
+        },
+        "M": {
+          "__typename": "Object_Go",
+          "j": true
+        },
+        "WZx": {
+          "_5NsiTeOBi": "Object_Go"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "e254fdcd/b2ce683f/7702f8cc",
+    "expected": {
+      "data": {
+        "tL9uCuZ": "Y",
+        "__typename": "Object_Am_AlXm",
+        "hcPuv0V": {
+          "__typename": "Object_Go"
+        },
+        "M": {
+          "__typename": "Object_Go",
+          "j": true
+        },
+        "WZx": {
+          "_5NsiTeOBi": "Object_Go"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "e520ea47/4dcc1b4d/b25766f8",
+    "expected": {
+      "data": {
+        "__typename": "Object_r8kX_BzHek"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: tpo5tT."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "f48df69e/25cb01a4/44136fa3",
+    "expected": {
+      "data": {
+        "N": "Object_KJDYJkCZK",
+        "__typename": "Object_KJDYJkCZK"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The specified directive `experimental_disableErrorPropagation` is not supported by the current schema."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "f6e28f4b/bf6aa67c/67a7e6fa",
+    "expected": {
+      "data": {
+        "__typename": "Object_RpkZy",
+        "f": {
+          "__typename": "Object_ACuleun"
+        },
+        "zrX2T": 3.14
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: t."
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "f6e28f4b/bf6aa67c/bcc14434",
+    "expected": {
+      "data": {
+        "__typename": "Object_RpkZy",
+        "f": {
+          "__typename": "Object_ACuleun"
+        },
+        "zrX2T": 3.14
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "The following variables were not used: t."
+        }
+      ]
+    }
+  }
+]

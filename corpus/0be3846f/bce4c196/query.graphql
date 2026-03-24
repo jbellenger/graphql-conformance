@@ -1,0 +1,14 @@
+{
+  ...Fragment_bnMf_
+}
+
+fragment Fragment_i on Union_oUbZw {
+  __typename
+}
+
+fragment Fragment_bnMf_ on Union_r5qzLthUMJ {
+  o: __typename
+  ... on Union_oUbZw {
+    ...Fragment_i
+  }
+}

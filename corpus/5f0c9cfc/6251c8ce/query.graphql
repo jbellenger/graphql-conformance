@@ -1,0 +1,25 @@
+{
+  ...Fragment_LS2qXQl
+  ... on Union_VTFQXUYB @Directive_fZxg {
+    ... on Union_U {
+      ...Fragment_N
+      Cn: __typename
+    }
+  }
+}
+
+fragment Fragment_N on Union_U {
+  __typename: __typename
+  rJJVlyQGU: __typename
+  ... on Object_IM {
+    sd71iPC1
+  }
+}
+
+fragment Fragment_LS2qXQl on Union_VTFQXUYB {
+  ...Fragment_N
+  mR5BeLB8Gc: __typename
+  oG9ca: __typename
+  d2lw8: __typename
+  NxkBZ9oj: __typename
+}

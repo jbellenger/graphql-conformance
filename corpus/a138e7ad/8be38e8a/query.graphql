@@ -1,0 +1,6 @@
+query y @Directive_FOJB {
+  ... on Union_Xj @defer(if: true, label: "") {
+    __typename
+    __typename
+  }
+}

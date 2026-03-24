@@ -1,0 +1,31 @@
+query ($nUxCq: Boolean = true) {
+  ...Fragment_n_9SDJm
+  j2K5pYV2v {
+    K: __typename
+  }
+  ... on Object_Fpsww {
+    J6te48JweC: uqz14hXNUT(cwhSg: $nUxCq) {
+      __typename
+    }
+    j2K5pYV2v {
+      ... on Object_fT2 {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_gwI_ on Object_Fpsww {
+  uqz14hXNUT(cwhSg: $nUxCq) {
+    __typename
+  }
+}
+
+fragment Fragment_SUQKHy on Object_Fpsww {
+  ...Fragment_gwI_
+}
+
+fragment Fragment_n_9SDJm on Object_Fpsww {
+  ...Fragment_SUQKHy@defer(if: false, label: "Ul0")
+  ...Fragment_SUQKHy
+}

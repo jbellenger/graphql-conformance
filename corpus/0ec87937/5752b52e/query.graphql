@@ -1,0 +1,35 @@
+query ($yl1NzYojdc: Boolean!) {
+  ...Fragment_GS
+  ...Fragment_tKnUd7_NxJ
+  ... on Object_dF4Jqm {
+    ...Fragment_tKnUd7_NxJ
+    ...Fragment_GS
+    ... on Object_dF4Jqm {
+      dS
+    }
+  }
+}
+
+fragment Fragment_XCpFnW4X on Object_J {
+  hnTVTOXNB @include(if: $yl1NzYojdc)
+}
+
+fragment Fragment_tKnUd7_NxJ on Union_decIn @Directive_l{
+  ...Fragment_XCpFnW4X
+  __typename
+  __typename
+  __typename
+}
+
+fragment Fragment_GS on Union_decIn {
+  ...Fragment_tKnUd7_NxJ
+  ...Fragment_tKnUd7_NxJ
+  PTx: __typename
+  ... on Object_dF4Jqm {
+    dS
+    __typename
+    ... on Object_dF4Jqm {
+      __typename
+    }
+  }
+}

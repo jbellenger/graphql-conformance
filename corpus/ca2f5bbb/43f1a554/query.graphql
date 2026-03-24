@@ -1,0 +1,22 @@
+{
+  ...Fragment_Bp4g
+  w3j
+  __typename
+  L: w3j
+}
+
+fragment Fragment_Bp4g on Union_Qa {
+  ... on Object_RICPUv {
+    ... on Object_RICPUv {
+      _iW: __typename
+    }
+  }
+  ... on Object_RICPUv {
+    w3j @skip(if: false)
+    __typename
+    __typename
+    ... {
+      D4HHdHKp3n: w3j
+    }
+  }
+}

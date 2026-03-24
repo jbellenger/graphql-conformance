@@ -1,0 +1,41 @@
+query @Directive_AVXwSk @Directive_V {
+  ...Fragment_L6YnB9HHp
+  Z: j5YWqY9 {
+    ...Fragment_gOx
+    ... on Interface_mNTFASTt {
+      ...Fragment_luXjG
+      ... on Object_R {
+        jFDoXnZqk {
+          __typename
+        }
+        gsE {
+          __typename
+        }
+      }
+    }
+  }
+  ... on Union_Jg {
+    __typename
+  }
+}
+
+fragment Fragment_BHJiN8Q on Union_QKwi {
+  __typename
+}
+
+fragment Fragment_gOx on Union_QKwi {
+  ...Fragment_BHJiN8Q
+  gGRor4Bvz: __typename
+  ... on Union_TYkr_ @skip(if: true) {
+    __typename
+  }
+}
+
+fragment Fragment_L6YnB9HHp on Union_QKwi {
+  ...Fragment_gOx
+  ...Fragment_BHJiN8Q
+}
+
+fragment Fragment_luXjG on Interface_mNTFASTt {
+  h9LZ: shx
+}

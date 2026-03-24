@@ -1,0 +1,20 @@
+{
+  pk: __typename @Directive_lOOTKMlO8f
+  __typename
+  ... on Union_yCwpDtsvO @defer(if: false, label: "") {
+    __typename
+    ... on Union_yCwpDtsvO {
+      ...Fragment_PQwreP
+      __typename
+      __typename @Directive_sDUxKc
+      ... on Union_yCwpDtsvO {
+        XyDrR2iT47: __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_PQwreP on Object_g {
+  __typename
+}

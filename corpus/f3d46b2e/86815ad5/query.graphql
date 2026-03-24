@@ -1,0 +1,50 @@
+{
+  ...Fragment_CLtY
+  pokXp {
+    ...Fragment_M
+    ... on Object_C {
+      ...Fragment_M
+    }
+    ... on Interface_TiN {
+      bR72SW {
+        __typename
+      }
+      ... on Interface_TiN {
+        nNl0O
+      }
+    }
+  }
+  pokXp {
+    __typename
+  }
+  nim5 @Directive_DNz_ {
+    ... on Object_o_SYRxMp6k {
+      __typename
+      kaRDAygWb @skip(if: true) {
+        __typename
+      }
+      A_DIdyCTv: nim5 {
+        __typename
+      }
+    }
+    ... on Object_o_SYRxMp6k {
+      Mr0F88Q: __typename
+    }
+  }
+  __typename
+}
+
+fragment Fragment_CLtY on Object_o_SYRxMp6k {
+  __typename
+}
+
+fragment Fragment_P7lO on Object_C {
+  __typename @skip(if: false)
+}
+
+fragment Fragment_M on Union_fWXn {
+  ...Fragment_P7lO
+  __typename
+  __typename
+  __typename @Directive_DNz_
+}

@@ -1,9 +1,0 @@
-query ku {
-  ...Fragment_Jwy
-  ...Fragment_Jwy
-}
-
-fragment Fragment_Jwy on Union_osAzff {
-  __typename @skip(if: false)
-  __typename
-}

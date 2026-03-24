@@ -1,0 +1,16 @@
+{
+  ...Fragment_AM
+  ... on Object_qYPyO {
+    ... on Union_g {
+      ...Fragment_AM
+    }
+    ... on Union_Odg {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_AM on Union_s {
+  __typename
+  __typename
+}

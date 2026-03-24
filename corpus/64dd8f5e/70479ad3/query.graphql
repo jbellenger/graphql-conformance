@@ -1,0 +1,18 @@
+query N {
+  ... on Object_yzOmN {
+    ...Fragment_yJGCxTi
+    ...Fragment_Mgp6ZKXicx
+  }
+}
+
+fragment Fragment_Mgp6ZKXicx on Union_GfmCKxl @Directive_B5bp7{
+  __typename @Directive_B5bp7
+}
+
+fragment Fragment_yJGCxTi on Object_yzOmN {
+  ...Fragment_Mgp6ZKXicx
+  ... on Object_yzOmN {
+    rv: m @skip(if: true) @include(if: false)
+    yK: m
+  }
+}

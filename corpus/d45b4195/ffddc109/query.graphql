@@ -1,0 +1,24 @@
+{
+  ... on Union_w1T9yAe5o {
+    ... on Object_CKq3_jm {
+      __typename @Directive_A
+      ... on Union_w1T9yAe5o {
+        __typename
+      }
+    }
+    ... on Object_CKq3_jm {
+      ...Fragment_a1
+      x_s0Cq9BR {
+        FJ: __typename
+      }
+    }
+  }
+  ... on Union_w1T9yAe5o {
+    ...Fragment_a1
+    ...Fragment_a1
+  }
+}
+
+fragment Fragment_a1 on Union_w1T9yAe5o {
+  __typename
+}

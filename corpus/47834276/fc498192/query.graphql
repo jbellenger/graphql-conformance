@@ -1,0 +1,22 @@
+{
+  ...Fragment_SmsoDYwt
+}
+
+fragment Fragment_ym4t on Union_vaw {
+  __typename @Directive_uTQB2vEoyN @Directive_DYxHb
+}
+
+fragment Fragment_BQOTgj on Object_Aa96 {
+  ...Fragment_ym4t
+  n {
+    Z6hOsdZ7hs: zNQdp
+  }
+  q8zV3yi
+}
+
+fragment Fragment_SmsoDYwt on Union_vaw {
+  ...Fragment_BQOTgj
+  ... on Union_L2D {
+    __typename
+  }
+}

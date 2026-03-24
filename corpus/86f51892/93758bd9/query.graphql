@@ -1,0 +1,7 @@
+query BjqzW8R {
+  ...Fragment_Jk@defer(if: false, label: "BV")
+}
+
+fragment Fragment_Jk on Union_ulsO {
+  OT: __typename
+}

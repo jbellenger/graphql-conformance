@@ -1,0 +1,25 @@
+query B {
+  ...Fragment_dH2o4d3E
+  ...Fragment_ppQLNn
+}
+
+fragment Fragment_l5ew6DRH2R on Union_tdk3 {
+  __typename
+}
+
+fragment Fragment_dH2o4d3E on Union_t07S57S {
+  ...Fragment_l5ew6DRH2R
+}
+
+fragment Fragment_ppQLNn on Union_t07S57S {
+  ...Fragment_l5ew6DRH2R
+  ... on Union_dNmd3gFSX @defer(if: false, label: "") {
+    ...Fragment_l5ew6DRH2R@skip(if: false)
+    __typename
+  }
+  ... on Object_A {
+    ... on Union_t07S57S {
+      __typename
+    }
+  }
+}

@@ -1,0 +1,25 @@
+query W {
+  ...Fragment_P@defer(if: false, label: "\\1")
+  ... on Union_b @skip(if: false) {
+    ...Fragment_P
+    __typename
+    ... on Union_x {
+      ...Fragment_P@Directive_ujwVY5Y
+      ... on Object_aaghjtY {
+        __typename
+        __typename
+      }
+    }
+    ... on Object_aaghjtY {
+      ...Fragment_P
+      ... on Union_x {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_P on Union_x {
+  uzNJil3N: __typename
+  __typename
+}

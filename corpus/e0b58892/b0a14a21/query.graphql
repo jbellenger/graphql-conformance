@@ -1,0 +1,21 @@
+query U {
+  ...Fragment_TUAHOxSeS
+  ...Fragment_TUAHOxSeS
+}
+
+fragment Fragment_miaCOuDY on Union_rVxOn4uGyL {
+  f: __typename
+}
+
+fragment Fragment_TUAHOxSeS on Union_m {
+  ...Fragment_miaCOuDY
+  __typename
+  __typename
+  __typename
+  __typename
+  ... on Union_m {
+    ... {
+      __typename @Directive_RTpYYb(aWcRjB: cRK)
+    }
+  }
+}

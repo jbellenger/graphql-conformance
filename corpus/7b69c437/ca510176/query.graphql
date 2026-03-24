@@ -1,0 +1,23 @@
+query eXx0Ph {
+  ...Fragment_XNjkTW
+}
+
+fragment Fragment_A on Union_m580UMe49 {
+  __typename
+}
+
+fragment Fragment_ABLh on Object_nq1 {
+  pz
+}
+
+fragment Fragment_XNjkTW on Union_m580UMe49 {
+  ...Fragment_A
+  ...Fragment_ABLh@Directive_RKI @defer(if: false, label: "\"|x")
+  __typename
+  ... on Union_F {
+    __typename
+  }
+  ... on Union_KkRA {
+    __typename
+  }
+}

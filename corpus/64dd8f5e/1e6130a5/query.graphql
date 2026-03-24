@@ -1,0 +1,37 @@
+query FFuwlAemt($wB3MTw4: Boolean!@Directive_B5bp7) {
+  ...Fragment_Yz
+  dTZ {
+    ...Fragment_tRL
+    ...Fragment_tRL
+    ... on Object_syM {
+      ...Fragment_tRL
+      __typename
+      ... on Object_syM {
+        fAGy_
+      }
+    }
+    ... on Union_GfmCKxl {
+      jQfLD8opF2: __typename
+    }
+  }
+  ... on Union_GfmCKxl {
+    __typename
+    Kfc: __typename
+  }
+  ... on Union_GfmCKxl @Directive_B5bp7 {
+    ...Fragment_Yz
+  }
+}
+
+fragment Fragment_Yz on Object_yzOmN {
+  m
+}
+
+fragment Fragment_tRL on Object_syM @Directive_B5bp7{
+  __typename
+  __typename
+  fAGy_
+  ... on Object_syM {
+    __typename @skip(if: $wB3MTw4)
+  }
+}

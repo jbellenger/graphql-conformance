@@ -1,0 +1,28 @@
+query ($w: Boolean, $gz: Boolean!) {
+  ...Fragment_TygTn2V
+}
+
+fragment Fragment_HobvUHQ on Object_Fpsww {
+  uqz14hXNUT(cwhSg: $w) @include(if: $gz) {
+    VAbMiQ: v @skip(if: $gz) {
+      nswXxERM
+    }
+    mG6M @include(if: true) {
+      __typename @skip(if: $gz)
+    }
+  }
+  __typename
+}
+
+fragment Fragment_TygTn2V on Object_Fpsww {
+  ...Fragment_HobvUHQ
+  ...Fragment_HobvUHQ
+  ... on Object_Fpsww @include(if: true) {
+    __typename @include(if: true)
+  }
+  ... on Object_Fpsww {
+    ... on Object_Fpsww {
+      __typename
+    }
+  }
+}

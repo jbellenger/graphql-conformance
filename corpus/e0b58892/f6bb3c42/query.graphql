@@ -1,0 +1,41 @@
+query BiuSsS($wvv53: Boolean! = false@Directive_M9(j99UOPz: 1788416599)) {
+  ...Fragment_M
+  xeem_4RbX
+  ... on Object_Xni5coG {
+    ...Fragment_M
+    ...Fragment_M@defer(if: false, label: null)
+    xeem_4RbX
+    MC0vvsYlg: xeem_4RbX
+    ... {
+      ...Fragment_ABkh
+      ... {
+        t: xeem_4RbX
+        AM2S: __typename
+      }
+    }
+    ... on Object_Xni5coG {
+      xeem_4RbX @include(if: false)
+    }
+  }
+  ... on Object_Xni5coG @skip(if: $wvv53) {
+    YLM: xeem_4RbX
+  }
+  ... on Object_Xni5coG {
+    ...Fragment_ABkh
+  }
+}
+
+fragment Fragment_M on Object_Xni5coG {
+  ... on Union_m {
+    __typename
+  }
+  ... on Object_Xni5coG {
+    ... {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_ABkh on Object_Xni5coG {
+  xeem_4RbX
+}

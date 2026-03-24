@@ -1,0 +1,41 @@
+query ($n: Boolean! = false) {
+  ...Fragment_e
+  YN7cHbi8e: __typename @skip(if: true)
+  hsOccBWPps {
+    ...Fragment_in
+    ...Fragment_r9kKB
+  }
+}
+
+fragment Fragment_e on Object_k {
+  hsOccBWPps {
+    uD {
+      ZPd2OKUL: __typename
+    }
+    ... on Union_WLpNsqr0_X {
+      __typename @include(if: true)
+    }
+  }
+  ... on Union_pPSaY {
+    __typename
+    ... on Union_A @skip(if: $n) {
+      __typename @skip(if: false)
+      __typename
+    }
+  }
+}
+
+fragment Fragment_IcyclMhu7t on Object_AegKP_4 {
+  FEYvy: __typename
+}
+
+fragment Fragment_in on Object_AegKP_4 @Directive_hEXWFXU_I{
+  ...Fragment_IcyclMhu7t
+  ... on Object_AegKP_4 {
+    tGT22TpR
+  }
+}
+
+fragment Fragment_r9kKB on Union_WLpNsqr0_X {
+  __typename @skip(if: true)
+}

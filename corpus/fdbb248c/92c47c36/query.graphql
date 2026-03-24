@@ -1,0 +1,36 @@
+query xEaOGj9uH {
+  ... on Object_u {
+    ...Fragment_XS6
+    ... on Union_bC {
+      ...Fragment_MCJ_QEzap
+      ... on Union_bC {
+        __typename
+      }
+    }
+    ... on Union_bC {
+      hpG3: __typename
+      ... on Union_bC {
+        __typename
+      }
+    }
+  }
+  ... on Union_bC {
+    ... on Union_KmNHV5 {
+      ...Fragment_MCJ_QEzap
+      __typename
+      __typename
+      __typename
+      ... on Union_bC {
+        RNleL: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_XS6 on Union_KmNHV5 @Directive_YOP08OG{
+  __typename
+}
+
+fragment Fragment_MCJ_QEzap on Union_KmNHV5 {
+  et1K7Y5: __typename @Directive_YOP08OG
+}

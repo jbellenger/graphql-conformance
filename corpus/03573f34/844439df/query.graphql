@@ -1,0 +1,28 @@
+query y90y6ZiH9($u4jGeH6z: Boolean!@Directive_RtXxkf) {
+  ... on Object_lpJFn {
+    ...Fragment_a
+    ...Fragment_a
+    ... on Union_LwpriNm {
+      ... on Object_eiHY5r {
+        if6 {
+          __typename
+        }
+        if6 {
+          __typename
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_uUIE on Union_V1o7oS {
+  __typename
+  __typename @include(if: $u4jGeH6z)
+}
+
+fragment Fragment_a on Union_LwpriNm {
+  ...Fragment_uUIE
+  ... on Union_V1o7oS {
+    __typename @skip(if: true)
+  }
+}

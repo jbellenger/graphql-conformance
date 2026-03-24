@@ -1,0 +1,19 @@
+{
+  ... {
+    ...Fragment_Ry4T99AK
+    ...Fragment_DP
+    __typename
+  }
+  ... on Object_u @skip(if: true) {
+    ...Fragment_Ry4T99AK
+    ...Fragment_DP
+  }
+}
+
+fragment Fragment_DP on Object_u {
+  x
+}
+
+fragment Fragment_Ry4T99AK on Object_u {
+  ...Fragment_DP
+}

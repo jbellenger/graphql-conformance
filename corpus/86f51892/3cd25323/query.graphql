@@ -1,0 +1,22 @@
+query EMXGbz {
+  ...Fragment_stTmAbo
+  ...Fragment_stTmAbo
+  rnpPvC1F {
+    ...Fragment_fDfw
+  }
+  ... on Union_qPHYWu {
+    __typename
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_stTmAbo on Object_JqX {
+  __typename
+}
+
+fragment Fragment_fDfw on Union_qPHYWu {
+  ... on Union_Il1WP @skip(if: true) @defer(if: true, label: "*#i") {
+    __typename
+  }
+}

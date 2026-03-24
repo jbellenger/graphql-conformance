@@ -1,0 +1,24 @@
+query F2cRi($k: Boolean!) {
+  ...Fragment_uqYlelG@skip(if: $k)
+  n_kMSMjl: c5GCEDZ
+  __typename
+}
+
+fragment Fragment_k2LmD on Object_nm48qsJ6Q7 {
+  __typename
+  gOZ
+}
+
+fragment Fragment_uqYlelG on Union_i @Directive_N{
+  __typename @Directive_pN7J97aLjh
+  __typename
+  ... on Union_YFL {
+    ...Fragment_k2LmD
+    __typename
+    __typename
+    __typename
+    ... on Object_jGekrLP4U {
+      c5GCEDZ
+    }
+  }
+}

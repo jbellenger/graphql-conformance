@@ -1,0 +1,34 @@
+query Agp {
+  ...Fragment_jUo9
+  ... on Object_ARs {
+    ... on Object_ARs {
+      ...Fragment_jUo9
+      sn6N8tbgL
+      ... on Union_PY9m {
+        __typename
+      }
+    }
+  }
+  ... on Union_PY9m {
+    ...Fragment_jUo9
+    ...Fragment_y4WYaE
+    ... on Object_gXths {
+      jk
+      Kz4VC: jk
+    }
+  }
+}
+
+fragment Fragment_NaG4aTG0Xo on Union_PY9m {
+  __typename
+  __typename
+}
+
+fragment Fragment_jUo9 on Object_ARs {
+  ...Fragment_NaG4aTG0Xo
+  ...Fragment_NaG4aTG0Xo
+}
+
+fragment Fragment_y4WYaE on Union_dN6r1 {
+  ...Fragment_NaG4aTG0Xo
+}

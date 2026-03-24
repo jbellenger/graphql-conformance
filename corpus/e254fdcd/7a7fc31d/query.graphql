@@ -1,0 +1,27 @@
+query aHJb @Directive_wo5APtC {
+  hcPuv0V(hsf: jMlRftd) {
+    ...Fragment_jeMSdO@skip(if: false)
+    ... on Union_pNiMQ {
+      ...Fragment_KCr
+    }
+    ... on Union_pNiMQ {
+      ...Fragment_V7TFb
+    }
+  }
+}
+
+fragment Fragment_KCr on Object_Go {
+  o7: j
+}
+
+fragment Fragment_jeMSdO on Union_C0RP {
+  ...Fragment_KCr
+  ... on Object_Go {
+    j
+    j @Directive_Yvzcg4ZR
+  }
+}
+
+fragment Fragment_V7TFb on Union_C0RP {
+  __typename
+}

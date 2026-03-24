@@ -1,0 +1,45 @@
+{
+  bv {
+    __typename
+    ... {
+      __typename
+    }
+  }
+  ... on Object_r8kX_BzHek {
+    VTf: bv {
+      ...Fragment_yh2PUpUS@skip(if: true)
+      u8NGo(cGN7S_4Z4n: 753446707, ft7s: dxusFTTZxx) @Directive_nd1ihETP {
+        vnnl: c132bQ
+      }
+      ... on Interface_fJ {
+        vgaT {
+          CFAv: __typename
+        }
+      }
+    }
+    __typename
+  }
+  ... on Object_r8kX_BzHek {
+    bv {
+      __typename
+    }
+    ... on Object_r8kX_BzHek {
+      bv @skip(if: true) {
+        __typename
+        u8NGo(cGN7S_4Z4n: -1609276723, ft7s: null) {
+          zaHeKzTYd {
+            __typename
+          }
+        }
+      }
+      __typename
+      bv {
+        X: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_yh2PUpUS on Interface_fJ @Directive_nd1ihETP{
+  rw: __typename
+}

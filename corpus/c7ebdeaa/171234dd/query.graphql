@@ -1,0 +1,20 @@
+query Re {
+  ... on Union_LO3x36jcpM {
+    ...Fragment_FkXEttHnju
+    ... on Object_udNff {
+      kiVrg
+    }
+    ... on Union_svJ_ {
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_J5UK9t_q9 on Object__gQq7Wm {
+  __typename
+}
+
+fragment Fragment_FkXEttHnju on Union_qy9D4YfNe {
+  ...Fragment_J5UK9t_q9
+}

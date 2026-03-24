@@ -1,0 +1,138 @@
+schema {
+  query: Object_A69
+}
+
+directive @Directive_aQaDaH repeatable on MUTATION | FRAGMENT_SPREAD | INLINE_FRAGMENT | SCHEMA | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM
+
+directive @Directive_tYZNwze(sUzpPZ: Input_IdILLOhOt @deprecated(reason : "9")) on MUTATION | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | INLINE_FRAGMENT | SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+directive @Directive_wY on QUERY | MUTATION | SUBSCRIPTION | FIELD | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+"This directive allows results to be deferred during execution"
+directive @defer(
+    "Deferred behaviour is controlled by this argument"
+    if: Boolean! = true,
+    "A unique label that represents the fragment being deferred"
+    label: String
+  ) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Marks the field, argument, input field or enum value as deprecated"
+directive @deprecated(
+    "The reason for the deprecation"
+    reason: String! = "No longer supported"
+  ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+"This directive disables error propagation when a non nullable field returns null for the given operation."
+directive @experimental_disableErrorPropagation on QUERY | MUTATION | SUBSCRIPTION
+
+"Directs the executor to include this field or fragment only when the `if` argument is true"
+directive @include(
+    "Included when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Indicates an Input Object is a OneOf Input Object."
+directive @oneOf on INPUT_OBJECT
+
+"Directs the executor to skip this field or fragment when the `if` argument is true."
+directive @skip(
+    "Skipped when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Exposes a URL that specifies the behaviour of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behaviour of this scalar."
+    url: String!
+  ) on SCALAR
+
+interface Interface_Li {
+  gV0: [ID]
+  h: Union_DAv @Directive_aQaDaH
+  i5: Interface_Li
+}
+
+interface Interface_eWKM @Directive_wY {
+  bLa: Float!
+  hn4ic: Enum_niX
+}
+
+interface Interface_jUwZRYyz {
+  i4kBE7hpT: Union_W0ZffOEj! @Directive_aQaDaH @Directive_tYZNwze(sUzpPZ : {fGg7XptT9 : false, jOYazlDhN : -5.396428521011062E+307})
+  l: Object_hby!
+  yLpe_6: ID!
+}
+
+union Union_A = Object_A69 | Object_hby
+
+union Union_DAv @Directive_tYZNwze(sUzpPZ : {fGg7XptT9 : false, jOYazlDhN : 1.7828528179967899E+308}) = Object_A69
+
+union Union_W0ZffOEj = Object_d4arNO | Object_hby
+
+type Interface_Li_STUB implements Interface_Li {
+  gV0: [ID]
+  h: Union_DAv @Directive_aQaDaH
+  i5: Interface_Li
+  zWC: Object_hby
+}
+
+type Interface_eWKM_STUB implements Interface_eWKM {
+  bLa: Float!
+  hn4ic: Enum_niX
+  q7fB: Interface_Li
+  tGYDlDw: Enum_Qtowe!
+}
+
+type Interface_jUwZRYyz_STUB implements Interface_jUwZRYyz {
+  hAKjw3N: [[Enum_niX]]
+  i4kBE7hpT: Union_W0ZffOEj! @Directive_aQaDaH @Directive_tYZNwze(sUzpPZ : {fGg7XptT9 : false, jOYazlDhN : -5.396428521011062E+307})
+  l: Object_hby!
+  mvV(uj1SzwlYL: Enum_a5b!): Interface_Li
+  yLpe_6: ID!
+}
+
+type Object_A69 {
+  gQfrS_GQG: Int! @Directive_aQaDaH
+  gVQ: Enum_a5b @Directive_wY
+  kMkn8hDv4: Union_DAv!
+}
+
+type Object_d4arNO @Directive_wY {
+  bPz: Object_hby
+  ndobw: [Union_A!] @Directive_wY
+}
+
+type Object_hby {
+  pZ9dvq: Int
+}
+
+enum Enum_Qtowe {
+  TyR4XSaY5 @Directive_wY
+}
+
+enum Enum_a5b {
+  F57
+  ZQc9m
+}
+
+enum Enum_niX {
+  Fp
+  YQDkU3v
+  jd9QAij7Nf
+}
+
+input Input_B66VIsuG @oneOf {
+  qgBDwkoA4p: Float
+  qh7Xq: Input_B66VIsuG
+  zdmb: Float
+}
+
+input Input_CM @Directive_wY {
+  hTQCliVhEX: Input_B66VIsuG = {qh7Xq : {qgBDwkoA4p : -1.3332419867538114E+308}}
+  m2tmniisb: Input_B66VIsuG!
+}
+
+input Input_IdILLOhOt {
+  fGg7XptT9: Boolean!
+  jOYazlDhN: Float!
+}

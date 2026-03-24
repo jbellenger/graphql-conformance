@@ -1,0 +1,17 @@
+query hZPRqseEn($o9SF: Boolean!) {
+  ...Fragment_SobjBrG@include(if: $o9SF)
+  ... on Object_GFi_G {
+    ...Fragment_SobjBrG
+    jUgVWdTc(iakF: null) {
+      __typename
+      __typename
+      ... on Union_jg7vd {
+        vNkz: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_SobjBrG on Object_GFi_G @Directive_Hs3xwyF_df{
+  __typename
+}

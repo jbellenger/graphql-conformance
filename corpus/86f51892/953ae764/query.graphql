@@ -1,0 +1,3 @@
+query Z2h($tyE4ovZ: Boolean!) {
+  __typename @skip(if: $tyE4ovZ)
+}

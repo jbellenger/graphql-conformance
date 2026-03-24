@@ -1,0 +1,20 @@
+{
+  ...Fragment_PkyVTZwm
+}
+
+fragment Fragment_bBukZ on Union_ZDYVINd {
+  __typename
+}
+
+fragment Fragment_wLtQY on Object_X0 {
+  ...Fragment_bBukZ
+  ... {
+    IsEjf: __typename
+  }
+}
+
+fragment Fragment_PkyVTZwm on Union_ZDYVINd {
+  ...Fragment_wLtQY
+  ...Fragment_bBukZ
+  __typename
+}

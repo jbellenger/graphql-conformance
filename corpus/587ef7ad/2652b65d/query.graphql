@@ -1,0 +1,60 @@
+{
+  ...Fragment_cfLJd2
+  ...Fragment_cfLJd2
+  ...Fragment_NS9XJMN
+  lqhE {
+    ...Fragment_LBdkPWkytc
+  }
+  ... on Object_l2szMSq @Directive_T6BOEjFi {
+    ...Fragment_cfLJd2
+    ... {
+      ... on Object_l2szMSq {
+        __typename @include(if: true)
+      }
+    }
+    ... on Object_l2szMSq {
+      ... on Object_l2szMSq {
+        __typename
+      }
+    }
+  }
+  ... {
+    ...Fragment_NS9XJMN
+    ...Fragment_NS9XJMN
+  }
+  ... on Object_l2szMSq {
+    lqhE {
+      ...Fragment_LBdkPWkytc
+      ... on Interface_Dx_STUB {
+        gpsAPaYGo: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_p6NcRV_w on Union_Q94M {
+  R: __typename
+}
+
+fragment Fragment_cfLJd2 on Object_l2szMSq {
+  gvbrfN {
+    ...Fragment_p6NcRV_w
+    __typename
+    __typename @Directive_eOrH0olwL
+    ... on Object_l_aaqqg0 {
+      xtX
+    }
+  }
+  _brP
+}
+
+fragment Fragment_NS9XJMN on Object_l2szMSq {
+  _brP
+}
+
+fragment Fragment_LBdkPWkytc on Interface_Dx_STUB {
+  gxn(eZ: -1030715682)
+  ... on Interface_Dx_STUB {
+    do44j40irh
+  }
+}

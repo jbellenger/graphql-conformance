@@ -1,0 +1,28 @@
+query m8MHr($vMSVEXbzjT: Input_J) @experimental_disableErrorPropagation {
+  ...Fragment_NT
+  ...Fragment_NT
+  ... on Interface_R {
+    ... on Union_D {
+      ...Fragment_NT
+      zrMWeATm: __typename
+    }
+  }
+  ... on Union_D {
+    mB0: __typename
+  }
+}
+
+fragment Fragment_NT on Union_D {
+  ... on Union_bGUiBDL7P @skip(if: false) {
+    __typename
+  }
+  ... on Object_wpUzMaqzh {
+    s: qvGXq8ssXO
+    kjJWEf(wzzc8ibOqC: {jc0i : PkxfJOW}) {
+      cXbzXqay(jgjL: $vMSVEXbzjT)
+    }
+    MsY05DOE: lhfg {
+      __typename
+    }
+  }
+}

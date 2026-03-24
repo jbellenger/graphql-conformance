@@ -1,0 +1,27 @@
+query AsYAe {
+  ...Fragment_Ub
+  ...Fragment_Ub@defer(label: "X")
+  __typename
+}
+
+fragment Fragment_zt5MoYDI on Union_tBf {
+  Y: __typename
+}
+
+fragment Fragment_B8RBMes8 on Union_FaWkwHJf {
+  ...Fragment_zt5MoYDI
+}
+
+fragment Fragment_Ub on Union_tBf {
+  ...Fragment_B8RBMes8
+  __typename
+  ... on Union_jPNbbtBYeQ {
+    __typename
+  }
+  ... on Union_jPNbbtBYeQ {
+    ...Fragment_B8RBMes8
+    ... on Object_LVdvN {
+      __typename
+    }
+  }
+}

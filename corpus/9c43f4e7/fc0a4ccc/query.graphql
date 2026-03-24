@@ -1,0 +1,35 @@
+{
+  ... on Union_MLNse08af {
+    ...Fragment_MVm7QKgQ2
+    __typename
+    T: __typename
+    __typename
+    y5YqBH1: __typename
+  }
+  ... on Union_pFvq4l93u {
+    __typename
+    ... on Union_MLNse08af @include(if: true) {
+      ...Fragment_JyhWIuU@defer(if: true, label: null)
+    }
+  }
+  ... on Union_MLNse08af {
+    __typename
+  }
+}
+
+fragment Fragment_vvWCXsp4 on Object_KEEeFM {
+  bPVg78xNb
+  h482YKI0: __typename
+}
+
+fragment Fragment_MVm7QKgQ2 on Union_pFvq4l93u {
+  ...Fragment_vvWCXsp4
+  __typename
+  ... on Object_KEEeFM {
+    __typename
+  }
+}
+
+fragment Fragment_JyhWIuU on Object_IlyM5C {
+  yNwKN8dW: qHpki6a
+}

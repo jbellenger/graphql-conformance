@@ -1,0 +1,18 @@
+query s {
+  ...Fragment_DbR
+}
+
+fragment Fragment_tui on Union_c {
+  Ufs8FPs: __typename
+}
+
+fragment Fragment_DbR on Union_j77RQEqd {
+  __typename
+  ... on Object_xDJ5nTpR {
+    ...Fragment_tui@skip(if: false)
+    __typename
+    ... on Object_xDJ5nTpR {
+      q
+    }
+  }
+}

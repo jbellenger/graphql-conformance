@@ -1,0 +1,16 @@
+query Ce105 {
+  ...Fragment_SB
+  ... on Object_jGekrLP4U {
+    ...Fragment_HD
+    ...Fragment_HD
+  }
+}
+
+fragment Fragment_SB on Union_YFL {
+  y9Sef: __typename
+}
+
+fragment Fragment_HD on Union_i {
+  __typename
+  __typename
+}

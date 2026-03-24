@@ -1,0 +1,28 @@
+query ($lLFywomVK: String) {
+  ...Fragment_j9ocV
+  ...Fragment_KdBP
+  ... on Object_E0NcK8 {
+    __typename
+  }
+  ... on Interface_R @defer(if: false, label: "\\w") {
+    __typename
+    QJnrTILj: kQAYnKy4fG(iz3Y: "$]")
+    lWH_o: __typename
+  }
+}
+
+fragment Fragment_KdBP on Interface_R {
+  kQAYnKy4fG
+}
+
+fragment Fragment_j9ocV on Union_D {
+  ... on Union_D {
+    ...Fragment_KdBP
+  }
+  ... on Interface_R {
+    qNjlFjDc1: kQAYnKy4fG(iz3Y: $lLFywomVK)
+    ... on Interface_R {
+      __typename
+    }
+  }
+}

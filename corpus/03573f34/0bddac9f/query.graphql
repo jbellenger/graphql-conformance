@@ -1,0 +1,13 @@
+{
+  ... on Union_LwpriNm {
+    __typename
+    ... on Union_JiFfNeAz {
+      ...Fragment_o
+    }
+  }
+}
+
+fragment Fragment_o on Union_LwpriNm {
+  __typename
+  __typename
+}

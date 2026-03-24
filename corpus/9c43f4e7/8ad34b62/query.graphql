@@ -1,0 +1,25 @@
+query sCKQCHMeCQ($pzwR: Boolean!) {
+  ...Fragment_d5QY1xH@skip(if: $pzwR)
+  g: snL @Directive_lvQ0Sp2Fj @Directive_fHFuDfXtZ {
+    ... on Interface_t {
+      l @skip(if: $pzwR)
+      ... on Interface_t {
+        __typename
+      }
+    }
+  }
+  __typename
+  __typename
+  __typename
+  ... on Union_pFvq4l93u @defer(if: false, label: "5ZC") {
+    __typename @skip(if: $pzwR)
+  }
+}
+
+fragment Fragment_p on Object_IlyM5C {
+  bs1Gt: qHpki6a
+}
+
+fragment Fragment_d5QY1xH on Union_MLNse08af {
+  ...Fragment_p
+}

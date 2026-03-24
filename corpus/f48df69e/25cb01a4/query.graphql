@@ -1,0 +1,11 @@
+query hy27G @experimental_disableErrorPropagation {
+  ... on Object_KJDYJkCZK {
+    ...Fragment_KPqbZtnWaH
+    ...Fragment_KPqbZtnWaH
+  }
+}
+
+fragment Fragment_KPqbZtnWaH on Union_q7_Ay_TgQs {
+  N: __typename
+  __typename
+}

@@ -1,0 +1,45 @@
+{
+  hAQ0Ef: m7Lc {
+    ...Fragment_oyVz_IOr
+    ...Fragment_QWXMBHzQy
+    u: __typename
+    TBim: __typename
+  }
+  ... on Object_Aeg {
+    ...Fragment_sJNNWZpFp0
+  }
+  ... on Union_hdOFIGw {
+    ... on Object_Aeg {
+      m7Lc {
+        m7Lc {
+          __typename
+        }
+      }
+      Wx: m7Lc {
+        __typename
+      }
+      __typename
+      ... on Union_hdOFIGw @skip(if: true) @defer(if: false) {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_oyVz_IOr on Object_Aeg {
+  ... on Union_hdOFIGw @include(if: false) {
+    __typename
+  }
+}
+
+fragment Fragment_QWXMBHzQy on Union_hdOFIGw {
+  ...Fragment_oyVz_IOr
+  __typename
+  ... on Union_hdOFIGw {
+    __typename
+  }
+}
+
+fragment Fragment_sJNNWZpFp0 on Union_hdOFIGw {
+  __typename
+}

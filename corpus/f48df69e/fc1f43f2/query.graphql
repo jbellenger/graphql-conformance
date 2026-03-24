@@ -1,0 +1,19 @@
+query WvZkb {
+  ...Fragment_q5doa6JsOQ
+  ... on Union_q7_Ay_TgQs {
+    __typename
+  }
+}
+
+fragment Fragment_fMg on Object_KJDYJkCZK {
+  nJtm @include(if: true) {
+    a
+  }
+  ... on Union_q7_Ay_TgQs {
+    __typename
+  }
+}
+
+fragment Fragment_q5doa6JsOQ on Union_q7_Ay_TgQs {
+  ...Fragment_fMg
+}

@@ -1,0 +1,23 @@
+{
+  ... on Union_s {
+    ... on Object_qYPyO {
+      ...Fragment_Dxo70KpeF5
+      g318GKOI: hvzm_i {
+        tn: dd {
+          __typename @Directive_N
+        }
+        ujQuu {
+          vhj: __typename
+        }
+      }
+      hvzm_i: eoyvai
+      sJyo0XqzFb {
+        hnxEo: iB
+      }
+    }
+  }
+}
+
+fragment Fragment_Dxo70KpeF5 on Union_Odg @Directive_N{
+  __typename @include(if: false)
+}

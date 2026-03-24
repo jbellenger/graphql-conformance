@@ -1,0 +1,23 @@
+{
+  nJtm {
+    ...Fragment_iVeNfIL2S
+    ...Fragment_GNHt
+    ... on Union_ysqyXP3EOB {
+      ...Fragment_iVeNfIL2S
+      __typename
+    }
+  }
+  ... on Union_q7_Ay_TgQs @skip(if: false) {
+    RqWiJGs: __typename
+  }
+}
+
+fragment Fragment_iVeNfIL2S on Union_zuQO {
+  __typename
+}
+
+fragment Fragment_GNHt on Object_Tyb {
+  ... on Union_ysqyXP3EOB {
+    __typename
+  }
+}

@@ -1,0 +1,19 @@
+{
+  ...Fragment_HNdE
+}
+
+fragment Fragment__e on Object_u {
+  x
+  ... @include(if: false) {
+    x
+  }
+}
+
+fragment Fragment_HNdE on Object_u {
+  ...Fragment__e
+  ...Fragment__e
+  x
+  ... {
+    aMERFxP: x
+  }
+}

@@ -1,0 +1,21 @@
+query BU5eJJ {
+  ...Fragment_Z8mMR5dxl
+  ...Fragment_Z8mMR5dxl
+}
+
+fragment Fragment_HZ8xIWRKGp on Object_u {
+  gUQefarZK: __typename
+}
+
+fragment Fragment_Z8mMR5dxl on Union_bC @Directive_YOP08OG{
+  __typename: __typename
+  ... {
+    ...Fragment_HZ8xIWRKGp
+    ... on Union_bC {
+      SY: __typename
+    }
+  }
+  ... on Object_u {
+    H1ybR: __typename
+  }
+}

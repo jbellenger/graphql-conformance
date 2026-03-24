@@ -1,0 +1,28 @@
+query ($xrVeVjY: Input_QV4DHDhZz) {
+  ...Fragment_JRi6P8G
+  ...Fragment_JRi6P8G@Directive_shG(j: $xrVeVjY)
+  __typename
+  ... on Object_JqX {
+    rnpPvC1F {
+      zREycaiBP: __typename
+    }
+    ... on Union_qPHYWu {
+      __typename @skip(if: true)
+    }
+  }
+  ... on Union_Il1WP {
+    p1AhlerE: __typename
+  }
+  ... on Union_qPHYWu @defer(if: false, label: "F9\\") {
+    __typename @Directive_shG(j: {x11e : {k6FrMCfw : 1528752774, o : null}, rlycIB : {x11e : null, rlycIB : null}})
+  }
+}
+
+fragment Fragment_JRi6P8G on Object_JqX {
+  ... on Union_ulsO {
+    __typename
+    ... on Union_Il1WP {
+      __typename
+    }
+  }
+}

@@ -1,0 +1,18 @@
+query ($pMDF: Boolean!) @experimental_disableErrorPropagation {
+  ...Fragment_yWjd0uQ_jd@include(if: $pMDF)
+  Ke: __typename
+  ... on Object_Yeeu {
+    dGIrtw6e6D: hpn
+  }
+  ... on Interface_jY {
+    ...Fragment_yWjd0uQ_jd
+  }
+}
+
+fragment Fragment_yWjd0uQ_jd on Union_toyLE9 {
+  __typename
+  Nk: __typename
+  ... on Union_toyLE9 {
+    __typename
+  }
+}

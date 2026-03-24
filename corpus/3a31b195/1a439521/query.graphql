@@ -1,0 +1,14 @@
+{
+  ...Fragment_DvgfFc@skip(if: false)
+  rU1ILHy1: kQAYnKy4fG(iz3Y: "")
+}
+
+fragment Fragment_lrxDFvYM on Object_E0NcK8 {
+  ... on Union_D {
+    __typename
+  }
+}
+
+fragment Fragment_DvgfFc on Object_E0NcK8 {
+  ...Fragment_lrxDFvYM
+}

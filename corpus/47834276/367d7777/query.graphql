@@ -1,0 +1,24 @@
+query FiBMH7CYRB {
+  ...Fragment_PEdvoI
+}
+
+fragment Fragment_DBND on Union_vaw {
+  __typename
+}
+
+fragment Fragment_PEdvoI on Object_Pi {
+  ...Fragment_DBND
+  ... on Union_vaw {
+    ... on Union_L2D {
+      G: __typename
+    }
+  }
+  ... on Union_vaw {
+    __typename
+    XnTX: __typename
+    __typename
+    ... on Object_Pi {
+      d: sa
+    }
+  }
+}

@@ -1,0 +1,20 @@
+query w_xW {
+  ...Fragment_sjpMl9
+  ...Fragment_zq3nXQlMfc
+}
+
+fragment Fragment_zq3nXQlMfc on Union_fV {
+  CMHdzk: __typename
+  ... on Object_kxCztsiP @Directive_fBZafO {
+    v1Dxj {
+      qXxM5KdjV: __typename
+    }
+  }
+}
+
+fragment Fragment_sjpMl9 on Union_YC_j {
+  ...Fragment_zq3nXQlMfc
+  ...Fragment_zq3nXQlMfc
+  __typename
+  __typename
+}

@@ -1,0 +1,5 @@
+query Bs8BAt($oVGU: Boolean!) {
+  ... on Union_QKwi @skip(if: $oVGU) {
+    oF7: __typename
+  }
+}

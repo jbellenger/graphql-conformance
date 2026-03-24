@@ -1,0 +1,25 @@
+query lJmI {
+  ...Fragment_LiOz277Bo
+  dS
+}
+
+fragment Fragment_pX_Ucpwiy7 on Union_mbB5eJqkZp @Directive_l{
+  ... on Object_dF4Jqm {
+    dS
+  }
+}
+
+fragment Fragment_LiOz277Bo on Union_mbB5eJqkZp {
+  ...Fragment_pX_Ucpwiy7
+  ...Fragment_pX_Ucpwiy7
+  __typename
+  mwta7dUg: __typename
+  ... @include(if: false) {
+    __typename
+  }
+  ... on Object_dF4Jqm {
+    ... on Union_mbB5eJqkZp {
+      __typename
+    }
+  }
+}

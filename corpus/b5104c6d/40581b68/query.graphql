@@ -1,0 +1,21 @@
+query wswBME3H {
+  ...Fragment_Zo7TtN
+}
+
+fragment Fragment_gAFX on Object_oTwQDb44X {
+  __typename
+}
+
+fragment Fragment_oamU on Union_hdOFIGw {
+  ...Fragment_gAFX
+  ... @include(if: false) @defer(if: true, label: "HrH") {
+    __typename
+  }
+}
+
+fragment Fragment_Zo7TtN on Object_Aeg {
+  ...Fragment_oamU
+  ...Fragment_oamU
+  j5: __typename
+  __typename
+}

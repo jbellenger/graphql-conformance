@@ -1,0 +1,98 @@
+query ($_o0o8Kt: Boolean, $f6D: Boolean!) {
+  ...Fragment_OrHWrYvr
+  wYMIx6iZ {
+    ...Fragment_ZIc
+    ...Fragment_ZIc
+  }
+  J: fgtA1(wKN: null) {
+    ...Fragment_XtsEqCIvU
+    ...Fragment_XtsEqCIvU
+  }
+  upC {
+    __typename @include(if: true)
+  }
+  P3wzi: upC {
+    ...Fragment_PFxjgbKIZt
+    ...Fragment_PFxjgbKIZt
+  }
+  upC {
+    ...Fragment_PFxjgbKIZt
+  }
+  ... on Union_m580UMe49 {
+    ... {
+      __typename
+    }
+  }
+  ... on Object_uyYc {
+    ... on Union_m580UMe49 {
+      ...Fragment_OrHWrYvr
+      __typename
+      __typename
+    }
+    ... on Union_m580UMe49 {
+      __typename
+    }
+  }
+  ... on Union_m580UMe49 {
+    ... on Object_uyYc {
+      ...Fragment_sA
+      ... on Object_uyYc {
+        upC {
+          __typename
+        }
+      }
+    }
+    ... on Object_uyYc {
+      ...Fragment_b0
+    }
+  }
+}
+
+fragment Fragment_b0 on Object_uyYc {
+  fgtA1(wKN: Y_2F) {
+    w(x: true)
+  }
+  wYMIx6iZ {
+    kU23
+  }
+  __typename
+  ... on Object_uyYc {
+    wYMIx6iZ {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_OrHWrYvr on Object_uyYc {
+  ...Fragment_b0
+  ... on Union_m580UMe49 @Directive_XJ @Directive_X {
+    ...Fragment_b0
+  }
+}
+
+fragment Fragment_ZIc on Interface_ELvS_STUB @Directive_X{
+  DcBCM: d
+}
+
+fragment Fragment_XtsEqCIvU on Interface_E3_STUB {
+  w(x: $_o0o8Kt)
+  biOp @skip(if: $f6D)
+  clmBx {
+    gqkIqllSN: __typename
+  }
+  ... on Interface_E3_STUB {
+    __typename @include(if: false)
+  }
+}
+
+fragment Fragment_PFxjgbKIZt on Interface_m0zkN0ul {
+  ... {
+    gqZ(hTlYc: Y_2F) {
+      tG7IEAR @include(if: false) @Directive_XJ
+    }
+  }
+}
+
+fragment Fragment_sA on Object_uyYc {
+  LUha: __typename
+}

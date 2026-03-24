@@ -1,0 +1,27 @@
+query ($sBoVkTLe: Boolean!) {
+  ...Fragment_S
+  __typename
+  ... on Union_WLpNsqr0_X @include(if: false) {
+    ...Fragment_q9fT
+  }
+}
+
+fragment Fragment_UbvxbM on Object_AegKP_4 {
+  __typename @include(if: $sBoVkTLe)
+}
+
+fragment Fragment_I6OEW3 on Union_WLpNsqr0_X {
+  ...Fragment_UbvxbM
+}
+
+fragment Fragment_S on Object_k {
+  ...Fragment_I6OEW3
+}
+
+fragment Fragment_q9fT on Object_AegKP_4 {
+  tGT22TpR
+  ... on Union_WLpNsqr0_X {
+    QLb7Jke0dS: __typename @Directive_hEXWFXU_I
+    __typename
+  }
+}

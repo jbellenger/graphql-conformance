@@ -1,0 +1,30 @@
+{
+  ...Fragment__VTip
+  ... on Object_A69 {
+    eBIEJI: gVQ
+  }
+}
+
+fragment Fragment_UXpNn on Object_A69 {
+  P: gVQ
+  ... on Union_DAv {
+    __typename
+  }
+}
+
+fragment Fragment_XhYYMs on Union_A @Directive_wY{
+  ...Fragment_UXpNn
+  __typename
+  __typename
+  __typename
+  ... on Object_A69 {
+    gQfrS_GQG
+  }
+}
+
+fragment Fragment__VTip on Union_DAv {
+  ...Fragment_UXpNn
+  ...Fragment_XhYYMs
+  __typename
+  __typename
+}

@@ -1,0 +1,19 @@
+query ZQ1uTpeW {
+  ...Fragment_cveEr3cIfR
+  ...Fragment_Qb1
+  ...Fragment_cveEr3cIfR
+}
+
+fragment Fragment_cveEr3cIfR on Object_PWvnL0k {
+  ... on Union_Jy2 @skip(if: true) {
+    ... on Union_Thr {
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_Qb1 on Union_Jy2 {
+  ...Fragment_cveEr3cIfR
+  __typename
+}

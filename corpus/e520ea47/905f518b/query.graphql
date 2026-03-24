@@ -1,0 +1,24 @@
+query pEXD {
+  FXGp6n_x: bv {
+    ...Fragment_v@defer(if: false, label: "")
+    ...Fragment_iUcu
+    ... on Interface_fJ_STUB {
+      ...Fragment_iUcu
+    }
+    ... on Interface_fJ_STUB {
+      m @Directive_JcM
+    }
+  }
+  __typename
+}
+
+fragment Fragment_iUcu on Interface_fJ_STUB {
+  m
+}
+
+fragment Fragment_v on Interface_fJ_STUB {
+  ...Fragment_iUcu@include(if: false)
+  ... {
+    __typename
+  }
+}

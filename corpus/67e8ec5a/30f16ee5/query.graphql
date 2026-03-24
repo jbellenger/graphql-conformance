@@ -1,0 +1,20 @@
+query aZ9Tg {
+  ...Fragment_g
+  vR_J
+}
+
+fragment Fragment_SYM963Ivpo on Union_c {
+  __typename
+  __typename
+}
+
+fragment Fragment_g on Union_j77RQEqd @Directive_tUygn47fpP(pn231b: {o0TC : {uCCSrO : cbzttjTIJ, sbwooW : []}}){
+  bzsFuPr: __typename
+  rvPieIs: __typename
+  ... on Union_j77RQEqd {
+    ...Fragment_SYM963Ivpo@defer(if: false, label: "m")
+  }
+  ... on Union_j77RQEqd {
+    ...Fragment_SYM963Ivpo
+  }
+}

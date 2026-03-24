@@ -1,0 +1,44 @@
+[
+  {
+    "testKey": "86f51892/32183bf6/57b9cd6b",
+    "expected": {
+      "data": {
+        "__typename": "Object_JqX"
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_JqX",
+        "rnpPvC1F": {
+          "v": {},
+          "j": {
+            "__typename": "Object_JqX"
+          },
+          "__typename": "Object_kX"
+        }
+      }
+    }
+  },
+  {
+    "testKey": "86f51892/32183bf6/83702d1c",
+    "expected": {
+      "data": {
+        "__typename": "Object_JqX"
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_JqX",
+        "rnpPvC1F": {
+          "v": {
+            "__typename": "Object_P6Gx_"
+          },
+          "j": {
+            "__typename": "Object_JqX"
+          },
+          "__typename": "Object_kX"
+        }
+      }
+    }
+  }
+]

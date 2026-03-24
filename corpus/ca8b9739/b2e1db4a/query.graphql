@@ -1,0 +1,20 @@
+{
+  ...Fragment_h
+}
+
+fragment Fragment_hxLovOSa on Interface_Kl5Z {
+  __typename
+}
+
+fragment Fragment_W7jLZ on Object_hEw {
+  ...Fragment_hxLovOSa
+  ... on Interface_Kl5Z {
+    o8 @Directive_rgEeY
+  }
+}
+
+fragment Fragment_h on Interface_XVRBXbnSAy {
+  ...Fragment_W7jLZ
+  __typename @Directive_rgEeY
+  ni1bbI5AU
+}

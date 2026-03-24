@@ -1,0 +1,24 @@
+{
+  __typename
+  ... on Union_x {
+    ...Fragment_DC
+  }
+  ... on Object_aaghjtY {
+    ... on Union_x @skip(if: true) {
+      ...Fragment_DC
+      ... on Union_x {
+        __typename
+      }
+    }
+    ... on Object_aaghjtY {
+      ...Fragment_DC
+    }
+  }
+}
+
+fragment Fragment_DC on Union_b {
+  __typename
+  ... on Union_x {
+    S9: __typename
+  }
+}

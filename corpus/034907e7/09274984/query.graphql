@@ -1,0 +1,26 @@
+query gsX($jcd: Boolean!) {
+  ... on Union_YFL {
+    Uf: __typename
+    __typename
+    __typename
+    __typename
+    ... on Union_i @skip(if: false) @include(if: $jcd) {
+      ...Fragment_D9uMUm
+    }
+    ... on Object_jGekrLP4U {
+      a
+    }
+  }
+  ... on Union_YFL {
+    ...Fragment_D9uMUm
+    ...Fragment_hm5H8nVvCh
+  }
+}
+
+fragment Fragment_D9uMUm on Union_i @Directive_N{
+  __typename
+}
+
+fragment Fragment_hm5H8nVvCh on Object_nm48qsJ6Q7 {
+  t_ob: __typename
+}

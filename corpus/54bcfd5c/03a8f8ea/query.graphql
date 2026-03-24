@@ -1,0 +1,34 @@
+query jLuiCK5 @Directive_eaz8FgPa {
+  ...Fragment_FyL_
+  ... {
+    ...Fragment_d
+  }
+  ... on Object_GFi_G {
+    ...Fragment_d@defer(if: false, label: "K")
+    ...Fragment_KLHF
+  }
+}
+
+fragment Fragment_YRn1xy4 on Object_eiM4 @Directive_Hs3xwyF_df{
+  xefK(udYguhkSZ9: null)
+}
+
+fragment Fragment_FyL_ on Object_GFi_G {
+  jcsu {
+    ...Fragment_YRn1xy4
+    ... on Object_GFi_G {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_d on Object_GFi_G {
+  ...Fragment_FyL_
+  wtnnoDTYIA {
+    BW7P42WUQU: __typename
+  }
+}
+
+fragment Fragment_KLHF on Union_MWG {
+  ...Fragment_YRn1xy4
+}

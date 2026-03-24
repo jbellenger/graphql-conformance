@@ -1,0 +1,23 @@
+{
+  ...Fragment_gaUFJWGhk9
+  ...Fragment_gaUFJWGhk9
+  ...Fragment_W3I
+}
+
+fragment Fragment_ssxAGFmI on Object_l2szMSq {
+  _brP
+}
+
+fragment Fragment_W3I on Object_l2szMSq {
+  ...Fragment_ssxAGFmI
+  _brP
+  ... on Object_l2szMSq {
+    _brP
+  }
+}
+
+fragment Fragment_gaUFJWGhk9 on Object_l2szMSq {
+  ...Fragment_W3I
+  ...Fragment_ssxAGFmI
+  __typename
+}

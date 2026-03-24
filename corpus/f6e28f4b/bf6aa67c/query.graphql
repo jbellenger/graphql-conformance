@@ -1,0 +1,23 @@
+query H33yUK4o($t: Boolean!) {
+  ... on Object_RpkZy {
+    __typename
+    __typename
+    f @skip(if: false) {
+      ... on Object_ACuleun {
+        __typename
+      }
+    }
+    zrX2T
+    ... on Object_RpkZy @skip(if: true) {
+      ...Fragment_Y
+      ... on Union_QC {
+        __typename @skip(if: $t)
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Y on Union_QC {
+  __typename
+}

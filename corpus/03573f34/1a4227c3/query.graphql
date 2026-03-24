@@ -1,0 +1,76 @@
+query uS {
+  ...Fragment_XckJBF
+  xunqtFHE: __typename
+  x4cbu6cZ {
+    ...Fragment_SUBU4QTU_
+    ... on Interface_j4AUR {
+      ... on Interface_j4AUR_STUB {
+        deWZL
+      }
+    }
+    ... on Interface_j4AUR {
+      zhKE {
+        ITX: __typename @Directive_uTS
+      }
+    }
+  }
+  ... on Union_LwpriNm {
+    msiDCGEKr: __typename
+    ... on Union_JiFfNeAz {
+      __typename
+      __typename
+      __typename
+    }
+    ... on Object_lpJFn {
+      ...Fragment_XckJBF
+      ... on Object_lpJFn @defer(if: true, label: "C") {
+        __typename
+      }
+    }
+  }
+  ... on Object_lpJFn {
+    ...Fragment_wQFPHc2
+    ...Fragment_la
+  }
+  ... on Object_lpJFn {
+    ...Fragment_wQFPHc2
+    ...Fragment_XckJBF
+  }
+}
+
+fragment Fragment_wQFPHc2 on Union_LwpriNm {
+  __typename
+}
+
+fragment Fragment_XckJBF on Object_lpJFn {
+  ... on Union_LwpriNm {
+    ...Fragment_wQFPHc2
+    ... on Object_lpJFn {
+      __typename
+    }
+  }
+  ... on Object_lpJFn @skip(if: true) {
+    ...Fragment_wQFPHc2
+    ... on Union_V1o7oS {
+      Gjxk: __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_yRNHleJxOy on Interface_j4AUR {
+  __typename
+}
+
+fragment Fragment_SUBU4QTU_ on Interface_j4AUR @Directive_uTS{
+  ...Fragment_yRNHleJxOy
+  __typename
+  R5Ldbv_: zhKE @skip(if: false) {
+    gf
+  }
+  wvF: __typename
+}
+
+fragment Fragment_la on Object_lpJFn {
+  __typename @include(if: true)
+}

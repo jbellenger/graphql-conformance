@@ -1,0 +1,33 @@
+{
+  ...Fragment__d6f
+  n7W1UZrE: o8
+  __typename
+}
+
+fragment Fragment_Z on Object_hEw {
+  __typename
+}
+
+fragment Fragment_ChoU on Object_hEw @Directive_rgEeY{
+  ...Fragment_Z@Directive_B1
+  sg2E {
+    ni1bbI5AU
+  }
+  ... on Object_hEw {
+    o8
+  }
+}
+
+fragment Fragment__d6f on Interface_Kl5Z {
+  ...Fragment_ChoU
+  ...Fragment_ChoU
+  ... {
+    ni1bbI5AU
+    ni1bbI5AU
+  }
+  ... on Interface_Kl5Z {
+    ... on Object_hEw {
+      o8
+    }
+  }
+}

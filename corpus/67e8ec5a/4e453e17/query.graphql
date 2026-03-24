@@ -1,0 +1,8 @@
+query Q380hcSk($r29lLg: Boolean!) {
+  ...Fragment_txauN4kn
+  bhU2eyihMO
+}
+
+fragment Fragment_txauN4kn on Union_c {
+  __typename @include(if: $r29lLg)
+}

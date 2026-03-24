@@ -1,0 +1,21 @@
+query @Directive_czvm6FB {
+  ...Fragment_A
+}
+
+fragment Fragment_KXSgI on Object_IM {
+  __typename
+}
+
+fragment Fragment_sq5LT54Ivh on Union_U @Directive_czvm6FB{
+  ...Fragment_KXSgI
+}
+
+fragment Fragment_a15gPKMGm on Object_LqSY2D0qso {
+  y5IQF8(u9V3As: {bM : true}, niY1x: oOon0Mn)
+}
+
+fragment Fragment_A on Union_VTFQXUYB {
+  ...Fragment_sq5LT54Ivh
+  ...Fragment_a15gPKMGm@defer(if: true, label: "qe")
+  __typename
+}

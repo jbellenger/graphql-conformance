@@ -1,0 +1,27 @@
+query UkA {
+  ... on Union_LO3x36jcpM {
+    ...Fragment_yo
+    ... @include(if: true) {
+      ...Fragment_yo
+    }
+  }
+  ... on Object_udNff {
+    ... on Object_udNff {
+      ...Fragment_yo
+      ... on Union_svJ_ {
+        __typename @Directive_XstZzCL
+      }
+    }
+  }
+}
+
+fragment Fragment_Jv on Object__gQq7Wm {
+  lxeglr
+  t7 {
+    __typename
+  }
+}
+
+fragment Fragment_yo on Union_svJ_ {
+  ...Fragment_Jv
+}

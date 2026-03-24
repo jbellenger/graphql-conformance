@@ -1,0 +1,45 @@
+query ($dH: Int = null) {
+  lqhE {
+    ...Fragment_FHhqgy
+  }
+  ... {
+    lqhE {
+      ...Fragment_acI7a
+      ... on Interface_Dx_STUB @Directive_eOrH0olwL {
+        do44j40irh
+        haxq: gxn(eZ: -1079683317)
+      }
+    }
+    AbmAL: __typename
+    ... on Object_l2szMSq {
+      __typename
+    }
+    ... on Object_l2szMSq {
+      __typename
+      ... on Object_l2szMSq {
+        __typename
+      }
+    }
+  }
+  ... on Object_l2szMSq {
+    _brP
+  }
+}
+
+fragment Fragment_acI7a on Interface_Dx_STUB @Directive_eOrH0olwL{
+  gxn(eZ: $dH)
+}
+
+fragment Fragment_FHhqgy on Interface_Dx {
+  ...Fragment_acI7a
+  woGR8
+  dc {
+    __typename @Directive_eOrH0olwL
+  }
+  ... on Interface_Dx {
+    __typename
+    dc {
+      TC: _brP @Directive_eOrH0olwL
+    }
+  }
+}

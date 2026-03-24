@@ -1,0 +1,62 @@
+{
+  jUgVWdTc(iakF: nagCK0) {
+    qcKYLxL2T: __typename
+    __typename
+    __typename
+    ... on Object_HeUWNjSJ2W {
+      ...Fragment_h
+      tRQJdttn8 {
+        __typename
+      }
+      ... {
+        __typename
+      }
+    }
+    ... on Union_jg7vd {
+      ... on Object_HeUWNjSJ2W {
+        __typename
+      }
+    }
+  }
+  jcsu {
+    ...Fragment_bhvchhk0
+    ...Fragment_vDgaf9HZfn
+    __typename
+    __typename
+    __typename @Directive_eaz8FgPa
+    rJCT57O: __typename
+  }
+  ... @Directive_eaz8FgPa {
+    ... on Object_GFi_G {
+      xExnNk6P4V: wtnnoDTYIA {
+        ugjh
+      }
+      ... on Object_GFi_G {
+        __typename
+      }
+    }
+    ... {
+      ...Fragment_ZQNOAP
+      __typename
+      ... on Union_MWG {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_h on Object_HeUWNjSJ2W {
+  oCcQcj
+}
+
+fragment Fragment_vDgaf9HZfn on Object_eiM4 {
+  __typename
+}
+
+fragment Fragment_bhvchhk0 on Object_eiM4 {
+  ...Fragment_vDgaf9HZfn
+}
+
+fragment Fragment_ZQNOAP on Union_MWG {
+  __typename
+}

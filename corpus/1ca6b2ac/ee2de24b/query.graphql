@@ -1,0 +1,13 @@
+query jDt9S($kFfi3N: Boolean!) {
+  ...Fragment_jwZpk4bZ7R
+  ...Fragment_jwZpk4bZ7R
+  __typename @skip(if: $kFfi3N)
+  __typename
+  N93dfesE6o: __typename
+}
+
+fragment Fragment_jwZpk4bZ7R on Object_X {
+  ... on Union_kJ @include(if: true) {
+    __typename
+  }
+}

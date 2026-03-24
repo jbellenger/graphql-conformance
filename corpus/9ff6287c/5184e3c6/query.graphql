@@ -1,0 +1,18 @@
+{
+  ...Fragment_aFX0uN5
+}
+
+fragment Fragment_RRQg01L on Union_tBf {
+  __typename @Directive_Nmj
+}
+
+fragment Fragment_fNgmpRlP8q on Union_jPNbbtBYeQ {
+  ...Fragment_RRQg01L
+  ... on Union_FaWkwHJf {
+    __typename
+  }
+}
+
+fragment Fragment_aFX0uN5 on Union_tBf {
+  ...Fragment_fNgmpRlP8q
+}

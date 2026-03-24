@@ -1,0 +1,21 @@
+query ($jZcxHtl: Boolean! = false@Directive_euRHFwT8P) {
+  ...Fragment_O
+  o
+  o
+  ... on Object_A {
+    ...Fragment_QvwE
+    ... on Union_t07S57S @skip(if: true) {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_O on Union_t07S57S {
+  __typename @include(if: $jZcxHtl)
+}
+
+fragment Fragment_QvwE on Object_A {
+  ... on Union_t07S57S {
+    NKjEj4cXO5: __typename @include(if: false)
+  }
+}

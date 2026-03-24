@@ -1,0 +1,28 @@
+query Z {
+  ... {
+    ... on Union_ZDYVINd {
+      ...Fragment_QC@include(if: false)
+      __typename
+      __typename
+    }
+    ... on Object_WdKOGs53VW {
+      ...Fragment_dLsBEtldI
+      ... on Object_WdKOGs53VW {
+        gsbwQ {
+          __typename
+        }
+        gsbwQ {
+          __typename
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_QC on Object_X0 {
+  Jlx46Lc: __typename
+}
+
+fragment Fragment_dLsBEtldI on Object_WdKOGs53VW {
+  _Z0lI
+}

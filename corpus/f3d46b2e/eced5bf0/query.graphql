@@ -1,0 +1,67 @@
+query j {
+  ...Fragment_aLPpcLYpK@skip(if: false) @Directive_Jut7g
+  ...Fragment_iwqp8
+  ... on Object_o_SYRxMp6k {
+    ...Fragment_aLPpcLYpK
+    VfPEFacqp: __typename
+    ... on Union_GIBVAg {
+      ... on Object_o_SYRxMp6k {
+        __typename @Directive_kSxchz
+      }
+    }
+    ... {
+      ...Fragment_gskFM
+      ... on Union_GIBVAg {
+        __typename
+      }
+    }
+  }
+  ... on Object_o_SYRxMp6k {
+    pokXp {
+      __typename
+      __typename
+      __typename
+    }
+    pokXp {
+      __typename
+      __typename
+      ... on Interface_TiN {
+        nNl0O
+      }
+    }
+  }
+  ... on Object_o_SYRxMp6k {
+    aymzxn3Er: __typename
+  }
+}
+
+fragment Fragment_iwqp8 on Object_o_SYRxMp6k {
+  nim5 {
+    __typename
+  }
+  __typename
+}
+
+fragment Fragment_aLPpcLYpK on Object_o_SYRxMp6k {
+  kaRDAygWb {
+    kO8ap7dl: pK {
+      __typename
+      __typename
+    }
+  }
+  ... on Object_o_SYRxMp6k {
+    ... on Object_o_SYRxMp6k {
+      YtpXMgngV: __typename
+    }
+  }
+  ... on Union_GIBVAg {
+    ...Fragment_iwqp8
+    ... on Union_GIBVAg {
+      OxSRc4qA: __typename
+    }
+  }
+}
+
+fragment Fragment_gskFM on Union_GIBVAg {
+  __typename
+}

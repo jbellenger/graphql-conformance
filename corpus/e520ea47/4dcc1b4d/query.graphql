@@ -1,0 +1,7 @@
+query HKnt_3($tpo5tT: Boolean!) {
+  ...Fragment_mPc_nN@defer(label: "^9")
+}
+
+fragment Fragment_mPc_nN on Object_r8kX_BzHek {
+  __typename @include(if: $tpo5tT)
+}

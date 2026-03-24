@@ -1,0 +1,24 @@
+{
+  ...Fragment_TfETU
+}
+
+fragment Fragment_IlKs8JgTFc on Object_l2szMSq {
+  __typename @include(if: true)
+  _brP
+}
+
+fragment Fragment_TfETU on Object_l2szMSq {
+  _brP
+  ... on Object_l2szMSq {
+    _brP
+  }
+  ... on Object_l2szMSq {
+    ...Fragment_IlKs8JgTFc
+    ... on Object_l2szMSq {
+      Va8q: _brP @Directive_eOrH0olwL
+      iuZfzQKXq: gvbrfN @skip(if: true) {
+        __typename @skip(if: true)
+      }
+    }
+  }
+}

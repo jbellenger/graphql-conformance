@@ -1,0 +1,20 @@
+{
+  ...Fragment_d
+}
+
+fragment Fragment_YZ09ZJZh on Union_vaw {
+  __typename
+}
+
+fragment Fragment_d on Object_Pi {
+  __typename
+  BJfbr: sa @Directive_J52m_6PHv8 @skip(if: true)
+  ... on Union_L2D {
+    ...Fragment_YZ09ZJZh
+  }
+  ... on Union_vaw {
+    ... on Object_Aa96 {
+      __typename
+    }
+  }
+}

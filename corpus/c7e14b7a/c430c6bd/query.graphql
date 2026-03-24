@@ -1,0 +1,17 @@
+{
+  ...Fragment_JNHhRd8wvt
+}
+
+fragment Fragment_qxT_a on Union_t07S57S {
+  __typename
+  __typename
+}
+
+fragment Fragment_JNHhRd8wvt on Union_t07S57S {
+  ... on Union_tdk3 {
+    ...Fragment_qxT_a
+  }
+  ... on Union_tdk3 {
+    __typename
+  }
+}

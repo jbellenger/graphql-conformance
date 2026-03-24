@@ -1,0 +1,26 @@
+query z {
+  ...Fragment_t8x2q6n
+  ... on Union_Jy2 {
+    ...Fragment_jD9cjRgHB
+    ...Fragment_jD9cjRgHB
+  }
+  ... {
+    ... on Union_Thr {
+      vuwyllJoM_: __typename
+      ... on Object_PWvnL0k {
+        __typename
+      }
+    }
+  }
+  ... on Union_Jy2 {
+    ...Fragment_jD9cjRgHB
+  }
+}
+
+fragment Fragment_t8x2q6n on Union_Jy2 {
+  __typename
+}
+
+fragment Fragment_jD9cjRgHB on Union_Thr {
+  ...Fragment_t8x2q6n
+}

@@ -1,0 +1,17 @@
+query g {
+  ...Fragment_Ura
+  __typename
+}
+
+fragment Fragment_Ura on Union_m {
+  Ui2B_t: __typename
+  __typename
+  ... on Union_rVxOn4uGyL {
+    __typename
+    __typename
+    __typename
+    ... on Union_uKzji {
+      __typename
+    }
+  }
+}

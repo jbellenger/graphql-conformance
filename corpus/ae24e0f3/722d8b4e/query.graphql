@@ -1,0 +1,23 @@
+query exMpEKEBk {
+  ... on Union_riXZ4INezI {
+    ... on Union_riXZ4INezI {
+      ...Fragment_B420LQ
+    }
+    ... on Union_riXZ4INezI {
+      __typename
+    }
+  }
+  ... on Union_ATXQDAj {
+    ...Fragment_lMBUes
+    ...Fragment_lMBUes
+  }
+}
+
+fragment Fragment_B420LQ on Union_kMwusUJ {
+  __typename
+  GJP5: __typename
+}
+
+fragment Fragment_lMBUes on Union_ATXQDAj {
+  __typename
+}

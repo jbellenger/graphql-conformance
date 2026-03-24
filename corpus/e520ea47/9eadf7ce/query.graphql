@@ -1,0 +1,19 @@
+query SeXIc_Sg {
+  ...Fragment_D
+  ...Fragment_D
+}
+
+fragment Fragment_D on Object_r8kX_BzHek {
+  ... on Object_r8kX_BzHek {
+    __typename
+    hm: bv {
+      vgaT {
+        __typename
+      }
+    }
+    __typename @include(if: true)
+    ... on Object_r8kX_BzHek {
+      CWbxrO: __typename
+    }
+  }
+}

@@ -1,0 +1,28 @@
+query oc6smBiqw($s94: Boolean!) {
+  ...Fragment_g
+  j2K5pYV2v {
+    ...Fragment_fo@skip(if: $s94) @Directive_NY
+    __typename
+    ... on Union_bF6GKhAkVy {
+      ...Fragment_Xw_ULT1E
+    }
+    ... on Object_fT2 {
+      ... on Union_bF6GKhAkVy @defer(if: true, label: "cVi") {
+        BiWUHzVgA: __typename
+      }
+    }
+  }
+  __typename
+}
+
+fragment Fragment_g on Object_Fpsww {
+  __typename
+}
+
+fragment Fragment_fo on Union_SQ {
+  __typename
+}
+
+fragment Fragment_Xw_ULT1E on Union_bF6GKhAkVy @Directive__INm @Directive_KRQR{
+  M9Of: __typename
+}

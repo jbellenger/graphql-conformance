@@ -1,0 +1,16 @@
+{
+  ...Fragment_rT8MGW@defer(if: true, label: "mi\\")
+}
+
+fragment Fragment_BMK on Object_jaCN {
+  bQG: h
+  __typename
+}
+
+fragment Fragment_rT8MGW on Union_Xj {
+  ... on Union_Xj @Directive_xJ2 {
+    ...Fragment_BMK
+    __typename
+    oXflTEz: __typename
+  }
+}

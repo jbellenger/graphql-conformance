@@ -1,0 +1,22 @@
+query lxAEDAIKU @Directive_Z6n {
+  ... on Union_dwkjJ {
+    ... on Object_tGtUJAtJZ {
+      ... on Object_tGtUJAtJZ {
+        __typename
+      }
+    }
+    ... on Union_dwkjJ {
+      ...Fragment_DbL
+      __typename
+      QvfYSTsYRy: __typename
+    }
+  }
+  ... on Object_Q {
+    ...Fragment_DbL
+    ...Fragment_DbL
+  }
+}
+
+fragment Fragment_DbL on Union_dwkjJ {
+  __typename
+}

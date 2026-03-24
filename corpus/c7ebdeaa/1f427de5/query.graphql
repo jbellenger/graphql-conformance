@@ -1,0 +1,9 @@
+query ivZPQ4 {
+  ... on Union_LO3x36jcpM {
+    __typename
+    __typename
+    ... on Union_LO3x36jcpM {
+      __typename @skip(if: false)
+    }
+  }
+}

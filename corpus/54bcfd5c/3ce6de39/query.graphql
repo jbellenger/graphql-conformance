@@ -1,0 +1,40 @@
+query ($fFKV_oR: Enum_xvxpRyb4Jw) {
+  jcsu {
+    ...Fragment_I9ayvlkgp
+    ...Fragment_I9ayvlkgp
+    __typename
+    __typename
+    ... on Object_GFi_G {
+      ... on Object_GFi_G {
+        __typename
+      }
+    }
+    ... on Object_GFi_G {
+      ...Fragment_sApkLvhcHj
+      __typename
+      ... on Object_GFi_G {
+        __typename
+      }
+    }
+  }
+  ... on Object_GFi_G {
+    ... on Union_MWG {
+      ...Fragment_sApkLvhcHj
+      joe: __typename
+      ... on Object_eiM4 {
+        xefK(piXki8loW: {b : -100001233, opz : "O"}, udYguhkSZ9: nagCK0)
+      }
+    }
+    ... on Union_MWG {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_I9ayvlkgp on Object_eiM4 {
+  xefK(udYguhkSZ9: $fFKV_oR)
+}
+
+fragment Fragment_sApkLvhcHj on Union_MWG {
+  __typename
+}

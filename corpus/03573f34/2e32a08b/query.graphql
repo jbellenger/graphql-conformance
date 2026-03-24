@@ -1,0 +1,31 @@
+query ($kJ8hrxR: Boolean! = true@Directive_RtXxkf) {
+  ...Fragment_Q
+  ...Fragment_Q
+  puaq39dlg: x4cbu6cZ {
+    deWZL @skip(if: $kJ8hrxR)
+    ... on Interface_j4AUR @defer(if: true, label: "") {
+      ... on Interface_j4AUR_STUB {
+        deWZL
+      }
+    }
+  }
+}
+
+fragment Fragment_Nic on Union_LwpriNm {
+  __typename
+}
+
+fragment Fragment_En7RGd on Union_V1o7oS {
+  ...Fragment_Nic
+  H3Nl_: __typename
+}
+
+fragment Fragment_Q on Object_lpJFn {
+  ...Fragment_En7RGd
+  ... on Union_LwpriNm @defer(if: false, label: "c") {
+    ...Fragment_Nic
+    __typename
+    __typename
+    __typename
+  }
+}

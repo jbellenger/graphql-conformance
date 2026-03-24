@@ -1,0 +1,26 @@
+query Lgyzn {
+  ...Fragment_dR8QMuqZ
+  ... on Interface_Kl5Z {
+    ... on Interface_XVRBXbnSAy {
+      __typename @Directive_B1
+    }
+  }
+}
+
+fragment Fragment_yU1cnsD8c on Object_hEw {
+  sg2E {
+    __typename
+  }
+}
+
+fragment Fragment_aM4EyZ on Interface_Kl5Z {
+  ...Fragment_yU1cnsD8c
+  __typename
+  ... {
+    __typename
+  }
+}
+
+fragment Fragment_dR8QMuqZ on Interface_Kl5Z {
+  ...Fragment_aM4EyZ
+}

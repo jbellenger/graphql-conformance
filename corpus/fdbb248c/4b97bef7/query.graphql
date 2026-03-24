@@ -1,0 +1,29 @@
+query wsbd {
+  ...Fragment_KgmEmDNN
+  ...Fragment_LKxhE5N3X@Directive_GA1SZCaXM
+  SygeseSO: __typename @include(if: false)
+  ... on Union_bC {
+    __typename
+    __typename @include(if: false)
+  }
+  ... on Union_KmNHV5 {
+    __typename
+  }
+  ... on Union_KmNHV5 {
+    ...Fragment_LKxhE5N3X
+    SlQhJJwP: __typename
+    ... on Object_i__zyN8J {
+      cP1gC @Directive_lqu
+    }
+  }
+}
+
+fragment Fragment_LKxhE5N3X on Object_u {
+  __typename
+}
+
+fragment Fragment_KgmEmDNN on Union_KmNHV5 {
+  ... on Object_u {
+    ...Fragment_LKxhE5N3X
+  }
+}

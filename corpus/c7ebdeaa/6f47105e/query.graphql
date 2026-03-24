@@ -1,0 +1,20 @@
+query UxL6tV9k25 {
+  ...Fragment_F3qRy
+  Rp4P: f0hY
+}
+
+fragment Fragment_KsNp on Union_qy9D4YfNe {
+  __typename
+}
+
+fragment Fragment_Lg on Interface_odHH2 {
+  ...Fragment_KsNp
+}
+
+fragment Fragment_F3qRy on Union_qy9D4YfNe {
+  ...Fragment_Lg
+  ... on Union_qy9D4YfNe {
+    ...Fragment_KsNp
+    __typename
+  }
+}

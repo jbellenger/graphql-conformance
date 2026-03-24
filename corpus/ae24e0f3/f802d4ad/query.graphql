@@ -1,0 +1,25 @@
+query wuH @experimental_disableErrorPropagation {
+  ...Fragment_OYBgC
+  ... on Union_kMwusUJ {
+    ... on Union_riXZ4INezI {
+      __typename
+    }
+    ... on Object_Q2Rm4 {
+      _dtJyV2_ {
+        ir: turJ
+      }
+      ... on Union_kMwusUJ {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_uRL on Object_K0b5ePiHN {
+  aZ4fK1deRM
+}
+
+fragment Fragment_OYBgC on Union_kMwusUJ {
+  ...Fragment_uRL
+  ...Fragment_uRL
+}

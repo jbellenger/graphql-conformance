@@ -1,0 +1,18 @@
+{
+  ...Fragment_klqyUktA
+  ... on Object_ApwfNHZGC {
+    __typename @include(if: true)
+  }
+}
+
+fragment Fragment_Un on Object_ApwfNHZGC {
+  ... on Union_oUbZw {
+    Y70: __typename
+  }
+}
+
+fragment Fragment_klqyUktA on Union_r5qzLthUMJ {
+  ...Fragment_Un
+  ...Fragment_Un
+  __typename
+}

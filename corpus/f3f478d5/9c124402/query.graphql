@@ -1,0 +1,25 @@
+{
+  ...Fragment_Qh
+  ... on Union_ZDYVINd {
+    __typename
+  }
+  ... on Object_WdKOGs53VW @Directive_CLCh {
+    ...Fragment_Qh
+  }
+}
+
+fragment Fragment_kPVZ8dHTgQ on Union_Q @Directive_CLCh{
+  __typename
+}
+
+fragment Fragment_dw3BZyE on Union_ZDYVINd {
+  ...Fragment_kPVZ8dHTgQ
+  ... on Union_Q {
+    __typename
+  }
+}
+
+fragment Fragment_Qh on Object_WdKOGs53VW @Directive_yzzzzzzzzz{
+  ...Fragment_dw3BZyE
+  ...Fragment_kPVZ8dHTgQ
+}

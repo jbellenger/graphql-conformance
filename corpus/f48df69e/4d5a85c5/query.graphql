@@ -1,0 +1,63 @@
+query ($qYS5_g9: Enum_ENSQq4ikQR!) {
+  ... on Union_q7_Ay_TgQs {
+    __typename
+    __typename
+  }
+  ... on Object_KJDYJkCZK {
+    ...Fragment_ajQW
+    ...Fragment_tg8rM
+    xasLfxDyG(w: $qYS5_g9) {
+      JBKPWJHpE: __typename
+    }
+    __typename @Directive_dU_A
+    nJtm {
+      ...Fragment_IR7HZJz@skip(if: true)
+      ... on Union_zuQO {
+        __typename
+      }
+    }
+    __typename
+    ... on Union_q7_Ay_TgQs {
+      ...Fragment_aYkvY
+      __typename
+      __typename
+      __typename
+      ... on Union_q7_Ay_TgQs {
+        __typename @Directive_uWXh5i(rbllm: null)
+      }
+    }
+    ... on Union_q7_Ay_TgQs {
+      ... on Object_KJDYJkCZK {
+        N: nJtm {
+          o: __typename
+        }
+      }
+    }
+  }
+  ... {
+    ...Fragment_UYyK
+  }
+}
+
+fragment Fragment_tg8rM on Union_q7_Ay_TgQs {
+  __typename
+  __typename
+}
+
+fragment Fragment_ajQW on Object_KJDYJkCZK @Directive_dU_A{
+  ...Fragment_tg8rM
+  __typename
+  __typename
+}
+
+fragment Fragment_IR7HZJz on Object_Tyb {
+  a
+}
+
+fragment Fragment_aYkvY on Union_q7_Ay_TgQs {
+  towbZ: __typename
+}
+
+fragment Fragment_UYyK on Union_q7_Ay_TgQs {
+  __typename
+}

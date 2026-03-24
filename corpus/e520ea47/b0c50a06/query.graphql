@@ -1,0 +1,18 @@
+{
+  ...Fragment_b
+  ...Fragment_b
+}
+
+fragment Fragment_nspSxy1w on Interface_fJ {
+  vgaT {
+    __typename
+  }
+}
+
+fragment Fragment_b on Object_r8kX_BzHek {
+  bv {
+    ...Fragment_nspSxy1w
+    __typename
+  }
+  __typename
+}

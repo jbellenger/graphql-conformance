@@ -1,0 +1,17 @@
+query IVN {
+  ...Fragment_Vr
+  ... on Object_ARs {
+    ... on Union_PY9m {
+      FvNQJr: __typename
+    }
+  }
+}
+
+fragment Fragment_VJ on Union_PY9m {
+  __typename
+}
+
+fragment Fragment_Vr on Object_ARs {
+  ...Fragment_VJ
+  __typename
+}

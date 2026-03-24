@@ -1,0 +1,8 @@
+{
+  ...Fragment_IR
+  __typename
+}
+
+fragment Fragment_IR on Union_b {
+  __typename @include(if: true)
+}

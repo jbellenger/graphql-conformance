@@ -1,0 +1,11 @@
+query O5o {
+  ... {
+    ... on Union_t07S57S {
+      ...Fragment_zj_Ollpr
+    }
+  }
+}
+
+fragment Fragment_zj_Ollpr on Object_A {
+  o @include(if: true)
+}

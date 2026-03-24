@@ -1,0 +1,28 @@
+query Cu0Mi0YHy {
+  xasLfxDyG(w: _8) {
+    ...Fragment_up
+  }
+  ... on Object_KJDYJkCZK {
+    ... {
+      ...Fragment_bj6z6kzfQ
+    }
+  }
+  ... on Object_KJDYJkCZK {
+    ...Fragment_bj6z6kzfQ
+    __typename
+  }
+  ... on Object_KJDYJkCZK @include(if: false) {
+    __typename
+  }
+}
+
+fragment Fragment_up on Interface_Z3qS8PZ {
+  ... on Interface_Z3qS8PZ_STUB {
+    v: pqUM6HmA
+    pqUM6HmA
+  }
+}
+
+fragment Fragment_bj6z6kzfQ on Union_q7_Ay_TgQs {
+  __typename
+}

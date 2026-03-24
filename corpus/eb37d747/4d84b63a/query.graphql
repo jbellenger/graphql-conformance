@@ -1,0 +1,14 @@
+query fgFKK4AXG {
+  ...Fragment_BD5_B2fkhh
+  ...Fragment_MynwHkf
+  ...Fragment_BD5_B2fkhh
+}
+
+fragment Fragment_BD5_B2fkhh on Union_fV {
+  _JPaJtS4: __typename
+}
+
+fragment Fragment_MynwHkf on Object_kxCztsiP {
+  ...Fragment_BD5_B2fkhh@defer(if: true, label: "")
+  ...Fragment_BD5_B2fkhh
+}

@@ -1,0 +1,35 @@
+query CX16 {
+  ...Fragment_aQvyUUn
+  __typename
+  voy0z1a {
+    ...Fragment_Yrp4
+    ...Fragment_UNPCO_Sj5
+    oes0KszcxF {
+      ...Fragment_Yrp4
+      oes0KszcxF {
+        __typename
+      }
+      ... on Interface_HVXwjPG1i_STUB {
+        j: kK(xpAkWIZI: {lkA : false}) @include(if: false)
+        ltxl0GbY_ {
+          vLO6t: n3szJu_dDr {
+            k9C2z8ms: __typename
+          }
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_aQvyUUn on Union_bC {
+  __typename
+  __typename
+}
+
+fragment Fragment_UNPCO_Sj5 on Interface_HVXwjPG1i_STUB {
+  __typename
+}
+
+fragment Fragment_Yrp4 on Interface_HVXwjPG1i {
+  ...Fragment_UNPCO_Sj5
+}

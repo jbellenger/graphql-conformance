@@ -1,0 +1,32 @@
+query MdipEx($iOsuXs9: Boolean! = false) {
+  n4aIrhR9 @skip(if: false) {
+    ...Fragment_W
+    ...Fragment_sOElA
+    wsf7(kPd1dbBJ_n: "") @Directive_A {
+      __typename
+      zM: __typename
+    }
+  }
+  ... on Object_CKq3_jm {
+    ...Fragment_W
+    _5F(lgXPGNBBj: OBJoLBJ)
+    _5F(lgXPGNBBj: OBJoLBJ)
+    n4aIrhR9 {
+      ...Fragment_sOElA
+    }
+    ... on Object_CKq3_jm {
+      ...Fragment_W
+    }
+  }
+}
+
+fragment Fragment_sOElA on Union_o2Shdr3G {
+  __typename
+}
+
+fragment Fragment_W on Union_w1T9yAe5o {
+  ...Fragment_sOElA@skip(if: $iOsuXs9)
+  Y0Hv4t: __typename
+  __typename
+  __typename
+}

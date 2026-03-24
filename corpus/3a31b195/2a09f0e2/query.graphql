@@ -1,0 +1,11 @@
+query DDSHbokB($dDDt8rfkG: Boolean!) {
+  ...Fragment_jCSRX6@skip(if: $dDDt8rfkG)
+  ...Fragment_jCSRX6
+  kQAYnKy4fG(iz3Y: "hV")
+}
+
+fragment Fragment_jCSRX6 on Union_D {
+  ... on Union_bGUiBDL7P {
+    MJBsTl: __typename
+  }
+}

@@ -1,0 +1,22 @@
+query ($kPRwKlz: Boolean!) {
+  ...Fragment_V2s
+  ...Fragment_V2s
+  ...Fragment_V2s
+  ... {
+    d: pokXp {
+      __typename
+    }
+    kaRDAygWb {
+      ...Fragment_b1vnEJX3e
+      lQryQMLDk
+    }
+  }
+}
+
+fragment Fragment_V2s on Object_o_SYRxMp6k {
+  __typename
+}
+
+fragment Fragment_b1vnEJX3e on Interface_awZryk3_STUB {
+  lQryQMLDk @skip(if: $kPRwKlz)
+}

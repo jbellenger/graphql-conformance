@@ -1,0 +1,40 @@
+query Voi {
+  ...Fragment_LQaR
+  ...Fragment_LQaR
+  ...Fragment_rZv9
+  U6w4KQ5: bhU2eyihMO
+}
+
+fragment Fragment_WH on Union_c {
+  UaiIZzs: __typename
+  __typename
+}
+
+fragment Fragment_Lx6b3Va on Object_xDJ5nTpR {
+  ...Fragment_WH
+  ... on Union_c @Directive_x {
+    __typename
+    foG1r: __typename
+  }
+}
+
+fragment Fragment_ILK on Union_j77RQEqd {
+  Li8NCCLvd: __typename
+}
+
+fragment Fragment_LQaR on Union_c {
+  ...Fragment_Lx6b3Va
+  ...Fragment_Lx6b3Va
+  ... on Object_xDJ5nTpR {
+    ...Fragment_Lx6b3Va
+    q: bhU2eyihMO
+  }
+  ... on Union_c {
+    ...Fragment_ILK
+    __typename
+  }
+}
+
+fragment Fragment_rZv9 on Union_j77RQEqd {
+  __typename
+}

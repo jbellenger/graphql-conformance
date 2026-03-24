@@ -1,0 +1,19 @@
+query G95 {
+  ...Fragment_J1
+  dS
+  __typename
+  __typename
+}
+
+fragment Fragment_m7YS9 on Object_dF4Jqm {
+  X8: __typename
+  dS
+}
+
+fragment Fragment_J1 on Union_mbB5eJqkZp {
+  __typename
+  __typename
+  ... on Union_mbB5eJqkZp {
+    ...Fragment_m7YS9
+  }
+}

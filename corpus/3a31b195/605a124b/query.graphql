@@ -1,0 +1,26 @@
+query ($xaBl9p4Y: String = "6'") {
+  ...Fragment_pfTGm
+}
+
+fragment Fragment_qcY on Union_bGUiBDL7P {
+  __typename
+}
+
+fragment Fragment_pfTGm on Object_E0NcK8 {
+  kQAYnKy4fG(iz3Y: $xaBl9p4Y)
+  __typename
+  pU {
+    ...Fragment_qcY
+    Xfs3nYBZ: __typename
+    __typename
+    C5b9K: __typename
+    ... on Union_D {
+      __typename
+    }
+  }
+  Kl: kQAYnKy4fG(iz3Y: null)
+  ... on Interface_R {
+    __typename
+    kQAYnKy4fG(iz3Y: $xaBl9p4Y) @Directive_Y7D
+  }
+}

@@ -1,0 +1,15 @@
+query qbujgkEY {
+  ... on Union_b {
+    ...Fragment_wa2vBF
+  }
+}
+
+fragment Fragment_fot917i on Object_aaghjtY {
+  _DCD: __typename @skip(if: true)
+}
+
+fragment Fragment_wa2vBF on Union_x {
+  ...Fragment_fot917i
+  __typename
+  __typename
+}

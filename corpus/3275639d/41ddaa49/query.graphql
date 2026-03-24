@@ -1,0 +1,37 @@
+{
+  ...Fragment_Pd
+  ...Fragment_XvE
+  VO: gw4aVFsyRl(_Ko3: {uAu_7LWo2 : null})
+}
+
+fragment Fragment_Ag on Union_DvQeDk0t {
+  __typename
+}
+
+fragment Fragment_Pd on Interface_jY {
+  uBHV @Directive_t {
+    ...Fragment_Ag
+    qF
+    qF
+  }
+}
+
+fragment Fragment_ZMm on Union_toyLE9 {
+  m1efv: __typename
+  ... on Object_rUQu6no5 @include(if: false) {
+    eL76bg2a
+  }
+}
+
+fragment Fragment_XvE on Interface_jY {
+  ...Fragment_Pd
+  ...Fragment_ZMm
+  __typename
+  gw4aVFsyRl(_Ko3: {uAu_7LWo2 : "@vV"}) @Directive_gA91skbj
+  ... on Object_Yeeu {
+    ...Fragment_ZMm
+    uBHV {
+      Kh: __typename
+    }
+  }
+}

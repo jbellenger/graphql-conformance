@@ -1,0 +1,14 @@
+{
+  dQ6WtE34
+  ... on Union_YFL {
+    __typename
+  }
+  ... on Union_i {
+    ...Fragment_IwR
+    ...Fragment_IwR
+  }
+}
+
+fragment Fragment_IwR on Union_i @Directive_N{
+  __typename
+}

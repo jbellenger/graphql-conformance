@@ -1,0 +1,22 @@
+query EhVA5 {
+  ...Fragment_D2v4MIb
+  ...Fragment_D2v4MIb
+}
+
+fragment Fragment_Y92vI on Object_ApwfNHZGC {
+  ... on Union_oUbZw {
+    __typename @Directive_bMwwlKOTf
+  }
+}
+
+fragment Fragment_D2v4MIb on Object_ApwfNHZGC {
+  ...Fragment_Y92vI@Directive_ZAG8
+  ...Fragment_Y92vI
+  ... on Union_r5qzLthUMJ {
+    __typename
+  }
+  ... on Union_r5qzLthUMJ {
+    ...Fragment_Y92vI
+    q1Kf4Syb: __typename
+  }
+}

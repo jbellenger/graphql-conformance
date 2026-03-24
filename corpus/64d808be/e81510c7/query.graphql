@@ -1,0 +1,38 @@
+query ItiS2RTwB($hHYn: Boolean!) {
+  ...Fragment_ZcMqk0
+  __typename
+  Z2xyUOSp: hvzm_i {
+    ... on Interface_ViLxiyDP @skip(if: $hHYn) {
+      qlGH1 @skip(if: false)
+      ... on Interface_WtRbrIvF0_STUB {
+        xfMu(rGM93e: [true, false])
+      }
+    }
+  }
+  sJyo0XqzFb @Directive_N {
+    ...Fragment_vMd_tHLY@Directive_hNaBov45f
+    ...Fragment_D_@include(if: false) @skip(if: true) @Directive_N
+    ... on Object_G8n {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_GmSM8oW5TP on Union_s {
+  SvXchh: __typename
+}
+
+fragment Fragment_ZcMqk0 on Union_g {
+  ...Fragment_GmSM8oW5TP
+  ...Fragment_GmSM8oW5TP
+}
+
+fragment Fragment_vMd_tHLY on Union_Odg {
+  __typename
+}
+
+fragment Fragment_D_ on Union_Odg {
+  ... on Union_s {
+    __typename
+  }
+}

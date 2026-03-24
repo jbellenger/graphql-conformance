@@ -1,0 +1,20 @@
+{
+  ...Fragment_qaTKH9C
+}
+
+fragment Fragment_KqE7cmk on Object_Fpsww {
+  __typename
+  j2K5pYV2v {
+    __typename
+  }
+}
+
+fragment Fragment_qaTKH9C on Object_Fpsww {
+  j2K5pYV2v {
+    __typename
+    __typename
+  }
+  ... on Object_Fpsww {
+    ...Fragment_KqE7cmk
+  }
+}

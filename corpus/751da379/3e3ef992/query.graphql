@@ -1,0 +1,14 @@
+query Ram {
+  ...Fragment_xobGxvhvm
+}
+
+fragment Fragment_qISaEGrXsf on Object_jHAw1p @Directive_YTuALY{
+  ... on Object_jHAw1p {
+    d1jJl4ACGJ
+  }
+}
+
+fragment Fragment_xobGxvhvm on Object_jHAw1p {
+  ...Fragment_qISaEGrXsf
+  ...Fragment_qISaEGrXsf
+}

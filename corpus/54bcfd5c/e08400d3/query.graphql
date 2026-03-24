@@ -1,0 +1,19 @@
+query BDKQIZqs6($hnJ30ir_Su: Boolean!) {
+  ...Fragment_xxF
+  ... on Union_MWG {
+    T9TPagX: __typename @skip(if: false)
+  }
+}
+
+fragment Fragment_MwK6lZt on Object_GFi_G @Directive_eaz8FgPa{
+  ... {
+    HYjMEhj4Eh: __typename @skip(if: $hnJ30ir_Su)
+  }
+}
+
+fragment Fragment_xxF on Object_GFi_G {
+  ...Fragment_MwK6lZt
+  uF6C: jcsu @Directive_eaz8FgPa {
+    __typename
+  }
+}

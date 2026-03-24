@@ -1,0 +1,37 @@
+query fm5 {
+  ...Fragment_X3sB4AV
+  ... on Object_l2szMSq {
+    lqhE {
+      ... on Interface_Dx_STUB {
+        woGR8
+      }
+    }
+  }
+  ... on Object_l2szMSq {
+    _brP
+  }
+}
+
+fragment Fragment_GVOeoTc on Object_l2szMSq {
+  lqhE {
+    woGR8
+  }
+  gvbrfN {
+    tqeu8: __typename
+  }
+  lqhE @skip(if: true) {
+    woGR8
+  }
+  ... on Object_l2szMSq {
+    _brP
+  }
+}
+
+fragment Fragment_X3sB4AV on Object_l2szMSq {
+  ...Fragment_GVOeoTc
+  ... on Object_l2szMSq {
+    ... on Object_l2szMSq {
+      _brP
+    }
+  }
+}

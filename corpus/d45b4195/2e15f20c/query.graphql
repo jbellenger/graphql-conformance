@@ -1,0 +1,10 @@
+query Fw3zBY($rO: Boolean!) {
+  _5F(lgXPGNBBj: null)
+  n4aIrhR9 @skip(if: $rO) {
+    ... on Union_CMcuG {
+      ... on Union_o2Shdr3G {
+        __typename @Directive_D
+      }
+    }
+  }
+}

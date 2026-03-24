@@ -1,0 +1,25 @@
+query M {
+  ... on Union_QC {
+    ...Fragment_wPxqWyXT9A
+    ...Fragment_wPxqWyXT9A
+    __typename
+  }
+  ... on Union_QC @Directive_c {
+    __typename
+  }
+  ... {
+    ... on Object_RpkZy {
+      ...Fragment_md4Zl
+    }
+  }
+}
+
+fragment Fragment_wPxqWyXT9A on Object_ACuleun {
+  ... on Union_TVHdVZ6 {
+    __typename
+  }
+}
+
+fragment Fragment_md4Zl on Union_QC {
+  aonwfsz: __typename
+}

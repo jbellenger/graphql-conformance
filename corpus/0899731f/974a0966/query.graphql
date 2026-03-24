@@ -1,0 +1,31 @@
+query k2fsZ {
+  ...Fragment_dB
+  ...Fragment_dB
+  k
+  sn6N8tbgL
+  k
+  ... on Object_ARs {
+    ...Fragment_aUkAcUIw
+    k
+    __typename
+  }
+}
+
+fragment Fragment_QG on Object_ARs {
+  ib4mE
+}
+
+fragment Fragment_aUkAcUIw on Object_ARs {
+  ...Fragment_QG
+  ... on Union_PY9m {
+    fIG9: __typename
+  }
+}
+
+fragment Fragment_dB on Object_ARs {
+  ...Fragment_aUkAcUIw
+  ib4mE
+  sn6N8tbgL
+  ib4mE
+  ib4mE
+}

@@ -1,0 +1,39 @@
+query i651dpDJEz($eGYi: Boolean!) {
+  ...Fragment_E2
+  ... on Interface_Kl5Z {
+    o8
+    __typename
+    ni1bbI5AU
+  }
+  ... on Interface_XVRBXbnSAy {
+    Z9HhIxkWV: ni1bbI5AU @Directive_pne
+  }
+  ... on Interface_Kl5Z {
+    ... on Interface_XVRBXbnSAy @defer(if: true, label: "z") {
+      o8 @Directive_pne
+    }
+    ... on Interface_XVRBXbnSAy {
+      ...Fragment_B
+      NndFy: o8
+    }
+  }
+}
+
+fragment Fragment_B on Object_hEw {
+  ni1bbI5AU
+  sg2E {
+    o8 @Directive_B1
+  }
+}
+
+fragment Fragment_E2 on Object_hEw @Directive_rgEeY{
+  dJczP8Cs {
+    __typename
+  }
+  sg2E {
+    ...Fragment_B@include(if: $eGYi)
+    ... on Interface_XVRBXbnSAy {
+      ni1bbI5AU
+    }
+  }
+}

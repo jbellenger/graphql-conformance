@@ -1,0 +1,18 @@
+{
+  ...Fragment_K2G
+  ... on Union_m {
+    __typename
+  }
+}
+
+fragment Fragment_gi1gaD3 on Union_uKzji {
+  __typename @include(if: true)
+}
+
+fragment Fragment_lAd04WY on Union_m {
+  ...Fragment_gi1gaD3
+}
+
+fragment Fragment_K2G on Union_m {
+  ...Fragment_lAd04WY
+}

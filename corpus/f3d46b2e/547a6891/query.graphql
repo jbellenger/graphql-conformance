@@ -1,0 +1,89 @@
+query stZgLGnl {
+  ...Fragment_s
+  ...Fragment_MX27LK
+  ...Fragment_s
+  pokXp {
+    ...Fragment__
+    ...Fragment__
+  }
+  ... {
+    ...Fragment_MX27LK
+    ...Fragment_HcBPTK7QW
+    ... on Union_GIBVAg {
+      ...Fragment_MX27LK
+      __typename
+      __typename
+      ... on Object_o_SYRxMp6k {
+        FG: kaRDAygWb {
+          pK {
+            __typename
+          }
+        }
+        pokXp {
+          __typename
+        }
+      }
+    }
+    ... on Object_o_SYRxMp6k {
+      ...Fragment_MX27LK
+      nim5 {
+        __typename
+      }
+      ... on Union_GIBVAg {
+        __typename
+      }
+    }
+  }
+  ... on Object_o_SYRxMp6k {
+    __typename
+    ... on Union_GIBVAg @Directive_kSxchz {
+      ...Fragment_vqmW8kam
+      SLxNOVIQJF: __typename @include(if: false)
+      t: __typename
+    }
+  }
+}
+
+fragment Fragment_k on Object_o_SYRxMp6k @Directive_DNz_ @Directive_kSxchz @Directive_Jut7g{
+  T_7F7gKH: __typename
+}
+
+fragment Fragment_MX27LK on Union_GIBVAg {
+  ...Fragment_k@Directive_kSxchz @Directive_Jut7g
+}
+
+fragment Fragment_s on Object_o_SYRxMp6k {
+  ...Fragment_MX27LK
+  ...Fragment_k
+  ... on Union_GIBVAg {
+    ...Fragment_MX27LK
+    ... on Union_GIBVAg {
+      z3wnZx: __typename
+    }
+  }
+}
+
+fragment Fragment__ on Union_fWXn {
+  mHnQqqLkpi: __typename
+  __typename
+}
+
+fragment Fragment_HcBPTK7QW on Object_o_SYRxMp6k {
+  ...Fragment_k
+  __typename
+  nim5 {
+    pokXp {
+      __typename
+    }
+    pokXp {
+      Jqw2g: __typename
+    }
+  }
+  ... on Object_o_SYRxMp6k {
+    __typename
+  }
+}
+
+fragment Fragment_vqmW8kam on Object_o_SYRxMp6k {
+  __typename
+}

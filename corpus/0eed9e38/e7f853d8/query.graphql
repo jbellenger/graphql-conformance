@@ -1,0 +1,20 @@
+query b1VGl($jkJ7x: Int) @Directive_A8hbg9pV9C {
+  ... on Union_mHu2ImJ {
+    ...Fragment_V6yZ
+    __typename
+  }
+  ... on Union_mHu2ImJ {
+    ... on Object_UBtsyN {
+      jUfFxVcV(ewqDKXOW: $jkJ7x)
+    }
+  }
+  ... on Union_JDbbTXHncn @defer(label: "PA") {
+    ...Fragment_V6yZ
+  }
+}
+
+fragment Fragment_V6yZ on Union_nfuW {
+  ... on Object_UBtsyN {
+    izsxRU @Directive_A8hbg9pV9C
+  }
+}

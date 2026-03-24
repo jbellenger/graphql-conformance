@@ -1,0 +1,16 @@
+query RZTb {
+  ... on Object_A {
+    ...Fragment_Xj
+    ...Fragment_Xj
+    o
+  }
+  ... on Object_A {
+    ...Fragment_Xj
+  }
+}
+
+fragment Fragment_Xj on Object_A {
+  ... on Object_A {
+    s9
+  }
+}

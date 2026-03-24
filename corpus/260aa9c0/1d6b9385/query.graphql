@@ -1,0 +1,15 @@
+query CJe {
+  ...Fragment_d1Kmt9
+  __typename
+}
+
+fragment Fragment_dDUf on Object_IVFUlKvt {
+  ... on Union_eSJkyHV {
+    SQtbxzr: __typename
+  }
+}
+
+fragment Fragment_d1Kmt9 on Object_IVFUlKvt {
+  ...Fragment_dDUf
+  ...Fragment_dDUf
+}

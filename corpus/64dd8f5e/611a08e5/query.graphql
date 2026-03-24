@@ -1,0 +1,28 @@
+query bWqHZRAW @Directive_B5bp7 {
+  ... on Object_yzOmN {
+    ...Fragment_h
+    ...Fragment_h@defer(if: true, label: " XO") @include(if: false)
+    ... on Union_VLsx {
+      QaRN: __typename
+    }
+    ... on Union_GfmCKxl {
+      ...Fragment_Ei
+      ... on Union_VLsx {
+        rYYOcUF: __typename
+      }
+    }
+  }
+  ... on Union_GfmCKxl {
+    __typename
+  }
+}
+
+fragment Fragment_h on Object_yzOmN {
+  ... on Union_VLsx {
+    __typename
+  }
+}
+
+fragment Fragment_Ei on Union_VLsx {
+  __typename
+}

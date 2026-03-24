@@ -1,0 +1,27 @@
+query F8gJZ($r: String) {
+  ... on Union_QKwi {
+    __typename
+    ... on Union_Jg {
+      __typename
+      __typename
+      ... on Interface_PegFSq {
+        qIOSwyJt5A: __typename
+      }
+    }
+    ... on Object_UCrvMtG2H {
+      ...Fragment_g5x4Epd
+      __typename
+      bzGh1c2(zAE9TSf: $r)
+      j5YWqY9 {
+        __typename @include(if: false)
+      }
+      ... on Union_QKwi {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_g5x4Epd on Union_QKwi {
+  __typename
+}

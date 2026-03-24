@@ -1,0 +1,8 @@
+query ($o17cP9: Boolean!) {
+  ...Fragment_FW
+  sd71iPC1 @include(if: $o17cP9)
+}
+
+fragment Fragment_FW on Object_IM @Directive_czvm6FB{
+  __typename
+}

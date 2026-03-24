@@ -1,0 +1,32 @@
+{
+  MRBYHudP: bv {
+    vgaT {
+      MaiMjwMy36: __typename
+    }
+    b: vgaT {
+      ... {
+        __typename
+      }
+    }
+    ... on Interface_fJ_STUB {
+      ...Fragment_osMnUh
+      ... on Interface_fJ {
+        __typename
+      }
+    }
+  }
+  __typename
+  ... on Object_r8kX_BzHek {
+    ...Fragment_wtWT
+  }
+}
+
+fragment Fragment_osMnUh on Interface_fJ_STUB {
+  m
+}
+
+fragment Fragment_wtWT on Object_r8kX_BzHek {
+  ... on Object_r8kX_BzHek {
+    __typename
+  }
+}

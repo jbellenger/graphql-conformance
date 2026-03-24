@@ -1,0 +1,3 @@
+query ($bqVqmj: Boolean!) {
+  __typename @include(if: $bqVqmj)
+}

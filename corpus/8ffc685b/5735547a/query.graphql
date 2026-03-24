@@ -1,0 +1,28 @@
+query @Directive_pIq @experimental_disableErrorPropagation {
+  ...Fragment_X4
+  ...Fragment_X4
+}
+
+fragment Fragment_AQE_QK2J on Object_u @Directive_bY8Wzu{
+  x
+}
+
+fragment Fragment_gp3N on Object_u {
+  ...Fragment_AQE_QK2J
+  __typename
+  x
+  __typename
+}
+
+fragment Fragment_X4 on Object_u @Directive_bY8Wzu{
+  ...Fragment_gp3N
+  ... on Object_u {
+    x
+  }
+  ... on Object_u {
+    ...Fragment_AQE_QK2J
+    ... on Object_u {
+      x
+    }
+  }
+}

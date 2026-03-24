@@ -1,0 +1,149 @@
+schema {
+  query: Object_GFi_G
+}
+
+directive @Directive_Hs3xwyF_df on QUERY | MUTATION | SUBSCRIPTION | FIELD | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCHEMA | SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+directive @Directive_KRT3 repeatable on MUTATION | SUBSCRIPTION | SCALAR
+
+directive @Directive_eaz8FgPa repeatable on QUERY | MUTATION | SUBSCRIPTION | FIELD | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+"This directive allows results to be deferred during execution"
+directive @defer(
+    "Deferred behaviour is controlled by this argument"
+    if: Boolean! = true,
+    "A unique label that represents the fragment being deferred"
+    label: String
+  ) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Marks the field, argument, input field or enum value as deprecated"
+directive @deprecated(
+    "The reason for the deprecation"
+    reason: String! = "No longer supported"
+  ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+"This directive disables error propagation when a non nullable field returns null for the given operation."
+directive @experimental_disableErrorPropagation on QUERY | MUTATION | SUBSCRIPTION
+
+"Directs the executor to include this field or fragment only when the `if` argument is true"
+directive @include(
+    "Included when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Indicates an Input Object is a OneOf Input Object."
+directive @oneOf on INPUT_OBJECT
+
+"Directs the executor to skip this field or fragment when the `if` argument is true."
+directive @skip(
+    "Skipped when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Exposes a URL that specifies the behaviour of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behaviour of this scalar."
+    url: String!
+  ) on SCALAR
+
+interface Interface_HFNg_yd157 implements Interface_L3v {
+  mrqKqv: Interface_L3v @Directive_eaz8FgPa
+  rli6QJbkK: Float
+  s: Enum_xvxpRyb4Jw
+  ugjh: String!
+  x: Object_HeUWNjSJ2W!
+}
+
+interface Interface_L3v {
+  s: Enum_xvxpRyb4Jw
+  ugjh: String!
+  x: Object_HeUWNjSJ2W!
+}
+
+interface Interface_eVAc3Z {
+  _B: Enum_xvxpRyb4Jw!
+  c5: Object_eiM4!
+  pcT1pE9: Boolean
+}
+
+union Union_MWG = Object_GFi_G | Object_eiM4
+
+union Union_jMrvCFuY = Object_HeUWNjSJ2W
+
+union Union_jg7vd = Object_HeUWNjSJ2W
+
+type Interface_HFNg_yd157_STUB implements Interface_HFNg_yd157 & Interface_L3v {
+  aID0f: Interface_L3v
+  gp: Object_eiM4
+  mrqKqv: Interface_L3v @Directive_eaz8FgPa
+  rli6QJbkK: Float
+  s: Enum_xvxpRyb4Jw
+  ugjh: String!
+  x: Object_HeUWNjSJ2W!
+}
+
+type Interface_L3v_STUB implements Interface_L3v {
+  s: Enum_xvxpRyb4Jw
+  ugjh: String!
+  x: Object_HeUWNjSJ2W!
+  x8_2fl: Object_eiM4
+}
+
+type Interface_eVAc3Z_STUB implements Interface_eVAc3Z {
+  _B: Enum_xvxpRyb4Jw!
+  bQH71GB: Union_MWG!
+  c5: Object_eiM4!
+  maqiRPSkIa: Enum_xvxpRyb4Jw
+  pcT1pE9: Boolean
+}
+
+type Object_GFi_G {
+  jUgVWdTc(iakF: Enum_xvxpRyb4Jw = nagCK0): Union_jg7vd!
+  jcsu: Union_MWG @Directive_Hs3xwyF_df @deprecated(reason : "\\")
+  wtnnoDTYIA: Interface_L3v
+}
+
+type Object_HeUWNjSJ2W {
+  oCcQcj: Int
+  tRQJdttn8: Interface_L3v!
+}
+
+type Object_eiM4 {
+  sFG0: [Interface_HFNg_yd157]
+  uOW: [[Object_HeUWNjSJ2W]]
+  xefK(piXki8loW: Input_z = {opz : "YT5"}, udYguhkSZ9: Enum_xvxpRyb4Jw): Int
+}
+
+enum Enum_NPuSw {
+  ORZHxV
+  ZZZpMk6oVd
+  oFSwiwEP
+}
+
+enum Enum_Q_Ti {
+  P @Directive_eaz8FgPa
+  UuFB0hqJ @Directive_eaz8FgPa @deprecated(reason : ">")
+  ijWP
+}
+
+enum Enum_xvxpRyb4Jw {
+  a
+  nagCK0
+}
+
+input Input_DJ @Directive_eaz8FgPa {
+  d5qVY: Input_DJ = {d5qVY : {d5qVY : {d5qVY : null, ofF87cXAD : 1.1980846422259479E+308, vGngU : null}, ofF87cXAD : -1.40573200402341E+308, vGngU : true}, ofF87cXAD : 7.171738000762677E+307, vGngU : true}
+  ofF87cXAD: Float!
+  vGngU: Boolean
+}
+
+input Input_vyyyyyyyyy {
+  oa: Input_DJ
+  xVJycrdGdl: Input_vyyyyyyyyy
+  xeEv6GYXm6: Boolean
+}
+
+input Input_z @Directive_Hs3xwyF_df {
+  b: Int
+  opz: ID!
+}

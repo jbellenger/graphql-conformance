@@ -1,0 +1,25 @@
+{
+  ...Fragment_crt
+  naKUBPhmY {
+    c: __typename
+    p {
+      ...Fragment_crt
+      __typename
+      ... on Object_Q2Rm4 {
+        __typename
+      }
+    }
+    bJ5t {
+      ... {
+        __typename
+      }
+    }
+    ... {
+      UPkoX: __typename
+    }
+  }
+}
+
+fragment Fragment_crt on Union_kMwusUJ {
+  __typename
+}

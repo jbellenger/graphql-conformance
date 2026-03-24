@@ -1,0 +1,35 @@
+query ($bXWjY: Boolean!) {
+  ...Fragment_pE0x8HC
+  ... on Union_qPHYWu {
+    ... on Union_ulsO {
+      __typename
+    }
+    ... on Union_qPHYWu {
+      __typename
+      ... on Object_kX {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_ZGPzHJdb on Object_JqX {
+  rnpPvC1F {
+    v {
+      __typename @skip(if: $bXWjY)
+    }
+    j {
+      __typename
+    }
+  }
+  rnpPvC1F {
+    __typename
+  }
+  ... on Union_Il1WP {
+    __typename
+  }
+}
+
+fragment Fragment_pE0x8HC on Union_Il1WP {
+  ...Fragment_ZGPzHJdb@defer(if: true, label: "X") @include(if: false)
+}

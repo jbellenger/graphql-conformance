@@ -1,0 +1,29 @@
+{
+  ...Fragment_up
+  ... on Union_tBf {
+    __typename
+    ... on Union_tBf {
+      ...Fragment_SPUlIcv
+      ... on Object_LVdvN {
+        __typename
+      }
+    }
+    ... on Union_tBf {
+      __typename
+    }
+  }
+  ... on Union_tBf {
+    ...Fragment_SPUlIcv
+    __typename
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_up on Union_tBf {
+  __typename
+}
+
+fragment Fragment_SPUlIcv on Union_FaWkwHJf {
+  __typename
+}

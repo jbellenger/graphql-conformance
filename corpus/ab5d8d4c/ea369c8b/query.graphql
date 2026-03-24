@@ -1,0 +1,18 @@
+query ($nyNq0FqXA: Boolean) {
+  uqz14hXNUT(cwhSg: $nyNq0FqXA) {
+    __typename
+  }
+  ASP0: uqz14hXNUT(cwhSg: $nyNq0FqXA) {
+    ...Fragment_Nq_K6
+    mG6M {
+      ...Fragment_Nq_K6
+      ... on Interface_sDKjfLxGh_STUB {
+        n3
+      }
+    }
+  }
+}
+
+fragment Fragment_Nq_K6 on Interface_sDKjfLxGh @Directive_KRQR{
+  __typename
+}

@@ -1,0 +1,28 @@
+query @experimental_disableErrorPropagation @Directive_lOOTKMlO8f {
+  ... on Object_g {
+    ...Fragment_UZVGfqI
+    ...Fragment_UZVGfqI
+    vec0R_Q6u {
+      ...Fragment_bAFxMM
+      a0Olo1N_: xbEm78s {
+        __typename
+      }
+    }
+    ... on Object_g {
+      ...Fragment__
+    }
+  }
+}
+
+fragment Fragment__ on Union_yCwpDtsvO @Directive_sDUxKc{
+  __typename @Directive_sDUxKc
+}
+
+fragment Fragment_UZVGfqI on Union_yCwpDtsvO {
+  ...Fragment__
+  wqzAC: __typename
+}
+
+fragment Fragment_bAFxMM on Interface_kOFJI {
+  __typename
+}

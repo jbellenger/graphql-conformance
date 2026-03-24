@@ -1,0 +1,32 @@
+query ($g: Boolean!) {
+  ...Fragment_rIu6J
+  f {
+    ...Fragment_BwCR1wkQM
+  }
+  ... on Object_RpkZy {
+    k @include(if: $g)
+    ... on Object_RpkZy {
+      ...Fragment_rIu6J
+      __typename
+    }
+  }
+}
+
+fragment Fragment_mZ on Object_RpkZy {
+  k
+}
+
+fragment Fragment_DneU on Union_o7T5C34vm {
+  ...Fragment_mZ
+  ... on Union_QC {
+    __typename
+  }
+}
+
+fragment Fragment_rIu6J on Union_o7T5C34vm {
+  ...Fragment_DneU
+}
+
+fragment Fragment_BwCR1wkQM on Object_QoGzw {
+  __typename
+}

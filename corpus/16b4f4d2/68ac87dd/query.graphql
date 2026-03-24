@@ -1,0 +1,25 @@
+query ($odc: Boolean!) {
+  ...Fragment_pBbk0T
+}
+
+fragment Fragment__H on Object_d90 {
+  ... on Object_d90 {
+    __typename
+  }
+}
+
+fragment Fragment_pBbk0T on Union_Smh {
+  ...Fragment__H@defer(if: false, label: null)
+  ...Fragment__H
+  __typename
+  __typename @include(if: $odc)
+  ... {
+    ...Fragment__H@Directive_wtz4Xhf @Directive_ZdabI(a: W_3t3l) @skip(if: $odc)
+    __typename
+    __typename
+  }
+  ... on Union_Smh {
+    zRrAQJ: __typename
+    M2VTW0L0: __typename
+  }
+}

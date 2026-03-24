@@ -1,0 +1,29 @@
+query RWjQkb9a {
+  ...Fragment_mU4LFxAqZ
+  ...Fragment_r5Y_qdpF4
+  ...Fragment_jFOe
+  ... on Object_g {
+    __typename
+  }
+}
+
+fragment Fragment_r5Y_qdpF4 on Union_yCwpDtsvO {
+  ... on Object_g {
+    kcqAj: __typename
+  }
+}
+
+fragment Fragment_mU4LFxAqZ on Object_g {
+  ...Fragment_r5Y_qdpF4
+  ... on Union_yCwpDtsvO {
+    __typename
+  }
+}
+
+fragment Fragment_jFOe on Object_g {
+  vec0R_Q6u {
+    OH: xbEm78s {
+      __typename
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  ... on Object_u {
+    ...Fragment_eaCO2Gw1F
+  }
+}
+
+fragment Fragment_eaCO2Gw1F on Union_bC {
+  ... on Object_u {
+    __typename
+  }
+}

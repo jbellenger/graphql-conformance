@@ -1,0 +1,32 @@
+{
+  ... on Object_qYPyO {
+    ...Fragment_joeg
+    ... on Union_Odg {
+      ... on Object_G8n {
+        iB
+      }
+    }
+  }
+  ... on Union_Odg {
+    __typename
+    __typename
+  }
+  ... on Union_s {
+    ... on Union_Odg {
+      ... on Union_s {
+        __typename
+      }
+    }
+    ... on Object_qYPyO @Directive_hNaBov45f {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_G0 on Union_g {
+  r1yGaC: __typename
+}
+
+fragment Fragment_joeg on Union_g {
+  ...Fragment_G0
+}

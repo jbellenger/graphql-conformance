@@ -1,0 +1,19 @@
+{
+  ...Fragment_XhjDPYkw
+  ...Fragment_j
+}
+
+fragment Fragment_XhjDPYkw on Object_GFi_G {
+  Mm: jUgVWdTc(iakF: nagCK0) {
+    Y6pzaJ: __typename
+    ... on Object_HeUWNjSJ2W {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_j on Object_GFi_G {
+  ... on Union_MWG {
+    __typename @skip(if: true)
+  }
+}

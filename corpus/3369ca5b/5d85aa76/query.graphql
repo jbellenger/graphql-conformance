@@ -1,0 +1,37 @@
+query ($cUq: Boolean!) {
+  ... on Object_zoR {
+    ... on Object_zoR {
+      __typename
+    }
+  }
+  ... on Union_l8Gn9 {
+    ...Fragment_kYTrH7_9ku
+    __typename
+    ... on Union_l8Gn9 {
+      __typename
+      __typename
+      __typename @Directive_g0wU_ggV
+    }
+  }
+  ... on Object_zoR {
+    ...Fragment_xtVWhT@skip(if: $cUq)
+    ...Fragment_ES
+    ... on Object_zoR {
+      pcX_
+    }
+  }
+}
+
+fragment Fragment_kYTrH7_9ku on Union_qT {
+  __typename
+}
+
+fragment Fragment_xtVWhT on Union_l8Gn9 {
+  ... on Object_k_494QiU {
+    Gbj90wqukG: __typename
+  }
+}
+
+fragment Fragment_ES on Object_zoR {
+  __typename
+}

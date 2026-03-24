@@ -1,0 +1,49 @@
+{
+  ...Fragment_ds9GyakH
+  ... on Object_ApwfNHZGC {
+    ...Fragment_ds9GyakH
+    ...Fragment_ds9GyakH
+    ... on Union_oUbZw {
+      ...Fragment_ds9GyakH
+      ... on Union_oUbZw @defer(if: true, label: "") {
+        __typename
+      }
+    }
+  }
+  ... on Union_r5qzLthUMJ {
+    u56DFHI: __typename
+  }
+  ... on Union_r5qzLthUMJ {
+    i2nfXIp: __typename
+    FN: __typename
+    __typename
+    ... on Interface_BuzdrGe {
+      vq: __typename
+      ... on Union_r5qzLthUMJ {
+        __typename
+      }
+    }
+    ... on Union_QERrVWXSFV {
+      ...Fragment_sF
+      ... on Object_wW6k62 {
+        zSTJ0s {
+          StBSch: x
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_ds9GyakH on Union_r5qzLthUMJ {
+  __typename
+  __typename
+  ... on Union_r5qzLthUMJ {
+    ... on Union_QERrVWXSFV {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_sF on Union_QERrVWXSFV {
+  __typename
+}

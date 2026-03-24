@@ -1,0 +1,27 @@
+query Xj($qgh9L03pAN: String, $kVMgrEO: Boolean!@Directive_YvwRpbKLH) {
+  ...Fragment_WUFcecFO
+  H: pU {
+    __typename
+    __typename
+    __typename @skip(if: $kVMgrEO)
+    ... on Union_D {
+      __typename
+      ... on Object_wpUzMaqzh {
+        __typename
+      }
+    }
+  }
+  jJX7yzJmiH: kQAYnKy4fG(iz3Y: "9V")
+  ... on Interface_R {
+    ... on Interface_R {
+      __typename @Directive_YvwRpbKLH
+    }
+  }
+  ... {
+    nGUXr9vR38: kQAYnKy4fG(iz3Y: "b9")
+  }
+}
+
+fragment Fragment_WUFcecFO on Interface_R {
+  kQAYnKy4fG(iz3Y: $qgh9L03pAN)
+}

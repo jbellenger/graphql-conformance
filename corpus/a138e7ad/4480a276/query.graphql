@@ -1,0 +1,10 @@
+query F1jg6C1 {
+  ... on Union_Xj {
+    ...Fragment_CKsng
+    ...Fragment_CKsng
+  }
+}
+
+fragment Fragment_CKsng on Union_Xj {
+  __typename
+}

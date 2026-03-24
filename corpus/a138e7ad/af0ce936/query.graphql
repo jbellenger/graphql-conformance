@@ -1,0 +1,28 @@
+query ($_8BAqtFl2: Boolean!) {
+  ... on Object_kCfY {
+    ...Fragment_D
+    ... on Union_Xj {
+      ...Fragment_D
+      ... on Union_RNkVKT {
+        __typename
+      }
+    }
+    ... on Object_kCfY {
+      ...Fragment_D
+      e_L
+      __typename
+    }
+  }
+  ... on Object_kCfY {
+    e_L @skip(if: $_8BAqtFl2)
+  }
+  ... on Object_kCfY {
+    e_L
+    __typename
+  }
+}
+
+fragment Fragment_D on Object_kCfY {
+  __typename
+  ec: e_L
+}

@@ -1,0 +1,21 @@
+query U0kFVJQ0Y {
+  ...Fragment_CKzGkuWaB
+  ...Fragment_CKzGkuWaB
+  ... on Object_dF4Jqm {
+    ...Fragment_CKzGkuWaB
+  }
+}
+
+fragment Fragment_CKzGkuWaB on Union_decIn {
+  __typename
+  yrlLiF46IK: __typename
+  __typename
+  ... on Object_dF4Jqm {
+    wGTU9_bDv: __typename @Directive_QLqE
+    __typename
+    __typename
+    ... on Union_mbB5eJqkZp {
+      __typename
+    }
+  }
+}

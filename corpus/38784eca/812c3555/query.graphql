@@ -1,0 +1,30 @@
+query @experimental_disableErrorPropagation {
+  ...Fragment_k_
+  ... on Union_Thr {
+    __typename
+  }
+  ... on Union_Jy2 {
+    __typename
+    __typename
+    ... on Union_Thr {
+      __typename
+    }
+    ... on Object_XIZrux @skip(if: true) {
+      v4y
+    }
+  }
+}
+
+fragment Fragment_K1p_ on Union_Thr {
+  noFTUs_b: __typename
+}
+
+fragment Fragment_x18w on Union_Jy2 {
+  ...Fragment_K1p_
+}
+
+fragment Fragment_k_ on Union_Jy2 {
+  ...Fragment_x18w
+  __typename
+  __typename
+}

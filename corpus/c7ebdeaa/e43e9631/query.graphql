@@ -1,0 +1,8 @@
+query PbWaEVC {
+  ...Fragment_DJm
+  ...Fragment_DJm@defer(if: false, label: "S")
+}
+
+fragment Fragment_DJm on Union_svJ_ {
+  __typename
+}

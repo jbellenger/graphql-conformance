@@ -1,0 +1,9 @@
+query i7P8s @experimental_disableErrorPropagation {
+  ...Fragment_MRb
+  ...Fragment_MRb
+  ...Fragment_MRb
+}
+
+fragment Fragment_MRb on Object_A {
+  __typename
+}

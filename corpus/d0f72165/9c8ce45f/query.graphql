@@ -1,0 +1,32 @@
+query wX {
+  ...Fragment__DeKfJ
+  ...Fragment_clGf@Directive_sDUxKc
+}
+
+fragment Fragment_hm on Union_yCwpDtsvO {
+  __typename
+  __typename
+  ... on Union_yCwpDtsvO {
+    __typename
+  }
+}
+
+fragment Fragment__DeKfJ on Union_yCwpDtsvO {
+  ...Fragment_hm@Directive_sDUxKc @include(if: false)
+}
+
+fragment Fragment_clGf on Object_g {
+  aIN: vec0R_Q6u {
+    __typename
+    ddZORYXq
+  }
+  ... on Object_g {
+    vec0R_Q6u {
+      __typename
+      ddZORYXq
+    }
+  }
+  ... on Union_yCwpDtsvO {
+    ...Fragment__DeKfJ
+  }
+}

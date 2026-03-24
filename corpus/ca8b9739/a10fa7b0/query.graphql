@@ -1,0 +1,53 @@
+query ($xiOfTU: Boolean! = false) @experimental_disableErrorPropagation {
+  ...Fragment_JtS
+  ... on Object_hEw {
+    ...Fragment_q22o83r
+    dJczP8Cs {
+      ...Fragment_on3z4@Directive_rgEeY
+    }
+    ... on Interface_Kl5Z {
+      ni1bbI5AU
+      o8
+    }
+  }
+  ... on Object_hEw {
+    ...Fragment_JtS
+    lZ6SY: ni1bbI5AU
+  }
+  ... on Interface_XVRBXbnSAy {
+    ... on Object_hEw {
+      ...Fragment_JtS
+      dJczP8Cs {
+        __typename
+      }
+      o8
+      V3pF: ni1bbI5AU
+    }
+    ... {
+      ... on Interface_XVRBXbnSAy {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_JtS on Object_hEw {
+  __typename
+}
+
+fragment Fragment_q22o83r on Object_hEw @Directive_rgEeY{
+  __typename
+  sg2E {
+    ni1bbI5AU
+  }
+  sg2E {
+    o8
+  }
+  ... on Interface_XVRBXbnSAy {
+    __typename
+  }
+}
+
+fragment Fragment_on3z4 on Union_w09m9X3E7a {
+  __typename @include(if: $xiOfTU)
+}

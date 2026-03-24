@@ -1,0 +1,19 @@
+query OVPCDjVtXt {
+  ...Fragment_q4
+  ... on Object_Aeg {
+    ... on Union_hdOFIGw {
+      ...Fragment_wqP_YGN0pY
+    }
+  }
+}
+
+fragment Fragment_q4 on Union_hdOFIGw {
+  ... on Object_Aeg {
+    oGqQ: __typename
+  }
+}
+
+fragment Fragment_wqP_YGN0pY on Union_hdOFIGw @Directive__7(tjaW9z: "-[%"){
+  wL66mgV: __typename
+  __typename
+}

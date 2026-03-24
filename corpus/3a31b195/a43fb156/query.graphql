@@ -1,0 +1,5 @@
+query yYW($oL2AvsKdBj: Boolean!) {
+  ... on Object_E0NcK8 {
+    __typename @skip(if: $oL2AvsKdBj)
+  }
+}

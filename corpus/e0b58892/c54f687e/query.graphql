@@ -1,0 +1,31 @@
+query ($a: Boolean!) {
+  EEss1lAESO: __typename
+  xeem_4RbX
+  __typename @include(if: $a)
+  ... on Union_m {
+    ...Fragment_Ge61GYsJ
+    __typename @Directive_qNsO5H8WG
+    __typename
+    ... on Object_WG {
+      ...Fragment_Ge61GYsJ
+      ... on Union_uKzji {
+        __typename
+        __typename
+      }
+    }
+    ... on Union_rVxOn4uGyL @include(if: true) {
+      ...Fragment_MZE
+    }
+  }
+}
+
+fragment Fragment_Ge61GYsJ on Object_WG {
+  ... on Union_m {
+    __typename
+  }
+}
+
+fragment Fragment_MZE on Union_rVxOn4uGyL {
+  __typename
+  y: __typename
+}
