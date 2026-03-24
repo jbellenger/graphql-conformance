@@ -212,7 +212,7 @@ describe('grafast conformer-harness', () => {
     });
   });
 
-  it('uses only the first payload for deferred execution', () => {
+  it('merges deferred payloads into the base result', () => {
     const f = writeFiles({
       'schema.graphqls': `
         directive @defer(
@@ -247,7 +247,39 @@ describe('grafast conformer-harness', () => {
       data: {
         hero: {
           name: 'str',
+          friends: [
+            { name: 'str' },
+            { name: 'str' },
+          ],
         },
+      },
+    });
+  });
+
+  it('merges root-level deferred payloads', () => {
+    const f = writeFiles({
+      'schema.graphqls': `
+        directive @defer(
+          if: Boolean! = true,
+          label: String
+        ) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+        type Query {
+          name: String
+        }
+      `,
+      'query.graphql': `
+        {
+          ... @defer(if: true, label: "later") {
+            name
+          }
+        }
+      `,
+    });
+    const result = run(f['schema.graphqls'], f['query.graphql']);
+    assert.deepStrictEqual(result, {
+      data: {
+        name: 'str',
       },
     });
   });

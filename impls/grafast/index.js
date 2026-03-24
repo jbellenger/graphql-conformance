@@ -143,29 +143,80 @@ async function getSingleResult(result) {
     return result;
   }
 
-  const first = await result.next();
+  const single = {};
+
   while (true) {
     const next = await result.next();
     if (next.done) {
       break;
     }
+    const payload = next.value;
+    if (payload == null) {
+      continue;
+    }
+
+    if (Object.prototype.hasOwnProperty.call(payload, 'data')) {
+      single.data = applyIncrementalData(single.data, payload.path, payload.data);
+    }
+    if (Object.prototype.hasOwnProperty.call(payload, 'errors')) {
+      single.errors = mergeArrayField(single.errors, payload.errors);
+    }
+    if (Object.prototype.hasOwnProperty.call(payload, 'extensions')) {
+      single.extensions = {
+        ...(single.extensions || {}),
+        ...(payload.extensions || {}),
+      };
+    }
   }
 
-  if (first.done || first.value == null) {
-    return {};
-  }
-
-  const single = {};
-  if (Object.prototype.hasOwnProperty.call(first.value, 'data')) {
-    single.data = first.value.data;
-  }
-  if (Object.prototype.hasOwnProperty.call(first.value, 'errors')) {
-    single.errors = first.value.errors;
-  }
-  if (Object.prototype.hasOwnProperty.call(first.value, 'extensions')) {
-    single.extensions = first.value.extensions;
-  }
   return single;
+}
+
+function mergeArrayField(existing, next) {
+  if (!Array.isArray(next) || next.length === 0) {
+    return existing;
+  }
+  return Array.isArray(existing) ? existing.concat(next) : next.slice();
+}
+
+function applyIncrementalData(existing, pathSegments, patch) {
+  if (patch === undefined) {
+    return existing;
+  }
+
+  if (!Array.isArray(pathSegments) || pathSegments.length === 0) {
+    return mergeObject(existing, patch);
+  }
+
+  const root = existing && typeof existing === 'object' ? existing : {};
+  let target = root;
+
+  for (const segment of pathSegments) {
+    if (target == null) {
+      return root;
+    }
+    target = target[segment];
+  }
+
+  if (target == null) {
+    return root;
+  }
+
+  mergeObject(target, patch);
+  return root;
+}
+
+function mergeObject(target, patch) {
+  if (!patch || typeof patch !== 'object') {
+    return patch;
+  }
+
+  if (!target || typeof target !== 'object') {
+    return Array.isArray(patch) ? patch.slice() : { ...patch };
+  }
+
+  Object.assign(target, patch);
+  return target;
 }
 
 if (require.main === module) {
