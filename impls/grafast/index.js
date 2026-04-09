@@ -128,6 +128,10 @@ function buildAbstractTypePlans(schema, graphql) {
 function buildHarnessSchema(schemaText, deps) {
   const { graphql, makeGrafastSchema, constant } = deps;
   const schema = graphql.buildSchema(schemaText);
+  const schemaErrors = graphql.validateSchema(schema);
+  if (schemaErrors.length > 0) {
+    throw new AggregateError(schemaErrors, "Schema is invalid");
+  }
   const { interfaces, unions } = buildAbstractTypePlans(schema, graphql);
 
   return makeGrafastSchema({

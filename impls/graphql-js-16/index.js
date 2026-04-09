@@ -5,6 +5,7 @@ const {
   buildSchema,
   execute,
   parse,
+  validateSchema,
   GraphQLNonNull,
   GraphQLList,
   GraphQLScalarType,
@@ -71,6 +72,10 @@ if (require.main === module) {
     : undefined;
 
   const schema = buildSchema(schemaText);
+  const schemaErrors = validateSchema(schema);
+  if (schemaErrors.length > 0) {
+    throw new AggregateError(schemaErrors, "Schema is invalid");
+  }
   const document = parse(queryText);
 
   (async () => {
