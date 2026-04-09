@@ -34,8 +34,38 @@ A coordinator runs every test case against the reference first. If the reference
 
 - [mise](https://mise.jdx.dev/) — manages tool versions (Node.js, Go, Java, .NET, Rust, Python)
 
+Then, in the repository root, run:
+
+```sh
+mise trust          # Tell mise you trust this repo
+mise install        # Install the various runtimes
+```
+
 That's it. `mise` handles installing the right versions of everything else.
+
+### MacOS
+
 On macOS, `mise install php` may require a newer `bison` on `PATH` than the system default.
+
+### Ubuntu
+
+On Ubuntu you might need some additional dependencies; here's some common deps
+required to build the common programming language runtimes from source (quite a
+lot of these are a belt-and-braces list for PHP):
+
+```sh
+sudo apt update
+sudo apt install \
+  build-essential build-dep autoconf automake libtool pkg-config \
+  libffi-dev libssl-dev zlib1g-dev \
+  libbz2-dev libreadline-dev libsqlite3-dev \
+  libncurses-dev libncursesw5-dev \
+  libyaml-dev libxml2-dev libcurl4-openssl-dev re2c \
+  curl git bison plocate libgd-dev libicu-dev libzip-dev \
+  libonig-dev libpq-dev libzip-dev libjpeg-dev libpng-dev \
+  libxpm-dev libmysqlclient-dev libfreetype6-dev libldap2-dev \
+  libxslt-dev libldb-dev
+```
 
 ## Quick start
 
