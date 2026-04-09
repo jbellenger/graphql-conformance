@@ -5,6 +5,7 @@ const {
   buildSchema,
   execute,
   parse,
+  validate,
   validateSchema,
   GraphQLNonNull,
   GraphQLList,
@@ -77,6 +78,11 @@ if (require.main === module) {
     throw new AggregateError(schemaErrors, "Schema is invalid");
   }
   const document = parse(queryText);
+
+  const validationErrors = validate(schema, document);
+  if (validationErrors.length) {
+    throw new AggregateError(validationErrors, "GraphQL document is invalid against this schema")
+  }
 
   (async () => {
     const result = await execute({
