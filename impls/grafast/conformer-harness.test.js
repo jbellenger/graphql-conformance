@@ -6,6 +6,7 @@ const { execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
+const { parseHarnessOutput } = require('../../conformer/src/protocol');
 
 const HARNESS = path.join(__dirname, 'index.js');
 let tmpDir;
@@ -35,7 +36,11 @@ function run(schemaPath, queryPath, variablesPath) {
     cwd: __dirname,
     encoding: 'utf8',
   });
-  return JSON.parse(stdout);
+  const parsed = parseHarnessOutput(stdout);
+  if (parsed.error) {
+    throw new Error(parsed.error);
+  }
+  return parsed.result;
 }
 
 describe('grafast conformer-harness', () => {

@@ -6,6 +6,7 @@ const { execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
+const { parseHarnessOutput } = require('../../conformer/src/protocol');
 
 const DLL = path.join(__dirname, 'out', 'Conformer.dll');
 
@@ -49,7 +50,11 @@ function run(schemaPath, queryPath, variablesPath) {
   const args = [DLL, schemaPath, queryPath];
   if (variablesPath) args.push(variablesPath);
   const stdout = execFileSync(DOTNET, args, { encoding: 'utf8', timeout: 30_000 });
-  return JSON.parse(stdout);
+  const parsed = parseHarnessOutput(stdout);
+  if (parsed.error) {
+    throw new Error(parsed.error);
+  }
+  return parsed.result;
 }
 
 describe('hot-chocolate conformer-harness', () => {

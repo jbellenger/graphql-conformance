@@ -33,6 +33,8 @@ from graphql.execution import (  # noqa: E402
     experimental_execute_incrementally,
 )
 
+STREAM_PROTOCOL = "conformer-stream-v1"
+
 
 def resolve_value(type_: Any, schema: Any) -> Any:
     if isinstance(type_, GraphQLNonNull):
@@ -74,67 +76,73 @@ def field_resolver(_source: Any, info: Any, **_args: Any) -> Any:
     return resolve_value(info.return_type, info.schema)
 
 
-def merge_patch(target: Any, path: list[str | int], value: Any) -> None:
-    if not path:
-        target.update(value)
-        return
-
-    current = target
-    for segment in path[:-1]:
-        current = current[segment]
-
-    last = path[-1]
-    if isinstance(current[last], dict) and isinstance(value, dict):
-        current[last].update(value)
-    else:
-        current[last] = value
+def format_errors(errors: Any) -> list[dict[str, Any]] | None:
+    if not errors:
+        return None
+    return [error.formatted for error in errors]
 
 
-def append_items(target: Any, path: list[str | int], items: list[Any]) -> None:
-    current = target
-    for segment in path:
-        current = current[segment]
-    current.extend(items)
+def write_protocol_event(kind: str, **payload: Any) -> None:
+    event = {"protocol": STREAM_PROTOCOL, "kind": kind, **payload}
+    sys.stdout.write(json.dumps(event) + "\n")
 
 
-async def normalize_result(result: Any) -> ExecutionResult:
+async def emit_incremental_result(result: Any) -> None:
     if inspect.isawaitable(result):
         result = await result
 
     if isinstance(result, ExecutionResult):
-        return result
+        json.dump(result.formatted, sys.stdout)
+        return
 
-    incremental_result = result
-    if not isinstance(incremental_result, ExperimentalIncrementalExecutionResults):
+    if not isinstance(result, ExperimentalIncrementalExecutionResults):
         raise TypeError(f"Unsupported result type: {type(result)!r}")
 
-    initial = incremental_result.initial_result
+    initial = result.initial_result
     pending_paths = {pending.id: list(pending.path) for pending in initial.pending}
-    data = initial.data
-    errors = list(initial.errors or [])
-    extensions = dict(initial.extensions or {})
 
-    async for chunk in incremental_result.subsequent_results:
-        if chunk.extensions:
-            extensions.update(chunk.extensions)
+    write_protocol_event(
+        "initial",
+        data=initial.data,
+        errors=format_errors(initial.errors),
+        extensions=initial.extensions,
+    )
+
+    wrote_complete = False
+    async for chunk in result.subsequent_results:
+        chunk_extensions = getattr(chunk, "extensions", None)
+        chunk_errors = getattr(chunk, "errors", None)
+        if chunk_extensions or chunk_errors:
+            write_protocol_event(
+                "patch",
+                errors=format_errors(chunk_errors),
+                extensions=chunk_extensions,
+            )
+
         for pending in chunk.pending or []:
             pending_paths[pending.id] = list(pending.path)
+
         for entry in chunk.incremental or []:
-            if entry.errors:
-                errors.extend(entry.errors)
             path = pending_paths.get(entry.id, []) + list(getattr(entry, "sub_path", None) or [])
+            payload: dict[str, Any] = {
+                "path": path,
+                "errors": format_errors(entry.errors),
+            }
             if hasattr(entry, "data"):
-                merge_patch(data, path, entry.data)
+                payload["data"] = entry.data
             else:
-                append_items(data, path, entry.items)
+                payload["items"] = entry.items
+            write_protocol_event("patch", **payload)
+
         for completed in chunk.completed or []:
             pending_paths.pop(completed.id, None)
 
-    return ExecutionResult(
-        data=data,
-        errors=errors or None,
-        extensions=extensions or None,
-    )
+        if getattr(chunk, "has_next", None) is False:
+            write_protocol_event("complete")
+            wrote_complete = True
+
+    if not wrote_complete:
+        write_protocol_event("complete")
 
 
 def main() -> int:
@@ -162,9 +170,9 @@ def main() -> int:
     if not isinstance(result, ExecutionResult):
         import asyncio
 
-        result = asyncio.run(normalize_result(result))
-
-    json.dump(result.formatted, sys.stdout)
+        asyncio.run(emit_incremental_result(result))
+    else:
+        json.dump(result.formatted, sys.stdout)
     return 0
 
 

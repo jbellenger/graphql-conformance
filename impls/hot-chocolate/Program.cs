@@ -6,6 +6,8 @@ using HotChocolate.Resolvers;
 using HotChocolate.Types;
 using Microsoft.Extensions.DependencyInjection;
 
+const string StreamProtocol = "conformer-stream-v1";
+
 if (args.Length < 2)
 {
     Console.Error.WriteLine("Usage: Conformer <schema> <query> [<variables>]");
@@ -73,74 +75,44 @@ static object? NormalizeResultValue(object? value)
     return ConvertJsonElement(doc.RootElement);
 }
 
-static object? ApplyDeferredPatch(object? root, HotChocolate.Path? path, object? patch)
-{
-    if (patch is not Dictionary<string, object?> patchMap)
-    {
-        return root;
-    }
-
-    if (root is null)
-    {
-        return patchMap;
-    }
-
-    var target = ResolvePathTarget(root, path);
-    if (target is not Dictionary<string, object?> targetMap)
-    {
-        return root;
-    }
-
-    foreach (var kv in patchMap)
-    {
-        targetMap[kv.Key] = kv.Value;
-    }
-
-    return root;
-}
-
-static object? ResolvePathTarget(object? value, HotChocolate.Path? path)
-{
-    if (value is null || path is null || path.IsRoot)
-    {
-        return value;
-    }
-
-    object? current = value;
-    foreach (var segment in path.ToList())
-    {
-        current = segment switch
-        {
-            string key => current is Dictionary<string, object?> map && map.TryGetValue(key, out var item)
-                ? item
-                : null,
-            int index => current is List<object?> list && index >= 0 && index < list.Count
-                ? list[index]
-                : null,
-            _ => null,
-        };
-
-        if (current is null)
-        {
-            return null;
-        }
-    }
-
-    return current;
-}
-
-static void AddErrors(ref List<object>? errors, IReadOnlyList<IError>? source)
+static List<object>? FormatErrors(IReadOnlyList<IError>? source)
 {
     if (source is not { Count: > 0 })
     {
-        return;
+        return null;
     }
 
-    errors ??= new List<object>();
+    var errors = new List<object>();
     foreach (var error in source)
     {
         errors.Add(new { message = error.Message });
     }
+    return errors;
+}
+
+static Dictionary<string, object?> CreateProtocolEvent(string kind)
+{
+    return new Dictionary<string, object?>
+    {
+        ["protocol"] = StreamProtocol,
+        ["kind"] = kind,
+    };
+}
+
+static void WriteProtocolEvent(Dictionary<string, object?> payload)
+{
+    Console.WriteLine(JsonSerializer.Serialize(payload));
+}
+
+static Dictionary<string, object?> BuildSingleOutput(IOperationResult result)
+{
+    var output = new Dictionary<string, object?> { ["data"] = result.Data };
+    var errors = FormatErrors(result.Errors);
+    if (errors is { Count: > 0 })
+    {
+        output["errors"] = errors;
+    }
+    return output;
 }
 
 // Build request executor from SDL
@@ -162,7 +134,7 @@ if (enableDefer || enableStream)
 var executor = await builder
     .UseField(next => context =>
     {
-        // Skip introspection fields — let HC handle __typename etc.
+        // Skip introspection fields. Let HC handle __typename and friends.
         if (context.Selection.Field.Name.StartsWith("__"))
         {
             return next(context);
@@ -172,8 +144,8 @@ var executor = await builder
     })
     .ConfigureSchema(sb => sb.SetTypeResolver((objectType, context, result) =>
     {
-        // For unions: resolve to alphabetically first member
-        // For interfaces: resolve to alphabetically last implementor
+        // For unions: resolve to alphabetically first member.
+        // For interfaces: resolve to alphabetically last implementor.
         var parentType = context.Selection.Type.NamedType();
 
         if (parentType is UnionType union)
@@ -203,7 +175,6 @@ var executor = await builder
     }))
     .BuildRequestExecutorAsync();
 
-// Build request
 var requestBuilder = OperationRequestBuilder.New().SetDocument(queryText);
 if (variables != null)
 {
@@ -213,69 +184,91 @@ if (variables != null)
 
 var result = await executor.ExecuteAsync(requestBuilder.Build());
 
-// When @defer is active, HC returns an IResponseStream instead of a single
-// IOperationResult. In this harness all resolvers are synchronous, so HC emits
-// one base payload plus one final payload containing every deferred patch.
 if (result is IResponseStream stream)
 {
-    object? mergedData = null;
-    List<object>? errors = null;
+    var wroteInitial = false;
+    var wroteComplete = false;
 
     await foreach (var chunk in stream.ReadResultsAsync())
     {
-        mergedData ??= NormalizeResultValue(chunk.Data);
-        AddErrors(ref errors, chunk.Errors);
-
-        if (chunk.Incremental == null)
+        if (!wroteInitial)
         {
-            continue;
-        }
-
-        foreach (var inc in chunk.Incremental)
-        {
-            AddErrors(ref errors, inc.Errors);
-
-            if (inc.Data != null)
+            var initialEvent = CreateProtocolEvent("initial");
+            initialEvent["data"] = NormalizeResultValue(chunk.Data);
+            var initialErrors = FormatErrors(chunk.Errors);
+            if (initialErrors is { Count: > 0 })
             {
-                mergedData = ApplyDeferredPatch(
-                    mergedData,
-                    inc.Path,
-                    NormalizeResultValue(inc.Data));
+                initialEvent["errors"] = initialErrors;
+            }
+            WriteProtocolEvent(initialEvent);
+            wroteInitial = true;
+        }
+        else
+        {
+            var chunkEvent = CreateProtocolEvent("patch");
+            if (chunk.Data != null)
+            {
+                chunkEvent["path"] = Array.Empty<object>();
+                chunkEvent["data"] = NormalizeResultValue(chunk.Data);
+            }
+            var chunkErrors = FormatErrors(chunk.Errors);
+            if (chunkErrors is { Count: > 0 })
+            {
+                chunkEvent["errors"] = chunkErrors;
+            }
+            if (chunkEvent.Count > 2)
+            {
+                WriteProtocolEvent(chunkEvent);
             }
         }
+
+        if (chunk.Incremental != null)
+        {
+            foreach (var inc in chunk.Incremental)
+            {
+                var patchEvent = CreateProtocolEvent("patch");
+                patchEvent["path"] = inc.Path.ToList();
+                if (inc.Data != null)
+                {
+                    patchEvent["data"] = NormalizeResultValue(inc.Data);
+                }
+                var patchErrors = FormatErrors(inc.Errors);
+                if (patchErrors is { Count: > 0 })
+                {
+                    patchEvent["errors"] = patchErrors;
+                }
+                WriteProtocolEvent(patchEvent);
+            }
+        }
+
+        if (chunk.HasNext == false)
+        {
+            WriteProtocolEvent(CreateProtocolEvent("complete"));
+            wroteComplete = true;
+        }
     }
 
-    var output = new Dictionary<string, object?> { ["data"] = mergedData };
-    if (errors is { Count: > 0 })
+    if (wroteInitial && !wroteComplete)
     {
-        output["errors"] = errors;
+        WriteProtocolEvent(CreateProtocolEvent("complete"));
     }
-
-    Console.Write(JsonSerializer.Serialize(output));
     return 0;
 }
 
 if (result is IOperationResult single)
 {
-    var output = new Dictionary<string, object?>();
-    output["data"] = single.Data;
-    if (single.Errors is { Count: > 0 })
-    {
-        output["errors"] = single.Errors.Select(e => new { message = e.Message }).ToList();
-    }
-    var json = JsonSerializer.Serialize(output);
-    Console.Write(json);
+    Console.Write(JsonSerializer.Serialize(BuildSingleOutput(single)));
 }
 
 return 0;
 
 static object? ResolveValue(IType type)
 {
-    // Unwrap NonNull
     if (type.IsNonNullType())
+    {
         return ResolveValue(type.InnerType());
+    }
 
-    // List: return 2 items
     if (type.IsListType())
     {
         var inner = type.ElementType();
@@ -292,7 +285,7 @@ static object? ResolveValue(IType type)
             "String" => "str",
             "Boolean" => true,
             "ID" => "id",
-            _ => "str", // custom scalars
+            _ => "str",
         };
     }
 
@@ -301,7 +294,6 @@ static object? ResolveValue(IType type)
         return enumType.Values.First().Name;
     }
 
-    // Object, Union, Interface → empty map (HC will recurse into fields)
     if (named is ObjectType || named is UnionType || named is InterfaceType)
     {
         return new Dictionary<string, object?>();

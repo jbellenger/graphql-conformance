@@ -4,6 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const { createRequire } = require('module');
 
+const STREAM_PROTOCOL = 'conformer-stream-v1';
+
 function loadBuildDependencies() {
   process.env.GRAPHILE_ENV ||= 'production';
   const buildPackagePath = path.join(__dirname, 'build', 'package.json');
@@ -138,12 +140,17 @@ function buildHarnessSchema(schemaText, deps) {
   });
 }
 
-async function getSingleResult(result) {
+function writeProtocolEvent(event) {
+  process.stdout.write(`${JSON.stringify({ protocol: STREAM_PROTOCOL, ...event })}\n`);
+}
+
+async function writeResult(result) {
   if (!result || typeof result.next !== 'function') {
-    return result;
+    process.stdout.write(JSON.stringify(result));
+    return;
   }
 
-  const single = {};
+  let isFirstPayload = true;
 
   while (true) {
     const next = await result.next();
@@ -155,68 +162,38 @@ async function getSingleResult(result) {
       continue;
     }
 
-    if (Object.prototype.hasOwnProperty.call(payload, 'data')) {
-      single.data = applyIncrementalData(single.data, payload.path, payload.data);
-    }
-    if (Object.prototype.hasOwnProperty.call(payload, 'errors')) {
-      single.errors = mergeArrayField(single.errors, payload.errors);
-    }
-    if (Object.prototype.hasOwnProperty.call(payload, 'extensions')) {
-      single.extensions = {
-        ...(single.extensions || {}),
-        ...(payload.extensions || {}),
+    if (isFirstPayload) {
+      writeProtocolEvent({
+        kind: 'initial',
+        data: payload.data,
+        errors: payload.errors,
+        extensions: payload.extensions,
+      });
+      isFirstPayload = false;
+    } else {
+      const event = {
+        kind: 'patch',
+        errors: payload.errors,
+        extensions: payload.extensions,
       };
+      if (Object.prototype.hasOwnProperty.call(payload, 'path')) {
+        event.path = payload.path;
+      }
+      if (Object.prototype.hasOwnProperty.call(payload, 'data')) {
+        event.data = payload.data;
+      }
+      if (Object.prototype.hasOwnProperty.call(payload, 'items')) {
+        event.items = payload.items;
+      }
+      if (Object.keys(event).length > 3 || event.path) {
+        writeProtocolEvent(event);
+      }
+    }
+
+    if (payload.hasNext === false) {
+      writeProtocolEvent({ kind: 'complete' });
     }
   }
-
-  return single;
-}
-
-function mergeArrayField(existing, next) {
-  if (!Array.isArray(next) || next.length === 0) {
-    return existing;
-  }
-  return Array.isArray(existing) ? existing.concat(next) : next.slice();
-}
-
-function applyIncrementalData(existing, pathSegments, patch) {
-  if (patch === undefined) {
-    return existing;
-  }
-
-  if (!Array.isArray(pathSegments) || pathSegments.length === 0) {
-    return mergeObject(existing, patch);
-  }
-
-  const root = existing && typeof existing === 'object' ? existing : {};
-  let target = root;
-
-  for (const segment of pathSegments) {
-    if (target == null) {
-      return root;
-    }
-    target = target[segment];
-  }
-
-  if (target == null) {
-    return root;
-  }
-
-  mergeObject(target, patch);
-  return root;
-}
-
-function mergeObject(target, patch) {
-  if (!patch || typeof patch !== 'object') {
-    return patch;
-  }
-
-  if (!target || typeof target !== 'object') {
-    return Array.isArray(patch) ? patch.slice() : { ...patch };
-  }
-
-  Object.assign(target, patch);
-  return target;
 }
 
 if (require.main === module) {
@@ -242,12 +219,11 @@ if (require.main === module) {
       source: queryText,
       variableValues,
     });
-    const singleResult = await getSingleResult(result);
-    process.stdout.write(JSON.stringify(singleResult));
+    await writeResult(result);
   })().catch((err) => {
     process.stderr.write(String(err) + '\n');
     process.exit(1);
   });
 }
 
-module.exports = { buildHarnessSchema, getSingleResult, loadBuildDependencies, resolveValue };
+module.exports = { buildHarnessSchema, loadBuildDependencies, resolveValue, writeResult };
