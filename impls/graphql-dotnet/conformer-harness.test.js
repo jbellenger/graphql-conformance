@@ -9,20 +9,7 @@ const os = require('os');
 
 const DLL = path.join(__dirname, 'out', 'Conformer.dll');
 
-function findDotnet() {
-  try {
-    return execFileSync('which', ['dotnet'], { encoding: 'utf8' }).trim();
-  } catch {
-    try {
-      const miseDir = execFileSync('mise', ['where', 'dotnet'], { encoding: 'utf8' }).trim();
-      return path.join(miseDir, 'dotnet');
-    } catch {
-      return 'dotnet';
-    }
-  }
-}
-
-const DOTNET = findDotnet();
+const DOTNET = 'dotnet';
 let tmpDir;
 
 beforeEach(() => {

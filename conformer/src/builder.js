@@ -6,8 +6,6 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 
-const { getToolEnv } = require('./tools');
-
 const execFileAsync = promisify(execFile);
 
 const DEFAULT_BUILD_TIMEOUT_MS = 5 * 60 * 1000;
@@ -58,11 +56,9 @@ async function buildImpl(impl, baseDir) {
       return { name: impl.name, sha, ok: true };
     }
 
-    // Run make build with mise-provided environment
     process.stderr.write(`  ${impl.name}: building at ${sha.slice(0, 8)}...\n`);
     const t0 = Date.now();
-    const env = getToolEnv(baseDir);
-    await execFileAsync('make', ['build'], { cwd: implDir, timeout: timeoutMs, env });
+    await execFileAsync('make', ['build'], { cwd: implDir, timeout: timeoutMs });
     const elapsed = ((Date.now() - t0) / 1000).toFixed(1);
 
     // Write stamp on success

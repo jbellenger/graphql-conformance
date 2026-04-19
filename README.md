@@ -77,5 +77,5 @@ site/             static dashboard (reads from site/data/)
 1. Create `impls/<name>/` with code that implements the [Wiring Spec](SPEC.md)
 2. Add a `Makefile` with `build`, `test`, `clean` targets
 3. Add an entry to `config.json`
-4. Add any new tool versions to `.mise.toml`, then `make image` to rebake them into the dev image
+4. If a new toolchain is required, add it to the `Dockerfile`, then `make image` to rebake the dev image
 5. Run `make build && make test`

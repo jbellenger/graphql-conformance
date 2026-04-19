@@ -2,26 +2,7 @@
 
 const { describe, it } = require('node:test');
 const assert = require('node:assert/strict');
-const path = require('path');
-const {
-  checkMise,
-  checkTool,
-  checkTools,
-  parseNumericVersion,
-  toolBinary,
-  versionSatisfiesRequirement,
-} = require('./tools');
-
-describe('checkMise', () => {
-  it('detects mise when installed', () => {
-    const result = checkMise();
-    // mise may or may not be installed in the test env
-    assert.equal(typeof result.found, 'boolean');
-    if (result.found) {
-      assert.ok(result.version);
-    }
-  });
-});
+const { checkTool, checkTools, toolBinary } = require('./tools');
 
 describe('checkTool', () => {
   it('finds node (always available)', () => {
@@ -44,15 +25,6 @@ describe('checkTool', () => {
     assert.equal(result.found, false);
     assert.equal(result.version, null);
   });
-
-  it('finds python via python3', () => {
-    const result = checkTool('python', path.resolve(__dirname, '../..'));
-    assert.equal(result.name, 'python');
-    assert.equal(typeof result.found, 'boolean');
-    if (result.found) {
-      assert.ok(result.version);
-    }
-  });
 });
 
 describe('checkTools', () => {
@@ -73,22 +45,5 @@ describe('toolBinary', () => {
 
   it('uses erl for the erlang tool', () => {
     assert.equal(toolBinary('erlang'), 'erl');
-  });
-});
-
-describe('parseNumericVersion', () => {
-  it('extracts dotted versions from command output', () => {
-    assert.deepEqual(parseNumericVersion('Python 3.14.3'), [3, 14, 3]);
-    assert.deepEqual(parseNumericVersion('v25.6.1'), [25, 6, 1]);
-  });
-});
-
-describe('versionSatisfiesRequirement', () => {
-  it('accepts newer installed versions', () => {
-    assert.equal(versionSatisfiesRequirement('PHP 8.5.4', '8.4'), true);
-  });
-
-  it('rejects older installed versions', () => {
-    assert.equal(versionSatisfiesRequirement('ruby 2.6.10p210', '3.4'), false);
   });
 });

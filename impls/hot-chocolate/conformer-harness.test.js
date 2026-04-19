@@ -10,22 +10,7 @@ const { parseHarnessOutput } = require('../../conformer/src/protocol');
 
 const DLL = path.join(__dirname, 'out', 'Conformer.dll');
 
-// Resolve dotnet path — may be installed via mise rather than system PATH
-function findDotnet() {
-  try {
-    return execFileSync('which', ['dotnet'], { encoding: 'utf8' }).trim();
-  } catch {
-    // Try mise
-    try {
-      const miseDir = execFileSync('mise', ['where', 'dotnet'], { encoding: 'utf8' }).trim();
-      return path.join(miseDir, 'dotnet');
-    } catch {
-      return 'dotnet'; // fall back, will fail with ENOENT if not found
-    }
-  }
-}
-
-const DOTNET = findDotnet();
+const DOTNET = 'dotnet';
 let tmpDir;
 
 beforeEach(() => {

@@ -51,9 +51,9 @@ Everything lives under the `conformer/` directory:
 
 All builds run inside the dev container defined by the repo's `Dockerfile`. The
 image ships every language runtime, build tool, and system dependency needed by
-any impl — there is no host setup beyond Docker and Docker Compose. Tool
-versions are pinned in `.mise.toml` at the repo root; bumping that file and
-running `make image` rebakes the toolchain into the image.
+any impl — there is no host setup beyond Docker and Docker Compose. Toolchain
+versions are pinned directly in the `Dockerfile`; bumping a version and running
+`make image` rebakes the image.
 
 Framework tools (always present inside the image): `node`, `make`, `git`.
 
@@ -139,7 +139,7 @@ Each entry has:
 - `command`: array of command + args to execute the impl; paths within the command
   are relative to the impl directory
 - `tools`: array of tool names required to build and run the impl (e.g. `["java", "maven"]`).
-  These correspond to the tool names in `.mise.toml`. The coordinator checks availability before building.
+  The coordinator checks these are on PATH inside the dev container before building.
 - `buildTimeoutMs` (optional): override for the impl build timeout in milliseconds. If omitted,
   the coordinator uses the 5-minute default.
 

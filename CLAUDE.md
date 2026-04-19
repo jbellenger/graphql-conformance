@@ -36,5 +36,5 @@ The repo root contains the top-level Makefile, `config.json`, `SPEC.md`, and thi
 1. Create `impls/<name>/` with native code implementing the Wiring Spec
 2. Add a `Makefile` with `build`, `test`, `clean` targets
 3. Add an entry to `config.json` with `name`, `path`, `command`, and `tools`
-4. Add required tool versions to `.mise.toml`; run `make image` to rebake the dev image if new tools were added
+4. If a new toolchain is required, add it to the `Dockerfile` and rebake the dev image with `make image`
 5. Run `make build && make test` to verify

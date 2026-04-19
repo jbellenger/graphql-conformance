@@ -4,7 +4,7 @@ const path = require('path');
 const { spawnSync } = require('child_process');
 
 const { getRootDir, loadConfig } = require('./impl-cli');
-const { ensureTools, getToolEnv } = require('./tools');
+const { checkTools } = require('./tools');
 
 function resolveImplByDir(config, rootDir, cwd, dirArg) {
   const requestedDir = path.resolve(cwd, dirArg);
@@ -29,18 +29,16 @@ function runImplMakeTarget(dirArg, target, cwd = process.cwd()) {
   const impl = resolveImplByDir(config, rootDir, cwd, dirArg);
   const tools = impl.tools || [];
 
-  const { installed, failed } = ensureTools(tools, rootDir);
-  if (installed.length > 0) {
-    process.stderr.write(`Installed via mise: ${installed.join(', ')}\n`);
-  }
-  if (failed.length > 0) {
-    process.stderr.write(`Missing tools for ${impl.name}: ${failed.join(', ')}\n`);
+  const missing = checkTools(tools).filter((r) => !r.found).map((r) => r.name);
+  if (missing.length > 0) {
+    process.stderr.write(
+      `Missing tools for ${impl.name}: ${missing.join(', ')} — rebuild the dev image with \`make image\`.\n`
+    );
     return 1;
   }
 
   const result = spawnSync('make', ['-C', path.resolve(rootDir, impl.path), target], {
     cwd,
-    env: getToolEnv(rootDir),
     stdio: 'inherit',
   });
 

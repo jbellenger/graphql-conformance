@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const { buildAll } = require('./builder');
-const { FRAMEWORK_TOOLS, ensureTools } = require('./tools');
+const { FRAMEWORK_TOOLS, checkTools } = require('./tools');
 
 async function main() {
   const baseDir = path.resolve(__dirname, '..');
@@ -17,19 +17,18 @@ async function main() {
   const allTools = [...new Set([...FRAMEWORK_TOOLS, ...implTools])];
 
   process.stderr.write('Checking tools...\n');
-  const { results: toolResults, installed, failed } = ensureTools(allTools, rootDir);
+  const toolResults = checkTools(allTools);
+  const missing = [];
   for (const r of toolResults) {
     if (r.found) {
       process.stderr.write(`  ✓ ${r.name.padEnd(8)} ${r.version}\n`);
     } else {
       process.stderr.write(`  ✗ ${r.name.padEnd(8)} not found\n`);
+      missing.push(r.name);
     }
   }
-  if (installed.length > 0) {
-    process.stderr.write(`  Installed via mise: ${installed.join(', ')}\n`);
-  }
-  if (failed.length > 0) {
-    process.stderr.write(`  Missing: ${failed.join(', ')}\n`);
+  if (missing.length > 0) {
+    process.stderr.write(`  Missing: ${missing.join(', ')} — rebuild the dev image with \`make image\`.\n`);
   }
   process.stderr.write('\n');
 

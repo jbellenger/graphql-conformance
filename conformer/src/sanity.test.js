@@ -5,7 +5,6 @@ const assert = require('node:assert/strict');
 const fs = require('fs');
 const path = require('path');
 const { runHarness } = require('./runner');
-const { getToolEnv } = require('./tools');
 
 const baseDir = path.resolve(__dirname, '..');
 const rootDir = path.resolve(baseDir, '..');
@@ -51,13 +50,11 @@ const allImpls = Object.entries(config.impls).map(([name, impl]) => ({ name, ...
 const schemaPath = path.join(corpusDir, 'schema.graphqls');
 const queryPath = path.join(corpusDir, '0', 'query.graphql');
 
-const env = getToolEnv(rootDir);
-
 describe('sanity: corpus/0 produces expected output', () => {
   for (const impl of allImpls) {
     it(impl.name, async () => {
       const implDir = path.resolve(rootDir, impl.path);
-      const result = await runHarness(impl.command, implDir, [schemaPath, queryPath], env);
+      const result = await runHarness(impl.command, implDir, [schemaPath, queryPath]);
       assert.equal(result.error, undefined, `impl errored: ${result.error}`);
       assert.deepStrictEqual(result.result, EXPECTED);
     });
