@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { buildAll } = require('./builder');
+const { buildAll, BUILD_OUTPUT_TAIL_LINES, tailLines } = require('./builder');
 const { FRAMEWORK_TOOLS, checkTools } = require('./tools');
 
 async function main() {
@@ -42,6 +42,19 @@ async function main() {
   for (const r of results) {
     const status = r.ok ? 'ok' : `FAILED: ${r.error}`;
     process.stderr.write(`  ${r.name}: ${status}\n`);
+  }
+
+  const failures = results.filter((r) => !r.ok);
+  if (failures.length > 0) {
+    for (const r of failures) {
+      process.stderr.write(`\n--- ${r.name}: last ${BUILD_OUTPUT_TAIL_LINES} lines of build output ---\n`);
+      const stdoutTail = tailLines(r.stdout, BUILD_OUTPUT_TAIL_LINES);
+      const stderrTail = tailLines(r.stderr, BUILD_OUTPUT_TAIL_LINES);
+      if (stdoutTail) process.stderr.write(`[stdout]\n${stdoutTail}\n`);
+      if (stderrTail) process.stderr.write(`[stderr]\n${stderrTail}\n`);
+      if (!stdoutTail && !stderrTail) process.stderr.write('(no output captured)\n');
+    }
+    process.exit(1);
   }
 }
 
