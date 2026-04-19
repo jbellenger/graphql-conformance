@@ -32,10 +32,12 @@ A coordinator runs every test case against the reference first. If the reference
 
 ## Requirements
 
-- Docker 24+
+- Docker 24+ with the `buildx` plugin
 
-That's it. All language runtimes, build tools, and system libraries live inside
-the dev image.
+Docker Desktop ships `buildx` by default. On a plain Linux install, add it
+with your package manager (e.g. `apt install docker-buildx-plugin`). All
+language runtimes, build tools, and system libraries live inside the dev
+image.
 
 ## Quick start
 

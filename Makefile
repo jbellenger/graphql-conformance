@@ -40,6 +40,15 @@ IMAGE ?= graphql-conformance:dev
 HOST_UID := $(shell id -u)
 HOST_GID := $(shell id -g)
 
+# Preflight: fail fast with an actionable message if Docker + buildx are missing.
+# Runs eagerly during Makefile parsing, so every host-side target is covered.
+ifeq ($(shell command -v $(DOCKER) >/dev/null 2>&1 && echo yes),)
+$(error '$(DOCKER)' not found on PATH. Install Docker 24+ (https://docs.docker.com/engine/install/).)
+endif
+ifeq ($(shell $(DOCKER) buildx version >/dev/null 2>&1 && echo yes),)
+$(error 'docker buildx' plugin not found. On Debian/Ubuntu: sudo apt install docker-buildx-plugin. On macOS/Windows it ships with Docker Desktop.)
+endif
+
 DOCKER_VOLUMES := \
   -v $(CURDIR):/work:cached \
   -v graphql-conformance-m2:/home/conformance/.m2 \
