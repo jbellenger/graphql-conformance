@@ -187,7 +187,8 @@ impl GraphQLType<DefaultScalarValue> for DynamicValue {
             TypeDefinition::InputObject(io) => {
                 let args: Vec<MetaArgument<DefaultScalarValue>> = io.fields.iter()
                     .map(|f| {
-                        let field_type = convert_type(info, &f.value_type, registry);
+                        // Input object fields are inputs — honor SDL nullability.
+                        let field_type = convert_type(info, &f.value_type, registry, /*as_output=*/ false);
                         MetaArgument::new(ArcStr::from(f.name.as_str()), field_type)
                     })
                     .collect();
@@ -251,7 +252,10 @@ fn build_field(
     f: &gp::Field<'static, String>,
     registry: &mut Registry<DefaultScalarValue>,
 ) -> Field<DefaultScalarValue> {
-    let field_type = convert_type(info, &f.field_type, registry);
+    // Per the Wiring Spec, every field is returned as non-null regardless of
+    // its SDL nullability. Register the output field type as non-null so
+    // Juniper's runtime null-check agrees with what resolve_value produces.
+    let field_type = convert_type(info, &f.field_type, registry, /*as_output=*/ true);
     let mut field = Field {
         name: ArcStr::from(f.name.as_str()),
         description: None,
@@ -262,7 +266,9 @@ fn build_field(
     if !f.arguments.is_empty() {
         let args: Vec<MetaArgument<DefaultScalarValue>> = f.arguments.iter()
             .map(|a| {
-                let arg_type = convert_type(info, &a.value_type, registry);
+                // Arguments are inputs — honor SDL nullability so callers can
+                // omit optional args without tripping validation.
+                let arg_type = convert_type(info, &a.value_type, registry, /*as_output=*/ false);
                 MetaArgument::new(ArcStr::from(a.name.as_str()), arg_type)
             })
             .collect();
@@ -273,10 +279,15 @@ fn build_field(
 
 /// Convert a graphql-parser type reference into a Juniper Type,
 /// registering any referenced types in the registry.
+///
+/// When `as_output` is true, every named type is forced non-null (per the
+/// Wiring Spec: "every nullable field is returned as non-null"). Inputs
+/// honor SDL nullability so optional arguments remain optional.
 fn convert_type(
     info: &SchemaInfo,
     gp_type: &gp::Type<'static, String>,
     registry: &mut Registry<DefaultScalarValue>,
+    as_output: bool,
 ) -> juniper::Type {
     match gp_type {
         gp::Type::NamedType(name) => {
@@ -290,14 +301,17 @@ fn convert_type(
                 "ID" => { registry.get_type::<juniper::ID>(&()); }
                 _ => { let type_info = info.with_type(name); registry.get_type::<DynamicValue>(&type_info); }
             };
-            juniper::Type::nullable(ArcStr::from(name.as_str()))
+            let t = juniper::Type::nullable(ArcStr::from(name.as_str()));
+            if as_output { t.wrap_non_null() } else { t }
         }
         gp::Type::ListType(inner) => {
-            let inner_type = convert_type(info, inner, registry);
-            inner_type.wrap_list(None)
+            let inner_type = convert_type(info, inner, registry, as_output);
+            let list = inner_type.wrap_list(None);
+            if as_output { list.wrap_non_null() } else { list }
         }
         gp::Type::NonNullType(inner) => {
-            convert_type(info, inner, registry).wrap_non_null()
+            let t = convert_type(info, inner, registry, as_output);
+            if t.is_non_null() { t } else { t.wrap_non_null() }
         }
     }
 }

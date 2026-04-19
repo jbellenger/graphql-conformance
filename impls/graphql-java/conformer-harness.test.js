@@ -146,4 +146,66 @@ describe('graphql-java conformer-harness', () => {
       },
     });
   });
+
+  it('resolves custom scalar as "str"', () => {
+    const f = writeFiles({
+      'schema.graphqls': `
+        scalar DateTime
+        type Query { now: DateTime, maybe: DateTime! }
+      `,
+      'query.graphql': '{ now maybe }',
+    });
+    const result = run(f['schema.graphqls'], f['query.graphql']);
+    assert.deepStrictEqual(result, {
+      data: { now: 'str', maybe: 'str' },
+    });
+  });
+
+  it('handles @defer as a single final JSON response', () => {
+    const f = writeFiles({
+      'schema.graphqls': `
+        type Query { hero: Hero }
+        type Hero { name: String, friends: [Hero] }
+      `,
+      'query.graphql': `
+        query {
+          hero {
+            name
+            ... DeferredFriends @defer
+          }
+        }
+        fragment DeferredFriends on Hero {
+          friends { name }
+        }
+      `,
+    });
+    const result = run(f['schema.graphqls'], f['query.graphql']);
+    assert.ok(!result.errors, `unexpected errors: ${JSON.stringify(result.errors)}`);
+    assert.ok(!('incremental' in result), '@defer response must not include incremental payloads');
+    assert.ok(!('hasNext' in result), '@defer response must not include hasNext');
+    assert.deepStrictEqual(result, {
+      data: {
+        hero: {
+          name: 'str',
+          friends: [{ name: 'str' }, { name: 'str' }],
+        },
+      },
+    });
+  });
+
+  it('handles @stream as a single final JSON response with list populated', () => {
+    const f = writeFiles({
+      'schema.graphqls': `
+        type Query { tags: [String] }
+      `,
+      'query.graphql': '{ tags @stream(initialCount: 1) }',
+    });
+    const result = run(f['schema.graphqls'], f['query.graphql']);
+    assert.ok(!result.errors, `unexpected errors: ${JSON.stringify(result.errors)}`);
+    assert.ok(!('incremental' in result), '@stream response must not include incremental payloads');
+    assert.ok(!('hasNext' in result), '@stream response must not include hasNext');
+    assert.deepStrictEqual(result, {
+      data: { tags: ['str', 'str'] },
+    });
+  });
 });

@@ -14,11 +14,10 @@ fn ast_type_to_typeref(ty: &async_graphql::parser::types::Type) -> TypeRef {
         BaseType::Named(name) => TypeRef::Named(name.to_string().into()),
         BaseType::List(inner) => TypeRef::List(Box::new(ast_type_to_typeref(inner))),
     };
-    if ty.nullable {
-        inner
-    } else {
-        TypeRef::NonNull(Box::new(inner))
-    }
+    // Per Wiring Spec: every nullable field must return the wired value, never null.
+    // Wrap all types as NonNull regardless of SDL's nullability so the dynamic
+    // schema enforces non-null resolution.
+    TypeRef::NonNull(Box::new(inner))
 }
 
 // resolve_value_composite is used instead — see below

@@ -2,7 +2,7 @@
 
 const { describe, it, beforeEach, afterEach } = require('node:test');
 const assert = require('node:assert/strict');
-const { execFileSync } = require('child_process');
+const { execFileSync, spawnSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
@@ -40,6 +40,12 @@ function run(schemaPath, queryPath, variablesPath) {
     throw new Error(parsed.error);
   }
   return parsed.result;
+}
+
+function runRaw(schemaPath, queryPath, variablesPath) {
+  const args = [DLL, schemaPath, queryPath];
+  if (variablesPath) args.push(variablesPath);
+  return spawnSync(DOTNET, args, { encoding: 'utf8', timeout: 30_000 });
 }
 
 describe('hot-chocolate conformer-harness', () => {
@@ -225,5 +231,34 @@ describe('hot-chocolate conformer-harness', () => {
         },
       },
     });
+  });
+
+  it('handles schemas with custom root type names', () => {
+    const f = writeFiles({
+      'schema.graphqls': `
+        schema { query: Foo }
+        type Foo { s: String }
+      `,
+      'query.graphql': '{ s }',
+    });
+    const result = run(f['schema.graphqls'], f['query.graphql']);
+    assert.deepStrictEqual(result, {
+      data: { s: 'str' },
+    });
+  });
+
+  it('exits non-zero with stderr diagnostic on malformed schema', () => {
+    const f = writeFiles({
+      'schema.graphqls': 'this is not valid GraphQL SDL @@@',
+      'query.graphql': '{ x }',
+    });
+    const res = runRaw(f['schema.graphqls'], f['query.graphql']);
+    assert.strictEqual(res.status, 1, `expected exit 1, got ${res.status}`);
+    assert.ok(res.stderr && res.stderr.trim().length > 0, 'stderr must be non-empty');
+    const stdout = res.stdout || '';
+    assert.ok(
+      !/\s+at\s+[A-Za-z0-9_.]+\(/.test(stdout),
+      `stdout should not contain a stacktrace, got: ${stdout}`,
+    );
   });
 });

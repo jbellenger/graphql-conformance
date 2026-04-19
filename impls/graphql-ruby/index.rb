@@ -27,7 +27,7 @@ module ConformerResolver
 
     return nil unless typename
 
-    ctx.query.get_type(typename)
+    ctx.schema.get_type(typename)
   end
 
   def coerce_input(_type, value, _ctx)
