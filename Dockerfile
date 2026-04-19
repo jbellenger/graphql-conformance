@@ -95,17 +95,20 @@ RUN arch="$(dpkg --print-architecture)" \
     && curl -fsSL "https://go.dev/dl/go${GO_VERSION}.linux-${goarch}.tar.gz" \
       | tar -C /usr/local -xz
 
-# --- Java 21 via Adoptium Temurin APT -----------------------------------
-# Resolve the arch-specific jdk directory (temurin-21-jdk-amd64 or -arm64)
-# to an arch-independent path at /opt/java-21 so JAVA_HOME works everywhere.
+# --- Java 17 + 21 via Adoptium Temurin APT ------------------------------
+# JAVA_HOME points at 21 (the default runtime). Java 17 is installed so
+# Gradle toolchain specs (e.g. viaduct's :core:errors compileJava) can
+# resolve locally without hitting foojay.
 RUN curl -fsSL https://packages.adoptium.net/artifactory/api/gpg/key/public \
       | gpg --dearmor > /usr/share/keyrings/adoptium.gpg \
     && echo 'deb [signed-by=/usr/share/keyrings/adoptium.gpg] https://packages.adoptium.net/artifactory/deb trixie main' \
        > /etc/apt/sources.list.d/adoptium.list \
     && apt-get update \
-    && apt-get install -y --no-install-recommends temurin-21-jdk \
+    && apt-get install -y --no-install-recommends temurin-17-jdk temurin-21-jdk \
     && rm -rf /var/lib/apt/lists/* \
-    && ln -s "$(dirname "$(dirname "$(readlink -f "$(command -v javac)")")")" /opt/java-21
+    && arch="$(dpkg --print-architecture)" \
+    && ln -s "/usr/lib/jvm/temurin-17-jdk-${arch}" /opt/java-17 \
+    && ln -s "/usr/lib/jvm/temurin-21-jdk-${arch}" /opt/java-21
 
 # --- Maven 3.9 via Apache archive ---------------------------------------
 ARG MAVEN_VERSION=3.9.9
