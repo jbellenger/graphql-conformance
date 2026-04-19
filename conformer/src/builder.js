@@ -10,7 +10,7 @@ const execFileAsync = promisify(execFile);
 
 const DEFAULT_BUILD_TIMEOUT_MS = 5 * 60 * 1000;
 const BUILD_OUTPUT_MAX_BUFFER = 32 * 1024 * 1024;
-const BUILD_OUTPUT_TAIL_LINES = 40;
+const BUILD_OUTPUT_TAIL_LINES = 200;
 
 function tailLines(text, n) {
   const lines = String(text || '').split('\n');
