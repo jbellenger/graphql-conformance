@@ -18,7 +18,7 @@ function main() {
     process.stderr.write(`mise      ${mise.version}\n\n`);
   } else {
     process.stderr.write(
-      'mise      not found (install from https://mise.jdx.dev)\n\n'
+      'mise      not found (the dev image should provide it; try `make image`)\n\n'
     );
   }
 
@@ -64,7 +64,7 @@ function main() {
 
   if (!allOk) {
     process.stderr.write(
-      '\nSome tools are missing. Run `mise install` in conformer/ to install.\n'
+      '\nSome tools are missing from the dev image. Rebuild with `make image`.\n'
     );
     process.exit(1);
   }

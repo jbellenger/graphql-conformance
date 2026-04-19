@@ -49,16 +49,17 @@ Everything lives under the `conformer/` directory:
 
 ## Build Environment
 
-The project uses [mise](https://mise.jdx.dev) to manage language runtimes and build
-tools across implementations. Tool versions are declared in `conformer/.mise.toml`.
+All builds run inside the dev container defined by the repo's `Dockerfile`. The
+image ships every language runtime, build tool, and system dependency needed by
+any impl — there is no host setup beyond Docker and Docker Compose. Tool
+versions are pinned in `.mise.toml` at the repo root; bumping that file and
+running `make image` rebakes the toolchain into the image.
 
-Framework tools (always required): `node`, `make`, `git`.
+Framework tools (always present inside the image): `node`, `make`, `git`.
 
-Each implementation declares its additional tool requirements in `config.json` via the
-`tools` field. The coordinator checks all required tools before building and installs
-missing ones via `mise install` when mise is available.
-
-Run `make check` from `conformer/` to verify all tools are available without building.
+Each implementation declares its additional tool requirements in `config.json`
+via the `tools` field. The coordinator checks that the required tools are on
+PATH before building.
 
 ## Build System
 
@@ -70,9 +71,9 @@ directory — all in parallel with error tolerance.
 ### How it works
 
 Each impl in `config.json` declares a `repo` (git URL), `branch`, and `tools` (required
-build tools). When `make build` is run from `conformer/`, the coordinator:
+build tools). When `make build` is run, the coordinator:
 
-1. Checks all required tools are available (installs via mise if possible)
+1. Checks all required tools are on PATH inside the container
 2. Clones `repo` into `<impl-dir>/build/` if not already cloned
 3. Runs `git fetch --all` to get latest from remote
 4. Checks out `origin/<branch>` (detached HEAD at latest remote tip)
@@ -98,14 +99,14 @@ The coordinator reads each impl's version directly via `git rev-parse HEAD` in t
 
 ### Top-level Makefile
 
-The top-level `conformer/Makefile` orchestrates everything:
+The top-level `Makefile` orchestrates everything through the dev container:
 
-    make                # default: build all impls (parallel, error-tolerant)
-    make build          # same as above (checks tools first, installs via mise if needed)
-    make check          # check all required tools without building
-    make test           # runs coordinator unit tests, then `make test` in each impl
-    make run            # runs the conformer coordinator
-    make clean          # cleans all impls
+    make image          # build the dev image
+    make build          # build all impls (parallel, error-tolerant)
+    make test           # run coordinator unit tests and each impl's tests
+    make run-conformer  # run the conformer coordinator end-to-end
+    make shell          # drop into a bash session in the container
+    make clean          # clean all impls
 
 ## Configuration
 
@@ -138,7 +139,7 @@ Each entry has:
 - `command`: array of command + args to execute the impl; paths within the command
   are relative to the impl directory
 - `tools`: array of tool names required to build and run the impl (e.g. `["java", "maven"]`).
-  These correspond to mise tool names. The coordinator checks availability before building.
+  These correspond to the tool names in `.mise.toml`. The coordinator checks availability before building.
 - `buildTimeoutMs` (optional): override for the impl build timeout in milliseconds. If omitted,
   the coordinator uses the 5-minute default.
 
