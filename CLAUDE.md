@@ -6,9 +6,14 @@ See `SPEC.md` for the full specification.
 
 ## Quick Start
 
-    make build          # check tools, install via mise if needed, build all implementations
+Everything runs inside the dev container defined by `Dockerfile`. The
+top-level `Makefile` wraps `docker run` so `make` works as usual.
+
+    make image          # build the dev image (first run only)
+    make build          # build all implementations
     make test           # run all tests
     make run-conformer  # run conformance tests and update site/data
+    make shell          # drop into a bash session in the container
 
 ## Project Layout
 
@@ -31,5 +36,5 @@ The repo root contains the top-level Makefile, `config.json`, `SPEC.md`, and thi
 1. Create `impls/<name>/` with native code implementing the Wiring Spec
 2. Add a `Makefile` with `build`, `test`, `clean` targets
 3. Add an entry to `config.json` with `name`, `path`, `command`, and `tools`
-4. Add required tool versions to `.mise.toml` if not already present
+4. If a new toolchain is required, add it to the `Dockerfile` and rebake the dev image with `make image`
 5. Run `make build && make test` to verify

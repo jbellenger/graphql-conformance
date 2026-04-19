@@ -6,11 +6,16 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 
-const { getToolEnv } = require('./tools');
-
 const execFileAsync = promisify(execFile);
 
 const DEFAULT_BUILD_TIMEOUT_MS = 5 * 60 * 1000;
+const BUILD_OUTPUT_MAX_BUFFER = 32 * 1024 * 1024;
+const BUILD_OUTPUT_TAIL_LINES = 200;
+
+function tailLines(text, n) {
+  const lines = String(text || '').split('\n');
+  return lines.slice(-n).join('\n').replace(/\s+$/, '');
+}
 
 function getBuildTimeoutMs(impl) {
   return impl.buildTimeoutMs ?? DEFAULT_BUILD_TIMEOUT_MS;
@@ -58,11 +63,13 @@ async function buildImpl(impl, baseDir) {
       return { name: impl.name, sha, ok: true };
     }
 
-    // Run make build with mise-provided environment
     process.stderr.write(`  ${impl.name}: building at ${sha.slice(0, 8)}...\n`);
     const t0 = Date.now();
-    const env = getToolEnv(baseDir);
-    await execFileAsync('make', ['build'], { cwd: implDir, timeout: timeoutMs, env });
+    await execFileAsync('make', ['build'], {
+      cwd: implDir,
+      timeout: timeoutMs,
+      maxBuffer: BUILD_OUTPUT_MAX_BUFFER,
+    });
     const elapsed = ((Date.now() - t0) / 1000).toFixed(1);
 
     // Write stamp on success
@@ -71,9 +78,11 @@ async function buildImpl(impl, baseDir) {
     process.stderr.write(`  ${impl.name}: built successfully (${elapsed}s)\n`);
     return { name: impl.name, sha, ok: true };
   } catch (err) {
-    const message = err.stderr ? err.stderr.toString().trim() : err.message;
-    process.stderr.write(`  ${impl.name}: build failed — ${message}\n`);
-    return { name: impl.name, sha: 'unknown', ok: false, error: message };
+    const stdout = err.stdout ? err.stdout.toString() : '';
+    const stderr = err.stderr ? err.stderr.toString() : '';
+    const summary = (stderr || stdout || err.message || '').trim().split('\n').slice(-1)[0] || err.message;
+    process.stderr.write(`  ${impl.name}: build failed — ${summary}\n`);
+    return { name: impl.name, sha: 'unknown', ok: false, error: summary, stdout, stderr };
   }
 }
 
@@ -105,9 +114,11 @@ function getVersion(implDir) {
 
 module.exports = {
   DEFAULT_BUILD_TIMEOUT_MS,
+  BUILD_OUTPUT_TAIL_LINES,
   buildImpl,
   buildAll,
   getBuildConcurrency,
   getBuildTimeoutMs,
   getVersion,
+  tailLines,
 };

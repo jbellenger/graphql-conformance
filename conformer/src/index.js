@@ -6,7 +6,6 @@ const { discoverCorpus } = require('./corpus');
 const { runHarness } = require('./runner');
 const { getVersion } = require('./builder');
 const { compareResults } = require('./compare');
-const { getToolEnv } = require('./tools');
 const { ResultsStore } = require('../../results');
 
 function generateRunId() {
@@ -14,9 +13,9 @@ function generateRunId() {
   return now.toISOString().replace(/:/g, '-').replace(/\./g, '-').replace(/Z$/, 'Z');
 }
 
-async function runImpl(impl, rootDir, args, env) {
+async function runImpl(impl, rootDir, args) {
   const implDir = path.resolve(rootDir, impl.path);
-  return runHarness(impl.command, implDir, args, env);
+  return runHarness(impl.command, implDir, args);
 }
 
 async function main() {
@@ -58,8 +57,6 @@ async function main() {
     conformantTests[conformant.name] = {};
   }
 
-  const env = getToolEnv(rootDir);
-
   // Determine which conformants to skip (incremental runs)
   const resultsDir = process.env.RESULTS_DIR || path.join(rootDir, 'results', 'data');
   const store = ResultsStore.fromDirectory(resultsDir);
@@ -96,7 +93,7 @@ async function main() {
         : [schemaPath, queryPath];
 
       process.stderr.write(`  test ${testId}/${queryId}: running reference (${reference.name})...\n`);
-      const refResult = await runImpl(reference, rootDir, args, env);
+      const refResult = await runImpl(reference, rootDir, args);
 
       if (refResult.error) {
         process.stderr.write(`    reference excluded: ${refResult.error}\n`);
@@ -108,7 +105,7 @@ async function main() {
 
       runnableCount += 1;
       await Promise.all(conformantsToRun.map(async (conformant) => {
-        const conformantResult = await runImpl(conformant, rootDir, args, env);
+        const conformantResult = await runImpl(conformant, rootDir, args);
         const result = compareResults(refResult, conformantResult);
         if (!result.matches) {
           if (refResult.result) result.expected = refResult.result;

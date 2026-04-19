@@ -32,50 +32,30 @@ A coordinator runs every test case against the reference first. If the reference
 
 ## Requirements
 
-- [mise](https://mise.jdx.dev/) — manages tool versions (Node.js, Go, Java, .NET, Rust, Python)
+- Docker 24+ with the `buildx` plugin
 
-Then, in the repository root, run:
+Docker Desktop ships `buildx` by default. On a plain Linux install, add it
+with your package manager — the package name depends on which Docker you
+installed:
 
-```sh
-mise trust          # Tell mise you trust this repo
-mise install        # Install the various runtimes
-```
+- Ubuntu's `docker.io` (from the `universe` repo): `sudo apt install docker-buildx`
+- Docker's official `docker-ce` (from [download.docker.com](https://docs.docker.com/engine/install/)): `sudo apt install docker-buildx-plugin`
 
-That's it. `mise` handles installing the right versions of everything else.
-
-### MacOS
-
-On macOS, `mise install php` may require a newer `bison` on `PATH` than the system default.
-
-### Ubuntu
-
-On Ubuntu you might need some additional dependencies; here's some common deps
-required to build the common programming language runtimes from source (quite a
-lot of these are a belt-and-braces list for PHP):
-
-```sh
-sudo apt update
-sudo apt install \
-  build-essential build-dep autoconf automake libtool pkg-config \
-  libffi-dev libssl-dev zlib1g-dev \
-  libbz2-dev libreadline-dev libsqlite3-dev \
-  libncurses-dev libncursesw5-dev \
-  libyaml-dev libxml2-dev libcurl4-openssl-dev re2c \
-  curl git bison plocate libgd-dev libicu-dev libzip-dev \
-  libonig-dev libpq-dev libzip-dev libjpeg-dev libpng-dev \
-  libxpm-dev libmysqlclient-dev libfreetype6-dev libldap2-dev \
-  libxslt-dev libldb-dev
-```
+All language runtimes, build tools, and system libraries live inside the
+dev image.
 
 ## Quick start
 
 ```sh
+make image          # build the dev image (first run only; slow)
 make build          # clone libraries and build all implementations
 make test           # run all tests
-make ci-smoke       # cross-platform smoke target used by CI
 make run-conformer  # run conformance suite and update the dashboard
-make serve-site     # serve the dashboard locally
+make serve-site     # serve the dashboard locally on http://localhost:8000
 ```
+
+Every `make` target runs inside the container. Use `make shell` to drop into
+a bash session when debugging a specific impl's build.
 
 ## Other commands
 
@@ -104,5 +84,5 @@ site/             static dashboard (reads from site/data/)
 1. Create `impls/<name>/` with code that implements the [Wiring Spec](SPEC.md)
 2. Add a `Makefile` with `build`, `test`, `clean` targets
 3. Add an entry to `config.json`
-4. Add any new tool versions to `.mise.toml`
+4. If a new toolchain is required, add it to the `Dockerfile`, then `make image` to rebake the dev image
 5. Run `make build && make test`

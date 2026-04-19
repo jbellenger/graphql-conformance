@@ -116,6 +116,22 @@ describe('buildImpl', () => {
     assert.ok(result.error);
   });
 
+  it('captures stdout and stderr from failed builds', async () => {
+    const implDir = path.join(tmpDir, 'impl');
+    fs.mkdirSync(implDir);
+    fs.writeFileSync(
+      path.join(implDir, 'Makefile'),
+      '.PHONY: build\nbuild:\n\t@echo to-stdout\n\t@echo to-stderr >&2\n\t@exit 1\n',
+    );
+
+    const impl = { name: 'test', path: implDir, repo: repoDir, branch: 'main' };
+    const result = await buildImpl(impl, '/');
+
+    assert.equal(result.ok, false);
+    assert.match(result.stdout, /to-stdout/);
+    assert.match(result.stderr, /to-stderr/);
+  });
+
   it('returns error when repo does not exist', async () => {
     const implDir = path.join(tmpDir, 'impl');
     fs.mkdirSync(implDir);

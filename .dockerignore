@@ -1,0 +1,22 @@
+.git
+.gitignore
+.github
+.tmp
+.DS_Store
+
+# Host build artifacts that would shadow the bind mount or bloat the build context
+impls/*/build
+impls/*/node_modules
+impls/*/target
+impls/*/out
+impls/*/vendor
+impls/*/deps
+impls/*/_build
+conformer/node_modules
+corpus-gen/build
+corpus-gen/.gradle
+site/data
+results/data
+
+# Only the sanity corpus needs to be baked in; regenerated cases are runtime artifacts
+corpus/[1-9]*

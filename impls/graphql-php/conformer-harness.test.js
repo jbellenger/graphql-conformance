@@ -9,24 +9,7 @@ const os = require('os');
 
 const SCRIPT = path.join(__dirname, 'index.php');
 
-function findPhp() {
-  try {
-    return execFileSync('which', ['php'], { encoding: 'utf8' }).trim();
-  } catch {
-    try {
-      const miseDir = execFileSync('mise', ['where', 'php'], { encoding: 'utf8' }).trim();
-      const binPhp = path.join(miseDir, 'bin', 'php');
-      if (fs.existsSync(binPhp)) return binPhp;
-      const rootPhp = path.join(miseDir, 'php');
-      if (fs.existsSync(rootPhp)) return rootPhp;
-      return miseDir;
-    } catch {
-      return 'php';
-    }
-  }
-}
-
-const PHP = findPhp();
+const PHP = 'php';
 let tmpDir;
 
 beforeEach(() => {

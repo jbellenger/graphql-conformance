@@ -2,8 +2,8 @@
 
 const fs = require('fs');
 const path = require('path');
-const { buildAll } = require('./builder');
-const { FRAMEWORK_TOOLS, ensureTools } = require('./tools');
+const { buildAll, BUILD_OUTPUT_TAIL_LINES, tailLines } = require('./builder');
+const { FRAMEWORK_TOOLS, checkTools } = require('./tools');
 
 async function main() {
   const baseDir = path.resolve(__dirname, '..');
@@ -17,19 +17,18 @@ async function main() {
   const allTools = [...new Set([...FRAMEWORK_TOOLS, ...implTools])];
 
   process.stderr.write('Checking tools...\n');
-  const { results: toolResults, installed, failed } = ensureTools(allTools, rootDir);
+  const toolResults = checkTools(allTools);
+  const missing = [];
   for (const r of toolResults) {
     if (r.found) {
       process.stderr.write(`  ✓ ${r.name.padEnd(8)} ${r.version}\n`);
     } else {
       process.stderr.write(`  ✗ ${r.name.padEnd(8)} not found\n`);
+      missing.push(r.name);
     }
   }
-  if (installed.length > 0) {
-    process.stderr.write(`  Installed via mise: ${installed.join(', ')}\n`);
-  }
-  if (failed.length > 0) {
-    process.stderr.write(`  Missing: ${failed.join(', ')}\n`);
+  if (missing.length > 0) {
+    process.stderr.write(`  Missing: ${missing.join(', ')} — rebuild the dev image with \`make image\`.\n`);
   }
   process.stderr.write('\n');
 
@@ -43,6 +42,19 @@ async function main() {
   for (const r of results) {
     const status = r.ok ? 'ok' : `FAILED: ${r.error}`;
     process.stderr.write(`  ${r.name}: ${status}\n`);
+  }
+
+  const failures = results.filter((r) => !r.ok);
+  if (failures.length > 0) {
+    for (const r of failures) {
+      process.stderr.write(`\n--- ${r.name}: last ${BUILD_OUTPUT_TAIL_LINES} lines of build output ---\n`);
+      const stdoutTail = tailLines(r.stdout, BUILD_OUTPUT_TAIL_LINES);
+      const stderrTail = tailLines(r.stderr, BUILD_OUTPUT_TAIL_LINES);
+      if (stdoutTail) process.stderr.write(`[stdout]\n${stdoutTail}\n`);
+      if (stderrTail) process.stderr.write(`[stderr]\n${stderrTail}\n`);
+      if (!stdoutTail && !stderrTail) process.stderr.write('(no output captured)\n');
+    }
+    process.exit(1);
   }
 }
 

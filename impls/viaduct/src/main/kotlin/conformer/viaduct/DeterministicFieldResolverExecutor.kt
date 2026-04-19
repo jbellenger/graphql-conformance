@@ -13,6 +13,7 @@ class DeterministicFieldResolverExecutor(
 ) : FieldResolverExecutor {
     override val objectSelectionSet = null
     override val querySelectionSet = null
+    override val isSelective = false
     override val resolverId = resolverName
     override val metadata = ResolverMetadata.forModern(resolverName)
     override val isBatching = false

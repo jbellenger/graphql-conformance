@@ -3,7 +3,6 @@
 const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
-const { getToolEnv } = require('./tools');
 const { parseHarnessOutput } = require('./protocol');
 
 function getRootDir() {
@@ -56,10 +55,8 @@ function parseCorpusTestPath(rootDir, testPath) {
 function spawnImplSync(implDef, rootDir, args) {
   const implDir = path.resolve(rootDir, implDef.path);
   const [cmd, ...cmdArgs] = implDef.command;
-  const env = getToolEnv(rootDir);
   return spawnSync(cmd, [...cmdArgs, ...args], {
     cwd: implDir,
-    env,
     stdio: ['pipe', 'pipe', 'pipe'],
     timeout: 30_000,
   });
