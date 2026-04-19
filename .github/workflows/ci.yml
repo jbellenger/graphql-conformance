@@ -22,10 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 120
     env:
-      # Keep to 1: viaduct's Gradle daemon takes 4GB, stacking two heavy
-      # builds trips the 16GB runner into OOM-kill territory (silent fail,
-      # no 'BUILD FAILED' printed).
-      BUILD_CONCURRENCY: 1
+      BUILD_CONCURRENCY: 2
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
