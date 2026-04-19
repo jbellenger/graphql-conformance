@@ -4,7 +4,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import graphql.ExecutionInput;
 import graphql.ExecutionResult;
 import graphql.GraphQL;
+import graphql.language.BooleanValue;
+import graphql.language.DirectiveDefinition;
+import graphql.language.InputValueDefinition;
+import graphql.language.NonNullType;
+import graphql.language.ScalarTypeDefinition;
+import graphql.language.TypeName;
 import graphql.parser.ParserOptions;
+import graphql.schema.Coercing;
 import graphql.schema.DataFetcher;
 import graphql.schema.GraphQLEnumType;
 import graphql.schema.GraphQLInterfaceType;
@@ -20,6 +27,7 @@ import graphql.schema.GraphQLUnionType;
 import graphql.schema.TypeResolver;
 import graphql.schema.idl.InterfaceWiringEnvironment;
 import graphql.schema.idl.RuntimeWiring;
+import graphql.schema.idl.ScalarInfo;
 import graphql.schema.idl.SchemaGenerator;
 import graphql.schema.idl.SchemaParser;
 import graphql.schema.idl.TypeDefinitionRegistry;
@@ -33,6 +41,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -63,9 +72,30 @@ public class Main {
         ParserOptions.setDefaultSdlParserOptions(parserOptions);
 
         TypeDefinitionRegistry registry = new SchemaParser().parse(schemaText);
-        RuntimeWiring wiring = RuntimeWiring.newRuntimeWiring()
-                .wiringFactory(new ConformanceWiringFactory())
-                .build();
+
+        // Bug 2 (part 1): register @stream directive so queries that use it parse
+        // and validate successfully. graphql-java treats @defer as built-in but
+        // does not ship a @stream definition. We register a stub; because we do
+        // not enable ExperimentalApi.ENABLE_INCREMENTAL_SUPPORT, both directives
+        // are accepted and then silently ignored at execution time, yielding a
+        // single final JSON response as required by the wiring spec.
+        registerStreamDirectiveIfMissing(registry);
+
+        // Bug 1: walk the schema AST for custom scalars and register a coercing
+        // implementation so schema generation does not fail with "expected a
+        // type resolver for scalar X" style SchemaProblem errors. Per the
+        // wiring spec, custom scalars serialize to the string "str".
+        RuntimeWiring.Builder wiringBuilder = RuntimeWiring.newRuntimeWiring()
+                .wiringFactory(new ConformanceWiringFactory());
+        for (Map.Entry<String, ScalarTypeDefinition> entry : registry.scalars().entrySet()) {
+            String scalarName = entry.getKey();
+            if (ScalarInfo.isGraphqlSpecifiedScalar(scalarName)) {
+                continue;
+            }
+            wiringBuilder.scalar(buildStrScalar(scalarName));
+        }
+        RuntimeWiring wiring = wiringBuilder.build();
+
         GraphQLSchema schema = new SchemaGenerator().makeExecutableSchema(registry, wiring);
         GraphQL graphql = GraphQL.newGraphQL(schema).build();
 
@@ -76,10 +106,67 @@ public class Main {
         }
 
         ExecutionResult result = graphql.execute(inputBuilder.build());
-        Map<String, Object> spec = result.toSpecification();
+
+        // Bug 2 (part 2): always emit a single final JSON result. Strip any
+        // incremental-delivery keys ("hasNext", "incremental", "pending") that
+        // IncrementalExecutionResult.toSpecification() may add.
+        Map<String, Object> spec = new LinkedHashMap<>(result.toSpecification());
+        spec.remove("hasNext");
+        spec.remove("incremental");
+        spec.remove("pending");
 
         ObjectMapper mapper = new ObjectMapper();
         System.out.print(mapper.writeValueAsString(spec));
+    }
+
+    static void registerStreamDirectiveIfMissing(TypeDefinitionRegistry registry) {
+        if (registry.getDirectiveDefinition("stream").isPresent()) {
+            return;
+        }
+        DirectiveDefinition streamDef = DirectiveDefinition.newDirectiveDefinition()
+                .name("stream")
+                .directiveLocation(graphql.language.DirectiveLocation.newDirectiveLocation()
+                        .name("FIELD")
+                        .build())
+                .inputValueDefinition(InputValueDefinition.newInputValueDefinition()
+                        .name("if")
+                        .type(NonNullType.newNonNullType(TypeName.newTypeName("Boolean").build()).build())
+                        .defaultValue(BooleanValue.newBooleanValue(true).build())
+                        .build())
+                .inputValueDefinition(InputValueDefinition.newInputValueDefinition()
+                        .name("label")
+                        .type(TypeName.newTypeName("String").build())
+                        .build())
+                .inputValueDefinition(InputValueDefinition.newInputValueDefinition()
+                        .name("initialCount")
+                        .type(TypeName.newTypeName("Int").build())
+                        .defaultValue(graphql.language.IntValue.newIntValue(java.math.BigInteger.ZERO).build())
+                        .build())
+                .build();
+        registry.add(streamDef);
+    }
+
+    static GraphQLScalarType buildStrScalar(String name) {
+        return GraphQLScalarType.newScalar()
+                .name(name)
+                .description("Conformance stub for custom scalar " + name)
+                .coercing(new Coercing<Object, Object>() {
+                    @Override
+                    public Object serialize(Object dataFetcherResult) {
+                        return "str";
+                    }
+
+                    @Override
+                    public Object parseValue(Object input) {
+                        return input;
+                    }
+
+                    @Override
+                    public Object parseLiteral(Object input) {
+                        return input;
+                    }
+                })
+                .build();
     }
 
     static Object resolveValue(GraphQLOutputType type) {

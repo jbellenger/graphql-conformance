@@ -128,6 +128,19 @@ describe('async-graphql conformer-harness', () => {
     });
   });
 
+  it('resolves nullable scalar fields to wired value (not null)', () => {
+    const f = writeFiles({
+      'schema.graphqls': `
+        type Query { s: String }
+      `,
+      'query.graphql': '{ s }',
+    });
+    const result = run(f['schema.graphqls'], f['query.graphql']);
+    assert.deepStrictEqual(result, {
+      data: { s: 'str' },
+    });
+  });
+
   it('resolves nested objects', () => {
     const f = writeFiles({
       'schema.graphqls': `

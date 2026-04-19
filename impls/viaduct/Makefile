@@ -9,5 +9,4 @@ test:
 	node --test conformer-harness.test.js
 
 clean:
-	rm -rf build .built-sha
-	mvn clean
+	rm -rf target .built-sha dependency-reduced-pom.xml

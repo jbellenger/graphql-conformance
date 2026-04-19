@@ -128,6 +128,29 @@ describe('juniper conformer-harness', () => {
     });
   });
 
+  it('resolves nullable scalar field as non-null wired value', () => {
+    // Per Wiring Spec: every nullable field is returned as non-null.
+    // Regression test for convert_type wrapping named types in Type::nullable,
+    // which caused nullable SDL fields to be registered as nullable in the
+    // schema. Verifies both the runtime value AND the introspected schema
+    // type, since the spec requires the wired schema to expose non-null
+    // fields regardless of SDL nullability.
+    const f = writeFiles({
+      'schema.graphqls': `
+        type Query { s: String }
+      `,
+      'query.graphql': '{ s __type(name: "Query") { fields { name type { kind name ofType { kind name } } } } }',
+    });
+    const result = run(f['schema.graphqls'], f['query.graphql']);
+    assert.strictEqual(result.data.s, 'str', 'nullable field must resolve to wired value, not null');
+    const sField = result.data.__type.fields.find((x) => x.name === 's');
+    assert.deepStrictEqual(sField.type, {
+      kind: 'NON_NULL',
+      name: null,
+      ofType: { kind: 'SCALAR', name: 'String' },
+    }, 'nullable SDL field must be registered as NON_NULL String in the wired schema');
+  });
+
   it('resolves nested objects', () => {
     const f = writeFiles({
       'schema.graphqls': `

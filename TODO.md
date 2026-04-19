@@ -1,0 +1,62 @@
+# Conformance Harness TODOs
+
+## Critical (ship-blockers)
+
+- [x] **graphql-js-17**: `package.json:7` pins `"graphql": "^16.13.1"`; `npm install --install-links build` does not override a fixed version, so the "reference" harness actually executes against graphql-js v16. Change to `"graphql": "file:./build"` (or drop the version specifier).
+- [x] **graphql-java** (`src/.../Main.java:115-158`): `ConformanceWiringFactory` does not register custom scalars in `RuntimeWiring`. Schemas containing `scalar DateTime` (etc.) throw `SchemaProblem` before execution. Register custom scalar type mappings before schema generation.
+- [x] **graphql-java**: Parser rejects `@defer` / `@stream`. Enable directives or provide stub implementations per spec ("allowed but synchronous — emit ONE final JSON").
+- [x] **hot-chocolate** (`Program.cs:121`): `AddDocumentFromString(schemaText)` ignores `schema { query: Foo }`. Parse the schema AST for `SchemaDefinitionNode` and wire custom root type names.
+- [x] **hot-chocolate**: No try/catch anywhere — unhandled exceptions crash with no diagnostic output. Wrap main logic, write error to stderr, exit 1.
+- [x] **async-graphql**: `Cargo.toml:4` has `edition = "2024"` (invalid). Change to `"2021"`.
+- [x] **async-graphql** (`src/main.rs:17-20`): Nullable-to-non-null logic inverted — nullable SDL types returned as nullable, so fields resolve to null. Wrap all nullable types in `NonNull` regardless of SDL.
+- [x] **juniper** (`src/main.rs:293`): `convert_type` wraps named types as `Type::nullable`, so nullable fields return null instead of wired values. Strip the nullable wrapping — spec requires non-null.
+- [x] **viaduct** (`Makefile:12`): `clean` removes the upstream `build/` directory checked out by the coordinator. Target only `target/`, `.built-sha`, and `dependency-reduced-pom.xml`.
+- [x] **graphql-ruby** (`Makefile:9`): `test: build` violates the "test must not depend on build" convention. Remove the dependency.
+- [x] **graphql-ruby** (`index.rb:30`): `ctx.query.get_type(typename)` uses deprecated API. Change to `ctx.schema.get_type(typename)`.
+- [ ] **coordinator** (`compare.js`, `results/index.js`): Quirks are unimplemented. `SPEC.md:253-271` specifies `{matches, quirks}` with `"object-ordering"` detected when conformant keys diverge from query order. `grep quirks conformer/src` returns zero. Either implement detection in `compareResults` and propagate through `ResultsStore`, or drop quirks from SPEC.
+- [ ] **coordinator** (`index.js:66-80, 149-154`): Skip predicate ignores corpus changes. Regenerating the corpus without touching impl code produces stale results for every unchanged conformant; if all are skipped, the prior `corpusTotal`/`total` split is copied forward even though the corpus has grown. Fingerprint the corpus (or invalidate on any mtime change) in the skip predicate.
+
+## Moderate
+
+- [ ] **graphql-core** (`index.py:156-164`): No exception handling; raw Python tracebacks leak on malformed input. Wrap schema/query/variables loading in try/except, write to stderr, exit 1.
+- [ ] **grafast** (`index.js:195`): Streaming path can exit without emitting `complete` when the iterator finishes before `hasNext === false`. Always emit `complete` after the loop in streaming mode.
+- [ ] **graphql-go** (`main.go:259, 274`): Unchecked `[0]` / `[len-1]` indexing on union/interface members — panics on empty sets. Add `len(...) > 0` guards.
+- [ ] **gqlgen**: No `@defer` / `@stream` handling; directives silently treated as regular fields. Detect in selection-set resolver, collect deferred/streamed fields, emit final response.
+- [ ] **graphql-dotnet** (`Conformer.csproj:15`): `PackageReference Version="*"` unversioned wildcard — pin for reproducibility (e.g., `Version="8.3.*"`).
+- [ ] **graphql-dotnet** (`Program.cs:26`): No try/catch around `Parser.Parse` / `ExecuteAsync`. Wrap, exit 1 on failure.
+- [ ] **absinthe** (`lib/conformer.ex:189-196`): `prime_identifier_atoms/1` violates the project's own `ERRATA.md` policy ("do not 'prime' the VM with these atoms as a silent workaround"). Either remove or document the deliberate policy override.
+- [ ] **absinthe** (`index.exs:19`): `{:ok, result} =` pattern-match crashes on `{:error, ...}`. Handle both branches.
+- [ ] **graphql-php** (`conformer-harness.test.js`): Code appears to support custom root types but no test exercises `schema { query: Foo }`. Add test.
+- [ ] **lacinia**: Parse errors propagate as raw Clojure exceptions — no JSON error wrapping. Add try/catch in harness entry point.
+- [ ] **coordinator** (`protocol.js:74-78` vs `159-164`): Streaming results normalize away empty `errors`/`extensions`, legacy `JSON.parse` output doesn't. A legacy reference emitting `{data, errors:[]}` fails to match a streaming conformant that dropped the empty list. Normalize both paths symmetrically.
+- [ ] **coordinator** (`diff-impl.js:86`): Always exits 1 after writing diff output, regardless of `spawnSync('diff', ...).status`. If `diff` itself fails we still report "differences found". Propagate the actual status.
+
+## Test-coverage gaps (cross-cutting)
+
+- [ ] Add custom-root-type test (`schema { query: Foo }`) to: **hot-chocolate, graphql-dotnet, graphql-php, async-graphql, juniper**.
+- [ ] Add nullable-field wiring test (field declared nullable must return the wired value, not null) to **all** harnesses. This gap is what let the juniper and async-graphql nullability bugs slip through.
+- [ ] Document `@defer` / `@stream` support matrix (rejects / ignores / streams / translates / synchronous) across impls.
+- [ ] Add direct unit tests for `impl-cli.js::parseCorpusTestPath` (path-escape, 2-part vs 3-part paths, `..` variants) and `resolveImpl` (unknown impl error-shape). Currently only covered transitively via `run-impl.test.js`.
+- [ ] Add tests for `check.js` and `build.js` (missing-tool warning vs exit behavior, build-failure output tail). Neither has any direct coverage today.
+- [ ] Add an integration test exercising corpus-change-during-skip (tied to the coordinator Critical item above).
+- [ ] Add a test firing an actual build timeout (currently only `getBuildTimeoutMs` config plumbing is covered).
+- [ ] Add a test covering mixed streaming + legacy conformants with empty `errors:[]` to pin behavior (or the fix, once applied).
+- [ ] Add a `compareResults` test for `null` data (both sides, one side only).
+
+## Minor / code quality
+
+- [ ] **graphql-js-17** (`index.js:63`): Error message references `"conformer-harness.js"` but entry point is `index.js`. Fix text.
+- [ ] **async-graphql** (`src/main.rs:91-94`): Four full `.clone()` calls per object field yield O(schema²) allocations. Use `Arc<>` or pass by reference.
+- [ ] **async-graphql** (`src/main.rs:220-225`): `.expect()` on file reads panics with unstructured output. Replace with structured error handling.
+- [ ] **juniper**: Replace `expect()` panics on schema errors (`src/main.rs:80, 89, 379-384`) with graceful error messages.
+- [ ] **viaduct**: `NoOpCoercing` defined twice (`ViaductHarness.kt:111-117` and `ViaductHarnessTest.kt:148-154`). Deduplicate.
+- [ ] **absinthe**: Add `@doc` / `@spec` to public functions in `Conformer` and `DirectiveSupport`.
+- [ ] **absinthe** (`lib/conformer.ex:307-328`): Regex-based directive-definition parsing is brittle (breaks on descriptions with escaped quotes). Replace with AST-based detection.
+- [ ] **coordinator** (`index.js:122-126`): Dead-code reconstruction of `conformantTests[name]` for skipped conformants — overridden by the `failuresByTestKey` branch at `index.js:135-141`.
+- [ ] **coordinator** (`index.js:181`): Tautology `const refPct = refTotal > 0 ? '100.0' : '100.0';`.
+- [ ] **coordinator** (`compare.js:60-78`): `compareResults` runs `deepEqual` before `unorderedEqual`, but `unorderedEqual` strictly subsumes it — the pre-pass is dead logic until quirks are implemented.
+- [ ] **coordinator** (`results/index.js:210-212`): `loadLatestRun()` is a pure alias for `loadLatestRunSummary()`. Pick one name.
+- [ ] **coordinator** (`builder.js:56-58`): `git checkout` runs before the stamp check. On stamp hits this wastes a checkout; move the stamp check up.
+- [ ] **coordinator** (`tools.js:32`): `erlang: [executable, '-version']` returns empty output on modern OTP, so `getVersion` silently reports `'unknown'` even when Erlang is installed.
+- [ ] **coordinator** (`build.js` vs `check.js`): `build.js` warns on missing tools and proceeds; `check.js` exits non-zero. Align behavior.
+- [ ] **coordinator** (`impl-cli.js:32`): `relative.startsWith('..')` also rejects a directory literally named `..foo`. Replace with `relative === '..' || relative.startsWith('..' + path.sep)`.

@@ -6,7 +6,7 @@ build:
 	bundle install
 	bundle exec ruby -c index.rb >/dev/null
 
-test: build
+test:
 	node --test conformer-harness.test.js
 
 clean:
