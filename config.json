@@ -30,7 +30,8 @@
       "path": "./impls/viaduct",
       "repo": "https://github.com/airbnb/viaduct",
       "branch": "main",
-      "command": ["java", "-jar", "target/conformer-1.0.jar"]
+      "command": ["java", "-jar", "target/conformer-1.0.jar"],
+      "buildTimeoutMs": 900000
     },
     "graphql-go": {
       "path": "./impls/graphql-go",
