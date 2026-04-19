@@ -35,9 +35,14 @@ A coordinator runs every test case against the reference first. If the reference
 - Docker 24+ with the `buildx` plugin
 
 Docker Desktop ships `buildx` by default. On a plain Linux install, add it
-with your package manager (e.g. `apt install docker-buildx-plugin`). All
-language runtimes, build tools, and system libraries live inside the dev
-image.
+with your package manager — the package name depends on which Docker you
+installed:
+
+- Ubuntu's `docker.io` (from the `universe` repo): `sudo apt install docker-buildx`
+- Docker's official `docker-ce` (from [download.docker.com](https://docs.docker.com/engine/install/)): `sudo apt install docker-buildx-plugin`
+
+All language runtimes, build tools, and system libraries live inside the
+dev image.
 
 ## Quick start
 

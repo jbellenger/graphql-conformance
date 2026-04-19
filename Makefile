@@ -46,7 +46,7 @@ ifeq ($(shell command -v $(DOCKER) >/dev/null 2>&1 && echo yes),)
 $(error '$(DOCKER)' not found on PATH. Install Docker 24+ (https://docs.docker.com/engine/install/).)
 endif
 ifeq ($(shell $(DOCKER) buildx version >/dev/null 2>&1 && echo yes),)
-$(error 'docker buildx' plugin not found. On Debian/Ubuntu: sudo apt install docker-buildx-plugin. On macOS/Windows it ships with Docker Desktop.)
+$(error 'docker buildx' plugin not found. Ubuntu docker.io: sudo apt install docker-buildx. Docker CE: sudo apt install docker-buildx-plugin. Docker Desktop ships it by default.)
 endif
 
 DOCKER_VOLUMES := \
