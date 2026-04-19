@@ -36,18 +36,44 @@ image shell:
 else
 
 DOCKER ?= docker
-COMPOSE ?= $(DOCKER) compose
+IMAGE ?= graphql-conformance:dev
 HOST_UID := $(shell id -u)
 HOST_GID := $(shell id -g)
-DOCKER_ENV := HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID)
-DOCKER_RUN := $(DOCKER_ENV) $(COMPOSE) run --rm app
-DOCKER_RUN_PORTS := $(DOCKER_ENV) $(COMPOSE) run --rm --service-ports app
+
+DOCKER_VOLUMES := \
+  -v $(CURDIR):/work:cached \
+  -v graphql-conformance-m2:/home/conformance/.m2 \
+  -v graphql-conformance-gradle:/home/conformance/.gradle \
+  -v graphql-conformance-cargo-registry:/home/conformance/.cargo/registry \
+  -v graphql-conformance-cargo-git:/home/conformance/.cargo/git \
+  -v graphql-conformance-pip-cache:/home/conformance/.cache/pip \
+  -v graphql-conformance-go-mod:/home/conformance/go/pkg/mod \
+  -v graphql-conformance-gem-cache:/home/conformance/.gem \
+  -v graphql-conformance-mix-deps:/home/conformance/.mix \
+  -v graphql-conformance-nuget-cache:/home/conformance/.nuget
+
+DOCKER_ENV := \
+  -e BUILD_CONCURRENCY \
+  -e CORPUS_DIR \
+  -e RESULTS_DIR \
+  -e SITE_DATA_DIR \
+  -e CONFIG_PATH
+
+DOCKER_RUN_BASE := $(DOCKER) run --rm \
+  --user $(HOST_UID):$(HOST_GID) \
+  -w /work \
+  $(DOCKER_VOLUMES) \
+  $(DOCKER_ENV)
+
+DOCKER_RUN := $(DOCKER_RUN_BASE) $(IMAGE)
+DOCKER_RUN_TTY := $(DOCKER_RUN_BASE) -it $(IMAGE)
+DOCKER_RUN_PORTS := $(DOCKER_RUN_BASE) -p 8000:8000 $(IMAGE)
 
 image:
-	$(DOCKER_ENV) $(COMPOSE) build
+	$(DOCKER) build -t $(IMAGE) .
 
 shell:
-	$(DOCKER_RUN) bash
+	$(DOCKER_RUN_TTY) bash
 
 build:
 	$(DOCKER_RUN) make -C /work _build

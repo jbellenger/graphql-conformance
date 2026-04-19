@@ -40,11 +40,7 @@ jobs:
           cache-to: type=gha,mode=max,scope=conformance
 
       - name: Run smoke suite
-        run: |
-          HOST_UID=$(id -u) HOST_GID=$(id -g) \
-            docker compose run --rm \
-              -e BUILD_CONCURRENCY \
-              app make -C /work _ci-smoke
+        run: make ci-smoke
 
       - name: Upload smoke artifacts
         if: always()

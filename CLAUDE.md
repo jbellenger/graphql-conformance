@@ -7,7 +7,7 @@ See `SPEC.md` for the full specification.
 ## Quick Start
 
 Everything runs inside the dev container defined by `Dockerfile`. The
-top-level `Makefile` wraps `docker compose run` so `make` works as usual.
+top-level `Makefile` wraps `docker run` so `make` works as usual.
 
     make image          # build the dev image (first run only)
     make build          # build all implementations

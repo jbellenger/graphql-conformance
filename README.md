@@ -32,7 +32,7 @@ A coordinator runs every test case against the reference first. If the reference
 
 ## Requirements
 
-- Docker 24+ and Docker Compose v2
+- Docker 24+
 
 That's it. All language runtimes, build tools, and system libraries live inside
 the dev image.

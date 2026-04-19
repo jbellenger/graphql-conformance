@@ -51,7 +51,7 @@ Everything lives under the `conformer/` directory:
 
 All builds run inside the dev container defined by the repo's `Dockerfile`. The
 image ships every language runtime, build tool, and system dependency needed by
-any impl — there is no host setup beyond Docker and Docker Compose. Toolchain
+any impl — there is no host setup beyond Docker. Toolchain
 versions are pinned directly in the `Dockerfile`; bumping a version and running
 `make image` rebakes the image.
 
