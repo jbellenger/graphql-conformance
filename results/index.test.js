@@ -118,6 +118,70 @@ describe('ResultsStore', () => {
     });
   });
 
+  describe('quirks', () => {
+    it('collects and exposes quirks from test results', () => {
+      const store = ResultsStore.inMemory();
+      store.recordRun(makeRun({
+        conformants: {
+          'graphql-java': {
+            sha: 'x',
+            tests: {
+              'a/b': { matches: true, quirks: ['object-ordering'] },
+              'c/d': { matches: true, quirks: [] },
+            },
+          },
+        },
+      }));
+
+      const latest = store.loadLatestRunSummary();
+      assert.deepStrictEqual(
+        latest.conformants['graphql-java'].quirksByTestKey,
+        { 'a/b': ['object-ordering'] },
+      );
+    });
+
+    it('round-trips pre-computed quirksByTestKey for skipped conformants', () => {
+      const store = ResultsStore.inMemory();
+      store.recordRun(makeRun({
+        conformants: {
+          'graphql-java': {
+            sha: 'x',
+            total: 2,
+            passed: 2,
+            quirksByTestKey: { 'a/b': ['object-ordering'] },
+          },
+        },
+      }));
+
+      const latest = store.loadLatestRunSummary();
+      assert.deepStrictEqual(
+        latest.conformants['graphql-java'].quirksByTestKey,
+        { 'a/b': ['object-ordering'] },
+      );
+    });
+  });
+
+  describe('corpus fingerprint', () => {
+    it('persists corpusFingerprint on the reference', () => {
+      const store = ResultsStore.inMemory();
+      store.recordRun(makeRun({
+        reference: {
+          name: 'graphql-js',
+          sha: 'abc',
+          scoringModel: 'runnable-set-v1',
+          total: 3,
+          errors: 0,
+          corpusTotal: 3,
+          corpusFingerprint: 'deadbeef',
+          excluded: 0,
+        },
+      }));
+
+      const latest = store.loadLatestRunSummary();
+      assert.equal(latest.reference.corpusFingerprint, 'deadbeef');
+    });
+  });
+
   describe('getTestStatus', () => {
     it('returns per-impl status for a test', () => {
       const store = ResultsStore.inMemory();

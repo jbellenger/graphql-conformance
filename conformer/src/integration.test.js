@@ -8,6 +8,7 @@ const path = require('path');
 const os = require('os');
 const { ResultsStore } = require('../../results');
 const { discoverCorpus } = require('./corpus');
+const { computeCorpusFingerprint } = require('./index');
 
 const baseDir = path.resolve(__dirname, '..');
 const rootDir = path.resolve(baseDir, '..');
@@ -204,7 +205,9 @@ describe('integration: incremental skip', () => {
       },
     }, null, 2));
 
-    const corpusTotal = discoverCorpus(corpusDir).length;
+    const discoveredTests = discoverCorpus(corpusDir);
+    const corpusTotal = discoveredTests.length;
+    const corpusFingerprint = computeCorpusFingerprint(discoveredTests);
     const store = ResultsStore.fromDirectory(tmpResultsDir);
     store.recordRun({
       id: 'prior-run',
@@ -216,6 +219,7 @@ describe('integration: incremental skip', () => {
         total: corpusTotal,
         errors: 0,
         corpusTotal,
+        corpusFingerprint,
         excluded: 0,
       },
       conformants: {
@@ -241,6 +245,106 @@ describe('integration: incremental skip', () => {
     assert.deepStrictEqual(
       Object.keys(latestRun.conformants.conformant.failuresByTestKey),
       ['ok-test/ok-query'],
+    );
+  });
+});
+
+describe('integration: corpus change invalidates skip', () => {
+  it('re-runs all conformants when the corpus grows', () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    const refDir = path.join(tmpDir, 'ref-impl');
+    const conformantDir = path.join(tmpDir, 'conformant-impl');
+    const conformantLog = path.join(tmpDir, 'conformant.log');
+
+    writeCorpusCase(
+      corpusDir,
+      'ok-test',
+      'ok-query',
+      'type Query { ok: String }',
+      '{ ok }',
+    );
+
+    writeStaticJsonImpl(refDir, `{ data: { ok: 'value' } }`);
+    writeNodeImpl(conformantDir, `'use strict';
+const fs = require('fs');
+fs.appendFileSync(${JSON.stringify(conformantLog)}, process.argv[3] + '\\n');
+process.stdout.write(JSON.stringify({ data: { ok: 'value' } }));
+`);
+
+    fs.writeFileSync(tmpConfigPath, JSON.stringify({
+      reference: 'ref',
+      impls: {
+        ref: { path: refDir, command: ['node', 'index.js'] },
+        conformant: { path: conformantDir, command: ['node', 'index.js'] },
+      },
+    }, null, 2));
+
+    const { cmd, args, opts } = runConformer({ CORPUS_DIR: corpusDir });
+    execFileSync(cmd, args, opts);
+
+    const run1 = ResultsStore.fromDirectory(tmpResultsDir).loadLatestRunSummary();
+    assert.ok(run1.reference.corpusFingerprint, 'first run should record a fingerprint');
+    assert.equal(run1.conformants.conformant.total, 1);
+
+    // Grow the corpus — conformant sha is unchanged so the old skip predicate
+    // would have skipped it, but the new corpus invalidates that.
+    writeCorpusCase(
+      corpusDir,
+      'ok-test-2',
+      'ok-query',
+      'type Query { ok: String }',
+      '{ ok }',
+    );
+
+    fs.rmSync(conformantLog, { force: true });
+
+    const run2proc = spawnSync(cmd, args, opts);
+    assert.equal(run2proc.status, 0, `stderr: ${run2proc.stderr.toString()}`);
+    const stderr = run2proc.stderr.toString();
+    assert.match(stderr, /Corpus changed since prior run/);
+    assert.ok(!stderr.includes('Skipping conformant'),
+      'conformant must not be skipped when corpus changed');
+
+    const run2 = ResultsStore.fromDirectory(tmpResultsDir).loadLatestRunSummary();
+    assert.equal(run2.conformants.conformant.total, 2,
+      'conformant total should reflect the new corpus size');
+    assert.notEqual(run2.reference.corpusFingerprint, run1.reference.corpusFingerprint);
+    assert.ok(fs.existsSync(conformantLog), 'conformant should have actually run');
+  });
+});
+
+describe('integration: object-ordering quirk', () => {
+  it('marks a conformant with different key order as matching with quirk', () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    const refDir = path.join(tmpDir, 'ref-impl');
+    const conformantDir = path.join(tmpDir, 'conformant-impl');
+
+    writeCorpusCase(
+      corpusDir,
+      'ordering-test',
+      'ordering-query',
+      'type Query { a: String b: String }',
+      '{ a b }',
+    );
+    writeStaticJsonImpl(refDir, `{ data: { a: 'x', b: 'y' } }`);
+    writeStaticJsonImpl(conformantDir, `{ data: { b: 'y', a: 'x' } }`);
+
+    fs.writeFileSync(tmpConfigPath, JSON.stringify({
+      reference: 'ref',
+      impls: {
+        ref: { path: refDir, command: ['node', 'index.js'] },
+        conformant: { path: conformantDir, command: ['node', 'index.js'] },
+      },
+    }, null, 2));
+
+    const { cmd, args, opts } = runConformer({ CORPUS_DIR: corpusDir });
+    execFileSync(cmd, args, opts);
+
+    const run = ResultsStore.fromDirectory(tmpResultsDir).loadLatestRunSummary();
+    assert.equal(run.conformants.conformant.passed, 1);
+    assert.deepStrictEqual(
+      run.conformants.conformant.quirksByTestKey,
+      { 'ordering-test/ordering-query': ['object-ordering'] },
     );
   });
 });
@@ -367,6 +471,8 @@ process.stdout.write(JSON.stringify({ data: { ok: 'value' } }));
       },
     }, null, 2));
 
+    const discoveredTests2 = discoverCorpus(corpusDir);
+    const corpusFingerprint2 = computeCorpusFingerprint(discoveredTests2);
     ResultsStore.fromDirectory(tmpResultsDir).recordRun({
       id: 'prior-run',
       timestamp: '2026-03-18T00:00:00.000Z',
@@ -377,6 +483,7 @@ process.stdout.write(JSON.stringify({ data: { ok: 'value' } }));
         total: 1,
         errors: 0,
         corpusTotal: 2,
+        corpusFingerprint: corpusFingerprint2,
         excluded: 1,
         exclusions: [{ testKey: 'excluded-test/excluded-query', error: 'process exited with code 1' }],
       },

@@ -13,8 +13,8 @@
 - [x] **viaduct** (`Makefile:12`): `clean` removes the upstream `build/` directory checked out by the coordinator. Target only `target/`, `.built-sha`, and `dependency-reduced-pom.xml`.
 - [x] **graphql-ruby** (`Makefile:9`): `test: build` violates the "test must not depend on build" convention. Remove the dependency.
 - [x] **graphql-ruby** (`index.rb:30`): `ctx.query.get_type(typename)` uses deprecated API. Change to `ctx.schema.get_type(typename)`.
-- [ ] **coordinator** (`compare.js`, `results/index.js`): Quirks are unimplemented. `SPEC.md:253-271` specifies `{matches, quirks}` with `"object-ordering"` detected when conformant keys diverge from query order. `grep quirks conformer/src` returns zero. Either implement detection in `compareResults` and propagate through `ResultsStore`, or drop quirks from SPEC.
-- [ ] **coordinator** (`index.js:66-80, 149-154`): Skip predicate ignores corpus changes. Regenerating the corpus without touching impl code produces stale results for every unchanged conformant; if all are skipped, the prior `corpusTotal`/`total` split is copied forward even though the corpus has grown. Fingerprint the corpus (or invalidate on any mtime change) in the skip predicate.
+- [x] **coordinator** (`compare.js`, `results/index.js`): Quirks are unimplemented. `SPEC.md:253-271` specifies `{matches, quirks}` with `"object-ordering"` detected when conformant keys diverge from query order. `grep quirks conformer/src` returns zero. Either implement detection in `compareResults` and propagate through `ResultsStore`, or drop quirks from SPEC.
+- [x] **coordinator** (`index.js:66-80, 149-154`): Skip predicate ignores corpus changes. Regenerating the corpus without touching impl code produces stale results for every unchanged conformant; if all are skipped, the prior `corpusTotal`/`total` split is copied forward even though the corpus has grown. Fingerprint the corpus (or invalidate on any mtime change) in the skip predicate.
 
 ## Moderate
 

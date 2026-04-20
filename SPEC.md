@@ -235,6 +235,8 @@ Before running tests, the coordinator loads the most recent prior run from
 - The conformant exists in the prior run
 - Its current SHA matches the prior run's SHA
 - The reference SHA also matches the prior run's reference SHA
+- The corpus fingerprint (sha256 of the sorted `testId/queryId` list) matches
+  the prior run's fingerprint
 
 Skipped conformants reuse their test results from the prior run. If every
 conformant is skipped, the prior run's runnable/excluded reference split is
@@ -263,12 +265,14 @@ reference impl on runnable reference cases in two steps:
    spec deviations (called "quirks") by comparing the original ordered responses.
 
 Each test result is an object `{ "matches": <bool>, "quirks": [<string>, ...] }`.
+Quirks are stored alongside failures in `results/data/quirks/<impl>/<runId>.json`
+(failures-only model: tests with no quirks are omitted).
 
 ### Known quirks
 
 | Quirk | Spec reference | Detected when |
 |-------|---------------|---------------|
-| `"object-ordering"` | §7.2.2 Serialized Map Ordering, §3.6 Field Ordering | Response keys differ from query field order |
+| `"object-ordering"` | §7.2.2 Serialized Map Ordering, §3.6 Field Ordering | Conformant response keys diverge from the reference's ordered response at any object level |
 
 ## Results
 

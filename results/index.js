@@ -52,6 +52,10 @@ class ResultsStore {
       const failures = Object.keys(failuresByTestKey).length > 0
         ? Object.values(failuresByTestKey)
         : (tests ? this._collectFailuresFromTests(tests) : []);
+      const quirksByTestKey = conformant.quirksByTestKey || null;
+      const quirks = quirksByTestKey
+        ? Object.entries(quirksByTestKey).map(([testKey, q]) => ({ testKey, quirks: q }))
+        : (tests ? this._collectQuirksFromTests(tests) : []);
       const total = conformant.total != null
         ? conformant.total
         : (tests ? Object.keys(tests).length : failures.length);
@@ -63,6 +67,9 @@ class ResultsStore {
 
       if (failures.length > 0) {
         this._data.put(`failures/${name}/${runResult.id}`, failures);
+      }
+      if (quirks.length > 0) {
+        this._data.put(`quirks/${name}/${runResult.id}`, quirks);
       }
     }
 
@@ -83,6 +90,7 @@ class ResultsStore {
         sha: ref.sha,
         scoringModel: ref.scoringModel || null,
         corpusTotal: ref.corpusTotal != null ? ref.corpusTotal : (ref.total || 0),
+        corpusFingerprint: ref.corpusFingerprint || null,
         total: ref.total || 0,
         errors: ref.errors || 0,
         excluded: ref.excluded || 0,
@@ -196,11 +204,13 @@ class ResultsStore {
 
     for (const [cName, c] of Object.entries(latest.conformants)) {
       const failures = this._getFailuresForRun(cName, latest.id);
+      const quirks = this._getQuirksForRun(cName, latest.id);
       result.conformants[cName] = {
         sha: c.sha,
         total: c.total,
         passed: c.passed,
         failuresByTestKey: this._indexFailuresByTestKey(failures),
+        quirksByTestKey: this._indexQuirksByTestKey(quirks),
       };
     }
 
@@ -241,6 +251,24 @@ class ResultsStore {
 
   _getExclusionsForRun(name, runId) {
     return this._data.get(`exclusions/${name}/${runId}`) || [];
+  }
+
+  _getQuirksForRun(name, runId) {
+    return this._data.get(`quirks/${name}/${runId}`) || [];
+  }
+
+  _collectQuirksFromTests(tests) {
+    const quirks = [];
+    for (const [testKey, result] of Object.entries(tests)) {
+      if (result.matches && Array.isArray(result.quirks) && result.quirks.length > 0) {
+        quirks.push({ testKey, quirks: result.quirks });
+      }
+    }
+    return quirks;
+  }
+
+  _indexQuirksByTestKey(quirks) {
+    return Object.fromEntries(quirks.map((q) => [q.testKey, q.quirks]));
   }
 
   _collectFailuresFromTests(tests) {
