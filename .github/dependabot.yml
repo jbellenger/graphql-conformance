@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: "maven"
+    directory: "/impls/viaduct"
+    schedule:
+      interval: "weekly"
+    allow:
+      - dependency-name: "com.airbnb.viaduct:*"
+    groups:
+      viaduct:
+        patterns:
+          - "com.airbnb.viaduct:*"
+    commit-message:
+      prefix: "viaduct"
