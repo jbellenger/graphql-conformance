@@ -8,9 +8,15 @@ RUN apt-get update \
 
 WORKDIR /src
 
-# Publish viaduct SNAPSHOT into the local Maven repo. The full viaduct
-# source tree is copied from ./build (vendored via git submodule / snapshot).
-COPY build ./build
+# Clone viaduct at a pinned commit and publish the SNAPSHOT into the local
+# Maven repo. The pom.xml below resolves against this local publication.
+ARG VIADUCT_REPO=https://github.com/airbnb/viaduct.git
+ARG VIADUCT_COMMIT=904dff16fa618bea48ef0ba0cf4abedfd68db0a8
+RUN git init build \
+ && cd build \
+ && git remote add origin ${VIADUCT_REPO} \
+ && git fetch --depth 1 origin ${VIADUCT_COMMIT} \
+ && git checkout FETCH_HEAD
 RUN cd build \
  && chmod +x ./gradlew \
  && ./gradlew publishToMavenLocal -x test --no-daemon \

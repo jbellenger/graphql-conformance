@@ -10,12 +10,18 @@ if (!resultsDir) {
   process.exit(1);
 }
 
-// Load config for repo URLs
-const configPath = path.join(__dirname, '..', 'config.json');
-const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+// Load registry + manifests for repo URLs (manifest.homepage → repo).
 const repoByName = {};
-for (const [name, impl] of Object.entries(config.impls)) {
-  if (impl.repo) repoByName[name] = impl.repo;
+const registryPath = path.join(__dirname, '..', 'registry.json');
+if (fs.existsSync(registryPath)) {
+  const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+  for (const driver of registry.drivers || []) {
+    if (!driver.manifestPath) continue;
+    const manifestFile = path.resolve(path.dirname(registryPath), driver.manifestPath);
+    if (!fs.existsSync(manifestFile)) continue;
+    const manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
+    if (manifest.homepage) repoByName[driver.name] = manifest.homepage;
+  }
 }
 
 const store = ResultsStore.fromDirectory(resultsDir);

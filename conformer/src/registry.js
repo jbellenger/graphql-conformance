@@ -39,36 +39,22 @@ function cloneExternalDriver(entry) {
   return checkoutDir;
 }
 
-function resolveInTreeEntry(entry, rootDir, configFallback) {
+function resolveInTreeEntry(entry, rootDir) {
   const manifestRel = entry.manifestPath || `./impls/${entry.name}/manifest.json`;
   const manifestFile = path.resolve(rootDir, manifestRel);
   const implDir = path.dirname(manifestFile);
 
-  if (fs.existsSync(manifestFile)) {
-    return {
-      name: entry.name,
-      source: 'in-tree',
-      transport: 'http',
-      implDir,
-      manifestPath: manifestFile,
-    };
+  if (!fs.existsSync(manifestFile)) {
+    throw new Error(`driver ${entry.name}: no manifest at ${manifestFile}`);
   }
 
-  if (configFallback && configFallback.impls && configFallback.impls[entry.name]) {
-    const impl = configFallback.impls[entry.name];
-    return {
-      name: entry.name,
-      source: 'in-tree',
-      transport: 'subprocess',
-      implDir: path.resolve(rootDir, impl.path),
-      command: impl.command,
-      buildTimeoutMs: impl.buildTimeoutMs,
-    };
-  }
-
-  throw new Error(
-    `driver ${entry.name}: no manifest at ${manifestFile} and no matching config.json entry`,
-  );
+  return {
+    name: entry.name,
+    source: 'in-tree',
+    transport: 'http',
+    implDir,
+    manifestPath: manifestFile,
+  };
 }
 
 function resolveExternalEntry(entry) {
@@ -89,13 +75,13 @@ function resolveExternalEntry(entry) {
   };
 }
 
-function resolveDriver(entry, rootDir, configFallback) {
-  if (entry.source === 'in-tree') return resolveInTreeEntry(entry, rootDir, configFallback);
+function resolveDriver(entry, rootDir) {
+  if (entry.source === 'in-tree') return resolveInTreeEntry(entry, rootDir);
   if (entry.source === 'external') return resolveExternalEntry(entry, rootDir);
   throw new Error(`driver ${entry.name || '<unnamed>'}: unknown source "${entry.source}"`);
 }
 
-function loadRegistry({ registryPath, configPath, rootDir } = {}) {
+function loadRegistry({ registryPath, rootDir } = {}) {
   if (!registryPath) throw new Error('loadRegistry: registryPath is required');
   if (!rootDir) throw new Error('loadRegistry: rootDir is required');
 
@@ -107,8 +93,7 @@ function loadRegistry({ registryPath, configPath, rootDir } = {}) {
     throw new Error(`registry at ${registryPath}: "reference" is required`);
   }
 
-  const configFallback = configPath && fs.existsSync(configPath) ? loadJson(configPath) : null;
-  const drivers = registry.drivers.map((entry) => resolveDriver(entry, rootDir, configFallback));
+  const drivers = registry.drivers.map((entry) => resolveDriver(entry, rootDir));
 
   const byName = new Map(drivers.map((d) => [d.name, d]));
   if (!byName.has(registry.reference)) {
@@ -118,20 +103,6 @@ function loadRegistry({ registryPath, configPath, rootDir } = {}) {
   }
 
   return { reference: registry.reference, drivers, byName };
-}
-
-function loadConfigAsRegistry({ configPath, rootDir } = {}) {
-  const config = loadJson(configPath);
-  const drivers = Object.entries(config.impls || {}).map(([name, impl]) => ({
-    name,
-    source: 'in-tree',
-    transport: 'subprocess',
-    implDir: path.resolve(rootDir, impl.path),
-    command: impl.command,
-    buildTimeoutMs: impl.buildTimeoutMs,
-  }));
-  const byName = new Map(drivers.map((d) => [d.name, d]));
-  return { reference: config.reference, drivers, byName };
 }
 
 function filterDrivers(registry, { only, exclude }) {
@@ -154,7 +125,6 @@ function filterDrivers(registry, { only, exclude }) {
 
 module.exports = {
   loadRegistry,
-  loadConfigAsRegistry,
   resolveDriver,
   filterDrivers,
 };

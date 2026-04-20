@@ -2,43 +2,28 @@
 
 const { describe, it, beforeEach, afterEach } = require('node:test');
 const assert = require('node:assert/strict');
-const { execFileSync, spawnSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
 const { ResultsStore } = require('../../results');
 const { discoverCorpus } = require('./corpus');
-const { computeCorpusFingerprint } = require('./index');
-
-const baseDir = path.resolve(__dirname, '..');
-const rootDir = path.resolve(baseDir, '..');
+const { computeCorpusFingerprint, runConformance } = require('./index');
+const { buildRequestBody } = require('./execute');
 
 let tmpDir;
 let tmpResultsDir;
-let tmpConfigPath;
+let tmpRegistryPath;
 
 beforeEach(() => {
   tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'conformer-integration-'));
   tmpResultsDir = path.join(tmpDir, 'results');
   fs.mkdirSync(tmpResultsDir);
-  tmpConfigPath = path.join(tmpDir, 'config.json');
+  tmpRegistryPath = path.join(tmpDir, 'registry.json');
 });
 
 afterEach(() => {
   fs.rmSync(tmpDir, { recursive: true, force: true });
 });
-
-function runConformer(env = {}) {
-  return {
-    cmd: 'node',
-    args: [path.join(baseDir, 'src/index.js')],
-    opts: {
-      cwd: baseDir,
-      timeout: 300_000,
-      env: { ...process.env, RESULTS_DIR: tmpResultsDir, CONFIG_PATH: tmpConfigPath, ...env },
-    },
-  };
-}
 
 function writeCorpusCase(corpusDir, testId, queryId, schema, query, variables) {
   const caseDir = path.join(corpusDir, testId, queryId);
@@ -52,169 +37,130 @@ function writeCorpusCase(corpusDir, testId, queryId, schema, query, variables) {
   }
 }
 
-function writeNodeImpl(dir, source) {
-  fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, 'index.js'), source);
+function writeStubManifest(implDir) {
+  fs.mkdirSync(implDir, { recursive: true });
+  fs.writeFileSync(path.join(implDir, 'manifest.json'), JSON.stringify({ name: path.basename(implDir) }));
 }
 
-function writeProtocolImpl(dir, eventsSource) {
-  writeNodeImpl(dir, `'use strict';
-const events = ${eventsSource};
-for (const event of events) {
-  process.stdout.write(JSON.stringify(event) + '\\n');
-}
-`);
+function writeRegistry(drivers, reference = 'ref') {
+  fs.writeFileSync(tmpRegistryPath, JSON.stringify({
+    registryVersion: 1,
+    reference,
+    drivers: drivers.map((name) => {
+      const implDir = path.join(tmpDir, name);
+      writeStubManifest(implDir);
+      return { name, source: 'in-tree', manifestPath: path.relative(tmpDir, path.join(implDir, 'manifest.json')) };
+    }),
+  }));
 }
 
-function writeStaticJsonImpl(dir, resultSource) {
-  writeNodeImpl(dir, `'use strict';
-process.stdout.write(JSON.stringify(${resultSource}));
-`);
+function makeSessionFactory(handlers) {
+  // handlers: { name: (body) => ({ data, errors? }) | 'error' string | { error, stderr? } | Error-to-throw }
+  return async (driver) => {
+    const handler = handlers[driver.name];
+    if (!handler) throw new Error(`no handler for driver ${driver.name}`);
+    const version = handler.version || 'stub-sha-' + driver.name;
+    return {
+      version,
+      async execute(test) {
+        const body = buildRequestBody(test);
+        const resp = await handler(body, test);
+        return resp;
+      },
+      async stop() { /* noop */ },
+    };
+  };
+}
+
+async function runInTmp(handlers, corpusDir, argv = []) {
+  const createSession = makeSessionFactory(handlers);
+  const prevResults = process.env.RESULTS_DIR;
+  const prevCorpus = process.env.CORPUS_DIR;
+  process.env.RESULTS_DIR = tmpResultsDir;
+  process.env.CORPUS_DIR = corpusDir;
+  try {
+    return await runConformance({
+      argv: ['--registry', tmpRegistryPath, ...argv],
+      createSession,
+      rootDir: tmpDir,
+    });
+  } finally {
+    if (prevResults === undefined) delete process.env.RESULTS_DIR; else process.env.RESULTS_DIR = prevResults;
+    if (prevCorpus === undefined) delete process.env.CORPUS_DIR; else process.env.CORPUS_DIR = prevCorpus;
+  }
 }
 
 describe('integration: self-comparison', () => {
-  it('graphql-js vs itself produces all true', () => {
+  it('identical impls produce all true', async () => {
     const corpusDir = path.join(tmpDir, 'corpus');
-    const refDir = path.join(tmpDir, 'ref-impl');
-    const conformantDir = path.join(tmpDir, 'conformant-impl');
+    writeCorpusCase(corpusDir, 'ok-test', 'ok-query', 'type Query { ok: String }', '{ ok }');
+    writeRegistry(['ref', 'conformant']);
 
-    writeCorpusCase(
-      corpusDir,
-      'ok-test',
-      'ok-query',
-      'type Query { ok: String }',
-      '{ ok }',
-    );
-    writeStaticJsonImpl(refDir, `{ data: { ok: 'value' } }`);
-    writeStaticJsonImpl(conformantDir, `{ data: { ok: 'value' } }`);
-
-    fs.writeFileSync(tmpConfigPath, JSON.stringify({
-      reference: 'ref',
-      impls: {
-        ref: {
-          path: refDir,
-          command: ['node', 'index.js'],
-        },
-        conformant: {
-          path: conformantDir,
-          command: ['node', 'index.js'],
-        },
-      },
-    }, null, 2));
-
-    const { cmd, args, opts } = runConformer({ CORPUS_DIR: corpusDir });
-    execFileSync(cmd, args, opts);
+    const handler = () => ({ result: { data: { ok: 'value' } } });
+    const handlers = Object.assign((body) => handler(body), { version: 'v1' });
+    await runInTmp({ ref: handler, conformant: handler }, corpusDir);
 
     const store = ResultsStore.fromDirectory(tmpResultsDir);
     const runResult = store.loadLatestRunSummary();
-
-    assert.ok(runResult, 'should have a run result');
-    assert.ok(runResult.timestamp);
+    assert.ok(runResult);
     assert.equal(runResult.reference.name, 'ref');
-    assert.ok(runResult.reference.sha);
-    assert.ok(runResult.conformants.conformant);
-    assert.ok(runResult.conformants.conformant.sha);
-
     const failures = store.getImplFailures('conformant');
-    assert.equal(failures.length, 0, 'identical temp impls should have no failures');
+    assert.equal(failures.length, 0);
   });
 });
 
 describe('integration: incremental skip', () => {
-  it('second run skips unchanged conformant and produces same results', () => {
+  it('second run skips unchanged conformant and reuses prior failures', async () => {
     const corpusDir = path.join(tmpDir, 'corpus');
-    const refDir = path.join(tmpDir, 'ref-impl');
-    const conformantDir = path.join(tmpDir, 'conformant-impl');
+    writeCorpusCase(corpusDir, 'ok-test', 'ok-query', 'type Query { ok: String }', '{ ok }');
+    writeRegistry(['ref', 'conformant']);
 
-    writeCorpusCase(
-      corpusDir,
-      'ok-test',
-      'ok-query',
-      'type Query { ok: String }',
-      '{ ok }',
-    );
-    writeStaticJsonImpl(refDir, `{ data: { ok: 'value' } }`);
-    writeStaticJsonImpl(conformantDir, `{ data: { ok: 'value' } }`);
-
-    fs.writeFileSync(tmpConfigPath, JSON.stringify({
-      reference: 'ref',
-      impls: {
-        ref: {
-          path: refDir,
-          command: ['node', 'index.js'],
-        },
-        conformant: {
-          path: conformantDir,
-          command: ['node', 'index.js'],
-        },
-      },
-    }, null, 2));
-
-    const { cmd, args, opts } = runConformer({ CORPUS_DIR: corpusDir });
-    execFileSync(cmd, args, opts);
+    const refHandler = () => ({ result: { data: { ok: 'value' } } });
+    const conformantHandler = () => ({ result: { data: { ok: 'value' } } });
+    await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
 
     const store1 = ResultsStore.fromDirectory(tmpResultsDir);
     const run1 = store1.loadLatestRunSummary();
 
-    const run2proc = spawnSync(cmd, args, opts);
-    assert.equal(run2proc.status, 0, 'second run should succeed');
-
-    const stderr = run2proc.stderr.toString();
+    // Second run: same version (stub-sha-name). Expect skip.
+    const stderrChunks = [];
+    const origWrite = process.stderr.write.bind(process.stderr);
+    process.stderr.write = (chunk) => { stderrChunks.push(String(chunk)); return true; };
+    try {
+      await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
+    } finally {
+      process.stderr.write = origWrite;
+    }
+    const stderr = stderrChunks.join('');
     assert.ok(stderr.includes('Skipping conformant (conformant)'),
       'should log that conformant was skipped');
 
     const store2 = ResultsStore.fromDirectory(tmpResultsDir);
     const runs = store2.listRuns();
-    assert.equal(runs.length, 2, 'should have two runs');
-
+    assert.equal(runs.length, 2);
     const run2 = store2.loadLatestRun();
-
     assert.deepStrictEqual(
       run2.conformants.conformant.failuresByTestKey,
       run1.conformants.conformant.failuresByTestKey,
-      'skipped conformant should have same test results as prior run',
     );
   });
 
-  it('reuses failure-only skipped results without persisting passing test rows', () => {
+  it('reuses failure-only skipped results without re-running', async () => {
     const corpusDir = path.join(tmpDir, 'corpus');
-    const refDir = path.join(tmpDir, 'ref-impl');
-    const conformantDir = path.join(tmpDir, 'conformant-impl');
-
-    writeCorpusCase(
-      corpusDir,
-      'ok-test',
-      'ok-query',
-      'type Query { ok: String }',
-      '{ ok }',
-    );
-    writeStaticJsonImpl(refDir, `{ data: { ok: 'value' } }`);
-    writeStaticJsonImpl(conformantDir, `{ data: { ok: 'value' } }`);
-
-    fs.writeFileSync(tmpConfigPath, JSON.stringify({
-      reference: 'ref',
-      impls: {
-        ref: {
-          path: refDir,
-          command: ['node', 'index.js'],
-        },
-        conformant: {
-          path: conformantDir,
-          command: ['node', 'index.js'],
-        },
-      },
-    }, null, 2));
+    writeCorpusCase(corpusDir, 'ok-test', 'ok-query', 'type Query { ok: String }', '{ ok }');
+    writeRegistry(['ref', 'conformant']);
 
     const discoveredTests = discoverCorpus(corpusDir);
     const corpusTotal = discoveredTests.length;
     const corpusFingerprint = computeCorpusFingerprint(discoveredTests);
+
     const store = ResultsStore.fromDirectory(tmpResultsDir);
     store.recordRun({
       id: 'prior-run',
       timestamp: '2026-03-18T00:00:00.000Z',
       reference: {
         name: 'ref',
-        sha: 'unknown',
+        sha: 'stub-sha-ref',
         scoringModel: 'runnable-set-v1',
         total: corpusTotal,
         errors: 0,
@@ -224,7 +170,7 @@ describe('integration: incremental skip', () => {
       },
       conformants: {
         conformant: {
-          sha: 'unknown',
+          sha: 'stub-sha-conformant',
           total: corpusTotal,
           passed: 0,
           failuresByTestKey: {
@@ -234,10 +180,17 @@ describe('integration: incremental skip', () => {
       },
     });
 
-    const { cmd, args, opts } = runConformer({ CORPUS_DIR: corpusDir });
-    const result = spawnSync(cmd, args, opts);
-    assert.equal(result.status, 0, `stderr: ${result.stderr.toString()}`);
-    assert.match(result.stderr.toString(), /Skipping conformant \(conformant\)/);
+    const handler = () => ({ result: { data: { ok: 'value' } } });
+    const stderrChunks = [];
+    const origWrite = process.stderr.write.bind(process.stderr);
+    process.stderr.write = (chunk) => { stderrChunks.push(String(chunk)); return true; };
+    try {
+      await runInTmp({ ref: handler, conformant: handler }, corpusDir);
+    } finally {
+      process.stderr.write = origWrite;
+    }
+
+    assert.match(stderrChunks.join(''), /Skipping conformant \(conformant\)/);
 
     const latestRun = ResultsStore.fromDirectory(tmpResultsDir).loadLatestRunSummary();
     assert.equal(latestRun.conformants.conformant.total, corpusTotal);
@@ -250,95 +203,56 @@ describe('integration: incremental skip', () => {
 });
 
 describe('integration: corpus change invalidates skip', () => {
-  it('re-runs all conformants when the corpus grows', () => {
+  it('re-runs all conformants when the corpus grows', async () => {
     const corpusDir = path.join(tmpDir, 'corpus');
-    const refDir = path.join(tmpDir, 'ref-impl');
-    const conformantDir = path.join(tmpDir, 'conformant-impl');
-    const conformantLog = path.join(tmpDir, 'conformant.log');
+    writeCorpusCase(corpusDir, 'ok-test', 'ok-query', 'type Query { ok: String }', '{ ok }');
+    writeRegistry(['ref', 'conformant']);
 
-    writeCorpusCase(
-      corpusDir,
-      'ok-test',
-      'ok-query',
-      'type Query { ok: String }',
-      '{ ok }',
-    );
+    let conformantRuns = 0;
+    const refHandler = () => ({ result: { data: { ok: 'value' } } });
+    const conformantHandler = () => { conformantRuns += 1; return { result: { data: { ok: 'value' } } }; };
 
-    writeStaticJsonImpl(refDir, `{ data: { ok: 'value' } }`);
-    writeNodeImpl(conformantDir, `'use strict';
-const fs = require('fs');
-fs.appendFileSync(${JSON.stringify(conformantLog)}, process.argv[3] + '\\n');
-process.stdout.write(JSON.stringify({ data: { ok: 'value' } }));
-`);
-
-    fs.writeFileSync(tmpConfigPath, JSON.stringify({
-      reference: 'ref',
-      impls: {
-        ref: { path: refDir, command: ['node', 'index.js'] },
-        conformant: { path: conformantDir, command: ['node', 'index.js'] },
-      },
-    }, null, 2));
-
-    const { cmd, args, opts } = runConformer({ CORPUS_DIR: corpusDir });
-    execFileSync(cmd, args, opts);
+    await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
 
     const run1 = ResultsStore.fromDirectory(tmpResultsDir).loadLatestRunSummary();
-    assert.ok(run1.reference.corpusFingerprint, 'first run should record a fingerprint');
+    assert.ok(run1.reference.corpusFingerprint);
     assert.equal(run1.conformants.conformant.total, 1);
+    const runsAfterFirst = conformantRuns;
 
-    // Grow the corpus — conformant sha is unchanged so the old skip predicate
-    // would have skipped it, but the new corpus invalidates that.
-    writeCorpusCase(
-      corpusDir,
-      'ok-test-2',
-      'ok-query',
-      'type Query { ok: String }',
-      '{ ok }',
-    );
+    // Grow the corpus
+    writeCorpusCase(corpusDir, 'ok-test-2', 'ok-query', 'type Query { ok: String }', '{ ok }');
 
-    fs.rmSync(conformantLog, { force: true });
-
-    const run2proc = spawnSync(cmd, args, opts);
-    assert.equal(run2proc.status, 0, `stderr: ${run2proc.stderr.toString()}`);
-    const stderr = run2proc.stderr.toString();
+    const stderrChunks = [];
+    const origWrite = process.stderr.write.bind(process.stderr);
+    process.stderr.write = (chunk) => { stderrChunks.push(String(chunk)); return true; };
+    try {
+      await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
+    } finally {
+      process.stderr.write = origWrite;
+    }
+    const stderr = stderrChunks.join('');
     assert.match(stderr, /Corpus changed since prior run/);
     assert.ok(!stderr.includes('Skipping conformant'),
       'conformant must not be skipped when corpus changed');
+    assert.ok(conformantRuns > runsAfterFirst, 'conformant should have actually run');
 
     const run2 = ResultsStore.fromDirectory(tmpResultsDir).loadLatestRunSummary();
-    assert.equal(run2.conformants.conformant.total, 2,
-      'conformant total should reflect the new corpus size');
+    assert.equal(run2.conformants.conformant.total, 2);
     assert.notEqual(run2.reference.corpusFingerprint, run1.reference.corpusFingerprint);
-    assert.ok(fs.existsSync(conformantLog), 'conformant should have actually run');
   });
 });
 
 describe('integration: object-ordering quirk', () => {
-  it('marks a conformant with different key order as matching with quirk', () => {
+  it('marks a conformant with different key order as matching with quirk', async () => {
     const corpusDir = path.join(tmpDir, 'corpus');
-    const refDir = path.join(tmpDir, 'ref-impl');
-    const conformantDir = path.join(tmpDir, 'conformant-impl');
+    writeCorpusCase(corpusDir, 'ordering-test', 'ordering-query',
+      'type Query { a: String b: String }', '{ a b }');
+    writeRegistry(['ref', 'conformant']);
 
-    writeCorpusCase(
-      corpusDir,
-      'ordering-test',
-      'ordering-query',
-      'type Query { a: String b: String }',
-      '{ a b }',
-    );
-    writeStaticJsonImpl(refDir, `{ data: { a: 'x', b: 'y' } }`);
-    writeStaticJsonImpl(conformantDir, `{ data: { b: 'y', a: 'x' } }`);
+    const refHandler = () => ({ result: { data: { a: 'x', b: 'y' } } });
+    const conformantHandler = () => ({ result: { data: { b: 'y', a: 'x' } } });
 
-    fs.writeFileSync(tmpConfigPath, JSON.stringify({
-      reference: 'ref',
-      impls: {
-        ref: { path: refDir, command: ['node', 'index.js'] },
-        conformant: { path: conformantDir, command: ['node', 'index.js'] },
-      },
-    }, null, 2));
-
-    const { cmd, args, opts } = runConformer({ CORPUS_DIR: corpusDir });
-    execFileSync(cmd, args, opts);
+    await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
 
     const run = ResultsStore.fromDirectory(tmpResultsDir).loadLatestRunSummary();
     assert.equal(run.conformants.conformant.passed, 1);
@@ -350,60 +264,20 @@ describe('integration: object-ordering quirk', () => {
 });
 
 describe('integration: reference exclusions', () => {
-  it('excludes reference-crash cases and does not run conformants for them', () => {
+  it('excludes reference-crash cases and does not run conformants for them', async () => {
     const corpusDir = path.join(tmpDir, 'corpus');
-    const refDir = path.join(tmpDir, 'ref-impl');
-    const conformantDir = path.join(tmpDir, 'conformant-impl');
-    const conformantLog = path.join(tmpDir, 'conformant.log');
+    writeCorpusCase(corpusDir, 'ok-test', 'ok-query', 'type Query { ok: String }', '{ ok }');
+    writeCorpusCase(corpusDir, 'excluded-test', 'excluded-query', 'type Query { boom: String }', '{ boom }');
+    writeRegistry(['ref', 'conformant']);
 
-    writeCorpusCase(
-      corpusDir,
-      'ok-test',
-      'ok-query',
-      'type Query { ok: String }',
-      '{ ok }',
-    );
-    writeCorpusCase(
-      corpusDir,
-      'excluded-test',
-      'excluded-query',
-      'type Query { boom: String }',
-      '{ boom }',
-    );
+    const refHandler = (body) => {
+      if (body.query.includes('boom')) return { error: 'reference exploded', stderr: 'boom!' };
+      return { result: { data: { ok: 'value' } } };
+    };
+    let conformantCalls = 0;
+    const conformantHandler = () => { conformantCalls += 1; return { result: { data: { ok: 'value' } } }; };
 
-    writeNodeImpl(refDir, `'use strict';
-const fs = require('fs');
-const queryPath = process.argv[3];
-if (queryPath.includes('excluded-test')) {
-  process.stderr.write('reference exploded\\n');
-  process.exit(1);
-}
-process.stdout.write(JSON.stringify({ data: { ok: 'value' } }));
-`);
-
-    writeNodeImpl(conformantDir, `'use strict';
-const fs = require('fs');
-const logPath = ${JSON.stringify(conformantLog)};
-fs.appendFileSync(logPath, process.argv[3] + '\\n');
-process.stdout.write(JSON.stringify({ data: { ok: 'value' } }));
-`);
-
-    fs.writeFileSync(tmpConfigPath, JSON.stringify({
-      reference: 'ref',
-      impls: {
-        ref: {
-          path: refDir,
-          command: ['node', 'index.js'],
-        },
-        conformant: {
-          path: conformantDir,
-          command: ['node', 'index.js'],
-        },
-      },
-    }, null, 2));
-
-    const { cmd, args, opts } = runConformer({ CORPUS_DIR: corpusDir });
-    execFileSync(cmd, args, opts);
+    await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
 
     const store = ResultsStore.fromDirectory(tmpResultsDir);
     const run = store.loadLatestRunSummary();
@@ -419,87 +293,55 @@ process.stdout.write(JSON.stringify({ data: { ok: 'value' } }));
     assert.equal(conformant.passed, 1);
     assert.deepStrictEqual(Object.keys(conformant.failuresByTestKey), []);
 
-    const invocations = fs.readFileSync(conformantLog, 'utf8').trim().split('\n');
-    assert.deepStrictEqual(invocations, [path.join(corpusDir, 'ok-test', 'ok-query', 'query.graphql')]);
+    assert.equal(conformantCalls, 1, 'conformant should only run for the non-excluded test');
   });
 
-  it('reuses prior reference exclusions when all conformants are skipped', () => {
+  it('reuses prior reference exclusions when all conformants are skipped', async () => {
     const corpusDir = path.join(tmpDir, 'corpus');
-    const refDir = path.join(tmpDir, 'ref-impl');
-    const conformantDir = path.join(tmpDir, 'conformant-impl');
-    const refLog = path.join(tmpDir, 'ref.log');
-    const conformantLog = path.join(tmpDir, 'conformant.log');
+    writeCorpusCase(corpusDir, 'ok-test', 'ok-query', 'type Query { ok: String }', '{ ok }');
+    writeCorpusCase(corpusDir, 'excluded-test', 'excluded-query', 'type Query { boom: String }', '{ boom }');
+    writeRegistry(['ref', 'conformant']);
 
-    writeCorpusCase(
-      corpusDir,
-      'ok-test',
-      'ok-query',
-      'type Query { ok: String }',
-      '{ ok }',
-    );
-    writeCorpusCase(
-      corpusDir,
-      'excluded-test',
-      'excluded-query',
-      'type Query { boom: String }',
-      '{ boom }',
-    );
+    const discoveredTests = discoverCorpus(corpusDir);
+    const corpusFingerprint = computeCorpusFingerprint(discoveredTests);
 
-    writeNodeImpl(refDir, `'use strict';
-const fs = require('fs');
-fs.appendFileSync(${JSON.stringify(refLog)}, 'ran\\n');
-process.stdout.write(JSON.stringify({ data: { ok: 'value' } }));
-`);
-
-    writeNodeImpl(conformantDir, `'use strict';
-const fs = require('fs');
-fs.appendFileSync(${JSON.stringify(conformantLog)}, 'ran\\n');
-process.stdout.write(JSON.stringify({ data: { ok: 'value' } }));
-`);
-
-    fs.writeFileSync(tmpConfigPath, JSON.stringify({
-      reference: 'ref',
-      impls: {
-        ref: {
-          path: refDir,
-          command: ['node', 'index.js'],
-        },
-        conformant: {
-          path: conformantDir,
-          command: ['node', 'index.js'],
-        },
-      },
-    }, null, 2));
-
-    const discoveredTests2 = discoverCorpus(corpusDir);
-    const corpusFingerprint2 = computeCorpusFingerprint(discoveredTests2);
     ResultsStore.fromDirectory(tmpResultsDir).recordRun({
       id: 'prior-run',
       timestamp: '2026-03-18T00:00:00.000Z',
       reference: {
         name: 'ref',
-        sha: 'unknown',
+        sha: 'stub-sha-ref',
         scoringModel: 'runnable-set-v1',
         total: 1,
         errors: 0,
         corpusTotal: 2,
-        corpusFingerprint: corpusFingerprint2,
+        corpusFingerprint,
         excluded: 1,
-        exclusions: [{ testKey: 'excluded-test/excluded-query', error: 'process exited with code 1' }],
+        exclusions: [{ testKey: 'excluded-test/excluded-query', error: 'reference exploded' }],
       },
       conformants: {
         conformant: {
-          sha: 'unknown',
+          sha: 'stub-sha-conformant',
           total: 1,
           passed: 1,
         },
       },
     });
 
-    const { cmd, args, opts } = runConformer({ CORPUS_DIR: corpusDir });
-    const result = spawnSync(cmd, args, opts);
-    assert.equal(result.status, 0, `stderr: ${result.stderr.toString()}`);
-    assert.match(result.stderr.toString(), /All conformants unchanged, skipping test execution/);
+    let refCalls = 0;
+    let conformantCalls = 0;
+    const refHandler = () => { refCalls += 1; return { result: { data: { ok: 'value' } } }; };
+    const conformantHandler = () => { conformantCalls += 1; return { result: { data: { ok: 'value' } } }; };
+
+    const stderrChunks = [];
+    const origWrite = process.stderr.write.bind(process.stderr);
+    process.stderr.write = (chunk) => { stderrChunks.push(String(chunk)); return true; };
+    try {
+      await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
+    } finally {
+      process.stderr.write = origWrite;
+    }
+    assert.match(stderrChunks.join(''), /All conformants unchanged, skipping test execution/);
 
     const latestRun = ResultsStore.fromDirectory(tmpResultsDir).loadLatestRunSummary();
     assert.equal(latestRun.reference.total, 1);
@@ -507,173 +349,7 @@ process.stdout.write(JSON.stringify({ data: { ok: 'value' } }));
     assert.equal(latestRun.reference.exclusions.length, 1);
     assert.equal(latestRun.reference.exclusions[0].testKey, 'excluded-test/excluded-query');
 
-    assert.ok(!fs.existsSync(refLog), 'reference should not run when reusing prior reference exclusions');
-    assert.ok(!fs.existsSync(conformantLog), 'conformant should not run when skipped');
-  });
-});
-
-describe('integration: streamed protocol', () => {
-  it('normalizes a streamed reference result before scoring a legacy conformant', () => {
-    const corpusDir = path.join(tmpDir, 'corpus');
-    const refDir = path.join(tmpDir, 'ref-impl');
-    const conformantDir = path.join(tmpDir, 'conformant-impl');
-
-    writeCorpusCase(
-      corpusDir,
-      'streamed-test',
-      'streamed-query',
-      'type Query { hero: Hero feed: [String] } type Hero { name: String }',
-      '{ hero { name } feed }',
-    );
-
-    writeProtocolImpl(refDir, `[
-  { protocol: 'conformer-stream-v1', kind: 'initial', data: { hero: {}, feed: [] } },
-  { protocol: 'conformer-stream-v1', kind: 'patch', path: ['hero'], data: { name: 'str' } },
-  { protocol: 'conformer-stream-v1', kind: 'patch', path: ['feed'], items: ['a', 'b'] },
-  { protocol: 'conformer-stream-v1', kind: 'complete' },
-]`);
-
-    writeNodeImpl(conformantDir, `'use strict';
-process.stdout.write(JSON.stringify({
-  data: {
-    hero: { name: 'str' },
-    feed: ['a', 'b'],
-  },
-}));
-`);
-
-    fs.writeFileSync(tmpConfigPath, JSON.stringify({
-      reference: 'ref',
-      impls: {
-        ref: {
-          path: refDir,
-          command: ['node', 'index.js'],
-        },
-        conformant: {
-          path: conformantDir,
-          command: ['node', 'index.js'],
-        },
-      },
-    }, null, 2));
-
-    const { cmd, args, opts } = runConformer({ CORPUS_DIR: corpusDir });
-    execFileSync(cmd, args, opts);
-
-    const run = ResultsStore.fromDirectory(tmpResultsDir).loadLatestRunSummary();
-    assert.equal(run.reference.total, 1);
-    assert.equal(run.reference.excluded, 0);
-    assert.equal(run.conformants.conformant.total, 1);
-    assert.equal(run.conformants.conformant.passed, 1);
-    assert.deepStrictEqual(run.conformants.conformant.failuresByTestKey, {});
-  });
-
-  it('stores assembled expected and actual results when streamed outputs differ', () => {
-    const corpusDir = path.join(tmpDir, 'corpus');
-    const refDir = path.join(tmpDir, 'ref-impl');
-    const conformantDir = path.join(tmpDir, 'conformant-impl');
-
-    writeCorpusCase(
-      corpusDir,
-      'streamed-test',
-      'streamed-query',
-      'type Query { hero: Hero feed: [String] } type Hero { name: String }',
-      '{ hero { name } feed }',
-    );
-
-    writeProtocolImpl(refDir, `[
-  { protocol: 'conformer-stream-v1', kind: 'initial', data: { hero: {}, feed: [] } },
-  { protocol: 'conformer-stream-v1', kind: 'patch', path: ['hero'], data: { name: 'str' } },
-  { protocol: 'conformer-stream-v1', kind: 'patch', path: ['feed'], items: ['a', 'b'] },
-  { protocol: 'conformer-stream-v1', kind: 'complete' },
-]`);
-
-    writeProtocolImpl(conformantDir, `[
-  { protocol: 'conformer-stream-v1', kind: 'initial', data: { hero: {}, feed: [] } },
-  { protocol: 'conformer-stream-v1', kind: 'patch', path: ['hero'], data: { name: 'wrong' } },
-  { protocol: 'conformer-stream-v1', kind: 'patch', path: ['feed'], items: ['a', 'c'] },
-  { protocol: 'conformer-stream-v1', kind: 'complete' },
-]`);
-
-    fs.writeFileSync(tmpConfigPath, JSON.stringify({
-      reference: 'ref',
-      impls: {
-        ref: {
-          path: refDir,
-          command: ['node', 'index.js'],
-        },
-        conformant: {
-          path: conformantDir,
-          command: ['node', 'index.js'],
-        },
-      },
-    }, null, 2));
-
-    const { cmd, args, opts } = runConformer({ CORPUS_DIR: corpusDir });
-    execFileSync(cmd, args, opts);
-
-    const failures = ResultsStore.fromDirectory(tmpResultsDir).getImplFailures('conformant');
-    assert.equal(failures.length, 1);
-    assert.deepStrictEqual(failures[0].expected, {
-      data: {
-        hero: { name: 'str' },
-        feed: ['a', 'b'],
-      },
-    });
-    assert.deepStrictEqual(failures[0].actual, {
-      data: {
-        hero: { name: 'wrong' },
-        feed: ['a', 'c'],
-      },
-    });
-  });
-
-  it('treats malformed streamed reference output as excluded and skips conformants', () => {
-    const corpusDir = path.join(tmpDir, 'corpus');
-    const refDir = path.join(tmpDir, 'ref-impl');
-    const conformantDir = path.join(tmpDir, 'conformant-impl');
-    const conformantLog = path.join(tmpDir, 'conformant.log');
-
-    writeCorpusCase(
-      corpusDir,
-      'streamed-test',
-      'streamed-query',
-      'type Query { hero: Hero } type Hero { name: String }',
-      '{ hero { name } }',
-    );
-
-    writeProtocolImpl(refDir, `[
-  { protocol: 'conformer-stream-v1', kind: 'initial', data: { hero: {} } },
-  { protocol: 'conformer-stream-v1', kind: 'patch', path: ['hero'], data: { name: 'str' } },
-]`);
-
-    writeNodeImpl(conformantDir, `'use strict';
-const fs = require('fs');
-fs.appendFileSync(${JSON.stringify(conformantLog)}, 'ran\\n');
-process.stdout.write(JSON.stringify({ data: { hero: { name: 'str' } } }));
-`);
-
-    fs.writeFileSync(tmpConfigPath, JSON.stringify({
-      reference: 'ref',
-      impls: {
-        ref: {
-          path: refDir,
-          command: ['node', 'index.js'],
-        },
-        conformant: {
-          path: conformantDir,
-          command: ['node', 'index.js'],
-        },
-      },
-    }, null, 2));
-
-    const { cmd, args, opts } = runConformer({ CORPUS_DIR: corpusDir });
-    execFileSync(cmd, args, opts);
-
-    const run = ResultsStore.fromDirectory(tmpResultsDir).loadLatestRunSummary();
-    assert.equal(run.reference.total, 0);
-    assert.equal(run.reference.excluded, 1);
-    assert.equal(run.reference.exclusions.length, 1);
-    assert.equal(run.reference.exclusions[0].error, 'invalid protocol output');
-    assert.ok(!fs.existsSync(conformantLog), 'conformant should not run for excluded streamed cases');
+    assert.equal(refCalls, 0, 'reference should not run when reusing prior reference exclusions');
+    assert.equal(conformantCalls, 0, 'conformant should not run when skipped');
   });
 });

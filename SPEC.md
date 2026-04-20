@@ -25,8 +25,7 @@ returns.
 The repo is rooted at the workspace root:
 
     Makefile              # top-level build orchestration
-    registry.json         # driver registry (primary)
-    config.json           # legacy subprocess configuration (deprecated)
+    registry.json         # driver registry
     conformer/src/        # conformer (Node.js)
       index.js            # entry point (orchestration)
       registry.js         # registry loader (in-tree + external)
@@ -35,117 +34,34 @@ The repo is rooted at the workspace root:
       execute.js          # /execute HTTP request + multipart/mixed parsing
       corpus.js           # corpus discovery
       compare.js          # unordered-match + quirk detection
-      runner.js           # legacy subprocess runner (deprecated)
-      protocol.js         # legacy conformer-stream-v1 parser (deprecated)
     corpus/               # test cases
       1/
         schema.graphqls
         1-query.graphql
         1-variables.json
-    impls/                # implementations
-      graphql-js-17/      # HTTP driver (Dockerfile + server.js + manifest.json)
-      graphql-js-16/      # HTTP driver
-      graphql-java/       # legacy subprocess impl (Makefile + index.js)
-      ...
+    impls/                # implementations (Dockerfile + server + manifest.json each)
     results/              # ResultsStore module + data/ (gitignored)
 
 ## Build Environment
 
-All builds run inside the dev container defined by the repo's `Dockerfile`. The
-image ships every language runtime, build tool, and system dependency needed by
-any impl — there is no host setup beyond Docker. Toolchain
-versions are pinned directly in the `Dockerfile`; bumping a version and running
-`make image` rebakes the image.
+All tooling for the conformer itself (Node, Docker CLI, site build) runs
+inside the dev container defined by the repo's `Dockerfile`. Driver images
+are separate — each impl ships its own `Dockerfile` under `impls/<name>/`
+that installs the target language runtime and GraphQL library.
 
-Framework tools (always present inside the image): `node`, `make`, `git`.
-
-Each implementation declares its additional tool requirements in `config.json`
-via the `tools` field. The conformer checks that the required tools are on
-PATH before building.
-
-## Build System
-
-Build orchestration is handled by the Node.js conformer (`src/builder.js`), not by
-individual impl Makefiles. The conformer clones repos, fetches latest code, checks out
-the configured branch, manages stamp files, and invokes `make build` in each impl
-directory — all in parallel with error tolerance.
-
-### How it works
-
-Each impl in `config.json` declares a `repo` (git URL), `branch`, and `tools` (required
-build tools). When `make build` is run, the conformer:
-
-1. Checks all required tools are on PATH inside the container
-2. Clones `repo` into `<impl-dir>/build/` if not already cloned
-3. Runs `git fetch --all` to get latest from remote
-4. Checks out `origin/<branch>` (detached HEAD at latest remote tip)
-5. Compares HEAD SHA to `.built-sha` stamp — skips build if they match
-6. Runs `make build` in the impl directory (5-minute timeout by default; overrideable per impl)
-7. Writes the SHA to `.built-sha` on success
-
-Builds run in parallel (bounded by CPU count). A failed build is reported but does
-not block other impls from building.
-
-### Impl Makefiles
-
-Each impl's `Makefile` has `build`, `test`, and `clean` targets. The `build` target
-assumes `build/` already exists with the source checked out — it only needs to handle
-the ecosystem-specific compile step (e.g. `npm install`, `mvn package`, `gradlew build`).
-
-The `build/` directory is gitignored per impl.
-
-### Version reporting
-
-The conformer reads each impl's version directly via `git rev-parse HEAD` in the
-`build/` directory. There is no `version` Makefile target.
+Framework tools (always present inside the dev image): `node`, `make`, `git`,
+`docker`.
 
 ### Top-level Makefile
 
 The top-level `Makefile` orchestrates everything through the dev container:
 
     make image          # build the dev image
-    make build          # build all impls (parallel, error-tolerant)
-    make test           # run conformer unit tests and each impl's tests
-    make run-conformer  # run the conformer end-to-end
+    make build          # install conformer deps + corpus generator
+    make test           # run conformer and site unit tests
+    make run-conformer  # run the conformer end-to-end (builds/pulls driver images on demand)
     make shell          # drop into a bash session in the container
-    make clean          # clean all impls
-
-## Configuration
-
-The conformer reads `registry.json` at the repo root (format described under
-"Registry" in the Driver Contract section below). If `registry.json` is absent,
-the conformer falls back to `config.json` for one release and logs a deprecation.
-
-### Legacy `config.json` format
-
-    {
-      "reference": "graphql-js-17",
-      "impls": {
-        "graphql-js-17": {
-          "path": "./impls/graphql-js-17",
-          "repo": "https://github.com/graphql/graphql-js.git",
-          "branch": "17.x.x",
-          "command": ["node", "index.js"]
-        },
-        "graphql-java": {
-          "path": "./impls/graphql-java",
-          "repo": "https://github.com/graphql-java/graphql-java.git",
-          "branch": "master",
-          "command": ["java", "-jar", "target/conformer-1.0.jar"]
-        }
-      }
-    }
-
-Each impl entry has:
-- `path`: directory containing the impl, relative to the repo root
-- `repo`: git URL for the library's source repository
-- `branch`: which branch to track (must be explicit)
-- `command`: array of command + args to execute the impl as a subprocess
-- `tools`: optional array of tool names required to build and run the impl
-- `buildTimeoutMs`: optional override for build timeout in milliseconds
-
-Multiple impls can point at the same repo on different branches, e.g. to test
-both `main` and a release branch.
+    make clean          # clean conformer + corpus-gen build state
 
 ## Corpus Discovery
 
@@ -189,9 +105,9 @@ and tears the container down on completion.
     result for comparison.
   - **Schema/parse/execute error** that would crash a library (e.g. stack
     overflow on circular input defaults, unsupported experimental directives):
-    return HTTP `5xx`. The conformer treats this as a harness-level error
-    analogous to a subprocess crash — the test is excluded from scoring when
-    the error comes from the reference driver.
+    return HTTP `5xx`. The conformer treats this as a harness-level error —
+    the test is excluded from scoring when the error comes from the reference
+    driver.
 
 ### Manifest
 
@@ -251,72 +167,18 @@ The conformer entrypoint accepts:
 - `--drivers <csv>` — run only the named drivers (reference is always included).
 - `--exclude <csv>` — exclude named drivers.
 - `--registry <path>` — override `registry.json` location.
-- `--config <path>` — legacy: use a `config.json` directly (deprecated).
 - `--build-from-source` — force local build even if `repository` is set.
 - `--image <ref>` — one-off: pin a single conformant image reference.
 - `--corpus-dir <path>` — override corpus location.
-
-## Legacy Command Interface (subprocess, deprecated)
-
-Impls that have not yet migrated to the HTTP driver model fall back to the
-subprocess contract declared in `config.json`. The conformer detects this by the
-absence of a `manifest.json` at the registry entry's path and spawns:
-
-    <command...> <absolute-path-to-schema> <absolute-path-to-query> [<absolute-path-to-variables>]
-
-The variables argument is omitted when no variables file exists for a test case.
-
-The command must:
-1. Read the schema file and build a GraphQL schema using the Wiring Spec below. The
-   schema may use custom root type names via `schema { query: MyRoot }` — implementations
-   must not assume the query root type is named `Query` (likewise for `Mutation` and
-   `Subscription`).
-2. Parse and execute the query (with variables if provided). Queries may include
-   `@defer` and `@stream`.
-3. Print either:
-   - a single GraphQL result as JSON to stdout, or
-   - a line-delimited conformer incremental protocol stream on stdout
-
-   Harnesses must not emit HTTP multipart framing or transport-specific streamed
-   output. If the underlying library supports incremental delivery, the harness
-   should translate native incremental payloads into the conformer protocol and
-   let the conformer normalize them.
-4. Exit with code 0 on success
-
-### Conformer incremental protocol
-
-For incremental execution, a harness may emit one JSON object per line using
-protocol `conformer-stream-v1`.
-
-- `{"protocol":"conformer-stream-v1","kind":"initial", ... }`
-- `{"protocol":"conformer-stream-v1","kind":"patch", ... }`
-- `{"protocol":"conformer-stream-v1","kind":"complete", ... }`
-
-Rules:
-
-- `initial` must be the first event
-- `complete` must be the final event
-- `patch.path` is absolute from the GraphQL response root
-- `patch.data` represents a deferred object patch
-- `patch.items` represents streamed list items
-- harnesses should translate library-specific pending IDs / subpaths into this
-  absolute-path form rather than merging patches themselves
-
-For example, the graphql-js reference implementation runs `node index.js` which
-loads the schema, wires it, executes the query, and prints the result. The
-graphql-java implementation runs `java -jar target/conformer-1.0.jar` which
-does the equivalent in Java.
-
-Before running tests, the conformer reads each impl's version via `git rev-parse HEAD`
-in the `<impl-dir>/build/` directory.
 
 ## Execution Model
 
 For each test case, the conformer runs the reference impl first.
 
 - If the reference succeeds, the test is considered **runnable** for that run and
-  all conformants are then run **in parallel** (each as an independent subprocess).
-- If the reference crashes, times out, or emits invalid JSON, the test is
+  all conformants are then run **in parallel** (each via a `POST /execute`
+  request to its container).
+- If the reference returns a 5xx, times out, or emits invalid JSON, the test is
   considered **excluded by reference** for that run. No conformant is run for that
   test, and the test does not count toward conformance totals.
 
@@ -341,12 +203,12 @@ same reference.
 
 ## Error Handling and Timeouts
 
-- If the reference command exits with a non-zero exit code, does not complete
-  within 30 seconds, or produces output that is not valid JSON, the test is
-  excluded from scoring for that run.
-- If a conformant command exits with a non-zero exit code, does not complete
-  within 30 seconds, or produces output that is not valid JSON for a runnable
-  reference case, that test is marked as a conformance failure for that conformant.
+- If the reference driver returns a 5xx response, does not respond within
+  30 seconds, or emits an unparseable body, the test is excluded from scoring
+  for that run.
+- If a conformant driver returns a 5xx response, does not respond within
+  30 seconds, or emits an unparseable body for a runnable reference case, that
+  test is marked as a conformance failure for that conformant.
 
 ## Comparison
 
@@ -481,27 +343,19 @@ New implementations should be added as HTTP drivers:
    and `runtime` fields.
 5. Add an entry to `registry.json` pointing at the manifest.
 
-Legacy subprocess wrappers (`index.js` / `Makefile` under `impls/<name>/`) remain
-supported during the migration phase but are deprecated. Their `Makefile` targets
-(`build`, `test`, `clean`) do not manage their own ordering; the outer conformer
-orchestrates the lifecycle.
-
 ## Testing
 
-Each implementation has two layers of tests:
+Each implementation has native wiring tests (JUnit for Java, node:test for JS,
+etc.) that verify the Wiring Spec behavior in-process: every scalar returns the
+right value, unions resolve to the alphabetically first member, interfaces to
+the last implementor, and so on. These tests run inside the driver image.
 
-1. **Wiring tests** — native unit tests (JUnit for Java, node:test for JS) that verify
-   the Wiring Spec behavior in-process: every scalar returns the right value, unions
-   resolve to the alphabetically first member, interfaces to the last implementor, etc.
+The conformer has unit tests for corpus discovery, registry loading, driver
+lifecycle, and the deep-equality comparison, plus integration tests that
+run through the full orchestration path using stub session factories
+(self-comparison, skip invalidation, reference exclusions, quirk detection).
 
-2. **Command tests** — subprocess integration tests (node:test) that invoke the impl's
-   command with small test schemas and verify the JSON output matches expectations.
-
-The conformer itself has unit tests for corpus discovery, the subprocess runner,
-and the deep-equality comparison, plus an integration test that runs graphql-js
-against itself (self-comparison must produce all `true`).
-
-All tests run via `make test` from the `conformer/` directory.
+All tests run via `make test` from the repo root.
 
 ## Wiring Spec
 

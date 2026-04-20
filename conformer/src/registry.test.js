@@ -5,7 +5,7 @@ const assert = require('node:assert');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-const { loadRegistry, loadConfigAsRegistry, filterDrivers } = require('./registry');
+const { loadRegistry, filterDrivers } = require('./registry');
 
 function mkdtemp() {
   return fs.mkdtempSync(path.join(os.tmpdir(), 'registry-test-'));
@@ -35,26 +35,18 @@ test('loadRegistry resolves in-tree HTTP driver via manifest.json', () => {
   assert.strictEqual(reg.drivers[0].implDir, path.join(rootDir, 'impls/demo'));
 });
 
-test('loadRegistry falls back to config.json entry when manifest is missing', () => {
+test('loadRegistry throws when manifest is missing for an in-tree driver', () => {
   const rootDir = mkdtemp();
-  writeFile(path.join(rootDir, 'impls/legacy/index.js'), '// stub');
   writeFile(path.join(rootDir, 'registry.json'), JSON.stringify({
     registryVersion: 1,
-    reference: 'legacy',
-    drivers: [{ name: 'legacy', source: 'in-tree', manifestPath: './impls/legacy/manifest.json' }],
-  }));
-  writeFile(path.join(rootDir, 'config.json'), JSON.stringify({
-    reference: 'legacy',
-    impls: { legacy: { path: './impls/legacy', command: ['node', 'index.js'] } },
+    reference: 'missing-manifest',
+    drivers: [{ name: 'missing-manifest', source: 'in-tree', manifestPath: './impls/missing-manifest/manifest.json' }],
   }));
 
-  const reg = loadRegistry({
-    registryPath: path.join(rootDir, 'registry.json'),
-    configPath: path.join(rootDir, 'config.json'),
-    rootDir,
-  });
-  assert.strictEqual(reg.drivers[0].transport, 'subprocess');
-  assert.deepStrictEqual(reg.drivers[0].command, ['node', 'index.js']);
+  assert.throws(
+    () => loadRegistry({ registryPath: path.join(rootDir, 'registry.json'), rootDir }),
+    /no manifest/,
+  );
 });
 
 test('loadRegistry throws on unknown source', () => {
@@ -82,24 +74,6 @@ test('loadRegistry throws when reference is missing from drivers list', () => {
     () => loadRegistry({ registryPath: path.join(rootDir, 'registry.json'), rootDir }),
     /reference "missing" is not in drivers list/,
   );
-});
-
-test('loadConfigAsRegistry maps config.json impls to subprocess drivers', () => {
-  const rootDir = mkdtemp();
-  writeFile(path.join(rootDir, 'config.json'), JSON.stringify({
-    reference: 'a',
-    impls: {
-      a: { path: './impls/a', command: ['node', 'a.js'] },
-      b: { path: './impls/b', command: ['node', 'b.js'] },
-    },
-  }));
-  const reg = loadConfigAsRegistry({
-    configPath: path.join(rootDir, 'config.json'),
-    rootDir,
-  });
-  assert.strictEqual(reg.reference, 'a');
-  assert.strictEqual(reg.drivers.length, 2);
-  assert.ok(reg.drivers.every((d) => d.transport === 'subprocess'));
 });
 
 test('filterDrivers keeps reference even if not in only-list', () => {

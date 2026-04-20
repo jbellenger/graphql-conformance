@@ -5,11 +5,9 @@ const path = require('path');
 const crypto = require('crypto');
 const { parseArgs } = require('util');
 const { discoverCorpus } = require('./corpus');
-const { runHarness } = require('./runner');
-const { getVersion } = require('./builder');
 const { compareResults } = require('./compare');
 const { DockerDriver } = require('./driver');
-const { loadRegistry, loadConfigAsRegistry, filterDrivers } = require('./registry');
+const { loadRegistry, filterDrivers } = require('./registry');
 const { ResultsStore } = require('../../results');
 
 function generateRunId() {
@@ -34,7 +32,6 @@ function parseCliArgs(argv) {
       drivers: { type: 'string' },
       exclude: { type: 'string' },
       registry: { type: 'string' },
-      config: { type: 'string' },
       'build-from-source': { type: 'boolean' },
       image: { type: 'string' },
       'corpus-dir': { type: 'string' },
@@ -45,35 +42,18 @@ function parseCliArgs(argv) {
     only: parseCsv(values.drivers),
     exclude: parseCsv(values.exclude),
     registryPath: values.registry,
-    configPath: values.config,
     buildFromSource: Boolean(values['build-from-source']),
     imageOverride: values.image,
     corpusDir: values['corpus-dir'],
   };
 }
 
-async function createSubprocessSession(driver) {
-  const version = getVersion(driver.implDir);
-  return {
-    mode: 'subprocess',
-    version,
-    async execute(test) {
-      const args = test.variablesPath
-        ? [test.schemaPath, test.queryPath, test.variablesPath]
-        : [test.schemaPath, test.queryPath];
-      return runHarness(driver.command, driver.implDir, args);
-    },
-    async stop() { /* nothing persistent */ },
-  };
-}
-
-async function createHttpSession(driver, runId, { buildFromSource, imageOverride } = {}) {
+async function createDockerSession(driver, runId, { buildFromSource, imageOverride } = {}) {
   const manifest = JSON.parse(fs.readFileSync(driver.manifestPath, 'utf8'));
   if (!manifest.runtime) manifest.runtime = {};
   if (imageOverride) {
     manifest.image = { repository: imageOverride.split(':')[0], tag: imageOverride.split(':')[1] || 'latest' };
   } else if (buildFromSource && manifest.image && manifest.image.repository) {
-    // Force local build even if repository is present
     delete manifest.image.repository;
   }
   const dockerDriver = new DockerDriver({
@@ -85,61 +65,39 @@ async function createHttpSession(driver, runId, { buildFromSource, imageOverride
   await dockerDriver.ensureImage({ onProgress: () => { /* silence */ } });
   await dockerDriver.start();
   return {
-    mode: 'http',
     version: dockerDriver.imageDigest || 'unknown',
     async execute(test) { return dockerDriver.execute(test); },
     async stop() { await dockerDriver.stop(); },
   };
 }
 
-async function createSession(driver, runId, options) {
-  if (driver.transport === 'http') return createHttpSession(driver, runId, options);
-  return createSubprocessSession(driver);
-}
-
 function resolveRegistry(rootDir, cli) {
-  const explicitRegistry = cli.registryPath || process.env.REGISTRY_PATH;
-  const explicitConfig = cli.configPath || process.env.CONFIG_PATH;
-
-  // Explicit config without registry → legacy config.json mode (no deprecation noise).
-  if (explicitConfig && !explicitRegistry) {
-    return loadConfigAsRegistry({ configPath: explicitConfig, rootDir });
+  const registryPath = cli.registryPath || process.env.REGISTRY_PATH || path.join(rootDir, 'registry.json');
+  if (!fs.existsSync(registryPath)) {
+    throw new Error(`no registry.json at ${registryPath}`);
   }
-
-  const registryPath = explicitRegistry || path.join(rootDir, 'registry.json');
-  const configPath = explicitConfig || path.join(rootDir, 'config.json');
-
-  if (fs.existsSync(registryPath)) {
-    return loadRegistry({ registryPath, configPath, rootDir });
-  }
-  if (fs.existsSync(configPath)) {
-    process.stderr.write(`registry.json not found at ${registryPath}; falling back to config.json (deprecated)\n`);
-    return loadConfigAsRegistry({ configPath, rootDir });
-  }
-  throw new Error(`no registry.json at ${registryPath} and no config.json at ${configPath}`);
+  return loadRegistry({ registryPath, rootDir });
 }
 
-async function main(argv = process.argv.slice(2)) {
+async function runConformance({ argv = [], createSession = createDockerSession, rootDir } = {}) {
   const baseDir = path.resolve(__dirname, '..');
-  const rootDir = path.resolve(baseDir, '..');
+  const resolvedRoot = rootDir || path.resolve(baseDir, '..');
   const cli = parseCliArgs(argv);
-  const fullRegistry = resolveRegistry(rootDir, cli);
+  const fullRegistry = resolveRegistry(resolvedRoot, cli);
   const registry = filterDrivers(fullRegistry, { only: cli.only, exclude: cli.exclude });
 
-  const corpusDir = cli.corpusDir || process.env.CORPUS_DIR || path.join(rootDir, 'corpus');
+  const corpusDir = cli.corpusDir || process.env.CORPUS_DIR || path.join(resolvedRoot, 'corpus');
   const tests = discoverCorpus(corpusDir);
   const corpusFingerprint = computeCorpusFingerprint(tests);
 
   const reference = registry.byName.get(registry.reference);
   if (!reference) {
-    process.stderr.write(`Reference driver "${registry.reference}" not in filtered driver set.\n`);
-    process.exit(1);
+    throw new Error(`Reference driver "${registry.reference}" not in filtered driver set.`);
   }
   const conformants = registry.drivers.filter((d) => d.name !== registry.reference);
 
   if (tests.length === 0) {
-    process.stderr.write('No test cases found in corpus.\n');
-    process.exit(1);
+    throw new Error('No test cases found in corpus.');
   }
 
   process.stderr.write(`Found ${tests.length} test case(s)\n`);
@@ -169,7 +127,7 @@ async function main(argv = process.argv.slice(2)) {
       conformantTests[conformant.name] = {};
     }
 
-    const resultsDir = process.env.RESULTS_DIR || path.join(rootDir, 'results', 'data');
+    const resultsDir = process.env.RESULTS_DIR || path.join(resolvedRoot, 'results', 'data');
     const store = ResultsStore.fromDirectory(resultsDir);
     const skippedConformants = {};
     const priorRun = store.loadLatestRunSummary();
@@ -320,6 +278,8 @@ async function main(argv = process.argv.slice(2)) {
         process.stderr.write('\n');
       }
     }
+
+    return runResult;
   } finally {
     const stopPromises = [refSession.stop()];
     for (const session of Object.values(conformantSessions)) {
@@ -329,7 +289,11 @@ async function main(argv = process.argv.slice(2)) {
   }
 }
 
-module.exports = { computeCorpusFingerprint, parseCliArgs };
+async function main(argv = process.argv.slice(2)) {
+  await runConformance({ argv });
+}
+
+module.exports = { computeCorpusFingerprint, parseCliArgs, runConformance };
 
 if (require.main === module) {
   main().catch((err) => {

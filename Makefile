@@ -1,8 +1,8 @@
 .PHONY: image shell \
-        build test test-core gen-corpus run-conformer run-impl diff-impl \
+        build test test-core gen-corpus run-conformer \
         serve-site ci-smoke clean clean-results clean-corpus clean-ci \
         _build _test _test-core _gen-corpus _run-conformer \
-        _prepare-smoke-corpus _run-conformer-smoke _run-impl _diff-impl \
+        _prepare-smoke-corpus _run-conformer-smoke \
         _serve-site _ci-smoke _clean _clean-results _clean-corpus
 
 SMOKE_CORPUS_DIR ?= $(CURDIR)/.tmp/corpus-smoke
@@ -11,8 +11,7 @@ SMOKE_SITE_DATA_DIR ?= $(CURDIR)/.tmp/site-data
 
 # Host-side entry points delegate into the dev container. Inside the
 # container (IN_CONTAINER=1, set by the Dockerfile) they short-circuit to
-# the matching _-prefixed inner target so nested `make run-impl` calls in
-# tests don't try to spawn docker-in-docker.
+# the matching _-prefixed inner target.
 
 ifdef IN_CONTAINER
 
@@ -21,8 +20,6 @@ test: _test
 test-core: _test-core
 gen-corpus: _gen-corpus
 run-conformer: _run-conformer
-run-impl: _run-impl
-diff-impl: _diff-impl
 serve-site: _serve-site
 ci-smoke: _ci-smoke
 clean: _clean
@@ -41,7 +38,6 @@ HOST_UID := $(shell id -u)
 HOST_GID := $(shell id -g)
 
 # Preflight: fail fast with an actionable message if Docker + buildx are missing.
-# Runs eagerly during Makefile parsing, so every host-side target is covered.
 ifeq ($(shell command -v $(DOCKER) >/dev/null 2>&1 && echo yes),)
 $(error '$(DOCKER)' not found on PATH. Install Docker 24+ (https://docs.docker.com/engine/install/).)
 endif
@@ -52,25 +48,18 @@ endif
 DOCKER_VOLUMES := \
   -v $(CURDIR):/work:cached \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -v graphql-conformance-m2:/home/conformance/.m2 \
   -v graphql-conformance-gradle:/home/conformance/.gradle \
-  -v graphql-conformance-cargo-registry:/home/conformance/.cargo/registry \
-  -v graphql-conformance-cargo-git:/home/conformance/.cargo/git \
-  -v graphql-conformance-pip-cache:/home/conformance/.cache/pip \
-  -v graphql-conformance-go-mod:/home/conformance/go/pkg/mod \
-  -v graphql-conformance-gem-cache:/home/conformance/.gem \
-  -v graphql-conformance-mix-deps:/home/conformance/.mix \
-  -v graphql-conformance-nuget-cache:/home/conformance/.nuget
+  -v graphql-conformance-m2:/home/conformance/.m2
 
 DOCKER_ENV := \
-  -e BUILD_CONCURRENCY \
   -e CORPUS_DIR \
   -e RESULTS_DIR \
   -e SITE_DATA_DIR \
-  -e CONFIG_PATH
+  -e REGISTRY_PATH
 
 DOCKER_RUN_BASE := $(DOCKER) run --rm \
   --user $(HOST_UID):$(HOST_GID) \
+  --group-add 0 \
   --add-host=host.docker.internal:host-gateway \
   -w /work \
   $(DOCKER_VOLUMES) \
@@ -101,12 +90,6 @@ gen-corpus:
 run-conformer:
 	$(DOCKER_RUN) make -C /work _run-conformer
 
-run-impl:
-	$(DOCKER_RUN) make -C /work _run-impl IMPL=$(IMPL) TEST=$(TEST)
-
-diff-impl:
-	$(DOCKER_RUN) make -C /work _diff-impl IMPL=$(IMPL) TEST=$(TEST)
-
 serve-site:
 	$(DOCKER_RUN_PORTS) make -C /work _serve-site
 
@@ -128,9 +111,7 @@ clean-ci:
 	rm -rf .tmp
 
 # ======================================================================
-# Inner targets. These run inside the container; each usage-checks its
-# own args so they behave correctly whether reached via the outer
-# wrapper or called directly (e.g. by run-impl.test.js).
+# Inner targets. These run inside the container.
 # ======================================================================
 
 _build:
@@ -142,13 +123,8 @@ _test:
 	$(MAKE) -C results test
 	$(MAKE) -C corpus-gen test
 	$(MAKE) -C conformer test
-	$(MAKE) -C impls test
 
-_test-core:
-	node --test site/build.test.js
-	$(MAKE) -C results test
-	$(MAKE) -C corpus-gen test
-	$(MAKE) -C conformer test
+_test-core: _test
 
 _gen-corpus:
 	$(MAKE) -C corpus-gen gen
@@ -165,14 +141,6 @@ _run-conformer-smoke: _prepare-smoke-corpus
 	mkdir -p $(SMOKE_RESULTS_DIR) $(SMOKE_SITE_DATA_DIR)
 	CORPUS_DIR=$(SMOKE_CORPUS_DIR) RESULTS_DIR=$(SMOKE_RESULTS_DIR) node conformer/src/index.js
 	SITE_DATA_DIR=$(SMOKE_SITE_DATA_DIR) node site/build.js $(SMOKE_RESULTS_DIR)
-
-_run-impl:
-	@test -n "$(IMPL)" -a -n "$(TEST)" || { echo "Usage: make run-impl IMPL=<name> TEST=<corpus-path>"; exit 1; }
-	@node conformer/src/run-impl.js $(IMPL) $(TEST)
-
-_diff-impl:
-	@test -n "$(IMPL)" -a -n "$(TEST)" || { echo "Usage: make diff-impl IMPL=<name> TEST=<corpus-path>"; exit 1; }
-	@node conformer/src/diff-impl.js $(IMPL) $(TEST)
 
 _serve-site:
 	node site/build.js results/data
@@ -193,4 +161,3 @@ _clean-results:
 _clean:
 	$(MAKE) -C conformer clean
 	$(MAKE) -C corpus-gen clean
-	$(MAKE) -C impls clean
