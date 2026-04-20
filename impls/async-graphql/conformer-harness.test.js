@@ -174,4 +174,34 @@ describe('async-graphql conformer-harness', () => {
       `stderr should mention "schema", got: ${result.stderr}`,
     );
   });
+
+  it('resolves a wide schema with many types and fields', () => {
+    const NUM_TYPES = 60;
+    const FIELDS_PER_TYPE = 40;
+    let sdl = '';
+    for (let t = 0; t < NUM_TYPES; t++) {
+      sdl += `type T${t} {\n`;
+      for (let i = 0; i < FIELDS_PER_TYPE; i++) {
+        sdl += `  f${i}: String\n`;
+      }
+      sdl += `}\n`;
+    }
+    sdl += `type Query {\n`;
+    for (let t = 0; t < NUM_TYPES; t++) {
+      sdl += `  t${t}: T${t}\n`;
+    }
+    sdl += `}\n`;
+
+    let query = '{';
+    for (let t = 0; t < NUM_TYPES; t++) {
+      query += ` t${t} { f0 f1 }`;
+    }
+    query += ' }';
+
+    const f = writeFiles({ 'schema.graphqls': sdl, 'query.graphql': query });
+    const result = run(f['schema.graphqls'], f['query.graphql']);
+
+    assert.strictEqual(result.data.t0.f0, 'str');
+    assert.strictEqual(result.data[`t${NUM_TYPES - 1}`].f1, 'str');
+  });
 });

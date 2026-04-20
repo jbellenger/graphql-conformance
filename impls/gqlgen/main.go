@@ -196,6 +196,27 @@ func (ds *dynamicSchema) resolveUnionType(def *ast.Definition) string {
 	return members[0]
 }
 
+// registerStreamDirective injects a stub @stream definition if the schema
+// does not already declare one. Mirrors the built-in arguments from the
+// GraphQL incremental-delivery proposal.
+func registerStreamDirective(schema *ast.Schema) {
+	if schema.Directives == nil {
+		schema.Directives = map[string]*ast.DirectiveDefinition{}
+	}
+	if _, ok := schema.Directives["stream"]; ok {
+		return
+	}
+	schema.Directives["stream"] = &ast.DirectiveDefinition{
+		Name: "stream",
+		Arguments: ast.ArgumentDefinitionList{
+			{Name: "if", Type: &ast.Type{NamedType: "Boolean"}},
+			{Name: "label", Type: &ast.Type{NamedType: "String"}},
+			{Name: "initialCount", Type: &ast.Type{NamedType: "Int"}},
+		},
+		Locations: []ast.DirectiveLocation{ast.LocationField},
+	}
+}
+
 // resolveInterfaceType returns the lexicographically last implementing type name.
 func (ds *dynamicSchema) resolveInterfaceType(def *ast.Definition) string {
 	possibleTypes := ds.schema.PossibleTypes[def.Name]
@@ -247,6 +268,11 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error parsing schema: %v\n", gqlErr)
 		os.Exit(1)
 	}
+
+	// @stream is not built into gqlparser; register a stub so queries using it
+	// pass validation. We execute synchronously, so the directive is effectively
+	// ignored and the full list is returned in the single final response.
+	registerStreamDirective(astSchema)
 
 	// Build dynamic executable schema.
 	ds := newDynamicSchema(astSchema)

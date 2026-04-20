@@ -2,7 +2,7 @@
 
 const { describe, it, beforeEach, afterEach } = require('node:test');
 const assert = require('node:assert/strict');
-const { execFileSync } = require('child_process');
+const { execFileSync, spawnSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
@@ -413,5 +413,25 @@ describe('absinthe conformer-harness', () => {
         },
       },
     });
+  });
+
+  it('returns JSON errors and exits 0 on a syntactically broken query', () => {
+    const f = writeFiles({
+      'schema.graphqls': `
+        type Query { x: String }
+      `,
+      'query.graphql': '{ x',
+    });
+    const res = spawnSync('mix', ['run', SCRIPT, f['schema.graphqls'], f['query.graphql']], {
+      cwd: __dirname,
+      encoding: 'utf8',
+      timeout: 30_000,
+    });
+    assert.strictEqual(res.status, 0, `expected exit 0, got ${res.status}; stderr: ${res.stderr}`);
+    const parsed = JSON.parse(res.stdout);
+    assert.ok(Array.isArray(parsed.errors) && parsed.errors.length >= 1,
+      `expected errors array; got: ${res.stdout}`);
+    assert.ok(parsed.errors[0].message,
+      `expected errors[0].message; got: ${res.stdout}`);
   });
 });

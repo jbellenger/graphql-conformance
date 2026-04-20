@@ -22,12 +22,12 @@
 - [x] **graphql-core** (`index.py:156-164`): No exception handling; raw Python tracebacks leak on malformed input. Wrap schema/query/variables loading in try/except, write to stderr, exit 1.
 - [x] **grafast** (`index.js:195`): Streaming path can exit without emitting `complete` when the iterator finishes before `hasNext === false`. Always emit `complete` after the loop in streaming mode.
 - [x] **graphql-go** (`main.go:259, 274`): Unchecked `[0]` / `[len-1]` indexing on union/interface members — panics on empty sets. Add `len(...) > 0` guards.
-- [ ] **gqlgen**: No `@defer` / `@stream` handling; directives silently treated as regular fields. Detect in selection-set resolver, collect deferred/streamed fields, emit final response.
+- [x] **gqlgen**: No `@defer` / `@stream` handling; directives silently treated as regular fields. Detect in selection-set resolver, collect deferred/streamed fields, emit final response.
 - [x] **graphql-dotnet** (`Conformer.csproj:15`): `PackageReference Version="*"` unversioned wildcard — pin for reproducibility (e.g., `Version="8.3.*"`).
 - [x] **graphql-dotnet** (`Program.cs:26`): No try/catch around `Parser.Parse` / `ExecuteAsync`. Wrap, exit 1 on failure.
 - [ ] **absinthe** (`lib/conformer.ex:189-196`): `prime_identifier_atoms/1` violates the project's own `ERRATA.md` policy ("do not 'prime' the VM with these atoms as a silent workaround"). Either remove or document the deliberate policy override.
-- [ ] **absinthe** (`index.exs:19`): `{:ok, result} =` pattern-match crashes on `{:error, ...}`. Handle both branches.
-- [ ] **graphql-php** (`conformer-harness.test.js`): Code appears to support custom root types but no test exercises `schema { query: Foo }`. Add test.
+- [x] **absinthe** (`index.exs:19`): `{:ok, result} =` pattern-match crashes on `{:error, ...}`. Handle both branches.
+- [x] **graphql-php** (`conformer-harness.test.js`): Code appears to support custom root types but no test exercises `schema { query: Foo }`. Add test.
 - [x] **lacinia**: Parse errors propagate as raw Clojure exceptions — no JSON error wrapping. Add try/catch in harness entry point.
 - [ ] **coordinator** (`protocol.js:74-78` vs `159-164`): Streaming results normalize away empty `errors`/`extensions`, legacy `JSON.parse` output doesn't. A legacy reference emitting `{data, errors:[]}` fails to match a streaming conformant that dropped the empty list. Normalize both paths symmetrically.
 - [ ] **coordinator** (`diff-impl.js:86`): Always exits 1 after writing diff output, regardless of `spawnSync('diff', ...).status`. If `diff` itself fails we still report "differences found". Propagate the actual status.
@@ -47,7 +47,7 @@
 ## Minor / code quality
 
 - [x] **graphql-js-17** (`index.js:63`): Error message references `"conformer-harness.js"` but entry point is `index.js`. Fix text.
-- [ ] **async-graphql** (`src/main.rs:91-94`): Four full `.clone()` calls per object field yield O(schema²) allocations. Use `Arc<>` or pass by reference.
+- [x] **async-graphql** (`src/main.rs:91-94`): Four full `.clone()` calls per object field yield O(schema²) allocations. Use `Arc<>` or pass by reference.
 - [x] **async-graphql** (`src/main.rs:220-225`): `.expect()` on file reads panics with unstructured output. Replace with structured error handling.
 - [x] **juniper**: Replace `expect()` panics on schema errors (`src/main.rs:80, 89, 379-384`) with graceful error messages.
 - [x] **viaduct**: `NoOpCoercing` defined twice (`ViaductHarness.kt:111-117` and `ViaductHarnessTest.kt:148-154`). Deduplicate.

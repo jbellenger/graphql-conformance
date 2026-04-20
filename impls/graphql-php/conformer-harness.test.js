@@ -199,4 +199,18 @@ describe('graphql-php conformer-harness', () => {
       },
     });
   });
+
+  it('handles schemas with custom root type names', () => {
+    const f = writeFiles({
+      'schema.graphqls': `
+        schema { query: Foo }
+        type Foo { x: String }
+      `,
+      'query.graphql': '{ x }',
+    });
+    const result = run(f['schema.graphqls'], f['query.graphql']);
+    assert.deepStrictEqual(result, {
+      data: { x: 'str' },
+    });
+  });
 });

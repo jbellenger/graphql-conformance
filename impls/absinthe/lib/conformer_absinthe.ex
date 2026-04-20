@@ -16,18 +16,21 @@ defmodule ConformerAbsinthe do
     {schema_sdl, metadata} = prepare_schema(schema_text)
     schema_module = build_schema_module(schema_sdl, metadata)
 
-    {:ok, result} =
-      Absinthe.run(query_text, schema_module,
-        variables: variables,
-        # Absinthe.run/3 does not automatically apply schema pipeline modifiers
-        # to the document pipeline, so we forward the schema's modifier chain here.
-        pipeline_modifier: fn pipeline, options ->
-          Absinthe.Schema.apply_modifiers(pipeline, schema_module, options)
-        end
-      )
-
-    result
+    case Absinthe.run(query_text, schema_module,
+           variables: variables,
+           # Absinthe.run/3 does not automatically apply schema pipeline modifiers
+           # to the document pipeline, so we forward the schema's modifier chain here.
+           pipeline_modifier: fn pipeline, options ->
+             Absinthe.Schema.apply_modifiers(pipeline, schema_module, options)
+           end
+         ) do
+      {:ok, result} -> result
+      {:error, reason} -> %{errors: [%{message: error_message(reason)}]}
+    end
   end
+
+  defp error_message(reason) when is_binary(reason), do: reason
+  defp error_message(reason), do: inspect(reason)
 
   def resolve_field(_parent, _args, resolution) do
     {:ok, resolve_value(resolution.definition.schema_node.type, resolution.schema)}

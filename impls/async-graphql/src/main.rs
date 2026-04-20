@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 use std::env;
 use std::fs;
+use std::sync::Arc;
 
 use async_graphql::dynamic::*;
 use async_graphql::parser::parse_schema;
@@ -26,9 +27,9 @@ fn ast_type_to_typeref(ty: &async_graphql::parser::types::Type) -> TypeRef {
 
 fn build_schema_v2(
     sdl: &str,
-    enum_first: HashMap<String, String>,
-    union_members: HashMap<String, Vec<String>>,
-    iface_impls: HashMap<String, Vec<String>>,
+    enum_first: Arc<HashMap<String, String>>,
+    union_members: Arc<HashMap<String, Vec<String>>>,
+    iface_impls: Arc<HashMap<String, Vec<String>>>,
 ) -> Schema {
     let doc = parse_schema(sdl).expect("Failed to parse schema");
 
@@ -54,6 +55,7 @@ fn build_schema_v2(
             _ => {}
         }
     }
+    let composite_types = Arc::new(composite_types);
 
     let query_name = schema_def
         .as_ref()
@@ -87,10 +89,10 @@ fn build_schema_v2(
                 for field in &obj.fields {
                     let field_name = field.node.name.node.to_string();
                     let type_ref = ast_type_to_typeref(&field.node.ty.node);
-                    let ef = enum_first.clone();
-                    let um = union_members.clone();
-                    let ii = iface_impls.clone();
-                    let ct = composite_types.clone();
+                    let ef = Arc::clone(&enum_first);
+                    let um = Arc::clone(&union_members);
+                    let ii = Arc::clone(&iface_impls);
+                    let ct = Arc::clone(&composite_types);
                     let mut f = Field::new(&field_name, type_ref.clone(), move |_ctx| {
                         let val = resolve_value_composite(&type_ref, &ef, &um, &ii, &ct);
                         FieldFuture::Value(val)
@@ -289,7 +291,12 @@ async fn main() {
         impls.sort();
     }
 
-    let schema = build_schema_v2(&schema_text, enum_first, union_members, iface_impls);
+    let schema = build_schema_v2(
+        &schema_text,
+        Arc::new(enum_first),
+        Arc::new(union_members),
+        Arc::new(iface_impls),
+    );
 
     // Build request
     let mut request = async_graphql::Request::new(&query_text);

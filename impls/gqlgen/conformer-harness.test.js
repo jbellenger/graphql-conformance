@@ -146,4 +146,43 @@ describe('gqlgen conformer-harness', () => {
       },
     });
   });
+
+  it('handles @defer(if: false) in queries without error', () => {
+    const f = writeFiles({
+      'schema.graphqls': `
+        type Query { x: String, y: Int }
+      `,
+      'query.graphql': '{ x ... @defer(if: false) { y } }',
+    });
+    const result = run(f['schema.graphqls'], f['query.graphql']);
+    assert.deepStrictEqual(result, {
+      data: { x: 'str', y: 2 },
+    });
+  });
+
+  it('handles @defer(if: true) and returns complete data', () => {
+    const f = writeFiles({
+      'schema.graphqls': `
+        type Query { x: String, y: Int }
+      `,
+      'query.graphql': '{ x ... @defer(if: true) { y } }',
+    });
+    const result = run(f['schema.graphqls'], f['query.graphql']);
+    assert.deepStrictEqual(result, {
+      data: { x: 'str', y: 2 },
+    });
+  });
+
+  it('handles @stream on a list and returns the full list', () => {
+    const f = writeFiles({
+      'schema.graphqls': `
+        type Query { items: [String] }
+      `,
+      'query.graphql': '{ items @stream(initialCount: 0) }',
+    });
+    const result = run(f['schema.graphqls'], f['query.graphql']);
+    assert.deepStrictEqual(result, {
+      data: { items: ['str', 'str'] },
+    });
+  });
 });
