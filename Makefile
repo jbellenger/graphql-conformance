@@ -36,6 +36,11 @@ DOCKER ?= docker
 IMAGE ?= graphql-conformance:dev
 HOST_UID := $(shell id -u)
 HOST_GID := $(shell id -g)
+# The group that owns /var/run/docker.sock (as seen inside a container)
+# varies: 0 (root) on Docker Desktop's VM, `docker` (varies) on Linux
+# hosts / GitHub runners. Stat the socket from inside a throwaway
+# container so the GID matches what the dev container will see.
+DOCKER_SOCK_GID := $(shell $(DOCKER) run --rm -v /var/run/docker.sock:/var/run/docker.sock alpine:3 stat -c '%g' /var/run/docker.sock 2>/dev/null || echo 0)
 
 # Preflight: fail fast with an actionable message if Docker + buildx are missing.
 ifeq ($(shell command -v $(DOCKER) >/dev/null 2>&1 && echo yes),)
@@ -59,7 +64,7 @@ DOCKER_ENV := \
 
 DOCKER_RUN_BASE := $(DOCKER) run --rm \
   --user $(HOST_UID):$(HOST_GID) \
-  --group-add 0 \
+  --group-add $(DOCKER_SOCK_GID) \
   --add-host=host.docker.internal:host-gateway \
   -w /work \
   $(DOCKER_VOLUMES) \
