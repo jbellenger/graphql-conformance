@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const { discoverCorpus } = require('./corpus');
 const { runHarness } = require('./runner');
 const { getVersion } = require('./builder');
@@ -11,6 +12,11 @@ const { ResultsStore } = require('../../results');
 function generateRunId() {
   const now = new Date();
   return now.toISOString().replace(/:/g, '-').replace(/\./g, '-').replace(/Z$/, 'Z');
+}
+
+function computeCorpusFingerprint(tests) {
+  const keys = tests.map((t) => `${t.testId}/${t.queryId}`).sort();
+  return crypto.createHash('sha256').update(keys.join('\n')).digest('hex');
 }
 
 async function runImpl(impl, rootDir, args) {
@@ -25,6 +31,7 @@ async function main() {
   const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
   const corpusDir = process.env.CORPUS_DIR || path.join(rootDir, 'corpus');
   const tests = discoverCorpus(corpusDir);
+  const corpusFingerprint = computeCorpusFingerprint(tests);
 
   const refName = config.reference;
   const reference = { name: refName, ...config.impls[refName] };
@@ -63,12 +70,18 @@ async function main() {
   const skippedConformants = {};
   const priorRun = store.loadLatestRunSummary();
 
+  const corpusUnchanged = priorRun && priorRun.reference.corpusFingerprint === corpusFingerprint;
+  if (priorRun && !corpusUnchanged) {
+    process.stderr.write('Corpus changed since prior run; will re-run all conformants.\n');
+  }
+
   const conformantsToRun = conformants.filter((conformant) => {
     const currentSha = conformantVersions[conformant.name];
     if (
       priorRun &&
       priorRun.reference.hasExclusionMetadata &&
       priorRun.reference.sha === refSha &&
+      corpusUnchanged &&
       priorRun.conformants[conformant.name] &&
       priorRun.conformants[conformant.name].sha === currentSha
     ) {
@@ -142,6 +155,12 @@ async function main() {
     } else {
       entry.tests = conformantTests[conformant.name];
     }
+    if (skippedConformants[conformant.name] && priorRun) {
+      const prior = priorRun.conformants[conformant.name];
+      if (prior && prior.quirksByTestKey) {
+        entry.quirksByTestKey = prior.quirksByTestKey;
+      }
+    }
     conformantResults[conformant.name] = entry;
   }
 
@@ -161,6 +180,7 @@ async function main() {
       sha: refSha,
       scoringModel: 'runnable-set-v1',
       corpusTotal: tests.length,
+      corpusFingerprint,
       total: runnableCount,
       errors: 0,
       excluded: referenceExclusions.length,
@@ -207,7 +227,11 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  process.stderr.write(String(err) + '\n');
-  process.exit(1);
-});
+module.exports = { computeCorpusFingerprint };
+
+if (require.main === module) {
+  main().catch((err) => {
+    process.stderr.write(String(err) + '\n');
+    process.exit(1);
+  });
+}
