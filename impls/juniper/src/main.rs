@@ -76,17 +76,39 @@ impl GraphQLValue<DefaultScalarValue> for DynamicValue {
         _arguments: &Arguments,
         executor: &Executor<SchemaInfo>,
     ) -> ExecutionResult {
-        let td = info.find_type_def(&info.type_name)
-            .expect("type not found in schema");
+        let td = match info.find_type_def(&info.type_name) {
+            Some(td) => td,
+            None => {
+                return Err(juniper::FieldError::new(
+                    format!("type {} not found in schema", info.type_name),
+                    Value::null(),
+                ));
+            }
+        };
 
         let fields = match td {
             TypeDefinition::Object(o) => &o.fields,
             TypeDefinition::Interface(i) => &i.fields,
-            _ => panic!("resolve_field called on non-object type {}", info.type_name),
+            _ => {
+                return Err(juniper::FieldError::new(
+                    format!(
+                        "resolve_field called on non-object type {}",
+                        info.type_name
+                    ),
+                    Value::null(),
+                ));
+            }
         };
 
-        let field_def = fields.iter().find(|f| f.name == field_name)
-            .unwrap_or_else(|| panic!("field {} not found on {}", field_name, info.type_name));
+        let field_def = match fields.iter().find(|f| f.name == field_name) {
+            Some(f) => f,
+            None => {
+                return Err(juniper::FieldError::new(
+                    format!("field {} not found on {}", field_name, info.type_name),
+                    Value::null(),
+                ));
+            }
+        };
 
         resolve_value(info, &field_def.field_type, executor)
     }
@@ -390,22 +412,49 @@ fn main() {
         std::process::exit(1);
     }
 
-    let schema_text = fs::read_to_string(&args[1]).expect("read schema");
-    let query_text = fs::read_to_string(&args[2]).expect("read query");
+    let schema_text = match fs::read_to_string(&args[1]) {
+        Ok(s) => s,
+        Err(e) => {
+            eprintln!("error: failed to read schema {}: {}", &args[1], e);
+            std::process::exit(1);
+        }
+    };
+    let query_text = match fs::read_to_string(&args[2]) {
+        Ok(s) => s,
+        Err(e) => {
+            eprintln!("error: failed to read query {}: {}", &args[2], e);
+            std::process::exit(1);
+        }
+    };
 
     let variables: Option<serde_json::Value> = if args.len() >= 4 {
-        let var_text = fs::read_to_string(&args[3]).expect("read variables");
-        Some(serde_json::from_str(&var_text).expect("parse variables"))
+        let var_text = match fs::read_to_string(&args[3]) {
+            Ok(s) => s,
+            Err(e) => {
+                eprintln!("error: failed to read variables {}: {}", &args[3], e);
+                std::process::exit(1);
+            }
+        };
+        match serde_json::from_str(&var_text) {
+            Ok(v) => Some(v),
+            Err(e) => {
+                eprintln!("error: failed to parse variables {}: {}", &args[3], e);
+                std::process::exit(1);
+            }
+        }
     } else {
         None
     };
 
     // Parse SDL — leak to get 'static lifetime (process exits after one execution)
-    let doc: &'static gp::Document<'static, String> = Box::leak(Box::new(
-        graphql_parser::parse_schema::<String>(&schema_text)
-            .expect("parse schema")
-            .into_static(),
-    ));
+    let parsed_doc = match graphql_parser::parse_schema::<String>(&schema_text) {
+        Ok(d) => d.into_static(),
+        Err(e) => {
+            eprintln!("error: failed to parse schema {}: {}", &args[1], e);
+            std::process::exit(1);
+        }
+    };
+    let doc: &'static gp::Document<'static, String> = Box::leak(Box::new(parsed_doc));
 
     // Pre-scan
     let mut enum_first = HashMap::new();

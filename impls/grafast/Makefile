@@ -5,7 +5,7 @@ build:
 
 test:
 	@test -f build/grafast/grafast/dist/index.js || $(MAKE) build
-	node --test conformer-harness.test.js
+	node --test conformer-harness.test.js makefile.test.js
 
 clean:
-	rm -rf build .built-sha
+	rm -rf .built-sha

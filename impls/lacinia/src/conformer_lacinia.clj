@@ -86,7 +86,13 @@
         (println "Usage: clojure -M -m conformer-lacinia <schema> <query> [<variables>]"))
       (System/exit 1))
 
-    (let [result (execute-query (slurp schema-path)
-                                (slurp query-path)
-                                (read-variables variables-path))]
-      (print (json/write-str result)))))
+    (try
+      (let [result (execute-query (slurp schema-path)
+                                  (slurp query-path)
+                                  (read-variables variables-path))]
+        (print (json/write-str result)))
+      (catch Throwable e
+        (binding [*out* *err*]
+          (println (json/write-str {:error (or (.getMessage e) (.toString e))
+                                    :type (.getName (class e))})))
+        (System/exit 1)))))

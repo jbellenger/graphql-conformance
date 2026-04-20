@@ -5,7 +5,7 @@ build:
 	npm install --install-links build
 
 test:
-	node --test wiring.test.js conformer-harness.test.js
+	node --test wiring.test.js conformer-harness.test.js makefile.test.js
 
 clean:
-	rm -rf node_modules build .built-sha
+	rm -rf node_modules .built-sha

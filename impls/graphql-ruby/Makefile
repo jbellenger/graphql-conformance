@@ -7,7 +7,7 @@ build:
 	bundle exec ruby -c index.rb >/dev/null
 
 test:
-	node --test conformer-harness.test.js
+	node --test conformer-harness.test.js makefile.test.js
 
 clean:
-	rm -rf build .built-sha .bundle vendor
+	rm -rf .built-sha .bundle vendor

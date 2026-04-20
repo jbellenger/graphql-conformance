@@ -7,6 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 const { parseHarnessOutput } = require('../../conformer/src/protocol');
+const { writeResult } = require('./index');
 
 const HARNESS = path.join(__dirname, 'index.js');
 let tmpDir;
@@ -259,6 +260,44 @@ describe('grafast conformer-harness', () => {
         },
       },
     });
+  });
+
+  it('emits complete when stream iterator ends without hasNext:false', async () => {
+    // Simulates a buggy/terminated async iterator that finishes without ever
+    // signaling payload.hasNext === false. The harness must still emit a
+    // final "complete" event so clients don't hang.
+    const payloads = [
+      { data: { name: 'str' }, hasNext: true },
+      // note: no terminal payload with hasNext === false
+    ];
+    const iter = {
+      next() {
+        if (payloads.length === 0) {
+          return Promise.resolve({ done: true, value: undefined });
+        }
+        return Promise.resolve({ done: false, value: payloads.shift() });
+      },
+    };
+
+    const originalWrite = process.stdout.write.bind(process.stdout);
+    const captured = [];
+    process.stdout.write = (chunk) => {
+      captured.push(typeof chunk === 'string' ? chunk : chunk.toString('utf8'));
+      return true;
+    };
+    try {
+      await writeResult(iter);
+    } finally {
+      process.stdout.write = originalWrite;
+    }
+    const lines = captured
+      .join('')
+      .split('\n')
+      .map((line) => line.trim())
+      .filter((line) => line.length > 0)
+      .map((line) => JSON.parse(line));
+    const kinds = lines.map((line) => line.kind);
+    assert.deepStrictEqual(kinds, ['initial', 'complete']);
   });
 
   it('merges root-level deferred payloads', () => {

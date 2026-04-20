@@ -6,7 +6,7 @@ build:
 
 test:
 	go test -v ./...
-	node --test conformer-harness.test.js
+	node --test conformer-harness.test.js makefile.test.js
 
 clean:
-	rm -rf build .built-sha conformer
+	rm -rf .built-sha conformer

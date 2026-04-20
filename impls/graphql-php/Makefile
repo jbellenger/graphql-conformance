@@ -5,7 +5,7 @@ build:
 	php -l index.php >/dev/null
 
 test: build
-	node --test conformer-harness.test.js
+	node --test conformer-harness.test.js makefile.test.js
 
 clean:
-	rm -rf build .built-sha
+	rm -rf .built-sha

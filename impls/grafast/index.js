@@ -151,6 +151,7 @@ async function writeResult(result) {
   }
 
   let isFirstPayload = true;
+  let completeEmitted = false;
 
   while (true) {
     const next = await result.next();
@@ -192,7 +193,15 @@ async function writeResult(result) {
 
     if (payload.hasNext === false) {
       writeProtocolEvent({ kind: 'complete' });
+      completeEmitted = true;
     }
+  }
+
+  // If the iterator finished without a final hasNext===false payload,
+  // still emit a complete event so clients don't hang.
+  if (!isFirstPayload && !completeEmitted) {
+    writeProtocolEvent({ kind: 'complete' });
+    completeEmitted = true;
   }
 }
 

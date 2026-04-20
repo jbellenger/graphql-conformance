@@ -2,7 +2,7 @@
 
 const { describe, it, beforeEach, afterEach } = require('node:test');
 const assert = require('node:assert/strict');
-const { execFileSync } = require('child_process');
+const { execFileSync, spawnSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
@@ -214,6 +214,35 @@ describe('lacinia conformer-harness', () => {
         },
       },
     });
+  });
+
+  it('exits 1 with structured JSON error on schema Clojure cannot parse', () => {
+    // Lacinia's SDL parser does not recognize `repeatable` on directive defs
+    // (see ERRATA.md). This passes graphql-js's normalization step but fails
+    // the Clojure harness, so it exercises the try/catch in -main.
+    const f = writeFiles({
+      'schema.graphqls': `
+        directive @rep repeatable on FIELD
+        type Query { x: String }
+      `,
+      'query.graphql': '{ x }',
+    });
+    const result = spawnSync('node', [SCRIPT, f['schema.graphqls'], f['query.graphql']], {
+      cwd: __dirname,
+      encoding: 'utf8',
+      timeout: 30_000,
+    });
+    assert.strictEqual(result.status, 1, `expected exit 1, got ${result.status}; stderr: ${result.stderr}`);
+    assert.ok(result.stderr.length > 0, 'expected non-empty stderr');
+    // Find the JSON error line (there may be other noise on stderr).
+    const jsonLine = result.stderr
+      .split('\n')
+      .map((l) => l.trim())
+      .find((l) => l.startsWith('{') && l.endsWith('}'));
+    assert.ok(jsonLine, `expected a JSON error on stderr; got: ${result.stderr}`);
+    const parsed = JSON.parse(jsonLine);
+    assert.ok(parsed.error, 'expected `error` field in stderr JSON');
+    assert.ok(parsed.type, 'expected `type` field in stderr JSON');
   });
 
   it('normalizes typeless inline fragments before executing the query', () => {
