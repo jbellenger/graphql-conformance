@@ -1,6 +1,8 @@
+using System.Text;
 using System.Text.Json;
 using HotChocolate;
 using HotChocolate.Execution;
+using HotChocolate.Execution.Serialization;
 using HotChocolate.Language;
 using HotChocolate.Resolvers;
 using HotChocolate.Types;
@@ -19,42 +21,90 @@ var app = builder.Build();
 
 app.MapGet("/health", () => Results.Text("ok"));
 
-app.MapPost("/execute", async (HttpRequest req) =>
+app.MapPost("/execute", async (HttpContext ctx) =>
 {
     ExecuteRequest? payload;
     try
     {
-        payload = await JsonSerializer.DeserializeAsync<ExecuteRequest>(req.Body, GetJsonOpts());
+        payload = await JsonSerializer.DeserializeAsync<ExecuteRequest>(ctx.Request.Body, GetJsonOpts());
     }
     catch (Exception e)
     {
-        return ErrorResponse(400, e.Message);
+        await WriteErrorAsync(ctx.Response, 400, e.Message);
+        return;
     }
 
     if (payload?.Schema is null || payload.Query is null)
-        return ErrorResponse(400, "schema and query are required strings");
+    {
+        await WriteErrorAsync(ctx.Response, 400, "schema and query are required strings");
+        return;
+    }
 
     try
     {
-        var resultJson = await ExecuteAsync(payload);
-        return Results.Content(resultJson, "application/json", null, 200);
+        var result = await ExecuteAsync(payload);
+        if (result is IResponseStream stream)
+        {
+            await WriteMultipartAsync(ctx.Response, stream);
+        }
+        else if (result is IOperationResult single)
+        {
+            await WriteJsonAsync(ctx.Response, 200, BuildSingleOutput(single));
+        }
+        else
+        {
+            await WriteJsonAsync(ctx.Response, 200, new Dictionary<string, object?> { ["data"] = null });
+        }
     }
     catch (Exception e)
     {
-        return ErrorResponse(500, e.Message);
+        await WriteErrorAsync(ctx.Response, 500, e.Message);
     }
 });
 
 app.Run();
 return 0;
 
-static IResult ErrorResponse(int status, string message)
+static async Task WriteErrorAsync(HttpResponse response, int status, string message)
 {
-    var body = JsonSerializer.Serialize(new { errors = new[] { new { message } } });
-    return Results.Content(body, "application/json", null, status);
+    await WriteJsonAsync(response, status, new { errors = new[] { new { message } } });
 }
 
-static async Task<string> ExecuteAsync(ExecuteRequest payload)
+static async Task WriteJsonAsync(HttpResponse response, int status, object body)
+{
+    response.StatusCode = status;
+    response.ContentType = "application/json";
+    await JsonSerializer.SerializeAsync(response.Body, body);
+}
+
+// Emits a GraphQL multipart/mixed incremental-delivery response. Each chunk from HC's
+// IResponseStream is serialized with its native incremental-delivery shape (hasNext,
+// pending, incremental, completed) and written as a separate part. The conformer's
+// applyIncrementalMerge reassembles these back to a single {data, errors?} object.
+static async Task WriteMultipartAsync(HttpResponse response, IResponseStream stream)
+{
+    var boundary = Guid.NewGuid().ToString("N");
+    response.StatusCode = 200;
+    response.ContentType = $"multipart/mixed; boundary={boundary}";
+
+    var formatter = new JsonResultFormatter(
+        new JsonResultFormatterOptions { Indented = false });
+    var headerBytes = Encoding.UTF8.GetBytes($"\r\n--{boundary}\r\nContent-Type: application/json\r\n\r\n");
+    var trailerBytes = Encoding.UTF8.GetBytes($"\r\n--{boundary}--\r\n");
+
+    await foreach (var chunk in stream.ReadResultsAsync())
+    {
+        await using var _ = chunk;
+        await response.Body.WriteAsync(headerBytes);
+        await formatter.FormatAsync(chunk, response.Body);
+        await response.Body.FlushAsync();
+    }
+
+    await response.Body.WriteAsync(trailerBytes);
+    await response.Body.FlushAsync();
+}
+
+static async Task<IExecutionResult> ExecuteAsync(ExecuteRequest payload)
 {
     var rawSchemaText = payload.Schema!;
     var queryText = payload.Query!;
@@ -172,32 +222,7 @@ static async Task<string> ExecuteAsync(ExecuteRequest payload)
             variables.ToDictionary(kv => kv.Key, kv => kv.Value));
     }
 
-    var result = await executor.ExecuteAsync(requestBuilder.Build());
-
-    if (result is IResponseStream stream)
-    {
-        IReadOnlyDictionary<string, object?>? mergedData = null;
-        var errors = new List<object>();
-        await foreach (var chunk in stream.ReadResultsAsync())
-        {
-            if (chunk.Data != null)
-            {
-                mergedData = NormalizeResultValue(chunk.Data) as IReadOnlyDictionary<string, object?>;
-            }
-            var chunkErrors = FormatErrors(chunk.Errors);
-            if (chunkErrors is { Count: > 0 }) errors.AddRange(chunkErrors);
-        }
-        var output = new Dictionary<string, object?> { ["data"] = mergedData };
-        if (errors.Count > 0) output["errors"] = errors;
-        return JsonSerializer.Serialize(output);
-    }
-
-    if (result is IOperationResult single)
-    {
-        return JsonSerializer.Serialize(BuildSingleOutput(single));
-    }
-
-    return JsonSerializer.Serialize(new Dictionary<string, object?> { ["data"] = null });
+    return await executor.ExecuteAsync(requestBuilder.Build());
 }
 
 static object? ConvertJsonElement(JsonElement element)

@@ -1,0 +1,12 @@
+{
+  objectField {
+    value
+    ... on Nested @defer {
+      number
+    }
+  }
+  listOfObjects @stream(initialCount: 1) {
+    value
+    number
+  }
+}
