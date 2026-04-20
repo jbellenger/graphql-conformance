@@ -1,12 +1,11 @@
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using HotChocolate;
 using HotChocolate.Execution;
 using HotChocolate.Language;
 using HotChocolate.Resolvers;
 using HotChocolate.Types;
 using Microsoft.Extensions.DependencyInjection;
-
-const string StreamProtocol = "conformer-stream-v1";
 
 try
 {
@@ -42,7 +41,7 @@ async Task<int> RunAsync(string[] runArgs)
     var stripDirectives = new HashSet<string>
     {
         "skip", "include", "deprecated", "specifiedBy", "oneOf",
-        "experimental_disableErrorPropagation", "defer", "stream",
+        "defer", "stream",
     };
     var declaredDirectives = new HashSet<string>(
         schemaDoc.Definitions.OfType<DirectiveDefinitionNode>().Select(d => d.Name.Value));
@@ -166,72 +165,8 @@ async Task<int> RunAsync(string[] runArgs)
 
     if (result is IResponseStream stream)
     {
-        var wroteInitial = false;
-        var wroteComplete = false;
-
-        await foreach (var chunk in stream.ReadResultsAsync())
-        {
-            if (!wroteInitial)
-            {
-                var initialEvent = CreateProtocolEvent("initial");
-                initialEvent["data"] = NormalizeResultValue(chunk.Data);
-                var initialErrors = FormatErrors(chunk.Errors);
-                if (initialErrors is { Count: > 0 })
-                {
-                    initialEvent["errors"] = initialErrors;
-                }
-                WriteProtocolEvent(initialEvent);
-                wroteInitial = true;
-            }
-            else
-            {
-                var chunkEvent = CreateProtocolEvent("patch");
-                if (chunk.Data != null)
-                {
-                    chunkEvent["path"] = Array.Empty<object>();
-                    chunkEvent["data"] = NormalizeResultValue(chunk.Data);
-                }
-                var chunkErrors = FormatErrors(chunk.Errors);
-                if (chunkErrors is { Count: > 0 })
-                {
-                    chunkEvent["errors"] = chunkErrors;
-                }
-                if (chunkEvent.Count > 2)
-                {
-                    WriteProtocolEvent(chunkEvent);
-                }
-            }
-
-            if (chunk.Incremental != null)
-            {
-                foreach (var inc in chunk.Incremental)
-                {
-                    var patchEvent = CreateProtocolEvent("patch");
-                    patchEvent["path"] = inc.Path.ToList();
-                    if (inc.Data != null)
-                    {
-                        patchEvent["data"] = NormalizeResultValue(inc.Data);
-                    }
-                    var patchErrors = FormatErrors(inc.Errors);
-                    if (patchErrors is { Count: > 0 })
-                    {
-                        patchEvent["errors"] = patchErrors;
-                    }
-                    WriteProtocolEvent(patchEvent);
-                }
-            }
-
-            if (chunk.HasNext == false)
-            {
-                WriteProtocolEvent(CreateProtocolEvent("complete"));
-                wroteComplete = true;
-            }
-        }
-
-        if (wroteInitial && !wroteComplete)
-        {
-            WriteProtocolEvent(CreateProtocolEvent("complete"));
-        }
+        var collapsed = await CollapseStreamAsync(stream);
+        Console.Write(collapsed.ToJsonString());
         return 0;
     }
 
@@ -241,15 +176,195 @@ async Task<int> RunAsync(string[] runArgs)
     }
 
     return 0;
+}
 
-    Dictionary<string, object?> CreateProtocolEvent(string kind)
+static async Task<JsonObject> CollapseStreamAsync(IResponseStream stream)
+{
+    JsonNode? data = null;
+    var errors = new JsonArray();
+    var pendingPaths = new Dictionary<string, List<object>>();
+
+    await foreach (var chunk in stream.ReadResultsAsync())
     {
-        return new Dictionary<string, object?>
+        var json = chunk.ToJson(withIndentations: false);
+        if (JsonNode.Parse(json) is not JsonObject root)
         {
-            ["protocol"] = StreamProtocol,
-            ["kind"] = kind,
-        };
+            continue;
+        }
+
+        if (data is null && root["data"] is JsonNode dataNode)
+        {
+            root.Remove("data");
+            data = dataNode;
+        }
+
+        if (root["errors"] is JsonArray chunkErrors)
+        {
+            DrainErrors(chunkErrors, errors);
+        }
+
+        if (root["pending"] is JsonArray pending)
+        {
+            foreach (var entry in pending)
+            {
+                if (entry is not JsonObject obj) continue;
+                var id = obj["id"]?.GetValue<string>();
+                if (id is null) continue;
+                if (obj["path"] is JsonArray pathArr)
+                {
+                    pendingPaths[id] = ExtractPath(pathArr);
+                }
+            }
+        }
+
+        if (root["incremental"] is JsonArray incremental)
+        {
+            foreach (var entry in incremental)
+            {
+                if (entry is not JsonObject inc) continue;
+
+                List<object> fullPath;
+                if (inc["path"] is JsonArray directPath)
+                {
+                    fullPath = ExtractPath(directPath);
+                    if (inc["subPath"] is JsonArray directSub)
+                    {
+                        fullPath.AddRange(ExtractPath(directSub));
+                    }
+                }
+                else
+                {
+                    var id = inc["id"]?.GetValue<string>();
+                    if (id is null || !pendingPaths.TryGetValue(id, out var basePath)) continue;
+                    fullPath = new List<object>(basePath);
+                    if (inc["subPath"] is JsonArray subPath)
+                    {
+                        fullPath.AddRange(ExtractPath(subPath));
+                    }
+                }
+
+                if (inc["data"] is JsonObject incData)
+                {
+                    inc.Remove("data");
+                    if (data is not null)
+                    {
+                        MergeObjectAt(data, fullPath, incData);
+                    }
+                }
+                else if (inc["items"] is JsonArray incItems)
+                {
+                    inc.Remove("items");
+                    if (data is not null)
+                    {
+                        AppendItemsAt(data, fullPath, incItems);
+                    }
+                }
+
+                if (inc["errors"] is JsonArray incErrors)
+                {
+                    DrainErrors(incErrors, errors);
+                }
+            }
+        }
     }
+
+    var output = new JsonObject { ["data"] = data };
+    if (errors.Count > 0)
+    {
+        output["errors"] = errors;
+    }
+    return output;
+}
+
+static List<object> ExtractPath(JsonArray arr)
+{
+    var list = new List<object>(arr.Count);
+    foreach (var seg in arr)
+    {
+        if (seg is not JsonValue value) continue;
+        if (value.TryGetValue<string>(out var s))
+        {
+            list.Add(s);
+        }
+        else if (value.TryGetValue<int>(out var i))
+        {
+            list.Add(i);
+        }
+        else if (value.TryGetValue<long>(out var l))
+        {
+            list.Add((int)l);
+        }
+    }
+    return list;
+}
+
+static JsonNode? Navigate(JsonNode root, IReadOnlyList<object> path)
+{
+    JsonNode? current = root;
+    foreach (var seg in path)
+    {
+        if (current is null) return null;
+        switch (seg)
+        {
+            case string name when current is JsonObject obj:
+                current = obj[name];
+                break;
+            case int index when current is JsonArray arr:
+                current = index >= 0 && index < arr.Count ? arr[index] : null;
+                break;
+            default:
+                return null;
+        }
+    }
+    return current;
+}
+
+static void MergeObjectAt(JsonNode root, IReadOnlyList<object> path, JsonObject patch)
+{
+    if (Navigate(root, path) is not JsonObject target) return;
+    var keys = new List<string>();
+    foreach (var kv in patch) keys.Add(kv.Key);
+    foreach (var key in keys)
+    {
+        var val = patch[key];
+        patch.Remove(key);
+        target[key] = val;
+    }
+}
+
+static void AppendItemsAt(JsonNode root, IReadOnlyList<object> path, JsonArray items)
+{
+    if (Navigate(root, path) is not JsonArray target) return;
+    while (items.Count > 0)
+    {
+        var item = items[0];
+        items.RemoveAt(0);
+        target.Add(item);
+    }
+}
+
+static void DrainErrors(JsonArray source, JsonArray destination)
+{
+    while (source.Count > 0)
+    {
+        var err = source[0];
+        source.RemoveAt(0);
+        destination.Add(NormalizeError(err));
+    }
+}
+
+static JsonObject NormalizeError(JsonNode? err)
+{
+    var normalized = new JsonObject();
+    if (err is JsonObject obj && obj["message"] is JsonValue msg && msg.TryGetValue<string>(out var text))
+    {
+        normalized["message"] = text;
+    }
+    else
+    {
+        normalized["message"] = err?.ToString() ?? string.Empty;
+    }
+    return normalized;
 }
 
 static object? ConvertJsonElement(JsonElement element)
@@ -268,17 +383,6 @@ static object? ConvertJsonElement(JsonElement element)
     };
 }
 
-static object? NormalizeResultValue(object? value)
-{
-    if (value is null)
-    {
-        return null;
-    }
-
-    using var doc = JsonDocument.Parse(JsonSerializer.Serialize(value));
-    return ConvertJsonElement(doc.RootElement);
-}
-
 static List<object>? FormatErrors(IReadOnlyList<IError>? source)
 {
     if (source is not { Count: > 0 })
@@ -292,11 +396,6 @@ static List<object>? FormatErrors(IReadOnlyList<IError>? source)
         errors.Add(new { message = error.Message });
     }
     return errors;
-}
-
-static void WriteProtocolEvent(Dictionary<string, object?> payload)
-{
-    Console.WriteLine(JsonSerializer.Serialize(payload));
 }
 
 static Dictionary<string, object?> BuildSingleOutput(IOperationResult result)
