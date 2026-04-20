@@ -1,0 +1,19 @@
+{
+  "manifestVersion": 1,
+  "name": "juniper",
+  "displayName": "juniper",
+  "homepage": "https://github.com/graphql-rust/juniper",
+  "image": {
+    "build": {
+      "dockerfile": "./Dockerfile",
+      "context": "."
+    }
+  },
+  "runtime": {
+    "port": 8080,
+    "healthPath": "/health",
+    "executePath": "/execute",
+    "readinessTimeoutMs": 30000,
+    "requestTimeoutMs": 30000
+  }
+}

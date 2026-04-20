@@ -1,17 +1,20 @@
 use std::collections::HashMap;
-use std::env;
-use std::fs;
+use std::net::SocketAddr;
 
-use graphql_parser::schema::{self as gp, Definition, TypeDefinition};
-use juniper::{
-    arcstr, ArcStr, Arguments, DefaultScalarValue, EmptyMutation, EmptySubscription,
-    ExecutionResult, Executor, GraphQLType, GraphQLValue, Registry, RootNode, Value,
+use axum::{
+    extract::Json,
+    http::StatusCode,
+    response::IntoResponse,
+    routing::{get, post},
+    Router,
 };
+use graphql_parser::schema::{self as gp, Definition, TypeDefinition};
 use juniper::meta::{Argument as MetaArgument, EnumValue, Field, MetaType};
-
-// ---------------------------------------------------------------------------
-// SchemaInfo: carries parsed schema + which type this DynamicValue represents
-// ---------------------------------------------------------------------------
+use juniper::{
+    ArcStr, Arguments, DefaultScalarValue, EmptyMutation, EmptySubscription, ExecutionResult,
+    Executor, GraphQLType, GraphQLValue, Registry, RootNode, Value,
+};
+use serde::Deserialize;
 
 #[derive(Debug, Clone)]
 struct SchemaInfo {
@@ -54,10 +57,6 @@ fn type_def_name<'a>(td: &'a TypeDefinition<'a, String>) -> &'a str {
         TypeDefinition::InputObject(io) => &io.name,
     }
 }
-
-// ---------------------------------------------------------------------------
-// DynamicValue: the single type that implements GraphQLType for all SDL types
-// ---------------------------------------------------------------------------
 
 struct DynamicValue;
 
@@ -140,16 +139,11 @@ impl GraphQLType<DefaultScalarValue> for DynamicValue {
     }
 
     fn meta(info: &SchemaInfo, registry: &mut Registry<DefaultScalarValue>) -> MetaType<DefaultScalarValue> {
-        // Built-in scalars are handled by Juniper — don't override them.
         let builtin_scalars = ["String", "Int", "Float", "Boolean", "ID"];
         if builtin_scalars.contains(&info.type_name.as_str()) {
-            // Return a dummy meta that won't actually be used — Juniper's
-            // own registration takes precedence for built-in types.
             return registry.build_scalar_type::<String>(&()).into_meta();
         }
 
-        // When registering the query root type, force-register all types from
-        // the SDL so that inline fragments on interface/union members work.
         if info.type_name == info.query_type {
             for def in &info.doc.definitions {
                 if let Definition::TypeDefinition(td) = def {
@@ -163,7 +157,6 @@ impl GraphQLType<DefaultScalarValue> for DynamicValue {
         }
 
         let Some(td) = info.find_type_def(&info.type_name) else {
-            // Unknown type — treat as custom scalar
             return registry.build_scalar_type::<String>(&()).into_meta();
         };
 
@@ -172,16 +165,19 @@ impl GraphQLType<DefaultScalarValue> for DynamicValue {
                 registry.build_scalar_type::<String>(&()).into_meta()
             }
             TypeDefinition::Enum(e) => {
-                let values: Vec<EnumValue> = e.values.iter()
+                let values: Vec<EnumValue> = e
+                    .values
+                    .iter()
                     .map(|v| EnumValue::new(&v.name))
                     .collect();
-                registry.build_enum_type::<DynamicEnum>(
-                    &info.type_name,
-                    &values,
-                ).into_meta()
+                registry
+                    .build_enum_type::<DynamicEnum>(&info.type_name, &values)
+                    .into_meta()
             }
             TypeDefinition::Object(o) => {
-                let fields: Vec<Field<DefaultScalarValue>> = o.fields.iter()
+                let fields: Vec<Field<DefaultScalarValue>> = o
+                    .fields
+                    .iter()
                     .map(|f| build_field(info, f, registry))
                     .collect();
                 let mut obj = registry.build_object_type::<DynamicValue>(info, &fields);
@@ -192,37 +188,44 @@ impl GraphQLType<DefaultScalarValue> for DynamicValue {
                 obj.into_meta()
             }
             TypeDefinition::Interface(i) => {
-                let fields: Vec<Field<DefaultScalarValue>> = i.fields.iter()
+                let fields: Vec<Field<DefaultScalarValue>> = i
+                    .fields
+                    .iter()
                     .map(|f| build_field(info, f, registry))
                     .collect();
-                registry.build_interface_type::<DynamicValue>(info, &fields).into_meta()
+                registry
+                    .build_interface_type::<DynamicValue>(info, &fields)
+                    .into_meta()
             }
             TypeDefinition::Union(u) => {
-                let member_types: Vec<juniper::Type> = u.types.iter()
+                let member_types: Vec<juniper::Type> = u
+                    .types
+                    .iter()
                     .map(|name| {
                         let member_info = info.with_type(name);
                         registry.get_type::<DynamicValue>(&member_info)
                     })
                     .collect();
-                registry.build_union_type::<DynamicValue>(info, &member_types).into_meta()
+                registry
+                    .build_union_type::<DynamicValue>(info, &member_types)
+                    .into_meta()
             }
             TypeDefinition::InputObject(io) => {
-                let args: Vec<MetaArgument<DefaultScalarValue>> = io.fields.iter()
+                let args: Vec<MetaArgument<DefaultScalarValue>> = io
+                    .fields
+                    .iter()
                     .map(|f| {
-                        // Input object fields are inputs — honor SDL nullability.
-                        let field_type = convert_type(info, &f.value_type, registry, /*as_output=*/ false);
+                        let field_type = convert_type(info, &f.value_type, registry, false);
                         MetaArgument::new(ArcStr::from(f.name.as_str()), field_type)
                     })
                     .collect();
-                registry.build_input_object_type::<DynamicValue>(info, &args).into_meta()
+                registry
+                    .build_input_object_type::<DynamicValue>(info, &args)
+                    .into_meta()
             }
         }
     }
 }
-
-// ---------------------------------------------------------------------------
-// DynamicEnum: separate type for enum registration (needs FromInputValue)
-// ---------------------------------------------------------------------------
 
 struct DynamicEnum;
 
@@ -265,19 +268,12 @@ impl juniper::ToInputValue<DefaultScalarValue> for DynamicEnum {
     }
 }
 
-// ---------------------------------------------------------------------------
-// Field and type helpers
-// ---------------------------------------------------------------------------
-
 fn build_field(
     info: &SchemaInfo,
     f: &gp::Field<'static, String>,
     registry: &mut Registry<DefaultScalarValue>,
 ) -> Field<DefaultScalarValue> {
-    // Per the Wiring Spec, every field is returned as non-null regardless of
-    // its SDL nullability. Register the output field type as non-null so
-    // Juniper's runtime null-check agrees with what resolve_value produces.
-    let field_type = convert_type(info, &f.field_type, registry, /*as_output=*/ true);
+    let field_type = convert_type(info, &f.field_type, registry, true);
     let mut field = Field {
         name: ArcStr::from(f.name.as_str()),
         description: None,
@@ -286,11 +282,11 @@ fn build_field(
         deprecation_status: juniper::meta::DeprecationStatus::Current,
     };
     if !f.arguments.is_empty() {
-        let args: Vec<MetaArgument<DefaultScalarValue>> = f.arguments.iter()
+        let args: Vec<MetaArgument<DefaultScalarValue>> = f
+            .arguments
+            .iter()
             .map(|a| {
-                // Arguments are inputs — honor SDL nullability so callers can
-                // omit optional args without tripping validation.
-                let arg_type = convert_type(info, &a.value_type, registry, /*as_output=*/ false);
+                let arg_type = convert_type(info, &a.value_type, registry, false);
                 MetaArgument::new(ArcStr::from(a.name.as_str()), arg_type)
             })
             .collect();
@@ -299,12 +295,6 @@ fn build_field(
     field
 }
 
-/// Convert a graphql-parser type reference into a Juniper Type,
-/// registering any referenced types in the registry.
-///
-/// When `as_output` is true, every named type is forced non-null (per the
-/// Wiring Spec: "every nullable field is returned as non-null"). Inputs
-/// honor SDL nullability so optional arguments remain optional.
 fn convert_type(
     info: &SchemaInfo,
     gp_type: &gp::Type<'static, String>,
@@ -313,34 +303,53 @@ fn convert_type(
 ) -> juniper::Type {
     match gp_type {
         gp::Type::NamedType(name) => {
-            // For built-in scalars, use Juniper's native type registration
-            // to avoid overwriting them with DynamicValue's fallback.
             match name.as_str() {
-                "String" => { registry.get_type::<String>(&()); }
-                "Int" => { registry.get_type::<i32>(&()); }
-                "Float" => { registry.get_type::<f64>(&()); }
-                "Boolean" => { registry.get_type::<bool>(&()); }
-                "ID" => { registry.get_type::<juniper::ID>(&()); }
-                _ => { let type_info = info.with_type(name); registry.get_type::<DynamicValue>(&type_info); }
+                "String" => {
+                    registry.get_type::<String>(&());
+                }
+                "Int" => {
+                    registry.get_type::<i32>(&());
+                }
+                "Float" => {
+                    registry.get_type::<f64>(&());
+                }
+                "Boolean" => {
+                    registry.get_type::<bool>(&());
+                }
+                "ID" => {
+                    registry.get_type::<juniper::ID>(&());
+                }
+                _ => {
+                    let type_info = info.with_type(name);
+                    registry.get_type::<DynamicValue>(&type_info);
+                }
             };
             let t = juniper::Type::nullable(ArcStr::from(name.as_str()));
-            if as_output { t.wrap_non_null() } else { t }
+            if as_output {
+                t.wrap_non_null()
+            } else {
+                t
+            }
         }
         gp::Type::ListType(inner) => {
             let inner_type = convert_type(info, inner, registry, as_output);
             let list = inner_type.wrap_list(None);
-            if as_output { list.wrap_non_null() } else { list }
+            if as_output {
+                list.wrap_non_null()
+            } else {
+                list
+            }
         }
         gp::Type::NonNullType(inner) => {
             let t = convert_type(info, inner, registry, as_output);
-            if t.is_non_null() { t } else { t.wrap_non_null() }
+            if t.is_non_null() {
+                t
+            } else {
+                t.wrap_non_null()
+            }
         }
     }
 }
-
-// ---------------------------------------------------------------------------
-// Wiring spec resolution
-// ---------------------------------------------------------------------------
 
 fn resolve_value(
     info: &SchemaInfo,
@@ -372,15 +381,14 @@ fn resolve_named(
         _ => {
             let td = info.find_type_def(type_name);
             match td {
-                Some(TypeDefinition::Scalar(_)) => {
-                    Ok(Value::scalar("str".to_string()))
-                }
+                Some(TypeDefinition::Scalar(_)) => Ok(Value::scalar("str".to_string())),
                 Some(TypeDefinition::Enum(_)) => {
-                    let first = info.enum_first.get(type_name)
-                        .expect("enum not found");
+                    let first = info.enum_first.get(type_name).expect("enum not found");
                     Ok(Value::scalar(first.clone()))
                 }
-                Some(TypeDefinition::Object(_)) | Some(TypeDefinition::Union(_)) | Some(TypeDefinition::Interface(_)) => {
+                Some(TypeDefinition::Object(_))
+                | Some(TypeDefinition::Union(_))
+                | Some(TypeDefinition::Interface(_)) => {
                     let resolved = resolve_concrete_type(info, type_name);
                     let type_info = info.with_type(&resolved);
                     executor.resolve(&type_info, &DynamicValue)
@@ -400,178 +408,6 @@ fn resolve_concrete_type(info: &SchemaInfo, type_name: &str) -> String {
     }
     type_name.to_string()
 }
-
-// ---------------------------------------------------------------------------
-// Main
-// ---------------------------------------------------------------------------
-
-fn main() {
-    let args: Vec<String> = env::args().collect();
-    if args.len() < 3 {
-        eprintln!("Usage: conformer <schema> <query> [<variables>]");
-        std::process::exit(1);
-    }
-
-    let schema_text = match fs::read_to_string(&args[1]) {
-        Ok(s) => s,
-        Err(e) => {
-            eprintln!("error: failed to read schema {}: {}", &args[1], e);
-            std::process::exit(1);
-        }
-    };
-    let query_text = match fs::read_to_string(&args[2]) {
-        Ok(s) => s,
-        Err(e) => {
-            eprintln!("error: failed to read query {}: {}", &args[2], e);
-            std::process::exit(1);
-        }
-    };
-
-    let variables: Option<serde_json::Value> = if args.len() >= 4 {
-        let var_text = match fs::read_to_string(&args[3]) {
-            Ok(s) => s,
-            Err(e) => {
-                eprintln!("error: failed to read variables {}: {}", &args[3], e);
-                std::process::exit(1);
-            }
-        };
-        match serde_json::from_str(&var_text) {
-            Ok(v) => Some(v),
-            Err(e) => {
-                eprintln!("error: failed to parse variables {}: {}", &args[3], e);
-                std::process::exit(1);
-            }
-        }
-    } else {
-        None
-    };
-
-    // Parse SDL — leak to get 'static lifetime (process exits after one execution)
-    let parsed_doc = match graphql_parser::parse_schema::<String>(&schema_text) {
-        Ok(d) => d.into_static(),
-        Err(e) => {
-            eprintln!("error: failed to parse schema {}: {}", &args[1], e);
-            std::process::exit(1);
-        }
-    };
-    let doc: &'static gp::Document<'static, String> = Box::leak(Box::new(parsed_doc));
-
-    // Pre-scan
-    let mut enum_first = HashMap::new();
-    let mut union_members = HashMap::new();
-    let mut iface_impls: HashMap<String, Vec<String>> = HashMap::new();
-    let mut query_type = "Query".to_string();
-
-    for def in &doc.definitions {
-        match def {
-            Definition::SchemaDefinition(sd) => {
-                if let Some(q) = &sd.query {
-                    query_type = q.clone();
-                }
-            }
-            Definition::TypeDefinition(td) => {
-                match td {
-                    TypeDefinition::Enum(e) => {
-                        if let Some(first) = e.values.first() {
-                            enum_first.insert(e.name.clone(), first.name.clone());
-                        }
-                    }
-                    TypeDefinition::Union(u) => {
-                        let mut members = u.types.clone();
-                        members.sort();
-                        union_members.insert(u.name.clone(), members);
-                    }
-                    TypeDefinition::Object(o) => {
-                        for iface in &o.implements_interfaces {
-                            iface_impls.entry(iface.clone())
-                                .or_default()
-                                .push(o.name.clone());
-                        }
-                    }
-                    _ => {}
-                }
-            }
-            _ => {}
-        }
-    }
-
-    for impls in iface_impls.values_mut() {
-        impls.sort();
-    }
-
-    let info = SchemaInfo {
-        doc,
-        type_name: query_type.clone(),
-        enum_first,
-        union_members,
-        iface_impls,
-        query_type,
-    };
-
-    // Strip custom directive usages from query — Juniper's public API doesn't
-    // allow registering custom directives, so it rejects unknown ones during
-    // validation. Custom directives don't affect execution semantics.
-    let built_in_directives = ["skip", "include", "deprecated", "specifiedBy"];
-    let custom_directives: Vec<String> = doc.definitions.iter()
-        .filter_map(|d| {
-            if let Definition::DirectiveDefinition(dd) = d {
-                if !built_in_directives.contains(&dd.name.as_str()) {
-                    return Some(dd.name.clone());
-                }
-            }
-            None
-        })
-        .collect();
-    let query_text = strip_custom_directives(&query_text, &custom_directives);
-
-    // Build RootNode
-    let root = RootNode::new_with_info(
-        DynamicValue,
-        EmptyMutation::<SchemaInfo>::new(),
-        EmptySubscription::<SchemaInfo>::new(),
-        info.clone(),
-        (),
-        (),
-    );
-
-    // Convert variables
-    let juniper_vars = match &variables {
-        Some(serde_json::Value::Object(m)) => {
-            m.iter()
-                .map(|(k, v)| (k.to_string(), json_to_input_value(v)))
-                .collect()
-        }
-        _ => juniper::Variables::new(),
-    };
-
-    // Execute
-    let result = juniper::execute_sync(&query_text, None, &root, &juniper_vars, &info);
-
-    match result {
-        Ok((data, errors)) => {
-            let json_data = value_to_json(&data);
-            let mut output = serde_json::Map::new();
-            output.insert("data".to_string(), json_data);
-            if !errors.is_empty() {
-                let json_errors: Vec<serde_json::Value> = errors.iter()
-                    .map(|e| serde_json::json!({"message": e.error().message()}))
-                    .collect();
-                output.insert("errors".to_string(), serde_json::Value::Array(json_errors));
-            }
-            print!("{}", serde_json::Value::Object(output));
-        }
-        Err(e) => {
-            let mut output = serde_json::Map::new();
-            output.insert("data".to_string(), serde_json::Value::Null);
-            output.insert("errors".to_string(), serde_json::json!([{"message": format!("{e:?}")}]));
-            print!("{}", serde_json::Value::Object(output));
-        }
-    }
-}
-
-// ---------------------------------------------------------------------------
-// JSON conversion helpers
-// ---------------------------------------------------------------------------
 
 fn value_to_json(val: &Value<DefaultScalarValue>) -> serde_json::Value {
     match val {
@@ -595,18 +431,14 @@ fn value_to_json(val: &Value<DefaultScalarValue>) -> serde_json::Value {
     }
 }
 
-/// Strip custom directive usages from a query string.
-/// Handles @Name and @Name(args) patterns.
 fn strip_custom_directives(query: &str, directives: &[String]) -> String {
     let mut result = query.to_string();
     for name in directives {
-        // Match @name(balanced parens) or @name without parens
         loop {
             if let Some(start) = result.find(&format!("@{name}")) {
                 let after = start + 1 + name.len();
                 let rest = &result[after..];
                 if rest.starts_with('(') {
-                    // Find matching close paren
                     let mut depth = 0;
                     let mut end = after;
                     for (i, c) in rest.char_indices() {
@@ -623,11 +455,11 @@ fn strip_custom_directives(query: &str, directives: &[String]) -> String {
                         }
                     }
                     result = format!("{}{}", &result[..start], &result[end..]);
-                } else if rest.is_empty() || !rest.starts_with(|c: char| c.is_alphanumeric() || c == '_') {
-                    // @name not followed by more identifier chars — remove just @name
+                } else if rest.is_empty()
+                    || !rest.starts_with(|c: char| c.is_alphanumeric() || c == '_')
+                {
                     result = format!("{}{}", &result[..start], &result[after..]);
                 } else {
-                    // @name is a prefix of a longer directive name, skip
                     break;
                 }
             } else {
@@ -649,16 +481,212 @@ fn json_to_input_value(val: &serde_json::Value) -> juniper::InputValue<DefaultSc
                 juniper::InputValue::Scalar(DefaultScalarValue::Float(n.as_f64().unwrap()))
             }
         }
-        serde_json::Value::String(s) => juniper::InputValue::Scalar(DefaultScalarValue::String(s.clone())),
+        serde_json::Value::String(s) => {
+            juniper::InputValue::Scalar(DefaultScalarValue::String(s.clone()))
+        }
         serde_json::Value::Array(a) => {
             juniper::InputValue::list(a.iter().map(json_to_input_value).collect())
         }
-        serde_json::Value::Object(m) => {
-            juniper::InputValue::object(
-                m.iter()
-                    .map(|(k, v)| (k.as_str(), json_to_input_value(v)))
-                    .collect()
-            )
+        serde_json::Value::Object(m) => juniper::InputValue::object(
+            m.iter()
+                .map(|(k, v)| (k.as_str(), json_to_input_value(v)))
+                .collect(),
+        ),
+    }
+}
+
+#[derive(Debug, Deserialize)]
+struct ExecuteRequest {
+    schema: Option<String>,
+    query: Option<String>,
+    variables: Option<serde_json::Value>,
+    #[serde(rename = "operationName")]
+    operation_name: Option<String>,
+}
+
+fn err_json(message: &str) -> serde_json::Value {
+    serde_json::json!({ "errors": [{ "message": message }] })
+}
+
+fn run_execute(
+    schema_text: String,
+    query_text: String,
+    variables: Option<serde_json::Value>,
+    operation_name: Option<String>,
+) -> Result<serde_json::Value, String> {
+    let parsed_doc = graphql_parser::parse_schema::<String>(&schema_text)
+        .map_err(|e| format!("parse schema: {e}"))?
+        .into_static();
+    let doc: &'static gp::Document<'static, String> = Box::leak(Box::new(parsed_doc));
+
+    let mut enum_first = HashMap::new();
+    let mut union_members = HashMap::new();
+    let mut iface_impls: HashMap<String, Vec<String>> = HashMap::new();
+    let mut query_type = "Query".to_string();
+
+    for def in &doc.definitions {
+        match def {
+            Definition::SchemaDefinition(sd) => {
+                if let Some(q) = &sd.query {
+                    query_type = q.clone();
+                }
+            }
+            Definition::TypeDefinition(td) => match td {
+                TypeDefinition::Enum(e) => {
+                    if let Some(first) = e.values.first() {
+                        enum_first.insert(e.name.clone(), first.name.clone());
+                    }
+                }
+                TypeDefinition::Union(u) => {
+                    let mut members = u.types.clone();
+                    members.sort();
+                    union_members.insert(u.name.clone(), members);
+                }
+                TypeDefinition::Object(o) => {
+                    for iface in &o.implements_interfaces {
+                        iface_impls
+                            .entry(iface.clone())
+                            .or_default()
+                            .push(o.name.clone());
+                    }
+                }
+                _ => {}
+            },
+            _ => {}
         }
     }
+
+    for impls in iface_impls.values_mut() {
+        impls.sort();
+    }
+
+    let info = SchemaInfo {
+        doc,
+        type_name: query_type.clone(),
+        enum_first,
+        union_members,
+        iface_impls,
+        query_type,
+    };
+
+    let built_in_directives = ["skip", "include", "deprecated", "specifiedBy"];
+    let custom_directives: Vec<String> = doc
+        .definitions
+        .iter()
+        .filter_map(|d| {
+            if let Definition::DirectiveDefinition(dd) = d {
+                if !built_in_directives.contains(&dd.name.as_str()) {
+                    return Some(dd.name.clone());
+                }
+            }
+            None
+        })
+        .collect();
+    let query_text = strip_custom_directives(&query_text, &custom_directives);
+
+    let root = RootNode::new_with_info(
+        DynamicValue,
+        EmptyMutation::<SchemaInfo>::new(),
+        EmptySubscription::<SchemaInfo>::new(),
+        info.clone(),
+        (),
+        (),
+    );
+
+    let juniper_vars = match &variables {
+        Some(serde_json::Value::Object(m)) => m
+            .iter()
+            .map(|(k, v)| (k.to_string(), json_to_input_value(v)))
+            .collect(),
+        _ => juniper::Variables::new(),
+    };
+
+    let result = juniper::execute_sync(
+        &query_text,
+        operation_name.as_deref(),
+        &root,
+        &juniper_vars,
+        &info,
+    );
+
+    match result {
+        Ok((data, errors)) => {
+            let json_data = value_to_json(&data);
+            let mut output = serde_json::Map::new();
+            output.insert("data".to_string(), json_data);
+            if !errors.is_empty() {
+                let json_errors: Vec<serde_json::Value> = errors
+                    .iter()
+                    .map(|e| serde_json::json!({"message": e.error().message()}))
+                    .collect();
+                output.insert("errors".to_string(), serde_json::Value::Array(json_errors));
+            }
+            Ok(serde_json::Value::Object(output))
+        }
+        Err(e) => {
+            let mut output = serde_json::Map::new();
+            output.insert("data".to_string(), serde_json::Value::Null);
+            output.insert(
+                "errors".to_string(),
+                serde_json::json!([{"message": format!("{e:?}")}]),
+            );
+            Ok(serde_json::Value::Object(output))
+        }
+    }
+}
+
+async fn health_handler() -> &'static str {
+    "ok"
+}
+
+async fn execute_handler(Json(req): Json<ExecuteRequest>) -> impl IntoResponse {
+    let schema_text = match req.schema {
+        Some(s) => s,
+        None => {
+            return (
+                StatusCode::BAD_REQUEST,
+                Json(err_json("schema and query are required strings")),
+            )
+        }
+    };
+    let query_text = match req.query {
+        Some(s) => s,
+        None => {
+            return (
+                StatusCode::BAD_REQUEST,
+                Json(err_json("schema and query are required strings")),
+            )
+        }
+    };
+
+    let result = tokio::task::spawn_blocking(move || {
+        run_execute(schema_text, query_text, req.variables, req.operation_name)
+    })
+    .await;
+
+    match result {
+        Ok(Ok(v)) => (StatusCode::OK, Json(v)),
+        Ok(Err(e)) => (StatusCode::INTERNAL_SERVER_ERROR, Json(err_json(&e))),
+        Err(e) => (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            Json(err_json(&format!("task join error: {e}"))),
+        ),
+    }
+}
+
+#[tokio::main]
+async fn main() {
+    let port: u16 = std::env::var("PORT")
+        .ok()
+        .and_then(|s| s.parse().ok())
+        .unwrap_or(8080);
+    let addr = SocketAddr::from(([0, 0, 0, 0], port));
+
+    let app = Router::new()
+        .route("/health", get(health_handler))
+        .route("/execute", post(execute_handler));
+
+    eprintln!("juniper driver listening on {}", addr);
+    let listener = tokio::net::TcpListener::bind(addr).await.expect("bind");
+    axum::serve(listener, app).await.expect("serve");
 }
