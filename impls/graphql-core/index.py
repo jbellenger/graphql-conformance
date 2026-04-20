@@ -150,29 +150,33 @@ def main() -> int:
         sys.stderr.write("Usage: python3 index.py <schema> <query> [<variables>]\n")
         return 1
 
-    schema_path = Path(sys.argv[1])
-    query_path = Path(sys.argv[2])
+    try:
+        schema_path = Path(sys.argv[1])
+        query_path = Path(sys.argv[2])
 
-    schema = build_schema(schema_path.read_text(encoding="utf-8"))
-    document = parse(query_path.read_text(encoding="utf-8"))
+        schema = build_schema(schema_path.read_text(encoding="utf-8"))
+        document = parse(query_path.read_text(encoding="utf-8"))
 
-    variables = None
-    if len(sys.argv) >= 4:
-        variables_path = Path(sys.argv[3])
-        variables = json.loads(variables_path.read_text(encoding="utf-8"))
+        variables = None
+        if len(sys.argv) >= 4:
+            variables_path = Path(sys.argv[3])
+            variables = json.loads(variables_path.read_text(encoding="utf-8"))
 
-    result = experimental_execute_incrementally(
-        schema,
-        document,
-        variable_values=variables,
-        field_resolver=field_resolver,
-    )
-    if not isinstance(result, ExecutionResult):
-        import asyncio
+        result = experimental_execute_incrementally(
+            schema,
+            document,
+            variable_values=variables,
+            field_resolver=field_resolver,
+        )
+        if not isinstance(result, ExecutionResult):
+            import asyncio
 
-        asyncio.run(emit_incremental_result(result))
-    else:
-        json.dump(result.formatted, sys.stdout)
+            asyncio.run(emit_incremental_result(result))
+        else:
+            json.dump(result.formatted, sys.stdout)
+    except Exception as e:  # noqa: BLE001
+        print(f"error: {e}", file=sys.stderr)
+        return 1
     return 0
 
 

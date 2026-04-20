@@ -5,7 +5,7 @@ build:
 
 test:
 	cargo test
-	node --test conformer-harness.test.js
+	node --test conformer-harness.test.js makefile.test.js
 
 clean:
-	rm -rf target build .built-sha
+	rm -rf target .built-sha

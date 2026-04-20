@@ -2,7 +2,7 @@
 
 const { describe, it, beforeEach, afterEach } = require('node:test');
 const assert = require('node:assert/strict');
-const { execFileSync } = require('child_process');
+const { execFileSync, spawnSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
@@ -168,5 +168,20 @@ describe('juniper conformer-harness', () => {
         },
       },
     });
+  });
+
+  it('exits 1 with stderr message on missing schema file', () => {
+    const missingSchema = path.join(tmpDir, 'does-not-exist.graphqls');
+    const f = writeFiles({ 'query.graphql': '{ x }' });
+    const result = spawnSync(BIN, [missingSchema, f['query.graphql']], {
+      encoding: 'utf8',
+      timeout: 30_000,
+    });
+    assert.strictEqual(result.status, 1, 'should exit with code 1');
+    assert.ok(result.stderr.length > 0, 'should write message to stderr');
+    assert.ok(
+      result.stderr.includes('schema'),
+      `stderr should mention "schema", got: ${result.stderr}`,
+    );
   });
 });

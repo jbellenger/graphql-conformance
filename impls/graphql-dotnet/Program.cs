@@ -12,61 +12,69 @@ if (args.Length < 2)
     return 1;
 }
 
-var schemaText = File.ReadAllText(args[0]);
-var queryText = File.ReadAllText(args[1]);
-
-Dictionary<string, object?>? variables = null;
-if (args.Length >= 3)
+try
 {
-    using var doc = JsonDocument.Parse(File.ReadAllText(args[2]));
-    variables = doc.RootElement.EnumerateObject()
-        .ToDictionary(prop => prop.Name, prop => ConvertJsonElement(prop.Value), StringComparer.Ordinal);
-}
+    var schemaText = File.ReadAllText(args[0]);
+    var queryText = File.ReadAllText(args[1]);
 
-var document = Parser.Parse(schemaText);
-var unionMembers = CollectUnionMembers(document);
-var interfaceImplementors = CollectInterfaceImplementors(document);
-var abstractPossibleTypes = unionMembers.Values
-    .SelectMany(x => x)
-    .Concat(interfaceImplementors.Values.SelectMany(x => x))
-    .Distinct(StringComparer.Ordinal)
-    .ToArray();
-
-var schema = Schema.For(schemaText, builder =>
-{
-    foreach (var objectTypeName in abstractPossibleTypes)
+    Dictionary<string, object?>? variables = null;
+    if (args.Length >= 3)
     {
-        builder.Types.For(objectTypeName).IsTypeOfFunc = value =>
-            value is RuntimeTypeMarker marker && string.Equals(marker.TypeName, objectTypeName, StringComparison.Ordinal);
+        using var doc = JsonDocument.Parse(File.ReadAllText(args[2]));
+        variables = doc.RootElement.EnumerateObject()
+            .ToDictionary(prop => prop.Name, prop => ConvertJsonElement(prop.Value), StringComparer.Ordinal);
     }
-});
 
-foreach (var graphType in schema.AllTypes)
-{
-    if (graphType is not IComplexGraphType complex)
-        continue;
+    var document = Parser.Parse(schemaText);
+    var unionMembers = CollectUnionMembers(document);
+    var interfaceImplementors = CollectInterfaceImplementors(document);
+    var abstractPossibleTypes = unionMembers.Values
+        .SelectMany(x => x)
+        .Concat(interfaceImplementors.Values.SelectMany(x => x))
+        .Distinct(StringComparer.Ordinal)
+        .ToArray();
 
-    foreach (var field in complex.Fields)
+    var schema = Schema.For(schemaText, builder =>
     {
-        if (field.Name.StartsWith("__", StringComparison.Ordinal))
+        foreach (var objectTypeName in abstractPossibleTypes)
+        {
+            builder.Types.For(objectTypeName).IsTypeOfFunc = value =>
+                value is RuntimeTypeMarker marker && string.Equals(marker.TypeName, objectTypeName, StringComparison.Ordinal);
+        }
+    });
+
+    foreach (var graphType in schema.AllTypes)
+    {
+        if (graphType is not IComplexGraphType complex)
             continue;
 
-        var resolvedType = field.ResolvedType
-            ?? throw new InvalidOperationException($"Field {complex.Name}.{field.Name} has no resolved type");
-        field.Resolver = new FuncFieldResolver<object?>(_ => ResolveValue(resolvedType, unionMembers, interfaceImplementors));
+        foreach (var field in complex.Fields)
+        {
+            if (field.Name.StartsWith("__", StringComparison.Ordinal))
+                continue;
+
+            var resolvedType = field.ResolvedType
+                ?? throw new InvalidOperationException($"Field {complex.Name}.{field.Name} has no resolved type");
+            field.Resolver = new FuncFieldResolver<object?>(_ => ResolveValue(resolvedType, unionMembers, interfaceImplementors));
+        }
     }
+
+    var result = await new DocumentExecuter().ExecuteAsync(options =>
+    {
+        options.Schema = schema;
+        options.Query = queryText;
+        if (variables != null)
+            options.Variables = variables.ToInputs();
+    });
+
+    Console.Write(new GraphQLSerializer().Serialize(result));
+    return 0;
 }
-
-var result = await new DocumentExecuter().ExecuteAsync(options =>
+catch (Exception e)
 {
-    options.Schema = schema;
-    options.Query = queryText;
-    if (variables != null)
-        options.Variables = variables.ToInputs();
-});
-
-Console.Write(new GraphQLSerializer().Serialize(result));
-return 0;
+    Console.Error.WriteLine($"error: {e.Message}");
+    return 1;
+}
 
 static Dictionary<string, List<string>> CollectUnionMembers(GraphQLDocument document)
 {

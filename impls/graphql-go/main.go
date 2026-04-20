@@ -253,6 +253,9 @@ func (sb *SchemaBuilder) buildInputFields(def *ast.Definition) graphql.InputObje
 }
 
 func (sb *SchemaBuilder) resolveUnionType(def *ast.Definition) *graphql.Object {
+	if len(def.Types) == 0 {
+		return nil
+	}
 	members := make([]string, len(def.Types))
 	copy(members, def.Types)
 	sort.Strings(members)
@@ -266,6 +269,9 @@ func (sb *SchemaBuilder) resolveUnionType(def *ast.Definition) *graphql.Object {
 
 func (sb *SchemaBuilder) resolveInterfaceType(name string) *graphql.Object {
 	possibleTypes := sb.astSchema.PossibleTypes[name]
+	if len(possibleTypes) == 0 {
+		return nil
+	}
 	names := make([]string, len(possibleTypes))
 	for i, pt := range possibleTypes {
 		names[i] = pt.Name

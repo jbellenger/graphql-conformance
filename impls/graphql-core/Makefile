@@ -6,7 +6,7 @@ build:
 	python3 -m py_compile index.py
 
 test: build
-	node --test conformer-harness.test.js
+	node --test conformer-harness.test.js makefile.test.js
 
 clean:
-	rm -rf build .built-sha __pycache__
+	rm -rf .built-sha __pycache__

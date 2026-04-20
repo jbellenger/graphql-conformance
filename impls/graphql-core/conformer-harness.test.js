@@ -2,7 +2,7 @@
 
 const { describe, it, beforeEach, afterEach } = require('node:test');
 const assert = require('node:assert/strict');
-const { execFileSync } = require('child_process');
+const { execFileSync, spawnSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
@@ -216,5 +216,34 @@ describe('graphql-core conformer-harness', () => {
         },
       },
     });
+  });
+
+  it('exits 1 with structured stderr on invalid JSON variables', () => {
+    const f = writeFiles({
+      'schema.graphqls': 'type Query { x: String }',
+      'query.graphql': '{ x }',
+      'variables.json': 'not-valid-json',
+    });
+    const res = spawnSync(PYTHON, [SCRIPT, f['schema.graphqls'], f['query.graphql'], f['variables.json']], {
+      encoding: 'utf8',
+      timeout: 30_000,
+    });
+    assert.strictEqual(res.status, 1);
+    assert.ok(res.stderr && res.stderr.length > 0, 'expected non-empty stderr');
+    assert.ok(!/Traceback/.test(res.stderr), `expected no raw traceback, got: ${res.stderr}`);
+  });
+
+  it('exits 1 with structured stderr on non-existent schema path', () => {
+    const missing = path.join(tmpDir, 'does-not-exist.graphqls');
+    const f = writeFiles({
+      'query.graphql': '{ x }',
+    });
+    const res = spawnSync(PYTHON, [SCRIPT, missing, f['query.graphql']], {
+      encoding: 'utf8',
+      timeout: 30_000,
+    });
+    assert.strictEqual(res.status, 1);
+    assert.ok(res.stderr && res.stderr.length > 0, 'expected non-empty stderr');
+    assert.ok(!/Traceback/.test(res.stderr), `expected no raw traceback, got: ${res.stderr}`);
   });
 });

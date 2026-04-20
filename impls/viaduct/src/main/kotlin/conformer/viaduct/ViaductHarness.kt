@@ -108,7 +108,7 @@ object ViaductHarness {
     }
 }
 
-private object NoOpCoercing : graphql.schema.Coercing<Any, Any> {
+internal object NoOpCoercing : graphql.schema.Coercing<Any, Any> {
     override fun serialize(dataFetcherResult: Any): Any = dataFetcherResult
 
     override fun parseValue(input: Any): Any = input

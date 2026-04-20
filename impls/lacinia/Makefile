@@ -7,7 +7,7 @@ build:
 	clojure -M -e "(require 'conformer-lacinia)"
 
 test: build
-	node --test conformer-harness.test.js
+	node --test conformer-harness.test.js makefile.test.js
 
 clean:
-	rm -rf node_modules build .built-sha .cpcache
+	rm -rf node_modules .built-sha .cpcache

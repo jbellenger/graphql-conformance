@@ -216,11 +216,35 @@ async fn main() {
         std::process::exit(1);
     }
 
-    let schema_text = fs::read_to_string(&args[1]).expect("Failed to read schema");
-    let query_text = fs::read_to_string(&args[2]).expect("Failed to read query");
+    let schema_text = match fs::read_to_string(&args[1]) {
+        Ok(s) => s,
+        Err(e) => {
+            eprintln!("error: failed to read schema {}: {}", &args[1], e);
+            std::process::exit(1);
+        }
+    };
+    let query_text = match fs::read_to_string(&args[2]) {
+        Ok(s) => s,
+        Err(e) => {
+            eprintln!("error: failed to read query {}: {}", &args[2], e);
+            std::process::exit(1);
+        }
+    };
     let variables: Option<serde_json::Value> = if args.len() >= 4 {
-        let var_text = fs::read_to_string(&args[3]).expect("Failed to read variables");
-        Some(serde_json::from_str(&var_text).expect("Failed to parse variables"))
+        let var_text = match fs::read_to_string(&args[3]) {
+            Ok(s) => s,
+            Err(e) => {
+                eprintln!("error: failed to read variables {}: {}", &args[3], e);
+                std::process::exit(1);
+            }
+        };
+        match serde_json::from_str(&var_text) {
+            Ok(v) => Some(v),
+            Err(e) => {
+                eprintln!("error: failed to parse variables {}: {}", &args[3], e);
+                std::process::exit(1);
+            }
+        }
     } else {
         None
     };

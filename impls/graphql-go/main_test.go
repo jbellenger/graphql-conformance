@@ -153,3 +153,45 @@ func TestNonNullWrapperDoesNotChangeValue(t *testing.T) {
 		t.Errorf("got %s, want %s", got, want)
 	}
 }
+
+func TestResolveUnionTypeReturnsNilForEmptyMembers(t *testing.T) {
+	defer func() {
+		if r := recover(); r != nil {
+			t.Fatalf("resolveUnionType panicked on empty member list: %v", r)
+		}
+	}()
+	sb := newSchemaBuilder(&ast.Schema{})
+	def := &ast.Definition{
+		Kind:  ast.Union,
+		Name:  "EmptyUnion",
+		Types: []string{},
+	}
+	if got := sb.resolveUnionType(def); got != nil {
+		t.Errorf("expected nil for empty union member list, got %v", got)
+	}
+}
+
+func TestResolveInterfaceTypeReturnsNilForNoImplementors(t *testing.T) {
+	defer func() {
+		if r := recover(); r != nil {
+			t.Fatalf("resolveInterfaceType panicked on no implementors: %v", r)
+		}
+	}()
+	sb := newSchemaBuilder(&ast.Schema{
+		PossibleTypes: map[string][]*ast.Definition{},
+	})
+	if got := sb.resolveInterfaceType("UnimplementedInterface"); got != nil {
+		t.Errorf("expected nil for interface with no implementors, got %v", got)
+	}
+}
+
+func TestResolveUnionTypeStillWorksOnHappyPath(t *testing.T) {
+	// Sanity check: the guard doesn't break the non-empty case.
+	sdl := "type Dog { bark: String } type Cat { meow: String } union Pet = Dog | Cat type Query { x: Pet }"
+	query := "{ x { ... on Cat { meow } ... on Dog { bark } } }"
+	got := execJSON(t, sdl, query)
+	want := `{"data":{"x":{"meow":"str"}}}`
+	if got != want {
+		t.Errorf("got %s, want %s", got, want)
+	}
+}

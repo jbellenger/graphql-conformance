@@ -60,7 +60,7 @@ if (require.main === module) {
   const [schemaPath, queryPath, variablesPath] = process.argv.slice(2);
 
   if (!schemaPath || !queryPath) {
-    process.stderr.write('Usage: node conformer-harness.js <schema> <query> [<variables>]\n');
+    process.stderr.write('Usage: node index.js <schema> <query> [<variables>]\n');
     process.exit(1);
   }
 

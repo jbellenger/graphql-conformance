@@ -144,11 +144,3 @@ class ViaductHarnessTest {
 
     private fun emptySchema() = buildSchema("schema { query: Root } type Root { x: String }").schema
 }
-
-private object NoOpCoercing : graphql.schema.Coercing<Any, Any> {
-    override fun serialize(dataFetcherResult: Any): Any = dataFetcherResult
-
-    override fun parseValue(input: Any): Any = input
-
-    override fun parseLiteral(input: Any): Any = input
-}

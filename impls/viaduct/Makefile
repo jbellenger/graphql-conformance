@@ -6,7 +6,7 @@ build:
 
 test:
 	mvn test -Dviaduct.version=$$(cd build && ./gradlew properties -q | grep '^version:' | awk '{print $$2}')
-	node --test conformer-harness.test.js
+	node --test conformer-harness.test.js makefile.test.js
 
 clean:
 	rm -rf target .built-sha dependency-reduced-pom.xml

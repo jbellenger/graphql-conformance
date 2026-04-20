@@ -6,8 +6,8 @@ build:
 
 test:
 	mvn test
-	node --test conformer-harness.test.js
+	node --test conformer-harness.test.js makefile.test.js
 
 clean:
-	rm -rf build .built-sha
+	rm -rf .built-sha
 	mvn clean
