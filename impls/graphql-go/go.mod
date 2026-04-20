@@ -1,4 +1,4 @@
-module conformer
+module graphql-go-driver
 
 go 1.22
 
@@ -8,5 +8,3 @@ require (
 )
 
 require github.com/agnivade/levenshtein v1.2.0 // indirect
-
-replace github.com/graphql-go/graphql => ./build

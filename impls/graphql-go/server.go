@@ -3,8 +3,11 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io"
+	"net/http"
 	"os"
 	"sort"
+	"strconv"
 
 	"github.com/graphql-go/graphql"
 	"github.com/vektah/gqlparser/v2"
@@ -24,7 +27,6 @@ func newSchemaBuilder(astSchema *ast.Schema) *SchemaBuilder {
 		typeMap:        make(map[string]graphql.Type),
 		enumFirstValue: make(map[string]interface{}),
 	}
-	// Pre-populate built-in scalars.
 	sb.typeMap["Int"] = graphql.Int
 	sb.typeMap["Float"] = graphql.Float
 	sb.typeMap["String"] = graphql.String
@@ -34,7 +36,6 @@ func newSchemaBuilder(astSchema *ast.Schema) *SchemaBuilder {
 }
 
 func (sb *SchemaBuilder) Build() (graphql.Schema, error) {
-	// First pass: create all types (thunks handle forward references).
 	for name, def := range sb.astSchema.Types {
 		if def.BuiltIn {
 			continue
@@ -127,11 +128,8 @@ func (sb *SchemaBuilder) Build() (graphql.Schema, error) {
 		return graphql.Schema{}, fmt.Errorf("Query type %q not found in typeMap", sb.astSchema.Query.Name)
 	}
 
-	config := graphql.SchemaConfig{
-		Query: queryType,
-	}
+	config := graphql.SchemaConfig{Query: queryType}
 
-	// Include all types so implementations are discovered.
 	var allTypes []graphql.Type
 	for _, t := range sb.typeMap {
 		allTypes = append(allTypes, t)
@@ -146,9 +144,6 @@ func (sb *SchemaBuilder) Build() (graphql.Schema, error) {
 		}
 	}
 
-	// Start with built-in directives, then add custom ones from the schema.
-	// graphql-go replaces all directives when config.Directives is set,
-	// so we must include the built-ins explicitly.
 	config.Directives = append(config.Directives,
 		graphql.IncludeDirective,
 		graphql.SkipDirective,
@@ -158,7 +153,6 @@ func (sb *SchemaBuilder) Build() (graphql.Schema, error) {
 		if dir.Position != nil && dir.Position.Src != nil && dir.Position.Src.BuiltIn {
 			continue
 		}
-		// Skip directives we already added as built-ins
 		if name == "include" || name == "skip" || name == "deprecated" {
 			continue
 		}
@@ -168,9 +162,7 @@ func (sb *SchemaBuilder) Build() (graphql.Schema, error) {
 		}
 		args := graphql.FieldConfigArgument{}
 		for _, arg := range dir.Arguments {
-			args[arg.Name] = &graphql.ArgumentConfig{
-				Type: sb.resolveInputType(arg.Type),
-			}
+			args[arg.Name] = &graphql.ArgumentConfig{Type: sb.resolveInputType(arg.Type)}
 		}
 		config.Directives = append(config.Directives, graphql.NewDirective(graphql.DirectiveConfig{
 			Name:      name,
@@ -184,10 +176,7 @@ func (sb *SchemaBuilder) Build() (graphql.Schema, error) {
 
 func (sb *SchemaBuilder) resolveOutputType(t *ast.Type) graphql.Output {
 	if t.NonNull {
-		inner := &ast.Type{
-			NamedType: t.NamedType,
-			Elem:      t.Elem,
-		}
+		inner := &ast.Type{NamedType: t.NamedType, Elem: t.Elem}
 		return graphql.NewNonNull(sb.resolveOutputType(inner))
 	}
 	if t.Elem != nil {
@@ -203,10 +192,7 @@ func (sb *SchemaBuilder) resolveOutputType(t *ast.Type) graphql.Output {
 
 func (sb *SchemaBuilder) resolveInputType(t *ast.Type) graphql.Input {
 	if t.NonNull {
-		inner := &ast.Type{
-			NamedType: t.NamedType,
-			Elem:      t.Elem,
-		}
+		inner := &ast.Type{NamedType: t.NamedType, Elem: t.Elem}
 		return graphql.NewNonNull(sb.resolveInputType(inner))
 	}
 	if t.Elem != nil {
@@ -226,9 +212,7 @@ func (sb *SchemaBuilder) buildFields(def *ast.Definition) graphql.Fields {
 		fieldType := sb.resolveOutputType(f.Type)
 		args := graphql.FieldConfigArgument{}
 		for _, a := range f.Arguments {
-			args[a.Name] = &graphql.ArgumentConfig{
-				Type: sb.resolveInputType(a.Type),
-			}
+			args[a.Name] = &graphql.ArgumentConfig{Type: sb.resolveInputType(a.Type)}
 		}
 		fields[f.Name] = &graphql.Field{
 			Name: f.Name,
@@ -245,9 +229,7 @@ func (sb *SchemaBuilder) buildFields(def *ast.Definition) graphql.Fields {
 func (sb *SchemaBuilder) buildInputFields(def *ast.Definition) graphql.InputObjectConfigFieldMap {
 	fields := graphql.InputObjectConfigFieldMap{}
 	for _, f := range def.Fields {
-		fields[f.Name] = &graphql.InputObjectFieldConfig{
-			Type: sb.resolveInputType(f.Type),
-		}
+		fields[f.Name] = &graphql.InputObjectFieldConfig{Type: sb.resolveInputType(f.Type)}
 	}
 	return fields
 }
@@ -323,78 +305,101 @@ func resolveValue(t graphql.Output, sb *SchemaBuilder) interface{} {
 	return nil
 }
 
-func main() {
-	if len(os.Args) < 3 {
-		fmt.Fprintf(os.Stderr, "Usage: conformer <schema> <query> [<variables>]\n")
-		os.Exit(1)
+type executeRequest struct {
+	Schema        string                 `json:"schema"`
+	Query         string                 `json:"query"`
+	Variables     map[string]interface{} `json:"variables"`
+	OperationName string                 `json:"operationName"`
+}
+
+func writeJSON(w http.ResponseWriter, status int, body interface{}) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(status)
+	_ = json.NewEncoder(w).Encode(body)
+}
+
+func executeHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
+		return
 	}
 
-	schemaPath := os.Args[1]
-	queryPath := os.Args[2]
-
-	schemaBytes, err := os.ReadFile(schemaPath)
+	raw, err := io.ReadAll(r.Body)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error reading schema: %v\n", err)
-		os.Exit(1)
+		writeJSON(w, http.StatusBadRequest, map[string]interface{}{
+			"errors": []map[string]string{{"message": fmt.Sprintf("read body: %v", err)}},
+		})
+		return
 	}
 
-	queryBytes, err := os.ReadFile(queryPath)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error reading query: %v\n", err)
-		os.Exit(1)
+	var req executeRequest
+	if err := json.Unmarshal(raw, &req); err != nil {
+		writeJSON(w, http.StatusBadRequest, map[string]interface{}{
+			"errors": []map[string]string{{"message": fmt.Sprintf("invalid JSON body: %v", err)}},
+		})
+		return
+	}
+	if req.Schema == "" || req.Query == "" {
+		writeJSON(w, http.StatusBadRequest, map[string]interface{}{
+			"errors": []map[string]string{{"message": "schema and query are required strings"}},
+		})
+		return
 	}
 
-	var variables map[string]interface{}
-	if len(os.Args) >= 4 {
-		varBytes, err := os.ReadFile(os.Args[3])
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error reading variables: %v\n", err)
-			os.Exit(1)
-		}
-		if err := json.Unmarshal(varBytes, &variables); err != nil {
-			fmt.Fprintf(os.Stderr, "Error parsing variables: %v\n", err)
-			os.Exit(1)
-		}
-	}
-
-	// Parse SDL with gqlparser.
-	astSchema, gqlErr := gqlparser.LoadSchema(&ast.Source{Input: string(schemaBytes)})
+	astSchema, gqlErr := gqlparser.LoadSchema(&ast.Source{Input: req.Schema})
 	if gqlErr != nil {
-		fmt.Fprintf(os.Stderr, "Error parsing schema: %v\n", gqlErr)
-		os.Exit(1)
+		writeJSON(w, http.StatusInternalServerError, map[string]interface{}{
+			"errors": []map[string]string{{"message": gqlErr.Error()}},
+		})
+		return
 	}
 
-	// Build graphql-go schema.
 	sb := newSchemaBuilder(astSchema)
 	schema, err := sb.Build()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error building schema: %v\n", err)
-		os.Exit(1)
+		writeJSON(w, http.StatusInternalServerError, map[string]interface{}{
+			"errors": []map[string]string{{"message": err.Error()}},
+		})
+		return
 	}
 
-	// Execute query.
 	params := graphql.Params{
-		Schema:        schema,
-		RequestString: string(queryBytes),
+		Schema:         schema,
+		RequestString:  req.Query,
+		OperationName:  req.OperationName,
+		VariableValues: req.Variables,
 	}
-	if variables != nil {
-		params.VariableValues = variables
-	}
-
 	result := graphql.Do(params)
 
-	// Build output matching graphql-js format: only include "errors" if non-empty.
-	output := map[string]interface{}{}
-	output["data"] = result.Data
+	output := map[string]interface{}{"data": result.Data}
 	if len(result.Errors) > 0 {
 		output["errors"] = result.Errors
 	}
+	writeJSON(w, http.StatusOK, output)
+}
 
-	jsonBytes, err := json.Marshal(output)
+func main() {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	portNum, err := strconv.Atoi(port)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error marshaling result: %v\n", err)
+		fmt.Fprintf(os.Stderr, "invalid PORT: %v\n", err)
 		os.Exit(1)
 	}
 
-	fmt.Print(string(jsonBytes))
+	mux := http.NewServeMux()
+	mux.HandleFunc("/health", func(w http.ResponseWriter, _ *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		_, _ = w.Write([]byte("ok"))
+	})
+	mux.HandleFunc("/execute", executeHandler)
+
+	addr := fmt.Sprintf(":%d", portNum)
+	fmt.Fprintf(os.Stderr, "graphql-go driver listening on %s\n", addr)
+	if err := http.ListenAndServe(addr, mux); err != nil {
+		fmt.Fprintf(os.Stderr, "server error: %v\n", err)
+		os.Exit(1)
+	}
 }
