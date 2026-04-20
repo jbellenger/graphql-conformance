@@ -1,6 +1,5 @@
 use std::collections::HashMap;
-use std::env;
-use std::fs;
+use std::net::SocketAddr;
 use std::sync::Arc;
 
 use async_graphql::dynamic::*;
@@ -9,29 +8,30 @@ use async_graphql::parser::types::{
     BaseType, SchemaDefinition, TypeDefinition, TypeKind, TypeSystemDefinition,
 };
 use async_graphql::{Name, Value};
+use axum::{
+    extract::Json,
+    http::StatusCode,
+    response::IntoResponse,
+    routing::{get, post},
+    Router,
+};
+use serde::Deserialize;
 
 fn ast_type_to_typeref(ty: &async_graphql::parser::types::Type) -> TypeRef {
     let inner = match &ty.base {
         BaseType::Named(name) => TypeRef::Named(name.to_string().into()),
         BaseType::List(inner) => TypeRef::List(Box::new(ast_type_to_typeref(inner))),
     };
-    // Per Wiring Spec: every nullable field must return the wired value, never null.
-    // Wrap all types as NonNull regardless of SDL's nullability so the dynamic
-    // schema enforces non-null resolution.
     TypeRef::NonNull(Box::new(inner))
 }
-
-// resolve_value_composite is used instead — see below
-
-// build_schema_v2 is the main schema builder — see below
 
 fn build_schema_v2(
     sdl: &str,
     enum_first: Arc<HashMap<String, String>>,
     union_members: Arc<HashMap<String, Vec<String>>>,
     iface_impls: Arc<HashMap<String, Vec<String>>>,
-) -> Schema {
-    let doc = parse_schema(sdl).expect("Failed to parse schema");
+) -> Result<Schema, String> {
+    let doc = parse_schema(sdl).map_err(|e| format!("parse schema: {e}"))?;
 
     let mut schema_def: Option<SchemaDefinition> = None;
     let mut type_defs: Vec<TypeDefinition> = Vec::new();
@@ -44,14 +44,19 @@ fn build_schema_v2(
         }
     }
 
-    // Collect type names by kind
-    let mut composite_types: HashMap<String, String> = HashMap::new(); // name → "object"|"union"|"interface"
+    let mut composite_types: HashMap<String, String> = HashMap::new();
     for td in &type_defs {
         let name = td.name.node.to_string();
         match &td.kind {
-            TypeKind::Object(_) => { composite_types.insert(name, "object".to_string()); }
-            TypeKind::Union(_) => { composite_types.insert(name, "union".to_string()); }
-            TypeKind::Interface(_) => { composite_types.insert(name, "interface".to_string()); }
+            TypeKind::Object(_) => {
+                composite_types.insert(name, "object".to_string());
+            }
+            TypeKind::Union(_) => {
+                composite_types.insert(name, "union".to_string());
+            }
+            TypeKind::Interface(_) => {
+                composite_types.insert(name, "interface".to_string());
+            }
             _ => {}
         }
     }
@@ -143,7 +148,7 @@ fn build_schema_v2(
         }
     }
 
-    builder.finish().expect("Failed to build schema")
+    builder.finish().map_err(|e| format!("build schema: {e}"))
 }
 
 fn resolve_value_composite(
@@ -158,10 +163,12 @@ fn resolve_value_composite(
             resolve_value_composite(inner, enum_first, union_members, iface_impls, composite_types)
         }
         TypeRef::List(inner) => {
-            let a = resolve_value_composite(inner, enum_first, union_members, iface_impls, composite_types)
-                .unwrap_or(FieldValue::NULL);
-            let b = resolve_value_composite(inner, enum_first, union_members, iface_impls, composite_types)
-                .unwrap_or(FieldValue::NULL);
+            let a =
+                resolve_value_composite(inner, enum_first, union_members, iface_impls, composite_types)
+                    .unwrap_or(FieldValue::NULL);
+            let b =
+                resolve_value_composite(inner, enum_first, union_members, iface_impls, composite_types)
+                    .unwrap_or(FieldValue::NULL);
             Some(FieldValue::list(vec![a, b]))
         }
         TypeRef::Named(name) => {
@@ -181,7 +188,6 @@ fn resolve_value_composite(
                                 Some(FieldValue::owned_any(()).with_type(name_str.to_string()))
                             }
                             "union" => {
-                                // Alphabetically first member
                                 if let Some(members) = union_members.get(name_str) {
                                     let target = members.first().unwrap();
                                     Some(FieldValue::owned_any(()).with_type(target.clone()))
@@ -190,7 +196,6 @@ fn resolve_value_composite(
                                 }
                             }
                             "interface" => {
-                                // Alphabetically last implementor
                                 if let Some(impls) = iface_impls.get(name_str) {
                                     let target = impls.last().unwrap();
                                     Some(FieldValue::owned_any(()).with_type(target.clone()))
@@ -201,132 +206,12 @@ fn resolve_value_composite(
                             _ => Some(FieldValue::value(Value::from("str"))),
                         }
                     } else {
-                        // Custom scalar
                         Some(FieldValue::value(Value::from("str")))
                     }
                 }
             }
         }
     }
-}
-
-#[tokio::main(flavor = "current_thread")]
-async fn main() {
-    let args: Vec<String> = env::args().collect();
-    if args.len() < 3 {
-        eprintln!("Usage: conformer <schema> <query> [<variables>]");
-        std::process::exit(1);
-    }
-
-    let schema_text = match fs::read_to_string(&args[1]) {
-        Ok(s) => s,
-        Err(e) => {
-            eprintln!("error: failed to read schema {}: {}", &args[1], e);
-            std::process::exit(1);
-        }
-    };
-    let query_text = match fs::read_to_string(&args[2]) {
-        Ok(s) => s,
-        Err(e) => {
-            eprintln!("error: failed to read query {}: {}", &args[2], e);
-            std::process::exit(1);
-        }
-    };
-    let variables: Option<serde_json::Value> = if args.len() >= 4 {
-        let var_text = match fs::read_to_string(&args[3]) {
-            Ok(s) => s,
-            Err(e) => {
-                eprintln!("error: failed to read variables {}: {}", &args[3], e);
-                std::process::exit(1);
-            }
-        };
-        match serde_json::from_str(&var_text) {
-            Ok(v) => Some(v),
-            Err(e) => {
-                eprintln!("error: failed to parse variables {}: {}", &args[3], e);
-                std::process::exit(1);
-            }
-        }
-    } else {
-        None
-    };
-
-    // Pre-scan SDL to collect enum first values, union members, and interface implementors
-    let doc = parse_schema(&schema_text).expect("Failed to parse schema");
-    let mut enum_first: HashMap<String, String> = HashMap::new();
-    let mut union_members: HashMap<String, Vec<String>> = HashMap::new();
-    let mut iface_impls: HashMap<String, Vec<String>> = HashMap::new();
-
-    for def in &doc.definitions {
-        if let TypeSystemDefinition::Type(t) = def {
-            let name = t.node.name.node.to_string();
-            match &t.node.kind {
-                TypeKind::Enum(e) => {
-                    if let Some(first) = e.values.first() {
-                        enum_first.insert(name, first.node.value.node.to_string());
-                    }
-                }
-                TypeKind::Union(u) => {
-                    let mut members: Vec<String> =
-                        u.members.iter().map(|m| m.node.to_string()).collect();
-                    members.sort();
-                    union_members.insert(name, members);
-                }
-                TypeKind::Object(obj) => {
-                    for iface in &obj.implements {
-                        let iface_name = iface.node.to_string();
-                        iface_impls
-                            .entry(iface_name)
-                            .or_default()
-                            .push(name.clone());
-                    }
-                }
-                _ => {}
-            }
-        }
-    }
-
-    // Sort interface implementors
-    for impls in iface_impls.values_mut() {
-        impls.sort();
-    }
-
-    let schema = build_schema_v2(
-        &schema_text,
-        Arc::new(enum_first),
-        Arc::new(union_members),
-        Arc::new(iface_impls),
-    );
-
-    // Build request
-    let mut request = async_graphql::Request::new(&query_text);
-    if let Some(vars) = variables {
-        if let serde_json::Value::Object(map) = vars {
-            let mut ag_vars = async_graphql::Variables::default();
-            for (k, v) in map {
-                ag_vars.insert(Name::new(&k), serde_json_to_value(v));
-            }
-            request = request.variables(ag_vars);
-        }
-    }
-
-    let response = schema.execute(request).await;
-
-    // Build output
-    let mut output = serde_json::Map::new();
-    output.insert("data".to_string(), value_to_json(&response.data));
-    if !response.errors.is_empty() {
-        let errors: Vec<serde_json::Value> = response
-            .errors
-            .iter()
-            .map(|e| {
-                serde_json::json!({ "message": e.message })
-            })
-            .collect();
-        output.insert("errors".to_string(), serde_json::Value::Array(errors));
-    }
-
-    print!("{}", serde_json::to_string(&output).unwrap());
 }
 
 fn serde_json_to_value(v: serde_json::Value) -> Value {
@@ -337,17 +222,13 @@ fn serde_json_to_value(v: serde_json::Value) -> Value {
             if let Some(i) = n.as_i64() {
                 Value::Number(i.into())
             } else if let Some(f) = n.as_f64() {
-                Value::Number(
-                    async_graphql::Number::from_f64(f).unwrap_or_else(|| 0.into()),
-                )
+                Value::Number(async_graphql::Number::from_f64(f).unwrap_or_else(|| 0.into()))
             } else {
                 Value::Null
             }
         }
         serde_json::Value::String(s) => Value::String(s),
-        serde_json::Value::Array(a) => {
-            Value::List(a.into_iter().map(serde_json_to_value).collect())
-        }
+        serde_json::Value::Array(a) => Value::List(a.into_iter().map(serde_json_to_value).collect()),
         serde_json::Value::Object(o) => Value::Object(
             o.into_iter()
                 .map(|(k, v)| (Name::new(&k), serde_json_to_value(v)))
@@ -381,4 +262,144 @@ fn value_to_json(v: &Value) -> serde_json::Value {
         }
         Value::Binary(_) => serde_json::Value::Null,
     }
+}
+
+#[derive(Debug, Deserialize)]
+struct ExecuteRequest {
+    schema: Option<String>,
+    query: Option<String>,
+    variables: Option<serde_json::Value>,
+    #[serde(rename = "operationName")]
+    operation_name: Option<String>,
+}
+
+async fn health_handler() -> &'static str {
+    "ok"
+}
+
+fn err_json(message: &str) -> serde_json::Value {
+    serde_json::json!({ "errors": [{ "message": message }] })
+}
+
+async fn execute_handler(Json(req): Json<ExecuteRequest>) -> impl IntoResponse {
+    let schema_text = match req.schema {
+        Some(s) => s,
+        None => {
+            return (
+                StatusCode::BAD_REQUEST,
+                Json(err_json("schema and query are required strings")),
+            )
+        }
+    };
+    let query_text = match req.query {
+        Some(s) => s,
+        None => {
+            return (
+                StatusCode::BAD_REQUEST,
+                Json(err_json("schema and query are required strings")),
+            )
+        }
+    };
+
+    let doc = match parse_schema(&schema_text) {
+        Ok(d) => d,
+        Err(e) => {
+            return (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                Json(err_json(&format!("{e}"))),
+            )
+        }
+    };
+
+    let mut enum_first: HashMap<String, String> = HashMap::new();
+    let mut union_members: HashMap<String, Vec<String>> = HashMap::new();
+    let mut iface_impls: HashMap<String, Vec<String>> = HashMap::new();
+
+    for def in &doc.definitions {
+        if let TypeSystemDefinition::Type(t) = def {
+            let name = t.node.name.node.to_string();
+            match &t.node.kind {
+                TypeKind::Enum(e) => {
+                    if let Some(first) = e.values.first() {
+                        enum_first.insert(name, first.node.value.node.to_string());
+                    }
+                }
+                TypeKind::Union(u) => {
+                    let mut members: Vec<String> =
+                        u.members.iter().map(|m| m.node.to_string()).collect();
+                    members.sort();
+                    union_members.insert(name, members);
+                }
+                TypeKind::Object(obj) => {
+                    for iface in &obj.implements {
+                        let iface_name = iface.node.to_string();
+                        iface_impls
+                            .entry(iface_name)
+                            .or_default()
+                            .push(name.clone());
+                    }
+                }
+                _ => {}
+            }
+        }
+    }
+    for impls in iface_impls.values_mut() {
+        impls.sort();
+    }
+
+    let schema = match build_schema_v2(
+        &schema_text,
+        Arc::new(enum_first),
+        Arc::new(union_members),
+        Arc::new(iface_impls),
+    ) {
+        Ok(s) => s,
+        Err(e) => return (StatusCode::INTERNAL_SERVER_ERROR, Json(err_json(&e))),
+    };
+
+    let mut request = async_graphql::Request::new(&query_text);
+    if let Some(op) = req.operation_name {
+        request = request.operation_name(op);
+    }
+    if let Some(vars) = req.variables {
+        if let serde_json::Value::Object(map) = vars {
+            let mut ag_vars = async_graphql::Variables::default();
+            for (k, v) in map {
+                ag_vars.insert(Name::new(&k), serde_json_to_value(v));
+            }
+            request = request.variables(ag_vars);
+        }
+    }
+
+    let response = schema.execute(request).await;
+
+    let mut output = serde_json::Map::new();
+    output.insert("data".to_string(), value_to_json(&response.data));
+    if !response.errors.is_empty() {
+        let errors: Vec<serde_json::Value> = response
+            .errors
+            .iter()
+            .map(|e| serde_json::json!({ "message": e.message }))
+            .collect();
+        output.insert("errors".to_string(), serde_json::Value::Array(errors));
+    }
+
+    (StatusCode::OK, Json(serde_json::Value::Object(output)))
+}
+
+#[tokio::main]
+async fn main() {
+    let port: u16 = std::env::var("PORT")
+        .ok()
+        .and_then(|s| s.parse().ok())
+        .unwrap_or(8080);
+    let addr = SocketAddr::from(([0, 0, 0, 0], port));
+
+    let app = Router::new()
+        .route("/health", get(health_handler))
+        .route("/execute", post(execute_handler));
+
+    eprintln!("async-graphql driver listening on {}", addr);
+    let listener = tokio::net::TcpListener::bind(addr).await.expect("bind");
+    axum::serve(listener, app).await.expect("serve");
 }

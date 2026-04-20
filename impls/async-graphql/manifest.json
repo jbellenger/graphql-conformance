@@ -1,0 +1,19 @@
+{
+  "manifestVersion": 1,
+  "name": "async-graphql",
+  "displayName": "async-graphql",
+  "homepage": "https://github.com/async-graphql/async-graphql",
+  "image": {
+    "build": {
+      "dockerfile": "./Dockerfile",
+      "context": "."
+    }
+  },
+  "runtime": {
+    "port": 8080,
+    "healthPath": "/health",
+    "executePath": "/execute",
+    "readinessTimeoutMs": 30000,
+    "requestTimeoutMs": 30000
+  }
+}
