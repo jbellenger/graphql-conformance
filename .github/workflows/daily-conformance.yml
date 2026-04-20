@@ -49,7 +49,7 @@ jobs:
         run: |
           git config user.name  "James Bellenger"
           git config user.email "james.bellenger@airbnb.com"
-          git add results/data site/data/summary.json
+          git add results/data
           if git diff --cached --quiet; then
             echo "No result changes to commit."
             exit 0
