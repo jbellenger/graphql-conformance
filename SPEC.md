@@ -371,6 +371,14 @@ Each implementation will wire its schema such that:
 - every interface is resolved as the lexicographically last implementing type
 - every list field returns exactly 2 items
 - every enum field returns its first declared value
-- queries may include `@defer` and `@stream`, but execution for this framework is
-  always synchronous: the implementation must produce one final JSON result rather
-  than incremental patches or streamed payloads
+- queries may include `@defer` and `@stream`. Drivers that natively support
+  incremental delivery MUST emit a standards-compliant
+  `Content-Type: multipart/mixed; boundary=...` response (see §HTTP driver
+  contract). The conformer parses the parts and merges them into one final
+  `{ data, errors?, extensions? }` object before comparison. Conformance is
+  defined against that collapsed value. Drivers without native support MUST
+  still accept schemas that declare `@defer`/`@stream` (registering stub
+  directive definitions as needed) and MAY execute synchronously, returning a
+  single `application/json` body that reflects the full selection set. After
+  collapse, the Wiring Spec values above still apply (e.g. a list field under
+  `@stream(initialCount: 0)` must yield exactly two items).

@@ -1,5 +1,7 @@
 directive @customSchemaDirective(reason: String) on FIELD_DEFINITION
 directive @customQueryDirective(label: String) on FIELD
+directive @defer(if: Boolean = true, label: String) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+directive @stream(if: Boolean = true, label: String, initialCount: Int = 0) on FIELD
 
 enum Color {
   RED

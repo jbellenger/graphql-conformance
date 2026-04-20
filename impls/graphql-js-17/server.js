@@ -1,9 +1,10 @@
 'use strict';
 
 const http = require('http');
+const crypto = require('crypto');
 const {
   buildSchema,
-  execute,
+  experimentalExecuteIncrementally,
   parse,
   GraphQLNonNull,
   GraphQLList,
@@ -85,7 +86,7 @@ async function handleExecute(req, res) {
     return;
   }
 
-  const result = await execute({
+  const result = await experimentalExecuteIncrementally({
     schema,
     document,
     variableValues: variables ?? undefined,
@@ -93,8 +94,33 @@ async function handleExecute(req, res) {
     fieldResolver,
   });
 
+  if (result && typeof result === 'object' && 'initialResult' in result) {
+    await writeMultipart(res, result);
+    return;
+  }
+
   res.writeHead(200, { 'Content-Type': 'application/json' });
   res.end(JSON.stringify(result));
+}
+
+// Emits a GraphQL multipart/mixed incremental-delivery response. Each chunk
+// from graphql-js-17's `experimentalExecuteIncrementally` iterator is written
+// as a separate part using the native incremental-delivery shape. The
+// conformer's applyIncrementalMerge reassembles these back to a single
+// {data, errors?} object.
+async function writeMultipart(res, incremental) {
+  const boundary = crypto.randomBytes(16).toString('hex');
+  res.writeHead(200, { 'Content-Type': `multipart/mixed; boundary=${boundary}` });
+  const header = `\r\n--${boundary}\r\nContent-Type: application/json\r\n\r\n`;
+  const trailer = `\r\n--${boundary}--\r\n`;
+
+  res.write(header);
+  res.write(JSON.stringify(incremental.initialResult));
+  for await (const chunk of incremental.subsequentResults) {
+    res.write(header);
+    res.write(JSON.stringify(chunk));
+  }
+  res.end(trailer);
 }
 
 const server = http.createServer(async (req, res) => {
