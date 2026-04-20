@@ -12,3 +12,21 @@ updates:
           - "com.airbnb.viaduct:*"
     commit-message:
       prefix: "viaduct"
+
+  - package-ecosystem: "npm"
+    directory: "/impls/graphql-js-16"
+    schedule:
+      interval: "weekly"
+    allow:
+      - dependency-name: "graphql"
+    commit-message:
+      prefix: "graphql-js-16"
+
+  - package-ecosystem: "npm"
+    directory: "/impls/graphql-js-17"
+    schedule:
+      interval: "weekly"
+    allow:
+      - dependency-name: "graphql"
+    commit-message:
+      prefix: "graphql-js-17"
