@@ -1,0 +1,19 @@
+{
+  "manifestVersion": 1,
+  "name": "graphql-java",
+  "displayName": "graphql-java",
+  "homepage": "https://github.com/graphql-java/graphql-java",
+  "image": {
+    "build": {
+      "dockerfile": "./Dockerfile",
+      "context": "."
+    }
+  },
+  "runtime": {
+    "port": 8080,
+    "healthPath": "/health",
+    "executePath": "/execute",
+    "readinessTimeoutMs": 30000,
+    "requestTimeoutMs": 30000
+  }
+}
