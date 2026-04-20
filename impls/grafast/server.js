@@ -1,6 +1,7 @@
 'use strict';
 
 const http = require('http');
+const crypto = require('crypto');
 const graphql = require('graphql');
 const { grafast, makeGrafastSchema, constant } = require('grafast');
 
@@ -87,22 +88,23 @@ function buildHarnessSchema(schemaText) {
   });
 }
 
-async function collectResult(result) {
-  if (!result || typeof result.next !== 'function') return result;
-  const payloads = [];
-  while (true) {
-    const next = await result.next();
-    if (next.done) break;
-    if (next.value != null) payloads.push(next.value);
-  }
-  if (payloads.length === 0) return { data: null };
-  if (payloads.length === 1) return payloads[0];
-  const combined = { data: payloads[0].data, errors: payloads[0].errors };
-  for (let i = 1; i < payloads.length; i++) {
-    const p = payloads[i];
-    if (p.errors) combined.errors = [...(combined.errors || []), ...p.errors];
-  }
-  return combined;
+// grafast emits the older GraphQL incremental-delivery wire format: each
+// subsequent payload is `{data, path, hasNext, errors?}` directly (no
+// `incremental[]` wrapper). The conformer's merger expects the newer shape
+// `{incremental: [{path, data|items}], hasNext}`. We translate here so the
+// rest of the pipeline sees a consistent shape regardless of source impl.
+function translateGrafastPatch(payload) {
+  if (!payload || typeof payload !== 'object') return payload;
+  if (!('path' in payload)) return payload;
+  const { data, path, errors, hasNext, extensions, label } = payload;
+  const last = path[path.length - 1];
+  const entry = typeof last === 'number' ? { path, items: [data] } : { path, data };
+  if (errors) entry.errors = errors;
+  if (label !== undefined) entry.label = label;
+  const out = { incremental: [entry] };
+  if (hasNext !== undefined) out.hasNext = hasNext;
+  if (extensions !== undefined) out.extensions = extensions;
+  return out;
 }
 
 function readBody(req) {
@@ -146,10 +148,32 @@ async function handleExecute(req, res) {
     variableValues: variables ?? undefined,
     operationName: operationName ?? undefined,
   });
-  const finalResult = await collectResult(result);
+
+  if (result && typeof result.next === 'function') {
+    await writeMultipart(res, result);
+    return;
+  }
 
   res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.end(JSON.stringify(finalResult));
+  res.end(JSON.stringify(result));
+}
+
+async function writeMultipart(res, iterator) {
+  const boundary = crypto.randomBytes(16).toString('hex');
+  res.writeHead(200, { 'Content-Type': `multipart/mixed; boundary=${boundary}` });
+  const header = `\r\n--${boundary}\r\nContent-Type: application/json\r\n\r\n`;
+  const trailer = `\r\n--${boundary}--\r\n`;
+
+  let first = true;
+  while (true) {
+    const next = await iterator.next();
+    if (next.done) break;
+    const payload = first ? next.value : translateGrafastPatch(next.value);
+    first = false;
+    res.write(header);
+    res.write(JSON.stringify(payload));
+  }
+  res.end(trailer);
 }
 
 const server = http.createServer(async (req, res) => {
