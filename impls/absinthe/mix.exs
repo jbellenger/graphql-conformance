@@ -13,14 +13,18 @@ defmodule ConformerAbsinthe.MixProject do
 
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: [:logger],
+      mod: {ConformerAbsinthe.Application, []}
     ]
   end
 
   defp deps do
     [
-      {:absinthe, path: "./build"},
-      {:jason, "~> 1.4"}
+      {:absinthe,
+       git: "https://github.com/absinthe-graphql/absinthe.git",
+       ref: "8f9816a62de93462536e0479f91c35eb57d3dfc1"},
+      {:jason, "~> 1.4"},
+      {:plug_cowboy, "~> 2.7"}
     ]
   end
 end

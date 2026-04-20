@@ -1,0 +1,19 @@
+{
+  "manifestVersion": 1,
+  "name": "absinthe",
+  "displayName": "absinthe",
+  "homepage": "https://github.com/absinthe-graphql/absinthe",
+  "image": {
+    "build": {
+      "dockerfile": "./Dockerfile",
+      "context": "."
+    }
+  },
+  "runtime": {
+    "port": 8080,
+    "healthPath": "/health",
+    "executePath": "/execute",
+    "readinessTimeoutMs": 60000,
+    "requestTimeoutMs": 30000
+  }
+}
