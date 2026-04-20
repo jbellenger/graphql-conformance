@@ -93,7 +93,7 @@ gen-corpus:
 	$(DOCKER_RUN) make -C /work _gen-corpus
 
 run-conformer:
-	$(DOCKER_RUN) make -C /work _run-conformer
+	$(DOCKER_RUN) make -C /work _run-conformer CONFORMER_ARGS="$(CONFORMER_ARGS)"
 
 serve-site:
 	$(DOCKER_RUN_PORTS) make -C /work _serve-site
