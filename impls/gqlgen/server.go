@@ -5,6 +5,8 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io"
+	"net/http"
 	"os"
 	"sort"
 
@@ -34,11 +36,9 @@ func newDynamicSchema(schema *ast.Schema) *dynamicSchema {
 	return ds
 }
 
-func (ds *dynamicSchema) Schema() *ast.Schema {
-	return ds.schema
-}
+func (ds *dynamicSchema) Schema() *ast.Schema { return ds.schema }
 
-func (ds *dynamicSchema) Complexity(ctx context.Context, typeName, fieldName string, childComplexity int, args map[string]any) (int, bool) {
+func (ds *dynamicSchema) Complexity(typeName, fieldName string, childComplexity int, args map[string]any) (int, bool) {
 	return 0, false
 }
 
@@ -54,27 +54,17 @@ func (ds *dynamicSchema) Exec(ctx context.Context) graphql.ResponseHandler {
 	default:
 		return graphql.OneShot(graphql.ErrorResponse(ctx, "unsupported operation"))
 	}
-
 	if rootType == nil {
 		return graphql.OneShot(graphql.ErrorResponse(ctx, "root type not found"))
 	}
 
 	data := ds.resolveSelectionSet(opCtx, opCtx.Operation.SelectionSet, rootType)
-
 	var buf bytes.Buffer
 	data.MarshalGQL(&buf)
-
 	return graphql.OneShot(&graphql.Response{Data: buf.Bytes()})
 }
 
-// resolveSelectionSet collects fields from a selection set and resolves each
-// field according to the wiring spec.
-func (ds *dynamicSchema) resolveSelectionSet(
-	opCtx *graphql.OperationContext,
-	selSet ast.SelectionSet,
-	typeDef *ast.Definition,
-) graphql.Marshaler {
-	// Build satisfies list: the concrete type, its interfaces, and any unions it belongs to.
+func (ds *dynamicSchema) resolveSelectionSet(opCtx *graphql.OperationContext, selSet ast.SelectionSet, typeDef *ast.Definition) graphql.Marshaler {
 	satisfies := []string{typeDef.Name}
 	satisfies = append(satisfies, typeDef.Interfaces...)
 	for name, def := range ds.schema.Types {
@@ -96,33 +86,21 @@ func (ds *dynamicSchema) resolveSelectionSet(
 			fieldSet.Values[i] = graphql.MarshalString(typeDef.Name)
 			continue
 		}
-
 		fieldDef := typeDef.Fields.ForName(field.Name)
 		if fieldDef == nil {
 			fieldSet.Values[i] = graphql.Null
 			continue
 		}
-
 		fieldSet.Values[i] = ds.marshalValue(opCtx, field, fieldDef.Type)
 	}
-
 	return fieldSet
 }
 
-// marshalValue produces a graphql.Marshaler for the given AST type according
-// to the wiring spec.
-func (ds *dynamicSchema) marshalValue(
-	opCtx *graphql.OperationContext,
-	field graphql.CollectedField,
-	astType *ast.Type,
-) graphql.Marshaler {
-	// Unwrap NonNull — same value, just not nullable.
+func (ds *dynamicSchema) marshalValue(opCtx *graphql.OperationContext, field graphql.CollectedField, astType *ast.Type) graphql.Marshaler {
 	if astType.NonNull {
 		inner := &ast.Type{NamedType: astType.NamedType, Elem: astType.Elem}
 		return ds.marshalValue(opCtx, field, inner)
 	}
-
-	// List → return exactly 2 items.
 	if astType.Elem != nil {
 		return graphql.Array{
 			ds.marshalValue(opCtx, field, astType.Elem),
@@ -130,7 +108,6 @@ func (ds *dynamicSchema) marshalValue(
 		}
 	}
 
-	// Named type.
 	typeName := astType.NamedType
 	def := ds.schema.Types[typeName]
 	if def == nil {
@@ -140,16 +117,13 @@ func (ds *dynamicSchema) marshalValue(
 	switch def.Kind {
 	case ast.Scalar:
 		return ds.marshalScalar(typeName)
-
 	case ast.Enum:
 		if v, ok := ds.enumFirstValue[typeName]; ok {
 			return graphql.MarshalString(v)
 		}
 		return graphql.Null
-
 	case ast.Object:
 		return ds.resolveSelectionSet(opCtx, field.Selections, def)
-
 	case ast.Union:
 		concrete := ds.resolveUnionType(def)
 		concreteDef := ds.schema.Types[concrete]
@@ -157,7 +131,6 @@ func (ds *dynamicSchema) marshalValue(
 			return graphql.Null
 		}
 		return ds.resolveSelectionSet(opCtx, field.Selections, concreteDef)
-
 	case ast.Interface:
 		concrete := ds.resolveInterfaceType(def)
 		concreteDef := ds.schema.Types[concrete]
@@ -166,11 +139,9 @@ func (ds *dynamicSchema) marshalValue(
 		}
 		return ds.resolveSelectionSet(opCtx, field.Selections, concreteDef)
 	}
-
 	return graphql.Null
 }
 
-// marshalScalar returns the wiring-spec value for a scalar type.
 func (ds *dynamicSchema) marshalScalar(typeName string) graphql.Marshaler {
 	switch typeName {
 	case "Int":
@@ -184,11 +155,10 @@ func (ds *dynamicSchema) marshalScalar(typeName string) graphql.Marshaler {
 	case "ID":
 		return graphql.MarshalID("id")
 	default:
-		return graphql.MarshalString("str") // custom scalars
+		return graphql.MarshalString("str")
 	}
 }
 
-// resolveUnionType returns the lexicographically first member type name.
 func (ds *dynamicSchema) resolveUnionType(def *ast.Definition) string {
 	members := make([]string, len(def.Types))
 	copy(members, def.Types)
@@ -217,7 +187,7 @@ func registerStreamDirective(schema *ast.Schema) {
 	}
 }
 
-// resolveInterfaceType returns the lexicographically last implementing type name.
+
 func (ds *dynamicSchema) resolveInterfaceType(def *ast.Definition) string {
 	possibleTypes := ds.schema.PossibleTypes[def.Name]
 	names := make([]string, len(possibleTypes))
@@ -228,95 +198,114 @@ func (ds *dynamicSchema) resolveInterfaceType(def *ast.Definition) string {
 	return names[len(names)-1]
 }
 
-func main() {
-	if len(os.Args) < 3 {
-		fmt.Fprintf(os.Stderr, "Usage: conformer <schema> <query> [<variables>]\n")
-		os.Exit(1)
+type executeRequest struct {
+	Schema        string                 `json:"schema"`
+	Query         string                 `json:"query"`
+	Variables     map[string]interface{} `json:"variables"`
+	OperationName string                 `json:"operationName"`
+}
+
+func writeJSON(w http.ResponseWriter, status int, body interface{}) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(status)
+	_ = json.NewEncoder(w).Encode(body)
+}
+
+func executeHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
+		return
 	}
 
-	schemaPath := os.Args[1]
-	queryPath := os.Args[2]
-
-	schemaBytes, err := os.ReadFile(schemaPath)
+	raw, err := io.ReadAll(r.Body)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error reading schema: %v\n", err)
-		os.Exit(1)
+		writeJSON(w, http.StatusBadRequest, map[string]interface{}{
+			"errors": []map[string]string{{"message": fmt.Sprintf("read body: %v", err)}},
+		})
+		return
+	}
+	var req executeRequest
+	if err := json.Unmarshal(raw, &req); err != nil {
+		writeJSON(w, http.StatusBadRequest, map[string]interface{}{
+			"errors": []map[string]string{{"message": fmt.Sprintf("invalid JSON body: %v", err)}},
+		})
+		return
+	}
+	if req.Schema == "" || req.Query == "" {
+		writeJSON(w, http.StatusBadRequest, map[string]interface{}{
+			"errors": []map[string]string{{"message": "schema and query are required strings"}},
+		})
+		return
 	}
 
-	queryBytes, err := os.ReadFile(queryPath)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error reading query: %v\n", err)
-		os.Exit(1)
-	}
-
-	var variables map[string]any
-	if len(os.Args) >= 4 {
-		varBytes, err := os.ReadFile(os.Args[3])
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error reading variables: %v\n", err)
-			os.Exit(1)
-		}
-		if err := json.Unmarshal(varBytes, &variables); err != nil {
-			fmt.Fprintf(os.Stderr, "Error parsing variables: %v\n", err)
-			os.Exit(1)
-		}
-	}
-
-	// Parse SDL with gqlparser.
-	astSchema, gqlErr := gqlparser.LoadSchema(&ast.Source{Input: string(schemaBytes)})
+	astSchema, gqlErr := gqlparser.LoadSchema(&ast.Source{Input: req.Schema})
 	if gqlErr != nil {
-		fmt.Fprintf(os.Stderr, "Error parsing schema: %v\n", gqlErr)
-		os.Exit(1)
+		writeJSON(w, http.StatusInternalServerError, map[string]interface{}{
+			"errors": []map[string]string{{"message": gqlErr.Error()}},
+		})
+		return
 	}
 
-	// @stream is not built into gqlparser; register a stub so queries using it
-	// pass validation. We execute synchronously, so the directive is effectively
-	// ignored and the full list is returned in the single final response.
 	registerStreamDirective(astSchema)
 
-	// Build dynamic executable schema.
-	ds := newDynamicSchema(astSchema)
 
-	// Create gqlgen executor.
+	ds := newDynamicSchema(astSchema)
 	exec := executor.New(ds)
 
-	// Build operation params.
 	params := &graphql.RawParams{
-		Query:     string(queryBytes),
-		Variables: variables,
+		Query:         req.Query,
+		Variables:     req.Variables,
+		OperationName: req.OperationName,
 	}
-
-	// Execute.
-	ctx := context.Background()
-	ctx = graphql.StartOperationTrace(ctx)
-
+	ctx := graphql.StartOperationTrace(r.Context())
 	opCtx, errs := exec.CreateOperationContext(ctx, params)
 	if len(errs) > 0 {
 		resp := exec.DispatchError(ctx, errs)
-		jsonBytes, _ := json.Marshal(resp)
-		fmt.Print(string(jsonBytes))
-		os.Exit(0)
+		out := map[string]interface{}{}
+		if resp.Data != nil {
+			out["data"] = json.RawMessage(resp.Data)
+		} else {
+			out["data"] = nil
+		}
+		if len(resp.Errors) > 0 {
+			out["errors"] = resp.Errors
+		}
+		writeJSON(w, http.StatusOK, out)
+		return
 	}
 
 	handler, resCtx := exec.DispatchOperation(ctx, opCtx)
 	resp := handler(resCtx)
 
-	// Build output matching graphql-js format: only include "errors" if non-empty.
-	output := map[string]any{}
+	out := map[string]interface{}{}
 	if resp.Data != nil {
-		output["data"] = json.RawMessage(resp.Data)
+		out["data"] = json.RawMessage(resp.Data)
 	} else {
-		output["data"] = nil
+		out["data"] = nil
 	}
 	if len(resp.Errors) > 0 {
-		output["errors"] = resp.Errors
+		out["errors"] = resp.Errors
+	}
+	writeJSON(w, http.StatusOK, out)
+}
+
+func main() {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
 	}
 
-	jsonBytes, err := json.Marshal(output)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error marshaling result: %v\n", err)
+	mux := http.NewServeMux()
+	mux.HandleFunc("/health", func(w http.ResponseWriter, _ *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		_, _ = w.Write([]byte("ok"))
+	})
+	mux.HandleFunc("/execute", executeHandler)
+
+	addr := fmt.Sprintf(":%s", port)
+	fmt.Fprintf(os.Stderr, "gqlgen driver listening on %s\n", addr)
+	if err := http.ListenAndServe(addr, mux); err != nil {
+		fmt.Fprintf(os.Stderr, "server error: %v\n", err)
 		os.Exit(1)
 	}
-
-	fmt.Print(string(jsonBytes))
 }

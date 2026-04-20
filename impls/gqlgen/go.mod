@@ -1,4 +1,4 @@
-module conformer
+module gqlgen-driver
 
 go 1.25.0
 
@@ -13,5 +13,3 @@ require (
 	github.com/sosodev/duration v1.4.0 // indirect
 	golang.org/x/sync v0.20.0 // indirect
 )
-
-replace github.com/99designs/gqlgen => ./build
