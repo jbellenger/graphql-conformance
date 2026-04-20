@@ -17,24 +17,28 @@ top-level `Makefile` wraps `docker run` so `make` works as usual.
 
 ## Project Layout
 
-The repo root contains the top-level Makefile, `config.json`, `SPEC.md`, and this file.
+The repo root contains the top-level Makefile, `registry.json`, `SPEC.md`, and this file.
 
-- `conformer/src/` — coordinator (Node.js): discovers corpus, spawns impl commands, compares results
-- `impls/` — one directory per GraphQL implementation, each with its own Makefile
+- `conformer/src/` — conformer (Node.js): discovers corpus, orchestrates drivers, compares results
+- `impls/` — one directory per GraphQL implementation (HTTP driver packaging lives here)
 - `corpus/` — test cases (schema + query + optional variables per test)
-- `config.json` — declares the reference impl and conformants with their commands
+- `registry.json` — endorsed driver list (in-tree + external); single source of truth for which driver is the reference
+- `config.json` — **legacy** subprocess configuration; retained for unmigrated impls during Phase 3 rollout
 
 ## Key Conventions
 
-- **Makefiles**: every impl has a `Makefile` with `build`, `test`, `clean` targets. The top-level Makefile recurses into each.
-- **Commands**: each impl declares a `command` array in `config.json` (e.g. `["java", "-jar", "target/conformer-1.0.jar"]`). The coordinator spawns this directly with `cwd` set to the impl directory.
+- **Driver model (current)**: each HTTP-native driver ships a `manifest.json` + `Dockerfile` + `server.js` (or equivalent) under `impls/<name>/`. The conformer builds/pulls the image, starts a container, and sends `POST /execute`.
+- **Legacy subprocess model**: impls without a `manifest.json` fall back to the `config.json` `command` entry. The conformer spawns the command directly with `cwd` set to the impl directory.
 - **Testing**: each impl has wiring tests (native unit tests) and command tests (subprocess integration tests via node:test). Run everything with `make test` from the repo root.
 - **Wiring Spec**: all impls return deterministic values based on type (Int→2, String→"str", etc.). See SPEC.md for the full spec.
 
 ## Adding an Implementation
 
-1. Create `impls/<name>/` with native code implementing the Wiring Spec
-2. Add a `Makefile` with `build`, `test`, `clean` targets
-3. Add an entry to `config.json` with `name`, `path`, `command`, and `tools`
-4. If a new toolchain is required, add it to the `Dockerfile` and rebake the dev image with `make image`
-5. Run `make build && make test` to verify
+New impls should be added as HTTP drivers:
+
+1. Create `impls/<name>/` with a `Dockerfile` that builds the toolchain + library, and a small HTTP server (`server.js`, `server.go`, etc.) that serves `GET /health` + `POST /execute` per the HTTP contract in SPEC.md.
+2. Add `impls/<name>/manifest.json` declaring `image.build` and `runtime` fields.
+3. Add an entry to `registry.json` pointing at the manifest.
+4. Run `make run-conformer --drivers <name>` to verify.
+
+Legacy subprocess impls remain supported during the migration phase; see SPEC.md for both contracts.

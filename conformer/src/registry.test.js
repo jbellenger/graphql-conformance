@@ -1,0 +1,173 @@
+'use strict';
+
+const test = require('node:test');
+const assert = require('node:assert');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const { loadRegistry, loadConfigAsRegistry, filterDrivers } = require('./registry');
+
+function mkdtemp() {
+  return fs.mkdtempSync(path.join(os.tmpdir(), 'registry-test-'));
+}
+
+function writeFile(filePath, content) {
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
+  fs.writeFileSync(filePath, content);
+}
+
+test('loadRegistry resolves in-tree HTTP driver via manifest.json', () => {
+  const rootDir = mkdtemp();
+  writeFile(path.join(rootDir, 'impls/demo/manifest.json'), JSON.stringify({ name: 'demo' }));
+  writeFile(path.join(rootDir, 'registry.json'), JSON.stringify({
+    registryVersion: 1,
+    reference: 'demo',
+    drivers: [{ name: 'demo', source: 'in-tree', manifestPath: './impls/demo/manifest.json' }],
+  }));
+
+  const reg = loadRegistry({
+    registryPath: path.join(rootDir, 'registry.json'),
+    rootDir,
+  });
+  assert.strictEqual(reg.reference, 'demo');
+  assert.strictEqual(reg.drivers.length, 1);
+  assert.strictEqual(reg.drivers[0].transport, 'http');
+  assert.strictEqual(reg.drivers[0].implDir, path.join(rootDir, 'impls/demo'));
+});
+
+test('loadRegistry falls back to config.json entry when manifest is missing', () => {
+  const rootDir = mkdtemp();
+  writeFile(path.join(rootDir, 'impls/legacy/index.js'), '// stub');
+  writeFile(path.join(rootDir, 'registry.json'), JSON.stringify({
+    registryVersion: 1,
+    reference: 'legacy',
+    drivers: [{ name: 'legacy', source: 'in-tree', manifestPath: './impls/legacy/manifest.json' }],
+  }));
+  writeFile(path.join(rootDir, 'config.json'), JSON.stringify({
+    reference: 'legacy',
+    impls: { legacy: { path: './impls/legacy', command: ['node', 'index.js'] } },
+  }));
+
+  const reg = loadRegistry({
+    registryPath: path.join(rootDir, 'registry.json'),
+    configPath: path.join(rootDir, 'config.json'),
+    rootDir,
+  });
+  assert.strictEqual(reg.drivers[0].transport, 'subprocess');
+  assert.deepStrictEqual(reg.drivers[0].command, ['node', 'index.js']);
+});
+
+test('loadRegistry throws on unknown source', () => {
+  const rootDir = mkdtemp();
+  writeFile(path.join(rootDir, 'registry.json'), JSON.stringify({
+    registryVersion: 1,
+    reference: 'x',
+    drivers: [{ name: 'x', source: 'lunar' }],
+  }));
+  assert.throws(
+    () => loadRegistry({ registryPath: path.join(rootDir, 'registry.json'), rootDir }),
+    /unknown source/,
+  );
+});
+
+test('loadRegistry throws when reference is missing from drivers list', () => {
+  const rootDir = mkdtemp();
+  writeFile(path.join(rootDir, 'impls/a/manifest.json'), '{}');
+  writeFile(path.join(rootDir, 'registry.json'), JSON.stringify({
+    registryVersion: 1,
+    reference: 'missing',
+    drivers: [{ name: 'a', source: 'in-tree', manifestPath: './impls/a/manifest.json' }],
+  }));
+  assert.throws(
+    () => loadRegistry({ registryPath: path.join(rootDir, 'registry.json'), rootDir }),
+    /reference "missing" is not in drivers list/,
+  );
+});
+
+test('loadConfigAsRegistry maps config.json impls to subprocess drivers', () => {
+  const rootDir = mkdtemp();
+  writeFile(path.join(rootDir, 'config.json'), JSON.stringify({
+    reference: 'a',
+    impls: {
+      a: { path: './impls/a', command: ['node', 'a.js'] },
+      b: { path: './impls/b', command: ['node', 'b.js'] },
+    },
+  }));
+  const reg = loadConfigAsRegistry({
+    configPath: path.join(rootDir, 'config.json'),
+    rootDir,
+  });
+  assert.strictEqual(reg.reference, 'a');
+  assert.strictEqual(reg.drivers.length, 2);
+  assert.ok(reg.drivers.every((d) => d.transport === 'subprocess'));
+});
+
+test('filterDrivers keeps reference even if not in only-list', () => {
+  const reg = {
+    reference: 'ref',
+    drivers: [
+      { name: 'ref' },
+      { name: 'a' },
+      { name: 'b' },
+      { name: 'c' },
+    ],
+  };
+  const filtered = filterDrivers(reg, { only: ['a', 'c'] });
+  assert.deepStrictEqual(filtered.drivers.map((d) => d.name), ['ref', 'a', 'c']);
+});
+
+test('filterDrivers exclude removes named conformants', () => {
+  const reg = {
+    reference: 'ref',
+    drivers: [{ name: 'ref' }, { name: 'a' }, { name: 'b' }],
+  };
+  const filtered = filterDrivers(reg, { exclude: ['a'] });
+  assert.deepStrictEqual(filtered.drivers.map((d) => d.name), ['ref', 'b']);
+});
+
+test('loadRegistry resolves an external driver by cloning a local git repo', () => {
+  const { execFileSync } = require('child_process');
+  const rootDir = mkdtemp();
+  const externalRepo = mkdtemp();
+  const cacheDir = mkdtemp();
+
+  // Initialize a tiny git repo that looks like an external driver.
+  execFileSync('git', ['init', '--quiet', '--initial-branch=main'], { cwd: externalRepo });
+  execFileSync('git', ['config', 'user.email', 'test@example.com'], { cwd: externalRepo });
+  execFileSync('git', ['config', 'user.name', 'test'], { cwd: externalRepo });
+  writeFile(path.join(externalRepo, 'manifest.json'), JSON.stringify({
+    manifestVersion: 1,
+    name: 'cloned-driver',
+    image: { build: { dockerfile: './Dockerfile', context: '.' } },
+    runtime: { port: 8080 },
+  }));
+  execFileSync('git', ['add', '.'], { cwd: externalRepo });
+  execFileSync('git', ['commit', '--quiet', '-m', 'init'], { cwd: externalRepo });
+
+  writeFile(path.join(rootDir, 'impls/in-tree-ref/manifest.json'), JSON.stringify({ name: 'in-tree-ref' }));
+  writeFile(path.join(rootDir, 'registry.json'), JSON.stringify({
+    registryVersion: 1,
+    reference: 'in-tree-ref',
+    drivers: [
+      { name: 'in-tree-ref', source: 'in-tree', manifestPath: './impls/in-tree-ref/manifest.json' },
+      { name: 'cloned-driver', source: 'external', repoUrl: externalRepo, ref: 'main' },
+    ],
+  }));
+
+  const prevCache = process.env.EXTERNAL_DRIVER_CACHE;
+  process.env.EXTERNAL_DRIVER_CACHE = cacheDir;
+  try {
+    const reg = loadRegistry({
+      registryPath: path.join(rootDir, 'registry.json'),
+      rootDir,
+    });
+    const external = reg.drivers.find((d) => d.name === 'cloned-driver');
+    assert.ok(external);
+    assert.strictEqual(external.source, 'external');
+    assert.strictEqual(external.transport, 'http');
+    assert.ok(fs.existsSync(external.manifestPath), 'manifest was cloned');
+  } finally {
+    if (prevCache === undefined) delete process.env.EXTERNAL_DRIVER_CACHE;
+    else process.env.EXTERNAL_DRIVER_CACHE = prevCache;
+  }
+});

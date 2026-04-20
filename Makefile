@@ -51,6 +51,7 @@ endif
 
 DOCKER_VOLUMES := \
   -v $(CURDIR):/work:cached \
+  -v /var/run/docker.sock:/var/run/docker.sock \
   -v graphql-conformance-m2:/home/conformance/.m2 \
   -v graphql-conformance-gradle:/home/conformance/.gradle \
   -v graphql-conformance-cargo-registry:/home/conformance/.cargo/registry \
@@ -70,6 +71,7 @@ DOCKER_ENV := \
 
 DOCKER_RUN_BASE := $(DOCKER) run --rm \
   --user $(HOST_UID):$(HOST_GID) \
+  --add-host=host.docker.internal:host-gateway \
   -w /work \
   $(DOCKER_VOLUMES) \
   $(DOCKER_ENV)

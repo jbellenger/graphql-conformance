@@ -5,5 +5,8 @@
     "check": "node src/check.js",
     "run": "node src/index.js",
     "test": "node --test src/*.test.js"
+  },
+  "dependencies": {
+    "dockerode": "^4.0.2"
   }
 }

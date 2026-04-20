@@ -1,0 +1,22 @@
+{
+  "registryVersion": 1,
+  "reference": "graphql-js-17",
+  "drivers": [
+    { "name": "graphql-js-17", "source": "in-tree", "manifestPath": "./impls/graphql-js-17/manifest.json" },
+    { "name": "graphql-js-16", "source": "in-tree", "manifestPath": "./impls/graphql-js-16/manifest.json" },
+    { "name": "grafast", "source": "in-tree", "manifestPath": "./impls/grafast/manifest.json" },
+    { "name": "graphql-java", "source": "in-tree", "manifestPath": "./impls/graphql-java/manifest.json" },
+    { "name": "viaduct", "source": "in-tree", "manifestPath": "./impls/viaduct/manifest.json" },
+    { "name": "graphql-go", "source": "in-tree", "manifestPath": "./impls/graphql-go/manifest.json" },
+    { "name": "graphql-php", "source": "in-tree", "manifestPath": "./impls/graphql-php/manifest.json" },
+    { "name": "graphql-core", "source": "in-tree", "manifestPath": "./impls/graphql-core/manifest.json" },
+    { "name": "graphql-ruby", "source": "in-tree", "manifestPath": "./impls/graphql-ruby/manifest.json" },
+    { "name": "hot-chocolate", "source": "in-tree", "manifestPath": "./impls/hot-chocolate/manifest.json" },
+    { "name": "graphql-dotnet", "source": "in-tree", "manifestPath": "./impls/graphql-dotnet/manifest.json" },
+    { "name": "async-graphql", "source": "in-tree", "manifestPath": "./impls/async-graphql/manifest.json" },
+    { "name": "absinthe", "source": "in-tree", "manifestPath": "./impls/absinthe/manifest.json" },
+    { "name": "gqlgen", "source": "in-tree", "manifestPath": "./impls/gqlgen/manifest.json" },
+    { "name": "juniper", "source": "in-tree", "manifestPath": "./impls/juniper/manifest.json" },
+    { "name": "lacinia", "source": "in-tree", "manifestPath": "./impls/lacinia/manifest.json" }
+  ]
+}
