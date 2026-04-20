@@ -12,6 +12,7 @@ Implementations tested:
 - [graphql-js 16](https://github.com/graphql/graphql-js/tree/16.x.x)
 - [graphql-java](https://github.com/graphql-java/graphql-java)
 - [Viaduct](https://github.com/airbnb/viaduct)
+- [Grafast](https://github.com/graphile/crystal/tree/main/grafast/grafast/)
 - [graphql-go](https://github.com/graphql-go/graphql)
 - [graphql-php](https://github.com/webonyx/graphql-php)
 - [graphql-core](https://github.com/graphql-python/graphql-core)
