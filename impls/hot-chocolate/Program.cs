@@ -4,40 +4,61 @@ using HotChocolate.Execution;
 using HotChocolate.Language;
 using HotChocolate.Resolvers;
 using HotChocolate.Types;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
-const string StreamProtocol = "conformer-stream-v1";
+var port = Environment.GetEnvironmentVariable("PORT") is { Length: > 0 } p ? int.Parse(p) : 8080;
 
-try
+var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+builder.Logging.ClearProviders();
+
+var app = builder.Build();
+
+app.MapGet("/health", () => Results.Text("ok"));
+
+app.MapPost("/execute", async (HttpRequest req) =>
 {
-    return await RunAsync(args);
-}
-catch (Exception ex)
-{
-    var payload = new Dictionary<string, object?>
+    ExecuteRequest? payload;
+    try
     {
-        ["error"] = ex.GetType().FullName,
-        ["message"] = ex.Message,
-    };
-    Console.Error.WriteLine(JsonSerializer.Serialize(payload));
-    return 1;
-}
-
-async Task<int> RunAsync(string[] runArgs)
-{
-    if (runArgs.Length < 2)
+        payload = await JsonSerializer.DeserializeAsync<ExecuteRequest>(req.Body, GetJsonOpts());
+    }
+    catch (Exception e)
     {
-        Console.Error.WriteLine("Usage: Conformer <schema> <query> [<variables>]");
-        return 1;
+        return ErrorResponse(400, e.Message);
     }
 
-    var rawSchemaText = File.ReadAllText(runArgs[0]);
-    var queryText = File.ReadAllText(runArgs[1]);
+    if (payload?.Schema is null || payload.Query is null)
+        return ErrorResponse(400, "schema and query are required strings");
 
-    // Strip built-in directive declarations that Hot Chocolate already registers
-    // internally. Corpus schemas may redeclare these, causing "name already
-    // registered" errors. We also strip @defer/@stream declarations since HC
-    // handles them via opt-in options rather than SDL declarations.
+    try
+    {
+        var resultJson = await ExecuteAsync(payload);
+        return Results.Content(resultJson, "application/json", null, 200);
+    }
+    catch (Exception e)
+    {
+        return ErrorResponse(500, e.Message);
+    }
+});
+
+app.Run();
+return 0;
+
+static IResult ErrorResponse(int status, string message)
+{
+    var body = JsonSerializer.Serialize(new { errors = new[] { new { message } } });
+    return Results.Content(body, "application/json", null, status);
+}
+
+static async Task<string> ExecuteAsync(ExecuteRequest payload)
+{
+    var rawSchemaText = payload.Schema!;
+    var queryText = payload.Query!;
+
     var schemaDoc = Utf8GraphQLParser.Parse(rawSchemaText);
     var stripDirectives = new HashSet<string>
     {
@@ -53,11 +74,6 @@ async Task<int> RunAsync(string[] runArgs)
         .ToList();
     var schemaText = schemaDoc.WithDefinitions(filteredDefs).ToString();
 
-    // Detect custom root type names declared via `schema { query: Foo, ... }`.
-    // When a SchemaDefinitionNode is present, its OperationTypeDefinition entries
-    // map each operation (query/mutation/subscription) to the corresponding named
-    // type. If absent, Hot Chocolate falls back to the defaults Query/Mutation/
-    // Subscription automatically.
     string? queryTypeName = null;
     string? mutationTypeName = null;
     string? subscriptionTypeName = null;
@@ -81,27 +97,20 @@ async Task<int> RunAsync(string[] runArgs)
     }
 
     Dictionary<string, object?>? variables = null;
-    if (runArgs.Length >= 3)
+    if (payload.Variables is { ValueKind: JsonValueKind.Object })
     {
-        var varText = File.ReadAllText(runArgs[2]);
-        using var doc = JsonDocument.Parse(varText);
-        variables = new Dictionary<string, object?>();
-        foreach (var prop in doc.RootElement.EnumerateObject())
-        {
-            variables[prop.Name] = ConvertJsonElement(prop.Value);
-        }
+        variables = payload.Variables.Value.EnumerateObject()
+            .ToDictionary(prop => prop.Name, prop => ConvertJsonElement(prop.Value), StringComparer.Ordinal);
     }
 
-    // Build request executor from SDL
-    var builder = new ServiceCollection()
+    var gqlBuilder = new ServiceCollection()
         .AddGraphQL()
         .AddDocumentFromString(schemaText);
 
-    // Apply custom root type names (if any) and @defer/@stream opt-in.
     var hasCustomRoots = queryTypeName != null || mutationTypeName != null || subscriptionTypeName != null;
     if (enableDefer || enableStream || hasCustomRoots)
     {
-        builder.ModifyOptions(o =>
+        gqlBuilder.ModifyOptions(o =>
         {
             if (enableDefer) o.EnableDefer = true;
             if (enableStream) o.EnableStream = true;
@@ -111,10 +120,9 @@ async Task<int> RunAsync(string[] runArgs)
         });
     }
 
-    var executor = await builder
+    var executor = await gqlBuilder
         .UseField(next => context =>
         {
-            // Skip introspection fields. Let HC handle __typename and friends.
             if (context.Selection.Field.Name.StartsWith("__"))
             {
                 return next(context);
@@ -124,8 +132,6 @@ async Task<int> RunAsync(string[] runArgs)
         })
         .ConfigureSchema(sb => sb.SetTypeResolver((objectType, context, result) =>
         {
-            // For unions: resolve to alphabetically first member.
-            // For interfaces: resolve to alphabetically last implementor.
             var parentType = context.Selection.Type.NamedType();
 
             if (parentType is UnionType union)
@@ -156,6 +162,10 @@ async Task<int> RunAsync(string[] runArgs)
         .BuildRequestExecutorAsync();
 
     var requestBuilder = OperationRequestBuilder.New().SetDocument(queryText);
+    if (!string.IsNullOrEmpty(payload.OperationName))
+    {
+        requestBuilder.SetOperationName(payload.OperationName);
+    }
     if (variables != null)
     {
         requestBuilder.SetVariableValues(
@@ -166,90 +176,28 @@ async Task<int> RunAsync(string[] runArgs)
 
     if (result is IResponseStream stream)
     {
-        var wroteInitial = false;
-        var wroteComplete = false;
-
+        IReadOnlyDictionary<string, object?>? mergedData = null;
+        var errors = new List<object>();
         await foreach (var chunk in stream.ReadResultsAsync())
         {
-            if (!wroteInitial)
+            if (chunk.Data != null)
             {
-                var initialEvent = CreateProtocolEvent("initial");
-                initialEvent["data"] = NormalizeResultValue(chunk.Data);
-                var initialErrors = FormatErrors(chunk.Errors);
-                if (initialErrors is { Count: > 0 })
-                {
-                    initialEvent["errors"] = initialErrors;
-                }
-                WriteProtocolEvent(initialEvent);
-                wroteInitial = true;
+                mergedData = NormalizeResultValue(chunk.Data) as IReadOnlyDictionary<string, object?>;
             }
-            else
-            {
-                var chunkEvent = CreateProtocolEvent("patch");
-                if (chunk.Data != null)
-                {
-                    chunkEvent["path"] = Array.Empty<object>();
-                    chunkEvent["data"] = NormalizeResultValue(chunk.Data);
-                }
-                var chunkErrors = FormatErrors(chunk.Errors);
-                if (chunkErrors is { Count: > 0 })
-                {
-                    chunkEvent["errors"] = chunkErrors;
-                }
-                if (chunkEvent.Count > 2)
-                {
-                    WriteProtocolEvent(chunkEvent);
-                }
-            }
-
-            if (chunk.Incremental != null)
-            {
-                foreach (var inc in chunk.Incremental)
-                {
-                    var patchEvent = CreateProtocolEvent("patch");
-                    patchEvent["path"] = inc.Path.ToList();
-                    if (inc.Data != null)
-                    {
-                        patchEvent["data"] = NormalizeResultValue(inc.Data);
-                    }
-                    var patchErrors = FormatErrors(inc.Errors);
-                    if (patchErrors is { Count: > 0 })
-                    {
-                        patchEvent["errors"] = patchErrors;
-                    }
-                    WriteProtocolEvent(patchEvent);
-                }
-            }
-
-            if (chunk.HasNext == false)
-            {
-                WriteProtocolEvent(CreateProtocolEvent("complete"));
-                wroteComplete = true;
-            }
+            var chunkErrors = FormatErrors(chunk.Errors);
+            if (chunkErrors is { Count: > 0 }) errors.AddRange(chunkErrors);
         }
-
-        if (wroteInitial && !wroteComplete)
-        {
-            WriteProtocolEvent(CreateProtocolEvent("complete"));
-        }
-        return 0;
+        var output = new Dictionary<string, object?> { ["data"] = mergedData };
+        if (errors.Count > 0) output["errors"] = errors;
+        return JsonSerializer.Serialize(output);
     }
 
     if (result is IOperationResult single)
     {
-        Console.Write(JsonSerializer.Serialize(BuildSingleOutput(single)));
+        return JsonSerializer.Serialize(BuildSingleOutput(single));
     }
 
-    return 0;
-
-    Dictionary<string, object?> CreateProtocolEvent(string kind)
-    {
-        return new Dictionary<string, object?>
-        {
-            ["protocol"] = StreamProtocol,
-            ["kind"] = kind,
-        };
-    }
+    return JsonSerializer.Serialize(new Dictionary<string, object?> { ["data"] = null });
 }
 
 static object? ConvertJsonElement(JsonElement element)
@@ -257,13 +205,13 @@ static object? ConvertJsonElement(JsonElement element)
     return element.ValueKind switch
     {
         JsonValueKind.String => element.GetString(),
-        JsonValueKind.Number => element.TryGetInt32(out var i) ? i : element.GetDouble(),
+        JsonValueKind.Number => element.TryGetInt32(out var i) ? (object)i : element.GetDouble(),
         JsonValueKind.True => true,
         JsonValueKind.False => false,
         JsonValueKind.Null => null,
         JsonValueKind.Array => element.EnumerateArray().Select(ConvertJsonElement).ToList(),
         JsonValueKind.Object => element.EnumerateObject()
-            .ToDictionary(p => p.Name, p => ConvertJsonElement(p.Value)),
+            .ToDictionary(prop => prop.Name, prop => ConvertJsonElement(prop.Value), StringComparer.Ordinal),
         _ => element.ToString(),
     };
 }
@@ -294,14 +242,9 @@ static List<object>? FormatErrors(IReadOnlyList<IError>? source)
     return errors;
 }
 
-static void WriteProtocolEvent(Dictionary<string, object?> payload)
-{
-    Console.WriteLine(JsonSerializer.Serialize(payload));
-}
-
 static Dictionary<string, object?> BuildSingleOutput(IOperationResult result)
 {
-    var output = new Dictionary<string, object?> { ["data"] = result.Data };
+    var output = new Dictionary<string, object?> { ["data"] = NormalizeResultValue(result.Data) };
     var errors = FormatErrors(result.Errors);
     if (errors is { Count: > 0 })
     {
@@ -348,4 +291,14 @@ static object? ResolveValue(IType type)
     }
 
     return null;
+}
+
+static JsonSerializerOptions GetJsonOpts() => new(JsonSerializerDefaults.Web);
+
+internal sealed record ExecuteRequest
+{
+    public string? Schema { get; init; }
+    public string? Query { get; init; }
+    public JsonElement? Variables { get; init; }
+    public string? OperationName { get; init; }
 }

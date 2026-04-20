@@ -1,0 +1,19 @@
+{
+  "manifestVersion": 1,
+  "name": "hot-chocolate",
+  "displayName": "Hot Chocolate",
+  "homepage": "https://github.com/ChilliCream/graphql-platform",
+  "image": {
+    "build": {
+      "dockerfile": "./Dockerfile",
+      "context": "."
+    }
+  },
+  "runtime": {
+    "port": 8080,
+    "healthPath": "/health",
+    "executePath": "/execute",
+    "readinessTimeoutMs": 30000,
+    "requestTimeoutMs": 30000
+  }
+}
