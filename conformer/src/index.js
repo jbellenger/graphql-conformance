@@ -35,6 +35,7 @@ function parseCliArgs(argv) {
       'build-from-source': { type: 'boolean' },
       image: { type: 'string' },
       'corpus-dir': { type: 'string' },
+      force: { type: 'boolean' },
     },
     strict: false,
   });
@@ -45,6 +46,7 @@ function parseCliArgs(argv) {
     buildFromSource: Boolean(values['build-from-source']),
     imageOverride: values.image,
     corpusDir: values['corpus-dir'],
+    force: Boolean(values.force),
   };
 }
 
@@ -136,10 +138,14 @@ async function runConformance({ argv = [], createSession = createDockerSession, 
     if (priorRun && !corpusUnchanged) {
       process.stderr.write('Corpus changed since prior run; will re-run all conformants.\n');
     }
+    if (cli.force && priorRun) {
+      process.stderr.write('Force flag set; re-running all conformants regardless of prior run.\n');
+    }
 
     const conformantsToRun = conformants.filter((conformant) => {
       const currentSha = conformantVersions[conformant.name];
       if (
+        !cli.force &&
         priorRun &&
         priorRun.reference.hasExclusionMetadata &&
         priorRun.reference.sha === refSha &&

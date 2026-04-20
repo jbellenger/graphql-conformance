@@ -6,7 +6,7 @@ build:
 	npm install
 
 run:
-	node src/index.js
+	node src/index.js $(CONFORMER_ARGS)
 
 test:
 	@echo "Running conformer tests..."

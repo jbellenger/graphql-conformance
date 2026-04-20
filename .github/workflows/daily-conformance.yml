@@ -1,0 +1,58 @@
+name: Daily Conformance
+
+on:
+  schedule:
+    - cron: '0 12 * * *'   # 12:00 UTC = 05:00 PDT / 04:00 PST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-conformance
+  cancel-in-progress: false
+
+jobs:
+  run:
+    name: Full conformance run
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      BUILD_CONCURRENCY: 2
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.DAILY_CONFORMANCE_PAT }}
+          fetch-depth: 0
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build dev image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          load: true
+          tags: graphql-conformance:dev
+          cache-from: type=gha,scope=conformance
+          cache-to: type=gha,mode=max,scope=conformance
+
+      - name: Install conformer + corpus-gen deps
+        run: make build
+
+      - name: Run full conformance suite (forced)
+        run: make run-conformer CONFORMER_ARGS=--force
+
+      - name: Commit and push results
+        if: always()
+        run: |
+          git config user.name  "James Bellenger"
+          git config user.email "james.bellenger@airbnb.com"
+          git add results/data site/data/summary.json
+          if git diff --cached --quiet; then
+            echo "No result changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(daily): conformance run $(date -u +%FT%TZ) [skip ci]"
+          git push

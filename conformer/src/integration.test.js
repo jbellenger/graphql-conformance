@@ -202,6 +202,35 @@ describe('integration: incremental skip', () => {
   });
 });
 
+describe('integration: --force flag', () => {
+  it('re-runs all conformants even when unchanged', async () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    writeCorpusCase(corpusDir, 'ok-test', 'ok-query', 'type Query { ok: String }', '{ ok }');
+    writeRegistry(['ref', 'conformant']);
+
+    let conformantRuns = 0;
+    const refHandler = () => ({ result: { data: { ok: 'value' } } });
+    const conformantHandler = () => { conformantRuns += 1; return { result: { data: { ok: 'value' } } }; };
+
+    await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
+    const runsAfterFirst = conformantRuns;
+
+    const stderrChunks = [];
+    const origWrite = process.stderr.write.bind(process.stderr);
+    process.stderr.write = (chunk) => { stderrChunks.push(String(chunk)); return true; };
+    try {
+      await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir, ['--force']);
+    } finally {
+      process.stderr.write = origWrite;
+    }
+    const stderr = stderrChunks.join('');
+    assert.match(stderr, /Force flag set/);
+    assert.ok(!stderr.includes('Skipping conformant'),
+      'conformant must not be skipped when --force is set');
+    assert.ok(conformantRuns > runsAfterFirst, 'conformant should have actually run again');
+  });
+});
+
 describe('integration: corpus change invalidates skip', () => {
   it('re-runs all conformants when the corpus grows', async () => {
     const corpusDir = path.join(tmpDir, 'corpus');
