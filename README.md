@@ -22,6 +22,8 @@ Implementations tested:
 - [async-graphql](https://github.com/async-graphql/async-graphql)
 - [Absinthe](https://github.com/absinthe-graphql/absinthe)
 - [Juniper](https://github.com/graphql-rust/juniper)
+- [graphql-ruby](https://github.com/rmosolgo/graphql-ruby)
+- [Lacinia](https://github.com/walmartlabs/lacinia)
 
 ## How it works
 
@@ -37,11 +39,19 @@ Each run writes a timestamped summary to `results/data/runs/<run-id>.json`, per-
 
 `site/data/` is a derived artifact — not committed. The `pages.yml` workflow regenerates it from `results/data/` on every push to master by running `node site/build.js results/data`, then deploys the result to GitHub Pages. Any commit that updates `results/data/` therefore refreshes the dashboard automatically.
 
-By default the conformer skips any conformant whose image sha + the corpus fingerprint haven't changed since the last run, reusing the prior results. Pass `--force` (i.e. `make run-conformer CONFORMER_ARGS=--force`) to re-run everything regardless.
+By default the conformer skips any conformant whose image digest + the corpus fingerprint haven't changed since the last run, reusing the prior results. Pass `--force` (i.e. `make run-conformer CONFORMER_ARGS=--force`) to re-run everything regardless.
 
 ### Daily runs
 
 `.github/workflows/daily-conformance.yml` runs the full suite every day at 12:00 UTC (05:00 PDT / 04:00 PST) with `--force`, then commits the refreshed `results/data/` back to master — which triggers `pages.yml` to rebuild and redeploy the dashboard. Push authentication uses the `DAILY_CONFORMANCE_PAT` repo secret — a fine-grained PAT with `contents: write` on this repo — so commits land under a real user account. This matters because GitHub pauses scheduled workflows after 60 days without a human-authored commit; the daily push keeps the schedule alive. Failures are surfaced through GitHub's native Actions failure emails; the same workflow can be kicked off manually from the Actions tab.
+
+### Dependency updates
+
+Library versions for every implementation are updated automatically by [Renovate](https://docs.renovatebot.com/). Configuration lives in `renovate.json` at the repo root. Renovate opens a PR for each available update and — if CI passes — the PR auto-merges with no human involvement. Most impls track the latest stable release from their native package manager; `graphql-js-17` tracks the npm `next` dist-tag so the 17.x pre-release line stays current, while `graphql-js-16` is pinned to `<17`.
+
+Installing the [Renovate GitHub App](https://github.com/apps/renovate) on the repo is a prerequisite. Branch protection must require CI success before auto-merge.
+
+The version displayed next to each implementation on the dashboard is resolved at image build time (via `npm ls`, `mvn dependency:list`, `go list -m`, `cargo tree`, etc.) and written to `/impl-version` inside the image. The conformer reads that file over the Docker API — so there is no separate place in the repo where a version string is mirrored. See [SPEC.md](SPEC.md) for the driver-side contract.
 
 ## Requirements
 

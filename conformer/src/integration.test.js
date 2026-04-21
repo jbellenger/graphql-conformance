@@ -59,9 +59,11 @@ function makeSessionFactory(handlers) {
   return async (driver) => {
     const handler = handlers[driver.name];
     if (!handler) throw new Error(`no handler for driver ${driver.name}`);
-    const version = handler.version || 'stub-sha-' + driver.name;
+    const version = handler.version !== undefined ? handler.version : null;
+    const imageDigest = handler.imageDigest || 'stub-image-' + driver.name;
     return {
       version,
+      imageDigest,
       async execute(test) {
         const body = buildRequestBody(test);
         const resp = await handler(body, test);
@@ -160,7 +162,8 @@ describe('integration: incremental skip', () => {
       timestamp: '2026-03-18T00:00:00.000Z',
       reference: {
         name: 'ref',
-        sha: 'stub-sha-ref',
+        version: null,
+        imageDigest: 'stub-image-ref',
         scoringModel: 'runnable-set-v1',
         total: corpusTotal,
         errors: 0,
@@ -170,7 +173,8 @@ describe('integration: incremental skip', () => {
       },
       conformants: {
         conformant: {
-          sha: 'stub-sha-conformant',
+          version: null,
+          imageDigest: 'stub-image-conformant',
           total: corpusTotal,
           passed: 0,
           failuresByTestKey: {
@@ -339,7 +343,8 @@ describe('integration: reference exclusions', () => {
       timestamp: '2026-03-18T00:00:00.000Z',
       reference: {
         name: 'ref',
-        sha: 'stub-sha-ref',
+        version: null,
+        imageDigest: 'stub-image-ref',
         scoringModel: 'runnable-set-v1',
         total: 1,
         errors: 0,
@@ -350,7 +355,8 @@ describe('integration: reference exclusions', () => {
       },
       conformants: {
         conformant: {
-          sha: 'stub-sha-conformant',
+          version: null,
+          imageDigest: 'stub-image-conformant',
           total: 1,
           passed: 1,
         },

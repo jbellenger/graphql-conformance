@@ -3,6 +3,7 @@
   "name": "graphql-php",
   "displayName": "graphql-php (webonyx)",
   "homepage": "https://github.com/webonyx/graphql-php",
+  "versionUrlTemplate": "https://github.com/webonyx/graphql-php/releases/tag/v{version}",
   "image": {
     "build": {
       "dockerfile": "./Dockerfile",

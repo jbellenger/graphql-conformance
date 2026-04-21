@@ -3,6 +3,7 @@
   "name": "graphql-core",
   "displayName": "graphql-core (Python)",
   "homepage": "https://github.com/graphql-python/graphql-core",
+  "versionUrlTemplate": "https://pypi.org/project/graphql-core/{version}/",
   "image": {
     "build": {
       "dockerfile": "./Dockerfile",

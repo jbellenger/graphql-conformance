@@ -10,8 +10,9 @@ if (!resultsDir) {
   process.exit(1);
 }
 
-// Load registry + manifests for repo URLs (manifest.homepage → repo).
+// Load registry + manifests for repo URLs and version-URL templates.
 const repoByName = {};
+const versionUrlTemplateByName = {};
 const registryPath = path.join(__dirname, '..', 'registry.json');
 if (fs.existsSync(registryPath)) {
   const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
@@ -21,7 +22,15 @@ if (fs.existsSync(registryPath)) {
     if (!fs.existsSync(manifestFile)) continue;
     const manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
     if (manifest.homepage) repoByName[driver.name] = manifest.homepage;
+    if (manifest.versionUrlTemplate) versionUrlTemplateByName[driver.name] = manifest.versionUrlTemplate;
   }
+}
+
+function resolveVersionUrl(name, version) {
+  if (!version) return null;
+  const tpl = versionUrlTemplateByName[name];
+  if (!tpl) return null;
+  return tpl.replace(/\{version\}/g, encodeURIComponent(version));
 }
 
 const store = ResultsStore.fromDirectory(resultsDir);
@@ -47,7 +56,8 @@ const summary = [
     excluded: ref.excluded || 0,
     corpusTotal: ref.corpusTotal != null ? ref.corpusTotal : refTotal + refErrors,
     lastRun: latest.timestamp,
-    sha: ref.sha,
+    version: ref.version || null,
+    versionUrl: resolveVersionUrl(ref.name, ref.version),
     repo: repoByName[ref.name] || null,
     isReference: true,
   },
@@ -57,7 +67,8 @@ const summary = [
     total: c.total,
     failed: c.total - c.passed,
     lastRun: latest.timestamp,
-    sha: c.sha,
+    version: c.version || null,
+    versionUrl: resolveVersionUrl(name, c.version),
     repo: repoByName[name] || null,
   })),
 ];

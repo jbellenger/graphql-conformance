@@ -3,6 +3,7 @@
   "name": "graphql-js-17",
   "displayName": "graphql-js 17",
   "homepage": "https://github.com/graphql/graphql-js",
+  "versionUrlTemplate": "https://github.com/graphql/graphql-js/releases/tag/v{version}",
   "image": {
     "build": {
       "dockerfile": "./Dockerfile",

@@ -63,7 +63,12 @@ class ResultsStore {
         ? conformant.passed
         : (tests ? Object.values(tests).filter((t) => t.matches).length : total - failures.length);
 
-      conformants[name] = { sha: conformant.sha, total, passed };
+      conformants[name] = {
+        version: conformant.version != null ? conformant.version : null,
+        imageDigest: conformant.imageDigest != null ? conformant.imageDigest : null,
+        total,
+        passed,
+      };
 
       if (failures.length > 0) {
         this._data.put(`failures/${name}/${runResult.id}`, failures);
@@ -87,7 +92,8 @@ class ResultsStore {
       timestamp: runResult.timestamp,
       reference: {
         name: ref.name,
-        sha: ref.sha,
+        version: ref.version != null ? ref.version : null,
+        imageDigest: ref.imageDigest != null ? ref.imageDigest : null,
         scoringModel: ref.scoringModel || null,
         corpusTotal: ref.corpusTotal != null ? ref.corpusTotal : (ref.total || 0),
         corpusFingerprint: ref.corpusFingerprint || null,
@@ -119,7 +125,7 @@ class ResultsStore {
       total: c.total,
       failed: c.total - c.passed,
       lastRun: latest.timestamp,
-      sha: c.sha,
+      version: c.version != null ? c.version : null,
     }));
   }
 
@@ -206,7 +212,8 @@ class ResultsStore {
       const failures = this._getFailuresForRun(cName, latest.id);
       const quirks = this._getQuirksForRun(cName, latest.id);
       result.conformants[cName] = {
-        sha: c.sha,
+        version: c.version != null ? c.version : null,
+        imageDigest: c.imageDigest != null ? c.imageDigest : null,
         total: c.total,
         passed: c.passed,
         failuresByTestKey: this._indexFailuresByTestKey(failures),

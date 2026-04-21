@@ -1,0 +1,24 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":automergeAll",
+    ":automergeBranch"
+  ],
+  "automerge": true,
+  "automergeType": "branch",
+  "packageRules": [
+    {
+      "description": "graphql-js-17 tracks the npm `next` dist-tag (17.x pre-release line)",
+      "matchFileNames": ["impls/graphql-js-17/package.json"],
+      "matchPackageNames": ["graphql"],
+      "followTag": "next"
+    },
+    {
+      "description": "graphql-js-16 stays on the 16.x stable line",
+      "matchFileNames": ["impls/graphql-js-16/package.json"],
+      "matchPackageNames": ["graphql"],
+      "allowedVersions": "<17"
+    }
+  ]
+}

@@ -118,6 +118,7 @@ Each driver ships `manifest.json` at the manifest path declared in `registry.jso
       "name": "my-engine",
       "displayName": "My Engine",
       "homepage": "https://github.com/acme/my-engine",
+      "versionUrlTemplate": "https://github.com/acme/my-engine/releases/tag/v{version}",
       "image": {
         "repository": "ghcr.io/acme/my-engine",
         "tag": "v1.2.3",
@@ -139,6 +140,34 @@ Each driver ships `manifest.json` at the manifest path declared in `registry.jso
   `--build-from-source` is set or `repository` is absent.
 - `runtime` defaults: port 8080, health `/health`, execute `/execute`, both
   timeouts 30 000 ms.
+- `versionUrlTemplate` (optional): URL template used by the dashboard to link
+  the displayed library version to an authoritative release or package page.
+  The literal substring `{version}` is replaced (URL-encoded) with the version
+  reported by the driver image (see *Library version reporting* below). Drivers
+  MAY omit this; when absent, the version renders as plain text.
+
+### Library version reporting
+
+Each driver SHOULD emit its GraphQL library's logical release version so the
+dashboard can display it. The version is reported through a file inside the
+driver image:
+
+- The driver's `Dockerfile` writes the version string to `/impl-version`,
+  with no trailing newline expected (the conformer trims whitespace).
+- The value SHOULD be resolved at image build time from the driver's package
+  manager (e.g. `npm ls`, `require('<pkg>/package.json').version`,
+  `go list -m`, `mvn dependency:list`, `cargo tree`, `dotnet list package`,
+  `pip` / `importlib.metadata`). Using the resolved value — not a declaration
+  from source (e.g. a caret range or wildcard) — ensures the dashboard reflects
+  what was actually installed into the image.
+
+The conformer reads `/impl-version` via the Docker API after pulling or
+building each image and writes the value to `runs/<run-id>.json` as
+`reference.version` and `conformants.<name>.version`.
+
+Drivers MAY omit the file. When absent, `version` is recorded as `null`, the
+dashboard displays `"unknown"` without a link, and all other harness behavior
+(corpus execution, result storage) proceeds normally.
 
 ### Registry
 
@@ -191,10 +220,16 @@ Before running tests, the conformer loads the most recent prior run from
 `conformer/results/`. A conformant is **skipped** when all of these are true:
 
 - The conformant exists in the prior run
-- Its current SHA matches the prior run's SHA
-- The reference SHA also matches the prior run's reference SHA
+- Its current image digest matches the prior run's image digest
+- The reference image digest also matches the prior run's reference image digest
 - The corpus fingerprint (sha256 of the sorted `testId/queryId` list) matches
   the prior run's fingerprint
+
+The image digest is the content-addressed hash of the driver's Docker image —
+distinct from the logical library version displayed on the dashboard. Two
+different library versions always produce different image digests, but the
+skip check compares digests because that is the content that actually gets
+executed.
 
 Skipped conformants reuse their test results from the prior run. If every
 conformant is skipped, the prior run's runnable/excluded reference split is
@@ -267,7 +302,7 @@ const testStore = ResultsStore.inMemory();
 
 store.recordRun(runResult);       // write a run
 store.listRuns();                 // [{id, timestamp, reference}]
-store.getSummary();               // [{impl, passPct, total, failed, lastRun, sha}]
+store.getSummary();               // [{impl, passPct, total, failed, lastRun, version}]
 store.getImplHistory(name);       // [{date, passPct, total, failed}]
 store.getReferenceHistory();      // [{date, passPct, total, failed, excluded, corpusTotal}]
 store.getImplFailures(name);      // [{testKey, error|expected|actual|stderr}]
@@ -289,8 +324,9 @@ Filesystem-safe ISO 8601: `2026-03-14T14-30-00Z` (colons replaced with hyphens).
       "id": "2026-03-14T14-30-00Z",
       "timestamp": "2026-03-14T14:30:00Z",
       "reference": {
-        "name": "graphql-js",
-        "sha": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
+        "name": "graphql-js-17",
+        "version": "17.0.0-alpha.14",
+        "imageDigest": "sha256:a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
         "corpusTotal": 241,
         "total": 232,
         "errors": 0,
@@ -298,7 +334,8 @@ Filesystem-safe ISO 8601: `2026-03-14T14-30-00Z` (colons replaced with hyphens).
       },
       "conformants": {
         "graphql-java": {
-          "sha": "f6e5d4c3b2a1f6e5d4c3b2a1f6e5d4c3b2a1f6e5",
+          "version": "25.0",
+          "imageDigest": "sha256:f6e5d4c3b2a1f6e5d4c3b2a1f6e5d4c3b2a1f6e5d4c3b2a1f6e5d4c3b2a1f6e5",
           "tests": {
             "0.1": { "matches": true, "quirks": [] },
             "1.1": { "matches": true, "quirks": ["object-ordering"] }
@@ -311,9 +348,11 @@ Filesystem-safe ISO 8601: `2026-03-14T14-30-00Z` (colons replaced with hyphens).
 counts the corpus cases that were skipped because the reference did not produce a
 result.
 
-Each conformant entry includes the library SHA and a `tests` object. The keys use
-dotted notation `<testId>.<queryId>` (e.g. `"1.1"` for test directory 1, query prefix
-1). Each maps to an object with:
+Each conformant entry includes the library version (the logical release string
+reported through `/impl-version` — see *Library version reporting*), the image
+digest (used for incremental-run skip detection — see *Incremental runs*), and
+a `tests` object. The keys use dotted notation `<testId>.<queryId>` (e.g.
+`"1.1"` for test directory 1, query prefix 1). Each maps to an object with:
 - `matches` (boolean): `true` if the response data matches the reference, ignoring
   object key ordering
 - `quirks` (list of strings): observed SHOULD-level spec deviations (see Comparison)

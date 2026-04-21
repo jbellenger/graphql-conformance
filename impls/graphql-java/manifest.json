@@ -3,6 +3,7 @@
   "name": "graphql-java",
   "displayName": "graphql-java",
   "homepage": "https://github.com/graphql-java/graphql-java",
+  "versionUrlTemplate": "https://github.com/graphql-java/graphql-java/releases/tag/v{version}",
   "image": {
     "build": {
       "dockerfile": "./Dockerfile",

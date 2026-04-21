@@ -439,7 +439,7 @@ function renderDashboard(summary) {
           </div>
           <div class="reference-meta">
             <div><span>Corpus</span><strong>${reference.corpusTotal ?? reference.total}</strong></div>
-            <div><span>SHA</span><strong class="mono">${reference.repo ? `<a href="${reference.repo}/commit/${reference.sha}">${reference.sha.slice(0, 7)}</a>` : reference.sha.slice(0, 7)}</strong></div>
+            <div><span>Version</span><strong class="mono">${renderVersion(reference)}</strong></div>
           </div>
         </section>
       ` : ''}
@@ -449,7 +449,7 @@ function renderDashboard(summary) {
             <tr>
               <th>Implementation</th>
               <th class="pass-rate-column">Pass Rate</th>
-              <th>SHA</th>
+              <th>Version</th>
             </tr>
           </thead>
           <tbody>
@@ -463,7 +463,7 @@ function renderDashboard(summary) {
                     <div class="bar-fill ${barClass(s.passPct)}" style="width: ${s.passPct}%"></div>
                   </div>
                 </td>
-                <td class="mono">${s.repo ? `<a href="${s.repo}/commit/${s.sha}">${s.sha.slice(0, 7)}</a>` : s.sha.slice(0, 7)}</td>
+                <td class="mono">${renderVersion(s)}</td>
               </tr>
             `).join('')}
           </tbody>
@@ -471,6 +471,13 @@ function renderDashboard(summary) {
       </div>
     </div>
   `;
+}
+
+function renderVersion(item) {
+  if (!item || !item.version) return 'unknown';
+  const text = escapeHtml(item.version);
+  if (item.versionUrl) return `<a href="${escapeHtml(item.versionUrl)}">${text}</a>`;
+  return text;
 }
 
 function renderImplDetail(name, history, failures, summaryItem, exclusions = [], options = {}) {
@@ -503,9 +510,7 @@ function renderImplDetail(name, history, failures, summaryItem, exclusions = [],
         { label: 'Failed', value: latest.failed },
       ])
     : [];
-  const repoLink = summaryItem?.repo
-    ? `<a href="${summaryItem.repo}/commit/${summaryItem.sha}">${summaryItem.sha.slice(0, 7)}</a>`
-    : (summaryItem?.sha ? summaryItem.sha.slice(0, 7) : 'unknown');
+  const versionCell = renderVersion(summaryItem);
   const detailsSection = !isReference && items.length === 0
     ? renderNoFailuresSection()
     : `
@@ -558,8 +563,8 @@ function renderImplDetail(name, history, failures, summaryItem, exclusions = [],
             </div>
           `).join('')}
           <div class="detail-meta-card">
-            <span>SHA</span>
-            <strong class="mono">${repoLink}</strong>
+            <span>Version</span>
+            <strong class="mono">${versionCell}</strong>
           </div>
         </div>
       </section>

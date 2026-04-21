@@ -144,6 +144,45 @@ async function getContainerLogs(container, { tail = 200 } = {}) {
   return collectStream(stream);
 }
 
+function parseSingleFileTar(buf) {
+  if (!buf || buf.length < 512) return null;
+  const sizeRaw = buf.slice(124, 136).toString('ascii').replace(/\0/g, '').trim();
+  const size = parseInt(sizeRaw, 8);
+  if (!Number.isFinite(size) || size <= 0) return null;
+  return buf.slice(512, 512 + size).toString('utf8');
+}
+
+async function readImageFile(imageTag, filePath) {
+  const docker = getDocker();
+  let container = null;
+  try {
+    container = await docker.createContainer({
+      Image: imageTag,
+      Cmd: ['/bin/true'],
+      HostConfig: { AutoRemove: false },
+    });
+    let tarStream;
+    try {
+      tarStream = await container.getArchive({ path: filePath });
+    } catch (err) {
+      if (err.statusCode === 404) return null;
+      throw err;
+    }
+    const chunks = [];
+    await new Promise((resolve, reject) => {
+      tarStream.on('data', (c) => chunks.push(c));
+      tarStream.on('end', resolve);
+      tarStream.on('error', reject);
+    });
+    const content = parseSingleFileTar(Buffer.concat(chunks));
+    return content ? content.trim() || null : null;
+  } finally {
+    if (container) {
+      try { await container.remove({ force: true }); } catch { /* best-effort */ }
+    }
+  }
+}
+
 module.exports = {
   getDocker,
   buildImage,
@@ -152,4 +191,6 @@ module.exports = {
   runContainer,
   stopContainer,
   getContainerLogs,
+  readImageFile,
+  parseSingleFileTar,
 };

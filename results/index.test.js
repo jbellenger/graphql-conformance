@@ -13,7 +13,7 @@ function makeRun(overrides = {}) {
     timestamp: overrides.timestamp || '2026-03-17T22:42:11.609Z',
     reference: overrides.reference || {
       name: 'graphql-js',
-      sha: 'abc123',
+      version: 'abc123',
       total: 3,
       errors: 0,
       corpusTotal: 3,
@@ -21,7 +21,7 @@ function makeRun(overrides = {}) {
     },
     conformants: overrides.conformants || {
       'graphql-java': {
-        sha: 'def456',
+        version: 'def456',
         tests: {
           'a/b/c': { matches: true },
           'd/e/f': { matches: true },
@@ -61,7 +61,7 @@ describe('ResultsStore', () => {
       assert.equal(summary[0].total, 3);
       assert.equal(summary[0].failed, 1);
       assert.equal(summary[0].passPct, 66.7);
-      assert.equal(summary[0].sha, 'def456');
+      assert.equal(summary[0].version, 'def456');
     });
   });
 
@@ -74,7 +74,7 @@ describe('ResultsStore', () => {
         timestamp: '2026-03-16T00:00:00Z',
         conformants: {
           'graphql-java': {
-            sha: 'def456',
+            version: 'def456',
             tests: {
               'a/b/c': { matches: true },
               'd/e/f': { matches: true },
@@ -108,7 +108,7 @@ describe('ResultsStore', () => {
       store.recordRun(makeRun({
         conformants: {
           'graphql-java': {
-            sha: 'x',
+            version: 'x',
             tests: { 'a/b/c': { matches: true } },
           },
         },
@@ -124,7 +124,7 @@ describe('ResultsStore', () => {
       store.recordRun(makeRun({
         conformants: {
           'graphql-java': {
-            sha: 'x',
+            version: 'x',
             tests: {
               'a/b': { matches: true, quirks: ['object-ordering'] },
               'c/d': { matches: true, quirks: [] },
@@ -145,7 +145,7 @@ describe('ResultsStore', () => {
       store.recordRun(makeRun({
         conformants: {
           'graphql-java': {
-            sha: 'x',
+            version: 'x',
             total: 2,
             passed: 2,
             quirksByTestKey: { 'a/b': ['object-ordering'] },
@@ -167,7 +167,7 @@ describe('ResultsStore', () => {
       store.recordRun(makeRun({
         reference: {
           name: 'graphql-js',
-          sha: 'abc',
+          version: 'abc',
           scoringModel: 'runnable-set-v1',
           total: 3,
           errors: 0,
@@ -188,11 +188,11 @@ describe('ResultsStore', () => {
       store.recordRun(makeRun({
         conformants: {
           'graphql-java': {
-            sha: 'a',
+            version: 'a',
             tests: { 'x/y/z': { matches: true } },
           },
           'graphql-go': {
-            sha: 'b',
+            version: 'b',
             tests: { 'x/y/z': { matches: false } },
           },
         },
@@ -219,7 +219,7 @@ describe('ResultsStore', () => {
       store.recordRun(makeRun({
         conformants: {
           'graphql-java': {
-            sha: 'def456',
+            version: 'def456',
             tests: {
               'g/h/i': { matches: false },
             },
@@ -252,7 +252,7 @@ describe('ResultsStore', () => {
       store.recordRun(makeRun({
         reference: {
           name: 'graphql-js',
-          sha: 'abc123',
+          version: 'abc123',
           total: 3,
           errors: 1,
           failures: [{ testKey: 'x/y/z', error: 'stack overflow' }],
@@ -269,7 +269,7 @@ describe('ResultsStore', () => {
       store.recordRun(makeRun({
         reference: {
           name: 'graphql-js',
-          sha: 'abc123',
+          version: 'abc123',
           total: 2,
           errors: 0,
           corpusTotal: 3,
@@ -288,7 +288,7 @@ describe('ResultsStore', () => {
       store.recordRun(makeRun({
         reference: {
           name: 'graphql-js',
-          sha: 'abc123',
+          version: 'abc123',
           total: 3,
           errors: 1,
           failures: [{ testKey: 'x/y/z', error: 'stack overflow' }],
@@ -306,7 +306,7 @@ describe('ResultsStore', () => {
       store.recordRun(makeRun({
         reference: {
           name: 'graphql-js',
-          sha: 'abc123',
+          version: 'abc123',
           total: 2,
           errors: 0,
           corpusTotal: 3,
@@ -338,7 +338,7 @@ describe('ResultsStore', () => {
         timestamp: '2026-03-17T22:42:11.609Z',
         reference: {
           name: 'graphql-js',
-          sha: 'abc123',
+          version: 'abc123',
           total: 3,
           errors: 1,
           failures: [{ testKey: 'x/y/z', error: 'legacy failure' }],
@@ -380,12 +380,12 @@ describe('ResultsStore', () => {
       store.recordRun(makeRun({
         id: 'run-1',
         timestamp: '2026-03-15T00:00:00Z',
-        reference: { name: 'graphql-js', sha: 'abc123', total: 4, errors: 1 },
+        reference: { name: 'graphql-js', version: 'abc123', total: 4, errors: 1 },
       }));
       store.recordRun(makeRun({
         id: 'run-2',
         timestamp: '2026-03-16T00:00:00Z',
-        reference: { name: 'graphql-js', sha: 'def456', total: 4, errors: 0 },
+        reference: { name: 'graphql-js', version: 'def456', total: 4, errors: 0 },
       }));
 
       const history = store.getReferenceHistory();
@@ -407,7 +407,7 @@ describe('ResultsStore', () => {
       store.recordRun(makeRun({
         reference: {
           name: 'graphql-js',
-          sha: 'abc123',
+          version: 'abc123',
           total: 2,
           errors: 0,
           corpusTotal: 3,
@@ -450,7 +450,7 @@ describe('FileData', () => {
     store.recordRun(makeRun({
       reference: {
         name: 'graphql-js',
-        sha: 'abc123',
+        version: 'abc123',
         total: 2,
         errors: 0,
         corpusTotal: 3,
@@ -467,7 +467,7 @@ describe('FileData', () => {
     store.recordRun(makeRun({
       conformants: {
         'graphql-java': {
-          sha: 'def456',
+          version: 'def456',
           tests: { 'a/b/c': { matches: true } },
         },
       },

@@ -28,10 +28,19 @@ function seedResults(overrides = {}) {
   store.recordRun({
     id: overrides.id || 'run-1',
     timestamp: overrides.timestamp || '2026-03-19T00:00:00.000Z',
-    reference: { name: 'graphql-js', sha: 'abc123', total: 2, errors: 0, corpusTotal: 2, excluded: 0 },
+    reference: {
+      name: 'graphql-js',
+      version: '1.2.3',
+      imageDigest: 'sha256:abc123',
+      total: 2,
+      errors: 0,
+      corpusTotal: 2,
+      excluded: 0,
+    },
     conformants: overrides.conformants || {
       'impl-a': {
-        sha: 'def456',
+        version: '4.5.6',
+        imageDigest: 'sha256:def456',
         tests: {
           'x/y/z': { matches: true },
           'a/b/c': { matches: false },
@@ -58,16 +67,118 @@ describe('site/build.js', () => {
     assert.equal(ref.passPct, 100);
     assert.equal(ref.excluded, 0);
     assert.equal(ref.corpusTotal, 2);
-    assert.equal(ref.sha, 'abc123');
+    assert.equal(ref.version, '1.2.3');
     assert.equal(ref.isReference, true);
+    assert.ok('versionUrl' in ref);
 
     const implA = summary.find((s) => s.impl === 'impl-a');
     assert.ok(implA, 'should include conformant impl');
     assert.equal(implA.total, 2);
     assert.equal(implA.failed, 1);
     assert.equal(implA.passPct, 50);
-    assert.equal(implA.sha, 'def456');
+    assert.equal(implA.version, '4.5.6');
     assert.ok(implA.repo !== undefined);
+    assert.ok('versionUrl' in implA);
+  });
+
+  it('resolves versionUrl from manifest template for a registered impl', () => {
+    const store = ResultsStore.fromDirectory(tmpResultsDir);
+    store.recordRun({
+      id: 'run-versionurl',
+      timestamp: '2026-03-19T00:00:00.000Z',
+      reference: {
+        name: 'graphql-js-17',
+        version: '17.0.0-alpha.14',
+        imageDigest: 'sha256:ref',
+        total: 1,
+        errors: 0,
+        corpusTotal: 1,
+        excluded: 0,
+      },
+      conformants: {
+        'graphql-java': {
+          version: '25.0',
+          imageDigest: 'sha256:java',
+          tests: { 'x/y/z': { matches: true } },
+        },
+      },
+    });
+    execFileSync('node', [buildScript, tmpResultsDir], {
+      env: { ...process.env, SITE_DATA_DIR: tmpSiteDataDir },
+    });
+    const summary = JSON.parse(fs.readFileSync(path.join(tmpSiteDataDir, 'summary.json'), 'utf8'));
+    const ref = summary.find((s) => s.impl === 'graphql-js-17');
+    assert.equal(
+      ref.versionUrl,
+      'https://github.com/graphql/graphql-js/releases/tag/v17.0.0-alpha.14',
+    );
+    const java = summary.find((s) => s.impl === 'graphql-java');
+    assert.equal(
+      java.versionUrl,
+      'https://github.com/graphql-java/graphql-java/releases/tag/v25.0',
+    );
+  });
+
+  it('url-encodes version values substituted into versionUrl templates', () => {
+    const store = ResultsStore.fromDirectory(tmpResultsDir);
+    store.recordRun({
+      id: 'run-versionurl-encode',
+      timestamp: '2026-03-19T00:00:00.000Z',
+      reference: {
+        name: 'graphql-js-17',
+        version: '17.0.0+build/1',
+        imageDigest: 'sha256:ref',
+        total: 1,
+        errors: 0,
+        corpusTotal: 1,
+        excluded: 0,
+      },
+      conformants: {},
+    });
+    execFileSync('node', [buildScript, tmpResultsDir], {
+      env: { ...process.env, SITE_DATA_DIR: tmpSiteDataDir },
+    });
+    const summary = JSON.parse(fs.readFileSync(path.join(tmpSiteDataDir, 'summary.json'), 'utf8'));
+    const ref = summary.find((s) => s.impl === 'graphql-js-17');
+    // Both `+` and `/` must be URL-encoded so the tag URL parses unambiguously.
+    assert.equal(
+      ref.versionUrl,
+      'https://github.com/graphql/graphql-js/releases/tag/v17.0.0%2Bbuild%2F1',
+    );
+  });
+
+  it('renders summary with null version as null (shown as "unknown" on dashboard)', () => {
+    const store = ResultsStore.fromDirectory(tmpResultsDir);
+    store.recordRun({
+      id: 'run-missing-version',
+      timestamp: '2026-03-19T00:00:00.000Z',
+      reference: {
+        name: 'graphql-js',
+        version: null,
+        imageDigest: 'sha256:abc123',
+        total: 1,
+        errors: 0,
+        corpusTotal: 1,
+        excluded: 0,
+      },
+      conformants: {
+        'impl-a': {
+          version: null,
+          imageDigest: 'sha256:def456',
+          tests: { 'x/y/z': { matches: true } },
+        },
+      },
+    });
+    execFileSync('node', [buildScript, tmpResultsDir], {
+      env: { ...process.env, SITE_DATA_DIR: tmpSiteDataDir },
+    });
+    const summary = JSON.parse(fs.readFileSync(path.join(tmpSiteDataDir, 'summary.json'), 'utf8'));
+    const ref = summary.find((s) => s.impl === 'graphql-js');
+    assert.equal(ref.version, null);
+    assert.equal(ref.versionUrl, null);
+    const implA = summary.find((s) => s.impl === 'impl-a');
+    assert.equal(implA.version, null);
+    assert.equal(implA.versionUrl, null);
   });
 
   it('produces per-impl history.json and failures.json', () => {
@@ -116,7 +227,8 @@ describe('site/build.js', () => {
       timestamp: '2026-03-19T00:00:00.000Z',
       reference: {
         name: 'graphql-js',
-        sha: 'abc123',
+        version: '1.2.3',
+        imageDigest: 'sha256:abc123',
         total: 3,
         errors: 0,
         corpusTotal: 5,
@@ -128,7 +240,8 @@ describe('site/build.js', () => {
       },
       conformants: {
         'impl-a': {
-          sha: 'def456',
+          version: '4.5.6',
+          imageDigest: 'sha256:def456',
           tests: {
             'x/y/z': { matches: true },
           },

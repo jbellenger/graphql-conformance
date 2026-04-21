@@ -44,6 +44,7 @@ class DockerDriver {
     this.hostPort = null;
     this.imageTag = null;
     this.imageDigest = null;
+    this.libraryVersion = null;
   }
 
   async ensureImage({ onProgress } = {}) {
@@ -71,7 +72,8 @@ class DockerDriver {
 
     const info = await docker.inspectImage(this.imageTag);
     this.imageDigest = info && info.Id ? info.Id : null;
-    return { tag: this.imageTag, digest: this.imageDigest };
+    this.libraryVersion = await docker.readImageFile(this.imageTag, '/impl-version').catch(() => null);
+    return { tag: this.imageTag, digest: this.imageDigest, version: this.libraryVersion };
   }
 
   async start() {

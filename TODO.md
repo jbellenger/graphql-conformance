@@ -24,6 +24,7 @@
 - [x] **graphql-go** (`main.go:259, 274`): Unchecked `[0]` / `[len-1]` indexing on union/interface members — panics on empty sets. Add `len(...) > 0` guards.
 - [x] **gqlgen**: No `@defer` / `@stream` handling; directives silently treated as regular fields. Detect in selection-set resolver, collect deferred/streamed fields, emit final response.
 - [x] **graphql-dotnet** (`Conformer.csproj:15`): `PackageReference Version="*"` unversioned wildcard — pin for reproducibility (e.g., `Version="8.3.*"`).
+- [x] **hot-chocolate** (`Conformer.csproj:15`): `PackageReference Version="*"` unversioned wildcard — pin for reproducibility and to make dependency updates manageable by Renovate.
 - [x] **graphql-dotnet** (`Program.cs:26`): No try/catch around `Parser.Parse` / `ExecuteAsync`. Wrap, exit 1 on failure.
 - [ ] **absinthe** (`lib/conformer.ex:189-196`): `prime_identifier_atoms/1` violates the project's own `ERRATA.md` policy ("do not 'prime' the VM with these atoms as a silent workaround"). Either remove or document the deliberate policy override.
 - [x] **absinthe** (`index.exs:19`): `{:ok, result} =` pattern-match crashes on `{:error, ...}`. Handle both branches.

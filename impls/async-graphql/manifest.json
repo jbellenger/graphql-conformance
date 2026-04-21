@@ -3,6 +3,7 @@
   "name": "async-graphql",
   "displayName": "async-graphql",
   "homepage": "https://github.com/async-graphql/async-graphql",
+  "versionUrlTemplate": "https://crates.io/crates/async-graphql/{version}",
   "image": {
     "build": {
       "dockerfile": "./Dockerfile",

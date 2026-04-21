@@ -67,7 +67,8 @@ async function createDockerSession(driver, runId, { buildFromSource, imageOverri
   await dockerDriver.ensureImage({ onProgress: () => { /* silence */ } });
   await dockerDriver.start();
   return {
-    version: dockerDriver.imageDigest || 'unknown',
+    version: dockerDriver.libraryVersion,
+    imageDigest: dockerDriver.imageDigest || 'unknown',
     async execute(test) { return dockerDriver.execute(test); },
     async stop() { await dockerDriver.stop(); },
   };
@@ -112,16 +113,19 @@ async function runConformance({ argv = [], createSession = createDockerSession, 
 
   process.stderr.write(`Starting session for reference (${reference.name})...\n`);
   const refSession = await createSession(reference, runId, sessionOptions);
-  const refSha = refSession.version;
+  const refVersion = refSession.version;
+  const refImageDigest = refSession.imageDigest;
 
   const conformantSessions = {};
   const conformantVersions = {};
+  const conformantImageDigests = {};
   try {
     for (const conformant of conformants) {
       process.stderr.write(`Starting session for conformant (${conformant.name})...\n`);
       const session = await createSession(conformant, runId, sessionOptions);
       conformantSessions[conformant.name] = session;
       conformantVersions[conformant.name] = session.version;
+      conformantImageDigests[conformant.name] = session.imageDigest;
     }
 
     const conformantTests = {};
@@ -143,17 +147,18 @@ async function runConformance({ argv = [], createSession = createDockerSession, 
     }
 
     const conformantsToRun = conformants.filter((conformant) => {
-      const currentSha = conformantVersions[conformant.name];
+      const currentDigest = conformantImageDigests[conformant.name];
       if (
         !cli.force &&
         priorRun &&
         priorRun.reference.hasExclusionMetadata &&
-        priorRun.reference.sha === refSha &&
+        priorRun.reference.imageDigest === refImageDigest &&
         corpusUnchanged &&
         priorRun.conformants[conformant.name] &&
-        priorRun.conformants[conformant.name].sha === currentSha
+        priorRun.conformants[conformant.name].imageDigest === currentDigest
       ) {
-        process.stderr.write(`Skipping conformant (${conformant.name}): unchanged (sha ${currentSha.slice(0, 7)})\n`);
+        const digestForLog = currentDigest || 'unknown';
+        process.stderr.write(`Skipping conformant (${conformant.name}): unchanged (image ${digestForLog.slice(0, 14)})\n`);
         skippedConformants[conformant.name] = priorRun.conformants[conformant.name].failuresByTestKey;
         return false;
       }
@@ -206,7 +211,10 @@ async function runConformance({ argv = [], createSession = createDockerSession, 
 
     const conformantResults = {};
     for (const conformant of conformants) {
-      const entry = { sha: conformantVersions[conformant.name] };
+      const entry = {
+        version: conformantVersions[conformant.name],
+        imageDigest: conformantImageDigests[conformant.name],
+      };
       if (skippedConformants[conformant.name] && priorRun) {
         const prior = priorRun.conformants[conformant.name];
         if (prior) {
@@ -238,7 +246,8 @@ async function runConformance({ argv = [], createSession = createDockerSession, 
       timestamp,
       reference: {
         name: reference.name,
-        sha: refSha,
+        version: refVersion,
+        imageDigest: refImageDigest,
         scoringModel: 'runnable-set-v1',
         corpusTotal: tests.length,
         corpusFingerprint,

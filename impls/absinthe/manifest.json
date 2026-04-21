@@ -3,6 +3,7 @@
   "name": "absinthe",
   "displayName": "absinthe",
   "homepage": "https://github.com/absinthe-graphql/absinthe",
+  "versionUrlTemplate": "https://github.com/absinthe-graphql/absinthe/commit/{version}",
   "image": {
     "build": {
       "dockerfile": "./Dockerfile",

@@ -4,11 +4,14 @@ WORKDIR /src
 COPY Conformer.csproj ./
 RUN dotnet restore
 COPY Program.cs ./
-RUN dotnet publish -c Release -o /app /p:UseAppHost=false
+RUN dotnet publish -c Release -o /app /p:UseAppHost=false \
+ && dotnet list package \
+      | awk '/> HotChocolate\.Execution/ {print $NF}' > /impl-version
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=builder /app ./
+COPY --from=builder /impl-version /impl-version
 
 EXPOSE 8080
 ENTRYPOINT ["dotnet", "Conformer.dll"]
