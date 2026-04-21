@@ -3,89 +3,105 @@
   "timestamp": "2026-04-21T02:27:51.907Z",
   "reference": {
     "name": "graphql-js-17",
-    "sha": "sha256:45b9369d8ae3fce79e1170dc170c2c20fe3ac32677928af204b23aebb3fe4636",
     "scoringModel": "runnable-set-v1",
     "corpusTotal": 553,
     "corpusFingerprint": "e62fc5705887e64d6475abc34e62f914875ccf1a44dd3dd56fcd325f12c7121d",
     "total": 553,
     "errors": 0,
-    "excluded": 0
+    "excluded": 0,
+    "imageDigest": "sha256:45b9369d8ae3fce79e1170dc170c2c20fe3ac32677928af204b23aebb3fe4636",
+    "version": null
   },
   "conformants": {
     "graphql-js-16": {
-      "sha": "sha256:4fe647002bcc9e6f0a32de97e3bbf97d341a14de02b866f2ebc8447d49822299",
       "total": 553,
-      "passed": 471
+      "passed": 471,
+      "imageDigest": "sha256:4fe647002bcc9e6f0a32de97e3bbf97d341a14de02b866f2ebc8447d49822299",
+      "version": null
     },
     "grafast": {
-      "sha": "sha256:91056792d139d47688b4fd6aa091024ecbd699678973ff9c4ac4491b16cacb9f",
       "total": 553,
-      "passed": 471
+      "passed": 471,
+      "imageDigest": "sha256:91056792d139d47688b4fd6aa091024ecbd699678973ff9c4ac4491b16cacb9f",
+      "version": null
     },
     "graphql-java": {
-      "sha": "sha256:455a410e821e9e9410f69b1eccc73c26c21d6a37ac02e4d5db37126f67009109",
       "total": 553,
-      "passed": 553
+      "passed": 553,
+      "imageDigest": "sha256:455a410e821e9e9410f69b1eccc73c26c21d6a37ac02e4d5db37126f67009109",
+      "version": null
     },
     "viaduct": {
-      "sha": "sha256:0b42a7f936d4dd309ef6277e439a11917ad3c35b1ebe7300dd0df78fd8a57fa7",
       "total": 553,
-      "passed": 553
+      "passed": 553,
+      "imageDigest": "sha256:0b42a7f936d4dd309ef6277e439a11917ad3c35b1ebe7300dd0df78fd8a57fa7",
+      "version": null
     },
     "graphql-go": {
-      "sha": "sha256:e489c842c930b20b8b8053005fdc957308bb9705622157ce4adf61c9236f2917",
       "total": 553,
-      "passed": 481
+      "passed": 481,
+      "imageDigest": "sha256:e489c842c930b20b8b8053005fdc957308bb9705622157ce4adf61c9236f2917",
+      "version": null
     },
     "graphql-php": {
-      "sha": "sha256:79aeed9bae726789cb8613a32cab9934e383155f77fb1cc36e34a0a898420327",
       "total": 553,
-      "passed": 553
+      "passed": 553,
+      "imageDigest": "sha256:79aeed9bae726789cb8613a32cab9934e383155f77fb1cc36e34a0a898420327",
+      "version": null
     },
     "graphql-core": {
-      "sha": "sha256:44521c9e38b23e8baaa2d413d40fbae745422e076b13d3d2a098373038e99848",
       "total": 553,
-      "passed": 471
+      "passed": 471,
+      "imageDigest": "sha256:44521c9e38b23e8baaa2d413d40fbae745422e076b13d3d2a098373038e99848",
+      "version": null
     },
     "graphql-ruby": {
-      "sha": "sha256:b6f53cfc3cb04d66087ee691a555c9aff9824e16c20f06d9baeb5b3dc672c34e",
       "total": 553,
-      "passed": 360
+      "passed": 360,
+      "imageDigest": "sha256:b6f53cfc3cb04d66087ee691a555c9aff9824e16c20f06d9baeb5b3dc672c34e",
+      "version": null
     },
     "hot-chocolate": {
-      "sha": "sha256:318b202736fb1a21211386cbc7098e7f48d0899007f908446cd4a6d6e6233d6d",
       "total": 553,
-      "passed": 488
+      "passed": 488,
+      "imageDigest": "sha256:318b202736fb1a21211386cbc7098e7f48d0899007f908446cd4a6d6e6233d6d",
+      "version": null
     },
     "graphql-dotnet": {
-      "sha": "sha256:4ab4dddb0319dc857320858991859c3c2535a1d76d7a7f4bd33a3e2c61dc606f",
       "total": 553,
-      "passed": 436
+      "passed": 436,
+      "imageDigest": "sha256:4ab4dddb0319dc857320858991859c3c2535a1d76d7a7f4bd33a3e2c61dc606f",
+      "version": null
     },
     "async-graphql": {
-      "sha": "sha256:894b405dadbabe9358a89c1caa6d528d93f03f5dcf8c3c89364261ab4e4b7056",
       "total": 553,
-      "passed": 186
+      "passed": 186,
+      "imageDigest": "sha256:894b405dadbabe9358a89c1caa6d528d93f03f5dcf8c3c89364261ab4e4b7056",
+      "version": null
     },
     "absinthe": {
-      "sha": "sha256:8654967498711a8e692a2bc709703ab2fa2e36c01a0b299eac82d03621fe5a03",
       "total": 553,
-      "passed": 2
+      "passed": 2,
+      "imageDigest": "sha256:8654967498711a8e692a2bc709703ab2fa2e36c01a0b299eac82d03621fe5a03",
+      "version": null
     },
     "gqlgen": {
-      "sha": "sha256:107251dd0faba2e3f1a54fb0af2f3c81fa1360ae1a72ba7ca701c7960f01160d",
       "total": 553,
-      "passed": 551
+      "passed": 551,
+      "imageDigest": "sha256:107251dd0faba2e3f1a54fb0af2f3c81fa1360ae1a72ba7ca701c7960f01160d",
+      "version": null
     },
     "juniper": {
-      "sha": "sha256:d387d64d752513f5c6635497c9c3c7ba519e6f494f3338213b8712284d98abcc",
       "total": 553,
-      "passed": 509
+      "passed": 509,
+      "imageDigest": "sha256:d387d64d752513f5c6635497c9c3c7ba519e6f494f3338213b8712284d98abcc",
+      "version": null
     },
     "lacinia": {
-      "sha": "sha256:a98976d2384f2267e9e40308f72eaf87120a26f6c8e07aeb58deadb1484648fe",
       "total": 553,
-      "passed": 20
+      "passed": 20,
+      "imageDigest": "sha256:a98976d2384f2267e9e40308f72eaf87120a26f6c8e07aeb58deadb1484648fe",
+      "version": null
     }
   }
 }
