@@ -1,0 +1,1705 @@
+[
+  {
+    "testKey": "034907e7/5f421a36/44136fa3",
+    "expected": {
+      "data": {
+        "lPfrwoN": "Object_jGekrLP4U"
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_jGekrLP4U",
+        "lPfrwoN": "Object_jGekrLP4U"
+      }
+    }
+  },
+  {
+    "testKey": "08c504e7/01330b7e/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Q",
+        "xsTsIOm": "Gx"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "Argument 'if' of type 'Boolean!' is required for directive 'defer' but not provided.",
+          "locations": [
+            {
+              "line": 21,
+              "column": 24
+            }
+          ],
+          "extensions": {
+            "code": "PROVIDED_NON_NULL_ARGUMENTS",
+            "codes": [
+              "PROVIDED_NON_NULL_ARGUMENTS"
+            ],
+            "number": "5.4.2.1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "0be3846f/0f576f46/44136fa3",
+    "expected": {
+      "data": {
+        "zXM2we": "G4F"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_xsLEb'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_xsLEb\\u0027.\"}]}"
+  },
+  {
+    "testKey": "0be3846f/223670b1/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_ApwfNHZGC",
+        "u56DFHI": "Object_ApwfNHZGC",
+        "i2nfXIp": "Object_ApwfNHZGC",
+        "FN": "Object_ApwfNHZGC"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_xsLEb'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_xsLEb\\u0027.\"}]}"
+  },
+  {
+    "testKey": "0be3846f/3acc2aab/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_ApwfNHZGC",
+        "q1Kf4Syb": "Object_ApwfNHZGC"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_xsLEb'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_xsLEb\\u0027.\"}]}"
+  },
+  {
+    "testKey": "0be3846f/47d203fa/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_ApwfNHZGC"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_xsLEb'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_xsLEb\\u0027.\"}]}"
+  },
+  {
+    "testKey": "0be3846f/5970534b/44136fa3",
+    "expected": {
+      "data": {
+        "xIsC0SG": "Object_ApwfNHZGC"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_xsLEb'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_xsLEb\\u0027.\"}]}"
+  },
+  {
+    "testKey": "0be3846f/8d6b28ac/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_ApwfNHZGC"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_xsLEb'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_xsLEb\\u0027.\"}]}"
+  },
+  {
+    "testKey": "0be3846f/9af7c9ba/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_ApwfNHZGC",
+        "V810xW": "Object_ApwfNHZGC"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_xsLEb'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_xsLEb\\u0027.\"}]}"
+  },
+  {
+    "testKey": "0be3846f/ab33497a/44136fa3",
+    "expected": {
+      "data": {
+        "Y70": "Object_ApwfNHZGC",
+        "__typename": "Object_ApwfNHZGC"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_xsLEb'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_xsLEb\\u0027.\"}]}"
+  },
+  {
+    "testKey": "0be3846f/bce4c196/44136fa3",
+    "expected": {
+      "data": {
+        "o": "Object_ApwfNHZGC",
+        "__typename": "Object_ApwfNHZGC"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_xsLEb'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_xsLEb\\u0027.\"}]}"
+  },
+  {
+    "testKey": "0be3846f/f61a751a/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_ApwfNHZGC"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_xsLEb'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_xsLEb\\u0027.\"}]}"
+  },
+  {
+    "testKey": "0eed9e38/d7405a9f/0841d763",
+    "expected": {
+      "data": {}
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_IY6OS5"
+      }
+    }
+  },
+  {
+    "testKey": "0eed9e38/e7f853d8/0bab813f",
+    "expected": {
+      "data": {
+        "__typename": "Object_IY6OS5"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "Argument 'if' of type 'Boolean!' is required for directive 'defer' but not provided.",
+          "locations": [
+            {
+              "line": 11,
+              "column": 27
+            }
+          ],
+          "extensions": {
+            "code": "PROVIDED_NON_NULL_ARGUMENTS",
+            "codes": [
+              "PROVIDED_NON_NULL_ARGUMENTS"
+            ],
+            "number": "5.4.2.1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "0eed9e38/e7f853d8/41ff2dbb",
+    "expected": {
+      "data": {
+        "__typename": "Object_IY6OS5"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "Argument 'if' of type 'Boolean!' is required for directive 'defer' but not provided.",
+          "locations": [
+            {
+              "line": 11,
+              "column": 27
+            }
+          ],
+          "extensions": {
+            "code": "PROVIDED_NON_NULL_ARGUMENTS",
+            "codes": [
+              "PROVIDED_NON_NULL_ARGUMENTS"
+            ],
+            "number": "5.4.2.1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "0eed9e38/e7f853d8/d6398d96",
+    "expected": {
+      "data": {
+        "__typename": "Object_IY6OS5"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "Argument 'if' of type 'Boolean!' is required for directive 'defer' but not provided.",
+          "locations": [
+            {
+              "line": 11,
+              "column": 27
+            }
+          ],
+          "extensions": {
+            "code": "PROVIDED_NON_NULL_ARGUMENTS",
+            "codes": [
+              "PROVIDED_NON_NULL_ARGUMENTS"
+            ],
+            "number": "5.4.2.1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "16b4f4d2/a035a5a3/44136fa3",
+    "expected": {
+      "data": {
+        "yxjlAs": "str",
+        "__typename": "Object_d90"
+      }
+    },
+    "actual": {
+      "data": {
+        "yxjlAs": "str",
+        "__typename": "Object_d90",
+        "Wu4iEMrd5": "str"
+      }
+    }
+  },
+  {
+    "testKey": "3369ca5b/ca3604cb/3bf58b42",
+    "expected": {
+      "data": {
+        "pcX_": "str",
+        "__typename": "Object_zoR",
+        "oHbWqY8gt": "str"
+      }
+    },
+    "actual": {
+      "data": {
+        "O5": "Object_zoR",
+        "pcX_": "str",
+        "__typename": "Object_zoR",
+        "oHbWqY8gt": "str"
+      }
+    }
+  },
+  {
+    "testKey": "3369ca5b/ca3604cb/5227c73d",
+    "expected": {
+      "data": {
+        "pcX_": "str",
+        "__typename": "Object_zoR",
+        "oHbWqY8gt": "str"
+      }
+    },
+    "actual": {
+      "data": {
+        "O5": "Object_zoR",
+        "pcX_": "str",
+        "__typename": "Object_zoR",
+        "oHbWqY8gt": "str"
+      }
+    }
+  },
+  {
+    "testKey": "38784eca/087e658f/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_PWvnL0k"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_tIy'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_tIy\\u0027.\"}]}"
+  },
+  {
+    "testKey": "38784eca/132078e8/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_PWvnL0k"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_tIy'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_tIy\\u0027.\"}]}"
+  },
+  {
+    "testKey": "38784eca/405cc542/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_PWvnL0k",
+        "vuwyllJoM_": "Object_PWvnL0k"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_tIy'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_tIy\\u0027.\"}]}"
+  },
+  {
+    "testKey": "38784eca/77ebf405/44136fa3",
+    "expected": {
+      "data": {
+        "if2w": {
+          "__typename": "Interface_PXEOSs0k3_STUB"
+        },
+        "__typename": "Object_PWvnL0k"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_tIy'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_tIy\\u0027.\"}]}"
+  },
+  {
+    "testKey": "38784eca/812c3555/44136fa3",
+    "expected": {
+      "data": {
+        "noFTUs_b": "Object_PWvnL0k",
+        "__typename": "Object_PWvnL0k"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_tIy'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_tIy\\u0027.\"}]}"
+  },
+  {
+    "testKey": "38784eca/8d8f7365/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_PWvnL0k"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_tIy'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_tIy\\u0027.\"}]}"
+  },
+  {
+    "testKey": "38784eca/b981ed0b/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_PWvnL0k"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_tIy'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_tIy\\u0027.\"}]}"
+  },
+  {
+    "testKey": "38784eca/dd23c602/44136fa3",
+    "expected": {
+      "data": {
+        "QVOSOo9uL": {
+          "rI": {
+            "Ox": 2
+          },
+          "__typename": "Interface_PXEOSs0k3_STUB"
+        },
+        "DS9lp7hiC": {
+          "__typename": "Object_PWvnL0k"
+        },
+        "__typename": "Object_PWvnL0k"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_tIy'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_tIy\\u0027.\"}]}"
+  },
+  {
+    "testKey": "38784eca/fdbe1e18/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_PWvnL0k"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_tIy'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_tIy\\u0027.\"}]}"
+  },
+  {
+    "testKey": "47834276/367d7777/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Pi",
+        "G": "Object_Pi",
+        "XnTX": "Object_Pi",
+        "d": "_Wk4kBfee7"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_E4Hrbl4Vr'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_E4Hrbl4Vr\\u0027.\"}]}"
+  },
+  {
+    "testKey": "47834276/4d43e7b2/44136fa3",
+    "expected": {
+      "data": {
+        "sa": "_Wk4kBfee7"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_E4Hrbl4Vr'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_E4Hrbl4Vr\\u0027.\"}]}"
+  },
+  {
+    "testKey": "47834276/636af363/44136fa3",
+    "expected": {
+      "data": {
+        "EBUG2": "Object_Pi"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_E4Hrbl4Vr'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_E4Hrbl4Vr\\u0027.\"}]}"
+  },
+  {
+    "testKey": "47834276/9739cf4d/44136fa3",
+    "expected": {
+      "data": {}
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_E4Hrbl4Vr'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_E4Hrbl4Vr\\u0027.\"}]}"
+  },
+  {
+    "testKey": "47834276/98bd63a1/44136fa3",
+    "expected": {
+      "data": {
+        "sq33U9K5HW": "_Wk4kBfee7",
+        "ONLlS": "Object_Pi"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_E4Hrbl4Vr'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_E4Hrbl4Vr\\u0027.\"}]}"
+  },
+  {
+    "testKey": "47834276/ab1ae1ff/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Pi",
+        "LJ6JZgS": "_Wk4kBfee7",
+        "sa": "_Wk4kBfee7"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_E4Hrbl4Vr'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_E4Hrbl4Vr\\u0027.\"}]}"
+  },
+  {
+    "testKey": "47834276/c0d7eefd/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Pi"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_E4Hrbl4Vr'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_E4Hrbl4Vr\\u0027.\"}]}"
+  },
+  {
+    "testKey": "47834276/cb70db05/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Pi"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_E4Hrbl4Vr'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_E4Hrbl4Vr\\u0027.\"}]}"
+  },
+  {
+    "testKey": "47834276/ec42e270/44136fa3",
+    "expected": {
+      "data": {
+        "sa": "_Wk4kBfee7",
+        "jin": "Object_Pi",
+        "__typename": "Object_Pi",
+        "iBiwqmExa": "Object_Pi"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_E4Hrbl4Vr'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_E4Hrbl4Vr\\u0027.\"}]}"
+  },
+  {
+    "testKey": "47834276/fc498192/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Pi"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_E4Hrbl4Vr'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_E4Hrbl4Vr\\u0027.\"}]}"
+  },
+  {
+    "testKey": "54bcfd5c/03a3179e/44136fa3",
+    "expected": {
+      "data": {}
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_DJ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_DJ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "54bcfd5c/03a8f8ea/44136fa3",
+    "expected": {
+      "data": {
+        "jcsu": {
+          "__typename": "Object_GFi_G"
+        },
+        "wtnnoDTYIA": {
+          "BW7P42WUQU": "Interface_L3v_STUB"
+        }
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_DJ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_DJ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "54bcfd5c/077683b3/44136fa3",
+    "expected": {
+      "data": {
+        "H9wVDDz": {
+          "M_xJ5Usxb": "Object_GFi_G"
+        },
+        "uEla": "Object_GFi_G",
+        "e": {}
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_DJ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_DJ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "54bcfd5c/3ce6de39/b258eaa8",
+    "expected": {
+      "data": {
+        "jcsu": {
+          "__typename": "Object_GFi_G"
+        },
+        "__typename": "Object_GFi_G",
+        "joe": "Object_GFi_G"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_DJ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_DJ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "54bcfd5c/882c5e34/44136fa3",
+    "expected": {
+      "data": {
+        "Mm": {
+          "Y6pzaJ": "Object_HeUWNjSJ2W",
+          "__typename": "Object_HeUWNjSJ2W"
+        }
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_DJ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_DJ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "54bcfd5c/8caf1017/1409ee23",
+    "expected": {
+      "data": {
+        "__typename": "Object_GFi_G",
+        "jUgVWdTc": {
+          "__typename": "Object_HeUWNjSJ2W",
+          "vNkz": "Object_HeUWNjSJ2W"
+        }
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_DJ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_DJ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "54bcfd5c/8caf1017/740657c9",
+    "expected": {
+      "data": {
+        "__typename": "Object_GFi_G",
+        "jUgVWdTc": {
+          "__typename": "Object_HeUWNjSJ2W",
+          "vNkz": "Object_HeUWNjSJ2W"
+        }
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_DJ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_DJ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "54bcfd5c/996d1668/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_GFi_G"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_DJ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_DJ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "54bcfd5c/a9019d19/44136fa3",
+    "expected": {
+      "data": {
+        "jUgVWdTc": {
+          "qcKYLxL2T": "Object_HeUWNjSJ2W",
+          "__typename": "Object_HeUWNjSJ2W",
+          "oCcQcj": 2,
+          "tRQJdttn8": {
+            "__typename": "Interface_L3v_STUB"
+          }
+        },
+        "jcsu": {
+          "__typename": "Object_GFi_G",
+          "rJCT57O": "Object_GFi_G"
+        },
+        "xExnNk6P4V": {
+          "ugjh": "str"
+        },
+        "__typename": "Object_GFi_G"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_DJ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_DJ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "54bcfd5c/aec2c140/44136fa3",
+    "expected": {
+      "data": {
+        "feSaXX7gXn": "Object_GFi_G"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_DJ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_DJ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "54bcfd5c/e08400d3/67afcd7a",
+    "expected": {
+      "data": {
+        "uF6C": {
+          "__typename": "Object_GFi_G"
+        },
+        "T9TPagX": "Object_GFi_G"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_DJ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_DJ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "54bcfd5c/e08400d3/6ea1c17d",
+    "expected": {
+      "data": {
+        "HYjMEhj4Eh": "Object_GFi_G",
+        "uF6C": {
+          "__typename": "Object_GFi_G"
+        },
+        "T9TPagX": "Object_GFi_G"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_DJ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_DJ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "587ef7ad/3f6a8118/44136fa3",
+    "expected": {
+      "data": {
+        "lqhE": {
+          "cJ": "MDQgR0k71"
+        },
+        "gvbrfN": {
+          "__typename": "Object_l_aaqqg0"
+        }
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "Argument 'if' of type 'Boolean!' is required for directive 'defer' but not provided.",
+          "locations": [
+            {
+              "line": 2,
+              "column": 25
+            }
+          ],
+          "extensions": {
+            "code": "PROVIDED_NON_NULL_ARGUMENTS",
+            "codes": [
+              "PROVIDED_NON_NULL_ARGUMENTS"
+            ],
+            "number": "5.4.2.1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "64d808be/206c7fa3/44136fa3",
+    "expected": {
+      "data": {
+        "sJyo0XqzFb": {}
+      }
+    },
+    "actual": {
+      "data": {
+        "H2BArBKgD": "Object_qYPyO",
+        "sJyo0XqzFb": {
+          "H2BArBKgD": "Object_G8n"
+        }
+      }
+    }
+  },
+  {
+    "testKey": "64d808be/f6ff1578/44136fa3",
+    "expected": {
+      "data": {
+        "g318GKOI": {
+          "tn": {
+            "__typename": "Object_G8n"
+          },
+          "ujQuu": {
+            "vhj": "Object_qYPyO"
+          }
+        },
+        "hvzm_i": 2,
+        "sJyo0XqzFb": {
+          "hnxEo": true
+        }
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_qYPyO",
+        "g318GKOI": {
+          "tn": {
+            "__typename": "Object_G8n"
+          },
+          "ujQuu": {
+            "vhj": "Object_qYPyO"
+          }
+        },
+        "hvzm_i": 2,
+        "sJyo0XqzFb": {
+          "hnxEo": true
+        }
+      }
+    }
+  },
+  {
+    "testKey": "67e8ec5a/122873ab/44136fa3",
+    "expected": {
+      "data": {
+        "q": "str",
+        "bhU2eyihMO": 3.14
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_eFYfhGZ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_eFYfhGZ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "67e8ec5a/30f16ee5/44136fa3",
+    "expected": {
+      "data": {
+        "bzsFuPr": "Object_xDJ5nTpR",
+        "rvPieIs": "Object_xDJ5nTpR",
+        "__typename": "Object_xDJ5nTpR",
+        "vR_J": 3.14
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_eFYfhGZ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_eFYfhGZ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "67e8ec5a/4e453e17/4b5cf82f",
+    "expected": {
+      "data": {
+        "bhU2eyihMO": 3.14
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_eFYfhGZ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_eFYfhGZ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "67e8ec5a/4e453e17/51893802",
+    "expected": {
+      "data": {
+        "__typename": "Object_xDJ5nTpR",
+        "bhU2eyihMO": 3.14
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_eFYfhGZ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_eFYfhGZ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "67e8ec5a/7aaa5c44/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_xDJ5nTpR",
+        "Ufs8FPs": "Object_xDJ5nTpR",
+        "q": "str"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_eFYfhGZ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_eFYfhGZ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "67e8ec5a/8d8f7365/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_xDJ5nTpR"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_eFYfhGZ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_eFYfhGZ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "67e8ec5a/a1eb410b/44136fa3",
+    "expected": {
+      "data": {
+        "bhU2eyihMO": 3.14
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_eFYfhGZ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_eFYfhGZ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "67e8ec5a/b064c0d4/44136fa3",
+    "expected": {
+      "data": {
+        "vR_J": 3.14
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_eFYfhGZ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_eFYfhGZ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "67e8ec5a/ce99c2d6/44136fa3",
+    "expected": {
+      "data": {
+        "UaiIZzs": "Object_xDJ5nTpR",
+        "__typename": "Object_xDJ5nTpR",
+        "foG1r": "Object_xDJ5nTpR",
+        "q": 3.14,
+        "Li8NCCLvd": "Object_xDJ5nTpR",
+        "U6w4KQ5": 3.14
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_eFYfhGZ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_eFYfhGZ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "67e8ec5a/f4c4b055/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_xDJ5nTpR",
+        "q": "str",
+        "bhU2eyihMO": 3.14
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_eFYfhGZ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_eFYfhGZ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "67e8ec5a/fd237eb7/44136fa3",
+    "expected": {
+      "data": {
+        "bhU2eyihMO": 3.14,
+        "__typename": "Object_xDJ5nTpR",
+        "xyXswFaPk": "Object_xDJ5nTpR",
+        "S": 3.14
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_eFYfhGZ'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_eFYfhGZ\\u0027.\"}]}"
+  },
+  {
+    "testKey": "7b69c437/a4e100a4/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_uyYc",
+        "wYMIx6iZ": {
+          "kU23": true
+        }
+      }
+    },
+    "actual": {
+      "data": {
+        "dAG": "Object_uyYc",
+        "__typename": "Object_uyYc",
+        "wYMIx6iZ": {
+          "kU23": true
+        }
+      }
+    }
+  },
+  {
+    "testKey": "86f51892/32183bf6/57b9cd6b",
+    "expected": {
+      "data": {
+        "__typename": "Object_JqX"
+      }
+    },
+    "actual": {
+      "data": {
+        "rnpPvC1F": {
+          "v": {
+            "__typename": "Object_P6Gx_"
+          },
+          "j": {
+            "__typename": "Object_JqX"
+          },
+          "__typename": "Object_kX"
+        },
+        "__typename": "Object_JqX"
+      }
+    }
+  },
+  {
+    "testKey": "86f51892/32183bf6/83702d1c",
+    "expected": {
+      "data": {
+        "__typename": "Object_JqX"
+      }
+    },
+    "actual": {
+      "data": {
+        "rnpPvC1F": {
+          "v": {
+            "__typename": "Object_P6Gx_"
+          },
+          "j": {
+            "__typename": "Object_JqX"
+          },
+          "__typename": "Object_kX"
+        },
+        "__typename": "Object_JqX"
+      }
+    }
+  },
+  {
+    "testKey": "86f51892/3cd25323/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_JqX",
+        "rnpPvC1F": {}
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_JqX",
+        "rnpPvC1F": {
+          "__typename": "Object_kX"
+        }
+      }
+    }
+  },
+  {
+    "testKey": "86f51892/c4a75a35/7d1ec464",
+    "expected": {
+      "data": {
+        "_hdt": "Object_JqX",
+        "L4pdej": {
+          "__typename": "Object_kX"
+        },
+        "QEN1HGP": "Object_JqX",
+        "rnpPvC1F": {
+          "kx": "Object_kX",
+          "ZWCul6Sj": "Object_kX",
+          "__typename": "Object_kX"
+        }
+      }
+    },
+    "actual": {
+      "data": {
+        "SfKpG78OrF": "Object_JqX",
+        "_hdt": "Object_JqX",
+        "L4pdej": {
+          "__typename": "Object_kX"
+        },
+        "QEN1HGP": "Object_JqX",
+        "rnpPvC1F": {
+          "kx": "Object_kX",
+          "ZWCul6Sj": "Object_kX",
+          "__typename": "Object_kX"
+        }
+      }
+    }
+  },
+  {
+    "testKey": "9ff6287c/905e633f/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_LAxf3ovFFr"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "Argument 'if' of type 'Boolean!' is required for directive 'defer' but not provided.",
+          "locations": [
+            {
+              "line": 3,
+              "column": 17
+            }
+          ],
+          "extensions": {
+            "code": "PROVIDED_NON_NULL_ARGUMENTS",
+            "codes": [
+              "PROVIDED_NON_NULL_ARGUMENTS"
+            ],
+            "number": "5.4.2.1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "b5104c6d/09fee25d/44136fa3",
+    "expected": {
+      "data": {
+        "oGqQ": "Object_Aeg",
+        "wL66mgV": "Object_Aeg",
+        "__typename": "Object_Aeg"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_I'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_I\\u0027.\"}]}"
+  },
+  {
+    "testKey": "b5104c6d/326a1830/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Aeg"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_I'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_I\\u0027.\"}]}"
+  },
+  {
+    "testKey": "b5104c6d/40581b68/44136fa3",
+    "expected": {
+      "data": {
+        "j5": "Object_Aeg",
+        "__typename": "Object_Aeg"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_I'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_I\\u0027.\"}]}"
+  },
+  {
+    "testKey": "b5104c6d/48f79b85/44136fa3",
+    "expected": {
+      "data": {
+        "ggSht0I": "Object_Aeg"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_I'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_I\\u0027.\"}]}"
+  },
+  {
+    "testKey": "b5104c6d/4e0e3b56/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Aeg"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_I'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_I\\u0027.\"}]}"
+  },
+  {
+    "testKey": "b5104c6d/8d8f7365/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Aeg"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_I'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_I\\u0027.\"}]}"
+  },
+  {
+    "testKey": "b5104c6d/e84b6448/44136fa3",
+    "expected": {
+      "data": {
+        "hAQ0Ef": {
+          "__typename": "Object_Aeg",
+          "u": "Object_Aeg",
+          "TBim": "Object_Aeg"
+        },
+        "__typename": "Object_Aeg",
+        "m7Lc": {
+          "m7Lc": {
+            "__typename": "Object_Aeg"
+          }
+        },
+        "Wx": {
+          "__typename": "Object_Aeg"
+        }
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_I'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_I\\u0027.\"}]}"
+  },
+  {
+    "testKey": "b5104c6d/f13ff4e3/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Aeg",
+        "m7Lc": {
+          "__typename": "Object_Aeg"
+        },
+        "lN": "Object_Aeg"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_I'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_I\\u0027.\"}]}"
+  },
+  {
+    "testKey": "c61b14f1/476a9f5f/44136fa3",
+    "expected": {
+      "data": {}
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_a02GgRep'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_a02GgRep\\u0027.\"}]}"
+  },
+  {
+    "testKey": "c61b14f1/55b2bf4c/44136fa3",
+    "expected": {
+      "data": {
+        "j5YWqY9": {
+          "__typename": "Object_R"
+        }
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_a02GgRep'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_a02GgRep\\u0027.\"}]}"
+  },
+  {
+    "testKey": "c61b14f1/64700f14/1f38d0c2",
+    "expected": {
+      "data": {
+        "oF7": "Object_UCrvMtG2H"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_a02GgRep'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_a02GgRep\\u0027.\"}]}"
+  },
+  {
+    "testKey": "c61b14f1/64700f14/8011c8cb",
+    "expected": {
+      "data": {}
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_a02GgRep'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_a02GgRep\\u0027.\"}]}"
+  },
+  {
+    "testKey": "c61b14f1/8ae6f804/4ba469b6",
+    "expected": {
+      "data": {}
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_a02GgRep'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_a02GgRep\\u0027.\"}]}"
+  },
+  {
+    "testKey": "c61b14f1/8ae6f804/93095bc6",
+    "expected": {
+      "data": {
+        "__typename": "Object_UCrvMtG2H"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_a02GgRep'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_a02GgRep\\u0027.\"}]}"
+  },
+  {
+    "testKey": "c61b14f1/8d8f7365/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_UCrvMtG2H"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_a02GgRep'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_a02GgRep\\u0027.\"}]}"
+  },
+  {
+    "testKey": "c61b14f1/9a8dab39/44136fa3",
+    "expected": {
+      "data": {
+        "nF": [
+          "str",
+          "str"
+        ]
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_a02GgRep'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_a02GgRep\\u0027.\"}]}"
+  },
+  {
+    "testKey": "c61b14f1/b1b460d2/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_UCrvMtG2H"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_a02GgRep'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_a02GgRep\\u0027.\"}]}"
+  },
+  {
+    "testKey": "c61b14f1/c33e94a2/b7521ca2",
+    "expected": {
+      "data": {
+        "__typename": "Object_UCrvMtG2H",
+        "bzGh1c2": 3.14,
+        "j5YWqY9": {}
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_a02GgRep'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_a02GgRep\\u0027.\"}]}"
+  },
+  {
+    "testKey": "c61b14f1/c33e94a2/bd61075b",
+    "expected": {
+      "data": {
+        "__typename": "Object_UCrvMtG2H",
+        "bzGh1c2": 3.14,
+        "j5YWqY9": {}
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_a02GgRep'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_a02GgRep\\u0027.\"}]}"
+  },
+  {
+    "testKey": "c61b14f1/ca9d3e57/44136fa3",
+    "expected": {
+      "data": {
+        "bzGh1c2": 3.14,
+        "__typename": "Object_UCrvMtG2H"
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_a02GgRep'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_a02GgRep\\u0027.\"}]}"
+  },
+  {
+    "testKey": "c61b14f1/d60154e5/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_UCrvMtG2H",
+        "gGRor4Bvz": "Object_UCrvMtG2H",
+        "Z": {
+          "h9LZ": 2,
+          "jFDoXnZqk": {
+            "__typename": "Object_R"
+          },
+          "gsE": {
+            "__typename": "Object_R"
+          }
+        }
+      }
+    },
+    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_a02GgRep'.",
+    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_a02GgRep\\u0027.\"}]}"
+  },
+  {
+    "testKey": "c7e14b7a/467a135a/e616ae07",
+    "expected": {
+      "data": {
+        "o": "str"
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_A",
+        "o": "str",
+        "NKjEj4cXO5": "Object_A"
+      }
+    }
+  },
+  {
+    "testKey": "c7e14b7a/c19a9f66/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_A"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "Argument 'ms' of type 'String!' is required for directive 'Directive_G' but not provided.",
+          "locations": [
+            {
+              "line": 7,
+              "column": 47
+            }
+          ],
+          "extensions": {
+            "code": "PROVIDED_NON_NULL_ARGUMENTS",
+            "codes": [
+              "PROVIDED_NON_NULL_ARGUMENTS"
+            ],
+            "number": "5.4.2.1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "d0f72165/9c8ce45f/44136fa3",
+    "expected": {
+      "data": {
+        "aIN": {
+          "__typename": "Interface_kOFJI_STUB",
+          "ddZORYXq": [
+            true,
+            true
+          ]
+        },
+        "vec0R_Q6u": {
+          "__typename": "Interface_kOFJI_STUB",
+          "ddZORYXq": [
+            true,
+            true
+          ]
+        }
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_g",
+        "aIN": {
+          "__typename": "Interface_kOFJI_STUB",
+          "ddZORYXq": [
+            true,
+            true
+          ]
+        },
+        "vec0R_Q6u": {
+          "__typename": "Interface_kOFJI_STUB",
+          "ddZORYXq": [
+            true,
+            true
+          ]
+        }
+      }
+    }
+  },
+  {
+    "testKey": "e0c0a435/e348e183/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_aaghjtY"
+      }
+    },
+    "actual": {
+      "data": {
+        "_DCD": "Object_aaghjtY",
+        "__typename": "Object_aaghjtY"
+      }
+    }
+  },
+  {
+    "testKey": "e254fdcd/0f810edd/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Am_AlXm"
+      }
+    },
+    "error": "The default value of Input Object type field 'Input_v6.ulGCIkq5' is invalid.",
+    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_v6.ulGCIkq5\\u0027 is invalid.\"}]}"
+  },
+  {
+    "testKey": "e254fdcd/12cd576f/44136fa3",
+    "expected": {
+      "data": {
+        "tL9uCuZ": "Y"
+      }
+    },
+    "error": "The default value of Input Object type field 'Input_v6.ulGCIkq5' is invalid.",
+    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_v6.ulGCIkq5\\u0027 is invalid.\"}]}"
+  },
+  {
+    "testKey": "e254fdcd/138c272c/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Am_AlXm",
+        "tL9uCuZ": "Y",
+        "Im": "Object_Am_AlXm"
+      }
+    },
+    "error": "The default value of Input Object type field 'Input_v6.ulGCIkq5' is invalid.",
+    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_v6.ulGCIkq5\\u0027 is invalid.\"}]}"
+  },
+  {
+    "testKey": "e254fdcd/2620f228/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Am_AlXm"
+      }
+    },
+    "error": "The default value of Input Object type field 'Input_v6.ulGCIkq5' is invalid.",
+    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_v6.ulGCIkq5\\u0027 is invalid.\"}]}"
+  },
+  {
+    "testKey": "e254fdcd/454530cd/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Am_AlXm"
+      }
+    },
+    "error": "The default value of Input Object type field 'Input_v6.ulGCIkq5' is invalid.",
+    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_v6.ulGCIkq5\\u0027 is invalid.\"}]}"
+  },
+  {
+    "testKey": "e254fdcd/7a7fc31d/44136fa3",
+    "expected": {
+      "data": {
+        "hcPuv0V": {
+          "o7": true,
+          "j": true,
+          "__typename": "Object_Go"
+        }
+      }
+    },
+    "error": "The default value of Input Object type field 'Input_v6.ulGCIkq5' is invalid.",
+    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_v6.ulGCIkq5\\u0027 is invalid.\"}]}"
+  },
+  {
+    "testKey": "e254fdcd/85293d3c/44136fa3",
+    "expected": {
+      "data": {
+        "tL9uCuZ": "Y"
+      }
+    },
+    "error": "The default value of Input Object type field 'Input_v6.ulGCIkq5' is invalid.",
+    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_v6.ulGCIkq5\\u0027 is invalid.\"}]}"
+  },
+  {
+    "testKey": "e254fdcd/8bfe8fae/44136fa3",
+    "expected": {
+      "data": {
+        "GfGw": "Object_Am_AlXm"
+      }
+    },
+    "error": "The default value of Input Object type field 'Input_v6.ulGCIkq5' is invalid.",
+    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_v6.ulGCIkq5\\u0027 is invalid.\"}]}"
+  },
+  {
+    "testKey": "e254fdcd/b2ce683f/27586576",
+    "expected": {
+      "data": {
+        "tL9uCuZ": "Y",
+        "__typename": "Object_Am_AlXm",
+        "hcPuv0V": {
+          "__typename": "Object_Go"
+        },
+        "M": {
+          "__typename": "Object_Go",
+          "j": true
+        },
+        "WZx": {
+          "_5NsiTeOBi": "Object_Go"
+        }
+      }
+    },
+    "error": "The default value of Input Object type field 'Input_v6.ulGCIkq5' is invalid.",
+    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_v6.ulGCIkq5\\u0027 is invalid.\"}]}"
+  },
+  {
+    "testKey": "e254fdcd/b2ce683f/7702f8cc",
+    "expected": {
+      "data": {
+        "tL9uCuZ": "Y",
+        "__typename": "Object_Am_AlXm",
+        "hcPuv0V": {
+          "__typename": "Object_Go"
+        },
+        "M": {
+          "__typename": "Object_Go",
+          "j": true
+        },
+        "WZx": {
+          "_5NsiTeOBi": "Object_Go"
+        }
+      }
+    },
+    "error": "The default value of Input Object type field 'Input_v6.ulGCIkq5' is invalid.",
+    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_v6.ulGCIkq5\\u0027 is invalid.\"}]}"
+  },
+  {
+    "testKey": "e254fdcd/e2272e94/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_Am_AlXm",
+        "Ve25q": "Object_Am_AlXm",
+        "a4fHO": "Object_Am_AlXm"
+      }
+    },
+    "error": "The default value of Input Object type field 'Input_v6.ulGCIkq5' is invalid.",
+    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_v6.ulGCIkq5\\u0027 is invalid.\"}]}"
+  },
+  {
+    "testKey": "e520ea47/4dcc1b4d/b25766f8",
+    "expected": {
+      "data": {
+        "__typename": "Object_r8kX_BzHek"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "Argument 'if' of type 'Boolean!' is required for directive 'defer' but not provided.",
+          "locations": [
+            {
+              "line": 2,
+              "column": 21
+            }
+          ],
+          "extensions": {
+            "code": "PROVIDED_NON_NULL_ARGUMENTS",
+            "codes": [
+              "PROVIDED_NON_NULL_ARGUMENTS"
+            ],
+            "number": "5.4.2.1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "testKey": "f3d46b2e/547a6891/44136fa3",
+    "expected": {
+      "data": {
+        "T_7F7gKH": "Object_o_SYRxMp6k",
+        "z3wnZx": "Object_o_SYRxMp6k",
+        "pokXp": {
+          "mHnQqqLkpi": "Object_C",
+          "__typename": "Object_C"
+        },
+        "__typename": "Object_o_SYRxMp6k",
+        "nim5": {
+          "pokXp": {
+            "__typename": "Object_C",
+            "Jqw2g": "Object_C"
+          },
+          "__typename": "Object_o_SYRxMp6k"
+        },
+        "FG": {
+          "pK": {
+            "__typename": "Object_C"
+          }
+        },
+        "t": "Object_o_SYRxMp6k"
+      }
+    },
+    "actual": {
+      "data": {
+        "T_7F7gKH": "Object_o_SYRxMp6k",
+        "z3wnZx": "Object_o_SYRxMp6k",
+        "pokXp": {
+          "mHnQqqLkpi": "Object_C",
+          "__typename": "Object_C"
+        },
+        "__typename": "Object_o_SYRxMp6k",
+        "nim5": {
+          "pokXp": {
+            "__typename": "Object_C",
+            "Jqw2g": "Object_C"
+          },
+          "__typename": "Object_o_SYRxMp6k"
+        },
+        "FG": {
+          "pK": {
+            "__typename": "Object_C"
+          }
+        },
+        "SLxNOVIQJF": "Object_o_SYRxMp6k",
+        "t": "Object_o_SYRxMp6k"
+      }
+    }
+  },
+  {
+    "testKey": "fdbb248c/3275d025/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_u"
+      }
+    },
+    "error": "The default value of Input Object type field 'Input_NRrH8rax19.lZ' is invalid.",
+    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_NRrH8rax19.lZ\\u0027 is invalid.\"}]}"
+  },
+  {
+    "testKey": "fdbb248c/4a5f8f0c/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_u",
+        "gUQefarZK": "Object_u",
+        "SY": "Object_u",
+        "H1ybR": "Object_u"
+      }
+    },
+    "error": "The default value of Input Object type field 'Input_NRrH8rax19.lZ' is invalid.",
+    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_NRrH8rax19.lZ\\u0027 is invalid.\"}]}"
+  },
+  {
+    "testKey": "fdbb248c/4b97bef7/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_u",
+        "SlQhJJwP": "Object_u"
+      }
+    },
+    "error": "The default value of Input Object type field 'Input_NRrH8rax19.lZ' is invalid.",
+    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_NRrH8rax19.lZ\\u0027 is invalid.\"}]}"
+  },
+  {
+    "testKey": "fdbb248c/87d2e3b2/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_u"
+      }
+    },
+    "error": "The default value of Input Object type field 'Input_NRrH8rax19.lZ' is invalid.",
+    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_NRrH8rax19.lZ\\u0027 is invalid.\"}]}"
+  },
+  {
+    "testKey": "fdbb248c/8d8f7365/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_u"
+      }
+    },
+    "error": "The default value of Input Object type field 'Input_NRrH8rax19.lZ' is invalid.",
+    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_NRrH8rax19.lZ\\u0027 is invalid.\"}]}"
+  },
+  {
+    "testKey": "fdbb248c/92c47c36/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_u",
+        "et1K7Y5": "Object_u",
+        "hpG3": "Object_u",
+        "RNleL": "Object_u"
+      }
+    },
+    "error": "The default value of Input Object type field 'Input_NRrH8rax19.lZ' is invalid.",
+    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_NRrH8rax19.lZ\\u0027 is invalid.\"}]}"
+  },
+  {
+    "testKey": "fdbb248c/e920891a/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_u"
+      }
+    },
+    "error": "The default value of Input Object type field 'Input_NRrH8rax19.lZ' is invalid.",
+    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_NRrH8rax19.lZ\\u0027 is invalid.\"}]}"
+  },
+  {
+    "testKey": "fdbb248c/ef3f1100/44136fa3",
+    "expected": {
+      "data": {
+        "__typename": "Object_u",
+        "voy0z1a": {
+          "__typename": "Interface_HVXwjPG1i_STUB",
+          "oes0KszcxF": {
+            "__typename": "Interface_HVXwjPG1i_STUB",
+            "oes0KszcxF": {
+              "__typename": "Interface_HVXwjPG1i_STUB"
+            },
+            "ltxl0GbY_": {
+              "vLO6t": {
+                "k9C2z8ms": "Object_i__zyN8J"
+              }
+            }
+          }
+        }
+      }
+    },
+    "error": "The default value of Input Object type field 'Input_NRrH8rax19.lZ' is invalid.",
+    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_NRrH8rax19.lZ\\u0027 is invalid.\"}]}"
+  },
+  {
+    "testKey": "fdbb248c/f192f7fb/44136fa3",
+    "expected": {
+      "data": {
+        "voy0z1a": {
+          "oes0KszcxF": {
+            "__typename": "Interface_HVXwjPG1i_STUB",
+            "srG905": "Interface_HVXwjPG1i_STUB"
+          },
+          "__typename": "Interface_HVXwjPG1i_STUB"
+        }
+      }
+    },
+    "error": "The default value of Input Object type field 'Input_NRrH8rax19.lZ' is invalid.",
+    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_NRrH8rax19.lZ\\u0027 is invalid.\"}]}"
+  }
+]

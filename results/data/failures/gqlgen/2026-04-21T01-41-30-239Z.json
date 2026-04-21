@@ -1,0 +1,39 @@
+[
+  {
+    "testKey": "3275639d/e1e0f6af/fad39b65",
+    "expected": {
+      "data": {
+        "Ke": "Object_Yeeu",
+        "dGIrtw6e6D": "id",
+        "__typename": "Object_Yeeu",
+        "Nk": "Object_Yeeu"
+      }
+    },
+    "actual": {
+      "data": {
+        "Ke": "Object_Yeeu",
+        "dGIrtw6e6D": "id"
+      }
+    }
+  },
+  {
+    "testKey": "54bcfd5c/8caf1017/1409ee23",
+    "expected": {
+      "data": {
+        "__typename": "Object_GFi_G",
+        "jUgVWdTc": {
+          "__typename": "Object_HeUWNjSJ2W",
+          "vNkz": "Object_HeUWNjSJ2W"
+        }
+      }
+    },
+    "actual": {
+      "data": {
+        "jUgVWdTc": {
+          "__typename": "Object_HeUWNjSJ2W",
+          "vNkz": "Object_HeUWNjSJ2W"
+        }
+      }
+    }
+  }
+]
