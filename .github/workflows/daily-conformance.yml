@@ -65,5 +65,5 @@ jobs:
             echo "No result changes to commit."
             exit 0
           fi
-          git commit -m "chore(daily): conformance run $(date -u +%FT%TZ) [skip ci]"
+          git commit -m "chore(daily): conformance run $(date -u +%FT%TZ)"
           git push
