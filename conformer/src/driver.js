@@ -33,6 +33,13 @@ function resolveDriverHost() {
   return '127.0.0.1';
 }
 
+function resolveStopTimeoutSeconds() {
+  const raw = process.env.CONFORMER_STOP_TIMEOUT_SECS;
+  if (raw == null || raw === '') return 10;
+  const parsed = Number(raw);
+  return Number.isFinite(parsed) && parsed >= 0 ? parsed : 10;
+}
+
 class DockerDriver {
   constructor({ name, implDir, manifest, runId }) {
     this.name = name;
@@ -130,7 +137,10 @@ class DockerDriver {
 
   async stop() {
     if (this.container) {
-      await docker.stopContainer(this.container, { removeOnStop: true });
+      await docker.stopContainer(this.container, {
+        removeOnStop: true,
+        timeout: resolveStopTimeoutSeconds(),
+      });
       this.container = null;
     }
   }
@@ -142,4 +152,5 @@ module.exports = {
   DockerDriver,
   containerNameFor,
   resolveDriverHost,
+  resolveStopTimeoutSeconds,
 };
