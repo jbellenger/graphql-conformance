@@ -77,12 +77,11 @@ function buildAbstractPlans(schema) {
   return { interfaces, unions };
 }
 
-function buildHarnessSchema(schemaText) {
-  const schema = graphql.buildSchema(schemaText);
-  const { interfaces, unions } = buildAbstractPlans(schema);
+function buildHarnessSchema(schemaText, baseSchema) {
+  const { interfaces, unions } = buildAbstractPlans(baseSchema);
   return makeGrafastSchema({
     typeDefs: schemaText,
-    objects: buildObjectPlans(schema),
+    objects: buildObjectPlans(baseSchema),
     interfaces,
     unions,
   });
@@ -133,9 +132,34 @@ async function handleExecute(req, res) {
     return;
   }
 
+  let baseSchema;
+  let document;
+  try {
+    baseSchema = graphql.buildSchema(schemaText);
+    document = graphql.parse(queryText);
+  } catch (err) {
+    res.writeHead(500, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ errors: [{ message: err.message }] }));
+    return;
+  }
+
+  const schemaErrors = graphql.validateSchema(baseSchema);
+  if (schemaErrors.length > 0) {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ errors: schemaErrors }));
+    return;
+  }
+
+  const validationErrors = graphql.validate(baseSchema, document);
+  if (validationErrors.length > 0) {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ errors: validationErrors }));
+    return;
+  }
+
   let schema;
   try {
-    schema = buildHarnessSchema(schemaText);
+    schema = buildHarnessSchema(schemaText, baseSchema);
   } catch (err) {
     res.writeHead(500, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ errors: [{ message: err.message }] }));
