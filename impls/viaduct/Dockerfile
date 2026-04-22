@@ -8,7 +8,7 @@ RUN mvn -B -q dependency:list -DincludeGroupIds=com.airbnb.viaduct -DincludeArti
 COPY src ./src
 RUN mvn -B -q package -DskipTests
 
-FROM eclipse-temurin:21.0.10_7-jre-noble
+FROM eclipse-temurin:25.0.2_10-jre-noble
 COPY --from=builder /src/target/conformer-1.0.jar /app/server.jar
 COPY --from=builder /impl-version /impl-version
 
