@@ -5,6 +5,8 @@ const {
   buildSchema,
   execute,
   parse,
+  validate,
+  validateSchema,
   GraphQLNonNull,
   GraphQLList,
   GraphQLScalarType,
@@ -82,6 +84,20 @@ async function handleExecute(req, res) {
   } catch (err) {
     res.writeHead(500, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ errors: [{ message: err.message }] }));
+    return;
+  }
+
+  const schemaErrors = validateSchema(schema);
+  if (schemaErrors.length > 0) {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ errors: schemaErrors }));
+    return;
+  }
+
+  const validationErrors = validate(schema, document);
+  if (validationErrors.length > 0) {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ errors: validationErrors }));
     return;
   }
 

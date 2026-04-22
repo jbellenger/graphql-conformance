@@ -134,11 +134,27 @@ async function handleExecute(req, res) {
   }
 
   let schema;
+  let document;
   try {
     schema = buildHarnessSchema(schemaText);
+    document = graphql.parse(queryText);
   } catch (err) {
     res.writeHead(500, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ errors: [{ message: err.message }] }));
+    return;
+  }
+
+  const schemaErrors = graphql.validateSchema(schema);
+  if (schemaErrors.length > 0) {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ errors: schemaErrors }));
+    return;
+  }
+
+  const validationErrors = graphql.validate(schema, document);
+  if (validationErrors.length > 0) {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ errors: validationErrors }));
     return;
   }
 
