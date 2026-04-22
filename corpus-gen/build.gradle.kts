@@ -1,4 +1,4 @@
-val viaductVersion = "0.24.0"
+val viaductVersion = "0.29.0"
 
 plugins {
     kotlin("jvm") version "2.3.20"
