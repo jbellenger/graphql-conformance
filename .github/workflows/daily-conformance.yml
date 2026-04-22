@@ -87,5 +87,4 @@ jobs:
             echo "Push failed on attempt ${attempt}; fetching and rebasing onto origin/${TARGET_BRANCH} before retry."
             git fetch origin "${TARGET_BRANCH}"
             git rebase "origin/${TARGET_BRANCH}"
-            sleep "${attempt}"
           done
