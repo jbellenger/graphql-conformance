@@ -29,6 +29,7 @@ jobs:
     timeout-minutes: 120
     env:
       CONFORMER_CONCURRENCY: 4
+      CONFORMER_STOP_TIMEOUT_SECS: '1'
       CONFORMER_USE_EXISTING_IMAGE: '1'
     steps:
       - name: Check out repository
