@@ -13,7 +13,7 @@ dependencies {
     implementation("com.airbnb.viaduct:shared-arbitrary:$viaductVersion")
     implementation("com.airbnb.viaduct:engine-api:$viaductVersion")
     implementation("com.graphql-java:graphql-java:25.0")
-    implementation("io.kotest:kotest-property-jvm:5.9.1")
+    implementation("io.kotest:kotest-property-jvm:6.1.11")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.17.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.8.1")
 
