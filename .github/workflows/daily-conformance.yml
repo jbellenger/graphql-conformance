@@ -18,7 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     env:
-      BUILD_CONCURRENCY: 2
+      CONFORMER_CONCURRENCY: 4
+      CONFORMER_USE_EXISTING_IMAGE: '1'
     steps:
       - name: Generate App token
         id: app-token
@@ -36,6 +37,9 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      - name: Expose GitHub Actions runtime
+        uses: crazy-max/ghaction-github-runtime@v3
+
       - name: Build dev image
         uses: docker/build-push-action@v6
         with:
@@ -44,6 +48,9 @@ jobs:
           tags: graphql-conformance:dev
           cache-from: type=gha,scope=conformance
           cache-to: type=gha,mode=max,scope=conformance
+
+      - name: Pre-build impl images
+        run: bash scripts/ci-prebuild-impls.sh
 
       - name: Install conformer + corpus-gen deps
         run: make build

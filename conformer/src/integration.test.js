@@ -92,6 +92,120 @@ async function runInTmp(handlers, corpusDir, argv = []) {
   }
 }
 
+async function runWithCustomSession(createSession, corpusDir, argv = []) {
+  const prevResults = process.env.RESULTS_DIR;
+  const prevCorpus = process.env.CORPUS_DIR;
+  process.env.RESULTS_DIR = tmpResultsDir;
+  process.env.CORPUS_DIR = corpusDir;
+  try {
+    return await runConformance({
+      argv: ['--registry', tmpRegistryPath, ...argv],
+      createSession,
+      rootDir: tmpDir,
+    });
+  } finally {
+    if (prevResults === undefined) delete process.env.RESULTS_DIR; else process.env.RESULTS_DIR = prevResults;
+    if (prevCorpus === undefined) delete process.env.CORPUS_DIR; else process.env.CORPUS_DIR = prevCorpus;
+  }
+}
+
+describe('integration: parallel session startup', () => {
+  it('respects CONFORMER_CONCURRENCY when starting conformants', async () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    writeCorpusCase(corpusDir, 'ok-test', 'ok-query', 'type Query { ok: String }', '{ ok }');
+    writeRegistry(['ref', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6']);
+
+    let active = 0;
+    let peak = 0;
+    const createSession = async (driver) => {
+      if (driver.name !== 'ref') {
+        active += 1;
+        if (active > peak) peak = active;
+        await new Promise((r) => setTimeout(r, 15));
+        active -= 1;
+      }
+      return {
+        version: null,
+        imageDigest: `digest-${driver.name}`,
+        async execute() { return { result: { data: { ok: 'value' } } }; },
+        async stop() { /* noop */ },
+      };
+    };
+
+    const prev = process.env.CONFORMER_CONCURRENCY;
+    process.env.CONFORMER_CONCURRENCY = '3';
+    try {
+      await runWithCustomSession(createSession, corpusDir);
+    } finally {
+      if (prev === undefined) delete process.env.CONFORMER_CONCURRENCY;
+      else process.env.CONFORMER_CONCURRENCY = prev;
+    }
+
+    assert.equal(peak, 3, 'should cap concurrent conformant startups at 3');
+  });
+
+  it('falls back to full parallelism when CONFORMER_CONCURRENCY is unset', async () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    writeCorpusCase(corpusDir, 'ok-test', 'ok-query', 'type Query { ok: String }', '{ ok }');
+    writeRegistry(['ref', 'c1', 'c2', 'c3', 'c4']);
+
+    let active = 0;
+    let peak = 0;
+    const createSession = async (driver) => {
+      if (driver.name !== 'ref') {
+        active += 1;
+        if (active > peak) peak = active;
+        await new Promise((r) => setTimeout(r, 15));
+        active -= 1;
+      }
+      return {
+        version: null,
+        imageDigest: `digest-${driver.name}`,
+        async execute() { return { result: { data: { ok: 'value' } } }; },
+        async stop() { /* noop */ },
+      };
+    };
+
+    const prev = process.env.CONFORMER_CONCURRENCY;
+    delete process.env.CONFORMER_CONCURRENCY;
+    try {
+      await runWithCustomSession(createSession, corpusDir);
+    } finally {
+      if (prev !== undefined) process.env.CONFORMER_CONCURRENCY = prev;
+    }
+
+    assert.equal(peak, 4, 'should run all 4 conformants in parallel when limit is unset');
+  });
+
+  it('surfaces a startup failure after other sessions have been awaited', async () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    writeCorpusCase(corpusDir, 'ok-test', 'ok-query', 'type Query { ok: String }', '{ ok }');
+    writeRegistry(['ref', 'good-a', 'bad', 'good-b']);
+
+    const stops = [];
+    const createSession = async (driver) => {
+      if (driver.name === 'bad') {
+        await new Promise((r) => setTimeout(r, 5));
+        throw new Error('ignition failed');
+      }
+      return {
+        version: null,
+        imageDigest: `digest-${driver.name}`,
+        async execute() { return { result: { data: { ok: 'value' } } }; },
+        async stop() { stops.push(driver.name); },
+      };
+    };
+
+    await assert.rejects(
+      runWithCustomSession(createSession, corpusDir),
+      /bad.*ignition failed/s,
+    );
+    assert.ok(stops.includes('ref'), 'reference session must be stopped on failure');
+    assert.ok(stops.includes('good-a'), 'good-a must be stopped on failure');
+    assert.ok(stops.includes('good-b'), 'good-b must be stopped on failure');
+  });
+});
+
 describe('integration: self-comparison', () => {
   it('identical impls produce all true', async () => {
     const corpusDir = path.join(tmpDir, 'corpus');

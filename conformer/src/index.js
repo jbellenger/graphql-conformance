@@ -15,6 +15,34 @@ function generateRunId() {
   return now.toISOString().replace(/:/g, '-').replace(/\./g, '-').replace(/Z$/, 'Z');
 }
 
+function parseConcurrency(raw) {
+  if (raw === undefined || raw === null || raw === '') return null;
+  const n = Number(raw);
+  if (!Number.isFinite(n) || n < 1) return null;
+  return Math.floor(n);
+}
+
+async function runWithConcurrency(limit, items, fn) {
+  const results = new Array(items.length);
+  const effective = Math.max(1, Math.min(limit, items.length));
+  let next = 0;
+  async function worker() {
+    while (true) {
+      const i = next++;
+      if (i >= items.length) return;
+      try {
+        results[i] = { status: 'fulfilled', value: await fn(items[i], i) };
+      } catch (reason) {
+        results[i] = { status: 'rejected', reason };
+      }
+    }
+  }
+  const workers = [];
+  for (let w = 0; w < effective; w += 1) workers.push(worker());
+  await Promise.all(workers);
+  return results;
+}
+
 function computeCorpusFingerprint(tests) {
   const keys = tests.map((t) => `${t.testId}/${t.queryId}`).sort();
   return crypto.createHash('sha256').update(keys.join('\n')).digest('hex');
@@ -120,12 +148,37 @@ async function runConformance({ argv = [], createSession = createDockerSession, 
   const conformantVersions = {};
   const conformantImageDigests = {};
   try {
-    for (const conformant of conformants) {
-      process.stderr.write(`Starting session for conformant (${conformant.name})...\n`);
+    const concurrency = parseConcurrency(process.env.CONFORMER_CONCURRENCY) || conformants.length;
+    if (conformants.length > 0) {
+      process.stderr.write(
+        `Starting ${conformants.length} conformant session(s) (concurrency ${Math.min(concurrency, conformants.length)})...\n`,
+      );
+    }
+    const settled = await runWithConcurrency(concurrency, conformants, async (conformant) => {
+      const t0 = Date.now();
       const session = await createSession(conformant, runId, sessionOptions);
-      conformantSessions[conformant.name] = session;
-      conformantVersions[conformant.name] = session.version;
-      conformantImageDigests[conformant.name] = session.imageDigest;
+      const dt = ((Date.now() - t0) / 1000).toFixed(1);
+      process.stderr.write(`  ready ${conformant.name} (${dt}s)\n`);
+      return session;
+    });
+    const startupFailures = [];
+    for (let i = 0; i < conformants.length; i += 1) {
+      const conformant = conformants[i];
+      const result = settled[i];
+      if (result.status === 'fulfilled') {
+        const session = result.value;
+        conformantSessions[conformant.name] = session;
+        conformantVersions[conformant.name] = session.version;
+        conformantImageDigests[conformant.name] = session.imageDigest;
+      } else {
+        startupFailures.push({ name: conformant.name, reason: result.reason });
+      }
+    }
+    if (startupFailures.length > 0) {
+      const names = startupFailures.map((f) => f.name).join(', ');
+      const firstReason = startupFailures[0].reason;
+      const message = firstReason && firstReason.message ? firstReason.message : String(firstReason);
+      throw new Error(`Failed to start conformant session(s) [${names}]: ${message}`);
     }
 
     const conformantTests = {};
@@ -308,7 +361,13 @@ async function main(argv = process.argv.slice(2)) {
   await runConformance({ argv });
 }
 
-module.exports = { computeCorpusFingerprint, parseCliArgs, runConformance };
+module.exports = {
+  computeCorpusFingerprint,
+  parseCliArgs,
+  parseConcurrency,
+  runConformance,
+  runWithConcurrency,
+};
 
 if (require.main === module) {
   main().catch((err) => {

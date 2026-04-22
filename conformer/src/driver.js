@@ -58,13 +58,19 @@ class DockerDriver {
       this.imageTag = ref;
     } else if (image && image.build) {
       const tag = `conformer/${this.name}:dev`;
-      await docker.buildImage({
-        contextDir: path.resolve(this.implDir, image.build.context || '.'),
-        dockerfile: image.build.dockerfile || 'Dockerfile',
-        tag,
-        buildArgs: image.build.args,
-        onProgress,
-      });
+      const useExisting = Boolean(process.env.CONFORMER_USE_EXISTING_IMAGE)
+        && process.env.CONFORMER_USE_EXISTING_IMAGE !== '0'
+        && process.env.CONFORMER_USE_EXISTING_IMAGE !== 'false';
+      const preExisting = useExisting ? await docker.inspectImage(tag) : null;
+      if (!preExisting) {
+        await docker.buildImage({
+          contextDir: path.resolve(this.implDir, image.build.context || '.'),
+          dockerfile: image.build.dockerfile || 'Dockerfile',
+          tag,
+          buildArgs: image.build.args,
+          onProgress,
+        });
+      }
       this.imageTag = tag;
     } else {
       throw new Error(`driver ${this.name}: manifest has neither image.repository nor image.build`);
