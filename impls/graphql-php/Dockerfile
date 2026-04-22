@@ -5,7 +5,7 @@ RUN composer install --no-dev --prefer-dist --no-interaction --no-progress \
  && composer show webonyx/graphql-php --format=json \
       | php -r "echo json_decode(stream_get_contents(STDIN), true)['versions'][0];" > /impl-version
 
-FROM php:8.3-cli
+FROM php:8.5-cli
 
 WORKDIR /app
 COPY --from=deps /app/vendor /app/vendor
