@@ -19,7 +19,7 @@ dependencies {
 
     testImplementation(testFixtures("com.airbnb.viaduct:shared-arbitrary:$viaductVersion"))
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.1")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.11.3")
+    testImplementation("org.junit.jupiter:junit-jupiter:6.0.3")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
