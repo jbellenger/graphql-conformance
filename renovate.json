@@ -2,11 +2,9 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    ":automergeAll",
-    ":automergeBranch"
+    ":automergeAll"
   ],
   "automerge": true,
-  "automergeType": "branch",
   "packageRules": [
     {
       "description": "graphql-js-17 tracks the npm `alpha` dist-tag (17.x pre-release line)",
