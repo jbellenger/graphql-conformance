@@ -2,7 +2,7 @@ val viaductVersion = "0.24.0"
 
 plugins {
     kotlin("jvm") version "2.3.20"
-    id("com.gradleup.shadow") version "8.3.9"
+    id("com.gradleup.shadow") version "9.4.1"
 }
 
 repositories {
