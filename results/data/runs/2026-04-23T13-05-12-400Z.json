@@ -1,0 +1,107 @@
+{
+  "id": "2026-04-23T13-05-12-400Z",
+  "timestamp": "2026-04-23T13:06:02.923Z",
+  "reference": {
+    "name": "graphql-js-17",
+    "version": "17.0.0-alpha.14",
+    "imageDigest": "sha256:5f127cd2c53dde3bd8509c7ef1fed749c922841c28369fba06a0e83b0a247a2a",
+    "scoringModel": "runnable-set-v1",
+    "corpusTotal": 553,
+    "corpusFingerprint": "e62fc5705887e64d6475abc34e62f914875ccf1a44dd3dd56fcd325f12c7121d",
+    "total": 553,
+    "errors": 0,
+    "excluded": 0
+  },
+  "conformants": {
+    "graphql-js-16": {
+      "version": "16.13.2",
+      "imageDigest": "sha256:bb06095a3911e11448c9fe1655e771e8ff5afeebdb2ebec2cbb62d718f087ecf",
+      "total": 553,
+      "passed": 463
+    },
+    "grafast": {
+      "version": "1.0.1",
+      "imageDigest": "sha256:4ff5ecce1e0c6a639cb07fde280e8c3213ee7144fd81dc80181d92a415235264",
+      "total": 553,
+      "passed": 463
+    },
+    "graphql-java": {
+      "version": "25.0",
+      "imageDigest": "sha256:00367f74e0430de7aba04629c8c33e8c8665696a8e3b2a2f05bbef0f59490e48",
+      "total": 553,
+      "passed": 545
+    },
+    "viaduct": {
+      "version": "0.29.0",
+      "imageDigest": "sha256:22ce2d777e2d02a9c7df45397f2968b5cd597dd140ea47e5b7a6efef90e9f854",
+      "total": 553,
+      "passed": 545
+    },
+    "graphql-go": {
+      "version": "v0.8.1",
+      "imageDigest": "sha256:b1dc4ce2b8fffe8f090192099b22a7ce7323c0d6027835e46061d62c405ddfd1",
+      "total": 553,
+      "passed": 481
+    },
+    "graphql-php": {
+      "version": "v15.32.1",
+      "imageDigest": "sha256:4d4db8f398dc01ebf2daf9eded9ca82fa06722896bf67b31bea752245d469cbd",
+      "total": 553,
+      "passed": 545
+    },
+    "graphql-core": {
+      "version": "3.2.8",
+      "imageDigest": "sha256:8d6730f25524d9039fe4bd66a8a6ece144673b019c7b84094834b10a830f060d",
+      "total": 553,
+      "passed": 463
+    },
+    "graphql-ruby": {
+      "version": "2.5.23",
+      "imageDigest": "sha256:fd7939698a0c239a206fa25b8d36d7a0d118eef95f2c18dcd5400f26e8670d47",
+      "total": 553,
+      "passed": 358
+    },
+    "hot-chocolate": {
+      "version": "15.1.15",
+      "imageDigest": "sha256:783a7e93d509ed28b25e1ed241ab11add5b36658bf636f54d7e75d0aa00306aa",
+      "total": 553,
+      "passed": 521
+    },
+    "graphql-dotnet": {
+      "version": "8.3.1",
+      "imageDigest": "sha256:b24aa86bdc00f5d18ea7da3c0b87a1dfab68a694a16c6b6aaf9e583ddd37c0ed",
+      "total": 553,
+      "passed": 431
+    },
+    "async-graphql": {
+      "version": "7.2.1",
+      "imageDigest": "sha256:743c96d1897e955d014e3ca03f9d0b19e037aaae312d76d96e13f121cf56912e",
+      "total": 553,
+      "passed": 185
+    },
+    "absinthe": {
+      "version": "8f9816a",
+      "imageDigest": "sha256:5100bd96754d2d5bbe544e5c2b37572f5a226f68778026859d1285fdbad4cc2e",
+      "total": 553,
+      "passed": 2
+    },
+    "gqlgen": {
+      "version": "v0.17.89",
+      "imageDigest": "sha256:5ac709f74d96182797eb2aa522f85d089ac30247c391182e3226a3f4b5ac4538",
+      "total": 553,
+      "passed": 545
+    },
+    "juniper": {
+      "version": "1e625cd",
+      "imageDigest": "sha256:3dca3c6ed2346cca88e64a2e2943e01e00e48813d9b14226ec8da5d5ea3e2b61",
+      "total": 553,
+      "passed": 504
+    },
+    "lacinia": {
+      "version": "1.2.2",
+      "imageDigest": "sha256:fbdc62a489c087774069da9111cd6276282b09e75d2efe6771c6c468f2d2bfdb",
+      "total": 553,
+      "passed": 20
+    }
+  }
+}
