@@ -3,7 +3,7 @@
         serve-site ci-smoke clean clean-results clean-corpus clean-ci \
         _build _test _test-core _gen-corpus _run-conformer \
         _build-smoke _prepare-smoke-corpus _run-conformer-smoke \
-        _serve-site _ci-smoke _clean _clean-results _clean-corpus
+        _serve-site _build-site _ci-smoke _clean _clean-results _clean-corpus
 
 SMOKE_CORPUS_DIR ?= $(CURDIR)/.tmp/corpus-smoke
 SMOKE_RESULTS_DIR ?= $(CURDIR)/.tmp/ci-results
@@ -65,7 +65,10 @@ DOCKER_ENV := \
   -e CONFORMER_STOP_TIMEOUT_SECS \
   -e CONFORMER_USE_EXISTING_IMAGE
 
-DOCKER_RUN_BASE := $(DOCKER) run --rm \
+# --init runs tini as PID 1 inside the container, which forwards
+# signals and reaps zombies. Without it, Ctrl-C against serve-site can
+# take multiple tries to reach the server process.
+DOCKER_RUN_BASE := $(DOCKER) run --rm --init \
   --user $(HOST_UID):$(HOST_GID) \
   --group-add $(DOCKER_SOCK_GID) \
   --add-host=host.docker.internal:host-gateway \
@@ -73,9 +76,10 @@ DOCKER_RUN_BASE := $(DOCKER) run --rm \
   $(DOCKER_VOLUMES) \
   $(DOCKER_ENV)
 
+SERVE_CONTAINER_NAME := graphql-conformance-serve
+
 DOCKER_RUN := $(DOCKER_RUN_BASE) $(IMAGE)
 DOCKER_RUN_TTY := $(DOCKER_RUN_BASE) -it $(IMAGE)
-DOCKER_RUN_PORTS := $(DOCKER_RUN_BASE) -p 8000:8000 $(IMAGE)
 
 image:
 	$(DOCKER) build -t $(IMAGE) .
@@ -99,7 +103,10 @@ run-conformer:
 	$(DOCKER_RUN) make -C /work _run-conformer CONFORMER_ARGS="$(CONFORMER_ARGS)"
 
 serve-site:
-	$(DOCKER_RUN_PORTS) make -C /work _serve-site
+	@$(DOCKER) rm -f $(SERVE_CONTAINER_NAME) >/dev/null 2>&1 || true
+	$(DOCKER_RUN) make -C /work _build-site
+	@printf 'Serving site at http://localhost:8000\n'
+	$(DOCKER_RUN_BASE) --name $(SERVE_CONTAINER_NAME) -p 8000:8000 $(IMAGE) python3 -u -m http.server 8000 -d /work/site
 
 ci-smoke:
 	$(DOCKER_RUN) make -C /work _ci-smoke
@@ -153,10 +160,12 @@ _run-conformer-smoke: _prepare-smoke-corpus
 	CORPUS_DIR=$(SMOKE_CORPUS_DIR) RESULTS_DIR=$(SMOKE_RESULTS_DIR) node conformer/src/index.js
 	SITE_DATA_DIR=$(SMOKE_SITE_DATA_DIR) node site/build.js $(SMOKE_RESULTS_DIR)
 
-_serve-site:
+_build-site:
 	node site/build.js results/data
+
+_serve-site: _build-site
 	@printf 'Serving site at http://localhost:8000\n'
-	@python3 -m http.server 8000 -d site
+	@exec python3 -m http.server 8000 -d site
 
 _ci-smoke:
 	$(MAKE) _build-smoke
