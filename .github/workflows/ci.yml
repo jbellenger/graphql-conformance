@@ -13,6 +13,9 @@ on:
       - master
     paths-ignore:
       - 'README.md'
+  merge_group:
+    branches:
+      - master
   workflow_dispatch:
 
 permissions:
@@ -29,19 +32,20 @@ jobs:
     timeout-minutes: 120
     env:
       CONFORMER_CONCURRENCY: 4
+      CONFORMER_STOP_TIMEOUT_SECS: '1'
       CONFORMER_USE_EXISTING_IMAGE: '1'
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Expose GitHub Actions runtime
         uses: crazy-max/ghaction-github-runtime@v3
 
       - name: Build dev image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           load: true
@@ -57,7 +61,7 @@ jobs:
 
       - name: Upload smoke artifacts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           if-no-files-found: ignore
           name: smoke
