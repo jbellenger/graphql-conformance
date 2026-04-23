@@ -2,7 +2,7 @@
         build test test-core gen-corpus run-conformer \
         serve-site ci-smoke clean clean-results clean-corpus clean-ci \
         _build _test _test-core _gen-corpus _run-conformer \
-        _prepare-smoke-corpus _run-conformer-smoke \
+        _build-smoke _prepare-smoke-corpus _run-conformer-smoke \
         _serve-site _ci-smoke _clean _clean-results _clean-corpus
 
 SMOKE_CORPUS_DIR ?= $(CURDIR)/.tmp/corpus-smoke
@@ -62,6 +62,7 @@ DOCKER_ENV := \
   -e SITE_DATA_DIR \
   -e REGISTRY_PATH \
   -e CONFORMER_CONCURRENCY \
+  -e CONFORMER_STOP_TIMEOUT_SECS \
   -e CONFORMER_USE_EXISTING_IMAGE
 
 DOCKER_RUN_BASE := $(DOCKER) run --rm \
@@ -125,6 +126,9 @@ _build:
 	$(MAKE) -C conformer build
 	$(MAKE) -C corpus-gen build
 
+_build-smoke:
+	$(MAKE) -C conformer build
+
 _test:
 	node --test site/build.test.js
 	$(MAKE) -C results test
@@ -155,7 +159,7 @@ _serve-site:
 	@python3 -m http.server 8000 -d site
 
 _ci-smoke:
-	$(MAKE) _build
+	$(MAKE) _build-smoke
 	$(MAKE) _test-core
 	$(MAKE) _run-conformer-smoke
 

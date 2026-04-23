@@ -10,14 +10,26 @@
     <packaging>jar</packaging>
 
     <properties>
-        <kotlin.version>2.1.10</kotlin.version>
+        <kotlin.version>2.3.20</kotlin.version>
         <junit.version>5.14.3</junit.version>
-        <jackson.version>2.17.0</jackson.version>
+        <jackson.version>2.21.2</jackson.version>
         <kotlinx.coroutines.version>1.8.1</kotlinx.coroutines.version>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <viaduct.version>0.29.0</viaduct.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.fasterxml.jackson</groupId>
+                <artifactId>jackson-bom</artifactId>
+                <version>${jackson.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
