@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.6
+# syntax=docker/dockerfile:1.23
 #
 # Dev container for the graphql-conformance monorepo.
 #
