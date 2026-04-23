@@ -23,13 +23,13 @@ jobs:
     steps:
       - name: Generate App token
         id: app-token
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@v3
         with:
           app-id: ${{ secrets.CONFORMANCE_APP_ID }}
           private-key: ${{ secrets.CONFORMANCE_APP_SECRET_KEY }}
 
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           token: ${{ steps.app-token.outputs.token }}
           fetch-depth: 0
@@ -73,4 +73,18 @@ jobs:
             exit 0
           fi
           git commit -m "chore(daily): conformance run $(date -u +%FT%TZ)"
-          git push
+          TARGET_BRANCH="${GITHUB_REF_NAME:-master}"
+          for attempt in $(seq 1 10); do
+            if git push origin "HEAD:${TARGET_BRANCH}"; then
+              exit 0
+            fi
+
+            if [ "${attempt}" -eq 10 ]; then
+              echo "Push failed after ${attempt} attempts." >&2
+              exit 1
+            fi
+
+            echo "Push failed on attempt ${attempt}; fetching and rebasing onto origin/${TARGET_BRANCH} before retry."
+            git fetch origin "${TARGET_BRANCH}"
+            git rebase "origin/${TARGET_BRANCH}"
+          done

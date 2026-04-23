@@ -38,7 +38,7 @@ func newDynamicSchema(schema *ast.Schema) *dynamicSchema {
 
 func (ds *dynamicSchema) Schema() *ast.Schema { return ds.schema }
 
-func (ds *dynamicSchema) Complexity(typeName, fieldName string, childComplexity int, args map[string]any) (int, bool) {
+func (ds *dynamicSchema) Complexity(ctx context.Context, typeName, fieldName string, childComplexity int, args map[string]any) (int, bool) {
 	return 0, false
 }
 
