@@ -74,12 +74,28 @@ echo "Pre-building ${#DRIVERS[@]} impl image(s) (concurrency=$CONCURRENCY)"
 
 pids=()
 fail=0
+
+wait_for_any() {
+  local i pid
+  while :; do
+    for i in "${!pids[@]}"; do
+      pid="${pids[i]}"
+      if ! kill -0 "$pid" 2>/dev/null; then
+        if ! wait "$pid"; then fail=1; fi
+        unset 'pids[i]'
+        pids=("${pids[@]}")
+        return
+      fi
+    done
+    sleep 0.2
+  done
+}
+
 for driver in "${DRIVERS[@]}"; do
   build_one "$driver" &
   pids+=("$!")
   if (( ${#pids[@]} >= CONCURRENCY )); then
-    if ! wait "${pids[0]}"; then fail=1; fi
-    pids=("${pids[@]:1}")
+    wait_for_any
   fi
 done
 for pid in "${pids[@]}"; do
