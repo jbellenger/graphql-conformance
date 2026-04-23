@@ -275,6 +275,61 @@ describe('site/build.js', () => {
     assert.equal(refExclusions[1].testKey, 's/t/u');
   });
 
+  it('preserves errors and stderr on reference exclusions for a test-ref impl', () => {
+    const store = ResultsStore.fromDirectory(tmpResultsDir);
+    store.recordRun({
+      id: 'run-ref-details',
+      timestamp: '2026-03-19T00:00:00.000Z',
+      reference: {
+        name: 'test-ref',
+        version: '0.0.1',
+        imageDigest: 'sha256:testref',
+        total: 0,
+        errors: 0,
+        corpusTotal: 2,
+        excluded: 2,
+        exclusions: [
+          {
+            testKey: 'p/q/r',
+            error: 'reference returned errors',
+            errors: [
+              {
+                message: 'Argument "@defer(label:)" must be a static string.',
+                locations: [{ line: 12, column: 17 }],
+              },
+            ],
+          },
+          {
+            testKey: 's/t/u',
+            error: 'driver returned status 500',
+            stderr: 'panic: oops\nat main.go:42',
+          },
+        ],
+      },
+      conformants: {},
+    });
+    execFileSync('node', [buildScript, tmpResultsDir], {
+      env: { ...process.env, SITE_DATA_DIR: tmpSiteDataDir },
+    });
+
+    const refExclusions = JSON.parse(
+      fs.readFileSync(path.join(tmpSiteDataDir, 'impls', 'test-ref', 'exclusions.json'), 'utf8')
+    );
+    assert.equal(refExclusions.length, 2);
+
+    const withErrors = refExclusions.find((e) => e.testKey === 'p/q/r');
+    assert.ok(Array.isArray(withErrors.errors));
+    assert.equal(withErrors.errors.length, 1);
+    assert.equal(
+      withErrors.errors[0].message,
+      'Argument "@defer(label:)" must be a static string.',
+    );
+    assert.deepStrictEqual(withErrors.errors[0].locations, [{ line: 12, column: 17 }]);
+
+    const withStderr = refExclusions.find((e) => e.testKey === 's/t/u');
+    assert.equal(withStderr.stderr, 'panic: oops\nat main.go:42');
+  });
+
   it('exits with error when no runs exist', () => {
     assert.throws(() => {
       execFileSync('node', [buildScript, tmpResultsDir], {

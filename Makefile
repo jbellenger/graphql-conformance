@@ -130,7 +130,7 @@ _build-smoke:
 	$(MAKE) -C conformer build
 
 _test:
-	node --test site/build.test.js
+	node --test site/*.test.js
 	$(MAKE) -C results test
 	$(MAKE) -C corpus-gen test
 	$(MAKE) -C conformer test

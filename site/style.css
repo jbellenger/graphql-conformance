@@ -472,6 +472,44 @@ details summary:hover { text-decoration: underline; }
 .detail-json .json-boolean { color: #2b8a3e; }
 .detail-json .json-null { color: #495057; font-style: italic; }
 
+.reference-error-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.reference-error-item {
+  padding: 0.5rem 0.75rem;
+  background: #fff5f5;
+  border: 1px solid #ffc9c9;
+  border-radius: 6px;
+}
+
+.reference-error-message {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.85rem;
+  color: #862e2e;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.reference-error-meta {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: #868e96;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.reference-error-loc,
+.reference-error-path {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
 .zero-failures-art {
   width: 88px;
   height: 88px;
