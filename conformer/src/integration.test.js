@@ -443,6 +443,102 @@ describe('integration: reference exclusions', () => {
     assert.equal(conformantCalls, 1, 'conformant should only run for the non-excluded test');
   });
 
+  it('excludes tests where the reference returns GraphQL errors', async () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    writeCorpusCase(corpusDir, 'ok-test', 'ok-query', 'type Query { ok: String }', '{ ok }');
+    writeCorpusCase(corpusDir, 'err-test', 'err-query', 'type Query { bad: String }', '{ bad }');
+    writeRegistry(['ref', 'conformant']);
+
+    const refHandler = (body) => {
+      if (body.query.includes('bad')) {
+        return {
+          result: {
+            errors: [{ message: 'validation failed: bad field', locations: [{ line: 1, column: 3 }] }],
+          },
+          status: 200,
+        };
+      }
+      return { result: { data: { ok: 'value' } } };
+    };
+    let conformantCalls = 0;
+    const conformantHandler = (body) => {
+      conformantCalls += 1;
+      if (body.query.includes('bad')) return { result: { data: { bad: 'str' } } };
+      return { result: { data: { ok: 'value' } } };
+    };
+
+    await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
+
+    const store = ResultsStore.fromDirectory(tmpResultsDir);
+    const run = store.loadLatestRunSummary();
+
+    assert.equal(run.reference.total, 1);
+    assert.equal(run.reference.excluded, 1);
+    assert.equal(run.reference.corpusTotal, 2);
+    assert.equal(run.reference.exclusions.length, 1);
+    assert.equal(run.reference.exclusions[0].testKey, 'err-test/err-query');
+    assert.equal(run.reference.exclusions[0].error, 'reference returned errors');
+    assert.ok(Array.isArray(run.reference.exclusions[0].errors));
+    assert.equal(run.reference.exclusions[0].errors.length, 1);
+    assert.equal(run.reference.exclusions[0].errors[0].message, 'validation failed: bad field');
+
+    const conformant = run.conformants.conformant;
+    assert.equal(conformant.total, 1);
+    assert.equal(conformant.passed, 1);
+    assert.deepStrictEqual(Object.keys(conformant.failuresByTestKey), []);
+
+    assert.equal(conformantCalls, 1, 'conformant should only run for the non-excluded test');
+  });
+
+  it('excludes tests where the reference returns errors alongside data', async () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    writeCorpusCase(corpusDir, 'partial-test', 'partial-query', 'type Query { ok: String }', '{ ok }');
+    writeRegistry(['ref', 'conformant']);
+
+    const refHandler = () => ({
+      result: {
+        data: { ok: null },
+        errors: [{ message: 'resolver failed', path: ['ok'] }],
+      },
+      status: 200,
+    });
+    let conformantCalls = 0;
+    const conformantHandler = () => {
+      conformantCalls += 1;
+      return { result: { data: { ok: 'value' } } };
+    };
+
+    await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
+
+    const store = ResultsStore.fromDirectory(tmpResultsDir);
+    const run = store.loadLatestRunSummary();
+
+    assert.equal(run.reference.total, 0);
+    assert.equal(run.reference.excluded, 1);
+    assert.equal(run.reference.exclusions[0].testKey, 'partial-test/partial-query');
+    assert.equal(run.reference.exclusions[0].errors[0].message, 'resolver failed');
+
+    assert.equal(conformantCalls, 0, 'conformant should not run when reference produced errors');
+  });
+
+  it('does not exclude when the reference returns an empty errors array', async () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    writeCorpusCase(corpusDir, 'ok-test', 'ok-query', 'type Query { ok: String }', '{ ok }');
+    writeRegistry(['ref', 'conformant']);
+
+    const refHandler = () => ({ result: { data: { ok: 'value' }, errors: [] } });
+    const conformantHandler = () => ({ result: { data: { ok: 'value' }, errors: [] } });
+
+    await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
+
+    const store = ResultsStore.fromDirectory(tmpResultsDir);
+    const run = store.loadLatestRunSummary();
+
+    assert.equal(run.reference.total, 1);
+    assert.equal(run.reference.excluded, 0);
+    assert.equal(run.conformants.conformant.passed, 1);
+  });
+
   it('reuses prior reference exclusions when all conformants are skipped', async () => {
     const corpusDir = path.join(tmpDir, 'corpus');
     writeCorpusCase(corpusDir, 'ok-test', 'ok-query', 'type Query { ok: String }', '{ ok }');

@@ -238,6 +238,19 @@ async function runConformance({ argv = [], createSession = createDockerSession, 
           continue;
         }
 
+        const refErrors = refResult.result && Array.isArray(refResult.result.errors)
+          ? refResult.result.errors
+          : null;
+        if (refErrors && refErrors.length > 0) {
+          process.stderr.write(`    reference excluded: returned ${refErrors.length} GraphQL error(s)\n`);
+          referenceExclusions.push({
+            testKey: `${testId}/${queryId}`,
+            error: 'reference returned errors',
+            errors: refErrors,
+          });
+          continue;
+        }
+
         runnableCount += 1;
         await Promise.all(conformantsToRun.map(async (conformant) => {
           const session = conformantSessions[conformant.name];
