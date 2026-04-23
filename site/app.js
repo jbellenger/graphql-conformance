@@ -4,6 +4,7 @@ const {
   escapeHtml,
   formatFailureCard: renderFailureCard,
   getFailureKey,
+  computeReferenceDisplay,
 } = window.GQLCRender;
 
 const app = document.getElementById('app');
@@ -90,22 +91,23 @@ function renderDashboard(summary) {
     .filter((item) => !item.isReference)
     .sort((a, b) => b.passPct - a.passPct || a.impl.localeCompare(b.impl));
 
+  const refDisplay = computeReferenceDisplay(reference);
+
   app.innerHTML = `
     <h2>Conformance Summary</h2>
     <div class="dashboard-layout">
-      ${reference ? `
-        <section class="reference-card">
+      ${reference && refDisplay ? `
+        <section class="reference-card" data-impl="${encodeURIComponent(reference.impl)}" tabindex="0" role="link" aria-label="View ${escapeHtml(reference.impl)} details">
           <div class="reference-card-header">
             <span class="reference-pill">Reference</span>
             <a class="reference-link" href="#/impl/${reference.impl}">${reference.impl}</a>
           </div>
-          <div class="reference-rate">${reference.passPct}%</div>
-          <div class="reference-subtext">${reference.total} runnable · ${reference.excluded || 0} excluded</div>
+          <div class="reference-rate">${refDisplay.passPct}%</div>
+          <div class="reference-subtext">${refDisplay.total} runnable · ${refDisplay.failed} failed</div>
           <div class="bar-container reference-bar">
-            <div class="bar-fill ${barClass(reference.passPct)}" style="width: ${reference.passPct}%"></div>
+            <div class="bar-fill ${barClass(refDisplay.passPct)}" style="width: ${refDisplay.passPct}%"></div>
           </div>
           <div class="reference-meta">
-            <div><span>Corpus</span><strong>${reference.corpusTotal ?? reference.total}</strong></div>
             <div><span>Version</span><strong class="mono">${renderVersion(reference)}</strong></div>
           </div>
         </section>
@@ -467,7 +469,6 @@ async function route() {
 app.addEventListener('click', (event) => {
   const target = getEventElement(event);
   if (!target) return;
-  if (!target.closest('.dashboard-row') && target.closest('a')) return;
 
   const copyButton = target.closest('.failure-card-copy');
   if (copyButton) {
@@ -476,14 +477,20 @@ app.addEventListener('click', (event) => {
     return;
   }
 
+  if (target.closest('a')) return;
+
+  const referenceCard = target.closest('.reference-card');
+  if (referenceCard && referenceCard.dataset.impl) {
+    location.hash = `#/impl/${decodeURIComponent(referenceCard.dataset.impl)}`;
+    return;
+  }
+
   const dashboardRow = target.closest('.dashboard-row');
   if (dashboardRow) {
-    if (target.closest('a')) return;
     location.hash = `#/impl/${decodeURIComponent(dashboardRow.dataset.impl)}`;
     return;
   }
 
-  if (target.closest('a')) return;
   const card = target.closest('.failure-card');
   if (!card || card.dataset.expandable !== 'true') return;
   if (!shouldToggleFailureCard(card, target)) return;
@@ -495,16 +502,22 @@ app.addEventListener('keydown', (event) => {
   if (!target) return;
   if (event.key !== 'Enter' && event.key !== ' ') return;
   if (target.closest('.failure-card-copy')) return;
+  if (target.closest('a')) return;
+
+  const referenceCard = target.closest('.reference-card');
+  if (referenceCard && referenceCard.dataset.impl) {
+    event.preventDefault();
+    location.hash = `#/impl/${decodeURIComponent(referenceCard.dataset.impl)}`;
+    return;
+  }
 
   const dashboardRow = target.closest('.dashboard-row');
   if (dashboardRow) {
-    if (target.closest('a')) return;
     event.preventDefault();
     location.hash = `#/impl/${decodeURIComponent(dashboardRow.dataset.impl)}`;
     return;
   }
 
-  if (target.closest('a')) return;
   const card = target.closest('.failure-card');
   if (!card || card.dataset.expandable !== 'true') return;
   event.preventDefault();

@@ -37,6 +37,12 @@ h2 { margin-bottom: 1rem; }
 
 .reference-card {
   padding: 1rem;
+  cursor: pointer;
+}
+
+.reference-card:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px rgba(54, 79, 199, 0.16), 0 8px 24px rgba(26, 26, 46, 0.06);
 }
 
 .reference-card-header {

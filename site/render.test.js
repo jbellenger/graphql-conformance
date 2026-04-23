@@ -103,6 +103,60 @@ describe('render.formatFailureCard', () => {
     });
   });
 
+  describe('computeReferenceDisplay', () => {
+    it('counts excluded cases as failures against the full corpus', () => {
+      const result = render.computeReferenceDisplay({
+        total: 545,
+        failed: 0,
+        excluded: 8,
+        corpusTotal: 553,
+      });
+      assert.equal(result.total, 553);
+      assert.equal(result.failed, 8);
+      assert.equal(result.passed, 545);
+      assert.equal(result.passPct, 98.6);
+    });
+
+    it('combines explicit errors with exclusions when both are present', () => {
+      const result = render.computeReferenceDisplay({
+        total: 10,
+        failed: 2,
+        excluded: 3,
+        corpusTotal: 15,
+      });
+      assert.equal(result.total, 15);
+      assert.equal(result.failed, 5);
+      assert.equal(result.passed, 10);
+      assert.equal(result.passPct, 66.7);
+    });
+
+    it('returns 100% when the corpus has no failures or exclusions', () => {
+      const result = render.computeReferenceDisplay({
+        total: 4,
+        failed: 0,
+        excluded: 0,
+        corpusTotal: 4,
+      });
+      assert.equal(result.total, 4);
+      assert.equal(result.failed, 0);
+      assert.equal(result.passPct, 100);
+    });
+
+    it('falls back to total when corpusTotal is missing', () => {
+      const result = render.computeReferenceDisplay({
+        total: 4,
+        failed: 1,
+      });
+      assert.equal(result.total, 4);
+      assert.equal(result.failed, 1);
+      assert.equal(result.passPct, 75);
+    });
+
+    it('returns null for a missing reference', () => {
+      assert.equal(render.computeReferenceDisplay(null), null);
+    });
+  });
+
   describe('baseline behavior (no regressions)', () => {
     it('renders a diff for failures with expected/actual', () => {
       const failure = {

@@ -265,6 +265,17 @@
     };
   }
 
+  function computeReferenceDisplay(reference) {
+    if (!reference) return null;
+    const corpus = reference.corpusTotal != null ? reference.corpusTotal : (reference.total || 0);
+    const excluded = reference.excluded || 0;
+    const errors = reference.failed || 0;
+    const failed = errors + excluded;
+    const passed = Math.max(0, corpus - failed);
+    const passPct = corpus > 0 ? Math.round((passed / corpus) * 1000) / 10 : 100;
+    return { total: corpus, failed, passed, passPct };
+  }
+
   function referenceResponseFromFailure(failure) {
     if (failure.response !== undefined && failure.response !== null) return failure.response;
     if (Array.isArray(failure.errors) && failure.errors.length > 0) {
@@ -412,6 +423,7 @@
     formatJsonDiff,
     formatJsonSingle,
     formatTextPreview,
+    computeReferenceDisplay,
     referenceResponseFromFailure,
     canExpandFailure,
     formatFailureContent,
