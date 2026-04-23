@@ -246,7 +246,7 @@ async function runConformance({ argv = [], createSession = createDockerSession, 
           referenceExclusions.push({
             testKey: `${testId}/${queryId}`,
             error: 'reference returned errors',
-            errors: refErrors,
+            response: refResult.result,
           });
           continue;
         }

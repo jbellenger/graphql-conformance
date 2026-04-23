@@ -9,7 +9,6 @@
 })(typeof self !== 'undefined' ? self : this, function () {
   const FAILURE_PREVIEW_ROWS = 4;
   const STDERR_PREVIEW_LINES = 3;
-  const REFERENCE_ERRORS_PREVIEW = 3;
   const REPO_URL = 'https://github.com/jbellenger/graphql-conformance/blob/master';
 
   function escapeHtml(s) {
@@ -234,6 +233,25 @@
     };
   }
 
+  function formatJsonSingle(value, options = {}) {
+    const lines = JSON.stringify(value, null, 2).split('\n');
+    const maxRows = Number.isInteger(options.maxRows) ? options.maxRows : null;
+    const visibleLines = maxRows === null ? lines : lines.slice(0, maxRows);
+    const truncated = visibleLines.length < lines.length;
+    const header = typeof options.header === 'string' ? options.header : 'Response';
+    return {
+      truncated,
+      html: `
+        <div class="json-diff json-diff-single">
+          <div class="json-diff-header">${escapeHtml(header)}</div>
+          ${visibleLines.map((line) => `
+            <div class="json-diff-line diff-same">${line ? highlightJsonText(line) : '&nbsp;'}</div>
+          `).join('')}
+        </div>
+      `,
+    };
+  }
+
   function formatTextPreview(text, options = {}) {
     const lines = text.trim().split('\n');
     const maxLines = Number.isInteger(options.maxLines) ? options.maxLines : null;
@@ -247,28 +265,12 @@
     };
   }
 
-  function formatReferenceErrors(errors, options = {}) {
-    const maxErrors = Number.isInteger(options.maxErrors) ? options.maxErrors : null;
-    const visible = maxErrors === null ? errors : errors.slice(0, maxErrors);
-    const truncated = visible.length < errors.length;
-    const items = visible.map((err) => {
-      const message = typeof err?.message === 'string' ? err.message : JSON.stringify(err);
-      const locations = Array.isArray(err?.locations) && err.locations.length > 0
-        ? err.locations.map((l) => `${l.line}:${l.column}`).join(', ')
-        : '';
-      const path = Array.isArray(err?.path) && err.path.length > 0
-        ? err.path.join('.')
-        : '';
-      const metaParts = [];
-      if (locations) metaParts.push(`<span class="reference-error-loc">@ ${escapeHtml(locations)}</span>`);
-      if (path) metaParts.push(`<span class="reference-error-path">path: ${escapeHtml(path)}</span>`);
-      const meta = metaParts.length > 0 ? `<div class="reference-error-meta">${metaParts.join(' · ')}</div>` : '';
-      return `<li class="reference-error-item"><div class="reference-error-message">${escapeHtml(message)}</div>${meta}</li>`;
-    });
-    return {
-      truncated,
-      html: `<ul class="reference-error-list">${items.join('')}</ul>`,
-    };
+  function referenceResponseFromFailure(failure) {
+    if (failure.response !== undefined && failure.response !== null) return failure.response;
+    if (Array.isArray(failure.errors) && failure.errors.length > 0) {
+      return { data: null, errors: failure.errors };
+    }
+    return null;
   }
 
   function canExpandFailure(failure) {
@@ -277,13 +279,15 @@
       if (diffRows.length > FAILURE_PREVIEW_ROWS) return true;
     }
 
+    const response = referenceResponseFromFailure(failure);
+    if (response) {
+      const lines = JSON.stringify(response, null, 2).split('\n');
+      if (lines.length > FAILURE_PREVIEW_ROWS) return true;
+    }
+
     if (failure.stderr) {
       const stderrLines = failure.stderr.trim().split('\n');
       if (stderrLines.length > STDERR_PREVIEW_LINES) return true;
-    }
-
-    if (Array.isArray(failure.errors) && failure.errors.length > REFERENCE_ERRORS_PREVIEW) {
-      return true;
     }
 
     return false;
@@ -323,16 +327,13 @@
       }
     }
 
-    if (Array.isArray(failure.errors) && failure.errors.length > 0) {
-      const errors = formatReferenceErrors(failure.errors, {
-        maxErrors: expanded ? null : REFERENCE_ERRORS_PREVIEW,
+    const referenceResponse = referenceResponseFromFailure(failure);
+    if (referenceResponse) {
+      const response = formatJsonSingle(referenceResponse, {
+        header: 'Response',
+        maxRows: expanded ? null : FAILURE_PREVIEW_ROWS,
       });
-      parts.push(`
-        <div class="failure-extra-block">
-          <div class="detail-label">GraphQL errors</div>
-          ${errors.html}
-        </div>
-      `);
+      parts.push(`<div class="failure-diff-block">${response.html}</div>`);
     }
 
     if (failure.stderr) {
@@ -354,7 +355,9 @@
     const expanded = Boolean(options.expanded);
     const expandable = canExpandFailure(failure);
     const content = formatFailureContent(failure, expanded);
-    const summary = failure.error || (failure.expected && failure.actual ? 'Output differs' : 'Failed');
+    const hasReferenceResponse = referenceResponseFromFailure(failure) !== null;
+    const summary = failure.error
+      || (failure.expected && failure.actual ? 'Output differs' : (hasReferenceResponse ? 'Reference response' : 'Failed'));
     const collapsed = expandable && !expanded;
     const testPath = getTestPathText(failure.testKey);
     const failureKey = getFailureKey(failure);
@@ -396,7 +399,6 @@
   return {
     FAILURE_PREVIEW_ROWS,
     STDERR_PREVIEW_LINES,
-    REFERENCE_ERRORS_PREVIEW,
     REPO_URL,
     escapeHtml,
     formatTestKey,
@@ -408,8 +410,9 @@
     renderCharDiff,
     renderJsonDiffLine,
     formatJsonDiff,
+    formatJsonSingle,
     formatTextPreview,
-    formatReferenceErrors,
+    referenceResponseFromFailure,
     canExpandFailure,
     formatFailureContent,
     formatFailureCard,

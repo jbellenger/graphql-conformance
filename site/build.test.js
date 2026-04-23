@@ -275,7 +275,7 @@ describe('site/build.js', () => {
     assert.equal(refExclusions[1].testKey, 's/t/u');
   });
 
-  it('preserves errors and stderr on reference exclusions for a test-ref impl', () => {
+  it('preserves response and stderr on reference exclusions for a test-ref impl', () => {
     const store = ResultsStore.fromDirectory(tmpResultsDir);
     store.recordRun({
       id: 'run-ref-details',
@@ -292,12 +292,15 @@ describe('site/build.js', () => {
           {
             testKey: 'p/q/r',
             error: 'reference returned errors',
-            errors: [
-              {
-                message: 'Argument "@defer(label:)" must be a static string.',
-                locations: [{ line: 12, column: 17 }],
-              },
-            ],
+            response: {
+              data: null,
+              errors: [
+                {
+                  message: 'Argument "@defer(label:)" must be a static string.',
+                  locations: [{ line: 12, column: 17 }],
+                },
+              ],
+            },
           },
           {
             testKey: 's/t/u',
@@ -317,14 +320,18 @@ describe('site/build.js', () => {
     );
     assert.equal(refExclusions.length, 2);
 
-    const withErrors = refExclusions.find((e) => e.testKey === 'p/q/r');
-    assert.ok(Array.isArray(withErrors.errors));
-    assert.equal(withErrors.errors.length, 1);
+    const withResponse = refExclusions.find((e) => e.testKey === 'p/q/r');
+    assert.ok(withResponse.response, 'should preserve the response field');
+    assert.equal(withResponse.response.data, null);
+    assert.equal(withResponse.response.errors.length, 1);
     assert.equal(
-      withErrors.errors[0].message,
+      withResponse.response.errors[0].message,
       'Argument "@defer(label:)" must be a static string.',
     );
-    assert.deepStrictEqual(withErrors.errors[0].locations, [{ line: 12, column: 17 }]);
+    assert.deepStrictEqual(
+      withResponse.response.errors[0].locations,
+      [{ line: 12, column: 17 }],
+    );
 
     const withStderr = refExclusions.find((e) => e.testKey === 's/t/u');
     assert.equal(withStderr.stderr, 'panic: oops\nat main.go:42');

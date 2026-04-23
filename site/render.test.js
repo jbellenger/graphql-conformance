@@ -6,44 +6,48 @@ const render = require('./render');
 
 describe('render.formatFailureCard', () => {
   describe('reference exclusions from a test-ref impl', () => {
-    it('renders the GraphQL error message for a validation-style exclusion', () => {
+    it('renders the full GraphQL response using the json-diff widget', () => {
       const exclusion = {
         testKey: 'aaaa/bbbb/cccc',
         error: 'reference returned errors',
-        errors: [
-          {
-            message: 'Argument "@defer(label:)" must be a static string.',
-            locations: [{ line: 12, column: 17 }],
-          },
-        ],
-      };
-
-      const html = render.formatFailureCard(exclusion, { expanded: false });
-
-      assert.ok(
-        html.includes('Argument "@defer(label:)" must be a static string.'),
-        'should include the error message',
-      );
-      assert.ok(html.includes('12:17'), 'should include error locations');
-      assert.ok(html.includes('GraphQL errors'), 'should label the errors block');
-    });
-
-    it('renders multiple errors and each error path', () => {
-      const exclusion = {
-        testKey: 'aaaa/bbbb/cccc',
-        error: 'reference returned errors',
-        errors: [
-          { message: 'boom 1', path: ['foo', 0, 'bar'] },
-          { message: 'boom 2', path: ['baz'] },
-        ],
+        response: {
+          data: null,
+          errors: [
+            {
+              message: 'Argument "@defer(label:)" must be a static string.',
+              locations: [{ line: 12, column: 17 }],
+            },
+          ],
+        },
       };
 
       const html = render.formatFailureCard(exclusion, { expanded: true });
 
-      assert.ok(html.includes('boom 1'), 'should include first error');
-      assert.ok(html.includes('boom 2'), 'should include second error');
-      assert.ok(html.includes('foo.0.bar'), 'should include first path');
-      assert.ok(html.includes('baz'), 'should include second path');
+      assert.ok(html.includes('json-diff-single'), 'should use single-column json-diff widget');
+      assert.ok(html.includes('json-diff-header'), 'should include a diff-style header');
+      assert.ok(html.includes('Response'), 'should label the block as Response');
+      assert.ok(
+        html.includes('Argument \\"@defer(label:)\\" must be a static string.'),
+        'message text should appear inside the JSON (quote-escaped)',
+      );
+      assert.ok(html.includes('"line"'), 'should include location keys');
+      assert.ok(html.includes('"data"'), 'should include the data field');
+      assert.ok(html.includes('null'), 'should include null data literal');
+    });
+
+    it('synthesizes {data:null, errors:[...]} for legacy records that only have errors', () => {
+      const legacy = {
+        testKey: 'aaaa/bbbb/cccc',
+        error: 'reference returned errors',
+        errors: [{ message: 'boom', path: ['foo', 0, 'bar'] }],
+      };
+
+      const html = render.formatFailureCard(legacy, { expanded: true });
+      assert.ok(html.includes('json-diff-single'));
+      assert.ok(html.includes('"data"'), 'synthesized data: null should be present');
+      assert.ok(html.includes('"errors"'), 'errors array should be rendered');
+      assert.ok(html.includes('"foo"'));
+      assert.ok(html.includes('"bar"'));
     });
 
     it('renders harness-failure exclusions with stderr content', () => {
@@ -60,32 +64,35 @@ describe('render.formatFailureCard', () => {
       assert.ok(html.includes('line 4'), 'should include all stderr lines when expanded');
     });
 
-    it('marks exclusions with many errors as expandable', () => {
-      const manyErrors = Array.from({ length: 8 }, (_unused, i) => ({ message: `error ${i}` }));
+    it('marks exclusions with a long response as expandable', () => {
+      const response = {
+        data: null,
+        errors: Array.from({ length: 8 }, (_unused, i) => ({ message: `error ${i}` })),
+      };
       const exclusion = {
         testKey: 'aaaa/bbbb/cccc',
         error: 'reference returned errors',
-        errors: manyErrors,
+        response,
       };
 
       assert.equal(render.canExpandFailure(exclusion), true);
 
       const collapsedHtml = render.formatFailureCard(exclusion, { expanded: false });
       assert.ok(collapsedHtml.includes('data-expandable="true"'));
-      assert.ok(collapsedHtml.includes('error 0'));
-      assert.ok(!collapsedHtml.includes('error 7'), 'last error is hidden when collapsed');
+      assert.ok(!collapsedHtml.includes('error 7'), 'last error hidden when collapsed');
 
       const expandedHtml = render.formatFailureCard(exclusion, { expanded: true });
       assert.ok(expandedHtml.includes('error 7'), 'last error visible when expanded');
     });
 
-    it('escapes HTML in error messages and path segments', () => {
+    it('escapes HTML in response content', () => {
       const exclusion = {
         testKey: 'aaaa/bbbb/cccc',
         error: 'reference returned errors',
-        errors: [
-          { message: '<script>alert(1)</script>', path: ['<evil>'] },
-        ],
+        response: {
+          data: null,
+          errors: [{ message: '<script>alert(1)</script>', path: ['<evil>'] }],
+        },
       };
 
       const html = render.formatFailureCard(exclusion, { expanded: true });

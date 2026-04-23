@@ -478,9 +478,11 @@ describe('integration: reference exclusions', () => {
     assert.equal(run.reference.exclusions.length, 1);
     assert.equal(run.reference.exclusions[0].testKey, 'err-test/err-query');
     assert.equal(run.reference.exclusions[0].error, 'reference returned errors');
-    assert.ok(Array.isArray(run.reference.exclusions[0].errors));
-    assert.equal(run.reference.exclusions[0].errors.length, 1);
-    assert.equal(run.reference.exclusions[0].errors[0].message, 'validation failed: bad field');
+    const errResponse = run.reference.exclusions[0].response;
+    assert.ok(errResponse, 'should capture the reference response');
+    assert.ok(Array.isArray(errResponse.errors));
+    assert.equal(errResponse.errors.length, 1);
+    assert.equal(errResponse.errors[0].message, 'validation failed: bad field');
 
     const conformant = run.conformants.conformant;
     assert.equal(conformant.total, 1);
@@ -516,7 +518,10 @@ describe('integration: reference exclusions', () => {
     assert.equal(run.reference.total, 0);
     assert.equal(run.reference.excluded, 1);
     assert.equal(run.reference.exclusions[0].testKey, 'partial-test/partial-query');
-    assert.equal(run.reference.exclusions[0].errors[0].message, 'resolver failed');
+    const partialResponse = run.reference.exclusions[0].response;
+    assert.ok(partialResponse, 'should capture the reference response');
+    assert.deepStrictEqual(partialResponse.data, { ok: null });
+    assert.equal(partialResponse.errors[0].message, 'resolver failed');
 
     assert.equal(conformantCalls, 0, 'conformant should not run when reference produced errors');
   });
