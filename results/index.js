@@ -140,6 +140,7 @@ class ResultsStore {
           passPct: c.total > 0 ? Math.round((c.passed / c.total) * 1000) / 10 : 100,
           total: c.total,
           failed: c.total - c.passed,
+          version: c.version != null ? c.version : null,
         };
       });
   }

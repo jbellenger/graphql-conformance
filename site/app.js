@@ -576,7 +576,7 @@ function renderImplDetail(name, history, failures, summaryItem, exclusions = [],
             <p>Pass rate over recorded runs.</p>
           </div>
           <div class="chart-container">
-            <canvas id="history-chart" height="200"></canvas>
+            <div id="history-chart"></div>
           </div>
         </section>
       ` : ''}
@@ -677,74 +677,96 @@ function shouldToggleFailureCard(card, target) {
   return true;
 }
 
+let currentChart = null;
+
+function buildVersionAnnotations(history) {
+  const points = [];
+  let lastVersion = null;
+  for (const entry of history) {
+    if (entry.version && entry.version !== lastVersion) {
+      if (lastVersion !== null) {
+        points.push({
+          x: new Date(entry.date).getTime(),
+          label: {
+            text: `v${entry.version}`,
+            borderColor: '#adb5bd',
+            style: {
+              color: '#1a1a2e',
+              background: '#fff',
+              fontSize: '11px',
+              fontWeight: 500,
+            },
+          },
+        });
+      }
+      lastVersion = entry.version;
+    }
+  }
+  return points;
+}
+
 function drawChart(history) {
-  const canvas = document.getElementById('history-chart');
-  if (!canvas) return;
+  const target = document.getElementById('history-chart');
+  if (!target || typeof ApexCharts === 'undefined') return;
 
-  const ctx = canvas.getContext('2d');
-  const dpr = window.devicePixelRatio || 1;
-  const rect = canvas.getBoundingClientRect();
-  canvas.width = rect.width * dpr;
-  canvas.height = rect.height * dpr;
-  ctx.scale(dpr, dpr);
-
-  const w = rect.width;
-  const h = rect.height;
-  const pad = { top: 20, right: 20, bottom: 40, left: 50 };
-  const plotW = w - pad.left - pad.right;
-  const plotH = h - pad.top - pad.bottom;
-
-  const dates = history.map((d) => d.date);
-  const values = history.map((d) => d.passPct);
-  const minY = Math.max(0, Math.min(...values) - 5);
-  const maxY = 100;
-
-  function x(i) { return pad.left + (i / (dates.length - 1)) * plotW; }
-  function y(v) { return pad.top + (1 - (v - minY) / (maxY - minY)) * plotH; }
-
-  // Grid
-  ctx.strokeStyle = '#dee2e6';
-  ctx.lineWidth = 0.5;
-  for (let pct = Math.ceil(minY / 10) * 10; pct <= maxY; pct += 10) {
-    const yy = y(pct);
-    ctx.beginPath();
-    ctx.moveTo(pad.left, yy);
-    ctx.lineTo(w - pad.right, yy);
-    ctx.stroke();
-
-    ctx.fillStyle = '#868e96';
-    ctx.font = '11px -apple-system, sans-serif';
-    ctx.textAlign = 'right';
-    ctx.fillText(`${pct}%`, pad.left - 8, yy + 4);
+  if (currentChart) {
+    currentChart.destroy();
+    currentChart = null;
   }
 
-  // X labels
-  ctx.textAlign = 'center';
-  ctx.fillStyle = '#868e96';
-  const step = Math.max(1, Math.floor(dates.length / 6));
-  for (let i = 0; i < dates.length; i += step) {
-    ctx.fillText(dates[i], x(i), h - pad.bottom + 20);
-  }
+  const series = history.map((d) => ({ x: new Date(d.date).getTime(), y: d.passPct }));
+  const minValue = history.reduce((m, d) => Math.min(m, d.passPct), 100);
+  const yMin = minValue >= 95 ? 90 : minValue >= 75 ? Math.max(0, Math.floor(minValue / 5) * 5 - 5) : 0;
 
-  // Line
-  ctx.strokeStyle = '#364fc7';
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  for (let i = 0; i < values.length; i++) {
-    const px = x(i);
-    const py = y(values[i]);
-    if (i === 0) ctx.moveTo(px, py);
-    else ctx.lineTo(px, py);
-  }
-  ctx.stroke();
+  const options = {
+    chart: {
+      type: 'line',
+      height: 260,
+      toolbar: { show: false },
+      zoom: { enabled: false },
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+      animations: { enabled: false },
+    },
+    series: [{ name: 'Pass rate', data: series }],
+    stroke: { curve: 'straight', width: 2.5, colors: ['#364fc7'] },
+    markers: { size: 4, colors: ['#364fc7'], strokeColors: '#fff', strokeWidth: 2, hover: { size: 6 } },
+    grid: { borderColor: '#e9ecef', strokeDashArray: 3, padding: { top: 0, right: 20, bottom: 0, left: 10 } },
+    xaxis: {
+      type: 'datetime',
+      labels: {
+        datetimeUTC: false,
+        format: 'MMM d',
+        style: { colors: '#868e96', fontSize: '12px' },
+      },
+      axisBorder: { color: '#dee2e6' },
+      axisTicks: { color: '#dee2e6' },
+    },
+    yaxis: {
+      min: yMin,
+      max: 100,
+      tickAmount: 5,
+      labels: {
+        formatter: (v) => `${Math.round(v)}%`,
+        style: { colors: '#868e96', fontSize: '12px' },
+      },
+    },
+    tooltip: {
+      x: { format: 'MMM d, yyyy' },
+      y: {
+        formatter: (value, { dataPointIndex }) => {
+          const entry = history[dataPointIndex] || {};
+          const parts = [`${value}%`];
+          if (entry.total != null) parts.push(`(${entry.total - entry.failed}/${entry.total})`);
+          if (entry.version) parts.push(`v${entry.version}`);
+          return parts.join(' ');
+        },
+      },
+    },
+    annotations: { xaxis: buildVersionAnnotations(history) },
+  };
 
-  // Dots
-  ctx.fillStyle = '#364fc7';
-  for (let i = 0; i < values.length; i++) {
-    ctx.beginPath();
-    ctx.arc(x(i), y(values[i]), 3, 0, Math.PI * 2);
-    ctx.fill();
-  }
+  currentChart = new ApexCharts(target, options);
+  currentChart.render();
 }
 
 async function route() {
