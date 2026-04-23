@@ -245,7 +245,6 @@ async function runConformance({ argv = [], createSession = createDockerSession, 
           process.stderr.write(`    reference excluded: returned ${refErrors.length} GraphQL error(s)\n`);
           referenceExclusions.push({
             testKey: `${testId}/${queryId}`,
-            error: 'reference returned errors',
             response: refResult.result,
           });
           continue;

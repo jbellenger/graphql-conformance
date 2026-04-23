@@ -199,6 +199,7 @@ h2 { margin-bottom: 1rem; }
 }
 
 .detail-meta-card {
+  position: relative;
   background: #f8f9fa;
   border: 1px solid #e9ecef;
   border-radius: 10px;
@@ -496,10 +497,20 @@ details summary:hover { text-decoration: underline; }
   box-shadow: 0 14px 30px rgba(64, 192, 87, 0.08);
 }
 
-.zero-failures-art svg {
+.zero-failures-art-img {
   width: 72px;
   height: 72px;
   display: block;
+}
+
+.detail-meta-emote {
+  position: absolute;
+  top: 50%;
+  right: 0.95rem;
+  transform: translateY(-50%);
+  width: 2.75rem;
+  height: 2.75rem;
+  pointer-events: none;
 }
 
 .zero-failures-copy h3 {

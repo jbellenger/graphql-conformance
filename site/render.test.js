@@ -9,7 +9,6 @@ describe('render.formatFailureCard', () => {
     it('renders the full GraphQL response using the json-diff widget', () => {
       const exclusion = {
         testKey: 'aaaa/bbbb/cccc',
-        error: 'reference returned errors',
         response: {
           data: null,
           errors: [
@@ -33,12 +32,12 @@ describe('render.formatFailureCard', () => {
       assert.ok(html.includes('"line"'), 'should include location keys');
       assert.ok(html.includes('"data"'), 'should include the data field');
       assert.ok(html.includes('null'), 'should include null data literal');
+      assert.ok(!html.includes('failure-card-summary'), 'summary line omitted when only a reference response is present');
     });
 
     it('synthesizes {data:null, errors:[...]} for legacy records that only have errors', () => {
       const legacy = {
         testKey: 'aaaa/bbbb/cccc',
-        error: 'reference returned errors',
         errors: [{ message: 'boom', path: ['foo', 0, 'bar'] }],
       };
 
@@ -71,7 +70,6 @@ describe('render.formatFailureCard', () => {
       };
       const exclusion = {
         testKey: 'aaaa/bbbb/cccc',
-        error: 'reference returned errors',
         response,
       };
 
@@ -88,7 +86,6 @@ describe('render.formatFailureCard', () => {
     it('escapes HTML in response content', () => {
       const exclusion = {
         testKey: 'aaaa/bbbb/cccc',
-        error: 'reference returned errors',
         response: {
           data: null,
           errors: [{ message: '<script>alert(1)</script>', path: ['<evil>'] }],

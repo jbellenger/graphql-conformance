@@ -291,7 +291,6 @@ describe('site/build.js', () => {
         exclusions: [
           {
             testKey: 'p/q/r',
-            error: 'reference returned errors',
             response: {
               data: null,
               errors: [

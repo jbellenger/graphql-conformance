@@ -10,24 +10,13 @@ const {
 const app = document.getElementById('app');
 const expandedFailureKeys = new Set();
 let currentDetailState = null;
-const BUILD_VERSION = (() => {
-  const scriptSrc = document.currentScript?.src;
-  if (!scriptSrc) return '';
-  try {
-    return new URL(scriptSrc, window.location.href).searchParams.get('v') || '';
-  } catch {
-    return '';
-  }
-})();
 
-function withBuildVersion(url) {
-  if (!BUILD_VERSION) return url;
-  const separator = url.includes('?') ? '&' : '?';
-  return `${url}${separator}v=${encodeURIComponent(BUILD_VERSION)}`;
+function happyFaceImg(className) {
+  return `<img src="icons/happy-face.svg" class="${className}" alt="">`;
 }
 
 async function fetchJSON(url) {
-  const res = await fetch(withBuildVersion(url));
+  const res = await fetch(url);
   if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
   return res.json();
 }
@@ -49,27 +38,7 @@ function renderNoFailuresSection() {
   return `
     <section class="detail-section-card zero-failures-card">
       <div class="zero-failures-art" aria-hidden="true">
-        <svg viewBox="0 0 96 96" role="presentation">
-          <defs>
-            <linearGradient id="zero-failures-glow" x1="0%" x2="100%" y1="0%" y2="100%">
-              <stop offset="0%" stop-color="#d3f9d8" />
-              <stop offset="100%" stop-color="#e7f5ff" />
-            </linearGradient>
-            <linearGradient id="zero-failures-face" x1="0%" x2="100%" y1="0%" y2="100%">
-              <stop offset="0%" stop-color="#fffef5" />
-              <stop offset="100%" stop-color="#f8fff8" />
-            </linearGradient>
-          </defs>
-          <circle cx="48" cy="48" r="34" fill="url(#zero-failures-glow)" />
-          <circle cx="48" cy="48" r="23" fill="url(#zero-failures-face)" stroke="#2b8a3e" stroke-width="3" />
-          <circle cx="39.5" cy="43" r="2.7" fill="#1a1a2e" />
-          <circle cx="56.5" cy="43" r="2.7" fill="#1a1a2e" />
-          <path d="M39 53.5c2.2 3 5.5 4.5 9 4.5s6.8-1.5 9-4.5" fill="none" stroke="#1a1a2e" stroke-linecap="round" stroke-width="3.4" />
-          <circle cx="33.5" cy="50" r="3" fill="#ffa8a8" opacity="0.7" />
-          <circle cx="62.5" cy="50" r="3" fill="#ffa8a8" opacity="0.7" />
-          <path d="M28.5 28.5 34.5 34.5 45 24" fill="none" stroke="#3b5bdb" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.5" />
-          <path d="M24 68h8M28 64v8M67 25h6M70 22v6M70 69h8M74 65v8" fill="none" stroke="#3b5bdb" stroke-linecap="round" stroke-width="3.5" />
-        </svg>
+        ${happyFaceImg('zero-failures-art-img')}
       </div>
       <div class="zero-failures-copy">
         <h3>No failures in this run</h3>
@@ -184,24 +153,29 @@ function renderImplDetail(name, history, failures, summaryItem, exclusions = [],
         : `${latest.total} total · ${latest.failed} failed`))
     : 'No history available';
 
+  const failedHref = (count) => (count > 0 ? `#/impl/${name}/failures` : null);
   const metaItems = latest
     ? (isReference
       ? [
         { label: 'Run', value: formatTimestamp(summaryItem?.lastRun) },
         { label: 'Total', value: refDisplay.total },
-        { label: 'Failed', value: refDisplay.failed },
+        { label: 'Failed', value: refDisplay.failed, href: failedHref(refDisplay.failed) },
       ]
       : (referenceSummary
         ? [
           { label: 'Run', value: formatTimestamp(summaryItem?.lastRun) },
           { label: 'Total', value: referenceSummary.corpusTotal ?? latest.total },
-          { label: 'Excluded', value: referenceSummary.excluded || 0 },
-          { label: 'Failed', value: latest.failed },
+          {
+            label: 'Excluded',
+            value: referenceSummary.excluded || 0,
+            href: referenceSummary.excluded > 0 ? `#/impl/${referenceSummary.impl}/failures` : null,
+          },
+          { label: 'Failed', value: latest.failed, href: failedHref(latest.failed) },
         ]
         : [
           { label: 'Run', value: formatTimestamp(summaryItem?.lastRun) },
           { label: 'Total', value: latest.total },
-          { label: 'Failed', value: latest.failed },
+          { label: 'Failed', value: latest.failed, href: failedHref(latest.failed) },
         ]))
     : [];
 
@@ -209,7 +183,7 @@ function renderImplDetail(name, history, failures, summaryItem, exclusions = [],
   const detailsSection = items.length === 0
     ? renderNoFailuresSection()
     : `
-      <section class="detail-section-card">
+      <section id="failures" class="detail-section-card">
         <div class="detail-section-header">
           <h3>${heading}</h3>
           <p>${items.length} ${itemLabel} in the latest run.</p>
@@ -250,12 +224,21 @@ function renderImplDetail(name, history, failures, summaryItem, exclusions = [],
         ` : ''}
 
         <div class="detail-meta-grid">
-          ${metaItems.map((item) => `
-            <div class="detail-meta-card">
-              <span>${item.label}</span>
-              <strong>${item.value}</strong>
-            </div>
-          `).join('')}
+          ${metaItems.map((item) => {
+            const emote = item.label === 'Failed' && item.value === 0
+              ? happyFaceImg('detail-meta-emote')
+              : '';
+            const value = item.href
+              ? `<a href="${item.href}">${item.value}</a>`
+              : item.value;
+            return `
+              <div class="detail-meta-card">
+                <span>${item.label}</span>
+                <strong>${value}</strong>
+                ${emote}
+              </div>
+            `;
+          }).join('')}
           <div class="detail-meta-card">
             <span>Version</span>
             <strong class="mono">${versionCell}</strong>
@@ -469,7 +452,10 @@ async function route() {
 
   try {
     if (hash.startsWith('#/impl/')) {
-      const name = decodeURIComponent(hash.slice(7));
+      const rest = hash.slice(7);
+      const slashIdx = rest.indexOf('/');
+      const name = decodeURIComponent(slashIdx === -1 ? rest : rest.slice(0, slashIdx));
+      const section = slashIdx === -1 ? null : rest.slice(slashIdx + 1);
       const summary = await fetchJSON('data/summary.json');
       const summaryItem = summary.find((item) => item.impl === name) || null;
       const referenceSummary = summary.find((item) => item.isReference) || null;
@@ -480,7 +466,12 @@ async function route() {
           ? fetchJSON(`data/impls/${name}/exclusions.json`)
           : Promise.resolve([]),
       ]);
-      renderImplDetail(name, history, failures, summaryItem, exclusions, referenceSummary, { resetExpanded: true });
+      const isSameImpl = currentDetailState?.name === name;
+      renderImplDetail(name, history, failures, summaryItem, exclusions, referenceSummary, { resetExpanded: !isSameImpl });
+      if (section) {
+        const target = document.getElementById(section);
+        if (target) target.scrollIntoView();
+      }
     } else {
       currentDetailState = null;
       expandedFailureKeys.clear();

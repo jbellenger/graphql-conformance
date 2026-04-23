@@ -367,8 +367,10 @@
     const expandable = canExpandFailure(failure);
     const content = formatFailureContent(failure, expanded);
     const hasReferenceResponse = referenceResponseFromFailure(failure) !== null;
-    const summary = failure.error
-      || (failure.expected && failure.actual ? 'Output differs' : (hasReferenceResponse ? 'Reference response' : 'Failed'));
+    let summary = null;
+    if (failure.error) summary = failure.error;
+    else if (failure.expected && failure.actual) summary = 'Output differs';
+    else if (!hasReferenceResponse) summary = 'Failed';
     const collapsed = expandable && !expanded;
     const testPath = getTestPathText(failure.testKey);
     const failureKey = getFailureKey(failure);
@@ -401,7 +403,7 @@
           </div>
           ${expandable ? `<span class="failure-card-chip">${expanded ? 'Collapse' : 'Expand'}</span>` : ''}
         </div>
-        <div class="failure-card-summary">${escapeHtml(summary)}</div>
+        ${summary ? `<div class="failure-card-summary">${escapeHtml(summary)}</div>` : ''}
         ${content.html ? `<div class="failure-card-body">${content.html}</div>` : ''}
       </article>
     `;

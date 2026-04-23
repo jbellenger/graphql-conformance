@@ -477,7 +477,7 @@ describe('integration: reference exclusions', () => {
     assert.equal(run.reference.corpusTotal, 2);
     assert.equal(run.reference.exclusions.length, 1);
     assert.equal(run.reference.exclusions[0].testKey, 'err-test/err-query');
-    assert.equal(run.reference.exclusions[0].error, 'reference returned errors');
+    assert.ok(!('error' in run.reference.exclusions[0]), 'no redundant error tag when response is present');
     const errResponse = run.reference.exclusions[0].response;
     assert.ok(errResponse, 'should capture the reference response');
     assert.ok(Array.isArray(errResponse.errors));

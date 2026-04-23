@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Happy face">
+  <defs>
+    <linearGradient id="glow" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#d3f9d8" />
+      <stop offset="100%" stop-color="#e7f5ff" />
+    </linearGradient>
+    <linearGradient id="face" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#fffef5" />
+      <stop offset="100%" stop-color="#f8fff8" />
+    </linearGradient>
+  </defs>
+  <circle cx="48" cy="48" r="34" fill="url(#glow)" />
+  <circle cx="48" cy="48" r="23" fill="url(#face)" stroke="#2b8a3e" stroke-width="3" />
+  <circle cx="39.5" cy="43" r="2.7" fill="#1a1a2e" />
+  <circle cx="56.5" cy="43" r="2.7" fill="#1a1a2e" />
+  <path d="M39 53.5c2.2 3 5.5 4.5 9 4.5s6.8-1.5 9-4.5" fill="none" stroke="#1a1a2e" stroke-linecap="round" stroke-width="3.4" />
+  <circle cx="33.5" cy="50" r="3" fill="#ffa8a8" opacity="0.7" />
+  <circle cx="62.5" cy="50" r="3" fill="#ffa8a8" opacity="0.7" />
+  <path d="M28.5 28.5 34.5 34.5 45 24" fill="none" stroke="#3b5bdb" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.5" />
+  <path d="M24 68h8M28 64v8M67 25h6M70 22v6M70 69h8M74 65v8" fill="none" stroke="#3b5bdb" stroke-linecap="round" stroke-width="3.5" />
+</svg>
