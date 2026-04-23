@@ -3,7 +3,7 @@
 const { describe, it, beforeEach, afterEach, mock } = require('node:test');
 const assert = require('node:assert/strict');
 const docker = require('./docker');
-const { DockerDriver } = require('./driver');
+const { DockerDriver, resolveStopTimeoutSeconds } = require('./driver');
 
 function makeDriver() {
   return new DockerDriver({
@@ -84,5 +84,64 @@ describe('DockerDriver.ensureImage — skip-if-present', () => {
     await driver.ensureImage();
     assert.equal(buildCalls, 1, 'must fall through to build when image is absent');
     assert.equal(driver.imageDigest, 'sha256:built');
+  });
+});
+
+describe('DockerDriver.stop', () => {
+  let prevEnv;
+
+  beforeEach(() => {
+    prevEnv = process.env.CONFORMER_STOP_TIMEOUT_SECS;
+  });
+
+  afterEach(() => {
+    if (prevEnv === undefined) delete process.env.CONFORMER_STOP_TIMEOUT_SECS;
+    else process.env.CONFORMER_STOP_TIMEOUT_SECS = prevEnv;
+    mock.restoreAll();
+  });
+
+  it('uses the configured stop timeout when stopping the container', async () => {
+    process.env.CONFORMER_STOP_TIMEOUT_SECS = '1';
+    const driver = makeDriver();
+    driver.container = { id: 'fake-container' };
+
+    let stopOptions = null;
+    mock.method(docker, 'stopContainer', async (_container, options) => {
+      stopOptions = options;
+    });
+
+    await driver.stop();
+
+    assert.deepStrictEqual(stopOptions, { removeOnStop: true, timeout: 1 });
+    assert.equal(driver.container, null);
+  });
+});
+
+describe('resolveStopTimeoutSeconds', () => {
+  let prevEnv;
+
+  beforeEach(() => {
+    prevEnv = process.env.CONFORMER_STOP_TIMEOUT_SECS;
+  });
+
+  afterEach(() => {
+    if (prevEnv === undefined) delete process.env.CONFORMER_STOP_TIMEOUT_SECS;
+    else process.env.CONFORMER_STOP_TIMEOUT_SECS = prevEnv;
+  });
+
+  it('defaults to 10 seconds when unset or invalid', () => {
+    delete process.env.CONFORMER_STOP_TIMEOUT_SECS;
+    assert.equal(resolveStopTimeoutSeconds(), 10);
+
+    process.env.CONFORMER_STOP_TIMEOUT_SECS = 'invalid';
+    assert.equal(resolveStopTimeoutSeconds(), 10);
+  });
+
+  it('accepts zero and positive numeric overrides', () => {
+    process.env.CONFORMER_STOP_TIMEOUT_SECS = '0';
+    assert.equal(resolveStopTimeoutSeconds(), 0);
+
+    process.env.CONFORMER_STOP_TIMEOUT_SECS = '1.5';
+    assert.equal(resolveStopTimeoutSeconds(), 1.5);
   });
 });
