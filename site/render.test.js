@@ -112,6 +112,7 @@ describe('render.formatFailureCard', () => {
         corpusTotal: 553,
       });
       assert.equal(result.total, 553);
+      assert.equal(result.excluded, 8);
       assert.equal(result.failed, 8);
       assert.equal(result.passed, 545);
       assert.equal(result.passPct, 98.6);
@@ -125,6 +126,7 @@ describe('render.formatFailureCard', () => {
         corpusTotal: 15,
       });
       assert.equal(result.total, 15);
+      assert.equal(result.excluded, 3);
       assert.equal(result.failed, 5);
       assert.equal(result.passed, 10);
       assert.equal(result.passPct, 66.7);
@@ -138,6 +140,7 @@ describe('render.formatFailureCard', () => {
         corpusTotal: 4,
       });
       assert.equal(result.total, 4);
+      assert.equal(result.excluded, 0);
       assert.equal(result.failed, 0);
       assert.equal(result.passPct, 100);
     });
@@ -148,6 +151,7 @@ describe('render.formatFailureCard', () => {
         failed: 1,
       });
       assert.equal(result.total, 4);
+      assert.equal(result.excluded, 0);
       assert.equal(result.failed, 1);
       assert.equal(result.passPct, 75);
     });

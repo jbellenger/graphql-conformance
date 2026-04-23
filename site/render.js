@@ -273,7 +273,7 @@
     const failed = errors + excluded;
     const passed = Math.max(0, corpus - failed);
     const passPct = corpus > 0 ? Math.round((passed / corpus) * 1000) / 10 : 100;
-    return { total: corpus, failed, passed, passPct };
+    return { total: corpus, excluded, failed, passed, passPct };
   }
 
   function referenceResponseFromFailure(failure) {
