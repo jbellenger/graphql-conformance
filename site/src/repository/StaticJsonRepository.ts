@@ -30,10 +30,15 @@ export class StaticJsonRepository implements Repository {
   // sufficient. TanStack Query owns the app-level cache.
   private readonly cache = new Map<string, Promise<unknown>>();
 
-  constructor(baseUrl: string, fetchImpl: typeof fetch = fetch) {
+  constructor(baseUrl: string, fetchImpl?: typeof fetch) {
     // Normalise to a trailing '/' so join is simple.
     this.baseUrl = baseUrl.endsWith('/') ? baseUrl : baseUrl + '/';
-    this.fetchImpl = fetchImpl;
+    // Default to the global fetch bound to globalThis. Storing `window.fetch`
+    // as an instance property and calling it via `this.fetchImpl(...)` loses
+    // its Window binding and triggers "Illegal invocation" in browsers; bind
+    // here once so callers don't have to worry about it. Custom fetch
+    // implementations (e.g. test mocks) are used as-is.
+    this.fetchImpl = fetchImpl ?? fetch.bind(globalThis);
   }
 
   private async getJson<T>(relativePath: string): Promise<T | null> {
