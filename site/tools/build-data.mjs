@@ -160,9 +160,14 @@ function toImpl(name, driver, { isReference, version }) {
   const repoUrl = manifest?.homepage;
   const language = manifest?.language ?? driver?.language ?? 'unknown';
   const manifestPath = driver?.manifestPath?.replace(/^\.\//, '');
+  // Use registry `name` as the display label. Manifest `displayName` entries
+  // like "Gra*fast" (logo stylization), "graphql-php (webonyx)", or
+  // "graphql-core (Python)" exist to disambiguate outside this repo or to
+  // show branding glyphs, but on this dashboard (one impl per name) they
+  // just add noise.
   return {
     id: name,
-    name: manifest?.displayName ?? name,
+    name,
     language,
     isReference,
     manifestUrl: manifestPath

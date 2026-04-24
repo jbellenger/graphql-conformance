@@ -18,7 +18,17 @@ export function Dashboard() {
 
   const run = latest.data;
   const reference = impls.data.find((i) => i.id === run.referenceImplId) ?? null;
-  const others = impls.data.filter((i) => i.id !== run.referenceImplId);
+  // Sort non-reference impls by pass rate descending; fall back to impl name
+  // so the order is stable for ties.
+  const others = impls.data
+    .filter((i) => i.id !== run.referenceImplId)
+    .slice()
+    .sort((a, b) => {
+      const aPct = computeDisplay(run, run.resultsByImpl[a.id]).passPct;
+      const bPct = computeDisplay(run, run.resultsByImpl[b.id]).passPct;
+      if (bPct !== aPct) return bPct - aPct;
+      return a.name.localeCompare(b.name);
+    });
 
   return (
     <div className="dashboard-layout">

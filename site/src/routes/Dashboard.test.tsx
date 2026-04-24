@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { HashRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Dashboard } from './Dashboard';
@@ -81,5 +81,39 @@ describe('Dashboard', () => {
     expect(
       await screen.findByText(/no conformance data/i),
     ).toBeInTheDocument();
+  });
+
+  it('sorts non-reference impls by descending pass rate', async () => {
+    const repo = new FakeRepository({
+      impls: [
+        { id: 'ref', name: 'ref', language: 'JS', isReference: true },
+        { id: 'low', name: 'low', language: 'JS', isReference: false },
+        { id: 'high', name: 'high', language: 'JS', isReference: false },
+        { id: 'mid', name: 'mid', language: 'JS', isReference: false },
+      ],
+      runs: [
+        {
+          id: 'r',
+          timestamp: '2026-04-24T12:00:00Z',
+          referenceImplId: 'ref',
+          implIds: ['ref', 'low', 'high', 'mid'],
+          testCaseCount: 100,
+          resultsByImpl: {
+            ref: implRunResults('ref'),
+            low: implRunResults('low', { failed: 50 }),
+            high: implRunResults('high', { failed: 0 }),
+            mid: implRunResults('mid', { failed: 20 }),
+          },
+        },
+      ],
+    });
+    renderWith(repo);
+    const rows = await screen.findAllByRole('row');
+    // Row order: header, high (100%), mid (80%), low (50%).
+    const bodyRows = rows.slice(1);
+    const names = bodyRows.map(
+      (r) => within(r).getByRole('link').textContent,
+    );
+    expect(names).toEqual(['high', 'mid', 'low']);
   });
 });
