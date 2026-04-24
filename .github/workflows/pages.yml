@@ -25,15 +25,27 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
+          cache: npm
+          cache-dependency-path: site/package-lock.json
 
-      - name: Build site data
-        run: node site/build.js results/data
+      - name: Install site dependencies
+        working-directory: site
+        run: npm ci
+
+      - name: Build site
+        working-directory: site
+        env:
+          VITE_BASE_URL: /graphql-conformance/
+        run: npm run build
+
+      - name: Generate site data
+        run: node site/tools/build-data.mjs results/data site/dist/data
 
       - uses: actions/configure-pages@v6
 
       - uses: actions/upload-pages-artifact@v5
         with:
-          path: site
+          path: site/dist
 
       - id: deployment
         uses: actions/deploy-pages@v5

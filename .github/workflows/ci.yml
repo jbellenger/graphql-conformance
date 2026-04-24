@@ -6,7 +6,6 @@ on:
       - master
     paths-ignore:
       - 'results/data/**'
-      - 'site/data/**'
   pull_request:
     branches:
       - master
