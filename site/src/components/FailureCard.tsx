@@ -2,8 +2,8 @@ import { useState, useRef, useEffect, type MouseEvent, type KeyboardEvent } from
 import type { Result } from '../repository/types';
 import { JsonDiff, JsonSingle } from './JsonDiff';
 import { buildJsonDiffRows } from '../lib/jsonDiff';
+import { repoBlobUrl } from '../lib/repo';
 
-const REPO_URL = 'https://github.com/jbellenger/graphql-conformance/blob/master';
 const PREVIEW_ROWS = 4;
 const STDERR_PREVIEW_LINES = 3;
 
@@ -168,13 +168,15 @@ function TestKeyLink({ testKey }: { testKey: string }) {
   return (
     <span className="failure-card-title-key">
       <span>corpus/</span>
-      <a href={`${REPO_URL}/corpus/${schema}/schema.graphqls`}>{schema}</a>
+      <a href={repoBlobUrl(`corpus/${schema}/schema.graphqls`)}>{schema}</a>
       {'/'}
-      <a href={`${REPO_URL}/corpus/${schema}/${query}/query.graphql`}>{query}</a>
+      <a href={repoBlobUrl(`corpus/${schema}/${query}/query.graphql`)}>{query}</a>
       {vars && (
         <>
           {'/'}
-          <a href={`${REPO_URL}/corpus/${schema}/${query}/${vars}/variables.json`}>{vars}</a>
+          <a href={repoBlobUrl(`corpus/${schema}/${query}/${vars}/variables.json`)}>
+            {vars}
+          </a>
         </>
       )}
     </span>
