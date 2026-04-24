@@ -1,8 +1,9 @@
 #!/usr/bin/env node
-// Emits Repository-shaped JSON (plan P6.1) from the existing ResultsStore output.
+// Emits Repository-shaped JSON from the ResultsStore output so the SPA can
+// read it at runtime via bundled fetches.
 //
 // Usage:  node tools/build-data.mjs <results-data-dir> [<site-data-dir>]
-// Defaults: site-data-dir = site-react/dist/data (or $SITE_DATA_DIR)
+// Defaults: site-data-dir = site/dist/data (or $SITE_DATA_DIR).
 //
 // Emits:
 //   impls.json                                — Impl[]
@@ -17,8 +18,8 @@ import path from 'node:path';
 import url from 'node:url';
 
 const here = path.dirname(url.fileURLToPath(import.meta.url));
-const siteReactRoot = path.resolve(here, '..');
-const repoRoot = path.resolve(siteReactRoot, '..');
+const siteRoot = path.resolve(here, '..');
+const repoRoot = path.resolve(siteRoot, '..');
 
 const resultsDir = process.argv[2];
 if (!resultsDir) {
@@ -31,7 +32,7 @@ if (!resultsDir) {
 const outDir = path.resolve(
   process.argv[3] ??
     process.env.SITE_DATA_DIR ??
-    path.join(siteReactRoot, 'dist', 'data'),
+    path.join(siteRoot, 'dist', 'data'),
 );
 
 fs.mkdirSync(outDir, { recursive: true });
