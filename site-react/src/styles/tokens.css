@@ -1,0 +1,26 @@
+:root {
+  --color-text: #1a1a2e;
+  --color-text-muted: #6c757d;
+  --color-text-subtle: #868e96;
+  --color-bg: #f8f9fa;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f1f3f5;
+  --color-border: #dee2e6;
+  --color-border-soft: #e9ecef;
+  --color-primary: #364fc7;
+  --color-primary-soft: rgba(54, 79, 199, 0.16);
+  --color-header-bg: #1a1a2e;
+  --color-header-text: #ffffff;
+  --color-pass: #40c057;
+  --color-warn: #fab005;
+  --color-fail: #fa5252;
+  --color-badge-pass-bg: #d3f9d8;
+  --color-badge-pass-text: #2b8a3e;
+  --color-badge-fail-bg: #ffe3e3;
+  --color-badge-fail-text: #c92a2a;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "SF Mono", Monaco, Consolas, monospace;
+  --radius-card: 12px;
+  --radius-sm: 4px;
+  --shadow-card: 0 8px 24px rgba(26, 26, 46, 0.06);
+}

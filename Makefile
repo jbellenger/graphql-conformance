@@ -106,7 +106,7 @@ serve-site:
 	@$(DOCKER) rm -f $(SERVE_CONTAINER_NAME) >/dev/null 2>&1 || true
 	$(DOCKER_RUN) make -C /work _build-site
 	@printf 'Serving site at http://localhost:8000\n'
-	$(DOCKER_RUN_BASE) --name $(SERVE_CONTAINER_NAME) -p 8000:8000 $(IMAGE) python3 -u -m http.server 8000 -d /work/site
+	$(DOCKER_RUN_BASE) --name $(SERVE_CONTAINER_NAME) -p 8000:8000 $(IMAGE) python3 -u -m http.server 8000 -d /work/site-react/dist
 
 ci-smoke:
 	$(DOCKER_RUN) make -C /work _ci-smoke
@@ -138,6 +138,7 @@ _build-smoke:
 
 _test:
 	node --test site/*.test.js
+	cd site-react && npm ci && npm test
 	$(MAKE) -C results test
 	$(MAKE) -C corpus-gen test
 	$(MAKE) -C conformer test
@@ -161,11 +162,13 @@ _run-conformer-smoke: _prepare-smoke-corpus
 	SITE_DATA_DIR=$(SMOKE_SITE_DATA_DIR) node site/build.js $(SMOKE_RESULTS_DIR)
 
 _build-site:
-	node site/build.js results/data
+	cd site-react && npm ci && npm run build
+	mkdir -p site-react/dist/data
+	node site-react/tools/build-data.mjs results/data site-react/dist/data
 
 _serve-site: _build-site
 	@printf 'Serving site at http://localhost:8000\n'
-	@exec python3 -m http.server 8000 -d site
+	@exec python3 -m http.server 8000 -d site-react/dist
 
 _ci-smoke:
 	$(MAKE) _build-smoke

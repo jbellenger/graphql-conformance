@@ -1,0 +1,158 @@
+@import './tokens.css';
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.5;
+}
+
+a { color: var(--color-primary); }
+a:hover { text-decoration: underline; }
+
+header {
+  background: var(--color-header-bg);
+  color: var(--color-header-text);
+  padding: 1rem 0;
+}
+header a { color: inherit; text-decoration: none; }
+header h1 {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  font-size: 1.25rem;
+}
+
+main {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+h2 { margin-bottom: 1rem; }
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.reference-card { padding: 1rem; }
+.reference-rate {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+.reference-link {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+}
+.reference-subtext,
+.pass-rate-meta {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.reference-meta {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.reference-meta span {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.15rem;
+}
+
+.reference-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: #e7f5ff;
+  color: #1864ab;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.results-table-card { overflow: hidden; }
+.results-table-card table { width: 100%; border-collapse: collapse; margin: 0; }
+.results-table-card th,
+.results-table-card td {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+.results-table-card th {
+  background: var(--color-border-soft);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+tr:hover td { background: var(--color-surface-alt); }
+.dashboard-row { cursor: pointer; }
+.dashboard-row:focus-visible {
+  outline: 2px solid var(--color-primary-soft);
+  outline-offset: -2px;
+}
+
+.pass-rate-cell { min-width: 260px; }
+.pass-rate-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.15rem;
+}
+.full-width-bar { margin-top: 0.6rem; }
+
+.bar-container {
+  width: 100%;
+  height: 20px;
+  background: var(--color-border-soft);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: var(--radius-sm);
+  transition: width 0.3s;
+}
+.bar-pass { background: var(--color-pass); }
+.bar-warn { background: var(--color-warn); }
+.bar-fail { background: var(--color-fail); }
+
+.empty {
+  color: var(--color-text-subtle);
+  font-style: italic;
+  padding: 2rem 0;
+}
+
+.loading {
+  color: var(--color-text-muted);
+  padding: 2rem 0;
+  text-align: center;
+}
+
+@media (max-width: 840px) {
+  .dashboard-layout { grid-template-columns: 1fr; }
+  .pass-rate-cell { min-width: 0; }
+}
