@@ -184,9 +184,7 @@ function ImplRow({ impl, run }: { impl: Impl; run: Run }) {
       </td>
       <td className="pass-rate-cell">
         <div className="pass-rate-value">{stats.passPct.toFixed(1)}%</div>
-        <div className="pass-rate-meta">
-          {stats.passed} / {stats.total} passed
-        </div>
+        <div className="pass-rate-meta">{formatRunStatsLine(stats)}</div>
         <div className="full-width-bar">
           <PassRateBar passPct={stats.passPct} />
         </div>
