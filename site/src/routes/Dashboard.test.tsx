@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { HashRouter, MemoryRouter, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -233,6 +233,109 @@ describe('Dashboard', () => {
     row.focus();
     await user.keyboard('{Enter}');
     expect(await screen.findByTestId('detail-marker')).toBeInTheDocument();
+  });
+
+  it('presents the impl name as plain text and the version as an external link', async () => {
+    const repo = new FakeRepository({
+      impls: [
+        {
+          id: 'graphql-js-17',
+          name: 'graphql-js-17',
+          language: 'JavaScript',
+          isReference: true,
+          version: '17.0.0-alpha.14',
+          versionUrl:
+            'https://github.com/graphql/graphql-js/releases/tag/v17.0.0-alpha.14',
+        },
+        {
+          id: 'graphql-java',
+          name: 'graphql-java',
+          language: 'Java',
+          isReference: false,
+          version: '25.0',
+          versionUrl:
+            'https://github.com/graphql-java/graphql-java/releases/tag/v25.0',
+        },
+      ],
+      runs: [
+        {
+          id: 'r',
+          timestamp: '2026-04-24T12:00:00Z',
+          referenceImplId: 'graphql-js-17',
+          implIds: ['graphql-js-17', 'graphql-java'],
+          testCaseCount: 100,
+          resultsByImpl: {
+            'graphql-js-17': implRunResults('graphql-js-17'),
+            'graphql-java': implRunResults('graphql-java', { failed: 5 }),
+          },
+        },
+      ],
+    });
+    renderWith(repo);
+    // Wait for render.
+    await screen.findByTestId('dashboard-row-graphql-java');
+
+    // Reference card: name is NOT an anchor; version IS an anchor to source.
+    const refCard = screen.getByRole('link', {
+      name: /View graphql-js-17 details/i,
+    });
+    // There should be no nested link for the impl name itself.
+    expect(
+      within(refCard).queryByRole('link', { name: 'graphql-js-17' }),
+    ).toBeNull();
+    const refVersionLink = within(refCard).getByRole('link', {
+      name: '17.0.0-alpha.14',
+    });
+    expect(refVersionLink).toHaveAttribute(
+      'href',
+      'https://github.com/graphql/graphql-js/releases/tag/v17.0.0-alpha.14',
+    );
+
+    // Row: same pattern — name is plain text, version is a link.
+    const row = screen.getByTestId('dashboard-row-graphql-java');
+    expect(
+      within(row).queryByRole('link', { name: 'graphql-java' }),
+    ).toBeNull();
+    const rowVersionLink = within(row).getByRole('link', {
+      name: '25.0',
+    });
+    expect(rowVersionLink).toHaveAttribute(
+      'href',
+      'https://github.com/graphql-java/graphql-java/releases/tag/v25.0',
+    );
+  });
+
+  it('renders a separate "Last run" card below the reference card', async () => {
+    const repo = new FakeRepository({
+      impls: [
+        {
+          id: 'graphql-js-17',
+          name: 'graphql-js-17',
+          language: 'JavaScript',
+          isReference: true,
+          version: '17.0.0-alpha.14',
+        },
+      ],
+      runs: [
+        {
+          id: 'r',
+          timestamp: '2026-04-24T12:00:00Z',
+          referenceImplId: 'graphql-js-17',
+          implIds: ['graphql-js-17'],
+          testCaseCount: 100,
+          resultsByImpl: {
+            'graphql-js-17': implRunResults('graphql-js-17'),
+          },
+        },
+      ],
+    });
+    const { container } = renderWith(repo);
+    const lastRun = await screen.findByLabelText('Last conformance run');
+    expect(within(lastRun).getByText('Last run')).toBeInTheDocument();
+    // "Last run" card is outside the reference card (separate .card).
+    const refCard = container.querySelector('.reference-card');
+    expect(refCard).toBeTruthy();
+    expect(refCard!.contains(lastRun)).toBe(false);
   });
 
   it('navigates to the reference impl when the reference card is clicked', async () => {

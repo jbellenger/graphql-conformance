@@ -1,5 +1,5 @@
-import type { KeyboardEvent, MouseEvent } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import type { KeyboardEvent, MouseEvent, ReactNode } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useImpls, useLatestRun } from '../repository/hooks';
 import type { Impl, ImplRunResults, Run } from '../repository/types';
 
@@ -33,7 +33,10 @@ export function Dashboard() {
 
   return (
     <div className="dashboard-layout">
-      {reference && <ReferenceCard impl={reference} run={run} />}
+      <div className="dashboard-sidebar">
+        {reference && <ReferenceCard impl={reference} run={run} />}
+        <LastRunCard run={run} />
+      </div>
       <ResultsTable impls={others} run={run} />
     </div>
   );
@@ -51,6 +54,26 @@ function shouldSkipRowActivation(e: MouseEvent): boolean {
   if (e.button !== 0) return true; // non-primary mouse button
   if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return true;
   return (e.target as HTMLElement).closest('a, button') != null;
+}
+
+// Renders an impl version as a link to its source (GitHub/npm/etc.) when
+// the data exposes versionUrl; plain text otherwise.
+function VersionLink({
+  impl,
+  className,
+}: {
+  impl: Impl;
+  className?: string;
+}): ReactNode {
+  if (!impl.version) return null;
+  if (impl.versionUrl) {
+    return (
+      <a className={className} href={impl.versionUrl}>
+        {impl.version}
+      </a>
+    );
+  }
+  return <span className={className}>{impl.version}</span>;
 }
 
 function ReferenceCard({ impl, run }: { impl: Impl; run: Run }) {
@@ -78,11 +101,12 @@ function ReferenceCard({ impl, run }: { impl: Impl; run: Run }) {
       onKeyDown={onKeyDown}
     >
       <span className="reference-pill">Reference</span>
-      <div>
-        <Link className="reference-link" to={href} tabIndex={-1}>
-          {impl.name}
-        </Link>
-      </div>
+      <div className="reference-name">{impl.name}</div>
+      {impl.version && (
+        <div className="reference-version">
+          <VersionLink impl={impl} />
+        </div>
+      )}
       <div className="reference-rate">{display.passPct.toFixed(1)}%</div>
       <div className="reference-subtext">
         {display.passed} / {display.total} passed
@@ -91,21 +115,16 @@ function ReferenceCard({ impl, run }: { impl: Impl; run: Run }) {
       <div className="reference-bar">
         <PassRateBar passPct={display.passPct} />
       </div>
-      <div className="reference-meta">
-        {impl.version && (
-          <div>
-            <span>Version</span>
-            {impl.versionUrl ? (
-              <a href={impl.versionUrl}>{impl.version}</a>
-            ) : (
-              <>{impl.version}</>
-            )}
-          </div>
-        )}
-        <div>
-          <span>Last run</span>
-          {new Date(run.timestamp).toLocaleString()}
-        </div>
+    </aside>
+  );
+}
+
+function LastRunCard({ run }: { run: Run }) {
+  return (
+    <aside className="card last-run-card" aria-label="Last conformance run">
+      <span className="last-run-label">Last run</span>
+      <div className="last-run-time">
+        {new Date(run.timestamp).toLocaleString()}
       </div>
     </aside>
   );
@@ -160,10 +179,12 @@ function ImplRow({ impl, run }: { impl: Impl; run: Run }) {
       onKeyDown={onKeyDown}
     >
       <td>
-        <Link to={href} tabIndex={-1}>
-          {impl.name}
-        </Link>
-        {impl.version && <div className="pass-rate-meta">{impl.version}</div>}
+        <div className="impl-name">{impl.name}</div>
+        {impl.version && (
+          <div className="pass-rate-meta">
+            <VersionLink impl={impl} />
+          </div>
+        )}
       </td>
       <td className="pass-rate-cell">
         <div className="pass-rate-value">{display.passPct.toFixed(1)}%</div>
