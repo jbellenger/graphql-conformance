@@ -1,7 +1,9 @@
 package conformer.gen
 
+import graphql.Directives
 import io.kotest.property.RandomSource
 import viaduct.arbitrary.common.Config
+import viaduct.arbitrary.graphql.BanDirectiveNames
 import viaduct.arbitrary.graphql.DescriptionLength
 import viaduct.arbitrary.graphql.GenInterfaceStubsIfNeeded
 import viaduct.arbitrary.graphql.OperationCount
@@ -34,4 +36,5 @@ fun main(args: Array<String>) {
 val defaultConfig: Config = Config.default +
     (DescriptionLength to 0.asIntRange()) +
     (GenInterfaceStubsIfNeeded to true) +
-    (OperationCount to 1.asIntRange())
+    (OperationCount to 1.asIntRange()) +
+    (BanDirectiveNames to setOf(Directives.ExperimentalDisableErrorPropagationDirective.name))
