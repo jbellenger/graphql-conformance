@@ -27,7 +27,7 @@ Implementations tested:
 
 ## How it works
 
-Each implementation is wrapped in a small harness that accepts a schema file and a query file, builds the schema, runs the query, and prints the result as JSON. All harnesses use the same deterministic resolvers (the [Wiring Spec](SPEC.md)) so that the only differences come from the GraphQL engine itself.
+Each implementation is wrapped in a small HTTP server that accepts a schema and query over `POST /execute`, builds the schema, runs the query, and returns the result as JSON. All harnesses use the same deterministic resolvers (the [Wiring Spec](SPEC.md)) so that the only differences come from the GraphQL engine itself.
 
 Test cases are generated randomly using the [Viaduct Arbitrary toolkit](https://github.com/airbnb/viaduct/tree/main/shared/arbitrary). This produces arbitrary GraphQL schemas, documents, and variables, which are stored in [corpus](corpus).
 
@@ -43,7 +43,7 @@ By default the conformer skips any conformant whose image digest + the corpus fi
 
 ### Daily runs
 
-`.github/workflows/daily-conformance.yml` runs the full suite every day at 12:00 UTC (05:00 PDT / 04:00 PST) with `--force`, then commits the refreshed `results/data/` back to master — which triggers `pages.yml` to rebuild and redeploy the dashboard. Push authentication uses the `DAILY_CONFORMANCE_PAT` repo secret — a fine-grained PAT with `contents: write` on this repo — so commits land under a real user account. This matters because GitHub pauses scheduled workflows after 60 days without a human-authored commit; the daily push keeps the schedule alive. Failures are surfaced through GitHub's native Actions failure emails; the same workflow can be kicked off manually from the Actions tab.
+`.github/workflows/daily-conformance.yml` runs the full suite every day at 12:00 UTC (05:00 PDT / 04:00 PST) with `--force`, then commits the refreshed `results/data/` back to master — which triggers `pages.yml` to rebuild and redeploy the dashboard. Push authentication uses a GitHub App (`CONFORMANCE_APP_ID` + `CONFORMANCE_APP_SECRET_KEY` repo secrets) with `contents: write` on this repo, so commits land under a bot account rather than the default `github-actions[bot]`. This matters because GitHub pauses scheduled workflows after 60 days without a human-authored commit; the daily push keeps the schedule alive. Failures are surfaced through GitHub's native Actions failure emails; the same workflow can be kicked off manually from the Actions tab.
 
 ### Dependency updates
 
@@ -84,8 +84,7 @@ a bash session when debugging a specific impl's build.
 
 ```sh
 make gen-corpus                                        # regenerate test cases
-make run-impl IMPL=graphql-go TEST=corpus/0/0          # run one impl on one test
-make diff-impl IMPL=graphql-go TEST=corpus/0/0         # diff an impl against the reference
+make run-conformer CONFORMER_ARGS="--drivers graphql-go"   # run a subset of impls
 make clean-corpus                                      # delete generated test cases (keeps corpus/0)
 make clean-results                                     # delete stored results
 make clean                                             # clean all build artifacts
@@ -104,8 +103,8 @@ site/             static dashboard (reads from site/data/)
 
 ## Adding an implementation
 
-1. Create `impls/<name>/` with code that implements the [Wiring Spec](SPEC.md)
-2. Add a `Makefile` with `build`, `test`, `clean` targets
-3. Add an entry to `config.json`
-4. If a new toolchain is required, add it to the `Dockerfile`, then `make image` to rebake the dev image
-5. Run `make build && make test`
+1. Create `impls/<name>/` with a `Dockerfile` and a small HTTP server (`server.js`, `server.go`, …) that serves `GET /health` + `POST /execute` per the [Wiring Spec](SPEC.md)
+2. Add `impls/<name>/manifest.json` declaring `image.build` and `runtime` fields
+3. Add an entry to `registry.json` pointing at the manifest
+4. If a new toolchain is required, add it to the top-level `Dockerfile`, then `make image` to rebake the dev image
+5. Run `make run-conformer CONFORMER_ARGS="--drivers <name>"` to verify
