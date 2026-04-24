@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-juniper = { git = "https://github.com/graphql-rust/juniper", rev = "1e625cd5ff55e6efa9fbef751f222b909ea4f3af" }
+juniper = { git = "https://github.com/graphql-rust/juniper", rev = "653d8391968ad7271a90a78693ee2e6abed6746d" }
 graphql-parser = "0.4"
 axum = "0.8"
 tokio = { version = "1", features = ["rt-multi-thread", "macros", "signal", "net"] }
