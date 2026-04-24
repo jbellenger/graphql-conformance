@@ -1,7 +1,8 @@
 import type { KeyboardEvent, MouseEvent, ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useImpls, useLatestRun } from '../repository/hooks';
-import type { Impl, ImplRunResults, Run } from '../repository/types';
+import type { Impl, Run } from '../repository/types';
+import { computeRunStats, formatRunStatsLine } from '../lib/runStats';
 
 export function Dashboard() {
   const impls = useImpls();
@@ -25,8 +26,8 @@ export function Dashboard() {
     .filter((i) => i.id !== run.referenceImplId)
     .slice()
     .sort((a, b) => {
-      const aPct = computeDisplay(run, run.resultsByImpl[a.id]).passPct;
-      const bPct = computeDisplay(run, run.resultsByImpl[b.id]).passPct;
+      const aPct = computeRunStats(run, a).passPct;
+      const bPct = computeRunStats(run, b).passPct;
       if (bPct !== aPct) return bPct - aPct;
       return a.name.localeCompare(b.name);
     });
@@ -77,8 +78,7 @@ function VersionLink({
 }
 
 function ReferenceCard({ impl, run }: { impl: Impl; run: Run }) {
-  const summary = run.resultsByImpl[impl.id];
-  const display = computeDisplay(run, summary);
+  const stats = computeRunStats(run, impl);
   const navigate = useNavigate();
   const href = implHref(impl);
   const onClick = (e: MouseEvent<HTMLElement>) => {
@@ -107,13 +107,10 @@ function ReferenceCard({ impl, run }: { impl: Impl; run: Run }) {
           <VersionLink impl={impl} />
         </div>
       )}
-      <div className="reference-rate">{display.passPct.toFixed(1)}%</div>
-      <div className="reference-subtext">
-        {display.passed} / {display.total} passed
-        {display.excluded > 0 && ` (excluded ${display.excluded})`}
-      </div>
+      <div className="reference-rate">{stats.passPct.toFixed(1)}%</div>
+      <div className="reference-subtext">{formatRunStatsLine(stats)}</div>
       <div className="reference-bar">
-        <PassRateBar passPct={display.passPct} />
+        <PassRateBar passPct={stats.passPct} />
       </div>
     </aside>
   );
@@ -154,8 +151,7 @@ function ResultsTable({ impls, run }: { impls: Impl[]; run: Run }) {
 }
 
 function ImplRow({ impl, run }: { impl: Impl; run: Run }) {
-  const summary = run.resultsByImpl[impl.id];
-  const display = computeDisplay(run, summary);
+  const stats = computeRunStats(run, impl);
   const navigate = useNavigate();
   const href = implHref(impl);
   const onClick = (e: MouseEvent<HTMLTableRowElement>) => {
@@ -187,12 +183,12 @@ function ImplRow({ impl, run }: { impl: Impl; run: Run }) {
         )}
       </td>
       <td className="pass-rate-cell">
-        <div className="pass-rate-value">{display.passPct.toFixed(1)}%</div>
+        <div className="pass-rate-value">{stats.passPct.toFixed(1)}%</div>
         <div className="pass-rate-meta">
-          {display.passed} / {display.total} passed
+          {stats.passed} / {stats.total} passed
         </div>
         <div className="full-width-bar">
-          <PassRateBar passPct={display.passPct} />
+          <PassRateBar passPct={stats.passPct} />
         </div>
       </td>
     </tr>
@@ -209,23 +205,4 @@ function PassRateBar({ passPct }: { passPct: number }) {
       />
     </div>
   );
-}
-
-interface Display {
-  total: number;
-  passed: number;
-  excluded: number;
-  failed: number;
-  errored: number;
-  passPct: number;
-}
-
-function computeDisplay(run: Run, summary?: ImplRunResults): Display {
-  const total = run.testCaseCount;
-  const failed = summary?.failed ?? 0;
-  const excluded = summary?.excluded ?? 0;
-  const errored = summary?.errored ?? 0;
-  const passed = Math.max(0, total - failed - excluded - errored);
-  const passPct = total > 0 ? Math.round((passed / total) * 1000) / 10 : 100;
-  return { total, passed, excluded, failed, errored, passPct };
 }

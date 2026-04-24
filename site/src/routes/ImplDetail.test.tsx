@@ -163,7 +163,7 @@ describe('ImplDetail', () => {
     expect(within(card).getByText('8')).toBeInTheDocument();
     // And the subtext under the pass rate mentions the exclusions too.
     expect(
-      screen.getByText(/553 \/ 553 passed · 8 excluded/),
+      screen.getByText(/553 total · 8 excluded · 0 failed/),
     ).toBeInTheDocument();
   });
 

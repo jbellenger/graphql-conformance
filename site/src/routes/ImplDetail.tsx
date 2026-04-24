@@ -10,12 +10,12 @@ import {
 import type {
   Impl,
   ImplHistoryPoint,
-  ImplRunResults,
   Result,
   Run,
 } from '../repository/types';
 import { HistoryChart } from '../components/HistoryChart';
 import { FailureCard } from '../components/FailureCard';
+import { computeRunStats, formatRunStatsLine } from '../lib/runStats';
 
 export function ImplDetail() {
   const { name, testCaseId } = useParams();
@@ -126,20 +126,11 @@ function ImplDetailView({
   highlightedTestCaseId,
   failuresRef,
 }: ImplDetailViewProps) {
-  const summary = run.resultsByImpl[impl.id];
-  const display = computeDisplay(run, summary);
+  const stats = computeRunStats(run, impl);
   const isReference = impl.isReference;
-  // Corpus-level exclusions live on the reference's ImplRunResults (the
-  // reference is the thing that marks tests as unrunnable). Non-reference
-  // impls need that same count surfaced, otherwise the UI looks like it
-  // silently dropped exclusions.
-  const refSummary = run.resultsByImpl[run.referenceImplId];
-  const corpusExcluded = isReference
-    ? display.excluded
-    : refSummary?.excluded ?? 0;
-  const failureTo = display.failed > 0 ? `/impl/${impl.id}/failures` : null;
+  const failureTo = stats.implFailed > 0 ? `/impl/${impl.id}/failures` : null;
   const excludedTo =
-    !isReference && corpusExcluded > 0
+    !isReference && stats.corpusExcluded > 0
       ? `/impl/${run.referenceImplId}/failures`
       : null;
 
@@ -168,35 +159,30 @@ function ImplDetailView({
           </h2>
         </div>
         <div className="detail-rate-row">
-          <div className="detail-rate">{display.passPct.toFixed(1)}%</div>
-          <div className="detail-subtext">
-            {display.passed} / {display.total} passed
-            {corpusExcluded > 0 && ` · ${corpusExcluded} excluded`}
-            {display.failed > 0 && ` · ${display.failed} failed`}
-            {display.errored > 0 && ` · ${display.errored} errored`}
-          </div>
+          <div className="detail-rate">{stats.passPct.toFixed(1)}%</div>
+          <div className="detail-subtext">{formatRunStatsLine(stats)}</div>
         </div>
         <div className="bar-container detail-bar">
           <div
-            className={`bar-fill ${barClass(display.passPct)}`}
-            style={{ width: `${display.passPct}%` }}
+            className={`bar-fill ${barClass(stats.passPct)}`}
+            style={{ width: `${stats.passPct}%` }}
           />
         </div>
         <div className="detail-meta-grid">
           <MetaCard label="Run" value={formatTimestamp(run.timestamp)} />
-          <MetaCard label="Total" value={display.total.toString()} />
+          <MetaCard label="Total" value={stats.total.toString()} />
           {!isReference && (
             <MetaCard
               label="Excluded"
-              value={corpusExcluded.toString()}
+              value={stats.corpusExcluded.toString()}
               to={excludedTo}
             />
           )}
           <MetaCard
             label="Failed"
-            value={(display.failed + display.errored).toString()}
+            value={stats.implFailed.toString()}
             to={failureTo}
-            smiley={display.failed + display.errored === 0}
+            smiley={stats.implFailed === 0}
           />
           <MetaCard
             label="Version"
@@ -305,25 +291,6 @@ function ZeroFailures() {
       </div>
     </section>
   );
-}
-
-interface Display {
-  total: number;
-  passed: number;
-  excluded: number;
-  failed: number;
-  errored: number;
-  passPct: number;
-}
-
-function computeDisplay(run: Run, summary?: ImplRunResults): Display {
-  const total = run.testCaseCount;
-  const failed = summary?.failed ?? 0;
-  const excluded = summary?.excluded ?? 0;
-  const errored = summary?.errored ?? 0;
-  const passed = Math.max(0, total - failed - excluded - errored);
-  const passPct = total > 0 ? Math.round((passed / total) * 1000) / 10 : 100;
-  return { total, passed, excluded, failed, errored, passPct };
 }
 
 function barClass(pct: number): string {
