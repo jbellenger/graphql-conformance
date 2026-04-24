@@ -109,6 +109,11 @@ function ReferenceCard({ impl, run }: { impl: Impl; run: Run }) {
       )}
       <div className="reference-rate">{stats.passPct.toFixed(1)}%</div>
       <div className="reference-subtext">{formatRunStatsLine(stats)}</div>
+      {stats.implFailed > 0 && (
+        <div className="reference-note">
+          Failing tests are excluded from conformance testing.
+        </div>
+      )}
       <div className="reference-bar">
         <PassRateBar passPct={stats.passPct} />
       </div>

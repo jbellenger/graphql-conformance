@@ -94,6 +94,13 @@ h2 { margin-bottom: 1rem; }
   font-size: 0.85rem;
 }
 
+.reference-note {
+  color: var(--color-text-subtle);
+  font-size: 0.75rem;
+  font-style: italic;
+  margin-top: 0.35rem;
+}
+
 .reference-bar { margin: 1rem 0 0 0; }
 
 .last-run-card {

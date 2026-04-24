@@ -99,6 +99,81 @@ describe('Dashboard', () => {
     expect(await screen.findByText(/97\.0%/)).toBeInTheDocument();
   });
 
+  it('explains that the reference\'s failures are excluded from conformance testing', async () => {
+    const repo = new FakeRepository({
+      impls: [
+        {
+          id: 'graphql-js-17',
+          name: 'graphql-js-17',
+          language: 'JavaScript',
+          isReference: true,
+          version: '17.0.0-alpha.14',
+        },
+        {
+          id: 'graphql-java',
+          name: 'graphql-java',
+          language: 'Java',
+          isReference: false,
+        },
+      ],
+      runs: [
+        {
+          id: 'r',
+          timestamp: '2026-04-24T12:00:00Z',
+          referenceImplId: 'graphql-js-17',
+          implIds: ['graphql-js-17', 'graphql-java'],
+          testCaseCount: 100,
+          resultsByImpl: {
+            // Reference has 8 unruncomputable tests → those are its failures.
+            'graphql-js-17': implRunResults('graphql-js-17', { excluded: 8 }),
+            'graphql-java': implRunResults('graphql-java'),
+          },
+        },
+      ],
+    });
+    renderWith(repo);
+    expect(
+      await screen.findByText(
+        /Failing tests are excluded from conformance testing/i,
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it('omits the failures-excluded note when the reference has no failures', async () => {
+    const repo = new FakeRepository({
+      impls: [
+        {
+          id: 'ref',
+          name: 'ref',
+          language: 'JS',
+          isReference: true,
+        },
+      ],
+      runs: [
+        {
+          id: 'r',
+          timestamp: '2026-04-24T12:00:00Z',
+          referenceImplId: 'ref',
+          implIds: ['ref'],
+          testCaseCount: 100,
+          resultsByImpl: {
+            ref: implRunResults('ref'), // zero failures / exclusions
+          },
+        },
+      ],
+    });
+    renderWith(repo);
+    // "Reference" pill renders as exact text (the ResultsTable also contains
+    // the substring "reference" in "non-reference", which would otherwise
+    // trip findByText/i). Match the pill specifically.
+    await screen.findByText('Reference');
+    expect(
+      screen.queryByText(
+        /Failing tests are excluded from conformance testing/i,
+      ),
+    ).toBeNull();
+  });
+
   it('renders a friendly empty state when there is no latest run', async () => {
     const repo = new FakeRepository({ impls: [], runs: [] });
     renderWith(repo);

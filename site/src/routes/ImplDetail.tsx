@@ -161,6 +161,11 @@ function ImplDetailView({
         <div className="detail-rate-row">
           <div className="detail-rate">{stats.passPct.toFixed(1)}%</div>
           <div className="detail-subtext">{formatRunStatsLine(stats)}</div>
+          {isReference && stats.implFailed > 0 && (
+            <div className="reference-note">
+              Failing tests are excluded from conformance testing.
+            </div>
+          )}
         </div>
         <div className="bar-container detail-bar">
           <div
