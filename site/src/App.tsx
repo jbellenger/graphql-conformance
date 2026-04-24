@@ -6,7 +6,7 @@ import { NotFound } from './routes/NotFound';
 export function App() {
   return (
     <HashRouter>
-      <header>
+      <header className="site-header">
         <h1>
           <Link to="/">GraphQL Conformance</Link>
         </h1>

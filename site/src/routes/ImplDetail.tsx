@@ -127,9 +127,17 @@ function ImplDetailView({
   const summary = run.resultsByImpl[impl.id];
   const display = computeDisplay(run, summary);
   const isReference = impl.isReference;
+  // Corpus-level exclusions live on the reference's ImplRunResults (the
+  // reference is the thing that marks tests as unrunnable). Non-reference
+  // impls need that same count surfaced, otherwise the UI looks like it
+  // silently dropped exclusions.
+  const refSummary = run.resultsByImpl[run.referenceImplId];
+  const corpusExcluded = isReference
+    ? display.excluded
+    : refSummary?.excluded ?? 0;
   const failureHref = display.failed > 0 ? `#/impl/${impl.id}/failures` : null;
   const excludedHref =
-    !isReference && display.excluded > 0
+    !isReference && corpusExcluded > 0
       ? `#/impl/${run.referenceImplId}/failures`
       : null;
 
@@ -149,19 +157,19 @@ function ImplDetailView({
       </Link>
 
       <section className="card detail-summary-card">
-        <header className="detail-summary-header">
+        <div className="detail-summary-header">
           <h2>
             {impl.name}
             {isReference && (
               <span className="reference-pill inline-pill">Reference</span>
             )}
           </h2>
-        </header>
+        </div>
         <div className="detail-rate-row">
           <div className="detail-rate">{display.passPct.toFixed(1)}%</div>
           <div className="detail-subtext">
             {display.passed} / {display.total} passed
-            {display.excluded > 0 && ` · ${display.excluded} excluded`}
+            {corpusExcluded > 0 && ` · ${corpusExcluded} excluded`}
             {display.failed > 0 && ` · ${display.failed} failed`}
             {display.errored > 0 && ` · ${display.errored} errored`}
           </div>
@@ -178,7 +186,7 @@ function ImplDetailView({
           {!isReference && (
             <MetaCard
               label="Excluded"
-              value={display.excluded.toString()}
+              value={corpusExcluded.toString()}
               href={excludedHref}
             />
           )}

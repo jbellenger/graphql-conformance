@@ -12,13 +12,15 @@ body {
 a { color: var(--color-primary); }
 a:hover { text-decoration: underline; }
 
-header {
+/* Site-wide header only; scoped via class so nested <header> tags inside
+   cards (e.g. .detail-summary-header) don't inherit the dark chrome. */
+.site-header {
   background: var(--color-header-bg);
   color: var(--color-header-text);
   padding: 1rem 0;
 }
-header a { color: inherit; text-decoration: none; }
-header h1 {
+.site-header a { color: inherit; text-decoration: none; }
+.site-header h1 {
   max-width: 960px;
   margin: 0 auto;
   padding: 0 1rem;

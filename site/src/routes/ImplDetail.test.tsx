@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ImplDetail } from './ImplDetail';
@@ -118,6 +118,52 @@ describe('ImplDetail', () => {
   it('renders NotFound for an unknown impl', async () => {
     renderAt('/impl/not-a-real-impl', makeRepo());
     expect(await screen.findByText(/unknown impl/i)).toBeInTheDocument();
+  });
+
+  it('surfaces the reference\'s corpus exclusions on a non-reference impl page', async () => {
+    // Repro of the bug where the Excluded meta card showed 0 for non-ref
+    // impls because it read from ImplRunResults.excluded on the impl itself
+    // (always zero) instead of on the reference.
+    const repo = new FakeRepository({
+      impls: [
+        {
+          id: 'graphql-js-17',
+          name: 'graphql-js-17',
+          language: 'JavaScript',
+          isReference: true,
+        },
+        {
+          id: 'graphql-php',
+          name: 'graphql-php',
+          language: 'PHP',
+          isReference: false,
+        },
+      ],
+      runs: [
+        {
+          id: 'r',
+          timestamp: '2026-04-24T12:00:00Z',
+          referenceImplId: 'graphql-js-17',
+          implIds: ['graphql-js-17', 'graphql-php'],
+          testCaseCount: 553,
+          resultsByImpl: {
+            'graphql-js-17': implRunResults('graphql-js-17', { excluded: 8 }),
+            'graphql-php': implRunResults('graphql-php'),
+          },
+        },
+      ],
+    });
+    renderAt('/impl/graphql-php', repo);
+    // Find the Excluded meta card and assert the value is 8, not 0.
+    await screen.findByText('graphql-php');
+    const excludedLabel = screen.getByText('Excluded');
+    const card = excludedLabel.closest('.detail-meta-card') as HTMLElement;
+    expect(card).toBeTruthy();
+    expect(within(card).getByText('8')).toBeInTheDocument();
+    // And the subtext under the pass rate mentions the exclusions too.
+    expect(
+      screen.getByText(/553 \/ 553 passed · 8 excluded/),
+    ).toBeInTheDocument();
   });
 
   it('renders the reference impl with an "Excluded Tests" heading', async () => {
