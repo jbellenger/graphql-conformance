@@ -37,7 +37,7 @@ A conformer runs every test case against the reference first. If the reference p
 
 Each run writes a timestamped summary to `results/data/runs/<run-id>.json`, per-implementation failure detail under `results/data/failures/<impl>/<run-id>/`, and the reference exclusions for that run under `results/data/exclusions/`. Everything in `results/data/` is committed to git; the dashboard reads from this history and external links may reference specific run IDs, so prior runs are preserved.
 
-`site/data/` is a derived artifact — not committed. The `pages.yml` workflow regenerates it from `results/data/` on every push to master by running `node site/build.js results/data`, then deploys the result to GitHub Pages. Any commit that updates `results/data/` therefore refreshes the dashboard automatically.
+`site/` is a Vite + React SPA; its dashboard data is bundled at build time. The `pages.yml` workflow regenerates everything from `results/data/` on every push to master — it runs `npm ci && npm run build` inside `site/`, then `node site/tools/build-data.mjs results/data site/dist/data` to emit `impls.json`, per-run summaries, and per-impl failure shards — and deploys `site/dist/` to GitHub Pages. Any commit that updates `results/data/` therefore refreshes the dashboard automatically.
 
 By default the conformer skips any conformant whose image digest + the corpus fingerprint haven't changed since the last run, reusing the prior results. Pass `--force` (i.e. `make run-conformer CONFORMER_ARGS=--force`) to re-run everything regardless.
 
@@ -98,7 +98,7 @@ corpus-gen/       test case generator (Kotlin)
 conformer/        runs tests and compares results (Node.js)
 impls/            one directory per GraphQL implementation
 results/          results store (writes to results/data/)
-site/             static dashboard (reads from site/data/)
+site/             Vite + React SPA (dashboard); reads from bundled site/dist/data/
 ```
 
 ## Adding an implementation

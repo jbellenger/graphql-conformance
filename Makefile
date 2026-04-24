@@ -106,7 +106,7 @@ serve-site:
 	@$(DOCKER) rm -f $(SERVE_CONTAINER_NAME) >/dev/null 2>&1 || true
 	$(DOCKER_RUN) make -C /work _build-site
 	@printf 'Serving site at http://localhost:8000\n'
-	$(DOCKER_RUN_BASE) --name $(SERVE_CONTAINER_NAME) -p 8000:8000 $(IMAGE) python3 -u -m http.server 8000 -d /work/site
+	$(DOCKER_RUN_BASE) --name $(SERVE_CONTAINER_NAME) -p 8000:8000 $(IMAGE) python3 -u -m http.server 8000 -d /work/site/dist
 
 ci-smoke:
 	$(DOCKER_RUN) make -C /work _ci-smoke
@@ -137,7 +137,7 @@ _build-smoke:
 	$(MAKE) -C conformer build
 
 _test:
-	node --test site/*.test.js
+	cd site && npm ci && npm test
 	$(MAKE) -C results test
 	$(MAKE) -C corpus-gen test
 	$(MAKE) -C conformer test
@@ -149,7 +149,6 @@ _gen-corpus:
 
 _run-conformer:
 	$(MAKE) -C conformer run
-	node site/build.js results/data
 
 _prepare-smoke-corpus:
 	node scripts/prepare-smoke-corpus.js $(SMOKE_CORPUS_DIR)
@@ -158,14 +157,16 @@ _run-conformer-smoke: _prepare-smoke-corpus
 	rm -rf $(SMOKE_RESULTS_DIR) $(SMOKE_SITE_DATA_DIR)
 	mkdir -p $(SMOKE_RESULTS_DIR) $(SMOKE_SITE_DATA_DIR)
 	CORPUS_DIR=$(SMOKE_CORPUS_DIR) RESULTS_DIR=$(SMOKE_RESULTS_DIR) node conformer/src/index.js
-	SITE_DATA_DIR=$(SMOKE_SITE_DATA_DIR) node site/build.js $(SMOKE_RESULTS_DIR)
+	node site/tools/build-data.mjs $(SMOKE_RESULTS_DIR) $(SMOKE_SITE_DATA_DIR)
 
 _build-site:
-	node site/build.js results/data
+	cd site && npm ci && npm run build
+	mkdir -p site/dist/data
+	node site/tools/build-data.mjs results/data site/dist/data
 
 _serve-site: _build-site
 	@printf 'Serving site at http://localhost:8000\n'
-	@exec python3 -m http.server 8000 -d site
+	@exec python3 -m http.server 8000 -d site/dist
 
 _ci-smoke:
 	$(MAKE) _build-smoke

@@ -12,7 +12,8 @@ top-level `Makefile` wraps `docker run` so `make` works as usual.
     make image          # build the dev image (first run only)
     make build          # build all implementations
     make test           # run all tests
-    make run-conformer  # run conformance tests and update site/data
+    make run-conformer  # run conformance tests and write results/data
+    make serve-site     # build the dashboard and serve it on localhost:8000
     make shell          # drop into a bash session in the container
 
 ## Project Layout

@@ -15,7 +15,8 @@ impls/*/_build
 conformer/node_modules
 corpus-gen/build
 corpus-gen/.gradle
-site/data
+site/dist
+site/node_modules
 results/data
 
 # Only the sanity corpus needs to be baked in; regenerated cases are runtime artifacts
