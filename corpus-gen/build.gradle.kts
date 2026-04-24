@@ -1,4 +1,4 @@
-val viaductVersion = "0.29.0"
+val viaductVersion = "0.31.0-SNAPSHOT"
 
 plugins {
     kotlin("jvm") version "2.3.21"
@@ -7,6 +7,10 @@ plugins {
 
 repositories {
     mavenCentral()
+    maven {
+        name = "sonatypeCentralSnapshots"
+        url = uri("https://central.sonatype.com/repository/maven-snapshots/")
+    }
 }
 
 dependencies {
