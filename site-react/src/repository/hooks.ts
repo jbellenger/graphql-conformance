@@ -43,3 +43,12 @@ export function useResults(filter: ResultFilter) {
     enabled: filter.runId != null && filter.implId != null,
   });
 }
+
+export function useImplHistory(implId: string | undefined) {
+  const repo = useRepository();
+  return useQuery({
+    queryKey: ['impl-history', implId],
+    queryFn: () => (implId ? repo.getImplHistory(implId) : []),
+    enabled: implId != null,
+  });
+}

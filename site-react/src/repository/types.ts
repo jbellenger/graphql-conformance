@@ -72,3 +72,14 @@ export interface TestVariables {
   id: string;
   values: Record<string, unknown>;
 }
+
+// Per-impl history point for the detail page chart. Derived from prior
+// Runs; stored as a pre-aggregated shard to keep the dashboard path cheap.
+export interface ImplHistoryPoint {
+  runId: string;
+  timestamp: string;
+  testCaseCount: number;
+  failed: number;
+  excluded: number;
+  errored: number;
+}

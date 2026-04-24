@@ -1,5 +1,6 @@
 import type {
   Impl,
+  ImplHistoryPoint,
   ImplRunResults,
   Result,
   Run,
@@ -19,6 +20,7 @@ export interface FakeRepositoryData {
   testSchemas?: TestSchema[];
   testQueries?: TestQuery[];
   testVariables?: TestVariables[];
+  history?: Record<string, ImplHistoryPoint[]>;
 }
 
 // Deterministic in-memory Repository for tests + previews.
@@ -31,6 +33,7 @@ export class FakeRepository implements Repository {
   private readonly testSchemas: TestSchema[];
   private readonly testQueries: TestQuery[];
   private readonly testVariables: TestVariables[];
+  private readonly history: Record<string, ImplHistoryPoint[]>;
 
   constructor(data: FakeRepositoryData = {}) {
     this.impls = data.impls ?? [];
@@ -41,6 +44,11 @@ export class FakeRepository implements Repository {
     this.testSchemas = data.testSchemas ?? [];
     this.testQueries = data.testQueries ?? [];
     this.testVariables = data.testVariables ?? [];
+    this.history = data.history ?? {};
+  }
+
+  async getImplHistory(implId: string): Promise<ImplHistoryPoint[]> {
+    return [...(this.history[implId] ?? [])];
   }
 
   async listImpls(): Promise<Impl[]> {

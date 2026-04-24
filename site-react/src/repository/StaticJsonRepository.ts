@@ -1,5 +1,6 @@
 import type {
   Impl,
+  ImplHistoryPoint,
   ImplRunResults,
   Result,
   Run,
@@ -124,6 +125,13 @@ export class StaticJsonRepository implements Repository {
     )}.json`;
     const shard = (await this.getJson<Result[]>(path)) ?? [];
     return shard;
+  }
+
+  async getImplHistory(implId: string): Promise<ImplHistoryPoint[]> {
+    const data = await this.getJson<ImplHistoryPoint[]>(
+      `impls/${encodeURIComponent(implId)}/history.json`,
+    );
+    return data ?? [];
   }
 
   async getTestCase(id: string): Promise<TestCase | null> {

@@ -1,5 +1,6 @@
 import { HashRouter, Link, Route, Routes } from 'react-router-dom';
 import { Dashboard } from './routes/Dashboard';
+import { ImplDetail } from './routes/ImplDetail';
 import { NotFound } from './routes/NotFound';
 
 export function App() {
@@ -13,6 +14,12 @@ export function App() {
       <main aria-label="Conformance dashboard">
         <Routes>
           <Route path="/" element={<Dashboard />} />
+          <Route path="/impl/:name" element={<ImplDetail />} />
+          <Route path="/impl/:name/failures" element={<ImplDetail />} />
+          <Route
+            path="/impl/:name/failures/:testCaseId"
+            element={<ImplDetail />}
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

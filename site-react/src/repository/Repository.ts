@@ -1,5 +1,6 @@
 import type {
   Impl,
+  ImplHistoryPoint,
   Result,
   ResultStatus,
   Run,
@@ -30,6 +31,9 @@ export interface Repository {
     testCaseId: string,
   ): Promise<Result | null>;
   listResults(filter: ResultFilter): Promise<Result[]>;
+
+  // Per-impl history (pre-aggregated across prior runs).
+  getImplHistory(implId: string): Promise<ImplHistoryPoint[]>;
 
   // Test cases + composed parts.
   getTestCase(id: string): Promise<TestCase | null>;
