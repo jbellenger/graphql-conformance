@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import type { KeyboardEvent, MouseEvent } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useImpls, useLatestRun } from '../repository/hooks';
 import type { Impl, ImplRunResults, Run } from '../repository/types';
 
@@ -38,20 +39,49 @@ export function Dashboard() {
   );
 }
 
+function implHref(impl: Impl): string {
+  return `/impl/${encodeURIComponent(impl.id)}`;
+}
+
+// Returns true when a mouse event should fall through (user wants the native
+// anchor behavior: new-tab/new-window/download) or when the click landed on
+// an interactive child that owns its own activation.
+function shouldSkipRowActivation(e: MouseEvent): boolean {
+  if (e.defaultPrevented) return true;
+  if (e.button !== 0) return true; // non-primary mouse button
+  if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return true;
+  return (e.target as HTMLElement).closest('a, button') != null;
+}
+
 function ReferenceCard({ impl, run }: { impl: Impl; run: Run }) {
   const summary = run.resultsByImpl[impl.id];
   const display = computeDisplay(run, summary);
+  const navigate = useNavigate();
+  const href = implHref(impl);
+  const onClick = (e: MouseEvent<HTMLElement>) => {
+    if (shouldSkipRowActivation(e)) return;
+    navigate(href);
+  };
+  const onKeyDown = (e: KeyboardEvent<HTMLElement>) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      navigate(href);
+    }
+  };
   return (
-    <aside className="card reference-card">
+    <aside
+      className="card reference-card"
+      tabIndex={0}
+      role="link"
+      aria-label={`View ${impl.name} details`}
+      onClick={onClick}
+      onKeyDown={onKeyDown}
+    >
       <span className="reference-pill">Reference</span>
       <div>
-        {impl.repoUrl ? (
-          <a className="reference-link" href={impl.repoUrl}>
-            {impl.name}
-          </a>
-        ) : (
-          <span className="reference-link">{impl.name}</span>
-        )}
+        <Link className="reference-link" to={href} tabIndex={-1}>
+          {impl.name}
+        </Link>
       </div>
       <div className="reference-rate">{display.passPct.toFixed(1)}%</div>
       <div className="reference-subtext">
@@ -95,34 +125,56 @@ function ResultsTable({ impls, run }: { impls: Impl[]; run: Run }) {
           </tr>
         </thead>
         <tbody>
-          {impls.map((impl) => {
-            const summary = run.resultsByImpl[impl.id];
-            const display = computeDisplay(run, summary);
-            return (
-              <tr key={impl.id} className="dashboard-row">
-                <td>
-                  <Link to={`/impl/${encodeURIComponent(impl.id)}`}>{impl.name}</Link>
-                  {impl.version && (
-                    <div className="pass-rate-meta">{impl.version}</div>
-                  )}
-                </td>
-                <td className="pass-rate-cell">
-                  <div className="pass-rate-value">
-                    {display.passPct.toFixed(1)}%
-                  </div>
-                  <div className="pass-rate-meta">
-                    {display.passed} / {display.total} passed
-                  </div>
-                  <div className="full-width-bar">
-                    <PassRateBar passPct={display.passPct} />
-                  </div>
-                </td>
-              </tr>
-            );
-          })}
+          {impls.map((impl) => (
+            <ImplRow key={impl.id} impl={impl} run={run} />
+          ))}
         </tbody>
       </table>
     </div>
+  );
+}
+
+function ImplRow({ impl, run }: { impl: Impl; run: Run }) {
+  const summary = run.resultsByImpl[impl.id];
+  const display = computeDisplay(run, summary);
+  const navigate = useNavigate();
+  const href = implHref(impl);
+  const onClick = (e: MouseEvent<HTMLTableRowElement>) => {
+    if (shouldSkipRowActivation(e)) return;
+    navigate(href);
+  };
+  const onKeyDown = (e: KeyboardEvent<HTMLTableRowElement>) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      navigate(href);
+    }
+  };
+  return (
+    <tr
+      className="dashboard-row"
+      tabIndex={0}
+      role="link"
+      aria-label={`View ${impl.name} details`}
+      data-testid={`dashboard-row-${impl.id}`}
+      onClick={onClick}
+      onKeyDown={onKeyDown}
+    >
+      <td>
+        <Link to={href} tabIndex={-1}>
+          {impl.name}
+        </Link>
+        {impl.version && <div className="pass-rate-meta">{impl.version}</div>}
+      </td>
+      <td className="pass-rate-cell">
+        <div className="pass-rate-value">{display.passPct.toFixed(1)}%</div>
+        <div className="pass-rate-meta">
+          {display.passed} / {display.total} passed
+        </div>
+        <div className="full-width-bar">
+          <PassRateBar passPct={display.passPct} />
+        </div>
+      </td>
+    </tr>
   );
 }
 
