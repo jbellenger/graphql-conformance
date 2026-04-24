@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ImplDetail } from './ImplDetail';
@@ -164,6 +165,44 @@ describe('ImplDetail', () => {
     expect(
       screen.getByText(/553 \/ 553 passed · 8 excluded/),
     ).toBeInTheDocument();
+  });
+
+  it('scrolls to the failures section when the Failed meta-card link is clicked', async () => {
+    const user = userEvent.setup();
+    // Capture each element scrollIntoView is invoked on by replacing the
+    // prototype method rather than spyOn — mock.instances types as `void`
+    // for void-returning methods which makes the assertion awkward.
+    const scrolled: HTMLElement[] = [];
+    const original = HTMLElement.prototype.scrollIntoView;
+    HTMLElement.prototype.scrollIntoView = function (this: HTMLElement) {
+      scrolled.push(this);
+    };
+
+    try {
+      // Repro: landing on /impl/graphql-java (no /failures), the failures
+      // section is out of view. Clicking the "Failed" meta-card link should
+      // both navigate to /impl/graphql-java/failures AND scroll to #failures.
+      renderAt('/impl/graphql-java', makeRepo());
+      await screen.findByText('graphql-java');
+
+      const failedLabel = screen.getByText('Failed');
+      const failedCard = failedLabel.closest('.detail-meta-card') as HTMLElement;
+      const failedLink = within(failedCard).getByRole('link');
+      // Internal route: Link renders a relative href, not a hash-prefixed URL.
+      expect(failedLink).toHaveAttribute('href', '/impl/graphql-java/failures');
+
+      scrolled.length = 0;
+      await user.click(failedLink);
+
+      // Wait for requestAnimationFrame-scheduled scroll.
+      await new Promise((r) => setTimeout(r, 20));
+
+      const failuresSection = document.getElementById('failures');
+      expect(failuresSection).toBeTruthy();
+      expect(scrolled).toContain(failuresSection);
+    } finally {
+      HTMLElement.prototype.scrollIntoView = original;
+    }
   });
 
   it('renders the reference impl with an "Excluded Tests" heading', async () => {

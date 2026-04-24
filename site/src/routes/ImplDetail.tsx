@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import {
   useImpl,
   useImplHistory,
@@ -19,6 +19,7 @@ import { FailureCard } from '../components/FailureCard';
 
 export function ImplDetail() {
   const { name, testCaseId } = useParams();
+  const location = useLocation();
   const impls = useImpls();
   const impl = useImpl(name ?? '');
   const latest = useLatestRun();
@@ -29,19 +30,17 @@ export function ImplDetail() {
   });
 
   const failuresRef = useRef<HTMLElement>(null);
-  const hasScrolled = useRef(false);
 
-  // Scroll to the failures section when the route includes /failures.
-  // If a testCaseId is present, scroll to that specific card (whose
-  // FailureCard component will open itself via defaultExpanded).
+  // Scroll to the failures section when the route includes /failures. Fires
+  // any time the pathname becomes /failures (including in-page navigation
+  // like clicking the "Failed" meta card when already on the impl page) or
+  // when the results shard finishes loading. If a testCaseId is present,
+  // scroll to that specific card instead of the section header.
   useEffect(() => {
-    if (hasScrolled.current) return;
     const ready =
       impls.data && impl.data && latest.data && results.data !== undefined;
     if (!ready) return;
-    const path = window.location.hash;
-    const wantsFailures = /\/failures/.test(path);
-    if (!wantsFailures) return;
+    if (!/\/failures/.test(location.pathname)) return;
 
     requestAnimationFrame(() => {
       if (testCaseId) {
@@ -51,19 +50,22 @@ export function ImplDetail() {
         if (card instanceof HTMLElement) {
           card.scrollIntoView({ behavior: 'smooth', block: 'start' });
           card.focus?.();
-          hasScrolled.current = true;
           return;
         }
       }
-      failuresRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      hasScrolled.current = true;
+      failuresRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
     });
-  }, [impls.data, impl.data, latest.data, results.data, testCaseId]);
-
-  // Reset scroll memo when navigating between impls.
-  useEffect(() => {
-    hasScrolled.current = false;
-  }, [name, testCaseId]);
+  }, [
+    impls.data,
+    impl.data,
+    latest.data,
+    results.data,
+    testCaseId,
+    location.pathname,
+  ]);
 
   if (!name) {
     return <div className="empty">Missing impl name.</div>;
@@ -135,10 +137,10 @@ function ImplDetailView({
   const corpusExcluded = isReference
     ? display.excluded
     : refSummary?.excluded ?? 0;
-  const failureHref = display.failed > 0 ? `#/impl/${impl.id}/failures` : null;
-  const excludedHref =
+  const failureTo = display.failed > 0 ? `/impl/${impl.id}/failures` : null;
+  const excludedTo =
     !isReference && corpusExcluded > 0
-      ? `#/impl/${run.referenceImplId}/failures`
+      ? `/impl/${run.referenceImplId}/failures`
       : null;
 
   const byStatus = useMemo(() => {
@@ -187,13 +189,13 @@ function ImplDetailView({
             <MetaCard
               label="Excluded"
               value={corpusExcluded.toString()}
-              href={excludedHref}
+              to={excludedTo}
             />
           )}
           <MetaCard
-            label={isReference ? 'Failed' : 'Failed'}
+            label="Failed"
             value={(display.failed + display.errored).toString()}
-            href={failureHref}
+            to={failureTo}
             smiley={display.failed + display.errored === 0}
           />
           <MetaCard
@@ -248,20 +250,29 @@ function ImplDetailView({
   );
 }
 
-function MetaCard({
-  label,
-  value,
-  href = null,
-  mono = false,
-  smiley = false,
-}: {
+interface MetaCardProps {
   label: string;
   value: string;
+  // Internal (react-router) route; rendered as a <Link> so navigation stays
+  // in-app and useLocation observers fire.
+  to?: string | null;
+  // External URL; rendered as a plain anchor (e.g. a GitHub release page).
   href?: string | null;
   mono?: boolean;
   smiley?: boolean;
-}) {
-  const inner = href ? <a href={href}>{value}</a> : <>{value}</>;
+}
+
+function MetaCard({
+  label,
+  value,
+  to = null,
+  href = null,
+  mono = false,
+  smiley = false,
+}: MetaCardProps) {
+  let inner: React.ReactNode = value;
+  if (to) inner = <Link to={to}>{value}</Link>;
+  else if (href) inner = <a href={href}>{value}</a>;
   return (
     <div className="detail-meta-card">
       <span>{label}</span>
