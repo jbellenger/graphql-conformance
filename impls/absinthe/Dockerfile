@@ -17,7 +17,7 @@ RUN mix deps.get --only prod
 COPY lib ./lib
 RUN mix compile
 
-RUN sed -n -E 's/.*ref: "([0-9a-f]+)".*/\1/p' mix.exs | head -1 | cut -c 1-7 > /impl-version || true
+RUN sed -n -E 's/.*tag: "v([^"]+)".*/\1/p' mix.exs | head -1 > /impl-version
 
 EXPOSE 8080
 CMD ["mix", "run", "--no-halt"]

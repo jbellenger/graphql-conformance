@@ -3,7 +3,7 @@
   "name": "graphql-dotnet",
   "displayName": "graphql-dotnet",
   "homepage": "https://github.com/graphql-dotnet/graphql-dotnet",
-  "versionUrlTemplate": "https://www.nuget.org/packages/GraphQL/{version}",
+  "versionUrlTemplate": "https://github.com/graphql-dotnet/graphql-dotnet/releases/tag/{version}",
   "image": {
     "build": {
       "dockerfile": "./Dockerfile",

@@ -3,7 +3,7 @@
   "name": "juniper",
   "displayName": "juniper",
   "homepage": "https://github.com/graphql-rust/juniper",
-  "versionUrlTemplate": "https://github.com/graphql-rust/juniper/commit/{version}",
+  "versionUrlTemplate": "https://github.com/graphql-rust/juniper/releases/tag/juniper-v{version}",
   "image": {
     "build": {
       "dockerfile": "./Dockerfile",

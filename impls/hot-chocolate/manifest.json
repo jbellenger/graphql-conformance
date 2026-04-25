@@ -3,7 +3,7 @@
   "name": "hot-chocolate",
   "displayName": "Hot Chocolate",
   "homepage": "https://github.com/ChilliCream/graphql-platform",
-  "versionUrlTemplate": "https://www.nuget.org/packages/HotChocolate.Execution/{version}",
+  "versionUrlTemplate": "https://github.com/ChilliCream/graphql-platform/releases/tag/{version}",
   "image": {
     "build": {
       "dockerfile": "./Dockerfile",

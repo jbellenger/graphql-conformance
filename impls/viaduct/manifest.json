@@ -3,7 +3,7 @@
   "name": "viaduct",
   "displayName": "viaduct",
   "homepage": "https://github.com/airbnb/viaduct",
-  "versionUrlTemplate": "https://central.sonatype.com/artifact/com.airbnb.viaduct/engine-runtime/{version}",
+  "versionUrlTemplate": "https://github.com/airbnb/viaduct/releases/tag/v{version}",
   "image": {
     "build": {
       "dockerfile": "./Dockerfile",

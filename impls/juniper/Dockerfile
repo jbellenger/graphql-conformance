@@ -4,7 +4,7 @@ WORKDIR /src
 COPY Cargo.toml ./
 COPY src ./src
 RUN cargo build --release --bin server \
- && sed -n -E 's/.*rev = "([0-9a-f]+)".*/\1/p' Cargo.toml | head -1 | cut -c 1-7 > /impl-version
+ && sed -n -E 's/.*tag = "juniper-v([^"]+)".*/\1/p' Cargo.toml | head -1 > /impl-version
 
 FROM debian:bookworm-slim
 RUN apt-get update \

@@ -3,7 +3,7 @@
   "name": "graphql-go",
   "displayName": "graphql-go",
   "homepage": "https://github.com/graphql-go/graphql",
-  "versionUrlTemplate": "https://github.com/graphql-go/graphql/releases/tag/{version}",
+  "versionUrlTemplate": "https://github.com/graphql-go/graphql/releases/tag/v{version}",
   "image": {
     "build": {
       "dockerfile": "./Dockerfile",

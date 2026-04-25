@@ -3,7 +3,7 @@ WORKDIR /app
 COPY composer.json /app/
 RUN composer install --no-dev --prefer-dist --no-interaction --no-progress \
  && composer show webonyx/graphql-php --format=json \
-      | php -r "echo json_decode(stream_get_contents(STDIN), true)['versions'][0];" > /impl-version
+      | php -r "\$v = json_decode(stream_get_contents(STDIN), true)['versions'][0]; echo ltrim(\$v, 'v');" > /impl-version
 
 FROM php:8.5-cli
 
