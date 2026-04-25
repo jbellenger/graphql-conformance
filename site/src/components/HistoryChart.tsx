@@ -19,26 +19,24 @@ interface ChartDatum {
   date: string;
   passPct: number;
   failed: number;
-  excluded: number;
   errored: number;
   total: number;
+  falloutAfter: number | null;
 }
 
 export function HistoryChart({ history }: HistoryChartProps) {
   const data = useMemo<ChartDatum[]>(() => {
     return history.map((h) => {
-      const total = h.testCaseCount;
-      const passed = Math.max(0, total - h.failed - h.excluded - h.errored);
       const passPct =
-        total > 0 ? Math.round((passed / total) * 1000) / 10 : 100;
+        h.total > 0 ? Math.round((h.passed / h.total) * 1000) / 10 : 100;
       return {
         timestamp: h.timestamp,
         date: formatDate(h.timestamp),
         passPct,
         failed: h.failed,
-        excluded: h.excluded,
         errored: h.errored,
-        total,
+        total: h.total,
+        falloutAfter: h.falloutAfter,
       };
     });
   }, [history]);

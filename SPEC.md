@@ -287,9 +287,9 @@ results/data/
 
 Files mirror site's types exactly; no field reshuffling between writer and
 reader. The one exception is `_conformerMeta` on per-run `summary.json`: it
-carries `corpusFingerprint`, `scoringModel`, and per-impl `imageDigest`/
-`version` that the incremental-skip logic needs and the site ignores. It is
-not copied into `runs.json`.
+carries `corpusFingerprint` and per-impl `imageDigest`/`version` that the
+incremental-skip logic needs and the site ignores. It is not copied into
+`runs.json`.
 
 ### ResultsStore API
 
@@ -303,9 +303,10 @@ const store = ResultsStore.fromDirectory('results/data');
 const testStore = ResultsStore.inMemory();
 
 store.writeRun({ run, resultsByImpl, conformerMeta, impls });
-//   run           — Run (resultsByImpl buckets with counts and empty results[])
+//   run           — Run (resultsByImpl buckets with {total, passed, failed,
+//                   errored, falloutAfter} counts and empty results[])
 //   resultsByImpl — Record<implId, Result[]>, non-pass only
-//   conformerMeta — { corpusFingerprint, scoringModel, runnableCount, implMeta }
+//   conformerMeta — { corpusFingerprint, runnableCount, implMeta }
 //   impls         — Impl[] (ordered; reference first)
 
 store.listRuns();        // Run[] (newest first)
@@ -329,15 +330,14 @@ Filesystem-safe ISO 8601: `2026-03-14T14-30-00Z` (colons replaced with hyphens).
   "timestamp": "2026-03-14T14:30:00Z",
   "referenceImplId": "graphql-js-17",
   "implIds": ["graphql-js-17", "graphql-java", "hot-chocolate"],
-  "testCaseCount": 241,
+  "excluded": 9,
   "resultsByImpl": {
-    "graphql-js-17":  { "implId": "graphql-js-17",  "failed": 0,  "excluded": 9, "errored": 0, "results": [] },
-    "graphql-java":   { "implId": "graphql-java",   "failed": 0,  "excluded": 0, "errored": 0, "results": [] },
-    "hot-chocolate":  { "implId": "hot-chocolate",  "failed": 20, "excluded": 0, "errored": 4, "results": [] }
+    "graphql-js-17":  { "implId": "graphql-js-17",  "total": 241, "passed": 232, "failed": 0,  "errored": 0, "falloutAfter": null, "results": [] },
+    "graphql-java":   { "implId": "graphql-java",   "total": 232, "passed": 232, "failed": 0,  "errored": 0, "falloutAfter": null, "results": [] },
+    "hot-chocolate":  { "implId": "hot-chocolate",  "total": 232, "passed": 208, "failed": 20, "errored": 4, "falloutAfter": null, "results": [] }
   },
   "_conformerMeta": {
     "corpusFingerprint": "e62fc5...",
-    "scoringModel": "runnable-set-v1",
     "runnableCount": 232,
     "implMeta": {
       "graphql-js-17":  { "imageDigest": "sha256:...", "version": "17.0.0-alpha.14" },
@@ -348,15 +348,50 @@ Filesystem-safe ISO 8601: `2026-03-14T14-30-00Z` (colons replaced with hyphens).
 }
 ```
 
-`testCaseCount` is the full corpus denominator. For the reference impl,
-`excluded` counts corpus cases where the reference could not produce an
-expected output (5xx / timeout / unparseable / GraphQL errors). Those same
-cases are also the ones not scored against any conformant.
+`Run.excluded` counts corpus cases where the reference could not produce an
+expected output (5xx / timeout / unparseable / GraphQL errors). Those cases
+are dropped from every conformant's corpus — nothing to compare against —
+and surface as `Result` rows with `status: 'excluded'` on the reference's
+per-impl shard.
+
+Per-impl `total` is what the impl was *actually subjected to*:
+
+- Reference: the full corpus size (`total = corpus size`, `passed = total − Run.excluded`).
+- Non-reference conformant that ran to completion: `total = corpus size − Run.excluded`.
+- Non-reference conformant that fell out under graduated testing (see below):
+  `total < corpus size − Run.excluded` and `falloutAfter` carries the count
+  at which fallout fired.
+
+Invariant: for every impl `i` in a run,
+`resultsByImpl[i].total ≤ resultsByImpl[referenceImplId].total`.
 
 For conformants, `failed` counts tests whose result diverged from the
 reference, and `errored` counts tests where the driver itself errored
 (timeout, crash, invalid JSON). Neither bucket contains reference-excluded
 cases.
+
+### Graduated testing
+
+A conformant implementation that fails or errors on a high fraction of the
+corpus bloats the results store without adding much diagnostic value — the
+same root cause typically accounts for most of its failures. The conformer
+supports a configurable threshold that drops a conformant from the active
+pool once it exceeds that many non-pass outcomes in a single run:
+
+- CLI: `--max-impl-failures=N`
+- Env var: `CONFORMER_MAX_IMPL_FAILURES=N`
+- Makefile default: `CONFORMER_MAX_IMPL_FAILURES=10` (overridable per
+  invocation; `=0` disables fallout).
+
+When a conformant's cumulative `failed + errored` reaches the threshold,
+its session is stopped and it does not see any subsequent test cases in
+that run. `failed + errored` is capped at the threshold value — e.g. with
+`--max-impl-failures=10`, a fallen-out conformant records exactly 10
+non-passes. Its partial results — `total`, `passed`, `failed`, `errored`,
+plus the individual `Result` rows for non-pass outcomes up to fallout —
+are recorded as-is, and the bucket's `falloutAfter` is set to the test
+count at which fallout fired. The reference impl is never dropped,
+regardless of how many tests it excludes.
 
 ### Per-(run, impl) results shard: `results/data/runs/<run-id>/results/<impl-id>.json`
 
@@ -390,11 +425,13 @@ Ordered `Impl[]` with reference first. Reference-ness is per-run (see
 
 ### Per-impl history: `results/data/impls/<impl-id>/history.json`
 
-`ImplHistoryPoint[]`, newest first, derived from `runs.json`:
+`ImplHistoryPoint[]`, newest first, derived from `runs.json`. Per-impl —
+`total` tracks what the impl was subjected to in that run, which equals the
+corpus denominator for full runs and is smaller for fallen-out ones:
 
 ```json
 [
-  { "runId": "...", "timestamp": "...", "testCaseCount": 241, "failed": 24, "excluded": 0, "errored": 0 }
+  { "runId": "...", "timestamp": "...", "total": 232, "passed": 208, "failed": 20, "errored": 4, "falloutAfter": null }
 ]
 ```
 

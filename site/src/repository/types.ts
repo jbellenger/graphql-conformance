@@ -1,6 +1,7 @@
-// Types mirror plan P6.1. Reference-ness is per-run (see
-// `Run.referenceImplId`) rather than per-impl; derive with
-// `impl.id === run.referenceImplId`.
+// Types mirror the Repository-shaped JSON emitted by the conformer (see
+// conformer/src/index.js → writeRun) and consumed by Repository implementations
+// (FakeRepository, StaticJsonRepository). Reference-ness is per-run: derive
+// with `impl.id === run.referenceImplId`.
 
 export interface Impl {
   id: string;
@@ -18,20 +19,34 @@ export interface Run {
   referenceImplId: string;
   commitSha?: string;
   implIds: string[];
-  testCaseCount: number;
+  // Count of test cases the reference couldn't produce a clean output for.
+  // These are dropped from every conformant's corpus (nothing to compare to)
+  // and surface as Result rows with status='excluded' on the reference's
+  // shard. Corpus size = resultsByImpl[referenceImplId].total.
+  excluded: number;
   resultsByImpl: Record<string, ImplRunResults>;
 }
 
-// Per-impl breakdown of a Run: aggregate counts plus non-pass Result objects.
-// `passed` count is derivable: Run.testCaseCount - (failed + excluded + errored).
-// In StaticJsonRepository, `results` is populated lazily from the per-impl shard
-// (see P7.1 / F14). Dashboard-path Run fetches leave `results: []`; impl-detail
-// fetches hydrate the array.
+// Per-impl breakdown of a Run. `total` is what this impl was subjected to;
+// for the reference it's the full corpus, for non-reference it's
+// corpus - run.excluded, and for a fallen-out conformant it's how far the
+// impl got before fallout. Invariant: total ≤ resultsByImpl[referenceImplId].total.
+//
+// `passed` is stored explicitly (not derived) to match the future D1
+// aggregate-row shape and to survive round-trips through histories.
+//
+// In StaticJsonRepository, `results` is populated lazily from the per-impl
+// shard. Dashboard-path fetches leave `results: []`; impl-detail fetches
+// hydrate the array.
 export interface ImplRunResults {
   implId: string;
+  total: number;
+  passed: number;
   failed: number;
-  excluded: number;
   errored: number;
+  // Test count at which graduated testing dropped this impl from the pool.
+  // null when the impl ran to completion.
+  falloutAfter: number | null;
   results: Result[];
 }
 
@@ -74,13 +89,17 @@ export interface TestVariables {
   values: Record<string, unknown>;
 }
 
-// Per-impl history point for the detail page chart. Derived from prior
-// Runs; stored as a pre-aggregated shard to keep the dashboard path cheap.
+// Per-impl history point for the detail page chart. Derived from prior Runs;
+// stored as a pre-aggregated shard to keep the dashboard path cheap. Carries
+// per-impl counts rather than the corpus denominator so that a fallen-out
+// impl's point accurately reflects what was measured (e.g. 12/50), not a
+// misleading 12/553.
 export interface ImplHistoryPoint {
   runId: string;
   timestamp: string;
-  testCaseCount: number;
+  total: number;
+  passed: number;
   failed: number;
-  excluded: number;
   errored: number;
+  falloutAfter: number | null;
 }

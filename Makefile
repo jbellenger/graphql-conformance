@@ -62,8 +62,16 @@ DOCKER_ENV := \
   -e SITE_DATA_DIR \
   -e REGISTRY_PATH \
   -e CONFORMER_CONCURRENCY \
+  -e CONFORMER_MAX_IMPL_FAILURES \
   -e CONFORMER_STOP_TIMEOUT_SECS \
   -e CONFORMER_USE_EXISTING_IMAGE
+
+# Graduated-testing threshold: drop a conformant from the pool after this many
+# non-pass outcomes in a single run. Overridable per invocation (e.g. `make
+# run-conformer CONFORMER_MAX_IMPL_FAILURES=25`); `=0` disables fallout.
+# Exported so `docker run -e CONFORMER_MAX_IMPL_FAILURES` above inherits it.
+CONFORMER_MAX_IMPL_FAILURES ?= 10
+export CONFORMER_MAX_IMPL_FAILURES
 
 # --init runs tini as PID 1 inside the container, which forwards
 # signals and reaps zombies. Without it, Ctrl-C against serve-site can

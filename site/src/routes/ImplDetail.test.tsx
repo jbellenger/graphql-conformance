@@ -61,10 +61,10 @@ function makeRepo(): FakeRepository {
         timestamp: '2026-04-24T12:00:00Z',
         referenceImplId: 'graphql-js-17',
         implIds: ['graphql-js-17', 'graphql-java'],
-        testCaseCount: 100,
+        excluded: 2,
         resultsByImpl: {
-          'graphql-js-17': implRunResults('graphql-js-17', { excluded: 2 }),
-          'graphql-java': implRunResults('graphql-java', { failed: 1 }),
+          'graphql-js-17': implRunResults('graphql-js-17', { total: 100, passed: 98 }),
+          'graphql-java': implRunResults('graphql-java', { total: 98, passed: 97, failed: 1 }),
         },
       },
     ],
@@ -74,18 +74,20 @@ function makeRepo(): FakeRepository {
         {
           runId: 'r0',
           timestamp: '2026-04-20T00:00:00Z',
-          testCaseCount: 100,
+          total: 98,
+          passed: 95,
           failed: 3,
-          excluded: 0,
           errored: 0,
+          falloutAfter: null,
         },
         {
           runId,
           timestamp: '2026-04-24T12:00:00Z',
-          testCaseCount: 100,
+          total: 98,
+          passed: 97,
           failed: 1,
-          excluded: 0,
           errored: 0,
+          falloutAfter: null,
         },
       ],
     },
@@ -142,10 +144,10 @@ describe('ImplDetail', () => {
           timestamp: '2026-04-24T12:00:00Z',
           referenceImplId: 'graphql-js-17',
           implIds: ['graphql-js-17', 'graphql-php'],
-          testCaseCount: 553,
+          excluded: 8,
           resultsByImpl: {
-            'graphql-js-17': implRunResults('graphql-js-17', { excluded: 8 }),
-            'graphql-php': implRunResults('graphql-php'),
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 553, passed: 545 }),
+            'graphql-php': implRunResults('graphql-php', { total: 545, passed: 545 }),
           },
         },
       ],
@@ -158,8 +160,9 @@ describe('ImplDetail', () => {
     expect(card).toBeTruthy();
     expect(within(card).getByText('8')).toBeInTheDocument();
     // And the subtext under the pass rate mentions the exclusions too.
+    // Non-ref denominator is corpus - excluded = 545.
     expect(
-      screen.getByText(/553 total · 8 excluded · 0 failed/),
+      screen.getByText(/545 total · 8 excluded · 0 failed/),
     ).toBeInTheDocument();
   });
 
@@ -201,6 +204,43 @@ describe('ImplDetail', () => {
     }
   });
 
+  it('renders an "aborted" note when the impl fell out, with the failure count', async () => {
+    const repo = new FakeRepository({
+      impls: [
+        { id: 'graphql-js-17', name: 'graphql-js-17', language: 'JavaScript' },
+        { id: 'absinthe', name: 'absinthe', language: 'Elixir' },
+      ],
+      runs: [
+        {
+          id: 'r',
+          timestamp: '2026-04-24T12:00:00Z',
+          referenceImplId: 'graphql-js-17',
+          implIds: ['graphql-js-17', 'absinthe'],
+          excluded: 8,
+          resultsByImpl: {
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 553, passed: 545 }),
+            absinthe: implRunResults('absinthe', {
+              total: 12, passed: 2, errored: 10, falloutAfter: 12,
+            }),
+          },
+        },
+      ],
+    });
+    renderAt('/impl/absinthe', repo);
+    await screen.findByText('absinthe');
+    expect(
+      await screen.findByText(/Testing was aborted after 10 failures/i),
+    ).toBeInTheDocument();
+    // Pill is gone from the heading.
+    expect(screen.queryByText(/^Fell out$/)).toBeNull();
+  });
+
+  it('omits the aborted note for impls that ran to completion', async () => {
+    renderAt('/impl/graphql-java', makeRepo());
+    await screen.findByText('graphql-java');
+    expect(screen.queryByText(/Testing was aborted/i)).toBeNull();
+  });
+
   it('renders the reference impl with an "Excluded Tests" heading', async () => {
     const repo = new FakeRepository({
       impls: [
@@ -216,9 +256,9 @@ describe('ImplDetail', () => {
           timestamp: '2026-04-24T12:00:00Z',
           referenceImplId: 'graphql-js-17',
           implIds: ['graphql-js-17'],
-          testCaseCount: 100,
+          excluded: 1,
           resultsByImpl: {
-            'graphql-js-17': implRunResults('graphql-js-17', { excluded: 1 }),
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 100, passed: 99 }),
           },
         },
       ],

@@ -18,10 +18,10 @@ function sampleRun(overrides: Partial<Run> = {}): Run {
     timestamp: '2026-04-24T12:00:00Z',
     referenceImplId,
     implIds: [referenceImplId, 'graphql-java'],
-    testCaseCount: 100,
+    excluded: 2,
     resultsByImpl: {
-      [referenceImplId]: implRunResults(referenceImplId, { excluded: 2 }),
-      'graphql-java': implRunResults('graphql-java', { failed: 3 }),
+      [referenceImplId]: implRunResults(referenceImplId, { total: 100, passed: 98 }),
+      'graphql-java': implRunResults('graphql-java', { total: 98, passed: 95, failed: 3 }),
     },
     ...overrides,
   };

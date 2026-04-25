@@ -34,9 +34,8 @@ class FileData {
 //   impls/<implId>/history.json               — ImplHistoryPoint[]
 //
 // `_conformerMeta` lives only on per-run summary files. It carries the
-// imageDigest / corpusFingerprint / scoringModel that incremental-skip needs
-// and that the site does not. Keeping it out of runs.json keeps the public
-// list lean.
+// imageDigest / corpusFingerprint that incremental-skip needs and that the
+// site does not. Keeping it out of runs.json keeps the public list lean.
 class ResultsStore {
   constructor(data) {
     this._data = data;
@@ -51,10 +50,11 @@ class ResultsStore {
   }
 
   // Write a complete run in one shot. Inputs:
-  //   run              — Run, with resultsByImpl buckets carrying {failed,
-  //                      excluded, errored} counts and empty results: [].
+  //   run              — Run, with resultsByImpl buckets carrying
+  //                      {total, passed, failed, errored, falloutAfter}
+  //                      counts and empty results: [].
   //   resultsByImpl    — Record<implId, Result[]> of non-pass results.
-  //   conformerMeta    — { corpusFingerprint, scoringModel,
+  //   conformerMeta    — { corpusFingerprint,
   //                        implMeta: { [implId]: { imageDigest, version } } }
   //   impls            — Impl[] (current, ordered; reference first).
   writeRun({ run, resultsByImpl, conformerMeta, impls }) {
@@ -122,10 +122,11 @@ class ResultsStore {
         return {
           runId: r.id,
           timestamp: r.timestamp,
-          testCaseCount: r.testCaseCount,
+          total: bucket.total || 0,
+          passed: bucket.passed || 0,
           failed: bucket.failed || 0,
-          excluded: bucket.excluded || 0,
           errored: bucket.errored || 0,
+          falloutAfter: bucket.falloutAfter ?? null,
         };
       });
   }

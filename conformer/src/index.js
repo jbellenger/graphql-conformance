@@ -10,7 +10,6 @@ const { DockerDriver } = require('./driver');
 const { loadRegistry, filterDrivers } = require('./registry');
 const { ResultsStore } = require('../../results');
 
-const SCORING_MODEL = 'runnable-set-v1';
 const MANIFEST_REPO_BASE = 'https://github.com/jbellenger/graphql-conformance/blob/master';
 
 function generateRunId() {
@@ -22,6 +21,16 @@ function parseConcurrency(raw) {
   if (raw === undefined || raw === null || raw === '') return null;
   const n = Number(raw);
   if (!Number.isFinite(n) || n < 1) return null;
+  return Math.floor(n);
+}
+
+// Parse a non-negative integer threshold. Returns null when the input is
+// missing, empty, non-numeric, or ≤ 0 — any of which disable graduated
+// testing. Float inputs are truncated.
+function parseMaxImplFailures(raw) {
+  if (raw === undefined || raw === null || raw === '') return null;
+  const n = Number(raw);
+  if (!Number.isFinite(n) || n <= 0) return null;
   return Math.floor(n);
 }
 
@@ -67,6 +76,7 @@ function parseCliArgs(argv) {
       image: { type: 'string' },
       'corpus-dir': { type: 'string' },
       force: { type: 'boolean' },
+      'max-impl-failures': { type: 'string' },
     },
     strict: false,
   });
@@ -78,6 +88,7 @@ function parseCliArgs(argv) {
     imageOverride: values.image,
     corpusDir: values['corpus-dir'],
     force: Boolean(values.force),
+    maxImplFailures: parseMaxImplFailures(values['max-impl-failures']),
   };
 }
 
@@ -164,15 +175,19 @@ function buildImpl({ driver, manifest, version, rootDir }) {
 
 function writeRunSummary(stderr, { reference, conformants, run, tests }) {
   const summaryRows = [reference, ...conformants].map((impl) => {
-    const bucket = run.resultsByImpl[impl.id] || { failed: 0, excluded: 0, errored: 0 };
-    const isRef = impl.id === reference.id;
-    const total = isRef
-      ? run.testCaseCount - bucket.excluded
-      : run.testCaseCount;
-    const nonPass = bucket.failed + bucket.errored + (isRef ? 0 : 0);
-    const passed = Math.max(0, total - nonPass);
-    const pct = total > 0 ? ((passed / total) * 100).toFixed(1) : '100.0';
-    return { impl: impl.id, passed, total, pct, failed: nonPass };
+    const b = run.resultsByImpl[impl.id] || {
+      total: 0, passed: 0, failed: 0, errored: 0, falloutAfter: null,
+    };
+    const nonPass = (b.failed || 0) + (b.errored || 0);
+    const pct = b.total > 0 ? ((b.passed / b.total) * 100).toFixed(1) : '100.0';
+    return {
+      impl: impl.id,
+      passed: b.passed || 0,
+      total: b.total || 0,
+      pct,
+      failed: nonPass,
+      falloutAfter: b.falloutAfter ?? null,
+    };
   });
   const nameWidth = Math.max(...summaryRows.map((r) => r.impl.length));
   stderr('\n');
@@ -183,14 +198,16 @@ function writeRunSummary(stderr, { reference, conformants, run, tests }) {
     `  ${'-'.repeat(nameWidth)}  ${'-'.repeat(4)} ${'-'.repeat(5)}  ${'-'.repeat(6)}  ${'-'.repeat(6)}\n`,
   );
   for (const r of summaryRows) {
-    const status = r.failed === 0 ? 'PASS' : 'FAIL';
+    let status;
+    if (r.falloutAfter != null) status = `FELLOUT (after ${r.falloutAfter})`;
+    else if (r.failed === 0) status = 'PASS';
+    else status = 'FAIL';
     stderr(
       `  ${r.impl.padEnd(nameWidth)}  ${String(r.passed).padStart(4)}/${String(r.total).padStart(5)}  ${r.pct.padStart(6)}%  ${status}\n`,
     );
   }
-  const refExcluded = (run.resultsByImpl[reference.id] || {}).excluded || 0;
-  if (refExcluded > 0) {
-    stderr(`  Reference excluded ${refExcluded}/${tests.length} test(s) from scoring.\n\n`);
+  if (run.excluded > 0) {
+    stderr(`  Reference excluded ${run.excluded}/${tests.length} test(s) from scoring.\n\n`);
   } else {
     stderr('\n');
   }
@@ -231,6 +248,11 @@ async function runConformance({ argv = [], createSession = createDockerSession, 
 
   const conformantSessions = {};
   try {
+    const maxImplFailures = cli.maxImplFailures
+      ?? parseMaxImplFailures(process.env.CONFORMER_MAX_IMPL_FAILURES);
+    if (maxImplFailures != null) {
+      stderr(`Graduated testing enabled: drop conformants after ${maxImplFailures} non-pass outcomes.\n`);
+    }
     const concurrency = parseConcurrency(process.env.CONFORMER_CONCURRENCY) || conformantDrivers.length;
     if (conformantDrivers.length > 0) {
       stderr(
@@ -288,7 +310,6 @@ async function runConformance({ argv = [], createSession = createDockerSession, 
         && referenceUnchanged
         && priorImplMeta
         && priorImplMeta.imageDigest === currentDigest
-        && priorMeta.scoringModel === SCORING_MODEL
       ) {
         const digestForLog = currentDigest || 'unknown';
         stderr(`Skipping conformant (${driver.name}): unchanged (image ${digestForLog.slice(0, 14)})\n`);
@@ -300,8 +321,16 @@ async function runConformance({ argv = [], createSession = createDockerSession, 
 
     const refTestResults = [];
     const conformantTestResults = {};
-    for (const driver of conformantsToRun) conformantTestResults[driver.name] = [];
+    // Per-impl running counters for graduated testing + final aggregate output.
+    const implStats = new Map();
+    for (const driver of conformantsToRun) {
+      conformantTestResults[driver.name] = [];
+      implStats.set(driver.name, {
+        total: 0, passed: 0, failed: 0, errored: 0, falloutAfter: null,
+      });
+    }
     let runnableCount = 0;
+    let activeConformants = conformantsToRun.slice();
 
     const fullySkipped = conformantsToRun.length === 0 && prior && corpusUnchanged;
     if (fullySkipped) {
@@ -337,12 +366,19 @@ async function runConformance({ argv = [], createSession = createDockerSession, 
         }
 
         runnableCount += 1;
-        await Promise.all(conformantsToRun.map(async (driver) => {
+        await Promise.all(activeConformants.map(async (driver) => {
           const session = conformantSessions[driver.name];
           const conformantResult = await session.execute(test);
           const cmp = compareResults(refResult, conformantResult);
-          if (cmp.matches) return;
+          const stats = implStats.get(driver.name);
+          stats.total += 1;
+          if (cmp.matches) {
+            stats.passed += 1;
+            return;
+          }
           const status = conformantResult.error ? 'error' : 'fail';
+          if (status === 'error') stats.errored += 1;
+          else stats.failed += 1;
           conformantTestResults[driver.name].push(buildResult({
             runId, implId: driver.name, testCaseId: testKey, status,
             expected: refResult.result,
@@ -351,6 +387,38 @@ async function runConformance({ argv = [], createSession = createDockerSession, 
             stderr: conformantResult.stderr,
           }));
         }));
+
+        // Graduated testing: drop any conformant whose cumulative non-pass
+        // count reaches the threshold. `--max-impl-failures=N` means "allow
+        // at most N non-passes"; the Nth non-pass itself triggers fallout,
+        // so recorded `failed + errored` is capped at N. The impl keeps the
+        // results it already recorded; subsequent tests skip it entirely.
+        if (maxImplFailures != null) {
+          const falloutThisRound = [];
+          for (const driver of activeConformants) {
+            const s = implStats.get(driver.name);
+            if ((s.failed + s.errored) >= maxImplFailures) {
+              s.falloutAfter = s.total;
+              falloutThisRound.push(driver);
+            }
+          }
+          if (falloutThisRound.length > 0) {
+            const dropped = new Set(falloutThisRound.map((d) => d.name));
+            activeConformants = activeConformants.filter((d) => !dropped.has(d.name));
+            for (const driver of falloutThisRound) {
+              const s = implStats.get(driver.name);
+              stderr(`    ${driver.name} fell out after ${s.total} tests (threshold=${maxImplFailures})\n`);
+              // Stop the session eagerly to free the container slot. Errors
+              // are swallowed; the final cleanup in `finally` also stops
+              // every session.
+              conformantSessions[driver.name].stop().catch(() => {});
+            }
+            if (activeConformants.length === 0) {
+              stderr('  all conformants fell out; ending run early\n');
+              break;
+            }
+          }
+        }
       }
     }
 
@@ -381,36 +449,65 @@ async function runConformance({ argv = [], createSession = createDockerSession, 
       referenceResults = refTestResults;
     }
 
-    // testCaseCount: full corpus; preserved across runs because fingerprint
-    // matching guarantees tests.length == prior run's count.
-    const testCaseCount = tests.length;
-
     const referenceExcludedCount = referenceResults.filter((r) => r.status === 'excluded').length;
+    // Full corpus size. The reference impl sees every test case; non-ref
+    // impls see corpus - referenceExcludedCount. Fingerprint matching
+    // guarantees tests.length == prior run's count.
+    const corpusTotal = tests.length;
 
     const resultsByImpl = {
       [referenceDriver.name]: {
         implId: referenceDriver.name,
+        total: corpusTotal,
+        passed: corpusTotal - referenceExcludedCount,
         failed: 0,
-        excluded: referenceExcludedCount,
         errored: 0,
+        falloutAfter: null,
         results: [],
       },
     };
     for (const driver of conformantDrivers) {
-      const rows = conformantResultsByImpl[driver.name];
-      let failed = 0;
-      let errored = 0;
-      for (const r of rows) {
-        if (r.status === 'fail') failed += 1;
-        else if (r.status === 'error') errored += 1;
+      if (skippedConformants.has(driver.name)) {
+        // Unchanged-image conformant: copy its prior-run bucket forward
+        // verbatim (including any `falloutAfter` from last time). Full-run
+        // correctness falls back gracefully for old buckets that predate
+        // these fields.
+        const priorRun = prior && prior.run;
+        const priorBucket = priorRun && priorRun.resultsByImpl && priorRun.resultsByImpl[driver.name];
+        const rows = conformantResultsByImpl[driver.name];
+        let failed = 0;
+        let errored = 0;
+        for (const r of rows) {
+          if (r.status === 'fail') failed += 1;
+          else if (r.status === 'error') errored += 1;
+        }
+        const priorTotal = priorBucket && typeof priorBucket.total === 'number' ? priorBucket.total : rows.length;
+        const priorPassed = priorBucket && typeof priorBucket.passed === 'number'
+          ? priorBucket.passed
+          : Math.max(0, priorTotal - failed - errored);
+        resultsByImpl[driver.name] = {
+          implId: driver.name,
+          total: priorTotal,
+          passed: priorPassed,
+          failed,
+          errored,
+          falloutAfter: priorBucket && priorBucket.falloutAfter != null ? priorBucket.falloutAfter : null,
+          results: [],
+        };
+      } else {
+        const s = implStats.get(driver.name) || {
+          total: 0, passed: 0, failed: 0, errored: 0, falloutAfter: null,
+        };
+        resultsByImpl[driver.name] = {
+          implId: driver.name,
+          total: s.total,
+          passed: s.passed,
+          failed: s.failed,
+          errored: s.errored,
+          falloutAfter: s.falloutAfter,
+          results: [],
+        };
       }
-      resultsByImpl[driver.name] = {
-        implId: driver.name,
-        failed,
-        excluded: 0,
-        errored,
-        results: [],
-      };
     }
 
     const orderedImpls = [referenceDriver, ...conformantDrivers].map((driver) => {
@@ -431,13 +528,12 @@ async function runConformance({ argv = [], createSession = createDockerSession, 
       timestamp: new Date().toISOString(),
       referenceImplId: referenceDriver.name,
       implIds: orderedImpls.map((i) => i.id),
-      testCaseCount,
+      excluded: referenceExcludedCount,
       resultsByImpl,
     };
 
     const conformerMeta = {
       corpusFingerprint,
-      scoringModel: SCORING_MODEL,
       runnableCount: fullySkipped && prior
         ? ((priorMeta && priorMeta.runnableCount) || 0)
         : runnableCount,
@@ -503,6 +599,7 @@ module.exports = {
   computeCorpusFingerprint,
   parseCliArgs,
   parseConcurrency,
+  parseMaxImplFailures,
   readManifestFile,
   resultId,
   runConformance,

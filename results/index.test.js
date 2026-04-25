@@ -7,6 +7,18 @@ const path = require('path');
 const os = require('os');
 const { ResultsStore } = require('./index');
 
+function bucket(implId, overrides = {}) {
+  return {
+    implId,
+    total: overrides.total ?? 0,
+    passed: overrides.passed ?? 0,
+    failed: overrides.failed ?? 0,
+    errored: overrides.errored ?? 0,
+    falloutAfter: overrides.falloutAfter ?? null,
+    results: [],
+  };
+}
+
 function makeRun(overrides = {}) {
   const id = overrides.id || '2026-03-17T22-42-11Z';
   return {
@@ -14,10 +26,10 @@ function makeRun(overrides = {}) {
     timestamp: overrides.timestamp || '2026-03-17T22:42:11.609Z',
     referenceImplId: overrides.referenceImplId || 'graphql-js',
     implIds: overrides.implIds || ['graphql-js', 'graphql-java'],
-    testCaseCount: overrides.testCaseCount ?? 3,
+    excluded: overrides.excluded ?? 0,
     resultsByImpl: overrides.resultsByImpl || {
-      'graphql-js': { implId: 'graphql-js', failed: 0, excluded: 0, errored: 0, results: [] },
-      'graphql-java': { implId: 'graphql-java', failed: 1, excluded: 0, errored: 0, results: [] },
+      'graphql-js': bucket('graphql-js', { total: 3, passed: 3 }),
+      'graphql-java': bucket('graphql-java', { total: 3, passed: 2, failed: 1 }),
     },
   };
 }
@@ -32,7 +44,6 @@ function makeImpls() {
 function makeMeta(overrides = {}) {
   return {
     corpusFingerprint: overrides.corpusFingerprint || 'fingerprint-1',
-    scoringModel: overrides.scoringModel || 'runnable-set-v1',
     implMeta: overrides.implMeta || {
       'graphql-js': { imageDigest: 'sha256:ref-digest', version: 'abc' },
       'graphql-java': { imageDigest: 'sha256:java-digest', version: 'def' },
@@ -60,7 +71,9 @@ describe('ResultsStore', () => {
       const latest = store.loadLatestRun();
       assert.ok(latest);
       assert.equal(latest.run.id, run.id);
-      assert.equal(latest.run.testCaseCount, 3);
+      assert.equal(latest.run.excluded, 0);
+      assert.equal(latest.run.resultsByImpl['graphql-js'].total, 3);
+      assert.equal(latest.run.resultsByImpl['graphql-java'].failed, 1);
       assert.deepStrictEqual(latest.resultsByImpl['graphql-java'][0].testCaseId, 'a/b/c');
       assert.equal(latest.conformerMeta.corpusFingerprint, 'fingerprint-1');
     });
@@ -109,9 +122,10 @@ describe('ResultsStore', () => {
         run: makeRun({
           id: 'r2',
           timestamp: '2026-03-16T00:00:00Z',
+          excluded: 1,
           resultsByImpl: {
-            'graphql-js': { implId: 'graphql-js', failed: 0, excluded: 1, errored: 0, results: [] },
-            'graphql-java': { implId: 'graphql-java', failed: 0, excluded: 0, errored: 0, results: [] },
+            'graphql-js': bucket('graphql-js', { total: 3, passed: 2 }),
+            'graphql-java': bucket('graphql-java', { total: 2, passed: 2 }),
           },
         }),
         resultsByImpl: {}, conformerMeta: makeMeta(), impls: makeImpls(),
@@ -120,9 +134,33 @@ describe('ResultsStore', () => {
       const history = store._data.get('impls/graphql-java/history');
       assert.equal(history.length, 2);
       assert.equal(history[0].runId, 'r2');
+      assert.equal(history[0].total, 2);
+      assert.equal(history[0].passed, 2);
       assert.equal(history[0].failed, 0);
+      assert.equal(history[0].falloutAfter, null);
       assert.equal(history[1].runId, 'r1');
       assert.equal(history[1].failed, 1);
+    });
+
+    it('propagates falloutAfter from the per-run bucket', () => {
+      const store = ResultsStore.inMemory();
+      store.writeRun({
+        run: makeRun({
+          id: 'rfo',
+          timestamp: '2026-04-01T00:00:00Z',
+          resultsByImpl: {
+            'graphql-js': bucket('graphql-js', { total: 3, passed: 3 }),
+            'graphql-java': bucket('graphql-java', {
+              total: 2, passed: 0, failed: 2, falloutAfter: 2,
+            }),
+          },
+        }),
+        resultsByImpl: {}, conformerMeta: makeMeta(), impls: makeImpls(),
+      });
+
+      const history = store._data.get('impls/graphql-java/history');
+      assert.equal(history[0].falloutAfter, 2);
+      assert.equal(history[0].total, 2);
     });
   });
 
@@ -190,7 +228,7 @@ describe('ResultsStore', () => {
         run: makeRun({
           id: sameId,
           timestamp: '2026-03-16T00:00:00Z',
-          testCaseCount: 99,
+          excluded: 5,
         }),
         resultsByImpl: {}, conformerMeta: makeMeta(), impls: makeImpls(),
       });
@@ -198,7 +236,7 @@ describe('ResultsStore', () => {
       const runs = store.listRuns();
       assert.equal(runs.length, 1);
       assert.equal(runs[0].timestamp, '2026-03-16T00:00:00Z');
-      assert.equal(runs[0].testCaseCount, 99);
+      assert.equal(runs[0].excluded, 5);
     });
   });
 
@@ -219,7 +257,7 @@ describe('ResultsStore', () => {
           timestamp: '2026-03-16T00:00:00Z',
           implIds: ['graphql-js'],
           resultsByImpl: {
-            'graphql-js': { implId: 'graphql-js', failed: 0, excluded: 0, errored: 0, results: [] },
+            'graphql-js': bucket('graphql-js', { total: 3, passed: 3 }),
           },
         }),
         resultsByImpl: {},

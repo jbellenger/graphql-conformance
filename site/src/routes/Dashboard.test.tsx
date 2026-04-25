@@ -75,10 +75,10 @@ describe('Dashboard', () => {
           timestamp: '2026-04-24T12:00:00Z',
           referenceImplId: 'graphql-js-17',
           implIds: ['graphql-js-17', 'graphql-java'],
-          testCaseCount: 100,
+          excluded: 2,
           resultsByImpl: {
-            'graphql-js-17': implRunResults('graphql-js-17', { excluded: 2 }),
-            'graphql-java': implRunResults('graphql-java', { failed: 3 }),
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 100, passed: 98 }),
+            'graphql-java': implRunResults('graphql-java', { total: 98, passed: 95, failed: 3 }),
           },
         },
       ],
@@ -91,10 +91,10 @@ describe('Dashboard', () => {
     expect(
       await screen.findByTestId('dashboard-row-graphql-java'),
     ).toBeInTheDocument();
-    // Reference pass rate: 100 - 2 excluded = 98 passed => 98.0%
+    // Reference pass rate: 98/100 = 98.0%
     expect(await screen.findByText(/98\.0%/)).toBeInTheDocument();
-    // graphql-java: 100 - 3 failed = 97 passed => 97.0%
-    expect(await screen.findByText(/97\.0%/)).toBeInTheDocument();
+    // graphql-java: 95/98 = 96.9% (denominator is non-excluded corpus)
+    expect(await screen.findByText(/96\.9%/)).toBeInTheDocument();
   });
 
   it('explains that the reference\'s failures are excluded from conformance testing', async () => {
@@ -118,11 +118,11 @@ describe('Dashboard', () => {
           timestamp: '2026-04-24T12:00:00Z',
           referenceImplId: 'graphql-js-17',
           implIds: ['graphql-js-17', 'graphql-java'],
-          testCaseCount: 100,
+          excluded: 8,
           resultsByImpl: {
-            // Reference has 8 unruncomputable tests → those are its failures.
-            'graphql-js-17': implRunResults('graphql-js-17', { excluded: 8 }),
-            'graphql-java': implRunResults('graphql-java'),
+            // Reference couldn't compute 8 tests → those are its "failures".
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 100, passed: 92 }),
+            'graphql-java': implRunResults('graphql-java', { total: 92, passed: 92 }),
           },
         },
       ],
@@ -150,9 +150,9 @@ describe('Dashboard', () => {
           timestamp: '2026-04-24T12:00:00Z',
           referenceImplId: 'ref',
           implIds: ['ref'],
-          testCaseCount: 100,
+          excluded: 0,
           resultsByImpl: {
-            ref: implRunResults('ref'), // zero failures / exclusions
+            ref: implRunResults('ref', { total: 100, passed: 100 }), // zero failures / exclusions
           },
         },
       ],
@@ -191,12 +191,12 @@ describe('Dashboard', () => {
           timestamp: '2026-04-24T12:00:00Z',
           referenceImplId: 'ref',
           implIds: ['ref', 'low', 'high', 'mid'],
-          testCaseCount: 100,
+          excluded: 0,
           resultsByImpl: {
-            ref: implRunResults('ref'),
-            low: implRunResults('low', { failed: 50 }),
-            high: implRunResults('high', { failed: 0 }),
-            mid: implRunResults('mid', { failed: 20 }),
+            ref: implRunResults('ref', { total: 100, passed: 100 }),
+            low: implRunResults('low', { total: 100, passed: 50, failed: 50 }),
+            high: implRunResults('high', { total: 100, passed: 100 }),
+            mid: implRunResults('mid', { total: 100, passed: 80, failed: 20 }),
           },
         },
       ],
@@ -222,12 +222,12 @@ describe('Dashboard', () => {
           timestamp: '2026-04-24T12:00:00Z',
           referenceImplId: 'ref',
           implIds: ['ref', 'charlie', 'alpha', 'bravo'],
-          testCaseCount: 100,
+          excluded: 0,
           resultsByImpl: {
-            ref: implRunResults('ref'),
-            alpha: implRunResults('alpha'),
-            bravo: implRunResults('bravo'),
-            charlie: implRunResults('charlie'),
+            ref: implRunResults('ref', { total: 100, passed: 100 }),
+            alpha: implRunResults('alpha', { total: 100, passed: 100 }),
+            bravo: implRunResults('bravo', { total: 100, passed: 100 }),
+            charlie: implRunResults('charlie', { total: 100, passed: 100 }),
           },
         },
       ],
@@ -254,10 +254,10 @@ describe('Dashboard', () => {
           timestamp: '2026-04-24T12:00:00Z',
           referenceImplId: 'ref',
           implIds: ['ref', 'graphql-java'],
-          testCaseCount: 100,
+          excluded: 0,
           resultsByImpl: {
-            ref: implRunResults('ref'),
-            'graphql-java': implRunResults('graphql-java', { failed: 5 }),
+            ref: implRunResults('ref', { total: 100, passed: 100 }),
+            'graphql-java': implRunResults('graphql-java', { total: 100, passed: 95, failed: 5 }),
           },
         },
       ],
@@ -288,10 +288,10 @@ describe('Dashboard', () => {
           timestamp: '2026-04-24T12:00:00Z',
           referenceImplId: 'ref',
           implIds: ['ref', 'graphql-java'],
-          testCaseCount: 100,
+          excluded: 0,
           resultsByImpl: {
-            ref: implRunResults('ref'),
-            'graphql-java': implRunResults('graphql-java', { failed: 5 }),
+            ref: implRunResults('ref', { total: 100, passed: 100 }),
+            'graphql-java': implRunResults('graphql-java', { total: 100, passed: 95, failed: 5 }),
           },
         },
       ],
@@ -329,10 +329,10 @@ describe('Dashboard', () => {
           timestamp: '2026-04-24T12:00:00Z',
           referenceImplId: 'graphql-js-17',
           implIds: ['graphql-js-17', 'graphql-java'],
-          testCaseCount: 100,
+          excluded: 0,
           resultsByImpl: {
-            'graphql-js-17': implRunResults('graphql-js-17'),
-            'graphql-java': implRunResults('graphql-java', { failed: 5 }),
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 100, passed: 100 }),
+            'graphql-java': implRunResults('graphql-java', { total: 100, passed: 95, failed: 5 }),
           },
         },
       ],
@@ -387,9 +387,9 @@ describe('Dashboard', () => {
           timestamp: '2026-04-24T12:00:00Z',
           referenceImplId: 'graphql-js-17',
           implIds: ['graphql-js-17'],
-          testCaseCount: 100,
+          excluded: 0,
           resultsByImpl: {
-            'graphql-js-17': implRunResults('graphql-js-17'),
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 100, passed: 100 }),
           },
         },
       ],
@@ -420,9 +420,9 @@ describe('Dashboard', () => {
           timestamp: '2026-04-24T12:00:00Z',
           referenceImplId: 'graphql-js-17',
           implIds: ['graphql-js-17'],
-          testCaseCount: 100,
+          excluded: 2,
           resultsByImpl: {
-            'graphql-js-17': implRunResults('graphql-js-17', { excluded: 2 }),
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 100, passed: 98 }),
           },
         },
       ],

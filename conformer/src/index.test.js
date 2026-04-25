@@ -5,7 +5,46 @@ const assert = require('node:assert/strict');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
-const { buildImpl, buildResult, resultId, readManifestFile } = require('./index');
+const {
+  buildImpl, buildResult, parseCliArgs, parseMaxImplFailures,
+  readManifestFile, resultId,
+} = require('./index');
+
+describe('parseMaxImplFailures', () => {
+  it('returns null for unset, empty, or non-numeric input', () => {
+    assert.equal(parseMaxImplFailures(undefined), null);
+    assert.equal(parseMaxImplFailures(null), null);
+    assert.equal(parseMaxImplFailures(''), null);
+    assert.equal(parseMaxImplFailures('not-a-number'), null);
+  });
+
+  it('returns null for zero and negative values (disabled)', () => {
+    assert.equal(parseMaxImplFailures('0'), null);
+    assert.equal(parseMaxImplFailures('-1'), null);
+  });
+
+  it('parses positive integers and truncates floats', () => {
+    assert.equal(parseMaxImplFailures('10'), 10);
+    assert.equal(parseMaxImplFailures('3.7'), 3);
+  });
+});
+
+describe('parseCliArgs', () => {
+  it('parses --max-impl-failures into maxImplFailures', () => {
+    const cli = parseCliArgs(['--max-impl-failures', '12']);
+    assert.equal(cli.maxImplFailures, 12);
+  });
+
+  it('absent flag yields null', () => {
+    const cli = parseCliArgs([]);
+    assert.equal(cli.maxImplFailures, null);
+  });
+
+  it('invalid flag value yields null (disabled)', () => {
+    const cli = parseCliArgs(['--max-impl-failures', '0']);
+    assert.equal(cli.maxImplFailures, null);
+  });
+});
 
 describe('resultId', () => {
   it('is deterministic for the same inputs', () => {

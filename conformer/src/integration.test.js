@@ -220,9 +220,14 @@ describe('integration: self-comparison', () => {
     const latest = loadLatest();
     assert.ok(latest);
     assert.equal(latest.run.referenceImplId, 'ref');
-    assert.equal(latest.run.testCaseCount, 1);
+    assert.equal(latest.run.excluded, 0);
+    assert.equal(latest.run.resultsByImpl.ref.total, 1);
+    assert.equal(latest.run.resultsByImpl.ref.passed, 1);
+    assert.equal(latest.run.resultsByImpl.conformant.total, 1);
+    assert.equal(latest.run.resultsByImpl.conformant.passed, 1);
     assert.equal(latest.run.resultsByImpl.conformant.failed, 0);
     assert.equal(latest.run.resultsByImpl.conformant.errored, 0);
+    assert.equal(latest.run.resultsByImpl.conformant.falloutAfter, null);
     assert.deepStrictEqual(latest.resultsByImpl.conformant, []);
   });
 });
@@ -311,10 +316,14 @@ describe('integration: incremental skip', () => {
         timestamp: '2026-03-18T00:00:00.000Z',
         referenceImplId: 'ref',
         implIds: ['ref', 'conformant'],
-        testCaseCount: 1,
+        excluded: 0,
         resultsByImpl: {
-          ref: { implId: 'ref', failed: 0, excluded: 0, errored: 0, results: [] },
-          conformant: { implId: 'conformant', failed: 1, excluded: 0, errored: 0, results: [] },
+          ref: {
+            implId: 'ref', total: 1, passed: 1, failed: 0, errored: 0, falloutAfter: null, results: [],
+          },
+          conformant: {
+            implId: 'conformant', total: 1, passed: 0, failed: 1, errored: 0, falloutAfter: null, results: [],
+          },
         },
       },
       resultsByImpl: {
@@ -330,7 +339,6 @@ describe('integration: incremental skip', () => {
       },
       conformerMeta: {
         corpusFingerprint,
-        scoringModel: 'runnable-set-v1',
         runnableCount: 1,
         implMeta: {
           ref: { imageDigest: 'stub-image-ref', version: null },
@@ -407,7 +415,7 @@ describe('integration: corpus change invalidates skip', () => {
 
     const run1 = loadLatest();
     assert.ok(run1.conformerMeta.corpusFingerprint);
-    assert.equal(run1.run.testCaseCount, 1);
+    assert.equal(run1.run.resultsByImpl.ref.total, 1);
     const runsAfterFirst = conformantRuns;
 
     writeCorpusCase(corpusDir, 'ok-test-2', 'ok-query', 'type Query { ok: String }', '{ ok }');
@@ -427,7 +435,7 @@ describe('integration: corpus change invalidates skip', () => {
     assert.ok(conformantRuns > runsAfterFirst, 'conformant should have actually run');
 
     const run2 = loadLatest();
-    assert.equal(run2.run.testCaseCount, 2);
+    assert.equal(run2.run.resultsByImpl.ref.total, 2);
     assert.notEqual(run2.conformerMeta.corpusFingerprint, run1.conformerMeta.corpusFingerprint);
   });
 });
@@ -449,8 +457,11 @@ describe('integration: reference exclusions', () => {
     await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
 
     const latest = loadLatest();
-    assert.equal(latest.run.testCaseCount, 2);
-    assert.equal(latest.run.resultsByImpl.ref.excluded, 1);
+    assert.equal(latest.run.resultsByImpl.ref.total, 2);
+    assert.equal(latest.run.excluded, 1);
+    assert.equal(latest.run.resultsByImpl.ref.passed, 1);
+    assert.equal(latest.run.resultsByImpl.conformant.total, 1);
+    assert.equal(latest.run.resultsByImpl.conformant.passed, 1);
     assert.equal(latest.run.resultsByImpl.conformant.failed, 0);
 
     const refResults = latest.resultsByImpl.ref;
@@ -489,7 +500,7 @@ describe('integration: reference exclusions', () => {
     await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
 
     const latest = loadLatest();
-    assert.equal(latest.run.resultsByImpl.ref.excluded, 1);
+    assert.equal(latest.run.excluded, 1);
     const refExcludedResult = latest.resultsByImpl.ref.find((r) => r.status === 'excluded');
     assert.equal(refExcludedResult.testCaseId, 'err-test/err-query');
     assert.equal(refExcludedResult.error, undefined);
@@ -521,8 +532,8 @@ describe('integration: reference exclusions', () => {
     await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
 
     const latest = loadLatest();
-    assert.equal(latest.run.testCaseCount, 1);
-    assert.equal(latest.run.resultsByImpl.ref.excluded, 1);
+    assert.equal(latest.run.resultsByImpl.ref.total, 1);
+    assert.equal(latest.run.excluded, 1);
     const refExcludedResult = latest.resultsByImpl.ref.find((r) => r.status === 'excluded');
     assert.equal(refExcludedResult.testCaseId, 'partial-test/partial-query');
     assert.deepStrictEqual(refExcludedResult.actual.data, { ok: null });
@@ -542,7 +553,7 @@ describe('integration: reference exclusions', () => {
     await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
 
     const latest = loadLatest();
-    assert.equal(latest.run.resultsByImpl.ref.excluded, 0);
+    assert.equal(latest.run.excluded, 0);
     assert.equal(latest.run.resultsByImpl.conformant.failed, 0);
   });
 
@@ -562,10 +573,14 @@ describe('integration: reference exclusions', () => {
         timestamp: '2026-03-18T00:00:00.000Z',
         referenceImplId: 'ref',
         implIds: ['ref', 'conformant'],
-        testCaseCount: 2,
+        excluded: 1,
         resultsByImpl: {
-          ref: { implId: 'ref', failed: 0, excluded: 1, errored: 0, results: [] },
-          conformant: { implId: 'conformant', failed: 0, excluded: 0, errored: 0, results: [] },
+          ref: {
+            implId: 'ref', total: 2, passed: 1, failed: 0, errored: 0, falloutAfter: null, results: [],
+          },
+          conformant: {
+            implId: 'conformant', total: 1, passed: 1, failed: 0, errored: 0, falloutAfter: null, results: [],
+          },
         },
       },
       resultsByImpl: {
@@ -581,7 +596,6 @@ describe('integration: reference exclusions', () => {
       },
       conformerMeta: {
         corpusFingerprint,
-        scoringModel: 'runnable-set-v1',
         runnableCount: 1,
         implMeta: {
           ref: { imageDigest: 'stub-image-ref', version: null },
@@ -610,12 +624,307 @@ describe('integration: reference exclusions', () => {
     assert.match(stderrChunks.join(''), /All conformants unchanged, skipping test execution/);
 
     const latest = loadLatest();
-    assert.equal(latest.run.testCaseCount, 2);
-    assert.equal(latest.run.resultsByImpl.ref.excluded, 1);
+    assert.equal(latest.run.resultsByImpl.ref.total, 2);
+    assert.equal(latest.run.excluded, 1);
     const refExcludedResult = latest.resultsByImpl.ref.find((r) => r.status === 'excluded');
     assert.equal(refExcludedResult.testCaseId, 'excluded-test/excluded-query');
 
     assert.equal(refCalls, 0, 'reference should not run when reusing prior reference exclusions');
     assert.equal(conformantCalls, 0, 'conformant should not run when skipped');
+  });
+});
+
+describe('integration: graduated testing', () => {
+  // Build an N-test corpus sharing one schema so each case triggers the
+  // per-test fallout check independently.
+  function writeNCaseCorpus(corpusDir, n) {
+    for (let i = 0; i < n; i += 1) {
+      writeCorpusCase(
+        corpusDir,
+        `test-${String(i).padStart(3, '0')}`,
+        'q',
+        'type Query { ok: String }',
+        '{ ok }',
+      );
+    }
+  }
+
+  it('without the flag, every conformant sees the full corpus (legacy behavior)', async () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    writeNCaseCorpus(corpusDir, 5);
+    writeRegistry(['ref', 'conformant']);
+
+    // Conformant always differs → would fall out if a threshold were set.
+    const refHandler = () => ({ result: { data: { ok: 'ref-value' } } });
+    const conformantHandler = () => ({ result: { data: { ok: 'other' } } });
+
+    await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
+
+    const latest = loadLatest();
+    assert.equal(latest.run.resultsByImpl.conformant.total, 5);
+    assert.equal(latest.run.resultsByImpl.conformant.failed, 5);
+    assert.equal(latest.run.resultsByImpl.conformant.falloutAfter, null);
+    assert.equal(latest.resultsByImpl.conformant.length, 5);
+  });
+
+  it('under threshold: no fallout, full run, falloutAfter is null', async () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    writeNCaseCorpus(corpusDir, 5);
+    writeRegistry(['ref', 'conformant']);
+
+    // 2 non-passes < threshold=3 → conformant runs to completion.
+    const refHandler = () => ({ result: { data: { ok: 'ref-value' } } });
+    let call = 0;
+    const conformantHandler = () => {
+      call += 1;
+      if (call <= 2) return { result: { data: { ok: 'differs' } } };
+      return { result: { data: { ok: 'ref-value' } } };
+    };
+
+    await runInTmp(
+      { ref: refHandler, conformant: conformantHandler },
+      corpusDir,
+      ['--max-impl-failures', '3'],
+    );
+
+    const latest = loadLatest();
+    assert.equal(latest.run.resultsByImpl.conformant.total, 5, 'should have seen the full corpus');
+    assert.equal(latest.run.resultsByImpl.conformant.failed, 2);
+    assert.equal(latest.run.resultsByImpl.conformant.passed, 3);
+    assert.equal(latest.run.resultsByImpl.conformant.falloutAfter, null);
+  });
+
+  it('threshold reached: fallout fires, session stopped, partial results preserved', async () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    writeNCaseCorpus(corpusDir, 10);
+    writeRegistry(['ref', 'conformant']);
+
+    const refHandler = () => ({ result: { data: { ok: 'ref-value' } } });
+    let conformantCalls = 0;
+    let conformantStops = 0;
+    // Conformant always fails; with threshold=2, fallout triggers at the
+    // 2nd non-pass (failed+errored >= 2) → total=2, failed=2, then stop.
+    const createSession = async (driver) => {
+      if (driver.name === 'ref') {
+        return {
+          version: null,
+          imageDigest: 'stub-image-ref',
+          async execute() { return refHandler(); },
+          async stop() { /* noop */ },
+        };
+      }
+      return {
+        version: null,
+        imageDigest: 'stub-image-conformant',
+        async execute() {
+          conformantCalls += 1;
+          return { result: { data: { ok: 'differs' } } };
+        },
+        async stop() { conformantStops += 1; },
+      };
+    };
+
+    await runWithCustomSession(createSession, corpusDir, ['--max-impl-failures', '2']);
+
+    const latest = loadLatest();
+    assert.equal(latest.run.resultsByImpl.conformant.total, 2,
+      'conformant should have seen exactly 2 tests before fallout (failed=2 >= threshold=2)');
+    assert.equal(latest.run.resultsByImpl.conformant.failed, 2);
+    assert.equal(latest.run.resultsByImpl.conformant.errored, 0);
+    assert.equal(latest.run.resultsByImpl.conformant.passed, 0);
+    assert.equal(latest.run.resultsByImpl.conformant.falloutAfter, 2);
+
+    // Reference still sees the full corpus; its total stays at 10.
+    assert.equal(latest.run.resultsByImpl.ref.total, 10);
+
+    // Per-impl shard has the 2 recorded failures.
+    assert.equal(latest.resultsByImpl.conformant.length, 2);
+
+    // Eager session stop (called at fallout; final cleanup is best-effort).
+    assert.ok(conformantStops >= 1, 'conformant session.stop() should have been called on fallout');
+    assert.equal(conformantCalls, 2, 'conformant should not be invoked after fallout');
+  });
+
+  it('counts errors toward the fallout threshold, not just mismatches', async () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    writeNCaseCorpus(corpusDir, 10);
+    writeRegistry(['ref', 'conformant']);
+
+    const refHandler = () => ({ result: { data: { ok: 'ref-value' } } });
+    const conformantHandler = () => ({ error: 'timeout', stderr: 'no response' });
+
+    await runInTmp(
+      { ref: refHandler, conformant: conformantHandler },
+      corpusDir,
+      ['--max-impl-failures', '1'],
+    );
+
+    const latest = loadLatest();
+    assert.equal(latest.run.resultsByImpl.conformant.total, 1,
+      'threshold=1: 1st error trips fallout (errored >= 1)');
+    assert.equal(latest.run.resultsByImpl.conformant.errored, 1);
+    assert.equal(latest.run.resultsByImpl.conformant.failed, 0);
+    assert.equal(latest.run.resultsByImpl.conformant.falloutAfter, 1);
+  });
+
+  it('when all conformants fall out, the loop terminates early', async () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    writeNCaseCorpus(corpusDir, 20);
+    writeRegistry(['ref', 'c1', 'c2']);
+
+    const refHandler = () => ({ result: { data: { ok: 'ref-value' } } });
+    let refCalls = 0;
+    const countedRef = () => { refCalls += 1; return refHandler(); };
+    const c1Handler = () => ({ result: { data: { ok: 'differs-a' } } });
+    const c2Handler = () => ({ result: { data: { ok: 'differs-b' } } });
+
+    await runInTmp(
+      { ref: countedRef, c1: c1Handler, c2: c2Handler },
+      corpusDir,
+      ['--max-impl-failures', '1'],
+    );
+
+    const latest = loadLatest();
+    // Both conformants fall out after 1 non-pass (threshold=1, fallout at >=).
+    assert.equal(latest.run.resultsByImpl.c1.falloutAfter, 1);
+    assert.equal(latest.run.resultsByImpl.c2.falloutAfter, 1);
+    // Reference should not have been called for every test in the corpus,
+    // since the loop terminates once both conformants are out.
+    assert.ok(refCalls < 20, `reference should stop early; got ${refCalls} calls out of 20`);
+    assert.ok(refCalls >= 1, 'reference must have run for at least the test that caused fallout');
+  });
+
+  it('reference is not subject to fallout even with many exclusions', async () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    // Two valid tests and three that the reference cannot compute.
+    writeCorpusCase(corpusDir, 'ok-1', 'q', 'type Query { ok: String }', '{ ok }');
+    writeCorpusCase(corpusDir, 'ok-2', 'q', 'type Query { ok: String }', '{ ok }');
+    writeCorpusCase(corpusDir, 'bad-1', 'q', 'type Query { boom: String }', '{ boom }');
+    writeCorpusCase(corpusDir, 'bad-2', 'q', 'type Query { boom: String }', '{ boom }');
+    writeCorpusCase(corpusDir, 'bad-3', 'q', 'type Query { boom: String }', '{ boom }');
+    writeRegistry(['ref', 'conformant']);
+
+    const refHandler = (body) => {
+      if (body.query.includes('boom')) return { error: 'ref exploded' };
+      return { result: { data: { ok: 'ref-value' } } };
+    };
+    const conformantHandler = () => ({ result: { data: { ok: 'ref-value' } } });
+
+    // threshold=1 would trip a conformant after 1 failure, but the reference
+    // should never be dropped even though its "excluded" count (3) exceeds it.
+    await runInTmp(
+      { ref: refHandler, conformant: conformantHandler },
+      corpusDir,
+      ['--max-impl-failures', '1'],
+    );
+
+    const latest = loadLatest();
+    assert.equal(latest.run.excluded, 3, 'reference should record all 3 exclusions');
+    assert.equal(latest.run.resultsByImpl.ref.total, 5, 'reference should see the full corpus');
+    assert.equal(latest.run.resultsByImpl.conformant.total, 2, 'conformant only sees non-excluded');
+    assert.equal(latest.run.resultsByImpl.conformant.falloutAfter, null);
+  });
+
+  it('preserves prior-run falloutAfter when skipping unchanged conformants', async () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    writeNCaseCorpus(corpusDir, 1);
+    writeRegistry(['ref', 'conformant']);
+
+    const discoveredTests = discoverCorpus(corpusDir);
+    const corpusFingerprint = computeCorpusFingerprint(discoveredTests);
+
+    // Seed a prior run where the conformant fell out at 7 tests.
+    const priorRunId = 'prior-fallout';
+    ResultsStore.fromDirectory(tmpResultsDir).writeRun({
+      run: {
+        id: priorRunId,
+        timestamp: '2026-03-18T00:00:00.000Z',
+        referenceImplId: 'ref',
+        implIds: ['ref', 'conformant'],
+        excluded: 0,
+        resultsByImpl: {
+          ref: {
+            implId: 'ref', total: 1, passed: 1, failed: 0, errored: 0, falloutAfter: null, results: [],
+          },
+          conformant: {
+            implId: 'conformant', total: 7, passed: 2, failed: 5, errored: 0,
+            falloutAfter: 7, results: [],
+          },
+        },
+      },
+      resultsByImpl: { ref: [], conformant: [] },
+      conformerMeta: {
+        corpusFingerprint,
+        runnableCount: 1,
+        implMeta: {
+          ref: { imageDigest: 'stub-image-ref', version: null },
+          conformant: { imageDigest: 'stub-image-conformant', version: null },
+        },
+      },
+      impls: [
+        { id: 'ref', name: 'ref', language: 'unknown' },
+        { id: 'conformant', name: 'conformant', language: 'unknown' },
+      ],
+    });
+
+    // Unchanged image digest → conformant should be skipped; prior bucket
+    // (including falloutAfter=7) should carry forward.
+    const refHandler = () => ({ result: { data: { ok: 'ref-value' } } });
+    const conformantHandler = () => ({ result: { data: { ok: 'ref-value' } } });
+
+    await runInTmp(
+      { ref: refHandler, conformant: conformantHandler },
+      corpusDir,
+    );
+
+    const latest = loadLatest();
+    assert.equal(latest.run.resultsByImpl.conformant.falloutAfter, 7);
+    assert.equal(latest.run.resultsByImpl.conformant.total, 7);
+    assert.equal(latest.run.resultsByImpl.conformant.passed, 2);
+  });
+
+  it('threshold=0 or missing disables fallout entirely', async () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    writeNCaseCorpus(corpusDir, 4);
+    writeRegistry(['ref', 'conformant']);
+
+    const refHandler = () => ({ result: { data: { ok: 'ref-value' } } });
+    const conformantHandler = () => ({ result: { data: { ok: 'differs' } } });
+
+    await runInTmp(
+      { ref: refHandler, conformant: conformantHandler },
+      corpusDir,
+      ['--max-impl-failures', '0'],
+    );
+
+    const latest = loadLatest();
+    // With threshold parsed as null (≤0), the conformant runs every test.
+    assert.equal(latest.run.resultsByImpl.conformant.total, 4);
+    assert.equal(latest.run.resultsByImpl.conformant.failed, 4);
+    assert.equal(latest.run.resultsByImpl.conformant.falloutAfter, null);
+  });
+
+  it('CONFORMER_MAX_IMPL_FAILURES env var drives fallout when CLI is unset', async () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    writeNCaseCorpus(corpusDir, 10);
+    writeRegistry(['ref', 'conformant']);
+
+    const refHandler = () => ({ result: { data: { ok: 'ref-value' } } });
+    const conformantHandler = () => ({ result: { data: { ok: 'differs' } } });
+
+    const prev = process.env.CONFORMER_MAX_IMPL_FAILURES;
+    process.env.CONFORMER_MAX_IMPL_FAILURES = '3';
+    try {
+      await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
+    } finally {
+      if (prev === undefined) delete process.env.CONFORMER_MAX_IMPL_FAILURES;
+      else process.env.CONFORMER_MAX_IMPL_FAILURES = prev;
+    }
+
+    const latest = loadLatest();
+    assert.equal(latest.run.resultsByImpl.conformant.total, 3,
+      'env threshold=3: 3rd non-pass trips fallout (failed >= 3)');
+    assert.equal(latest.run.resultsByImpl.conformant.failed, 3);
+    assert.equal(latest.run.resultsByImpl.conformant.falloutAfter, 3);
   });
 });

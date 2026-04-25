@@ -145,17 +145,30 @@ export class FakeRepository implements Repository {
 }
 
 // Helper: build a realistic ImplRunResults from result counts. Useful when
-// constructing a fixture Run quickly.
+// constructing a fixture Run quickly. `total` defaults to passed+failed+errored
+// when not specified; `passed` defaults to total-failed-errored.
 export function implRunResults(
   implId: string,
-  counts: { failed?: number; excluded?: number; errored?: number } = {},
+  counts: {
+    total?: number;
+    passed?: number;
+    failed?: number;
+    errored?: number;
+    falloutAfter?: number | null;
+  } = {},
   results: Result[] = [],
 ): ImplRunResults {
+  const failed = counts.failed ?? 0;
+  const errored = counts.errored ?? 0;
+  const total = counts.total ?? (counts.passed ?? 0) + failed + errored;
+  const passed = counts.passed ?? Math.max(0, total - failed - errored);
   return {
     implId,
-    failed: counts.failed ?? 0,
-    excluded: counts.excluded ?? 0,
-    errored: counts.errored ?? 0,
+    total,
+    passed,
+    failed,
+    errored,
+    falloutAfter: counts.falloutAfter ?? null,
     results,
   };
 }

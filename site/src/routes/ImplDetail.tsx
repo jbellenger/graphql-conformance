@@ -166,6 +166,11 @@ function ImplDetailView({
               Failing tests are excluded from conformance testing.
             </div>
           )}
+          {stats.falloutAfter != null && (
+            <div className="reference-note">
+              Testing was aborted after {stats.implFailed} failures.
+            </div>
+          )}
         </div>
         <div className="bar-container detail-bar">
           <div
