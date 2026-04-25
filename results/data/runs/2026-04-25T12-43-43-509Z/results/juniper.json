@@ -1,0 +1,1152 @@
+[
+  {
+    "id": "f760b4bf-04b1-444e-8a95-631bdb1d4619",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "03573f34/2e32a08b/08277c86",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_lpJFn",
+        "H3Nl_": "Object_lpJFn",
+        "puaq39dlg": {
+          "deWZL": "XtCw_c"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 28, line: 0, col: 28 }], message: \"Argument \\\"kJ8hrxR\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cb9b8f57-dabf-4f45-8fba-81f884d75f61",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "03573f34/2e32a08b/179ab86c",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_lpJFn",
+        "H3Nl_": "Object_lpJFn",
+        "puaq39dlg": {
+          "deWZL": "XtCw_c"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 28, line: 0, col: 28 }], message: \"Argument \\\"kJ8hrxR\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "5e25a50f-3d3e-4907-8134-f9e05275180f",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "03573f34/db6ebcb1/457e9b63",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "P": "Object_lpJFn",
+        "oM": "Object_lpJFn"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 35, line: 0, col: 35 }], message: \"Argument \\\"rbEuY2\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "6fcf02da-c5bf-42bb-8c2a-348a92a3f19e",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "03573f34/db6ebcb1/b116a709",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "P": "Object_lpJFn"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 35, line: 0, col: 35 }], message: \"Argument \\\"rbEuY2\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "9656874c-fd45-4e98-8fab-e06d1e072112",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "0899731f/9a5daa04/7d1ec464",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "k": "iS",
+        "sn6N8tbgL": "id",
+        "__typename": "Object_ARs"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 27, line: 0, col: 27 }], message: \"Argument \\\"b\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "2345aaec-f70c-4c42-82d1-36d51a609aeb",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "0899731f/9a5daa04/fc0f22db",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "k": "iS",
+        "sn6N8tbgL": "id",
+        "__typename": "Object_ARs"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 27, line: 0, col: 27 }], message: \"Argument \\\"b\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "2e30e8c5-6fb1-49cb-8cc4-a9a5ad456c87",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "3275639d/8541eccc/3bcdbb31",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_Yeeu",
+        "uBHV": {
+          "__typename": "Object_k2FH"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 32, line: 0, col: 32 }], message: \"Argument \\\"_9J62F5s\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "77af1607-217a-4d00-8caa-5acb3cf33a94",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "3275639d/8541eccc/8c48d46d",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_Yeeu",
+        "uBHV": {}
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 32, line: 0, col: 32 }], message: \"Argument \\\"_9J62F5s\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ab306f8e-206b-49a9-87ca-ebcf74690000",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "54bcfd5c/077683b3/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "H9wVDDz": {
+          "M_xJ5Usxb": "Object_GFi_G"
+        },
+        "uEla": "Object_GFi_G",
+        "e": {}
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 47, line: 3, col: 4 }], message: \"Fragment cannot be spread here as objects of type \\\"Interface_L3v\\\" can never be of type \\\"Interface_HFNg_yd157\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "3c615258-704a-4d96-8446-8be6bd49425d",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "64d808be/e81510c7/20a1cc2d",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "SvXchh": "Object_qYPyO",
+        "__typename": "Object_qYPyO",
+        "Z2xyUOSp": {
+          "qlGH1": "Fu"
+        },
+        "sJyo0XqzFb": {
+          "__typename": "Object_G8n"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 174, line: 6, col: 6 }], message: \"Fragment cannot be spread here as objects of type \\\"Interface_ViLxiyDP\\\" can never be of type \\\"Interface_WtRbrIvF0_STUB\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "d2508dff-2324-44fa-8797-e494ca4772af",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "64d808be/e81510c7/e116d992",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "SvXchh": "Object_qYPyO",
+        "__typename": "Object_qYPyO",
+        "Z2xyUOSp": {},
+        "sJyo0XqzFb": {
+          "__typename": "Object_G8n"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 174, line: 6, col: 6 }], message: \"Fragment cannot be spread here as objects of type \\\"Interface_ViLxiyDP\\\" can never be of type \\\"Interface_WtRbrIvF0_STUB\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "26edaf3c-3483-44aa-8772-aaf4138bc4b9",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "7b69c437/c812bd9e/a1b79991",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "fgtA1": {
+          "w": [
+            "str",
+            "str"
+          ]
+        },
+        "wYMIx6iZ": {
+          "kU23": true,
+          "__typename": "Interface_ELvS_STUB",
+          "DcBCM": "Y_2F"
+        },
+        "__typename": "Object_uyYc",
+        "J": {
+          "w": [
+            "str",
+            "str"
+          ],
+          "clmBx": {
+            "gqkIqllSN": "Object_nq1"
+          }
+        },
+        "upC": {
+          "__typename": "Interface_m0zkN0ul_STUB",
+          "gqZ": {}
+        },
+        "P3wzi": {
+          "gqZ": {}
+        },
+        "LUha": "Object_uyYc"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 1091, line: 67, col: 26 }], message: \"Unknown directive \\\"Directive_X\\\"\" }, RuleError { locations: [SourcePosition { index: 1177, line: 72, col: 45 }], message: \"Unknown directive \\\"Directive_X\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "d5c3e7f0-8606-41b4-8b95-59937a11cfb7",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "7b69c437/c812bd9e/b147668b",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "fgtA1": {
+          "w": [
+            "str",
+            "str"
+          ]
+        },
+        "wYMIx6iZ": {
+          "kU23": true,
+          "__typename": "Interface_ELvS_STUB",
+          "DcBCM": "Y_2F"
+        },
+        "__typename": "Object_uyYc",
+        "J": {
+          "w": [
+            "str",
+            "str"
+          ],
+          "clmBx": {
+            "gqkIqllSN": "Object_nq1"
+          }
+        },
+        "upC": {
+          "__typename": "Interface_m0zkN0ul_STUB",
+          "gqZ": {}
+        },
+        "P3wzi": {
+          "gqZ": {}
+        },
+        "LUha": "Object_uyYc"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 1091, line: 67, col: 26 }], message: \"Unknown directive \\\"Directive_X\\\"\" }, RuleError { locations: [SourcePosition { index: 1177, line: 72, col: 45 }], message: \"Unknown directive \\\"Directive_X\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "94e49037-cb8f-47de-8602-4ec0deeb9a6b",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "86f51892/5dcdf56c/3f601bbe",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_JqX",
+        "rnpPvC1F": {
+          "zREycaiBP": "Object_kX"
+        },
+        "p1AhlerE": "Object_JqX"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 7, line: 0, col: 7 }], message: \"Variable \\\"$xrVeVjY\\\" is not used\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "48314bfc-5ddd-4647-859b-9d50f4f5324e",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "86f51892/5dcdf56c/4046e731",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_JqX",
+        "rnpPvC1F": {
+          "zREycaiBP": "Object_kX"
+        },
+        "p1AhlerE": "Object_JqX"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 7, line: 0, col: 7 }], message: \"Variable \\\"$xrVeVjY\\\" is not used\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "2f57ea21-67a9-4b34-8fa0-d43d3b43543e",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "86f51892/5dcdf56c/56276374",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_JqX",
+        "rnpPvC1F": {
+          "zREycaiBP": "Object_kX"
+        },
+        "p1AhlerE": "Object_JqX"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 7, line: 0, col: 7 }], message: \"Variable \\\"$xrVeVjY\\\" is not used\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "70709a42-1905-4dbd-8173-bd1cf3c329f9",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "989abafa/736d3fbc/61ef44a6",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "hsOccBWPps": {
+          "uD": {
+            "ZPd2OKUL": "Object_P1hyjbpC"
+          },
+          "__typename": "Object_AegKP_4",
+          "FEYvy": "Object_AegKP_4",
+          "tGT22TpR": 2
+        },
+        "__typename": "Object_k"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 22, line: 0, col: 22 }], message: \"Argument \\\"n\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "14f53780-d35c-4b63-8702-ff019a870999",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "989abafa/736d3fbc/9b5548ab",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "hsOccBWPps": {
+          "uD": {
+            "ZPd2OKUL": "Object_P1hyjbpC"
+          },
+          "__typename": "Object_AegKP_4",
+          "FEYvy": "Object_AegKP_4",
+          "tGT22TpR": 2
+        },
+        "__typename": "Object_k"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 22, line: 0, col: 22 }], message: \"Argument \\\"n\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "97e33018-50d1-48c7-854a-e66f86cb5a86",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "c61b14f1/c33e94a2/b7521ca2",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_UCrvMtG2H",
+        "bzGh1c2": 3.14,
+        "j5YWqY9": {}
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 125, line: 6, col: 6 }], message: \"Fragment cannot be spread here as objects of type \\\"Union_Jg\\\" can never be of type \\\"Interface_PegFSq\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "808a9a1b-1ae0-44a1-8e3f-a33527554f30",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "c61b14f1/c33e94a2/bd61075b",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_UCrvMtG2H",
+        "bzGh1c2": 3.14,
+        "j5YWqY9": {}
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 125, line: 6, col: 6 }], message: \"Fragment cannot be spread here as objects of type \\\"Union_Jg\\\" can never be of type \\\"Interface_PegFSq\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ec244392-96ad-4225-8cf2-b500cb10c626",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "c7e14b7a/467a135a/e616ae07",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "o": "str"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 28, line: 0, col: 28 }], message: \"Argument \\\"jZcxHtl\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "8973dd4d-4338-40c3-86dc-cf85cf479a4c",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "c7ebdeaa/00d0f1bc/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "z": "id",
+        "aNJXRl": {}
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 35, line: 3, col: 4 }], message: \"Fragment cannot be spread here as objects of type \\\"Union_qy9D4YfNe\\\" can never be of type \\\"Interface_ihOKZP\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "468a4324-0ae9-4e1a-8ab5-4dcb776683f0",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "ca8b9739/20adbbf0/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_hEw",
+        "sg2E": {
+          "ni1bbI5AU": [
+            "pGn",
+            "pGn"
+          ]
+        },
+        "o8": "xBA40RkVs",
+        "ni1bbI5AU": [
+          "pGn",
+          "pGn"
+        ],
+        "n7W1UZrE": "xBA40RkVs"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 4, line: 1, col: 2 }], message: \"Fragment \\\"Fragment__d6f\\\" cannot be spread here as objects of type \\\"Object_hEw\\\" can never be of type \\\"Interface_Kl5Z\\\"\" }, RuleError { locations: [SourcePosition { index: 267, line: 21, col: 2 }], message: \"Fragment \\\"Fragment_ChoU\\\" cannot be spread here as objects of type \\\"Interface_Kl5Z\\\" can never be of type \\\"Object_hEw\\\"\" }, RuleError { locations: [SourcePosition { index: 286, line: 22, col: 2 }], message: \"Fragment \\\"Fragment_ChoU\\\" cannot be spread here as objects of type \\\"Interface_Kl5Z\\\" can never be of type \\\"Object_hEw\\\"\" }, RuleError { locations: [SourcePosition { index: 373, line: 28, col: 4 }], message: \"Fragment cannot be spread here as objects of type \\\"Interface_Kl5Z\\\" can never be of type \\\"Object_hEw\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "0af63bb8-d62f-40bb-88a3-295820993c7f",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "ca8b9739/23461f47/4957272a",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "dJczP8Cs": {
+          "__typename": "Object_XlToXN8uz"
+        },
+        "sg2E": {
+          "ni1bbI5AU": [
+            "pGn",
+            "pGn"
+          ],
+          "sg2E": {
+            "o8": "xBA40RkVs"
+          },
+          "o8": "xBA40RkVs"
+        },
+        "o8": "xBA40RkVs",
+        "__typename": "Object_hEw",
+        "ni1bbI5AU": [
+          "pGn",
+          "pGn"
+        ],
+        "Z9HhIxkWV": [
+          "pGn",
+          "pGn"
+        ],
+        "NndFy": "xBA40RkVs"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 55, line: 2, col: 2 }], message: \"Fragment cannot be spread here as objects of type \\\"Object_hEw\\\" can never be of type \\\"Interface_Kl5Z\\\"\" }, RuleError { locations: [SourcePosition { index: 183, line: 10, col: 2 }], message: \"Fragment cannot be spread here as objects of type \\\"Object_hEw\\\" can never be of type \\\"Interface_Kl5Z\\\"\" }, RuleError { locations: [SourcePosition { index: 211, line: 11, col: 4 }], message: \"Fragment cannot be spread here as objects of type \\\"Interface_Kl5Z\\\" can never be of type \\\"Interface_XVRBXbnSAy\\\"\" }, RuleError { locations: [SourcePosition { index: 262, line: 14, col: 4 }], message: \"Fragment cannot be spread here as objects of type \\\"Interface_Kl5Z\\\" can never be of type \\\"Interface_XVRBXbnSAy\\\"\" }, RuleError { locations: [SourcePosition { index: 495, line: 33, col: 4 }], message: \"Fragment \\\"Fragment_B\\\" cannot be spread here as objects of type \\\"Interface_Kl5Z\\\" can never be of type \\\"Object_hEw\\\"\" }, RuleError { locations: [SourcePosition { index: 532, line: 34, col: 4 }], message: \"Fragment cannot be spread here as objects of type \\\"Interface_Kl5Z\\\" can never be of type \\\"Interface_XVRBXbnSAy\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "5d6e0a7a-2c10-4201-879a-54ddde4f0103",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "ca8b9739/23461f47/59680d65",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "dJczP8Cs": {
+          "__typename": "Object_XlToXN8uz"
+        },
+        "sg2E": {
+          "ni1bbI5AU": [
+            "pGn",
+            "pGn"
+          ],
+          "o8": "xBA40RkVs"
+        },
+        "o8": "xBA40RkVs",
+        "__typename": "Object_hEw",
+        "ni1bbI5AU": [
+          "pGn",
+          "pGn"
+        ],
+        "Z9HhIxkWV": [
+          "pGn",
+          "pGn"
+        ],
+        "NndFy": "xBA40RkVs"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 55, line: 2, col: 2 }], message: \"Fragment cannot be spread here as objects of type \\\"Object_hEw\\\" can never be of type \\\"Interface_Kl5Z\\\"\" }, RuleError { locations: [SourcePosition { index: 183, line: 10, col: 2 }], message: \"Fragment cannot be spread here as objects of type \\\"Object_hEw\\\" can never be of type \\\"Interface_Kl5Z\\\"\" }, RuleError { locations: [SourcePosition { index: 211, line: 11, col: 4 }], message: \"Fragment cannot be spread here as objects of type \\\"Interface_Kl5Z\\\" can never be of type \\\"Interface_XVRBXbnSAy\\\"\" }, RuleError { locations: [SourcePosition { index: 262, line: 14, col: 4 }], message: \"Fragment cannot be spread here as objects of type \\\"Interface_Kl5Z\\\" can never be of type \\\"Interface_XVRBXbnSAy\\\"\" }, RuleError { locations: [SourcePosition { index: 495, line: 33, col: 4 }], message: \"Fragment \\\"Fragment_B\\\" cannot be spread here as objects of type \\\"Interface_Kl5Z\\\" can never be of type \\\"Object_hEw\\\"\" }, RuleError { locations: [SourcePosition { index: 532, line: 34, col: 4 }], message: \"Fragment cannot be spread here as objects of type \\\"Interface_Kl5Z\\\" can never be of type \\\"Interface_XVRBXbnSAy\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "326b1971-c672-43e9-8e4b-27768c6ed800",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "ca8b9739/65fb7646/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_hEw",
+        "CVPVBnyGF": {
+          "__typename": "Object_XlToXN8uz"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 17, line: 1, col: 2 }], message: \"Fragment cannot be spread here as objects of type \\\"Object_hEw\\\" can never be of type \\\"Interface_Kl5Z\\\"\" }, RuleError { locations: [SourcePosition { index: 96, line: 5, col: 4 }], message: \"Fragment cannot be spread here as objects of type \\\"Interface_XVRBXbnSAy\\\" can never be of type \\\"Interface_Kl5Z\\\"\" }, RuleError { locations: [SourcePosition { index: 126, line: 6, col: 6 }], message: \"Fragment cannot be spread here as objects of type \\\"Interface_Kl5Z\\\" can never be of type \\\"Interface_XVRBXbnSAy\\\"\" }, RuleError { locations: [SourcePosition { index: 237, line: 13, col: 2 }], message: \"Fragment cannot be spread here as objects of type \\\"Object_hEw\\\" can never be of type \\\"Interface_Kl5Z\\\"\" }, RuleError { locations: [SourcePosition { index: 265, line: 14, col: 4 }], message: \"Fragment \\\"Fragment_zAFGhM62k\\\" cannot be spread here as objects of type \\\"Interface_Kl5Z\\\" can never be of type \\\"Interface_XVRBXbnSAy\\\"\" }, RuleError { locations: [SourcePosition { index: 291, line: 15, col: 4 }], message: \"Fragment \\\"Fragment_zAFGhM62k\\\" cannot be spread here as objects of type \\\"Interface_Kl5Z\\\" can never be of type \\\"Interface_XVRBXbnSAy\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "21820a1e-7ed2-44ba-8c45-ebd747695bb3",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "ca8b9739/8569253b/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "ni1bbI5AU": [
+          "pGn",
+          "pGn"
+        ]
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 17, line: 1, col: 2 }], message: \"Fragment \\\"Fragment_r1wSPlccJk\\\" cannot be spread here as objects of type \\\"Object_hEw\\\" can never be of type \\\"Interface_Kl5Z\\\"\" }, RuleError { locations: [SourcePosition { index: 42, line: 2, col: 2 }], message: \"Fragment \\\"Fragment_r1wSPlccJk\\\" cannot be spread here as objects of type \\\"Object_hEw\\\" can never be of type \\\"Interface_Kl5Z\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "e5b58e71-8f98-4c25-88ac-da151cf3fbb5",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "ca8b9739/a10fa7b0/2db84a2d",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_hEw",
+        "sg2E": {
+          "ni1bbI5AU": [
+            "pGn",
+            "pGn"
+          ],
+          "o8": "xBA40RkVs"
+        },
+        "dJczP8Cs": {
+          "__typename": "Object_XlToXN8uz"
+        },
+        "ni1bbI5AU": [
+          "pGn",
+          "pGn"
+        ],
+        "o8": "xBA40RkVs",
+        "lZ6SY": [
+          "pGn",
+          "pGn"
+        ],
+        "V3pF": [
+          "pGn",
+          "pGn"
+        ]
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 27, line: 0, col: 27 }], message: \"Argument \\\"xiOfTU\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }, RuleError { locations: [SourcePosition { index: 150, line: 7, col: 4 }], message: \"Fragment cannot be spread here as objects of type \\\"Object_hEw\\\" can never be of type \\\"Interface_Kl5Z\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "c171b6d5-8b55-4c8e-82d4-dbe1cbbbafa5",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "ca8b9739/a10fa7b0/6e4febb4",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_hEw",
+        "sg2E": {
+          "ni1bbI5AU": [
+            "pGn",
+            "pGn"
+          ],
+          "o8": "xBA40RkVs"
+        },
+        "dJczP8Cs": {
+          "__typename": "Object_XlToXN8uz"
+        },
+        "ni1bbI5AU": [
+          "pGn",
+          "pGn"
+        ],
+        "o8": "xBA40RkVs",
+        "lZ6SY": [
+          "pGn",
+          "pGn"
+        ],
+        "V3pF": [
+          "pGn",
+          "pGn"
+        ]
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 27, line: 0, col: 27 }], message: \"Argument \\\"xiOfTU\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }, RuleError { locations: [SourcePosition { index: 150, line: 7, col: 4 }], message: \"Fragment cannot be spread here as objects of type \\\"Object_hEw\\\" can never be of type \\\"Interface_Kl5Z\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "bbd97a03-27d4-41de-823a-15a7906eacbb",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "ca8b9739/b0c5557d/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "o8": "xBA40RkVs",
+        "ni1bbI5AU": [
+          "pGn",
+          "pGn"
+        ],
+        "t6": [
+          "pGn",
+          "pGn"
+        ],
+        "tlsZvxEn": {
+          "__typename": "Object_XlToXN8uz"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 72, line: 4, col: 4 }], message: \"Fragment \\\"Fragment_yC\\\" cannot be spread here as objects of type \\\"Object_hEw\\\" can never be of type \\\"Interface_Kl5Z\\\"\" }, RuleError { locations: [SourcePosition { index: 198, line: 14, col: 2 }], message: \"Fragment cannot be spread here as objects of type \\\"Object_hEw\\\" can never be of type \\\"Interface_Kl5Z\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "c7eb1e51-48e3-40cf-8c6d-5013f38df496",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "ca8b9739/b2e1db4a/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_hEw",
+        "o8": "xBA40RkVs",
+        "ni1bbI5AU": [
+          "pGn",
+          "pGn"
+        ]
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 126, line: 9, col: 2 }], message: \"Fragment \\\"Fragment_hxLovOSa\\\" cannot be spread here as objects of type \\\"Object_hEw\\\" can never be of type \\\"Interface_Kl5Z\\\"\" }, RuleError { locations: [SourcePosition { index: 149, line: 10, col: 2 }], message: \"Fragment cannot be spread here as objects of type \\\"Object_hEw\\\" can never be of type \\\"Interface_Kl5Z\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "d3717688-e119-47b8-8fbb-2bd3324fe4e7",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "ca8b9739/d1f794e4/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "sg2E": {
+          "__typename": "Object_hEw"
+        },
+        "__typename": "Object_hEw"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 16, line: 1, col: 2 }], message: \"Fragment \\\"Fragment_dR8QMuqZ\\\" cannot be spread here as objects of type \\\"Object_hEw\\\" can never be of type \\\"Interface_Kl5Z\\\"\" }, RuleError { locations: [SourcePosition { index: 39, line: 2, col: 2 }], message: \"Fragment cannot be spread here as objects of type \\\"Object_hEw\\\" can never be of type \\\"Interface_Kl5Z\\\"\" }, RuleError { locations: [SourcePosition { index: 67, line: 3, col: 4 }], message: \"Fragment cannot be spread here as objects of type \\\"Interface_Kl5Z\\\" can never be of type \\\"Interface_XVRBXbnSAy\\\"\" }, RuleError { locations: [SourcePosition { index: 250, line: 16, col: 2 }], message: \"Fragment \\\"Fragment_yU1cnsD8c\\\" cannot be spread here as objects of type \\\"Interface_Kl5Z\\\" can never be of type \\\"Object_hEw\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "57c15e02-fdbb-4960-8868-245fc9816fe4",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "ca8b9739/e74d4ac6/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "o8": "xBA40RkVs",
+        "W": {
+          "o8": "xBA40RkVs"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 34, line: 3, col: 4 }], message: \"Fragment cannot be spread here as objects of type \\\"Interface_Kl5Z\\\" can never be of type \\\"Interface_XVRBXbnSAy\\\"\" }, RuleError { locations: [SourcePosition { index: 70, line: 4, col: 6 }], message: \"Fragment \\\"Fragment_F77gKa\\\" cannot be spread here as objects of type \\\"Interface_XVRBXbnSAy\\\" can never be of type \\\"Interface_Kl5Z\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "8438acb8-cece-4199-84bd-8fcc5c59285a",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "d45b4195/633bbcb6/0a03de48",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "n4aIrhR9": {
+          "Y0Hv4t": "Object_FaurvozErF",
+          "__typename": "Object_FaurvozErF",
+          "wsf7": {
+            "__typename": "Object_CKq3_jm",
+            "zM": "Object_CKq3_jm"
+          }
+        },
+        "Y0Hv4t": "Object_CKq3_jm",
+        "__typename": "Object_CKq3_jm",
+        "_5F": "id"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 34, line: 0, col: 34 }], message: \"Argument \\\"iOsuXs9\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "f76ef8ae-04a5-4ad6-8eec-95f6fc32aca2",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "d45b4195/633bbcb6/432f60b9",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "n4aIrhR9": {
+          "__typename": "Object_FaurvozErF",
+          "Y0Hv4t": "Object_FaurvozErF",
+          "wsf7": {
+            "__typename": "Object_CKq3_jm",
+            "zM": "Object_CKq3_jm"
+          }
+        },
+        "Y0Hv4t": "Object_CKq3_jm",
+        "__typename": "Object_CKq3_jm",
+        "_5F": "id"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 34, line: 0, col: 34 }], message: \"Argument \\\"iOsuXs9\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "baee4654-1063-4e9d-8fae-8cb9ed815fa8",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "d45b4195/633bbcb6/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "n4aIrhR9": {
+          "__typename": "Object_FaurvozErF",
+          "Y0Hv4t": "Object_FaurvozErF",
+          "wsf7": {
+            "__typename": "Object_CKq3_jm",
+            "zM": "Object_CKq3_jm"
+          }
+        },
+        "Y0Hv4t": "Object_CKq3_jm",
+        "__typename": "Object_CKq3_jm",
+        "_5F": "id"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 34, line: 0, col: 34 }], message: \"Argument \\\"iOsuXs9\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "dfc2689c-a13b-4dac-8763-63af4f1d0b53",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "e0c0a435/cb00b481/277bf0e2",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "U2MBdh2aO": "Object_aaghjtY",
+        "pfqX2IwOA": [
+          {
+            "__typename": "Object_lqf6ZF"
+          },
+          {
+            "__typename": "Object_lqf6ZF"
+          }
+        ],
+        "__typename": "Object_aaghjtY"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 28, line: 0, col: 28 }], message: \"Variable \\\"$csfHcI\\\" is not used by operation \\\"BMV\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "c09982cf-bf7a-4b70-83a3-e7e9b7e40955",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "e0c0a435/cb00b481/a7f151a6",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "U2MBdh2aO": "Object_aaghjtY",
+        "pfqX2IwOA": [
+          {
+            "__typename": "Object_lqf6ZF"
+          },
+          {
+            "__typename": "Object_lqf6ZF"
+          }
+        ],
+        "__typename": "Object_aaghjtY"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 28, line: 0, col: 28 }], message: \"Variable \\\"$csfHcI\\\" is not used by operation \\\"BMV\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "76185e59-da34-415b-81c9-68be68a7f35a",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "e0c0a435/cb00b481/e9d08746",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "U2MBdh2aO": "Object_aaghjtY",
+        "pfqX2IwOA": [
+          {
+            "__typename": "Object_lqf6ZF"
+          },
+          {
+            "__typename": "Object_lqf6ZF"
+          }
+        ],
+        "__typename": "Object_aaghjtY"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 28, line: 0, col: 28 }], message: \"Variable \\\"$csfHcI\\\" is not used by operation \\\"BMV\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "01847cfa-f546-4b08-8f0e-728f3733a364",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "e254fdcd/b2ce683f/27586576",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "tL9uCuZ": "Y",
+        "__typename": "Object_Am_AlXm",
+        "hcPuv0V": {
+          "__typename": "Object_Go"
+        },
+        "M": {
+          "__typename": "Object_Go",
+          "j": true
+        },
+        "WZx": {
+          "_5NsiTeOBi": "Object_Go"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 823, line: 45, col: 4 }], message: \"Fragment \\\"Fragment_sHUdF\\\" cannot be spread here as objects of type \\\"Union_SOAMMB1BcR\\\" can never be of type \\\"Interface_nnF\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "a351ba9d-864b-4b1a-8864-fe9139a312fb",
+    "runId": "2026-04-25T12-43-43-509Z",
+    "implId": "juniper",
+    "testCaseId": "e254fdcd/b2ce683f/7702f8cc",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "tL9uCuZ": "Y",
+        "__typename": "Object_Am_AlXm",
+        "hcPuv0V": {
+          "__typename": "Object_Go"
+        },
+        "M": {
+          "__typename": "Object_Go",
+          "j": true
+        },
+        "WZx": {
+          "_5NsiTeOBi": "Object_Go"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 823, line: 45, col: 4 }], message: \"Fragment \\\"Fragment_sHUdF\\\" cannot be spread here as objects of type \\\"Union_SOAMMB1BcR\\\" can never be of type \\\"Interface_nnF\\\"\" }])"
+        }
+      ]
+    }
+  }
+]
