@@ -40,19 +40,16 @@ const ref: Impl = {
   id: 'graphql-js-17',
   name: 'graphql-js-17',
   language: 'JavaScript',
-  isReference: true,
 };
 const java: Impl = {
   id: 'graphql-java',
   name: 'graphql-java',
   language: 'Java',
-  isReference: false,
 };
 const hc: Impl = {
   id: 'hot-chocolate',
   name: 'hot-chocolate',
   language: 'C#',
-  isReference: false,
 };
 
 describe('computeRunStats', () => {

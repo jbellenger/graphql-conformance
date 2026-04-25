@@ -1,6 +1,6 @@
 'use strict';
 
-const { describe, it, beforeEach, afterEach } = require('node:test');
+const { describe, it } = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('fs');
 const path = require('path');
@@ -8,471 +8,173 @@ const os = require('os');
 const { ResultsStore } = require('./index');
 
 function makeRun(overrides = {}) {
+  const id = overrides.id || '2026-03-17T22-42-11Z';
   return {
-    id: overrides.id || '2026-03-17T22-42-11Z',
+    id,
     timestamp: overrides.timestamp || '2026-03-17T22:42:11.609Z',
-    reference: overrides.reference || {
-      name: 'graphql-js',
-      version: 'abc123',
-      total: 3,
-      errors: 0,
-      corpusTotal: 3,
-      excluded: 0,
+    referenceImplId: overrides.referenceImplId || 'graphql-js',
+    implIds: overrides.implIds || ['graphql-js', 'graphql-java'],
+    testCaseCount: overrides.testCaseCount ?? 3,
+    resultsByImpl: overrides.resultsByImpl || {
+      'graphql-js': { implId: 'graphql-js', failed: 0, excluded: 0, errored: 0, results: [] },
+      'graphql-java': { implId: 'graphql-java', failed: 1, excluded: 0, errored: 0, results: [] },
     },
-    conformants: overrides.conformants || {
-      'graphql-java': {
-        version: 'def456',
-        tests: {
-          'a/b/c': { matches: true },
-          'd/e/f': { matches: true },
-          'g/h/i': { matches: false },
-        },
-      },
+  };
+}
+
+function makeImpls() {
+  return [
+    { id: 'graphql-js', name: 'graphql-js', language: 'JavaScript', version: 'abc' },
+    { id: 'graphql-java', name: 'graphql-java', language: 'Java', version: 'def' },
+  ];
+}
+
+function makeMeta(overrides = {}) {
+  return {
+    corpusFingerprint: overrides.corpusFingerprint || 'fingerprint-1',
+    scoringModel: overrides.scoringModel || 'runnable-set-v1',
+    implMeta: overrides.implMeta || {
+      'graphql-js': { imageDigest: 'sha256:ref-digest', version: 'abc' },
+      'graphql-java': { imageDigest: 'sha256:java-digest', version: 'def' },
     },
   };
 }
 
 describe('ResultsStore', () => {
-  describe('recordRun + listRuns', () => {
-    it('records and lists runs in reverse chronological order', () => {
+  describe('writeRun + loadLatestRun', () => {
+    it('round-trips a run through memory', () => {
       const store = ResultsStore.inMemory();
-      store.recordRun(makeRun({ id: 'run-1', timestamp: '2026-03-15T00:00:00Z' }));
-      store.recordRun(makeRun({ id: 'run-2', timestamp: '2026-03-16T00:00:00Z' }));
+      const run = makeRun();
+      const resultsByImpl = {
+        'graphql-js': [],
+        'graphql-java': [
+          {
+            id: 'r1', runId: run.id, implId: 'graphql-java',
+            testCaseId: 'a/b/c', status: 'fail',
+            expected: { data: { x: 1 } }, actual: { data: { x: 2 } },
+          },
+        ],
+      };
+      store.writeRun({ run, resultsByImpl, conformerMeta: makeMeta(), impls: makeImpls() });
+
+      const latest = store.loadLatestRun();
+      assert.ok(latest);
+      assert.equal(latest.run.id, run.id);
+      assert.equal(latest.run.testCaseCount, 3);
+      assert.deepStrictEqual(latest.resultsByImpl['graphql-java'][0].testCaseId, 'a/b/c');
+      assert.equal(latest.conformerMeta.corpusFingerprint, 'fingerprint-1');
+    });
+
+    it('keeps runs sorted newest first', () => {
+      const store = ResultsStore.inMemory();
+      store.writeRun({
+        run: makeRun({ id: 'run-old', timestamp: '2026-03-15T00:00:00Z' }),
+        resultsByImpl: {}, conformerMeta: makeMeta(), impls: makeImpls(),
+      });
+      store.writeRun({
+        run: makeRun({ id: 'run-new', timestamp: '2026-03-16T00:00:00Z' }),
+        resultsByImpl: {}, conformerMeta: makeMeta(), impls: makeImpls(),
+      });
 
       const runs = store.listRuns();
       assert.equal(runs.length, 2);
-      assert.equal(runs[0].id, 'run-2');
-      assert.equal(runs[1].id, 'run-1');
+      assert.equal(runs[0].id, 'run-new');
+      assert.equal(runs[1].id, 'run-old');
     });
 
-    it('returns empty for no runs', () => {
-      assert.deepStrictEqual(ResultsStore.inMemory().listRuns(), []);
-    });
-  });
-
-  describe('getSummary', () => {
-    it('returns pass percentage for each impl', () => {
-      const store = ResultsStore.inMemory();
-      store.recordRun(makeRun());
-
-      const summary = store.getSummary();
-      assert.equal(summary.length, 1);
-      assert.equal(summary[0].impl, 'graphql-java');
-      assert.equal(summary[0].total, 3);
-      assert.equal(summary[0].failed, 1);
-      assert.equal(summary[0].passPct, 66.7);
-      assert.equal(summary[0].version, 'def456');
+    it('returns null loadLatestRun when empty', () => {
+      assert.equal(ResultsStore.inMemory().loadLatestRun(), null);
     });
   });
 
-  describe('getImplHistory', () => {
-    it('returns history across runs', () => {
+  describe('impls.json', () => {
+    it('is written verbatim', () => {
       const store = ResultsStore.inMemory();
-      store.recordRun(makeRun({ id: 'run-1', timestamp: '2026-03-15T00:00:00Z' }));
-      store.recordRun(makeRun({
-        id: 'run-2',
-        timestamp: '2026-03-16T00:00:00Z',
-        conformants: {
-          'graphql-java': {
-            version: 'def456',
-            tests: {
-              'a/b/c': { matches: true },
-              'd/e/f': { matches: true },
-              'g/h/i': { matches: true },
-            },
+      const impls = makeImpls();
+      store.writeRun({
+        run: makeRun(), resultsByImpl: {}, conformerMeta: makeMeta(), impls,
+      });
+      assert.deepStrictEqual(store._data.get('impls'), impls);
+    });
+  });
+
+  describe('impl history', () => {
+    it('accumulates history points across runs in newest-first order', () => {
+      const store = ResultsStore.inMemory();
+      store.writeRun({
+        run: makeRun({ id: 'r1', timestamp: '2026-03-15T00:00:00Z' }),
+        resultsByImpl: {}, conformerMeta: makeMeta(), impls: makeImpls(),
+      });
+      store.writeRun({
+        run: makeRun({
+          id: 'r2',
+          timestamp: '2026-03-16T00:00:00Z',
+          resultsByImpl: {
+            'graphql-js': { implId: 'graphql-js', failed: 0, excluded: 1, errored: 0, results: [] },
+            'graphql-java': { implId: 'graphql-java', failed: 0, excluded: 0, errored: 0, results: [] },
           },
-        },
-      }));
-
-      const history = store.getImplHistory('graphql-java');
-      assert.equal(history.length, 2);
-      assert.equal(history[0].date, '2026-03-15');
-      assert.equal(history[0].passPct, 66.7);
-      assert.equal(history[1].date, '2026-03-16');
-      assert.equal(history[1].passPct, 100);
-    });
-  });
-
-  describe('getImplFailures', () => {
-    it('returns failures for latest run', () => {
-      const store = ResultsStore.inMemory();
-      store.recordRun(makeRun());
-
-      const failures = store.getImplFailures('graphql-java');
-      assert.equal(failures.length, 1);
-      assert.equal(failures[0].testKey, 'g/h/i');
-    });
-
-    it('returns empty when all tests pass', () => {
-      const store = ResultsStore.inMemory();
-      store.recordRun(makeRun({
-        conformants: {
-          'graphql-java': {
-            version: 'x',
-            tests: { 'a/b/c': { matches: true } },
-          },
-        },
-      }));
-
-      assert.deepStrictEqual(store.getImplFailures('graphql-java'), []);
-    });
-  });
-
-  describe('quirks', () => {
-    it('collects and exposes quirks from test results', () => {
-      const store = ResultsStore.inMemory();
-      store.recordRun(makeRun({
-        conformants: {
-          'graphql-java': {
-            version: 'x',
-            tests: {
-              'a/b': { matches: true, quirks: ['object-ordering'] },
-              'c/d': { matches: true, quirks: [] },
-            },
-          },
-        },
-      }));
-
-      const latest = store.loadLatestRunSummary();
-      assert.deepStrictEqual(
-        latest.conformants['graphql-java'].quirksByTestKey,
-        { 'a/b': ['object-ordering'] },
-      );
-    });
-
-    it('round-trips pre-computed quirksByTestKey for skipped conformants', () => {
-      const store = ResultsStore.inMemory();
-      store.recordRun(makeRun({
-        conformants: {
-          'graphql-java': {
-            version: 'x',
-            total: 2,
-            passed: 2,
-            quirksByTestKey: { 'a/b': ['object-ordering'] },
-          },
-        },
-      }));
-
-      const latest = store.loadLatestRunSummary();
-      assert.deepStrictEqual(
-        latest.conformants['graphql-java'].quirksByTestKey,
-        { 'a/b': ['object-ordering'] },
-      );
-    });
-  });
-
-  describe('corpus fingerprint', () => {
-    it('persists corpusFingerprint on the reference', () => {
-      const store = ResultsStore.inMemory();
-      store.recordRun(makeRun({
-        reference: {
-          name: 'graphql-js',
-          version: 'abc',
-          scoringModel: 'runnable-set-v1',
-          total: 3,
-          errors: 0,
-          corpusTotal: 3,
-          corpusFingerprint: 'deadbeef',
-          excluded: 0,
-        },
-      }));
-
-      const latest = store.loadLatestRunSummary();
-      assert.equal(latest.reference.corpusFingerprint, 'deadbeef');
-    });
-  });
-
-  describe('getTestStatus', () => {
-    it('returns per-impl status for a test', () => {
-      const store = ResultsStore.inMemory();
-      store.recordRun(makeRun({
-        conformants: {
-          'graphql-java': {
-            version: 'a',
-            tests: { 'x/y/z': { matches: true } },
-          },
-          'graphql-go': {
-            version: 'b',
-            tests: { 'x/y/z': { matches: false } },
-          },
-        },
-      }));
-
-      const status = store.getTestStatus('x/y/z');
-      assert.equal(status.length, 2);
-
-      const java = status.find((s) => s.impl === 'graphql-java');
-      assert.equal(java.passes, true);
-
-      const go = status.find((s) => s.impl === 'graphql-go');
-      assert.equal(go.passes, false);
-      assert.equal(go.passes, false);
-    });
-  });
-
-  describe('recordRun with pre-computed totals', () => {
-    it('uses provided total and passed instead of recomputing from tests', () => {
-      const store = ResultsStore.inMemory();
-      // Simulate a skipped conformant: the tests map only contains failures
-      // (passing tests are not reconstructed by loadLatestRun), but the caller
-      // provides the correct total/passed from the prior run.
-      store.recordRun(makeRun({
-        conformants: {
-          'graphql-java': {
-            version: 'def456',
-            tests: {
-              'g/h/i': { matches: false },
-            },
-            total: 3,
-            passed: 2,
-          },
-        },
-      }));
-
-      const summary = store.getSummary();
-      assert.equal(summary.length, 1);
-      assert.equal(summary[0].total, 3);
-      assert.equal(summary[0].failed, 1);
-      assert.equal(summary[0].passPct, 66.7);
-    });
-
-    it('falls back to computing from tests when total/passed not provided', () => {
-      const store = ResultsStore.inMemory();
-      store.recordRun(makeRun());
-
-      const summary = store.getSummary();
-      assert.equal(summary[0].total, 3);
-      assert.equal(summary[0].failed, 1);
-    });
-  });
-
-  describe('reference failures', () => {
-    it('stores and retrieves reference failures', () => {
-      const store = ResultsStore.inMemory();
-      store.recordRun(makeRun({
-        reference: {
-          name: 'graphql-js',
-          version: 'abc123',
-          total: 3,
-          errors: 1,
-          failures: [{ testKey: 'x/y/z', error: 'stack overflow' }],
-        },
-      }));
-
-      const failures = store.getImplFailures('graphql-js');
-      assert.equal(failures.length, 1);
-      assert.equal(failures[0].testKey, 'x/y/z');
-    });
-
-    it('stores and retrieves reference exclusions separately', () => {
-      const store = ResultsStore.inMemory();
-      store.recordRun(makeRun({
-        reference: {
-          name: 'graphql-js',
-          version: 'abc123',
-          total: 2,
-          errors: 0,
-          corpusTotal: 3,
-          excluded: 1,
-          exclusions: [{ testKey: 'x/y/z', error: 'timeout' }],
-        },
-      }));
-
-      const exclusions = store.getReferenceExclusions();
-      assert.equal(exclusions.length, 1);
-      assert.equal(exclusions[0].testKey, 'x/y/z');
-    });
-
-    it('reconstructs reference failures in loadLatestRun', () => {
-      const store = ResultsStore.inMemory();
-      store.recordRun(makeRun({
-        reference: {
-          name: 'graphql-js',
-          version: 'abc123',
-          total: 3,
-          errors: 1,
-          failures: [{ testKey: 'x/y/z', error: 'stack overflow' }],
-        },
-      }));
-
-      const run = store.loadLatestRunSummary();
-      assert.equal(run.reference.errors, 1);
-      assert.equal(run.reference.failures.length, 1);
-      assert.equal(run.reference.failures[0].testKey, 'x/y/z');
-    });
-
-    it('reconstructs reference exclusions in loadLatestRun', () => {
-      const store = ResultsStore.inMemory();
-      store.recordRun(makeRun({
-        reference: {
-          name: 'graphql-js',
-          version: 'abc123',
-          total: 2,
-          errors: 0,
-          corpusTotal: 3,
-          excluded: 1,
-          exclusions: [{ testKey: 'x/y/z', error: 'stack overflow' }],
-        },
-      }));
-
-      const run = store.loadLatestRunSummary();
-      assert.equal(run.reference.total, 2);
-      assert.equal(run.reference.excluded, 1);
-      assert.equal(run.reference.corpusTotal, 3);
-      assert.equal(run.reference.exclusions.length, 1);
-      assert.equal(run.reference.exclusions[0].testKey, 'x/y/z');
-    });
-
-    it('does not write failures file when reference has no errors', () => {
-      const store = ResultsStore.inMemory();
-      store.recordRun(makeRun());
-
-      const failures = store.getImplFailures('graphql-js');
-      assert.deepStrictEqual(failures, []);
-    });
-
-    it('defaults missing exclusion metadata for older runs', () => {
-      const store = ResultsStore.inMemory();
-      store.recordRun({
-        id: 'legacy-run',
-        timestamp: '2026-03-17T22:42:11.609Z',
-        reference: {
-          name: 'graphql-js',
-          version: 'abc123',
-          total: 3,
-          errors: 1,
-          failures: [{ testKey: 'x/y/z', error: 'legacy failure' }],
-        },
-        conformants: {},
+        }),
+        resultsByImpl: {}, conformerMeta: makeMeta(), impls: makeImpls(),
       });
 
-      const run = store.loadLatestRunSummary();
-      assert.equal(run.reference.corpusTotal, 3);
-      assert.equal(run.reference.excluded, 0);
-      assert.deepStrictEqual(run.reference.exclusions, []);
-    });
-  });
-
-  describe('loadLatestRun', () => {
-    it('returns an explicit failure-only summary', () => {
-      const store = ResultsStore.inMemory();
-      store.recordRun(makeRun());
-
-      const run = store.loadLatestRunSummary();
-      assert.equal(run.id, '2026-03-17T22-42-11Z');
-      assert.equal(run.reference.name, 'graphql-js');
-
-      const java = run.conformants['graphql-java'];
-      assert.equal(java.total, 3);
-      assert.equal(java.passed, 2);
-      assert.ok(java.failuresByTestKey['g/h/i']);
-      assert.equal(java.failuresByTestKey['g/h/i'].testKey, 'g/h/i');
-    });
-
-    it('returns null when no runs exist', () => {
-      assert.equal(ResultsStore.inMemory().loadLatestRunSummary(), null);
-    });
-  });
-
-  describe('getReferenceHistory', () => {
-    it('returns history for the reference implementation', () => {
-      const store = ResultsStore.inMemory();
-      store.recordRun(makeRun({
-        id: 'run-1',
-        timestamp: '2026-03-15T00:00:00Z',
-        reference: { name: 'graphql-js', version: 'abc123', total: 4, errors: 1 },
-      }));
-      store.recordRun(makeRun({
-        id: 'run-2',
-        timestamp: '2026-03-16T00:00:00Z',
-        reference: { name: 'graphql-js', version: 'def456', total: 4, errors: 0 },
-      }));
-
-      const history = store.getReferenceHistory();
+      const history = store._data.get('impls/graphql-java/history');
       assert.equal(history.length, 2);
-      assert.equal(history[0].date, '2026-03-15');
-      assert.equal(history[0].failed, 1);
-      assert.equal(history[0].passPct, 75);
-      assert.equal(history[0].excluded, 0);
-      assert.equal(history[0].corpusTotal, 4);
-      assert.equal(history[1].date, '2026-03-16');
-      assert.equal(history[1].failed, 0);
-      assert.equal(history[1].passPct, 100);
-      assert.equal(history[1].excluded, 0);
-      assert.equal(history[1].corpusTotal, 4);
+      assert.equal(history[0].runId, 'r2');
+      assert.equal(history[0].failed, 0);
+      assert.equal(history[1].runId, 'r1');
+      assert.equal(history[1].failed, 1);
+    });
+  });
+
+  describe('conformerMeta', () => {
+    it('is retrievable on the loaded run', () => {
+      const store = ResultsStore.inMemory();
+      store.writeRun({
+        run: makeRun(), resultsByImpl: {},
+        conformerMeta: makeMeta({ corpusFingerprint: 'fp-xyz' }), impls: makeImpls(),
+      });
+      const latest = store.loadLatestRun();
+      assert.equal(latest.conformerMeta.corpusFingerprint, 'fp-xyz');
+      assert.equal(latest.conformerMeta.implMeta['graphql-java'].imageDigest, 'sha256:java-digest');
     });
 
-    it('includes excluded counts for runnable-set reference runs', () => {
+    it('is stripped from runs.json entries', () => {
       const store = ResultsStore.inMemory();
-      store.recordRun(makeRun({
-        reference: {
-          name: 'graphql-js',
-          version: 'abc123',
-          total: 2,
-          errors: 0,
-          corpusTotal: 3,
-          excluded: 1,
-          exclusions: [{ testKey: 'x/y/z', error: 'timeout' }],
-        },
-      }));
-
-      const history = store.getReferenceHistory();
-      assert.equal(history.length, 1);
-      assert.equal(history[0].passPct, 100);
-      assert.equal(history[0].total, 2);
-      assert.equal(history[0].excluded, 1);
-      assert.equal(history[0].corpusTotal, 3);
+      store.writeRun({
+        run: makeRun(), resultsByImpl: {}, conformerMeta: makeMeta(), impls: makeImpls(),
+      });
+      const runs = store.listRuns();
+      assert.ok(!('_conformerMeta' in runs[0]), 'runs.json entries must not leak conformer meta');
     });
   });
 });
 
 describe('FileData', () => {
-  let tmpDir;
+  it('writes run + results shards to disk and reads them back', () => {
+    const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'results-store-'));
+    try {
+      const store = ResultsStore.fromDirectory(tmpDir);
+      const run = makeRun();
+      const resultsByImpl = {
+        'graphql-js': [],
+        'graphql-java': [
+          { id: 'r1', runId: run.id, implId: 'graphql-java', testCaseId: 'a/b/c', status: 'fail' },
+        ],
+      };
+      store.writeRun({ run, resultsByImpl, conformerMeta: makeMeta(), impls: makeImpls() });
 
-  beforeEach(() => {
-    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'results-test-'));
-  });
+      assert.ok(fs.existsSync(path.join(tmpDir, 'runs.json')));
+      assert.ok(fs.existsSync(path.join(tmpDir, 'impls.json')));
+      assert.ok(fs.existsSync(path.join(tmpDir, 'runs', run.id, 'summary.json')));
+      assert.ok(fs.existsSync(path.join(tmpDir, 'runs', run.id, 'results', 'graphql-java.json')));
+      assert.ok(fs.existsSync(path.join(tmpDir, 'impls', 'graphql-java', 'history.json')));
 
-  afterEach(() => {
-    fs.rmSync(tmpDir, { recursive: true, force: true });
-  });
-
-  it('writes run and failure files to disk', () => {
-    const store = ResultsStore.fromDirectory(tmpDir);
-    store.recordRun(makeRun());
-
-    assert.ok(fs.existsSync(path.join(tmpDir, 'runs', '2026-03-17T22-42-11Z.json')));
-    assert.ok(fs.existsSync(path.join(tmpDir, 'failures', 'graphql-java', '2026-03-17T22-42-11Z.json')));
-  });
-
-  it('writes reference exclusions to disk', () => {
-    const store = ResultsStore.fromDirectory(tmpDir);
-    store.recordRun(makeRun({
-      reference: {
-        name: 'graphql-js',
-        version: 'abc123',
-        total: 2,
-        errors: 0,
-        corpusTotal: 3,
-        excluded: 1,
-        exclusions: [{ testKey: 'x/y/z', error: 'timeout' }],
-      },
-    }));
-
-    assert.ok(fs.existsSync(path.join(tmpDir, 'exclusions', 'graphql-js', '2026-03-17T22-42-11Z.json')));
-  });
-
-  it('does not write failures file when all tests pass', () => {
-    const store = ResultsStore.fromDirectory(tmpDir);
-    store.recordRun(makeRun({
-      conformants: {
-        'graphql-java': {
-          version: 'def456',
-          tests: { 'a/b/c': { matches: true } },
-        },
-      },
-    }));
-
-    assert.ok(!fs.existsSync(path.join(tmpDir, 'failures', 'graphql-java')));
+      const reloaded = ResultsStore.fromDirectory(tmpDir);
+      const latest = reloaded.loadLatestRun();
+      assert.equal(latest.run.id, run.id);
+      assert.equal(latest.resultsByImpl['graphql-java'][0].testCaseId, 'a/b/c');
+    } finally {
+      fs.rmSync(tmpDir, { recursive: true, force: true });
+    }
   });
 });

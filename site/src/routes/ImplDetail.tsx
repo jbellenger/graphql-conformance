@@ -127,7 +127,7 @@ function ImplDetailView({
   failuresRef,
 }: ImplDetailViewProps) {
   const stats = computeRunStats(run, impl);
-  const isReference = impl.isReference;
+  const isReference = impl.id === run.referenceImplId;
   const failureTo = stats.implFailed > 0 ? `/impl/${impl.id}/failures` : null;
   const excludedTo =
     !isReference && stats.corpusExcluded > 0

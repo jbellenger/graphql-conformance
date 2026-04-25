@@ -47,13 +47,11 @@ function makeRepo(): FakeRepository {
         id: 'graphql-js-17',
         name: 'graphql-js-17',
         language: 'JavaScript',
-        isReference: true,
       },
       {
         id: 'graphql-java',
         name: 'graphql-java',
         language: 'Java',
-        isReference: false,
         version: '25.0',
       },
     ],
@@ -131,13 +129,11 @@ describe('ImplDetail', () => {
           id: 'graphql-js-17',
           name: 'graphql-js-17',
           language: 'JavaScript',
-          isReference: true,
         },
         {
           id: 'graphql-php',
           name: 'graphql-php',
           language: 'PHP',
-          isReference: false,
         },
       ],
       runs: [
@@ -212,7 +208,6 @@ describe('ImplDetail', () => {
           id: 'graphql-js-17',
           name: 'graphql-js-17',
           language: 'JavaScript',
-          isReference: true,
         },
       ],
       runs: [

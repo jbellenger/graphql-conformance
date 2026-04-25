@@ -35,9 +35,9 @@ A conformer runs every test case against the reference first. If the reference p
 
 ## Results
 
-Each run writes a timestamped summary to `results/data/runs/<run-id>.json`, per-implementation failure detail under `results/data/failures/<impl>/<run-id>/`, and the reference exclusions for that run under `results/data/exclusions/`. Everything in `results/data/` is committed to git; the dashboard reads from this history and external links may reference specific run IDs, so prior runs are preserved.
+Each run writes a timestamped summary to `results/data/runs/<run-id>/summary.json` and per-implementation non-pass results under `results/data/runs/<run-id>/results/<impl>.json`, plus `impls.json`, `runs.json`, and per-impl history shards. The on-disk layout mirrors the site's `Repository` types (`site/src/repository/types.ts`) — see [SPEC.md](SPEC.md) for the full shape. Everything in `results/data/` is committed to git so the dashboard has data to render.
 
-`site/` is a Vite + React SPA; its dashboard data is bundled at build time. The `pages.yml` workflow regenerates everything from `results/data/` on every push to master — it runs `npm ci && npm run build` inside `site/`, then `node site/tools/build-data.mjs results/data site/dist/data` to emit `impls.json`, per-run summaries, and per-impl failure shards — and deploys `site/dist/` to GitHub Pages. Any commit that updates `results/data/` therefore refreshes the dashboard automatically.
+`site/` is a Vite + React SPA. The `pages.yml` workflow builds the SPA with `npm ci && npm run build` inside `site/`, then copies `results/data/` into `site/dist/data/` (no translation — the shapes already match) and deploys `site/dist/` to GitHub Pages. Any commit that updates `results/data/` refreshes the dashboard automatically.
 
 By default the conformer skips any conformant whose image digest + the corpus fingerprint haven't changed since the last run, reusing the prior results. Pass `--force` (i.e. `make run-conformer CONFORMER_ARGS=--force`) to re-run everything regardless.
 

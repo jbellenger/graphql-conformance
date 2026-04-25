@@ -31,13 +31,11 @@ describe('StaticJsonRepository', () => {
         id: 'graphql-js-17',
         name: 'graphql-js-17',
         language: 'JavaScript',
-        isReference: true,
       },
       {
         id: 'graphql-java',
         name: 'graphql-java',
         language: 'Java',
-        isReference: false,
       },
     ];
     const run: Run = {

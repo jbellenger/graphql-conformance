@@ -20,17 +20,23 @@ class FileData {
     fs.mkdirSync(path.dirname(filePath), { recursive: true });
     fs.writeFileSync(filePath, JSON.stringify(value, null, 2) + '\n');
   }
-
-  list(prefix) {
-    const dir = path.join(this.baseDir, prefix);
-    if (!fs.existsSync(dir)) return [];
-    return fs.readdirSync(dir)
-      .filter((f) => f.endsWith('.json'))
-      .map((f) => f.replace(/\.json$/, ''))
-      .sort();
-  }
 }
 
+// ResultsStore owns the on-disk Repository-shaped layout that the site reads
+// directly. The writer is the sole producer of these files; `site/` never
+// reshapes them at build time.
+//
+// On-disk layout (relative to baseDir):
+//   impls.json                                — Impl[]
+//   runs.json                                 — Run[] (newest first)
+//   runs/<runId>/summary.json                 — Run + _conformerMeta
+//   runs/<runId>/results/<implId>.json        — Result[] (non-pass only)
+//   impls/<implId>/history.json               — ImplHistoryPoint[]
+//
+// `_conformerMeta` lives only on per-run summary files. It carries the
+// imageDigest / corpusFingerprint / scoringModel that incremental-skip needs
+// and that the site does not. Keeping it out of runs.json keeps the public
+// list lean.
 class ResultsStore {
   constructor(data) {
     this._data = data;
@@ -44,258 +50,84 @@ class ResultsStore {
     return new ResultsStore(new MemoryData());
   }
 
-  recordRun(runResult) {
-    const conformants = {};
-    for (const [name, conformant] of Object.entries(runResult.conformants)) {
-      const tests = conformant.tests || null;
-      const failuresByTestKey = conformant.failuresByTestKey || {};
-      const failures = Object.keys(failuresByTestKey).length > 0
-        ? Object.values(failuresByTestKey)
-        : (tests ? this._collectFailuresFromTests(tests) : []);
-      const quirksByTestKey = conformant.quirksByTestKey || null;
-      const quirks = quirksByTestKey
-        ? Object.entries(quirksByTestKey).map(([testKey, q]) => ({ testKey, quirks: q }))
-        : (tests ? this._collectQuirksFromTests(tests) : []);
-      const total = conformant.total != null
-        ? conformant.total
-        : (tests ? Object.keys(tests).length : failures.length);
-      const passed = conformant.passed != null
-        ? conformant.passed
-        : (tests ? Object.values(tests).filter((t) => t.matches).length : total - failures.length);
+  // Write a complete run in one shot. Inputs:
+  //   run              — Run, with resultsByImpl buckets carrying {failed,
+  //                      excluded, errored} counts and empty results: [].
+  //   resultsByImpl    — Record<implId, Result[]> of non-pass results.
+  //   conformerMeta    — { corpusFingerprint, scoringModel,
+  //                        implMeta: { [implId]: { imageDigest, version } } }
+  //   impls            — Impl[] (current, ordered; reference first).
+  writeRun({ run, resultsByImpl, conformerMeta, impls }) {
+    if (!run || !run.id) throw new Error('writeRun: run.id is required');
 
-      conformants[name] = {
-        version: conformant.version != null ? conformant.version : null,
-        imageDigest: conformant.imageDigest != null ? conformant.imageDigest : null,
-        total,
-        passed,
-      };
-
-      if (failures.length > 0) {
-        this._data.put(`failures/${name}/${runResult.id}`, failures);
-      }
-      if (quirks.length > 0) {
-        this._data.put(`quirks/${name}/${runResult.id}`, quirks);
-      }
-    }
-
-    // Store reference failures if any
-    const ref = runResult.reference;
-    if (ref.failures && ref.failures.length > 0) {
-      this._data.put(`failures/${ref.name}/${runResult.id}`, ref.failures);
-    }
-    if (ref.exclusions && ref.exclusions.length > 0) {
-      this._data.put(`exclusions/${ref.name}/${runResult.id}`, ref.exclusions);
-    }
-
-    this._data.put(`runs/${runResult.id}`, {
-      id: runResult.id,
-      timestamp: runResult.timestamp,
-      reference: {
-        name: ref.name,
-        version: ref.version != null ? ref.version : null,
-        imageDigest: ref.imageDigest != null ? ref.imageDigest : null,
-        scoringModel: ref.scoringModel || null,
-        corpusTotal: ref.corpusTotal != null ? ref.corpusTotal : (ref.total || 0),
-        corpusFingerprint: ref.corpusFingerprint || null,
-        total: ref.total || 0,
-        errors: ref.errors || 0,
-        excluded: ref.excluded || 0,
-      },
-      conformants,
+    this._data.put(`runs/${run.id}/summary`, {
+      ...run,
+      _conformerMeta: conformerMeta,
     });
+    for (const [implId, results] of Object.entries(resultsByImpl ?? {})) {
+      this._data.put(`runs/${run.id}/results/${implId}`, results);
+    }
+
+    const runs = this._loadRunsIndex();
+    const idx = runs.findIndex((r) => r.id === run.id);
+    if (idx >= 0) runs.splice(idx, 1);
+    runs.push(run);
+    runs.sort((a, b) => b.timestamp.localeCompare(a.timestamp));
+    this._data.put('runs', runs);
+
+    this._data.put('impls', impls ?? []);
+
+    for (const impl of impls ?? []) {
+      const history = this._computeImplHistory(impl.id, runs);
+      this._data.put(`impls/${impl.id}/history`, history);
+    }
+  }
+
+  // Return the latest run (Run + non-pass results + conformerMeta), or null.
+  loadLatestRun() {
+    const runs = this._loadRunsIndex();
+    if (runs.length === 0) return null;
+    return this._loadRunFull(runs[0].id);
+  }
+
+  // For parity with the old API.
+  loadRun(id) {
+    return this._loadRunFull(id);
   }
 
   listRuns() {
-    return this._data.list('runs')
-      .reverse()
-      .map((id) => {
-        const run = this._data.get(`runs/${id}`);
-        return { id: run.id, timestamp: run.timestamp, reference: run.reference };
-      });
+    return this._loadRunsIndex();
   }
 
-  getSummary() {
-    const runs = this._loadAllRuns();
-    if (runs.length === 0) return [];
-
-    const latest = runs[0];
-    return Object.entries(latest.conformants).map(([name, c]) => ({
-      impl: name,
-      passPct: c.total > 0 ? Math.round((c.passed / c.total) * 1000) / 10 : 100,
-      total: c.total,
-      failed: c.total - c.passed,
-      lastRun: latest.timestamp,
-      version: c.version != null ? c.version : null,
-    }));
+  _loadRunsIndex() {
+    return this._data.get('runs') || [];
   }
 
-  getImplHistory(name) {
-    return this._loadAllRuns()
-      .filter((r) => r.conformants[name])
-      .reverse()
+  _loadRunFull(id) {
+    const summary = this._data.get(`runs/${id}/summary`);
+    if (!summary) return null;
+    const { _conformerMeta, ...run } = summary;
+    const resultsByImpl = {};
+    for (const implId of Object.keys(run.resultsByImpl || {})) {
+      resultsByImpl[implId] = this._data.get(`runs/${id}/results/${implId}`) || [];
+    }
+    return { run, resultsByImpl, conformerMeta: _conformerMeta || null };
+  }
+
+  _computeImplHistory(implId, runsNewestFirst) {
+    return runsNewestFirst
+      .filter((r) => r.resultsByImpl && r.resultsByImpl[implId])
       .map((r) => {
-        const c = r.conformants[name];
+        const bucket = r.resultsByImpl[implId];
         return {
-          date: r.timestamp.slice(0, 10),
-          passPct: c.total > 0 ? Math.round((c.passed / c.total) * 1000) / 10 : 100,
-          total: c.total,
-          failed: c.total - c.passed,
-          version: c.version != null ? c.version : null,
+          runId: r.id,
+          timestamp: r.timestamp,
+          testCaseCount: r.testCaseCount,
+          failed: bucket.failed || 0,
+          excluded: bucket.excluded || 0,
+          errored: bucket.errored || 0,
         };
       });
-  }
-
-  getImplFailures(name) {
-    const runs = this._loadAllRuns();
-    if (runs.length === 0) return [];
-
-    const latestRun = runs[0];
-    return this._getFailuresForRun(name, latestRun.id);
-  }
-
-  getReferenceExclusions() {
-    const runs = this._loadAllRuns();
-    if (runs.length === 0) return [];
-
-    const latestRun = runs[0];
-    const refName = latestRun.reference?.name;
-    if (!refName) return [];
-    return this._getExclusionsForRun(refName, latestRun.id);
-  }
-
-  getTestStatus(testKey) {
-    const runs = this._loadAllRuns();
-    if (runs.length === 0) return [];
-
-    const latestRun = runs[0];
-    const results = [];
-
-    for (const [name] of Object.entries(latestRun.conformants)) {
-      const failures = this.getImplFailures(name);
-      const failure = failures.find((f) => f.testKey === testKey);
-      results.push({
-        impl: name,
-        passes: !failure,
-      });
-    }
-
-    return results;
-  }
-
-  loadLatestRunSummary() {
-    const runs = this._loadAllRuns();
-    if (runs.length === 0) return null;
-
-    const latest = runs[0];
-    const refFailures = latest.reference.name
-      ? this._getFailuresForRun(latest.reference.name, latest.id)
-      : [];
-    const refExclusions = latest.reference.name
-      ? this._getExclusionsForRun(latest.reference.name, latest.id)
-      : [];
-    const result = {
-      id: latest.id,
-      timestamp: latest.timestamp,
-      reference: {
-        ...latest.reference,
-        hasExclusionMetadata: latest.reference.scoringModel === 'runnable-set-v1',
-        corpusTotal: latest.reference.corpusTotal != null
-          ? latest.reference.corpusTotal
-          : (latest.reference.total || 0),
-        excluded: latest.reference.excluded != null ? latest.reference.excluded : refExclusions.length,
-        failures: refFailures,
-        exclusions: refExclusions,
-      },
-      conformants: {},
-    };
-
-    for (const [cName, c] of Object.entries(latest.conformants)) {
-      const failures = this._getFailuresForRun(cName, latest.id);
-      const quirks = this._getQuirksForRun(cName, latest.id);
-      result.conformants[cName] = {
-        version: c.version != null ? c.version : null,
-        imageDigest: c.imageDigest != null ? c.imageDigest : null,
-        total: c.total,
-        passed: c.passed,
-        failuresByTestKey: this._indexFailuresByTestKey(failures),
-        quirksByTestKey: this._indexQuirksByTestKey(quirks),
-      };
-    }
-
-    return result;
-  }
-
-  loadLatestRun() {
-    return this.loadLatestRunSummary();
-  }
-
-  getReferenceHistory() {
-    return this._loadAllRuns().reverse().map((r) => {
-      const total = r.reference.total || 0;
-      const errors = r.reference.errors || 0;
-      const passed = total - errors;
-      const excluded = r.reference.excluded || 0;
-      const corpusTotal = r.reference.corpusTotal != null ? r.reference.corpusTotal : total;
-      return {
-        date: r.timestamp.slice(0, 10),
-        passPct: total > 0 ? Math.round((passed / total) * 1000) / 10 : 100,
-        total,
-        failed: errors,
-        excluded,
-        corpusTotal,
-      };
-    });
-  }
-
-  _loadAllRuns() {
-    return this._data.list('runs')
-      .reverse()
-      .map((id) => this._data.get(`runs/${id}`));
-  }
-
-  _getFailuresForRun(name, runId) {
-    return this._data.get(`failures/${name}/${runId}`) || [];
-  }
-
-  _getExclusionsForRun(name, runId) {
-    return this._data.get(`exclusions/${name}/${runId}`) || [];
-  }
-
-  _getQuirksForRun(name, runId) {
-    return this._data.get(`quirks/${name}/${runId}`) || [];
-  }
-
-  _collectQuirksFromTests(tests) {
-    const quirks = [];
-    for (const [testKey, result] of Object.entries(tests)) {
-      if (result.matches && Array.isArray(result.quirks) && result.quirks.length > 0) {
-        quirks.push({ testKey, quirks: result.quirks });
-      }
-    }
-    return quirks;
-  }
-
-  _indexQuirksByTestKey(quirks) {
-    return Object.fromEntries(quirks.map((q) => [q.testKey, q.quirks]));
-  }
-
-  _collectFailuresFromTests(tests) {
-    const failures = [];
-    for (const [testKey, result] of Object.entries(tests)) {
-      if (!result.matches) {
-        const failure = { testKey };
-        if (result.expected) failure.expected = result.expected;
-        if (result.actual) failure.actual = result.actual;
-        if (result.error) failure.error = result.error;
-        if (result.stderr) failure.stderr = result.stderr;
-        failures.push(failure);
-      }
-    }
-    return failures;
-  }
-
-  _indexFailuresByTestKey(failures) {
-    return Object.fromEntries(failures.map((failure) => [failure.testKey, failure]));
   }
 }
 

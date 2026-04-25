@@ -54,10 +54,10 @@
 - [x] **viaduct**: `NoOpCoercing` defined twice (`ViaductHarness.kt:111-117` and `ViaductHarnessTest.kt:148-154`). Deduplicate.
 - [ ] **absinthe**: Add `@doc` / `@spec` to public functions in `Conformer` and `DirectiveSupport`.
 - [ ] **absinthe** (`lib/conformer.ex:307-328`): Regex-based directive-definition parsing is brittle (breaks on descriptions with escaped quotes). Replace with AST-based detection.
-- [ ] **conformer** (`index.js:122-126`): Dead-code reconstruction of `conformantTests[name]` for skipped conformants — overridden by the `failuresByTestKey` branch at `index.js:135-141`.
-- [ ] **conformer** (`index.js:181`): Tautology `const refPct = refTotal > 0 ? '100.0' : '100.0';`.
-- [ ] **conformer** (`compare.js:60-78`): `compareResults` runs `deepEqual` before `unorderedEqual`, but `unorderedEqual` strictly subsumes it — the pre-pass is dead logic until quirks are implemented.
-- [ ] **conformer** (`results/index.js:210-212`): `loadLatestRun()` is a pure alias for `loadLatestRunSummary()`. Pick one name.
+- [x] **conformer** (`index.js:122-126`): Dead-code reconstruction of `conformantTests[name]` for skipped conformants — removed in the writer rewrite.
+- [x] **conformer** (`index.js:181`): Tautology `refPct` — removed in the writer rewrite.
+- [x] **conformer** (`compare.js:60-78`): Dead `deepEqual` pre-pass — removed along with `sameKeyOrder` / quirks.
+- [x] **conformer** (`results/index.js:210-212`): `loadLatestRun` / `loadLatestRunSummary` alias — collapsed to a single `loadLatestRun` in the writer rewrite.
 - [ ] **conformer** (`builder.js:56-58`): `git checkout` runs before the stamp check. On stamp hits this wastes a checkout; move the stamp check up.
 - [ ] **conformer** (`tools.js:32`): `erlang: [executable, '-version']` returns empty output on modern OTP, so `getVersion` silently reports `'unknown'` even when Erlang is installed.
 - [ ] **conformer** (`build.js` vs `check.js`): `build.js` warns on missing tools and proceeds; `check.js` exits non-zero. Align behavior.

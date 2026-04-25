@@ -157,12 +157,12 @@ _run-conformer-smoke: _prepare-smoke-corpus
 	rm -rf $(SMOKE_RESULTS_DIR) $(SMOKE_SITE_DATA_DIR)
 	mkdir -p $(SMOKE_RESULTS_DIR) $(SMOKE_SITE_DATA_DIR)
 	CORPUS_DIR=$(SMOKE_CORPUS_DIR) RESULTS_DIR=$(SMOKE_RESULTS_DIR) node conformer/src/index.js
-	node site/tools/build-data.mjs $(SMOKE_RESULTS_DIR) $(SMOKE_SITE_DATA_DIR)
+	cp -R $(SMOKE_RESULTS_DIR)/. $(SMOKE_SITE_DATA_DIR)/
 
 _build-site:
 	cd site && npm ci && npm run build
 	mkdir -p site/dist/data
-	node site/tools/build-data.mjs results/data site/dist/data
+	cp -R results/data/. site/dist/data/
 
 _serve-site: _build-site
 	@printf 'Serving site at http://localhost:8000\n'

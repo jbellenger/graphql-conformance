@@ -7,7 +7,6 @@ function sampleImpl(overrides: Partial<Impl> = {}): Impl {
     id: 'graphql-java',
     name: 'graphql-java',
     language: 'Java',
-    isReference: false,
     ...overrides,
   };
 }
