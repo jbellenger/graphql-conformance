@@ -33,7 +33,7 @@ The repo is rooted at the workspace root:
       docker.js           # dockerode wrapper (pull, build, run, stop)
       execute.js          # /execute HTTP request + multipart/mixed parsing
       corpus.js           # corpus discovery
-      compare.js          # unordered-match + quirk detection
+      compare.js          # unordered-match
     corpus/               # test cases
       1/
         schema.graphqls
@@ -248,46 +248,48 @@ same reference.
 ## Comparison
 
 The conformer compares the response from each conformant impl against the
-reference impl on runnable reference cases in two steps:
+reference impl on runnable reference cases with a single step:
 
-1. **Unordered match**: the responses are compared as JSON, ignoring object key ordering
-   but preserving array element order. `null` values are treated as distinct from absent
-   values. If the data matches under this comparison, `matches` is `true`.
+**Unordered match**: the responses are compared as JSON, ignoring object key
+ordering but preserving array element order. `null` values are treated as
+distinct from absent values. If the data matches under this comparison,
+`matches` is `true`.
 
-2. **Quirk detection**: if `matches` is `true`, the conformer checks for SHOULD-level
-   spec deviations (called "quirks") by comparing the original ordered responses.
-
-Each test result is an object `{ "matches": <bool>, "quirks": [<string>, ...] }`.
-Quirks are stored alongside failures in `results/data/quirks/<impl>/<runId>.json`
-(failures-only model: tests with no quirks are omitted).
-
-### Known quirks
-
-| Quirk | Spec reference | Detected when |
-|-------|---------------|---------------|
-| `"object-ordering"` | §7.2.2 Serialized Map Ordering, §3.6 Field Ordering | Conformant response keys diverge from the reference's ordered response at any object level |
+`compareResults` returns `{ matches: boolean }`.
 
 ## Results
 
-The conformer writes results to `results/data/` using a failures-only storage model
-(passing tests are not stored; absence from the failures file means pass). The
-`ResultsStore` class (`results/index.js`) provides a read/write API over this data.
+The conformer writes results to `results/data/` in the Repository shape that
+`site/src/repository/types.ts` describes — `Impl`, `Run`, `Result`,
+`ImplRunResults`, `ImplHistoryPoint`. The site's `StaticJsonRepository` reads
+these files directly; no build-time translation step.
 
-**`results/data/` is semi-sacred.** External systems (dashboards, links) may reference
-specific run IDs. Deleting or modifying this data constitutes a breaking change. Tests
-must never write to or delete from `results/data/` — use `MemoryResultsStore`
-(`results/memory.js`) or a temporary directory with `RESULTS_DIR` env var instead.
+`results/data/` is checked into git by the daily conformance workflow so the
+GitHub Pages deploy has data to render. Tests must not write to or delete
+from `results/data/` — use `ResultsStore.inMemory()` (`results/memory.js`) or
+a temporary directory via the `RESULTS_DIR` env var.
 
 ### On-disk format
 
 ```
 results/data/
+  impls.json                                 # Impl[]
+  runs.json                                  # Run[] (newest first)
   runs/
-    <run-id>.json              # run metadata + per-conformant summary
-  failures/
-    <conformant-name>/
-      <run-id>.json            # array of failing test keys
+    <run-id>/
+      summary.json                           # single Run + _conformerMeta
+      results/
+        <impl-id>.json                       # Result[] (non-pass only)
+  impls/
+    <impl-id>/
+      history.json                           # ImplHistoryPoint[]
 ```
+
+Files mirror site's types exactly; no field reshuffling between writer and
+reader. The one exception is `_conformerMeta` on per-run `summary.json`: it
+carries `corpusFingerprint`, `scoringModel`, and per-impl `imageDigest`/
+`version` that the incremental-skip logic needs and the site ignores. It is
+not copied into `runs.json`.
 
 ### ResultsStore API
 
@@ -300,73 +302,101 @@ const store = ResultsStore.fromDirectory('results/data');
 // Tests: in-memory (same API, no disk I/O)
 const testStore = ResultsStore.inMemory();
 
-store.recordRun(runResult);       // write a run
-store.listRuns();                 // [{id, timestamp, reference}]
-store.getSummary();               // [{impl, passPct, total, failed, lastRun, version}]
-store.getImplHistory(name);       // [{date, passPct, total, failed}]
-store.getReferenceHistory();      // [{date, passPct, total, failed, excluded, corpusTotal}]
-store.getImplFailures(name);      // [{testKey, error|expected|actual|stderr}]
-store.getReferenceExclusions();   // [{testKey, error, stderr}]
-store.getTestStatus(testKey);     // [{impl, passes}]
-store.loadLatestRunSummary();     // latest run metadata + failure-only summaries
+store.writeRun({ run, resultsByImpl, conformerMeta, impls });
+//   run           — Run (resultsByImpl buckets with counts and empty results[])
+//   resultsByImpl — Record<implId, Result[]>, non-pass only
+//   conformerMeta — { corpusFingerprint, scoringModel, runnableCount, implMeta }
+//   impls         — Impl[] (ordered; reference first)
+
+store.listRuns();        // Run[] (newest first)
+store.loadLatestRun();   // { run, resultsByImpl, conformerMeta } | null
+store.loadRun(id);       // { run, resultsByImpl, conformerMeta } | null
 ```
 
-The conformer respects a `RESULTS_DIR` environment variable to override the default
-results location, used by integration tests to avoid touching production data.
+The conformer respects a `RESULTS_DIR` environment variable to override the
+default results location, used by integration tests to avoid touching
+production data.
 
 ### Run ID format
 
 Filesystem-safe ISO 8601: `2026-03-14T14-30-00Z` (colons replaced with hyphens).
 
-### Per-run file: `conformer/results/<run-id>.json`
+### Per-run summary: `results/data/runs/<run-id>/summary.json`
 
-    {
-      "id": "2026-03-14T14-30-00Z",
-      "timestamp": "2026-03-14T14:30:00Z",
-      "reference": {
-        "name": "graphql-js-17",
-        "version": "17.0.0-alpha.14",
-        "imageDigest": "sha256:a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
-        "corpusTotal": 241,
-        "total": 232,
-        "errors": 0,
-        "excluded": 9
-      },
-      "conformants": {
-        "graphql-java": {
-          "version": "25.0",
-          "imageDigest": "sha256:f6e5d4c3b2a1f6e5d4c3b2a1f6e5d4c3b2a1f6e5d4c3b2a1f6e5d4c3b2a1f6e5",
-          "tests": {
-            "0.1": { "matches": true, "quirks": [] },
-            "1.1": { "matches": true, "quirks": ["object-ordering"] }
-          }
-        }
-      }
+```json
+{
+  "id": "2026-03-14T14-30-00Z",
+  "timestamp": "2026-03-14T14:30:00Z",
+  "referenceImplId": "graphql-js-17",
+  "implIds": ["graphql-js-17", "graphql-java", "hot-chocolate"],
+  "testCaseCount": 241,
+  "resultsByImpl": {
+    "graphql-js-17":  { "implId": "graphql-js-17",  "failed": 0,  "excluded": 9, "errored": 0, "results": [] },
+    "graphql-java":   { "implId": "graphql-java",   "failed": 0,  "excluded": 0, "errored": 0, "results": [] },
+    "hot-chocolate":  { "implId": "hot-chocolate",  "failed": 20, "excluded": 0, "errored": 4, "results": [] }
+  },
+  "_conformerMeta": {
+    "corpusFingerprint": "e62fc5...",
+    "scoringModel": "runnable-set-v1",
+    "runnableCount": 232,
+    "implMeta": {
+      "graphql-js-17":  { "imageDigest": "sha256:...", "version": "17.0.0-alpha.14" },
+      "graphql-java":   { "imageDigest": "sha256:...", "version": "25.0" },
+      "hot-chocolate":  { "imageDigest": "sha256:...", "version": "15.1.15" }
     }
+  }
+}
+```
 
-`reference.total` is the runnable-set denominator for that run. `reference.excluded`
-counts the corpus cases that were skipped because the reference did not produce a
-result.
+`testCaseCount` is the full corpus denominator. For the reference impl,
+`excluded` counts corpus cases where the reference could not produce an
+expected output (5xx / timeout / unparseable / GraphQL errors). Those same
+cases are also the ones not scored against any conformant.
 
-Each conformant entry includes the library version (the logical release string
-reported through `/impl-version` — see *Library version reporting*), the image
-digest (used for incremental-run skip detection — see *Incremental runs*), and
-a `tests` object. The keys use dotted notation `<testId>.<queryId>` (e.g.
-`"1.1"` for test directory 1, query prefix 1). Each maps to an object with:
-- `matches` (boolean): `true` if the response data matches the reference, ignoring
-  object key ordering
-- `quirks` (list of strings): observed SHOULD-level spec deviations (see Comparison)
+For conformants, `failed` counts tests whose result diverged from the
+reference, and `errored` counts tests where the driver itself errored
+(timeout, crash, invalid JSON). Neither bucket contains reference-excluded
+cases.
 
-### Index file: `conformer/results/index.json`
+### Per-(run, impl) results shard: `results/data/runs/<run-id>/results/<impl-id>.json`
 
-    {
-      "runs": [
-        { "id": "2026-03-14T14-30-00Z", "timestamp": "2026-03-14T14:30:00Z" },
-        { "id": "2026-03-13T10-00-00Z", "timestamp": "2026-03-13T10:00:00Z" }
-      ]
-    }
+Non-pass `Result[]`. Passing tests are not stored; absence from this file
+implies pass. Each record:
 
-Newest first. A dashboard can load this index and then fetch individual run files.
+```json
+{
+  "id": "<uuid>",                       // deterministic: sha256(runId|implId|testCaseId)
+  "runId": "<run-id>",
+  "implId": "<impl-id>",
+  "testCaseId": "<testId>/<queryId>",   // opaque composite; will normalize per U2
+  "status": "fail" | "error" | "excluded",
+  "expected": <unknown>,                // optional
+  "actual":   <unknown>,                // optional
+  "error":    "<string>",               // optional (harness / driver error)
+  "stderr":   "<string>"                // optional
+}
+```
+
+- `fail` — conformant data differs from reference (under unordered match).
+- `error` — conformant driver errored (timeout/crash/unparseable output).
+- `excluded` — reference could not produce expected output; only appears in
+  the reference's own shard.
+
+### Impls index: `results/data/impls.json`
+
+Ordered `Impl[]` with reference first. Reference-ness is per-run (see
+`Run.referenceImplId`), so `Impl` carries no `isReference` field. Derive as
+`impl.id === run.referenceImplId`.
+
+### Per-impl history: `results/data/impls/<impl-id>/history.json`
+
+`ImplHistoryPoint[]`, newest first, derived from `runs.json`:
+
+```json
+[
+  { "runId": "...", "timestamp": "...", "testCaseCount": 241, "failed": 24, "excluded": 0, "errored": 0 }
+]
+```
 
 ## Adding a New Implementation
 
@@ -392,7 +422,7 @@ the last implementor, and so on. These tests run inside the driver image.
 The conformer has unit tests for corpus discovery, registry loading, driver
 lifecycle, and the deep-equality comparison, plus integration tests that
 run through the full orchestration path using stub session factories
-(self-comparison, skip invalidation, reference exclusions, quirk detection).
+(self-comparison, skip invalidation, reference exclusions).
 
 All tests run via `make test` from the repo root.
 

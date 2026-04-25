@@ -38,8 +38,12 @@ jobs:
           VITE_BASE_URL: /graphql-conformance/
         run: npm run build
 
-      - name: Generate site data
-        run: node site/tools/build-data.mjs results/data site/dist/data
+      - name: Copy conformance data into site dist
+        run: |
+          mkdir -p site/dist/data
+          if [ -d results/data ] && [ -n "$(ls -A results/data 2>/dev/null)" ]; then
+            cp -R results/data/. site/dist/data/
+          fi
 
       - uses: actions/configure-pages@v6
 

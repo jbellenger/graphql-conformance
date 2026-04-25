@@ -59,7 +59,6 @@ describe('Dashboard', () => {
           id: 'graphql-js-17',
           name: 'graphql-js-17',
           language: 'JavaScript',
-          isReference: true,
           version: '17.0.0-alpha.14',
           repoUrl: 'https://github.com/graphql/graphql-js',
         },
@@ -67,7 +66,6 @@ describe('Dashboard', () => {
           id: 'graphql-java',
           name: 'graphql-java',
           language: 'Java',
-          isReference: false,
           version: '25.0',
         },
       ],
@@ -106,14 +104,12 @@ describe('Dashboard', () => {
           id: 'graphql-js-17',
           name: 'graphql-js-17',
           language: 'JavaScript',
-          isReference: true,
           version: '17.0.0-alpha.14',
         },
         {
           id: 'graphql-java',
           name: 'graphql-java',
           language: 'Java',
-          isReference: false,
         },
       ],
       runs: [
@@ -146,7 +142,6 @@ describe('Dashboard', () => {
           id: 'ref',
           name: 'ref',
           language: 'JS',
-          isReference: true,
         },
       ],
       runs: [
@@ -185,10 +180,10 @@ describe('Dashboard', () => {
   it('sorts non-reference impls by descending pass rate', async () => {
     const repo = new FakeRepository({
       impls: [
-        { id: 'ref', name: 'ref', language: 'JS', isReference: true },
-        { id: 'low', name: 'low', language: 'JS', isReference: false },
-        { id: 'high', name: 'high', language: 'JS', isReference: false },
-        { id: 'mid', name: 'mid', language: 'JS', isReference: false },
+        { id: 'ref', name: 'ref', language: 'JS' },
+        { id: 'low', name: 'low', language: 'JS' },
+        { id: 'high', name: 'high', language: 'JS' },
+        { id: 'mid', name: 'mid', language: 'JS' },
       ],
       runs: [
         {
@@ -216,10 +211,10 @@ describe('Dashboard', () => {
     // to be reordered to alpha, bravo, charlie.
     const repo = new FakeRepository({
       impls: [
-        { id: 'ref', name: 'ref', language: 'JS', isReference: true },
-        { id: 'charlie', name: 'charlie', language: 'JS', isReference: false },
-        { id: 'alpha', name: 'alpha', language: 'JS', isReference: false },
-        { id: 'bravo', name: 'bravo', language: 'JS', isReference: false },
+        { id: 'ref', name: 'ref', language: 'JS' },
+        { id: 'charlie', name: 'charlie', language: 'JS' },
+        { id: 'alpha', name: 'alpha', language: 'JS' },
+        { id: 'bravo', name: 'bravo', language: 'JS' },
       ],
       runs: [
         {
@@ -246,12 +241,11 @@ describe('Dashboard', () => {
     const user = userEvent.setup();
     const repo = new FakeRepository({
       impls: [
-        { id: 'ref', name: 'ref', language: 'JS', isReference: true },
+        { id: 'ref', name: 'ref', language: 'JS' },
         {
           id: 'graphql-java',
           name: 'graphql-java',
           language: 'Java',
-          isReference: false,
         },
       ],
       runs: [
@@ -281,12 +275,11 @@ describe('Dashboard', () => {
     const user = userEvent.setup();
     const repo = new FakeRepository({
       impls: [
-        { id: 'ref', name: 'ref', language: 'JS', isReference: true },
+        { id: 'ref', name: 'ref', language: 'JS' },
         {
           id: 'graphql-java',
           name: 'graphql-java',
           language: 'Java',
-          isReference: false,
         },
       ],
       runs: [
@@ -317,7 +310,6 @@ describe('Dashboard', () => {
           id: 'graphql-js-17',
           name: 'graphql-js-17',
           language: 'JavaScript',
-          isReference: true,
           version: '17.0.0-alpha.14',
           versionUrl:
             'https://github.com/graphql/graphql-js/releases/tag/v17.0.0-alpha.14',
@@ -326,7 +318,6 @@ describe('Dashboard', () => {
           id: 'graphql-java',
           name: 'graphql-java',
           language: 'Java',
-          isReference: false,
           version: '25.0',
           versionUrl:
             'https://github.com/graphql-java/graphql-java/releases/tag/v25.0',
@@ -387,7 +378,6 @@ describe('Dashboard', () => {
           id: 'graphql-js-17',
           name: 'graphql-js-17',
           language: 'JavaScript',
-          isReference: true,
           version: '17.0.0-alpha.14',
         },
       ],
@@ -421,7 +411,6 @@ describe('Dashboard', () => {
           id: 'graphql-js-17',
           name: 'graphql-js-17',
           language: 'JavaScript',
-          isReference: true,
           version: '17.0.0-alpha.14',
         },
       ],

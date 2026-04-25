@@ -32,21 +32,22 @@ export interface RunStats {
 }
 
 export function computeRunStats(run: Run, impl: Impl): RunStats {
+  const isReference = impl.id === run.referenceImplId;
   const refSummary = run.resultsByImpl[run.referenceImplId];
   const implSummary = run.resultsByImpl[impl.id];
   const total = run.testCaseCount;
   const refUncomputable = refSummary?.excluded ?? 0;
 
-  const implFailed = impl.isReference
+  const implFailed = isReference
     ? refUncomputable
     : (implSummary?.failed ?? 0) + (implSummary?.errored ?? 0);
-  const corpusExcluded = impl.isReference ? 0 : refUncomputable;
+  const corpusExcluded = isReference ? 0 : refUncomputable;
 
   const passed = Math.max(0, total - implFailed);
   const passPct = total > 0 ? Math.round((passed / total) * 1000) / 10 : 100;
 
   return {
-    isReference: impl.isReference,
+    isReference,
     total,
     passed,
     passPct,

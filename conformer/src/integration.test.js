@@ -7,7 +7,7 @@ const path = require('path');
 const os = require('os');
 const { ResultsStore } = require('../../results');
 const { discoverCorpus } = require('./corpus');
-const { computeCorpusFingerprint, runConformance } = require('./index');
+const { computeCorpusFingerprint, runConformance, resultId } = require('./index');
 const { buildRequestBody } = require('./execute');
 
 let tmpDir;
@@ -55,19 +55,17 @@ function writeRegistry(drivers, reference = 'ref') {
 }
 
 function makeSessionFactory(handlers) {
-  // handlers: { name: (body) => ({ data, errors? }) | 'error' string | { error, stderr? } | Error-to-throw }
   return async (driver) => {
     const handler = handlers[driver.name];
     if (!handler) throw new Error(`no handler for driver ${driver.name}`);
     const version = handler.version !== undefined ? handler.version : null;
-    const imageDigest = handler.imageDigest || 'stub-image-' + driver.name;
+    const imageDigest = handler.imageDigest || `stub-image-${driver.name}`;
     return {
       version,
       imageDigest,
       async execute(test) {
         const body = buildRequestBody(test);
-        const resp = await handler(body, test);
-        return resp;
+        return handler(body, test);
       },
       async stop() { /* noop */ },
     };
@@ -107,6 +105,10 @@ async function runWithCustomSession(createSession, corpusDir, argv = []) {
     if (prevResults === undefined) delete process.env.RESULTS_DIR; else process.env.RESULTS_DIR = prevResults;
     if (prevCorpus === undefined) delete process.env.CORPUS_DIR; else process.env.CORPUS_DIR = prevCorpus;
   }
+}
+
+function loadLatest() {
+  return ResultsStore.fromDirectory(tmpResultsDir).loadLatestRun();
 }
 
 describe('integration: parallel session startup', () => {
@@ -207,38 +209,71 @@ describe('integration: parallel session startup', () => {
 });
 
 describe('integration: self-comparison', () => {
-  it('identical impls produce all true', async () => {
+  it('identical impls produce zero non-pass results', async () => {
     const corpusDir = path.join(tmpDir, 'corpus');
     writeCorpusCase(corpusDir, 'ok-test', 'ok-query', 'type Query { ok: String }', '{ ok }');
     writeRegistry(['ref', 'conformant']);
 
     const handler = () => ({ result: { data: { ok: 'value' } } });
-    const handlers = Object.assign((body) => handler(body), { version: 'v1' });
     await runInTmp({ ref: handler, conformant: handler }, corpusDir);
 
-    const store = ResultsStore.fromDirectory(tmpResultsDir);
-    const runResult = store.loadLatestRunSummary();
-    assert.ok(runResult);
-    assert.equal(runResult.reference.name, 'ref');
-    const failures = store.getImplFailures('conformant');
-    assert.equal(failures.length, 0);
+    const latest = loadLatest();
+    assert.ok(latest);
+    assert.equal(latest.run.referenceImplId, 'ref');
+    assert.equal(latest.run.testCaseCount, 1);
+    assert.equal(latest.run.resultsByImpl.conformant.failed, 0);
+    assert.equal(latest.run.resultsByImpl.conformant.errored, 0);
+    assert.deepStrictEqual(latest.resultsByImpl.conformant, []);
+  });
+});
+
+describe('integration: conformant driver error', () => {
+  it('classifies driver-error responses as status "error", not "fail"', async () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    writeCorpusCase(corpusDir, 'ok-test', 'ok-query', 'type Query { ok: String }', '{ ok }');
+    writeRegistry(['ref', 'crasher', 'differs']);
+
+    const refHandler = () => ({ result: { data: { ok: 'value' } } });
+    const crasherHandler = () => ({ error: 'timeout', stderr: 'no response from driver' });
+    const differsHandler = () => ({ result: { data: { ok: 'other' } } });
+
+    await runInTmp(
+      { ref: refHandler, crasher: crasherHandler, differs: differsHandler },
+      corpusDir,
+    );
+
+    const latest = loadLatest();
+    assert.equal(latest.run.resultsByImpl.crasher.errored, 1);
+    assert.equal(latest.run.resultsByImpl.crasher.failed, 0);
+    assert.equal(latest.run.resultsByImpl.differs.failed, 1);
+    assert.equal(latest.run.resultsByImpl.differs.errored, 0);
+
+    const crasherResult = latest.resultsByImpl.crasher[0];
+    assert.equal(crasherResult.status, 'error');
+    assert.equal(crasherResult.error, 'timeout');
+    assert.equal(crasherResult.stderr, 'no response from driver');
+
+    const differsResult = latest.resultsByImpl.differs[0];
+    assert.equal(differsResult.status, 'fail');
+    assert.deepStrictEqual(differsResult.expected, { data: { ok: 'value' } });
+    assert.deepStrictEqual(differsResult.actual, { data: { ok: 'other' } });
   });
 });
 
 describe('integration: incremental skip', () => {
-  it('second run skips unchanged conformant and reuses prior failures', async () => {
+  it('second run skips unchanged conformant and reuses prior non-pass results', async () => {
     const corpusDir = path.join(tmpDir, 'corpus');
     writeCorpusCase(corpusDir, 'ok-test', 'ok-query', 'type Query { ok: String }', '{ ok }');
     writeRegistry(['ref', 'conformant']);
 
     const refHandler = () => ({ result: { data: { ok: 'value' } } });
-    const conformantHandler = () => ({ result: { data: { ok: 'value' } } });
+    const conformantHandler = () => ({ result: { data: { ok: 'differs' } } });
     await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
 
-    const store1 = ResultsStore.fromDirectory(tmpResultsDir);
-    const run1 = store1.loadLatestRunSummary();
+    const first = loadLatest();
+    assert.equal(first.resultsByImpl.conformant.length, 1);
+    const firstFailureTestCaseId = first.resultsByImpl.conformant[0].testCaseId;
 
-    // Second run: same version (stub-sha-name). Expect skip.
     const stderrChunks = [];
     const origWrite = process.stderr.write.bind(process.stderr);
     process.stderr.write = (chunk) => { stderrChunks.push(String(chunk)); return true; };
@@ -251,14 +286,13 @@ describe('integration: incremental skip', () => {
     assert.ok(stderr.includes('Skipping conformant (conformant)'),
       'should log that conformant was skipped');
 
-    const store2 = ResultsStore.fromDirectory(tmpResultsDir);
-    const runs = store2.listRuns();
-    assert.equal(runs.length, 2);
-    const run2 = store2.loadLatestRun();
-    assert.deepStrictEqual(
-      run2.conformants.conformant.failuresByTestKey,
-      run1.conformants.conformant.failuresByTestKey,
-    );
+    const runsIdx = ResultsStore.fromDirectory(tmpResultsDir).listRuns();
+    assert.equal(runsIdx.length, 2);
+
+    const second = loadLatest();
+    assert.equal(second.resultsByImpl.conformant.length, 1);
+    assert.equal(second.resultsByImpl.conformant[0].testCaseId, firstFailureTestCaseId);
+    assert.equal(second.resultsByImpl.conformant[0].runId, second.run.id);
   });
 
   it('reuses failure-only skipped results without re-running', async () => {
@@ -267,35 +301,46 @@ describe('integration: incremental skip', () => {
     writeRegistry(['ref', 'conformant']);
 
     const discoveredTests = discoverCorpus(corpusDir);
-    const corpusTotal = discoveredTests.length;
     const corpusFingerprint = computeCorpusFingerprint(discoveredTests);
 
+    const priorRunId = 'prior-run';
     const store = ResultsStore.fromDirectory(tmpResultsDir);
-    store.recordRun({
-      id: 'prior-run',
-      timestamp: '2026-03-18T00:00:00.000Z',
-      reference: {
-        name: 'ref',
-        version: null,
-        imageDigest: 'stub-image-ref',
-        scoringModel: 'runnable-set-v1',
-        total: corpusTotal,
-        errors: 0,
-        corpusTotal,
-        corpusFingerprint,
-        excluded: 0,
-      },
-      conformants: {
-        conformant: {
-          version: null,
-          imageDigest: 'stub-image-conformant',
-          total: corpusTotal,
-          passed: 0,
-          failuresByTestKey: {
-            'ok-test/ok-query': { testKey: 'ok-test/ok-query', error: 'seeded mismatch' },
-          },
+    store.writeRun({
+      run: {
+        id: priorRunId,
+        timestamp: '2026-03-18T00:00:00.000Z',
+        referenceImplId: 'ref',
+        implIds: ['ref', 'conformant'],
+        testCaseCount: 1,
+        resultsByImpl: {
+          ref: { implId: 'ref', failed: 0, excluded: 0, errored: 0, results: [] },
+          conformant: { implId: 'conformant', failed: 1, excluded: 0, errored: 0, results: [] },
         },
       },
+      resultsByImpl: {
+        ref: [],
+        conformant: [{
+          id: resultId(priorRunId, 'conformant', 'ok-test/ok-query'),
+          runId: priorRunId,
+          implId: 'conformant',
+          testCaseId: 'ok-test/ok-query',
+          status: 'fail',
+          error: 'seeded mismatch',
+        }],
+      },
+      conformerMeta: {
+        corpusFingerprint,
+        scoringModel: 'runnable-set-v1',
+        runnableCount: 1,
+        implMeta: {
+          ref: { imageDigest: 'stub-image-ref', version: null },
+          conformant: { imageDigest: 'stub-image-conformant', version: null },
+        },
+      },
+      impls: [
+        { id: 'ref', name: 'ref', language: 'unknown' },
+        { id: 'conformant', name: 'conformant', language: 'unknown' },
+      ],
     });
 
     const handler = () => ({ result: { data: { ok: 'value' } } });
@@ -310,11 +355,10 @@ describe('integration: incremental skip', () => {
 
     assert.match(stderrChunks.join(''), /Skipping conformant \(conformant\)/);
 
-    const latestRun = ResultsStore.fromDirectory(tmpResultsDir).loadLatestRunSummary();
-    assert.equal(latestRun.conformants.conformant.total, corpusTotal);
-    assert.equal(latestRun.conformants.conformant.passed, 0);
+    const latest = loadLatest();
+    assert.equal(latest.run.resultsByImpl.conformant.failed, 1);
     assert.deepStrictEqual(
-      Object.keys(latestRun.conformants.conformant.failuresByTestKey),
+      latest.resultsByImpl.conformant.map((r) => r.testCaseId),
       ['ok-test/ok-query'],
     );
   });
@@ -361,12 +405,11 @@ describe('integration: corpus change invalidates skip', () => {
 
     await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
 
-    const run1 = ResultsStore.fromDirectory(tmpResultsDir).loadLatestRunSummary();
-    assert.ok(run1.reference.corpusFingerprint);
-    assert.equal(run1.conformants.conformant.total, 1);
+    const run1 = loadLatest();
+    assert.ok(run1.conformerMeta.corpusFingerprint);
+    assert.equal(run1.run.testCaseCount, 1);
     const runsAfterFirst = conformantRuns;
 
-    // Grow the corpus
     writeCorpusCase(corpusDir, 'ok-test-2', 'ok-query', 'type Query { ok: String }', '{ ok }');
 
     const stderrChunks = [];
@@ -383,30 +426,9 @@ describe('integration: corpus change invalidates skip', () => {
       'conformant must not be skipped when corpus changed');
     assert.ok(conformantRuns > runsAfterFirst, 'conformant should have actually run');
 
-    const run2 = ResultsStore.fromDirectory(tmpResultsDir).loadLatestRunSummary();
-    assert.equal(run2.conformants.conformant.total, 2);
-    assert.notEqual(run2.reference.corpusFingerprint, run1.reference.corpusFingerprint);
-  });
-});
-
-describe('integration: object-ordering quirk', () => {
-  it('marks a conformant with different key order as matching with quirk', async () => {
-    const corpusDir = path.join(tmpDir, 'corpus');
-    writeCorpusCase(corpusDir, 'ordering-test', 'ordering-query',
-      'type Query { a: String b: String }', '{ a b }');
-    writeRegistry(['ref', 'conformant']);
-
-    const refHandler = () => ({ result: { data: { a: 'x', b: 'y' } } });
-    const conformantHandler = () => ({ result: { data: { b: 'y', a: 'x' } } });
-
-    await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
-
-    const run = ResultsStore.fromDirectory(tmpResultsDir).loadLatestRunSummary();
-    assert.equal(run.conformants.conformant.passed, 1);
-    assert.deepStrictEqual(
-      run.conformants.conformant.quirksByTestKey,
-      { 'ordering-test/ordering-query': ['object-ordering'] },
-    );
+    const run2 = loadLatest();
+    assert.equal(run2.run.testCaseCount, 2);
+    assert.notEqual(run2.conformerMeta.corpusFingerprint, run1.conformerMeta.corpusFingerprint);
   });
 });
 
@@ -426,19 +448,16 @@ describe('integration: reference exclusions', () => {
 
     await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
 
-    const store = ResultsStore.fromDirectory(tmpResultsDir);
-    const run = store.loadLatestRunSummary();
+    const latest = loadLatest();
+    assert.equal(latest.run.testCaseCount, 2);
+    assert.equal(latest.run.resultsByImpl.ref.excluded, 1);
+    assert.equal(latest.run.resultsByImpl.conformant.failed, 0);
 
-    assert.equal(run.reference.total, 1);
-    assert.equal(run.reference.excluded, 1);
-    assert.equal(run.reference.corpusTotal, 2);
-    assert.equal(run.reference.exclusions.length, 1);
-    assert.equal(run.reference.exclusions[0].testKey, 'excluded-test/excluded-query');
-
-    const conformant = run.conformants.conformant;
-    assert.equal(conformant.total, 1);
-    assert.equal(conformant.passed, 1);
-    assert.deepStrictEqual(Object.keys(conformant.failuresByTestKey), []);
+    const refResults = latest.resultsByImpl.ref;
+    const excluded = refResults.filter((r) => r.status === 'excluded');
+    assert.equal(excluded.length, 1);
+    assert.equal(excluded[0].testCaseId, 'excluded-test/excluded-query');
+    assert.equal(excluded[0].error, 'reference exploded');
 
     assert.equal(conformantCalls, 1, 'conformant should only run for the non-excluded test');
   });
@@ -469,26 +488,15 @@ describe('integration: reference exclusions', () => {
 
     await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
 
-    const store = ResultsStore.fromDirectory(tmpResultsDir);
-    const run = store.loadLatestRunSummary();
+    const latest = loadLatest();
+    assert.equal(latest.run.resultsByImpl.ref.excluded, 1);
+    const refExcludedResult = latest.resultsByImpl.ref.find((r) => r.status === 'excluded');
+    assert.equal(refExcludedResult.testCaseId, 'err-test/err-query');
+    assert.equal(refExcludedResult.error, undefined);
+    assert.ok(Array.isArray(refExcludedResult.actual.errors));
+    assert.equal(refExcludedResult.actual.errors[0].message, 'validation failed: bad field');
 
-    assert.equal(run.reference.total, 1);
-    assert.equal(run.reference.excluded, 1);
-    assert.equal(run.reference.corpusTotal, 2);
-    assert.equal(run.reference.exclusions.length, 1);
-    assert.equal(run.reference.exclusions[0].testKey, 'err-test/err-query');
-    assert.ok(!('error' in run.reference.exclusions[0]), 'no redundant error tag when response is present');
-    const errResponse = run.reference.exclusions[0].response;
-    assert.ok(errResponse, 'should capture the reference response');
-    assert.ok(Array.isArray(errResponse.errors));
-    assert.equal(errResponse.errors.length, 1);
-    assert.equal(errResponse.errors[0].message, 'validation failed: bad field');
-
-    const conformant = run.conformants.conformant;
-    assert.equal(conformant.total, 1);
-    assert.equal(conformant.passed, 1);
-    assert.deepStrictEqual(Object.keys(conformant.failuresByTestKey), []);
-
+    assert.equal(latest.run.resultsByImpl.conformant.failed, 0);
     assert.equal(conformantCalls, 1, 'conformant should only run for the non-excluded test');
   });
 
@@ -512,16 +520,13 @@ describe('integration: reference exclusions', () => {
 
     await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
 
-    const store = ResultsStore.fromDirectory(tmpResultsDir);
-    const run = store.loadLatestRunSummary();
-
-    assert.equal(run.reference.total, 0);
-    assert.equal(run.reference.excluded, 1);
-    assert.equal(run.reference.exclusions[0].testKey, 'partial-test/partial-query');
-    const partialResponse = run.reference.exclusions[0].response;
-    assert.ok(partialResponse, 'should capture the reference response');
-    assert.deepStrictEqual(partialResponse.data, { ok: null });
-    assert.equal(partialResponse.errors[0].message, 'resolver failed');
+    const latest = loadLatest();
+    assert.equal(latest.run.testCaseCount, 1);
+    assert.equal(latest.run.resultsByImpl.ref.excluded, 1);
+    const refExcludedResult = latest.resultsByImpl.ref.find((r) => r.status === 'excluded');
+    assert.equal(refExcludedResult.testCaseId, 'partial-test/partial-query');
+    assert.deepStrictEqual(refExcludedResult.actual.data, { ok: null });
+    assert.equal(refExcludedResult.actual.errors[0].message, 'resolver failed');
 
     assert.equal(conformantCalls, 0, 'conformant should not run when reference produced errors');
   });
@@ -536,12 +541,9 @@ describe('integration: reference exclusions', () => {
 
     await runInTmp({ ref: refHandler, conformant: conformantHandler }, corpusDir);
 
-    const store = ResultsStore.fromDirectory(tmpResultsDir);
-    const run = store.loadLatestRunSummary();
-
-    assert.equal(run.reference.total, 1);
-    assert.equal(run.reference.excluded, 0);
-    assert.equal(run.conformants.conformant.passed, 1);
+    const latest = loadLatest();
+    assert.equal(latest.run.resultsByImpl.ref.excluded, 0);
+    assert.equal(latest.run.resultsByImpl.conformant.failed, 0);
   });
 
   it('reuses prior reference exclusions when all conformants are skipped', async () => {
@@ -553,29 +555,43 @@ describe('integration: reference exclusions', () => {
     const discoveredTests = discoverCorpus(corpusDir);
     const corpusFingerprint = computeCorpusFingerprint(discoveredTests);
 
-    ResultsStore.fromDirectory(tmpResultsDir).recordRun({
-      id: 'prior-run',
-      timestamp: '2026-03-18T00:00:00.000Z',
-      reference: {
-        name: 'ref',
-        version: null,
-        imageDigest: 'stub-image-ref',
-        scoringModel: 'runnable-set-v1',
-        total: 1,
-        errors: 0,
-        corpusTotal: 2,
-        corpusFingerprint,
-        excluded: 1,
-        exclusions: [{ testKey: 'excluded-test/excluded-query', error: 'reference exploded' }],
-      },
-      conformants: {
-        conformant: {
-          version: null,
-          imageDigest: 'stub-image-conformant',
-          total: 1,
-          passed: 1,
+    const priorRunId = 'prior-run';
+    ResultsStore.fromDirectory(tmpResultsDir).writeRun({
+      run: {
+        id: priorRunId,
+        timestamp: '2026-03-18T00:00:00.000Z',
+        referenceImplId: 'ref',
+        implIds: ['ref', 'conformant'],
+        testCaseCount: 2,
+        resultsByImpl: {
+          ref: { implId: 'ref', failed: 0, excluded: 1, errored: 0, results: [] },
+          conformant: { implId: 'conformant', failed: 0, excluded: 0, errored: 0, results: [] },
         },
       },
+      resultsByImpl: {
+        ref: [{
+          id: resultId(priorRunId, 'ref', 'excluded-test/excluded-query'),
+          runId: priorRunId,
+          implId: 'ref',
+          testCaseId: 'excluded-test/excluded-query',
+          status: 'excluded',
+          error: 'reference exploded',
+        }],
+        conformant: [],
+      },
+      conformerMeta: {
+        corpusFingerprint,
+        scoringModel: 'runnable-set-v1',
+        runnableCount: 1,
+        implMeta: {
+          ref: { imageDigest: 'stub-image-ref', version: null },
+          conformant: { imageDigest: 'stub-image-conformant', version: null },
+        },
+      },
+      impls: [
+        { id: 'ref', name: 'ref', language: 'unknown' },
+        { id: 'conformant', name: 'conformant', language: 'unknown' },
+      ],
     });
 
     let refCalls = 0;
@@ -593,11 +609,11 @@ describe('integration: reference exclusions', () => {
     }
     assert.match(stderrChunks.join(''), /All conformants unchanged, skipping test execution/);
 
-    const latestRun = ResultsStore.fromDirectory(tmpResultsDir).loadLatestRunSummary();
-    assert.equal(latestRun.reference.total, 1);
-    assert.equal(latestRun.reference.excluded, 1);
-    assert.equal(latestRun.reference.exclusions.length, 1);
-    assert.equal(latestRun.reference.exclusions[0].testKey, 'excluded-test/excluded-query');
+    const latest = loadLatest();
+    assert.equal(latest.run.testCaseCount, 2);
+    assert.equal(latest.run.resultsByImpl.ref.excluded, 1);
+    const refExcludedResult = latest.resultsByImpl.ref.find((r) => r.status === 'excluded');
+    assert.equal(refExcludedResult.testCaseId, 'excluded-test/excluded-query');
 
     assert.equal(refCalls, 0, 'reference should not run when reusing prior reference exclusions');
     assert.equal(conformantCalls, 0, 'conformant should not run when skipped');

@@ -57,53 +57,15 @@ function unorderedEqual(a, b) {
   return a === b;
 }
 
-// Recursively checks whether two values have identical object-key orderings
-// wherever both sides present the same keys. Assumes values already match
-// under unordered equality. Returns false as soon as any object-level key
-// ordering diverges.
-function sameKeyOrder(a, b) {
-  if (a === null || b === null) return true;
-  if (typeof a !== typeof b) return true;
-
-  if (Array.isArray(a)) {
-    for (let i = 0; i < a.length; i += 1) {
-      if (!sameKeyOrder(a[i], b[i])) return false;
-    }
-    return true;
-  }
-
-  if (typeof a === 'object') {
-    const keysA = Object.keys(a);
-    const keysB = Object.keys(b);
-    if (keysA.length !== keysB.length) return true;
-    for (let i = 0; i < keysA.length; i += 1) {
-      if (keysA[i] !== keysB[i]) return false;
-    }
-    for (const key of keysA) {
-      if (!sameKeyOrder(a[key], b[key])) return false;
-    }
-    return true;
-  }
-
-  return true;
-}
-
 function compareResults(a, b) {
   const errorA = normalizeHarnessError(a);
   const errorB = normalizeHarnessError(b);
 
-  if (errorA && errorB) {
-    return { matches: deepEqual(errorA, errorB), quirks: [] };
-  }
-  if (errorA) return { matches: false, quirks: [] };
-  if (errorB) return { matches: false, quirks: [] };
+  if (errorA && errorB) return { matches: deepEqual(errorA, errorB) };
+  if (errorA) return { matches: false };
+  if (errorB) return { matches: false };
 
-  if (!unorderedEqual(a.result, b.result)) {
-    return { matches: false, quirks: [] };
-  }
-
-  const quirks = sameKeyOrder(a.result, b.result) ? [] : ['object-ordering'];
-  return { matches: true, quirks };
+  return { matches: unorderedEqual(a.result, b.result) };
 }
 
-module.exports = { deepEqual, unorderedEqual, sameKeyOrder, normalizeHarnessError, compareResults };
+module.exports = { deepEqual, unorderedEqual, normalizeHarnessError, compareResults };

@@ -116,73 +116,67 @@ describe('compareResults', () => {
   it('both successful and matching', () => {
     const a = { result: { data: { x: 1 } } };
     const b = { result: { data: { x: 1 } } };
-    assert.deepStrictEqual(compareResults(a, b), { matches: true, quirks: [] });
+    assert.deepStrictEqual(compareResults(a, b), { matches: true });
   });
 
-  it('same data, different top-level key order flags object-ordering quirk', () => {
+  it('same data, different top-level key order still matches', () => {
     const a = { result: { data: { a: 1, b: 2 } } };
     const b = { result: { data: { b: 2, a: 1 } } };
-    assert.deepStrictEqual(compareResults(a, b), { matches: true, quirks: ['object-ordering'] });
+    assert.deepStrictEqual(compareResults(a, b), { matches: true });
   });
 
-  it('same data, different nested key order flags object-ordering quirk', () => {
+  it('same data, different nested key order still matches', () => {
     const a = { result: { data: { hero: { name: 'str', id: 'i' } } } };
     const b = { result: { data: { hero: { id: 'i', name: 'str' } } } };
-    assert.deepStrictEqual(compareResults(a, b), { matches: true, quirks: ['object-ordering'] });
-  });
-
-  it('identical key order produces no quirks', () => {
-    const a = { result: { data: { hero: { name: 'str', id: 'i' } } } };
-    const b = { result: { data: { hero: { name: 'str', id: 'i' } } } };
-    assert.deepStrictEqual(compareResults(a, b), { matches: true, quirks: [] });
+    assert.deepStrictEqual(compareResults(a, b), { matches: true });
   });
 
   it('both successful but different data', () => {
     const a = { result: { data: { x: 1 } } };
     const b = { result: { data: { x: 2 } } };
-    assert.deepStrictEqual(compareResults(a, b), { matches: false, quirks: [] });
+    assert.deepStrictEqual(compareResults(a, b), { matches: false });
   });
 
   it('reference errored', () => {
     const a = { error: 'timeout' };
     const b = { result: { data: { x: 1 } } };
-    assert.deepStrictEqual(compareResults(a, b), { matches: false, quirks: [] });
+    assert.deepStrictEqual(compareResults(a, b), { matches: false });
   });
 
   it('conformant errored', () => {
     const a = { result: { data: { x: 1 } } };
     const b = { error: 'crash' };
-    assert.deepStrictEqual(compareResults(a, b), { matches: false, quirks: [] });
+    assert.deepStrictEqual(compareResults(a, b), { matches: false });
   });
 
   it('matching harness errors match', () => {
     const a = { error: 'process exited with code 1' };
     const b = { error: 'process exited with code 1' };
-    assert.deepStrictEqual(compareResults(a, b), { matches: true, quirks: [] });
+    assert.deepStrictEqual(compareResults(a, b), { matches: true });
   });
 
   it('different exit codes do not match', () => {
     const a = { error: 'process exited with code 1' };
     const b = { error: 'process exited with code 2' };
-    assert.deepStrictEqual(compareResults(a, b), { matches: false, quirks: [] });
+    assert.deepStrictEqual(compareResults(a, b), { matches: false });
   });
 
   it('timeout vs crash do not match', () => {
     const a = { error: 'timeout' };
     const b = { error: 'spawn foo ENOENT' };
-    assert.deepStrictEqual(compareResults(a, b), { matches: false, quirks: [] });
+    assert.deepStrictEqual(compareResults(a, b), { matches: false });
   });
 
   it('invalid JSON vs exit do not match', () => {
     const a = { error: 'invalid JSON output' };
     const b = { error: 'process exited with code 1' };
-    assert.deepStrictEqual(compareResults(a, b), { matches: false, quirks: [] });
+    assert.deepStrictEqual(compareResults(a, b), { matches: false });
   });
 
   it('invalid protocol output is treated like other invalid harness output', () => {
     const a = { error: 'invalid protocol output' };
     const b = { error: 'invalid JSON output' };
-    assert.deepStrictEqual(compareResults(a, b), { matches: true, quirks: [] });
+    assert.deepStrictEqual(compareResults(a, b), { matches: true });
   });
 });
 

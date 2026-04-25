@@ -1,10 +1,11 @@
-// Types mirror plan P6.1.
+// Types mirror plan P6.1. Reference-ness is per-run (see
+// `Run.referenceImplId`) rather than per-impl; derive with
+// `impl.id === run.referenceImplId`.
 
 export interface Impl {
   id: string;
   name: string;
   language: string;
-  isReference: boolean;
   manifestUrl?: string;
   repoUrl?: string;
   version?: string;
