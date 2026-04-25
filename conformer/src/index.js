@@ -498,12 +498,15 @@ async function main(argv = process.argv.slice(2)) {
 }
 
 module.exports = {
+  buildImpl,
+  buildResult,
   computeCorpusFingerprint,
   parseCliArgs,
   parseConcurrency,
+  readManifestFile,
+  resultId,
   runConformance,
   runWithConcurrency,
-  resultId,
 };
 
 if (require.main === module) {

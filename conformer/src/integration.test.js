@@ -227,6 +227,39 @@ describe('integration: self-comparison', () => {
   });
 });
 
+describe('integration: conformant driver error', () => {
+  it('classifies driver-error responses as status "error", not "fail"', async () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    writeCorpusCase(corpusDir, 'ok-test', 'ok-query', 'type Query { ok: String }', '{ ok }');
+    writeRegistry(['ref', 'crasher', 'differs']);
+
+    const refHandler = () => ({ result: { data: { ok: 'value' } } });
+    const crasherHandler = () => ({ error: 'timeout', stderr: 'no response from driver' });
+    const differsHandler = () => ({ result: { data: { ok: 'other' } } });
+
+    await runInTmp(
+      { ref: refHandler, crasher: crasherHandler, differs: differsHandler },
+      corpusDir,
+    );
+
+    const latest = loadLatest();
+    assert.equal(latest.run.resultsByImpl.crasher.errored, 1);
+    assert.equal(latest.run.resultsByImpl.crasher.failed, 0);
+    assert.equal(latest.run.resultsByImpl.differs.failed, 1);
+    assert.equal(latest.run.resultsByImpl.differs.errored, 0);
+
+    const crasherResult = latest.resultsByImpl.crasher[0];
+    assert.equal(crasherResult.status, 'error');
+    assert.equal(crasherResult.error, 'timeout');
+    assert.equal(crasherResult.stderr, 'no response from driver');
+
+    const differsResult = latest.resultsByImpl.differs[0];
+    assert.equal(differsResult.status, 'fail');
+    assert.deepStrictEqual(differsResult.expected, { data: { ok: 'value' } });
+    assert.deepStrictEqual(differsResult.actual, { data: { ok: 'other' } });
+  });
+});
+
 describe('integration: incremental skip', () => {
   it('second run skips unchanged conformant and reuses prior non-pass results', async () => {
     const corpusDir = path.join(tmpDir, 'corpus');

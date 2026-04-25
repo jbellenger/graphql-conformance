@@ -147,6 +147,95 @@ describe('ResultsStore', () => {
       assert.ok(!('_conformerMeta' in runs[0]), 'runs.json entries must not leak conformer meta');
     });
   });
+
+  describe('loadRun', () => {
+    it('returns null for an unknown id', () => {
+      const store = ResultsStore.inMemory();
+      store.writeRun({ run: makeRun(), resultsByImpl: {}, conformerMeta: makeMeta(), impls: makeImpls() });
+      assert.equal(store.loadRun('does-not-exist'), null);
+    });
+
+    it('returns the same shape as loadLatestRun for a known id', () => {
+      const store = ResultsStore.inMemory();
+      const run = makeRun({ id: 'specific-run' });
+      store.writeRun({
+        run,
+        resultsByImpl: {
+          'graphql-java': [{
+            id: 'r1', runId: run.id, implId: 'graphql-java',
+            testCaseId: 'a/b', status: 'fail',
+          }],
+        },
+        conformerMeta: makeMeta(),
+        impls: makeImpls(),
+      });
+      const loaded = store.loadRun('specific-run');
+      assert.equal(loaded.run.id, 'specific-run');
+      assert.equal(loaded.resultsByImpl['graphql-java'][0].testCaseId, 'a/b');
+      assert.equal(loaded.conformerMeta.corpusFingerprint, 'fingerprint-1');
+    });
+  });
+
+  describe('overwriting the same run id', () => {
+    it('replaces the prior entry in runs.json rather than duplicating', () => {
+      const store = ResultsStore.inMemory();
+      const sameId = 'same-id';
+
+      store.writeRun({
+        run: makeRun({ id: sameId, timestamp: '2026-03-15T00:00:00Z' }),
+        resultsByImpl: {}, conformerMeta: makeMeta(), impls: makeImpls(),
+      });
+
+      store.writeRun({
+        run: makeRun({
+          id: sameId,
+          timestamp: '2026-03-16T00:00:00Z',
+          testCaseCount: 99,
+        }),
+        resultsByImpl: {}, conformerMeta: makeMeta(), impls: makeImpls(),
+      });
+
+      const runs = store.listRuns();
+      assert.equal(runs.length, 1);
+      assert.equal(runs[0].timestamp, '2026-03-16T00:00:00Z');
+      assert.equal(runs[0].testCaseCount, 99);
+    });
+  });
+
+  describe('impl history', () => {
+    it('omits a run from an impl\'s history when that impl was not in the run', () => {
+      const store = ResultsStore.inMemory();
+
+      // r1: both impls
+      store.writeRun({
+        run: makeRun({ id: 'r1', timestamp: '2026-03-15T00:00:00Z' }),
+        resultsByImpl: {}, conformerMeta: makeMeta(), impls: makeImpls(),
+      });
+
+      // r2: only graphql-js present (graphql-java missing from resultsByImpl)
+      store.writeRun({
+        run: makeRun({
+          id: 'r2',
+          timestamp: '2026-03-16T00:00:00Z',
+          implIds: ['graphql-js'],
+          resultsByImpl: {
+            'graphql-js': { implId: 'graphql-js', failed: 0, excluded: 0, errored: 0, results: [] },
+          },
+        }),
+        resultsByImpl: {},
+        conformerMeta: makeMeta(),
+        impls: [makeImpls()[0]],
+      });
+
+      const javaHistory = store._data.get('impls/graphql-java/history');
+      assert.equal(javaHistory.length, 1, 'java history should skip r2');
+      assert.equal(javaHistory[0].runId, 'r1');
+
+      const jsHistory = store._data.get('impls/graphql-js/history');
+      assert.equal(jsHistory.length, 2);
+      assert.equal(jsHistory[0].runId, 'r2');
+    });
+  });
 });
 
 describe('FileData', () => {
