@@ -12,9 +12,10 @@ const { ResultsStore } = require('../../results');
 
 const MANIFEST_REPO_BASE = 'https://github.com/jbellenger/graphql-conformance/blob/master';
 
+// Run IDs are opaque UUIDs. The run's wall-clock timestamp is stored
+// separately in Run.timestamp — consumers format that for display.
 function generateRunId() {
-  const now = new Date();
-  return now.toISOString().replace(/:/g, '-').replace(/\./g, '-').replace(/Z$/, 'Z');
+  return crypto.randomUUID();
 }
 
 function parseConcurrency(raw) {
@@ -597,6 +598,7 @@ module.exports = {
   buildImpl,
   buildResult,
   computeCorpusFingerprint,
+  generateRunId,
   parseCliArgs,
   parseConcurrency,
   parseMaxImplFailures,
