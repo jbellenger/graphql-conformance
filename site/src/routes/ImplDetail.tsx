@@ -1,11 +1,12 @@
+import type { KeyboardEvent, MouseEvent } from 'react';
 import { useEffect, useMemo, useRef } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import {
   useImpl,
   useImplHistory,
   useImpls,
-  useLatestRun,
   useResults,
+  useRunOrLatest,
 } from '../repository/hooks';
 import type {
   Impl,
@@ -16,16 +17,19 @@ import type {
 import { HistoryChart } from '../components/HistoryChart';
 import { FailureCard } from '../components/FailureCard';
 import { computeRunStats, formatRunStatsLine } from '../lib/runStats';
+import { NotFound } from './NotFound';
+
+const RECENT_RUNS_LIMIT = 20;
 
 export function ImplDetail() {
-  const { name, testCaseId } = useParams();
+  const { name, testCaseId, runId } = useParams();
   const location = useLocation();
   const impls = useImpls();
   const impl = useImpl(name ?? '');
-  const latest = useLatestRun();
+  const runQuery = useRunOrLatest(runId);
   const history = useImplHistory(name);
   const results = useResults({
-    runId: latest.data?.id,
+    runId: runQuery.data?.id,
     implId: name,
   });
 
@@ -38,7 +42,7 @@ export function ImplDetail() {
   // scroll to that specific card instead of the section header.
   useEffect(() => {
     const ready =
-      impls.data && impl.data && latest.data && results.data !== undefined;
+      impls.data && impl.data && runQuery.data && results.data !== undefined;
     if (!ready) return;
     if (!/\/failures/.test(location.pathname)) return;
 
@@ -61,20 +65,20 @@ export function ImplDetail() {
   }, [
     impls.data,
     impl.data,
-    latest.data,
+    runQuery.data,
     results.data,
     testCaseId,
     location.pathname,
   ]);
 
   if (!name) {
-    return <div className="empty">Missing impl name.</div>;
+    return <NotFound message="Missing impl name." />;
   }
 
   const loading =
     impls.isLoading ||
     impl.isLoading ||
-    latest.isLoading ||
+    runQuery.isLoading ||
     history.isLoading ||
     results.isLoading;
 
@@ -83,24 +87,34 @@ export function ImplDetail() {
   // Validate the name against the allowlist; otherwise 404.
   const known = (impls.data ?? []).some((i) => i.id === name);
   if (!known) {
+    return <NotFound message={`Unknown impl: ${name}`} />;
+  }
+
+  // runId present but the run doesn't exist → 404 with an impl-latest fallback
+  // that keeps the user on this impl.
+  if (runId && !runQuery.data) {
     return (
-      <div className="empty">
-        <p>Unknown impl: {name}</p>
-        <p>
-          <Link to="/">Back to dashboard</Link>
-        </p>
-      </div>
+      <NotFound
+        message="That run isn't in the index."
+        fallbacks={[
+          {
+            label: 'View this impl in the latest run',
+            to: `/impl/${encodeURIComponent(name)}`,
+          },
+        ]}
+      />
     );
   }
 
-  if (!impl.data || !latest.data) {
-    return <div className="empty">No data for this impl.</div>;
+  if (!impl.data || !runQuery.data) {
+    return <NotFound message="No data for this impl." />;
   }
 
   return (
     <ImplDetailView
       impl={impl.data}
-      run={latest.data}
+      run={runQuery.data}
+      runId={runId}
       history={history.data ?? []}
       results={results.data ?? []}
       highlightedTestCaseId={testCaseId}
@@ -112,15 +126,24 @@ export function ImplDetail() {
 interface ImplDetailViewProps {
   impl: Impl;
   run: Run;
+  runId: string | undefined;
   history: ImplHistoryPoint[];
   results: Result[];
   highlightedTestCaseId?: string;
   failuresRef: React.RefObject<HTMLElement>;
 }
 
+// Prefix that preserves the pinned-run URL segment when one is present; empty
+// otherwise. All in-app navigation from the detail page should use this so a
+// user reading a permalinked run stays on that run as they click around.
+function runPrefix(runId: string | undefined): string {
+  return runId ? `/runs/${encodeURIComponent(runId)}` : '';
+}
+
 function ImplDetailView({
   impl,
   run,
+  runId,
   history,
   results,
   highlightedTestCaseId,
@@ -128,11 +151,14 @@ function ImplDetailView({
 }: ImplDetailViewProps) {
   const stats = computeRunStats(run, impl);
   const isReference = impl.id === run.referenceImplId;
-  const failureTo = stats.implFailed > 0 ? `/impl/${impl.id}/failures` : null;
+  const prefix = runPrefix(runId);
+  const failureTo =
+    stats.implFailed > 0 ? `${prefix}/impl/${impl.id}/failures` : null;
   const excludedTo =
     !isReference && stats.corpusExcluded > 0
-      ? `/impl/${run.referenceImplId}/failures`
+      ? `${prefix}/impl/${run.referenceImplId}/failures`
       : null;
+  const summaryHref = prefix || '/';
 
   const byStatus = useMemo(() => {
     const sorted = [...results].sort((a, b) =>
@@ -145,7 +171,7 @@ function ImplDetailView({
 
   return (
     <div className="detail-page">
-      <Link className="back" to="/">
+      <Link className="back" to={summaryHref}>
         ← Back to summary
       </Link>
 
@@ -204,15 +230,28 @@ function ImplDetailView({
       </section>
 
       {history.length > 1 && (
-        <section className="card detail-section-card chart-card">
-          <div className="detail-section-header">
-            <h3>History</h3>
-            <p>Pass rate over recorded runs.</p>
+        <div className="history-layout">
+          <section className="card detail-section-card chart-card">
+            <div className="detail-section-header">
+              <h3>History</h3>
+              <p>Pass rate over recorded runs.</p>
+            </div>
+            <div className="chart-container">
+              <HistoryChart history={history} />
+            </div>
+          </section>
+          {/* Slot wrapper: the inner card is absolutely-positioned so its
+              intrinsic height doesn't drive the grid row. The row height is
+              set by the chart card; the runs-history card stretches to fill
+              and scrolls its body when the row list exceeds that height. */}
+          <div className="runs-history-slot">
+            <RunsHistoryTable
+              history={history}
+              currentRunId={run.id}
+              implId={impl.id}
+            />
           </div>
-          <div className="chart-container">
-            <HistoryChart history={history} />
-          </div>
-        </section>
+        </div>
       )}
 
       {hasItems ? (
@@ -226,7 +265,7 @@ function ImplDetailView({
             <p>
               {byStatus.length}{' '}
               {isReference ? 'exclusion' : 'failure'}
-              {byStatus.length === 1 ? '' : 's'} in the latest run.
+              {byStatus.length === 1 ? '' : 's'} in this run.
             </p>
           </div>
           <div className="failure-list">
@@ -283,6 +322,102 @@ function MetaCard({
       )}
     </div>
   );
+}
+
+function RunsHistoryTable({
+  history,
+  currentRunId,
+  implId,
+}: {
+  history: ImplHistoryPoint[];
+  currentRunId: string;
+  implId: string;
+}) {
+  const rows = history.slice(0, RECENT_RUNS_LIMIT);
+  return (
+    <section className="card detail-section-card runs-history-card">
+      <div className="detail-section-header">
+        <h3>Other runs</h3>
+        <p>Last {rows.length} {rows.length === 1 ? 'run' : 'runs'}</p>
+      </div>
+      <div className="runs-history-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th className="runs-history-rate-col">Pass rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((h) => (
+              <RunsHistoryRow
+                key={h.runId}
+                point={h}
+                implId={implId}
+                isCurrent={h.runId === currentRunId}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  );
+}
+
+function RunsHistoryRow({
+  point,
+  implId,
+  isCurrent,
+}: {
+  point: ImplHistoryPoint;
+  implId: string;
+  isCurrent: boolean;
+}) {
+  const navigate = useNavigate();
+  const href = `/runs/${encodeURIComponent(point.runId)}/impl/${encodeURIComponent(implId)}`;
+  const passPct =
+    point.total > 0
+      ? Math.round((point.passed / point.total) * 1000) / 10
+      : 100;
+
+  const onClick = (e: MouseEvent<HTMLTableRowElement>) => {
+    if (e.button !== 0) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    navigate(href);
+  };
+  const onKeyDown = (e: KeyboardEvent<HTMLTableRowElement>) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      navigate(href);
+    }
+  };
+
+  return (
+    <tr
+      className={`runs-history-row${isCurrent ? ' is-current' : ''}`}
+      tabIndex={0}
+      role="link"
+      aria-current={isCurrent ? 'page' : undefined}
+      aria-label={`View ${formatTimestamp(point.timestamp)} run`}
+      data-testid={`runs-history-row-${point.runId}`}
+      onClick={onClick}
+      onKeyDown={onKeyDown}
+    >
+      <td>{formatCompactTimestamp(point.timestamp)}</td>
+      <td className="runs-history-rate-col mono">{passPct.toFixed(1)}%</td>
+    </tr>
+  );
+}
+
+function formatCompactTimestamp(t: string): string {
+  const d = new Date(t);
+  if (Number.isNaN(d.getTime())) return t;
+  return d.toLocaleString(undefined, {
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+  });
 }
 
 function ZeroFailures() {

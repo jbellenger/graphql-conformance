@@ -1,24 +1,46 @@
 import type { KeyboardEvent, MouseEvent, ReactNode } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useImpls, useLatestRun } from '../repository/hooks';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useImpls, useRunOrLatest } from '../repository/hooks';
 import type { Impl, Run } from '../repository/types';
 import { computeRunStats, formatRunStatsLine } from '../lib/runStats';
+import { NotFound } from './NotFound';
 
 export function Dashboard() {
+  const { runId } = useParams();
   const impls = useImpls();
-  const latest = useLatestRun();
+  const runQuery = useRunOrLatest(runId);
 
-  if (impls.isLoading || latest.isLoading) {
+  if (impls.isLoading || runQuery.isLoading) {
     return <div className="loading">Loading…</div>;
   }
-  if (impls.isError || latest.isError) {
-    return <div className="empty">Failed to load conformance data.</div>;
+  if (impls.isError || runQuery.isError) {
+    return (
+      <NotFound
+        message="Failed to load conformance data."
+        fallbacks={[]}
+      />
+    );
   }
-  if (!impls.data || !latest.data) {
-    return <div className="empty">No conformance data available yet.</div>;
+  // runId present but the run doesn't exist → 404 with a latest-run fallback.
+  if (runId && !runQuery.data) {
+    return (
+      <NotFound
+        message="That run isn't in the index."
+        fallbacks={[{ label: 'View the latest run', to: '/' }]}
+      />
+    );
+  }
+  if (!impls.data || !runQuery.data) {
+    return (
+      <NotFound
+        message="No conformance data available yet."
+        fallbacks={[]}
+      />
+    );
   }
 
-  const run = latest.data;
+  const run = runQuery.data;
+  const isPinned = runId != null;
   const reference = impls.data.find((i) => i.id === run.referenceImplId) ?? null;
   // Sort non-reference impls by pass rate descending; fall back to impl name
   // so the order is stable for ties.
@@ -35,16 +57,20 @@ export function Dashboard() {
   return (
     <div className="dashboard-layout">
       <div className="dashboard-sidebar">
-        {reference && <ReferenceCard impl={reference} run={run} />}
-        <LastRunCard run={run} />
+        {reference && (
+          <ReferenceCard impl={reference} run={run} runId={runId} />
+        )}
+        <LastRunCard run={run} isPinned={isPinned} />
       </div>
-      <ResultsTable impls={others} run={run} />
+      <ResultsTable impls={others} run={run} runId={runId} />
     </div>
   );
 }
 
-function implHref(impl: Impl): string {
-  return `/impl/${encodeURIComponent(impl.id)}`;
+function implHref(impl: Impl, runId: string | undefined): string {
+  const implSegment = encodeURIComponent(impl.id);
+  if (runId) return `/runs/${encodeURIComponent(runId)}/impl/${implSegment}`;
+  return `/impl/${implSegment}`;
 }
 
 // Returns true when a mouse event should fall through (user wants the native
@@ -77,10 +103,18 @@ function VersionLink({
   return <span className={className}>{impl.version}</span>;
 }
 
-function ReferenceCard({ impl, run }: { impl: Impl; run: Run }) {
+function ReferenceCard({
+  impl,
+  run,
+  runId,
+}: {
+  impl: Impl;
+  run: Run;
+  runId: string | undefined;
+}) {
   const stats = computeRunStats(run, impl);
   const navigate = useNavigate();
-  const href = implHref(impl);
+  const href = implHref(impl, runId);
   const onClick = (e: MouseEvent<HTMLElement>) => {
     if (shouldSkipRowActivation(e)) return;
     navigate(href);
@@ -121,10 +155,12 @@ function ReferenceCard({ impl, run }: { impl: Impl; run: Run }) {
   );
 }
 
-function LastRunCard({ run }: { run: Run }) {
+function LastRunCard({ run, isPinned }: { run: Run; isPinned: boolean }) {
+  const label = isPinned ? 'Run' : 'Last run';
+  const ariaLabel = isPinned ? 'Conformance run' : 'Last conformance run';
   return (
-    <aside className="card last-run-card" aria-label="Last conformance run">
-      <span className="last-run-label">Last run</span>
+    <aside className="card last-run-card" aria-label={ariaLabel}>
+      <span className="last-run-label">{label}</span>
       <div className="last-run-time">
         {new Date(run.timestamp).toLocaleString()}
       </div>
@@ -132,7 +168,15 @@ function LastRunCard({ run }: { run: Run }) {
   );
 }
 
-function ResultsTable({ impls, run }: { impls: Impl[]; run: Run }) {
+function ResultsTable({
+  impls,
+  run,
+  runId,
+}: {
+  impls: Impl[];
+  run: Run;
+  runId: string | undefined;
+}) {
   if (impls.length === 0) {
     return <div className="card empty">No non-reference impls in this run.</div>;
   }
@@ -147,7 +191,7 @@ function ResultsTable({ impls, run }: { impls: Impl[]; run: Run }) {
         </thead>
         <tbody>
           {impls.map((impl) => (
-            <ImplRow key={impl.id} impl={impl} run={run} />
+            <ImplRow key={impl.id} impl={impl} run={run} runId={runId} />
           ))}
         </tbody>
       </table>
@@ -155,10 +199,18 @@ function ResultsTable({ impls, run }: { impls: Impl[]; run: Run }) {
   );
 }
 
-function ImplRow({ impl, run }: { impl: Impl; run: Run }) {
+function ImplRow({
+  impl,
+  run,
+  runId,
+}: {
+  impl: Impl;
+  run: Run;
+  runId: string | undefined;
+}) {
   const stats = computeRunStats(run, impl);
   const navigate = useNavigate();
-  const href = implHref(impl);
+  const href = implHref(impl, runId);
   const onClick = (e: MouseEvent<HTMLTableRowElement>) => {
     if (shouldSkipRowActivation(e)) return;
     navigate(href);

@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 const {
-  buildImpl, buildResult, parseCliArgs, parseMaxImplFailures,
+  buildImpl, buildResult, generateRunId, parseCliArgs, parseMaxImplFailures,
   readManifestFile, resultId,
 } = require('./index');
 
@@ -43,6 +43,20 @@ describe('parseCliArgs', () => {
   it('invalid flag value yields null (disabled)', () => {
     const cli = parseCliArgs(['--max-impl-failures', '0']);
     assert.equal(cli.maxImplFailures, null);
+  });
+});
+
+describe('generateRunId', () => {
+  it('returns a UUID-shaped opaque string', () => {
+    const id = generateRunId();
+    assert.match(
+      id,
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/,
+    );
+  });
+
+  it('returns a fresh id on every call', () => {
+    assert.notEqual(generateRunId(), generateRunId());
   });
 });
 

@@ -308,6 +308,76 @@ tr:hover td { background: var(--color-surface-alt); }
   padding: 0.5rem 1.25rem 1.25rem 1.25rem;
 }
 
+/* Two-column row: history chart on the left, other-runs table on the right.
+   Stacks on narrow viewports. The chart card defines the row height; the
+   runs-history card stretches to match and scrolls its body if the list
+   doesn't fit. See `.runs-history-slot` for the technique. */
+.history-layout {
+  display: grid;
+  grid-template-columns: 1fr minmax(240px, 320px);
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+/* The slot is a positioned wrapper whose only child is absolutely positioned.
+   Because the inner card is out of normal flow, the slot has zero intrinsic
+   height — so the grid row is sized by the chart card alone. The inner card
+   then fills the slot (inset: 0) and scrolls its body internally. */
+.runs-history-slot {
+  position: relative;
+  min-height: 0;
+}
+
+.runs-history-slot > .runs-history-card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.runs-history-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.runs-history-card table { width: 100%; border-collapse: collapse; margin: 0; }
+.runs-history-card th,
+.runs-history-card td {
+  padding: 0.55rem 0.9rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+  font-size: 0.9rem;
+}
+.runs-history-card th {
+  background: var(--color-border-soft);
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.runs-history-rate-col { text-align: right !important; white-space: nowrap; }
+.runs-history-row {
+  cursor: pointer;
+  border-left: 3px solid transparent;
+}
+.runs-history-row:hover td { background: var(--color-surface-alt); }
+.runs-history-row:focus-visible {
+  outline: 2px solid var(--color-primary-soft);
+  outline-offset: -2px;
+}
+.runs-history-row.is-current {
+  border-left-color: var(--color-primary);
+  background: var(--color-primary-surface);
+}
+.runs-history-row.is-current td { background: transparent; }
+.runs-history-row.is-current:hover td { background: var(--color-surface-alt); }
+
 .mono { font-family: var(--font-mono); font-size: 0.85rem; }
 
 /* ---- Failure cards ---- */
@@ -523,6 +593,40 @@ tr:hover td { background: var(--color-surface-alt); }
   overflow-y: auto;
 }
 
+/* ---- Not found ---- */
+
+.not-found-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.5rem 1.4rem;
+  background:
+    radial-gradient(circle at top left, rgba(229, 219, 255, 0.85), transparent 42%),
+    linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+.not-found-art {
+  width: 88px;
+  height: 88px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(173, 181, 189, 0.24);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 14px 30px rgba(92, 124, 250, 0.1);
+}
+.not-found-art-img { width: 72px; height: 72px; display: block; }
+.not-found-copy h3 { margin: 0 0 0.25rem 0; font-size: 1.1rem; }
+.not-found-copy p { margin: 0; color: var(--color-text-muted); }
+.not-found-links {
+  list-style: none;
+  padding: 0;
+  margin: 0.6rem 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
 /* ---- Zero failures ---- */
 
 .zero-failures-card {
@@ -550,6 +654,13 @@ tr:hover td { background: var(--color-surface-alt); }
 .zero-failures-copy p { margin: 0; color: var(--color-text-muted); }
 
 @media (max-width: 840px) {
+  .history-layout { grid-template-columns: 1fr; }
+  /* Stacked layout: the slot has no sibling to match. Put the card back
+     in normal flow with a max-height so the scroll is still bounded. */
+  .runs-history-slot > .runs-history-card {
+    position: static;
+    max-height: 420px;
+  }
   .dashboard-layout { grid-template-columns: 1fr; }
   .pass-rate-cell { min-width: 0; }
   .failure-card-header,
@@ -558,7 +669,8 @@ tr:hover td { background: var(--color-surface-alt); }
   }
   .json-diff { grid-template-columns: 1fr; }
   .json-diff > :nth-child(even) { border-left: none; }
-  .zero-failures-card {
+  .zero-failures-card,
+  .not-found-card {
     grid-template-columns: 1fr;
     justify-items: start;
     padding: 1.25rem 1rem;
