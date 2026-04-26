@@ -25,10 +25,20 @@ export function App() {
       <main aria-label="Conformance dashboard">
         <Routes>
           <Route path="/" element={<Dashboard />} />
+          <Route path="/runs/:runId" element={<Dashboard />} />
           <Route path="/impl/:name" element={<ImplDetail />} />
           <Route path="/impl/:name/failures" element={<ImplDetail />} />
           <Route
             path="/impl/:name/failures/:testCaseId"
+            element={<ImplDetail />}
+          />
+          <Route path="/runs/:runId/impl/:name" element={<ImplDetail />} />
+          <Route
+            path="/runs/:runId/impl/:name/failures"
+            element={<ImplDetail />}
+          />
+          <Route
+            path="/runs/:runId/impl/:name/failures/:testCaseId"
             element={<ImplDetail />}
           />
           <Route path="*" element={<NotFound />} />

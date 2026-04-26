@@ -35,6 +35,17 @@ export function useRun(id: string | undefined) {
   });
 }
 
+// When runId is provided, load that specific run; otherwise fall back to the
+// latest. Enables the "pinned run" URL scheme (/runs/:runId/...) alongside the
+// existing latest-run routes.
+export function useRunOrLatest(runId: string | undefined) {
+  const repo = useRepository();
+  return useQuery({
+    queryKey: ['run', runId ?? 'latest'],
+    queryFn: () => (runId ? repo.getRun(runId) : repo.getLatestRun()),
+  });
+}
+
 export function useResults(filter: ResultFilter) {
   const repo = useRepository();
   return useQuery({

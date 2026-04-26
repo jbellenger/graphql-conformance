@@ -21,6 +21,15 @@ function renderAt(initialPath: string, repo: FakeRepository) {
               path="/impl/:name/failures/:testCaseId"
               element={<ImplDetail />}
             />
+            <Route path="/runs/:runId/impl/:name" element={<ImplDetail />} />
+            <Route
+              path="/runs/:runId/impl/:name/failures"
+              element={<ImplDetail />}
+            />
+            <Route
+              path="/runs/:runId/impl/:name/failures/:testCaseId"
+              element={<ImplDetail />}
+            />
           </Routes>
         </MemoryRouter>
       </RepositoryProvider>
@@ -96,10 +105,12 @@ function makeRepo(): FakeRepository {
 
 describe('ImplDetail', () => {
   it('renders pass rate, a failure card, and deep-link data attribute', async () => {
-    renderAt('/impl/graphql-java', makeRepo());
+    const { container } = renderAt('/impl/graphql-java', makeRepo());
     expect(await screen.findByText('graphql-java')).toBeInTheDocument();
-    // 100 - 1 failed = 99 → 99.0%
-    expect(await screen.findByText(/99\.0%/)).toBeInTheDocument();
+    // 100 - 1 failed = 99 → 99.0% — match the headline rate, not the sibling
+    // occurrences in the Recent runs table / chart.
+    const detailRate = container.querySelector('.detail-rate');
+    expect(detailRate?.textContent).toMatch(/99\.0%/);
     // Failure card is present with the expected test case id data attribute
     const card = await screen.findByTestId('failure-card');
     expect(card.getAttribute('data-test-case-id')).toBe('aa/bb/cc');
@@ -119,6 +130,148 @@ describe('ImplDetail', () => {
   it('renders NotFound for an unknown impl', async () => {
     renderAt('/impl/not-a-real-impl', makeRepo());
     expect(await screen.findByText(/unknown impl/i)).toBeInTheDocument();
+  });
+
+  it('renders the pinned run when the URL includes /runs/:runId/impl/:name', async () => {
+    const oldRunId = 'older-run';
+    const newRunId = 'run-1';
+    const repo = new FakeRepository({
+      impls: [
+        { id: 'graphql-js-17', name: 'graphql-js-17', language: 'JavaScript' },
+        { id: 'graphql-java', name: 'graphql-java', language: 'Java' },
+      ],
+      runs: [
+        {
+          id: newRunId,
+          timestamp: '2026-04-24T12:00:00Z',
+          referenceImplId: 'graphql-js-17',
+          implIds: ['graphql-js-17', 'graphql-java'],
+          excluded: 0,
+          resultsByImpl: {
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 100, passed: 100 }),
+            'graphql-java': implRunResults('graphql-java', { total: 100, passed: 99, failed: 1 }),
+          },
+        },
+        {
+          id: oldRunId,
+          timestamp: '2026-04-20T12:00:00Z',
+          referenceImplId: 'graphql-js-17',
+          implIds: ['graphql-js-17', 'graphql-java'],
+          excluded: 0,
+          resultsByImpl: {
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 100, passed: 100 }),
+            'graphql-java': implRunResults('graphql-java', { total: 100, passed: 40, failed: 60 }),
+          },
+        },
+      ],
+    });
+    const { container } = renderAt(
+      `/runs/${oldRunId}/impl/graphql-java`,
+      repo,
+    );
+    // Pinned run: 40/100 = 40.0% (not the latest run's 99.0%). Match the
+    // headline rate specifically — the Recent runs table also renders these.
+    await screen.findByText('graphql-java');
+    const detailRate = container.querySelector('.detail-rate');
+    expect(detailRate?.textContent).toMatch(/40\.0%/);
+    expect(detailRate?.textContent).not.toMatch(/99\.0%/);
+  });
+
+  it('renders NotFound with an impl-latest fallback when runId is unknown', async () => {
+    renderAt('/runs/bogus-run/impl/graphql-java', makeRepo());
+    const card = await screen.findByTestId('not-found');
+    expect(
+      within(card).getByText(/that run isn't in the index/i),
+    ).toBeInTheDocument();
+    const fallback = within(card).getByRole('link', {
+      name: /view this impl in the latest run/i,
+    });
+    expect(fallback).toHaveAttribute('href', '/impl/graphql-java');
+  });
+
+  it('renders NotFound when runId is unknown even if impl itself is unknown', async () => {
+    // The impl-unknown branch runs first; we expect the "Unknown impl" 404.
+    renderAt('/runs/bogus-run/impl/not-a-real-impl', makeRepo());
+    expect(await screen.findByText(/unknown impl/i)).toBeInTheDocument();
+  });
+
+  it('renders the Recent runs table, highlights the current run, and navigates on row click', async () => {
+    const user = userEvent.setup();
+    const oldRunId = 'older-run';
+    const newRunId = 'run-1';
+    const repo = new FakeRepository({
+      impls: [
+        { id: 'graphql-js-17', name: 'graphql-js-17', language: 'JavaScript' },
+        { id: 'graphql-java', name: 'graphql-java', language: 'Java' },
+      ],
+      runs: [
+        {
+          id: newRunId,
+          timestamp: '2026-04-24T12:00:00Z',
+          referenceImplId: 'graphql-js-17',
+          implIds: ['graphql-js-17', 'graphql-java'],
+          excluded: 0,
+          resultsByImpl: {
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 100, passed: 100 }),
+            'graphql-java': implRunResults('graphql-java', { total: 100, passed: 99, failed: 1 }),
+          },
+        },
+        {
+          id: oldRunId,
+          timestamp: '2026-04-20T12:00:00Z',
+          referenceImplId: 'graphql-js-17',
+          implIds: ['graphql-js-17', 'graphql-java'],
+          excluded: 0,
+          resultsByImpl: {
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 100, passed: 100 }),
+            'graphql-java': implRunResults('graphql-java', { total: 100, passed: 40, failed: 60 }),
+          },
+        },
+      ],
+      history: {
+        'graphql-java': [
+          {
+            runId: newRunId,
+            timestamp: '2026-04-24T12:00:00Z',
+            total: 100,
+            passed: 99,
+            failed: 1,
+            errored: 0,
+            falloutAfter: null,
+          },
+          {
+            runId: oldRunId,
+            timestamp: '2026-04-20T12:00:00Z',
+            total: 100,
+            passed: 40,
+            failed: 60,
+            errored: 0,
+            falloutAfter: null,
+          },
+        ],
+      },
+    });
+    const { container } = renderAt('/impl/graphql-java', repo);
+    // Wait until the table has materialised.
+    const currentRow = await screen.findByTestId(
+      `runs-history-row-${newRunId}`,
+    );
+    expect(currentRow.className).toMatch(/is-current/);
+    expect(currentRow).toHaveAttribute('aria-current', 'page');
+    // Both runs render with their respective pass rates.
+    expect(within(currentRow).getByText('99.0%')).toBeInTheDocument();
+    const otherRow = screen.getByTestId(`runs-history-row-${oldRunId}`);
+    expect(otherRow.className).not.toMatch(/is-current/);
+    expect(within(otherRow).getByText('40.0%')).toBeInTheDocument();
+    // Clicking the older row navigates to the pinned route for that run.
+    await user.click(otherRow);
+    // Wait for the pinned view to load, then assert the headline rate
+    // switched to 40.0% (detail-rate specifically — the Recent runs table
+    // and chart also render 40.0% elsewhere).
+    await screen.findByTestId(`runs-history-row-${oldRunId}`);
+    await new Promise((r) => setTimeout(r, 0));
+    const detailRate = container.querySelector('.detail-rate');
+    expect(detailRate?.textContent).toMatch(/40\.0%/);
   });
 
   it('surfaces the reference\'s corpus exclusions on a non-reference impl page', async () => {

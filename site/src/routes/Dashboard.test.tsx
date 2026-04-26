@@ -38,6 +38,37 @@ function renderWithRoutes(repository: Repository) {
               path="/impl/:name"
               element={<div data-testid="detail-marker">detail-marker</div>}
             />
+            <Route
+              path="/runs/:runId/impl/:name"
+              element={<div data-testid="detail-marker-pinned">detail-marker-pinned</div>}
+            />
+          </Routes>
+        </MemoryRouter>
+      </RepositoryProvider>
+    </QueryClientProvider>,
+  );
+}
+
+// Renders Dashboard at a specific path through the /runs/:runId route.
+function renderAtPath(repository: Repository, path: string) {
+  const queryClient = new QueryClient({
+    defaultOptions: { queries: { retry: false } },
+  });
+  return render(
+    <QueryClientProvider client={queryClient}>
+      <RepositoryProvider value={repository}>
+        <MemoryRouter initialEntries={[path]}>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/runs/:runId" element={<Dashboard />} />
+            <Route
+              path="/impl/:name"
+              element={<div data-testid="detail-marker">detail-marker</div>}
+            />
+            <Route
+              path="/runs/:runId/impl/:name"
+              element={<div data-testid="detail-marker-pinned">detail-marker-pinned</div>}
+            />
           </Routes>
         </MemoryRouter>
       </RepositoryProvider>
@@ -401,6 +432,119 @@ describe('Dashboard', () => {
     const refCard = container.querySelector('.reference-card');
     expect(refCard).toBeTruthy();
     expect(refCard!.contains(lastRun)).toBe(false);
+  });
+
+  it('renders the pinned run when the URL includes /runs/:runId, not the latest', async () => {
+    const impls = [
+      { id: 'ref', name: 'ref', language: 'JS' },
+      { id: 'graphql-java', name: 'graphql-java', language: 'Java' },
+    ];
+    const oldRunId = '00000000-0000-0000-0000-00000000aaaa';
+    const newRunId = '00000000-0000-0000-0000-00000000bbbb';
+    const repo = new FakeRepository({
+      impls,
+      runs: [
+        {
+          id: newRunId,
+          timestamp: '2026-04-24T12:00:00Z',
+          referenceImplId: 'ref',
+          implIds: ['ref', 'graphql-java'],
+          excluded: 0,
+          resultsByImpl: {
+            ref: implRunResults('ref', { total: 100, passed: 100 }),
+            'graphql-java': implRunResults('graphql-java', {
+              total: 100,
+              passed: 95,
+              failed: 5,
+            }),
+          },
+        },
+        {
+          id: oldRunId,
+          timestamp: '2026-04-20T12:00:00Z',
+          referenceImplId: 'ref',
+          implIds: ['ref', 'graphql-java'],
+          excluded: 0,
+          resultsByImpl: {
+            ref: implRunResults('ref', { total: 100, passed: 100 }),
+            'graphql-java': implRunResults('graphql-java', {
+              total: 100,
+              passed: 70,
+              failed: 30,
+            }),
+          },
+        },
+      ],
+    });
+    renderAtPath(repo, `/runs/${oldRunId}`);
+    // Pinned run: 70/100 = 70.0% (not the latest's 95.0%).
+    expect(await screen.findByText(/70\.0%/)).toBeInTheDocument();
+    expect(screen.queryByText(/95\.0%/)).toBeNull();
+    // LastRunCard relabels to "Run" when pinned.
+    expect(screen.getByText('Run')).toBeInTheDocument();
+    expect(screen.queryByText('Last run')).toBeNull();
+  });
+
+  it('renders NotFound with a latest-run fallback when runId is unknown', async () => {
+    const repo = new FakeRepository({
+      impls: [{ id: 'ref', name: 'ref', language: 'JS' }],
+      runs: [
+        {
+          id: 'real-run',
+          timestamp: '2026-04-24T12:00:00Z',
+          referenceImplId: 'ref',
+          implIds: ['ref'],
+          excluded: 0,
+          resultsByImpl: {
+            ref: implRunResults('ref', { total: 100, passed: 100 }),
+          },
+        },
+      ],
+    });
+    renderAtPath(repo, '/runs/bogus-run-id');
+    const card = await screen.findByTestId('not-found');
+    expect(
+      within(card).getByText(/that run isn't in the index/i),
+    ).toBeInTheDocument();
+    const fallback = within(card).getByRole('link', {
+      name: /view the latest run/i,
+    });
+    expect(fallback).toHaveAttribute('href', '/');
+  });
+
+  it('pinned-run rows link to /runs/:runId/impl/:name (preserve the pin)', async () => {
+    const user = userEvent.setup();
+    const oldRunId = '00000000-0000-0000-0000-0000000000aa';
+    const repo = new FakeRepository({
+      impls: [
+        { id: 'ref', name: 'ref', language: 'JS' },
+        { id: 'graphql-java', name: 'graphql-java', language: 'Java' },
+      ],
+      runs: [
+        {
+          id: oldRunId,
+          timestamp: '2026-04-20T12:00:00Z',
+          referenceImplId: 'ref',
+          implIds: ['ref', 'graphql-java'],
+          excluded: 0,
+          resultsByImpl: {
+            ref: implRunResults('ref', { total: 100, passed: 100 }),
+            'graphql-java': implRunResults('graphql-java', {
+              total: 100,
+              passed: 70,
+              failed: 30,
+            }),
+          },
+        },
+      ],
+    });
+    renderAtPath(repo, `/runs/${oldRunId}`);
+    const row = await screen.findByTestId('dashboard-row-graphql-java');
+    const cell = row.querySelector('.pass-rate-cell') as HTMLElement;
+    await user.click(cell);
+    expect(
+      await screen.findByTestId('detail-marker-pinned'),
+    ).toBeInTheDocument();
   });
 
   it('navigates to the reference impl when the reference card is clicked', async () => {
