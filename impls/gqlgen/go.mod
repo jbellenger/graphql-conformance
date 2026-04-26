@@ -3,7 +3,7 @@ module gqlgen-driver
 go 1.25.0
 
 require (
-	github.com/99designs/gqlgen v0.17.89
+	github.com/99designs/gqlgen v0.17.90
 	github.com/vektah/gqlparser/v2 v2.5.33
 )
 
