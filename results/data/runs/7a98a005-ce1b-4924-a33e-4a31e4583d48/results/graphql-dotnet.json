@@ -97,20 +97,6 @@
     "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_xsLEb\\u0027.\"}]}"
   },
   {
-    "id": "0ccc0f60-0ef5-465a-8258-290e8d14ccaf",
-    "runId": "7a98a005-ce1b-4924-a33e-4a31e4583d48",
-    "implId": "graphql-dotnet",
-    "testCaseId": "0be3846f/47d203fa/44136fa3",
-    "status": "error",
-    "expected": {
-      "data": {
-        "__typename": "Object_ApwfNHZGC"
-      }
-    },
-    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_xsLEb'.",
-    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_xsLEb\\u0027.\"}]}"
-  },
-  {
     "id": "bdbf2221-45ce-40cb-800a-97ef330365e3",
     "runId": "7a98a005-ce1b-4924-a33e-4a31e4583d48",
     "implId": "graphql-dotnet",

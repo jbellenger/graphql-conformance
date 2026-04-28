@@ -97,20 +97,6 @@
     "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_xsLEb\\u0027.\"}]}"
   },
   {
-    "id": "2deddd6a-bef8-416a-83c5-4429f0014922",
-    "runId": "5bd000ba-e129-473f-b781-942319907438",
-    "implId": "graphql-dotnet",
-    "testCaseId": "0be3846f/47d203fa/44136fa3",
-    "status": "error",
-    "expected": {
-      "data": {
-        "__typename": "Object_ApwfNHZGC"
-      }
-    },
-    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_xsLEb'.",
-    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_xsLEb\\u0027.\"}]}"
-  },
-  {
     "id": "06e80640-3499-4962-864a-2cea32916bec",
     "runId": "5bd000ba-e129-473f-b781-942319907438",
     "implId": "graphql-dotnet",
@@ -382,21 +368,6 @@
         "if2w": {
           "__typename": "Interface_PXEOSs0k3_STUB"
         },
-        "__typename": "Object_PWvnL0k"
-      }
-    },
-    "error": "Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: 'Input_tIy'.",
-    "stderr": "{\"errors\":[{\"message\":\"Default values in input types cannot contain a circular dependency loop. Please resolve dependency loop between the following types: \\u0027Input_tIy\\u0027.\"}]}"
-  },
-  {
-    "id": "6949d72a-f91e-42cf-8b1d-82417ac26721",
-    "runId": "5bd000ba-e129-473f-b781-942319907438",
-    "implId": "graphql-dotnet",
-    "testCaseId": "38784eca/812c3555/44136fa3",
-    "status": "error",
-    "expected": {
-      "data": {
-        "noFTUs_b": "Object_PWvnL0k",
         "__typename": "Object_PWvnL0k"
       }
     },
@@ -1777,56 +1748,6 @@
     "expected": {
       "data": {
         "GfGw": "Object_Am_AlXm"
-      }
-    },
-    "error": "The default value of Input Object type field 'Input_v6.ulGCIkq5' is invalid.",
-    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_v6.ulGCIkq5\\u0027 is invalid.\"}]}"
-  },
-  {
-    "id": "17d3dd0e-fdc2-4bf1-806b-329c3d72f705",
-    "runId": "5bd000ba-e129-473f-b781-942319907438",
-    "implId": "graphql-dotnet",
-    "testCaseId": "e254fdcd/b2ce683f/27586576",
-    "status": "error",
-    "expected": {
-      "data": {
-        "tL9uCuZ": "Y",
-        "__typename": "Object_Am_AlXm",
-        "hcPuv0V": {
-          "__typename": "Object_Go"
-        },
-        "M": {
-          "__typename": "Object_Go",
-          "j": true
-        },
-        "WZx": {
-          "_5NsiTeOBi": "Object_Go"
-        }
-      }
-    },
-    "error": "The default value of Input Object type field 'Input_v6.ulGCIkq5' is invalid.",
-    "stderr": "{\"errors\":[{\"message\":\"The default value of Input Object type field \\u0027Input_v6.ulGCIkq5\\u0027 is invalid.\"}]}"
-  },
-  {
-    "id": "d31a14b8-5d3b-4f84-806e-076207d801e9",
-    "runId": "5bd000ba-e129-473f-b781-942319907438",
-    "implId": "graphql-dotnet",
-    "testCaseId": "e254fdcd/b2ce683f/7702f8cc",
-    "status": "error",
-    "expected": {
-      "data": {
-        "tL9uCuZ": "Y",
-        "__typename": "Object_Am_AlXm",
-        "hcPuv0V": {
-          "__typename": "Object_Go"
-        },
-        "M": {
-          "__typename": "Object_Go",
-          "j": true
-        },
-        "WZx": {
-          "_5NsiTeOBi": "Object_Go"
-        }
       }
     },
     "error": "The default value of Input Object type field 'Input_v6.ulGCIkq5' is invalid.",

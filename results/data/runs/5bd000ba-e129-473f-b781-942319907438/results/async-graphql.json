@@ -663,20 +663,6 @@
     "stderr": "{\"errors\":[{\"message\":\"build schema: \\\"Input_xsLEb\\\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.\"}]}"
   },
   {
-    "id": "a57811bd-d363-45a5-8277-3895970f7e2d",
-    "runId": "5bd000ba-e129-473f-b781-942319907438",
-    "implId": "async-graphql",
-    "testCaseId": "0be3846f/47d203fa/44136fa3",
-    "status": "error",
-    "expected": {
-      "data": {
-        "__typename": "Object_ApwfNHZGC"
-      }
-    },
-    "error": "build schema: \"Input_xsLEb\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.",
-    "stderr": "{\"errors\":[{\"message\":\"build schema: \\\"Input_xsLEb\\\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.\"}]}"
-  },
-  {
     "id": "8715d117-4c2e-4ef7-825f-d8ff8e4c7cd7",
     "runId": "5bd000ba-e129-473f-b781-942319907438",
     "implId": "async-graphql",
@@ -1037,20 +1023,6 @@
     "stderr": "{\"errors\":[{\"message\":\"build schema: \\\"Input_hGMIEHk\\\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.\"}]}"
   },
   {
-    "id": "2c672816-037f-43c8-824d-b7cb845be279",
-    "runId": "5bd000ba-e129-473f-b781-942319907438",
-    "implId": "async-graphql",
-    "testCaseId": "260aa9c0/3db04ec7/44136fa3",
-    "status": "error",
-    "expected": {
-      "data": {
-        "lSwApAg14J": "Qqdt4w"
-      }
-    },
-    "error": "build schema: \"Input_hGMIEHk\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.",
-    "stderr": "{\"errors\":[{\"message\":\"build schema: \\\"Input_hGMIEHk\\\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.\"}]}"
-  },
-  {
     "id": "d07df62b-215c-4616-8dfd-ccfdb92e000d",
     "runId": "5bd000ba-e129-473f-b781-942319907438",
     "implId": "async-graphql",
@@ -1240,48 +1212,6 @@
         "uBHV": {
           "AF": "Object_k2FH"
         }
-      }
-    }
-  },
-  {
-    "id": "7c638a6d-0b7e-429e-8b6f-b2a468a48ee1",
-    "runId": "5bd000ba-e129-473f-b781-942319907438",
-    "implId": "async-graphql",
-    "testCaseId": "3275639d/e1e0f6af/bdfd558e",
-    "status": "fail",
-    "expected": {
-      "data": {
-        "__typename": "Object_Yeeu",
-        "Nk": "Object_Yeeu",
-        "Ke": "Object_Yeeu",
-        "dGIrtw6e6D": "id"
-      }
-    },
-    "actual": {
-      "data": {
-        "Ke": "Object_Yeeu",
-        "dGIrtw6e6D": "id"
-      }
-    }
-  },
-  {
-    "id": "99732af6-9b25-4866-8db0-9eace3f6d081",
-    "runId": "5bd000ba-e129-473f-b781-942319907438",
-    "implId": "async-graphql",
-    "testCaseId": "3275639d/e1e0f6af/fad39b65",
-    "status": "fail",
-    "expected": {
-      "data": {
-        "Ke": "Object_Yeeu",
-        "dGIrtw6e6D": "id",
-        "__typename": "Object_Yeeu",
-        "Nk": "Object_Yeeu"
-      }
-    },
-    "actual": {
-      "data": {
-        "Ke": "Object_Yeeu",
-        "dGIrtw6e6D": "id"
       }
     }
   },
@@ -1491,21 +1421,6 @@
     "stderr": "{\"errors\":[{\"message\":\"build schema: \\\"Input_tIy\\\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.\"}]}"
   },
   {
-    "id": "b68c5ce1-de76-4e96-8380-a0af4dc93983",
-    "runId": "5bd000ba-e129-473f-b781-942319907438",
-    "implId": "async-graphql",
-    "testCaseId": "38784eca/812c3555/44136fa3",
-    "status": "error",
-    "expected": {
-      "data": {
-        "noFTUs_b": "Object_PWvnL0k",
-        "__typename": "Object_PWvnL0k"
-      }
-    },
-    "error": "build schema: \"Input_tIy\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.",
-    "stderr": "{\"errors\":[{\"message\":\"build schema: \\\"Input_tIy\\\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.\"}]}"
-  },
-  {
     "id": "667b9615-ef2b-4733-8cc7-f19af6e62405",
     "runId": "5bd000ba-e129-473f-b781-942319907438",
     "implId": "async-graphql",
@@ -1607,54 +1522,6 @@
         "kQAYnKy4fG": "str",
         "pU": null
       }
-    }
-  },
-  {
-    "id": "7bf09475-4975-4876-8346-6da04b26ac8d",
-    "runId": "5bd000ba-e129-473f-b781-942319907438",
-    "implId": "async-graphql",
-    "testCaseId": "3a31b195/62221936/3d1e23d4",
-    "status": "fail",
-    "expected": {
-      "data": {
-        "zrMWeATm": "Object_E0NcK8",
-        "mB0": "Object_E0NcK8"
-      }
-    },
-    "actual": {
-      "data": null
-    }
-  },
-  {
-    "id": "7cc148a5-fdd5-4998-8ffc-66a4de8efa87",
-    "runId": "5bd000ba-e129-473f-b781-942319907438",
-    "implId": "async-graphql",
-    "testCaseId": "3a31b195/62221936/87f4f246",
-    "status": "fail",
-    "expected": {
-      "data": {
-        "zrMWeATm": "Object_E0NcK8",
-        "mB0": "Object_E0NcK8"
-      }
-    },
-    "actual": {
-      "data": null
-    }
-  },
-  {
-    "id": "2690f012-9a1e-492e-8fbb-742fdc65de4b",
-    "runId": "5bd000ba-e129-473f-b781-942319907438",
-    "implId": "async-graphql",
-    "testCaseId": "3a31b195/62221936/abd54625",
-    "status": "fail",
-    "expected": {
-      "data": {
-        "zrMWeATm": "Object_E0NcK8",
-        "mB0": "Object_E0NcK8"
-      }
-    },
-    "actual": {
-      "data": null
     }
   },
   {
@@ -2316,23 +2183,6 @@
       "data": {
         "__typename": "Object_qYPyO"
       }
-    }
-  },
-  {
-    "id": "e83ff67c-f929-4af2-8704-8ca97ef1f996",
-    "runId": "5bd000ba-e129-473f-b781-942319907438",
-    "implId": "async-graphql",
-    "testCaseId": "64d808be/daa5fec9/2552ba7b",
-    "status": "fail",
-    "expected": {
-      "data": {
-        "pNxWCT": "Object_qYPyO",
-        "__typename": "Object_qYPyO",
-        "lt": "Object_qYPyO"
-      }
-    },
-    "actual": {
-      "data": null
     }
   },
   {
@@ -3503,38 +3353,6 @@
     }
   },
   {
-    "id": "068d5c60-6d3c-4ed6-8a65-2c02961146be",
-    "runId": "5bd000ba-e129-473f-b781-942319907438",
-    "implId": "async-graphql",
-    "testCaseId": "9c43f4e7/55d1afce/44136fa3",
-    "status": "fail",
-    "expected": {
-      "data": {
-        "qHpki6a": "id",
-        "grFOPvI": {
-          "yF": "FZLXylYNy"
-        },
-        "snL": {
-          "__typename": "Interface_t_STUB",
-          "l": "VbH23o85nO"
-        },
-        "__typename": "Object_IlyM5C"
-      }
-    },
-    "actual": {
-      "data": {
-        "grFOPvI": {
-          "yF": "FZLXylYNy"
-        },
-        "qHpki6a": "id",
-        "snL": {
-          "__typename": "Interface_t_STUB",
-          "l": "VbH23o85nO"
-        }
-      }
-    }
-  },
-  {
     "id": "62d27499-e8e1-4043-8a93-15462d973560",
     "runId": "5bd000ba-e129-473f-b781-942319907438",
     "implId": "async-graphql",
@@ -4192,22 +4010,6 @@
         "A1ZZ": "Object_K0b5ePiHN",
         "__typename": "Object_K0b5ePiHN"
       }
-    }
-  },
-  {
-    "id": "cc705f82-68ac-4112-8338-ee44550d651c",
-    "runId": "5bd000ba-e129-473f-b781-942319907438",
-    "implId": "async-graphql",
-    "testCaseId": "ae24e0f3/f802d4ad/44136fa3",
-    "status": "fail",
-    "expected": {
-      "data": {
-        "aZ4fK1deRM": "str",
-        "__typename": "Object_K0b5ePiHN"
-      }
-    },
-    "actual": {
-      "data": null
     }
   },
   {
@@ -4944,128 +4746,6 @@
     "stderr": "{\"errors\":[{\"message\":\"build schema: \\\"Input_GKTl9g\\\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.\"}]}"
   },
   {
-    "id": "8cfc5adc-71f7-4afd-805e-6fbeeb262e92",
-    "runId": "5bd000ba-e129-473f-b781-942319907438",
-    "implId": "async-graphql",
-    "testCaseId": "ca8b9739/a10fa7b0/2db84a2d",
-    "status": "fail",
-    "expected": {
-      "data": {
-        "__typename": "Object_hEw",
-        "sg2E": {
-          "ni1bbI5AU": [
-            "pGn",
-            "pGn"
-          ],
-          "o8": "xBA40RkVs"
-        },
-        "dJczP8Cs": {
-          "__typename": "Object_XlToXN8uz"
-        },
-        "ni1bbI5AU": [
-          "pGn",
-          "pGn"
-        ],
-        "o8": "xBA40RkVs",
-        "lZ6SY": [
-          "pGn",
-          "pGn"
-        ],
-        "V3pF": [
-          "pGn",
-          "pGn"
-        ]
-      }
-    },
-    "actual": {
-      "data": {
-        "V3pF": [
-          "pGn",
-          "pGn"
-        ],
-        "__typename": "Object_hEw",
-        "dJczP8Cs": null,
-        "lZ6SY": [
-          "pGn",
-          "pGn"
-        ],
-        "ni1bbI5AU": [
-          "pGn",
-          "pGn"
-        ],
-        "o8": "xBA40RkVs",
-        "sg2E": {
-          "ni1bbI5AU": [
-            "pGn",
-            "pGn"
-          ],
-          "o8": "xBA40RkVs"
-        }
-      }
-    }
-  },
-  {
-    "id": "a0c7045e-9bff-48fe-8260-9c9905fc0ee8",
-    "runId": "5bd000ba-e129-473f-b781-942319907438",
-    "implId": "async-graphql",
-    "testCaseId": "ca8b9739/a10fa7b0/6e4febb4",
-    "status": "fail",
-    "expected": {
-      "data": {
-        "__typename": "Object_hEw",
-        "sg2E": {
-          "ni1bbI5AU": [
-            "pGn",
-            "pGn"
-          ],
-          "o8": "xBA40RkVs"
-        },
-        "dJczP8Cs": {
-          "__typename": "Object_XlToXN8uz"
-        },
-        "ni1bbI5AU": [
-          "pGn",
-          "pGn"
-        ],
-        "o8": "xBA40RkVs",
-        "lZ6SY": [
-          "pGn",
-          "pGn"
-        ],
-        "V3pF": [
-          "pGn",
-          "pGn"
-        ]
-      }
-    },
-    "actual": {
-      "data": {
-        "V3pF": [
-          "pGn",
-          "pGn"
-        ],
-        "__typename": "Object_hEw",
-        "dJczP8Cs": null,
-        "lZ6SY": [
-          "pGn",
-          "pGn"
-        ],
-        "ni1bbI5AU": [
-          "pGn",
-          "pGn"
-        ],
-        "o8": "xBA40RkVs",
-        "sg2E": {
-          "ni1bbI5AU": [
-            "pGn",
-            "pGn"
-          ],
-          "o8": "xBA40RkVs"
-        }
-      }
-    }
-  },
-  {
     "id": "abb61d40-b9c8-42bc-8103-0b922697b4ea",
     "runId": "5bd000ba-e129-473f-b781-942319907438",
     "implId": "async-graphql",
@@ -5082,35 +4762,6 @@
       "data": {
         "__typename": "Object_g",
         "pk": "Object_g"
-      }
-    }
-  },
-  {
-    "id": "a81f0f3e-4050-45ba-801c-f0cb40f0f649",
-    "runId": "5bd000ba-e129-473f-b781-942319907438",
-    "implId": "async-graphql",
-    "testCaseId": "d0f72165/de641c8a/44136fa3",
-    "status": "fail",
-    "expected": {
-      "data": {
-        "__typename": "Object_g",
-        "wqzAC": "Object_g",
-        "vec0R_Q6u": {
-          "__typename": "Interface_kOFJI_STUB",
-          "a0Olo1N_": {
-            "__typename": "Object_g"
-          }
-        }
-      }
-    },
-    "actual": {
-      "data": {
-        "vec0R_Q6u": {
-          "__typename": "Interface_kOFJI_STUB",
-          "a0Olo1N_": {
-            "__typename": "Object_g"
-          }
-        }
       }
     }
   },
@@ -5503,20 +5154,6 @@
       "data": {
         "__typename": "Object_aaghjtY",
         "S9": "Object_aaghjtY"
-      }
-    },
-    "error": "build schema: \"Input_NwPEmhw\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.",
-    "stderr": "{\"errors\":[{\"message\":\"build schema: \\\"Input_NwPEmhw\\\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.\"}]}"
-  },
-  {
-    "id": "485b3ae7-f3e0-427d-8d12-153c58f5b8b4",
-    "runId": "5bd000ba-e129-473f-b781-942319907438",
-    "implId": "async-graphql",
-    "testCaseId": "e0c0a435/1140b341/44136fa3",
-    "status": "error",
-    "expected": {
-      "data": {
-        "__typename": "Object_aaghjtY"
       }
     },
     "error": "build schema: \"Input_NwPEmhw\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.",
@@ -6152,22 +5789,6 @@
           "__typename": "Object_zKeV"
         }
       }
-    }
-  },
-  {
-    "id": "ab30f552-cabc-42f3-8660-fc4529e6732c",
-    "runId": "5bd000ba-e129-473f-b781-942319907438",
-    "implId": "async-graphql",
-    "testCaseId": "f48df69e/25cb01a4/44136fa3",
-    "status": "fail",
-    "expected": {
-      "data": {
-        "N": "Object_KJDYJkCZK",
-        "__typename": "Object_KJDYJkCZK"
-      }
-    },
-    "actual": {
-      "data": null
     }
   },
   {
