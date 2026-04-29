@@ -1,0 +1,38 @@
+{
+  ...Fragment_zwCOpImCI
+  __typename
+  ... on Object_OKsjTF {
+    __typename
+  }
+}
+
+fragment Fragment_zuEM4YRNOD on Object_OKsjTF {
+  __typename
+}
+
+fragment Fragment__ on Object_OKsjTF {
+  ...Fragment_zuEM4YRNOD@defer(if: true, label: "") @include(if: true)
+}
+
+fragment Fragment_zwCOpImCI on Object_OKsjTF {
+  ...Fragment__
+  ... on Object_OKsjTF {
+    ...Fragment_zuEM4YRNOD
+    ... on Object_OKsjTF @include(if: true) {
+      __typename
+    }
+  }
+  ... on Object_OKsjTF {
+    tyfLo {
+      __typename
+    }
+    xI7YkCWJJR {
+      Q9f2: kdn7mNlEx {
+        __typename
+      }
+      kdn7mNlEx {
+        __typename
+      }
+    }
+  }
+}

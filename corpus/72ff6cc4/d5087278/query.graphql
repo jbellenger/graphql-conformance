@@ -1,0 +1,26 @@
+query yOlZIse {
+  ...Fragment_m
+}
+
+fragment Fragment_pEC5PNs on Object_pn @Directive_HF{
+  __typename
+}
+
+fragment Fragment_Qp7qk on Object_pn {
+  ...Fragment_pEC5PNs
+  __typename
+  __typename
+  ... on Object_pn {
+    irvDct_J {
+      df: __typename
+    }
+  }
+}
+
+fragment Fragment_m on Object_pn {
+  ...Fragment_Qp7qk
+  ...Fragment_Qp7qk
+  ... on Object_pn {
+    ...Fragment_Qp7qk
+  }
+}

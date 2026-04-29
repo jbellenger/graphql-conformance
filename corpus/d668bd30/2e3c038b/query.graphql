@@ -1,0 +1,32 @@
+query E4YeL4Xt {
+  ...Fragment_QbwAcp0bb8
+  ...Fragment_QbwAcp0bb8
+  ...Fragment_QbwAcp0bb8
+  __typename
+  ... on Union_tEOp63 {
+    wVU: __typename
+    __typename
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_QbwAcp0bb8 on Object_A {
+  __typename @include(if: false)
+  ... on Object_A {
+    x {
+      jvyyRf {
+        gB: __typename
+      }
+    }
+    x {
+      _
+    }
+    CDS: q {
+      __typename
+    }
+  }
+  ... on Union_tEOp63 {
+    sKtToANM: __typename
+  }
+}

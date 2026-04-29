@@ -1,0 +1,18 @@
+{
+  ...Fragment_UeW7I
+  ... on Union_d3a8apx @defer(if: true, label: "") {
+    __typename
+  }
+}
+
+fragment Fragment_jp8T8fc on Union__S5IfKW {
+  __typename
+  __typename
+}
+
+fragment Fragment_UeW7I on Union_zmRdaZ3 {
+  ...Fragment_jp8T8fc
+  ... on Object_jso1BN {
+    yhgJDoSI
+  }
+}

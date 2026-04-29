@@ -1,0 +1,32 @@
+{
+  zDQ: __typename
+  e0aDXmmu {
+    ZkG: __typename
+    ... {
+      ... on Object_P0HaToI3R {
+        xjDcJVf: __typename
+      }
+    }
+    ... on Union_wsazxIP {
+      __typename
+      __typename
+      ... on Object_P0HaToI3R {
+        __typename
+      }
+    }
+  }
+  ... on Object_P0HaToI3R {
+    __typename
+  }
+  ... on Union_wsazxIP {
+    ...Fragment_BA
+  }
+}
+
+fragment Fragment_l on Object_P0HaToI3R {
+  P2O_Ep_6: __typename
+}
+
+fragment Fragment_BA on Union_wsazxIP {
+  ...Fragment_l
+}

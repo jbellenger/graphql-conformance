@@ -1,0 +1,13 @@
+query pl {
+  ... on Object_DSlaT {
+    ...Fragment_A
+    ...Fragment_A
+  }
+}
+
+fragment Fragment_A on Union_XbPQB {
+  __typename
+  ... on Object_Z0vC {
+    tNdAR: __typename
+  }
+}

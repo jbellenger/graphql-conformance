@@ -1,0 +1,24 @@
+{
+  T2Pu6N0oZ: __typename
+  qYYm
+  qYYm
+  __typename
+  ... on Union_UxZji {
+    ...Fragment_QKEW
+    ...Fragment_QKEW
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_IGop on Union_UxZji {
+  __typename
+}
+
+fragment Fragment_QKEW on Union_If9EYatOp {
+  ...Fragment_IGop
+  __typename
+  ... on Union_UxZji {
+    __typename
+  }
+}

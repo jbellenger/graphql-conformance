@@ -1,0 +1,18 @@
+query _cBTkt {
+  ... {
+    __typename
+  }
+  ... {
+    pnxZBt
+  }
+  ... on Object_rT0nTXS {
+    ... on Object_rT0nTXS {
+      ...Fragment_W@skip(if: true)
+      __typename
+    }
+  }
+}
+
+fragment Fragment_W on Object_rT0nTXS {
+  __typename
+}

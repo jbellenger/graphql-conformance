@@ -1,0 +1,50 @@
+query yH_hcu_($f: Boolean!) @experimental_disableErrorPropagation {
+  ...Fragment_c4mm0
+  ...Fragment_c4mm0
+  e7qpNoJ: __typename @skip(if: false)
+  e0aDXmmu {
+    __typename
+    y: __typename
+    Gmua: e0aDXmmu @Directive_Ow9On {
+      LdKLzVOXE9: __typename
+    }
+    T7xj10ZMTH: aqrQ {
+      ... on Interface_pEZz1EryXy_STUB @defer(if: false, label: "t") {
+        nwXUAEdTZT
+      }
+    }
+  }
+  ... on Object_P0HaToI3R {
+    ... on Union_wsazxIP {
+      ... {
+        __typename
+      }
+    }
+  }
+  ... on Union_wsazxIP {
+    ...Fragment_IecMLgHYb
+    ...Fragment_DjHb3l0dD
+  }
+}
+
+fragment Fragment_U0Mg on Union_wsazxIP {
+  GTa2PAW: __typename
+  __typename @skip(if: $f)
+}
+
+fragment Fragment_c4mm0 on Union_wsazxIP {
+  ...Fragment_U0Mg
+}
+
+fragment Fragment_IecMLgHYb on Object_P0HaToI3R {
+  aqrQ {
+    __typename
+  }
+  ... on Union_wsazxIP @defer(if: false, label: "v]w") {
+    __typename
+  }
+}
+
+fragment Fragment_DjHb3l0dD on Union_wsazxIP {
+  __typename @include(if: false) @Directive_Ow9On
+}

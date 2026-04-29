@@ -1,0 +1,21 @@
+query iuRKjj {
+  ...Fragment_x3wU1_jKA
+  ... on Union_e_gItNANE2 {
+    __typename
+    ... on Union_ptT2 {
+      ...Fragment_x3wU1_jKA
+      CwBlofA: __typename
+      __typename
+    }
+  }
+  ... on Union_p6fSKG {
+    __typename
+  }
+  ... on Union_ptT2 {
+    __typename
+  }
+}
+
+fragment Fragment_x3wU1_jKA on Union_e_gItNANE2 {
+  __typename
+}

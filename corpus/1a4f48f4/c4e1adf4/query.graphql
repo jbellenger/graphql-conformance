@@ -1,0 +1,14 @@
+{
+  ...Fragment_Gfdd7sV2
+}
+
+fragment Fragment_Taj3Z8Tq1 on Union_PREtU1t1m {
+  ... on Union_HQB {
+    __typename
+  }
+}
+
+fragment Fragment_Gfdd7sV2 on Union_PREtU1t1m {
+  ...Fragment_Taj3Z8Tq1@defer(if: false, label: "{O")
+  __typename
+}

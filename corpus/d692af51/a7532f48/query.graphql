@@ -1,0 +1,22 @@
+query ($pRT: Float) {
+  ...Fragment_obmR5_HeXn
+  ...Fragment_obmR5_HeXn
+  ...Fragment_JKJijaFmB
+}
+
+fragment Fragment_obmR5_HeXn on Object_PtuDH {
+  sG: i @include(if: false)
+}
+
+fragment Fragment_bLkhuB05C on Object_PtuDH {
+  rK7QteO(ldiw5WI: $pRT) @skip(if: false) {
+    h_u: f {
+      VkPJLvLbK: __typename
+    }
+  }
+}
+
+fragment Fragment_JKJijaFmB on Object_PtuDH {
+  ...Fragment_bLkhuB05C
+  i
+}

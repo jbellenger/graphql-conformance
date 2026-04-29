@@ -1,0 +1,22 @@
+{
+  ... on Union_whO {
+    ...Fragment_QT4ssSg
+  }
+  ... on Object_Kh64g13XC {
+    zlxnAWPVlO
+  }
+}
+
+fragment Fragment_BgphlN on Object_YuesW07 {
+  jnzBPF {
+    ahZblrqP0
+  }
+  rNGVE3Snml: __typename
+}
+
+fragment Fragment_QT4ssSg on Union_vRQKA {
+  ...Fragment_BgphlN
+  ... on Object_YuesW07 {
+    __typename
+  }
+}

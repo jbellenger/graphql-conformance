@@ -1,0 +1,25 @@
+{
+  ... on Union_OcEZjSe {
+    ...Fragment_pD
+    ... on Union_OcEZjSe {
+      __typename
+    }
+    ... on Union_z_m {
+      ...Fragment_pD
+    }
+  }
+  ... on Union_z_m {
+    __typename
+  }
+}
+
+fragment Fragment_MuwPS on Union_z_m @Directive_camdh{
+  __typename
+  __typename
+}
+
+fragment Fragment_pD on Union_t6NH @Directive_camdh{
+  ...Fragment_MuwPS
+  __typename
+  __typename
+}

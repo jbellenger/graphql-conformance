@@ -1,0 +1,35 @@
+query KjWNdZ {
+  g98dN: un5o1BXf
+  ... on Union_byptr {
+    ...Fragment_oW4qt3
+    __typename
+  }
+  ... on Union_byptr {
+    __typename
+    ... on Object_uewY {
+      ...Fragment_T_4MN
+      yFazq {
+        enkdvb {
+          hazZnmJ
+        }
+        lcD3KNK41: j_SC
+      }
+    }
+    ... on Object_L8 {
+      ...Fragment_oW4qt3
+      gp4d3UteyO
+    }
+  }
+  ... on Object_L8 {
+    ...Fragment_oW4qt3
+    ...Fragment_oW4qt3
+  }
+}
+
+fragment Fragment_oW4qt3 on Object_L8 {
+  __typename
+}
+
+fragment Fragment_T_4MN on Union_F9K {
+  __typename
+}

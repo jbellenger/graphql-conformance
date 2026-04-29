@@ -1,0 +1,40 @@
+query vw {
+  ...Fragment_K6
+  ...Fragment_K6
+  ... {
+    ...Fragment_K6
+    ...Fragment_K6
+    pBQPr3
+    ... on Union_oA93q2Ko {
+      __typename
+      ... on Union_RN9X {
+        sbQ: __typename
+      }
+    }
+  }
+  ... on Union_RN9X {
+    ...Fragment_Ds5Rxvn2
+    ... on Union_RN9X @defer(if: true, label: "L9") {
+      ZccKqT: __typename
+      __typename
+      sOjg8zq: __typename
+      ... on Object_CFDge2 {
+        y_4c
+      }
+    }
+  }
+  ... on Union_oA93q2Ko {
+    __typename
+    yO: __typename
+  }
+}
+
+fragment Fragment_K6 on Union_RN9X {
+  F1B: __typename
+  __typename
+}
+
+fragment Fragment_Ds5Rxvn2 on Union_oA93q2Ko {
+  ...Fragment_K6
+  I0: __typename
+}

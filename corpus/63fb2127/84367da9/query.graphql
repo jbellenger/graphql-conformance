@@ -1,0 +1,9 @@
+query amv {
+  ...Fragment_ziCymECt@defer(label: null)
+  ...Fragment_ziCymECt
+  x
+}
+
+fragment Fragment_ziCymECt on Object_clxS {
+  __typename
+}

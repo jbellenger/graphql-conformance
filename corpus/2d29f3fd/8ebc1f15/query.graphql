@@ -1,0 +1,15 @@
+query @experimental_disableErrorPropagation {
+  __typename: da5 {
+    h6BFeyiXr1: __typename
+  }
+  yhgJDoSI
+  da5 @include(if: false) {
+    __typename
+  }
+  ... on Union__S5IfKW {
+    mFMEv4: __typename @include(if: false)
+  }
+  ... on Union_zmRdaZ3 {
+    pu: __typename
+  }
+}

@@ -1,0 +1,45 @@
+{
+  LqjxbM: t8 {
+    ...Fragment_qdNbWsq1@skip(if: false)
+    ...Fragment_XNwe
+    ... on Object_itUi4 {
+      t8 {
+        __typename
+      }
+      t8 {
+        t8 @include(if: false) {
+          gRsweoFFE
+        }
+      }
+      gRsweoFFE: t8 {
+        __typename
+        NbzBr94: t8 {
+          __typename
+        }
+      }
+    }
+    ... on Object_itUi4 {
+      ...Fragment_XNwe@Directive_sb9jhxMzi @defer(if: true, label: null)
+      __typename
+      ... on Union_fZ0I9 {
+        __typename
+      }
+    }
+  }
+  ... on Union_fZ0I9 {
+    __typename
+  }
+  ... on Union_fZ0I9 {
+    __typename
+  }
+}
+
+fragment Fragment_qdNbWsq1 on Union_fZ0I9 {
+  __typename
+}
+
+fragment Fragment_XNwe on Union_fZ0I9 {
+  ... on Union_fZ0I9 {
+    DCJO: __typename
+  }
+}

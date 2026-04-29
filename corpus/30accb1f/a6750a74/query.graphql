@@ -1,0 +1,24 @@
+query aoB6xUx5Rr($kmOX: Boolean! = false@Directive_jN(njUBVLeWXc: "")) {
+  ...Fragment_NOx5f8Cgi@skip(if: $kmOX)
+  ...Fragment_V
+  ...Fragment_A7t
+}
+
+fragment Fragment_A7t on Object_v1Mp87Hka7 {
+  ... on Object_v1Mp87Hka7 {
+    __typename
+  }
+}
+
+fragment Fragment_NOx5f8Cgi on Union_mKL1IQm {
+  ...Fragment_A7t
+  ...Fragment_A7t
+}
+
+fragment Fragment_V on Union_mKL1IQm @Directive_x{
+  ...Fragment_A7t@skip(if: false)
+  ...Fragment_NOx5f8Cgi
+  __typename
+  __typename
+  __typename
+}

@@ -1,0 +1,13 @@
+query nTx9 {
+  ...Fragment_VaBPl
+  ...Fragment_VaBPl
+  __typename @Directive_Tr
+}
+
+fragment Fragment_VaBPl on Object_g3JuXPzWK0 {
+  ... on Object_g3JuXPzWK0 {
+    ... on Object_g3JuXPzWK0 {
+      g
+    }
+  }
+}

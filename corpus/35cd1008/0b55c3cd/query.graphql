@@ -1,0 +1,18 @@
+{
+  zsY {
+    __typename
+  }
+  ... on Union_mM_Dx1P6xl {
+    ...Fragment_k
+    __typename @skip(if: true)
+  }
+}
+
+fragment Fragment_u on Union_B @Directive_aHg{
+  __typename
+}
+
+fragment Fragment_k on Union_mM_Dx1P6xl {
+  ...Fragment_u
+  __typename
+}

@@ -1,0 +1,22 @@
+query ($g1Ua3VSbc: Boolean!) {
+  wt0q0U {
+    RmWVK: __typename
+  }
+  kdttV4u: aOS042D
+  UBX: aOS042D
+  __typename @include(if: $g1Ua3VSbc)
+  ... on Union_jAO {
+    ...Fragment_r4_3rOiiK
+    ...Fragment_r4_3rOiiK
+    ... @skip(if: true) {
+      __typename
+    }
+  }
+  ... on Union_jAO @include(if: $g1Ua3VSbc) {
+    __typename @include(if: false) @skip(if: false)
+  }
+}
+
+fragment Fragment_r4_3rOiiK on Union_jAO {
+  __typename
+}

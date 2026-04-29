@@ -1,0 +1,18 @@
+{
+  ...Fragment__uU5o
+}
+
+fragment Fragment_rRLITT on Object_SFJf6qDaTo {
+  C4r3AjUYvn: __typename
+}
+
+fragment Fragment__uU5o on Object_g7zATJR {
+  ... on Union_KrktG {
+    ... on Object_g7zATJR {
+      flCQ6: __typename
+    }
+  }
+  ... on Union_KrktG {
+    ...Fragment_rRLITT
+  }
+}

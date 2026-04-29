@@ -1,0 +1,18 @@
+{
+  ...Fragment_CmHD
+  ... {
+    ...Fragment_CmHD
+  }
+  ... {
+    ... on Object_hcBnsjSNE {
+      ...Fragment_CmHD
+    }
+  }
+  ... on Union_hODB_jalT {
+    fSKBtdA: __typename
+  }
+}
+
+fragment Fragment_CmHD on Union_hODB_jalT {
+  __typename
+}

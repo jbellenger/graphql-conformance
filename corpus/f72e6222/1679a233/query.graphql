@@ -1,0 +1,14 @@
+{
+  __typename
+  ... on Union_gxzU {
+    ...Fragment_BZ8w
+  }
+}
+
+fragment Fragment_XRMzGf on Object_OuXSYDg8 {
+  __typename
+}
+
+fragment Fragment_BZ8w on Union_gxzU {
+  ...Fragment_XRMzGf
+}

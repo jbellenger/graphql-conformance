@@ -1,0 +1,17 @@
+query EYGwjS {
+  ...Fragment__q7v08p
+  ...Fragment_G4
+}
+
+fragment Fragment_G4 on Union_ptT2 {
+  Zly: __typename
+}
+
+fragment Fragment__q7v08p on Object_Ifl @Directive_cu7GL9rJa{
+  ... on Union_ptT2 {
+    ...Fragment_G4
+    __typename
+    __typename
+    __typename
+  }
+}

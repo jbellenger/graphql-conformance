@@ -1,0 +1,15 @@
+query oZV($jCYwbSiq0l: [Input_c]) {
+  ...Fragment_C
+}
+
+fragment Fragment_WhOT on Object_VDsJQHyt2 {
+  SeRLGicwGe: __typename
+}
+
+fragment Fragment_pK on Object_VDsJQHyt2 @Directive_UdCvEtAs{
+  ...Fragment_WhOT
+}
+
+fragment Fragment_C on Object_VDsJQHyt2 @Directive_BYd5BM8gR(aqjjlQuVH1: $jCYwbSiq0l){
+  ...Fragment_pK
+}

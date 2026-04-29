@@ -1,0 +1,19 @@
+query sXb2j($f6hgtb: Boolean!) {
+  ...Fragment_X
+  ... on Union_ZXqKL4VmSJ {
+    __typename
+    ... on Object_v {
+      ...Fragment_X
+      ... on Union_ZXqKL4VmSJ {
+        __typename
+      }
+    }
+    ... on Union_ZXqKL4VmSJ @defer(if: true, label: "=@3") {
+      __typename @include(if: $f6hgtb)
+    }
+  }
+}
+
+fragment Fragment_X on Union_ZXqKL4VmSJ {
+  __typename
+}

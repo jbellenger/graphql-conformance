@@ -1,0 +1,17 @@
+query ($bkYV2kI: Boolean!) @experimental_disableErrorPropagation {
+  ...Fragment_pY79dTVRaI
+  ...Fragment_Oi8ZXXuJx@skip(if: $bkYV2kI)
+}
+
+fragment Fragment_Oi8ZXXuJx on Union_lvB_B {
+  __typename
+  __typename
+  __typename
+  ... on Union_Iqy21zbP {
+    __typename
+  }
+}
+
+fragment Fragment_pY79dTVRaI on Object_b {
+  ...Fragment_Oi8ZXXuJx
+}

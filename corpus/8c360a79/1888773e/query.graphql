@@ -1,0 +1,25 @@
+{
+  ...Fragment_oFf
+  ... on Interface_F2nEqpOXyJ {
+    __typename
+  }
+}
+
+fragment Fragment_tH on Union_kA7SuFOaML {
+  Fcm6H0juz: __typename
+}
+
+fragment Fragment_puCpOqH on Object_xSrwf0 {
+  ...Fragment_tH
+  ... on Union_HS {
+    __typename
+  }
+}
+
+fragment Fragment_oFf on Union_HS {
+  ...Fragment_puCpOqH
+  ... on Union_kA7SuFOaML {
+    ...Fragment_tH
+    __typename
+  }
+}

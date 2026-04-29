@@ -1,0 +1,19 @@
+{
+  ...Fragment_xGsYnou9
+}
+
+fragment Fragment_tQSxudAP on Object_wQt2elnM {
+  rHI6qUVlb {
+    kY: bxIc
+  }
+  __typename
+}
+
+fragment Fragment_xGsYnou9 on Union_Tpyf7q {
+  ... on Object_wQt2elnM {
+    ...Fragment_tQSxudAP
+    rHI6qUVlb {
+      bxIc
+    }
+  }
+}

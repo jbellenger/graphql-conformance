@@ -1,0 +1,11 @@
+query gPOuAgyGOy {
+  ...Fragment_W7L
+  ...Fragment_W7L
+  ...Fragment_W7L
+}
+
+fragment Fragment_W7L on Union_gvrmxAudS {
+  ... on Object_FujizSGnTm {
+    O: __typename
+  }
+}

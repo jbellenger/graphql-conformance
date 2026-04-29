@@ -1,0 +1,24 @@
+query d($cxR: Boolean! = false) {
+  ...Fragment_LSCzMG7
+}
+
+fragment Fragment_RQbxn1Q on Object_lWPnqdd {
+  AE_7rXX9: __typename
+  Ny_vTN: n6pMzu
+}
+
+fragment Fragment_TLBjK4Zlvd on Union_Z9mt {
+  ...Fragment_RQbxn1Q
+  __typename
+  __typename
+}
+
+fragment Fragment_LSCzMG7 on Object_qmyMKuaYjL {
+  ...Fragment_TLBjK4Zlvd
+  lBWFDPByzD @skip(if: $cxR) @Directive_Ey0k8 {
+    ... on Union_HBM {
+      __typename
+    }
+  }
+  O: __typename
+}

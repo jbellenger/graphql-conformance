@@ -1,0 +1,23 @@
+query LTa {
+  ... on Union_kpCUGx {
+    ...Fragment_q9qjFZw
+  }
+  ... on Union_ZST4 {
+    ... on Object_jUWQ {
+      ... on Object_jUWQ {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_a8yqXqTi on Union_kpCUGx {
+  __typename
+}
+
+fragment Fragment_q9qjFZw on Union_kpCUGx {
+  ...Fragment_a8yqXqTi
+  __typename
+  __typename
+  __typename
+}

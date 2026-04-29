@@ -1,0 +1,23 @@
+query Onx0e8sSn {
+  ... on Object_Ui6at {
+    ...Fragment_GZ
+  }
+  ... on Object_Ui6at {
+    ... on Union_Ly2zpL {
+      __typename @Directive_p6uaOUt
+    }
+  }
+  ... on Union_Ly2zpL {
+    ...Fragment_Yka
+  }
+}
+
+fragment Fragment_GZ on Union_Ly2zpL {
+  __typename
+  __typename
+  __typename
+}
+
+fragment Fragment_Yka on Union_Ly2zpL {
+  __typename
+}

@@ -1,0 +1,22 @@
+query ($o: Boolean!) {
+  ...Fragment_x
+  ... on Object_hGVMb {
+    __typename @include(if: $o)
+    ... on Object_hGVMb {
+      czjCHtezu
+    }
+  }
+  ... on Union_rnUorz {
+    ...Fragment_x
+    __typename
+  }
+}
+
+fragment Fragment_x on Object_hGVMb {
+  vT: wKKMvy(fX0: null) {
+    owNJmb {
+      __typename
+    }
+    _
+  }
+}

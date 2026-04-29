@@ -1,0 +1,22 @@
+query nqFYkyvOYn($k: Boolean!@Directive_NSQ) {
+  ...Fragment_WJWMqnQMt2
+  hgVMsr3t {
+    ...Fragment_DmeBkzamX7@skip(if: true)
+    ... on Union_aIo {
+      ...Fragment_DmeBkzamX7
+      jBfHUFba6: __typename
+    }
+    ... on Object_KLe8tIu @include(if: $k) {
+      ruxvCNq
+    }
+  }
+}
+
+fragment Fragment_DmeBkzamX7 on Union_kA7SuFOaML {
+  __typename
+}
+
+fragment Fragment_WJWMqnQMt2 on Union_HS {
+  ...Fragment_DmeBkzamX7
+  ...Fragment_DmeBkzamX7
+}

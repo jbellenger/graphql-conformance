@@ -1,0 +1,31 @@
+query ($i_aRXAtH1r: Boolean!) {
+  ...Fragment_r
+  xjk99uHZ(r4RnCa8: GhqX64I) {
+    TLLQ7BUqGT: __typename @skip(if: $i_aRXAtH1r)
+    __typename
+    __typename
+    __typename
+    ... on Interface_mye_STUB {
+      ...Fragment_hIQr6R0
+    }
+    ... on Interface_mye_STUB {
+      ...Fragment_hIQr6R0
+    }
+  }
+  __typename
+}
+
+fragment Fragment_V5g on Union_A2vqgt {
+  __typename
+}
+
+fragment Fragment_r on Object_Xr2 {
+  kIVM
+  cS4ltY {
+    ...Fragment_V5g
+  }
+}
+
+fragment Fragment_hIQr6R0 on Interface_mye {
+  K9s: oOdj @skip(if: true)
+}

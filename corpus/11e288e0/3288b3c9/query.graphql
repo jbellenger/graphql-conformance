@@ -1,0 +1,7 @@
+query K {
+  ...Fragment_V
+}
+
+fragment Fragment_V on Object_O {
+  __typename
+}

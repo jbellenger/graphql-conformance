@@ -1,0 +1,17 @@
+query RLNh {
+  ...Fragment_UqvRw5dax@defer(if: true, label: "X")
+  ...Fragment_XvR9@Directive_PP93x
+  ...Fragment_UqvRw5dax
+  c5I8Z9: kdci @include(if: true)
+}
+
+fragment Fragment_UqvRw5dax on Union_XbPQB {
+  PHcqWz: __typename
+  ... on Object_DSlaT {
+    LNSnwp: __typename
+  }
+}
+
+fragment Fragment_XvR9 on Union_XbPQB {
+  __typename @include(if: true)
+}

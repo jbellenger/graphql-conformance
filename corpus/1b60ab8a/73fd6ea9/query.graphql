@@ -1,0 +1,28 @@
+{
+  ... on Object_OKsjTF @skip(if: false) {
+    ...Fragment_mQkBs
+    tyfLo {
+      __typename
+      __typename @include(if: false)
+      ... on Union_h {
+        __typename
+      }
+    }
+    ... on Object_OKsjTF {
+      XfvKFRU: __typename
+    }
+  }
+}
+
+fragment Fragment_cpG0BzcEOu on Object_OKsjTF {
+  __typename
+}
+
+fragment Fragment_mQkBs on Object_OKsjTF {
+  ...Fragment_cpG0BzcEOu
+  ... on Object_OKsjTF {
+    xI7YkCWJJR {
+      __typename
+    }
+  }
+}

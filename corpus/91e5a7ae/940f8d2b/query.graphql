@@ -1,0 +1,39 @@
+query N {
+  ...Fragment_onj3
+  ...Fragment_miC
+  ji2M
+  ... on Union_MGHy {
+    __typename
+  }
+}
+
+fragment Fragment_dWVzFN on Union_CEyRjsuIs2 {
+  ... {
+    __typename
+  }
+}
+
+fragment Fragment_miC on Union_TLs7V9N {
+  ...Fragment_dWVzFN
+  ... on Union_MGHy {
+    oPsH: __typename
+  }
+}
+
+fragment Fragment_onj3 on Union_CEyRjsuIs2 {
+  ...Fragment_dWVzFN
+  ...Fragment_miC
+  __typename
+  ... {
+    __typename
+    IVHjmEwNcb: __typename
+    ... on Object_THbyPZ {
+      xt @Directive_vE {
+        __typename
+      }
+      xt {
+        __typename
+      }
+    }
+  }
+}

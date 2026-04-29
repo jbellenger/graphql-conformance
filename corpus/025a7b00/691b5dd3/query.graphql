@@ -1,0 +1,28 @@
+query tf2wOxoa {
+  ...Fragment_TrYj
+  i {
+    DO_yiNm: uOhYE5GE {
+      ...Fragment_TrYj
+    }
+    ... on Object_HE {
+      ...Fragment_yie
+      ... on Interface_A0M {
+        __typename
+      }
+    }
+  }
+  i {
+    ...Fragment_yie@defer(if: true)
+  }
+  L: i {
+    __typename
+  }
+}
+
+fragment Fragment_TrYj on Union_sc {
+  __typename
+}
+
+fragment Fragment_yie on Union_ovbh {
+  __typename
+}

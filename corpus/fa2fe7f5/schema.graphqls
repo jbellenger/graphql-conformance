@@ -1,0 +1,145 @@
+schema {
+  query: Object_c
+}
+
+directive @Directive_QEv on MUTATION | FIELD | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+directive @Directive_ZQddNzt4 on SUBSCRIPTION | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCHEMA | OBJECT | FIELD_DEFINITION | INTERFACE | UNION | ENUM | ENUM_VALUE
+
+directive @Directive_n8PBe72W3Z on MUTATION | FIELD | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | INLINE_FRAGMENT | SCHEMA | SCALAR | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | ENUM_VALUE | INPUT_OBJECT
+
+"This directive allows results to be deferred during execution"
+directive @defer(
+    "Deferred behaviour is controlled by this argument"
+    if: Boolean! = true,
+    "A unique label that represents the fragment being deferred"
+    label: String
+  ) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Marks the field, argument, input field or enum value as deprecated"
+directive @deprecated(
+    "The reason for the deprecation"
+    reason: String! = "No longer supported"
+  ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+"This directive disables error propagation when a non nullable field returns null for the given operation."
+directive @experimental_disableErrorPropagation on QUERY | MUTATION | SUBSCRIPTION
+
+"Directs the executor to include this field or fragment only when the `if` argument is true"
+directive @include(
+    "Included when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Indicates an Input Object is a OneOf Input Object."
+directive @oneOf on INPUT_OBJECT
+
+"Directs the executor to skip this field or fragment when the `if` argument is true."
+directive @skip(
+    "Skipped when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Exposes a URL that specifies the behaviour of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behaviour of this scalar."
+    url: String!
+  ) on SCALAR
+
+interface Interface_hngVm9cs implements Interface_iM7JsU {
+  bp46XzV: Int @Directive_n8PBe72W3Z
+  f: Union_w
+  f2Xh: Interface_osXTv5rV
+  g0UbLMJyVH: Enum_fJaf8n
+  hl: Union_w!
+  i: Object_hAZa
+}
+
+interface Interface_iM7JsU {
+  bp46XzV: Int @Directive_n8PBe72W3Z
+  f2Xh: Interface_osXTv5rV
+  i: Object_hAZa
+}
+
+interface Interface_osXTv5rV {
+  nbH: Union_Sp0K0MOVe7
+  r9ZVOn: Union_Sp0K0MOVe7
+}
+
+union Union_Sp0K0MOVe7 = Object_c | Object_hAZa | Object_wO4u
+
+union Union_bZOn3AKcT = Object_hAZa | Object_wO4u
+
+union Union_w = Object_wO4u
+
+type Interface_hngVm9cs_STUB implements Interface_hngVm9cs & Interface_iM7JsU {
+  bp46XzV: Int @Directive_n8PBe72W3Z
+  f: Union_w
+  f2Xh: Interface_osXTv5rV
+  g0UbLMJyVH: Enum_fJaf8n
+  hl: Union_w!
+  i: Object_hAZa
+  v_qhw(xbSz: Boolean): Object_hAZa
+}
+
+type Interface_iM7JsU_STUB implements Interface_iM7JsU {
+  bp46XzV: Int @Directive_n8PBe72W3Z
+  f2Xh: Interface_osXTv5rV
+  hVbs: ID @Directive_n8PBe72W3Z
+  i: Object_hAZa
+  nPc0YdyXQP: Interface_iM7JsU!
+  r: Union_bZOn3AKcT!
+}
+
+type Interface_osXTv5rV_STUB implements Interface_osXTv5rV {
+  mfIj: Interface_hngVm9cs
+  nbH: Union_Sp0K0MOVe7
+  qjW8dPW3g: [Int] @Directive_QEv @deprecated(reason : "g")
+  r9ZVOn: Union_Sp0K0MOVe7
+}
+
+type Object_c {
+  cb7xQcRv: Object_wO4u
+  kv9uXMn: ID
+  n0yAsoGc: Interface_iM7JsU
+}
+
+type Object_hAZa {
+  aGpZ7Je: Enum_fJaf8n!
+  rA7InNqUB: Union_w
+}
+
+type Object_wO4u {
+  nuuJqB: Enum_fJaf8n!
+  pQJAX: Interface_osXTv5rV
+}
+
+enum Enum_R0AveRlk {
+  Q76TPgEesu
+}
+
+enum Enum_Y6bw {
+  Zz797wu3_ @Directive_QEv
+  ffJL3X3Vs @Directive_ZQddNzt4 @Directive_n8PBe72W3Z
+}
+
+enum Enum_fJaf8n {
+  EYONTe
+  PGE @Directive_ZQddNzt4
+  TZSqkCqBX
+}
+
+input Input_c5JGOx2LCL @oneOf {
+  gahs: ID
+  i4Tu: [Enum_Y6bw]
+  sfLcnk0_fm: Enum_Y6bw
+}
+
+input Input_g39KyKBHY4 {
+  fn5: Int = -1984123907 @deprecated(reason : "y")
+}
+
+input Input_yo92u @oneOf {
+  nRFKryxTs0: String
+  pE8aNQeP7z: Float
+}

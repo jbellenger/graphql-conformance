@@ -1,0 +1,20 @@
+{
+  ...Fragment_arHpT
+  ofD {
+    ...Fragment_EY
+  }
+}
+
+fragment Fragment_E on Union_CBi {
+  __typename
+  nJ: __typename
+}
+
+fragment Fragment_EY on Union_nYsh {
+  __typename
+}
+
+fragment Fragment_arHpT on Union_nYsh {
+  ...Fragment_E
+  ...Fragment_EY
+}

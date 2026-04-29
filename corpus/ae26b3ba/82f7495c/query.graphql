@@ -1,0 +1,23 @@
+{
+  ... on Union_MguHx1fN {
+    __typename
+  }
+  ... on Object_OK {
+    ... on Union_YA {
+      h: __typename @Directive_CV
+    }
+    ... on Object_OK {
+      ...Fragment_m3QPoBul
+      ... on Union_YA {
+        __typename
+      }
+    }
+  }
+  ... on Union_YA {
+    __typename
+  }
+}
+
+fragment Fragment_m3QPoBul on Object_OK {
+  __typename
+}

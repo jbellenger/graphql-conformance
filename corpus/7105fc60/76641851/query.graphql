@@ -1,0 +1,23 @@
+query i0w0cKF {
+  ...Fragment_vq
+  ... on Union_tX8QgeA {
+    __typename
+  }
+}
+
+fragment Fragment_gj5e7cvGFi on Union_lE {
+  __typename
+  __typename
+}
+
+fragment Fragment_vq on Object_H {
+  d2C5Ts: __typename
+  ... on Union_uJCxunQ4Kn {
+    ...Fragment_gj5e7cvGFi
+    __typename
+    __typename
+    ... on Union_lE {
+      __typename
+    }
+  }
+}

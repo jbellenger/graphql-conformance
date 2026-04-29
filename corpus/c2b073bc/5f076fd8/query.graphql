@@ -1,0 +1,34 @@
+query bKy($sJ: Boolean!) {
+  tDZnvVRvkj(eEEa: sB3Egfq) {
+    __typename
+  }
+  ... on Interface_fNTvQNV {
+    ...Fragment_x
+    _tp9: cRYo {
+      __typename
+    }
+    gypkn2Pn3 {
+      __typename
+    }
+  }
+  ... on Union_tInnVc7NXL {
+    VaVR: __typename
+    ... on Union_srPVMVqnpQ {
+      ...Fragment_nKqXtlC5@Directive_DCLCEMiB(o1Rgj: "")
+    }
+  }
+}
+
+fragment Fragment_x on Object_hBAtJG {
+  gypkn2Pn3 @Directive_Emx {
+    RF04C: c1VQ9yeQA
+  }
+  no6: cRYo {
+    __typename
+  }
+  __typename
+}
+
+fragment Fragment_nKqXtlC5 on Object_whSs7nxb {
+  c1VQ9yeQA @include(if: $sJ)
+}

@@ -1,0 +1,26 @@
+query ($uNw9l: Boolean!) {
+  ... {
+    ...Fragment_B2W
+    ...Fragment_MahB_M6Gw@skip(if: false)
+    __typename @skip(if: $uNw9l)
+  }
+}
+
+fragment Fragment_B2W on Union_m {
+  __typename
+  ... on Union_m {
+    __typename
+  }
+}
+
+fragment Fragment_jHjGoqiSab on Union_N {
+  O6g: __typename
+}
+
+fragment Fragment_MahB_M6Gw on Union_sC0kDL {
+  ...Fragment_jHjGoqiSab
+  __typename
+  ... on Union_N {
+    __typename
+  }
+}

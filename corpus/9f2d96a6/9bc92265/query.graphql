@@ -1,0 +1,13 @@
+query LuCFNgGWn @Directive_xPuP58vaD {
+  wqMTl
+  __typename
+  ... {
+    ...Fragment_h0NxraN
+  }
+}
+
+fragment Fragment_h0NxraN on Union_F_D {
+  ... on Union_pWLIGs8Jaw @include(if: false) @skip(if: true) {
+    __typename
+  }
+}

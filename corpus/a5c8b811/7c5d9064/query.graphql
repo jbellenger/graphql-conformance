@@ -1,0 +1,22 @@
+{
+  ...Fragment_k4sSG12vlw
+  xgfT {
+    ...Fragment_k4sSG12vlw
+  }
+  ... on Union_mOsBIRmfOZ {
+    __typename
+  }
+}
+
+fragment Fragment_k4sSG12vlw on Union_N5oqN9 {
+  __typename
+  ... on Object_aw7sMff {
+    __typename
+    zy {
+      __typename
+    }
+    ... on Union_N5oqN9 @include(if: true) {
+      __typename
+    }
+  }
+}

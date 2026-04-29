@@ -1,0 +1,16 @@
+{
+  yMb
+  __typename
+  ... on Union_Ly2zpL {
+    ...Fragment_iwAldV3_
+  }
+}
+
+fragment Fragment_GzKk7WPa on Union_Ly2zpL {
+  __typename
+  __typename
+}
+
+fragment Fragment_iwAldV3_ on Interface_NxkLuCR {
+  ...Fragment_GzKk7WPa@include(if: false)
+}

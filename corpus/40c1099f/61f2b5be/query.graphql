@@ -1,0 +1,24 @@
+query Bwv @Directive_y7pd6iAP {
+  ...Fragment_Krw_jTpcg
+}
+
+fragment Fragment_dXpxBNYX3 on Object_jUWQ {
+  __typename
+}
+
+fragment Fragment_tvyYHE on Object_jUWQ {
+  ...Fragment_dXpxBNYX3@Directive_z1UjoH1VaE
+  ... on Object_jUWQ {
+    btmDJW {
+      v6HbW2o8PR
+    }
+    lxNq {
+      xRI_IsQLwj: __typename
+    }
+  }
+}
+
+fragment Fragment_Krw_jTpcg on Union_kpCUGx {
+  ...Fragment_tvyYHE
+  __typename @include(if: true)
+}

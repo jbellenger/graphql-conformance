@@ -1,0 +1,9 @@
+query M($rm1yb5tpy: Boolean! = false) {
+  ...Fragment_TTDvCgFN
+  gNn @skip(if: $rm1yb5tpy)
+  gNn
+}
+
+fragment Fragment_TTDvCgFN on Object_tMuDzO {
+  __typename
+}

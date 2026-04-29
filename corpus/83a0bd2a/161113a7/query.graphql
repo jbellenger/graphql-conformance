@@ -1,0 +1,14 @@
+query bkWvP0C7r {
+  ...Fragment_oX8QjHV
+  __typename
+}
+
+fragment Fragment_y on Object_TElTFsqc0k {
+  ... on Object_TElTFsqc0k {
+    __typename @skip(if: true)
+  }
+}
+
+fragment Fragment_oX8QjHV on Object_TElTFsqc0k {
+  ...Fragment_y
+}

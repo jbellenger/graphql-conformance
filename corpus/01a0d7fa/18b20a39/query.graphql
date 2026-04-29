@@ -1,0 +1,30 @@
+{
+  ...Fragment_Ux
+  aZXn7r {
+    ...Fragment_Ux
+    M0kJ: __typename
+    ... on Object_CX {
+      __typename
+    }
+    ... on Object_CX @defer(if: true, label: "c") {
+      GbGCP0D0w: __typename
+    }
+  }
+  esp
+}
+
+fragment Fragment_jac on Object_ah7AKfslC {
+  cZC
+}
+
+fragment Fragment_Ux on Object_ah7AKfslC {
+  ...Fragment_jac
+  ... on Union_La {
+    ...Fragment_jac
+  }
+  ... on Union_E3c {
+    ... on Union_E3c {
+      __typename
+    }
+  }
+}

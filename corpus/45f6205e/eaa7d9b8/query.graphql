@@ -1,0 +1,19 @@
+query Ck($q: Boolean! = true) {
+  __typename
+  ... on Union_r {
+    ...Fragment_YFZS
+    ...Fragment_YFZS
+    __typename
+    __typename
+  }
+  ... on Object_zQFIo @defer(if: true, label: "q") @include(if: $q) {
+    fXp09S2c: g2GmG
+  }
+  ... on Union_r {
+    __typename
+  }
+}
+
+fragment Fragment_YFZS on Object_l {
+  __typename
+}

@@ -1,0 +1,20 @@
+query VggMpYqcZ($o: Boolean!) {
+  ...Fragment_Hr@defer(label: "r|")
+  ...Fragment_hzWEY
+  __typename @Directive_xRWyhx
+}
+
+fragment Fragment_hzWEY on Object_bsyX1Jfzqo {
+  nvlM @skip(if: $o)
+}
+
+fragment Fragment_x on Object_bsyX1Jfzqo {
+  ...Fragment_hzWEY
+  ... {
+    __typename
+  }
+}
+
+fragment Fragment_Hr on Object_bsyX1Jfzqo {
+  ...Fragment_x
+}

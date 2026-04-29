@@ -1,0 +1,16 @@
+query v {
+  __typename
+  xXRn_ {
+    ...Fragment_gYE6aSO
+    ... on Interface_DUfZlh {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_gYE6aSO on Interface_DUfZlh {
+  ... on Interface__s_STUB {
+    ckP_K
+    esp @skip(if: true)
+  }
+}

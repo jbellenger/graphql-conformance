@@ -1,0 +1,27 @@
+{
+  ... on Union_kJmSgG8F {
+    ...Fragment_hMxIkl8@include(if: false)
+    DxMS4fB: __typename
+    __typename
+    __typename
+    Nc8rPWADa: __typename
+    ... on Union_j7A7utz @include(if: true) {
+      __typename @Directive_AZ83nQQ9g5
+      __typename
+      ... on Object_YnX6wfB {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_PMXAth6 on Union_j7A7utz {
+  __typename
+}
+
+fragment Fragment_hMxIkl8 on Object_YnX6wfB {
+  ...Fragment_PMXAth6
+  ... on Object_YnX6wfB {
+    h1uTr: __typename
+  }
+}

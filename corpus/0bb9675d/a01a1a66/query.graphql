@@ -1,0 +1,14 @@
+query dqnv1 {
+  ... on Object_e {
+    __typename
+  }
+  ... on Object_e @skip(if: true) {
+    ...Fragment_XPg6i
+  }
+}
+
+fragment Fragment_XPg6i on Object_e {
+  ... on Union_NroIHFvHL5 {
+    __typename
+  }
+}

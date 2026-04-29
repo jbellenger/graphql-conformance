@@ -1,0 +1,22 @@
+query YKYNymW {
+  ...Fragment_fnCR4sfV
+}
+
+fragment Fragment_L on Object_VUMN6z {
+  a4WO8Y: __typename
+}
+
+fragment Fragment_fnCR4sfV on Union_B {
+  __typename
+  __typename
+  ... on Interface_S1Cr {
+    N8Ogr864Y: __typename
+  }
+  ... on Interface_S1Cr {
+    ...Fragment_L
+    __typename
+    ... on Object_VUMN6z {
+      __typename
+    }
+  }
+}

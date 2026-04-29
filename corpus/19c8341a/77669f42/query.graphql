@@ -1,0 +1,19 @@
+{
+  ...Fragment_G
+}
+
+fragment Fragment_ufBDXVE on Union_aQ {
+  __typename @skip(if: false)
+  __typename
+}
+
+fragment Fragment_RV98cl on Union_aQ {
+  ...Fragment_ufBDXVE
+  __typename
+  __typename @Directive_Y5AA
+}
+
+fragment Fragment_G on Object_vF53n {
+  ...Fragment_RV98cl
+  ...Fragment_RV98cl
+}

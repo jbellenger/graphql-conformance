@@ -1,0 +1,14 @@
+{
+  ... on Union_L5XmO {
+    ...Fragment_EZZu
+    ...Fragment_gFbS
+  }
+}
+
+fragment Fragment_gFbS on Object_dONtXZ {
+  n
+}
+
+fragment Fragment_EZZu on Object_dONtXZ {
+  ...Fragment_gFbS
+}

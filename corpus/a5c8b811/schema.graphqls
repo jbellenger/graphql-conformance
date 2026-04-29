@@ -1,0 +1,148 @@
+schema {
+  query: Object_aw7sMff
+}
+
+directive @Directive_NFU on SUBSCRIPTION | FIELD
+
+directive @Directive_TzMAtlXns on QUERY | MUTATION | SUBSCRIPTION | FIELD | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCHEMA | SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | INPUT_OBJECT
+
+directive @Directive_W52h5t repeatable on QUERY | INLINE_FRAGMENT | OBJECT | UNION | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+"This directive allows results to be deferred during execution"
+directive @defer(
+    "Deferred behaviour is controlled by this argument"
+    if: Boolean! = true,
+    "A unique label that represents the fragment being deferred"
+    label: String
+  ) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Marks the field, argument, input field or enum value as deprecated"
+directive @deprecated(
+    "The reason for the deprecation"
+    reason: String! = "No longer supported"
+  ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+"This directive disables error propagation when a non nullable field returns null for the given operation."
+directive @experimental_disableErrorPropagation on QUERY | MUTATION | SUBSCRIPTION
+
+"Directs the executor to include this field or fragment only when the `if` argument is true"
+directive @include(
+    "Included when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Indicates an Input Object is a OneOf Input Object."
+directive @oneOf on INPUT_OBJECT
+
+"Directs the executor to skip this field or fragment when the `if` argument is true."
+directive @skip(
+    "Skipped when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Exposes a URL that specifies the behaviour of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behaviour of this scalar."
+    url: String!
+  ) on SCALAR
+
+interface Interface_Nn {
+  c8v3rX2TT: Object_HMNGlCG
+  pEN: Interface_x23
+  sp54QHE2b: Interface_x23
+}
+
+interface Interface_cWYhwvY7G1 {
+  iAdoDEB: Enum_QFSPFWI10
+  md: Enum_kQdB34
+  nm9LkWr74: Interface_Nn @Directive_TzMAtlXns
+}
+
+interface Interface_x23 implements Interface_cWYhwvY7G1 {
+  iAdoDEB: Enum_QFSPFWI10
+  md: Enum_kQdB34
+  nm9LkWr74: Interface_Nn @Directive_TzMAtlXns
+  rq: Interface_x23
+  vw38mEs25: ID!
+  zqSq(gz_I0j: Enum_W7tLc): Enum_kQdB34
+}
+
+union Union_N5oqN9 = Object_HMNGlCG | Object_LlYT4Y | Object_aw7sMff
+
+union Union_mOsBIRmfOZ = Object_aw7sMff
+
+union Union_slFU7 = Object_LlYT4Y
+
+type Interface_Nn_STUB implements Interface_Nn @Directive_W52h5t {
+  c8v3rX2TT: Object_HMNGlCG
+  pEN: Interface_x23
+  sp54QHE2b: Interface_x23
+  twGdIkFd: [Enum_W7tLc]
+  wH: [Union_mOsBIRmfOZ]
+}
+
+type Interface_x23_STUB implements Interface_cWYhwvY7G1 & Interface_x23 {
+  iAdoDEB: Enum_QFSPFWI10
+  ie2_HpxVTw: Enum_kQdB34 @deprecated(reason : "4")
+  md: Enum_kQdB34
+  nm9LkWr74: Interface_Nn @Directive_TzMAtlXns
+  rq: Interface_x23
+  vw38mEs25: ID!
+  zqSq(gz_I0j: Enum_W7tLc): Enum_kQdB34
+}
+
+type Object_HMNGlCG implements Interface_cWYhwvY7G1 {
+  f: Interface_x23
+  iAdoDEB: Enum_QFSPFWI10
+  md: Enum_kQdB34
+  nm9LkWr74: Interface_Nn @Directive_TzMAtlXns
+  t908jH6br1: Union_slFU7
+}
+
+type Object_LlYT4Y implements Interface_cWYhwvY7G1 {
+  dyF3: Enum_W7tLc
+  floe: String @Directive_TzMAtlXns
+  iAdoDEB: Enum_QFSPFWI10
+  md: Enum_kQdB34
+  nm9LkWr74: Interface_Nn @Directive_TzMAtlXns
+  oJn3u(mbPjE54t: Input_TUEj): [Object_aw7sMff]
+}
+
+type Object_aw7sMff @Directive_W52h5t {
+  hTrUfDo6: Boolean
+  xgfT: Object_aw7sMff
+  zy: Object_aw7sMff!
+}
+
+enum Enum_QFSPFWI10 {
+  Qpud5 @Directive_W52h5t
+  l
+  rkhsybhod
+}
+
+enum Enum_W7tLc {
+  AarG
+  EYIq8W
+  z444444444
+}
+
+enum Enum_kQdB34 {
+  bZE
+  toPS
+  ypuNAbiH @deprecated(reason : "_")
+}
+
+input Input_TUEj {
+  nS4lfCk: Enum_QFSPFWI10
+  sXqLFMG: Input_qQz = {aG5UiYe : [z444444444, z444444444, z444444444], ejcnLl : false}
+  slj2Fjwu21: String = "$"
+}
+
+input Input_VwjG {
+  pO: [ID] @Directive_W52h5t
+}
+
+input Input_qQz {
+  aG5UiYe: [Enum_W7tLc]
+  ejcnLl: Boolean
+}

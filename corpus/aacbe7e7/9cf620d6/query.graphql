@@ -1,0 +1,25 @@
+{
+  ...Fragment_S
+  ...Fragment_dC_
+}
+
+fragment Fragment_S on Union_XB_cB {
+  ... on Union_XB_cB {
+    __typename
+  }
+}
+
+fragment Fragment_aHm3Pb on Union_XB_cB {
+  __typename
+  __typename
+}
+
+fragment Fragment_dC_ on Union_XB_cB {
+  ...Fragment_aHm3Pb
+  ... on Union_XB_cB {
+    __typename
+    ... {
+      __typename
+    }
+  }
+}

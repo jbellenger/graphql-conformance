@@ -1,0 +1,37 @@
+query wMGTLpilyt($a: [[Input_T_O0M7haS]!]) {
+  ...Fragment_uAgwW
+  ... on Object_xSrwf0 {
+    ...Fragment_MqfBkSYB
+    ... on Interface_F2nEqpOXyJ {
+      ... on Union_kA7SuFOaML {
+        dLRe: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_cG3v on Object_xSrwf0 {
+  C: __typename
+}
+
+fragment Fragment_CmOpfI on Interface_F2nEqpOXyJ {
+  ...Fragment_cG3v
+}
+
+fragment Fragment_uAgwW on Union_HS {
+  ...Fragment_CmOpfI
+  ...Fragment_cG3v
+  ... on Object_xSrwf0 {
+    ...Fragment_CmOpfI
+    _aj2H: mYG3W5NOz(tD2mIZEa: $a) {
+      __typename
+    }
+    hgVMsr3t {
+      ruxvCNq
+    }
+  }
+}
+
+fragment Fragment_MqfBkSYB on Object_xSrwf0 {
+  __typename @Directive_NSQ
+}

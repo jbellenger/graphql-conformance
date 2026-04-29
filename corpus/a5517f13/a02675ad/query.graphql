@@ -1,0 +1,11 @@
+query PW {
+  ...Fragment_qRcnZuOqF
+}
+
+fragment Fragment_WJkj on Union_fDJ {
+  SrK33cXp: __typename
+}
+
+fragment Fragment_qRcnZuOqF on Union_fDJ {
+  ...Fragment_WJkj
+}

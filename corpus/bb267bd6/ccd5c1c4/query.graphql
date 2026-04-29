@@ -1,0 +1,25 @@
+query ggqxG {
+  x8_OVnjt {
+    ...Fragment_hqGaFDfZ
+    ...Fragment_hqGaFDfZ
+    jN66OgAc @Directive_eY1R
+    __typename
+    ... {
+      ...Fragment_hqGaFDfZ
+      v_t_tpD: _pw_WlY
+    }
+    ... on Interface_II7L7Q2YV_STUB {
+      ... on Interface_II7L7Q2YV_STUB {
+        jN66OgAc
+      }
+    }
+  }
+}
+
+fragment Fragment_afGlJ on Interface__kyi2 {
+  uIT3
+}
+
+fragment Fragment_hqGaFDfZ on Interface__kyi2_STUB {
+  ...Fragment_afGlJ
+}

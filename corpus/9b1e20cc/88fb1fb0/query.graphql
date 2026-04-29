@@ -1,0 +1,22 @@
+{
+  fur {
+    ...Fragment_PUX
+    ...Fragment_PUX
+    __typename
+    __typename @Directive_TveW6sXtm
+    __typename
+  }
+  fur {
+    __typename
+    __typename
+    ogA2I: __typename
+  }
+}
+
+fragment Fragment_PUX on Union_Dp {
+  __typename @Directive_TveW6sXtm
+  __typename
+  ... on Object_oBL0UG {
+    myBg
+  }
+}

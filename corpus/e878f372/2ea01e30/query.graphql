@@ -1,0 +1,21 @@
+{
+  ...Fragment_k1pEv
+  ... on Object_EAz2pT {
+    __typename
+  }
+}
+
+fragment Fragment_IN6JWiK on Object_om1bvEojDh {
+  ... on Union_dX0Hr6OIR {
+    __typename
+  }
+}
+
+fragment Fragment_k1pEv on Union_dX0Hr6OIR {
+  ...Fragment_IN6JWiK
+  ... on Union_dX0Hr6OIR {
+    ... on Union_dX0Hr6OIR {
+      __typename
+    }
+  }
+}

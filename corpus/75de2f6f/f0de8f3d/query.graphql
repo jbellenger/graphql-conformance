@@ -1,0 +1,15 @@
+{
+  ...Fragment_azyX
+  ...Fragment_H
+  __typename
+}
+
+fragment Fragment_H on Union_jxgOJg {
+  __typename
+}
+
+fragment Fragment_azyX on Object_MqXq2r3_ {
+  ... on Union_jxgOJg {
+    ...Fragment_H
+  }
+}

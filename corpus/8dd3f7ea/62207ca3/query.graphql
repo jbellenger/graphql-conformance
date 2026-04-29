@@ -1,0 +1,11 @@
+query XlK93g1 {
+  ...Fragment_uo
+}
+
+fragment Fragment_uo on Union_OUY5npv {
+  ... on Object_qmyMKuaYjL {
+    ... on Union_HBM @Directive_kc(uK: null) {
+      __typename
+    }
+  }
+}

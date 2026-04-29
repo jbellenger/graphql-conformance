@@ -1,0 +1,42 @@
+query zs {
+  ... on Union_xsxCCrOcmp {
+    ... on Union_xsxCCrOcmp {
+      __typename
+    }
+  }
+  ... on Union_QjR @skip(if: false) {
+    ...Fragment_X
+    __typename
+  }
+  ... {
+    ...Fragment_Q31syk_1
+    zIwwRBAWvt @Directive_Li7 {
+      xkQ2ldseV(rti: {d4w4sZrL1 : TVhCt2yM, f : null})
+      ... {
+        __typename
+      }
+    }
+    wf: __typename
+    ... on Union_xsxCCrOcmp {
+      __typename
+      __typename
+      ... on Union_QjR {
+        __typename
+      }
+    }
+    ... on Object_gJEi {
+      __typename
+      ... on Union_xsxCCrOcmp {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Q31syk_1 on Union_xsxCCrOcmp {
+  __typename
+}
+
+fragment Fragment_X on Object_gJEi {
+  ...Fragment_Q31syk_1@include(if: false)
+}

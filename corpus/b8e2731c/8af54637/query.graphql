@@ -1,0 +1,16 @@
+query U {
+  ... {
+    ... on Union_jAO @Directive_VaQzzxm {
+      ...Fragment_vL
+    }
+    ... on Union_jAO {
+      __typename
+      __typename @skip(if: false)
+      V0wAhZDKR: __typename
+    }
+  }
+}
+
+fragment Fragment_vL on Object_q {
+  __typename
+}

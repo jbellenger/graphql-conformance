@@ -1,0 +1,102 @@
+query it {
+  ...Fragment_Chr
+  syVYCO {
+    __typename
+    __typename
+    ... on Union_HyKNOQQE {
+      ...Fragment_ARt0
+    }
+    ... on Object_X {
+      s9cft5 {
+        __typename
+        x3oIkTlPK {
+          __typename
+        }
+      }
+      y2tG
+      FCD: s9cft5 {
+        ke: yNwx82VZl
+      }
+    }
+  }
+  fv {
+    ...Fragment_ARt0
+    ... on Object_X {
+      ...Fragment_ARt0
+      ... on Union_HyKNOQQE {
+        m7za: __typename
+      }
+    }
+    ... on Object_X @Directive_ee3qhD {
+      ...Fragment_ARt0
+      __typename
+      LKza_: y2tG
+      ... on Object_X {
+        v7CXSRTdF3 {
+          __typename
+        }
+      }
+    }
+  }
+  XJkjHu: __typename
+  ... on Union_i4MUFfvKmf {
+    ...Fragment_F1Wezc_Q
+  }
+  ... on Object_CnLtJ6r {
+    x3oIkTlPK {
+      ... on Object_K1 @Directive_tpZ4A {
+        kie97nk1: __typename
+      }
+    }
+    ... on Object_CnLtJ6r {
+      ... on Interface_DI1hF {
+        ALK3W3: pk(wCPPR5: DoJcPa2m) {
+          __typename
+        }
+      }
+    }
+    ... on Interface_DI1hF @defer(if: true, label: "") {
+      ...Fragment_Chr
+      x3oIkTlPK {
+        __typename
+        w {
+          OD0RMmK: __typename
+        }
+      }
+      ... on Object_CnLtJ6r {
+        __typename @Directive_ee3qhD
+      }
+    }
+  }
+  ... on Object_CnLtJ6r {
+    ... on Union_i4MUFfvKmf {
+      ...Fragment_F1Wezc_Q@include(if: false)
+      aUUvB: __typename
+      __typename
+    }
+    ... on Interface_DI1hF {
+      ...Fragment_F1Wezc_Q@defer(if: false, label: "<")
+      __typename
+    }
+  }
+}
+
+fragment Fragment_F1Wezc_Q on Interface_DI1hF {
+  bMqmKxfI06: __typename
+}
+
+fragment Fragment_Chr on Union_i4MUFfvKmf {
+  __typename
+  ... on Object_CnLtJ6r @Directive_tpZ4A {
+    ... on Object_CnLtJ6r {
+      yNwx82VZl
+    }
+  }
+  ... on Object_CnLtJ6r @Directive_RH {
+    ...Fragment_F1Wezc_Q
+  }
+}
+
+fragment Fragment_ARt0 on Union_HyKNOQQE {
+  Kg1n: __typename
+}

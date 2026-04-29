@@ -1,0 +1,28 @@
+query ($f0aq8: Enum_ScxcUFub) {
+  xjk99uHZ(r4RnCa8: $f0aq8) {
+    ... on Interface_mye {
+      ... on Interface_mye_STUB @include(if: true) {
+        EF3dIRV6T: __typename
+      }
+    }
+  }
+  ... on Object_Xr2 {
+    ...Fragment_RFyQHp
+    ... on Union_fN {
+      __typename
+    }
+    ... on Union_fN {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_Y on Object_Xr2 {
+  kIVM
+}
+
+fragment Fragment_RFyQHp on Union_fN {
+  ...Fragment_Y
+  __typename
+  __typename
+}

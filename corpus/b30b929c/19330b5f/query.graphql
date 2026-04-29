@@ -1,0 +1,30 @@
+query ($z2Iyj_L: Boolean!) {
+  ...Fragment_v9CecK
+  ...Fragment_v9CecK
+  ...Fragment_v9CecK
+  hgmAQl {
+    ...Fragment_IV
+    ...Fragment_IV
+    __typename
+    ... on Interface_leeeeeeeee {
+      pBtF
+      ... on Interface_leeeeeeeee_STUB {
+        pBtF
+      }
+    }
+  }
+  ... on Union_h9689Wrm @Directive_tnlxSG7M {
+    ...Fragment_v9CecK
+    ...Fragment_v9CecK
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_v9CecK on Union_cQ5 {
+  SWN2o: __typename @include(if: $z2Iyj_L)
+}
+
+fragment Fragment_IV on Interface_leeeeeeeee_STUB {
+  __typename
+}

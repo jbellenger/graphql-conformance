@@ -1,0 +1,19 @@
+{
+  ... on Union_F_D {
+    tgCU8IMJd: __typename
+  }
+  ... {
+    __typename
+  }
+  ... on Union_F_D {
+    __typename
+    ... on Union_F_D {
+      ...Fragment_V6Q
+      __typename
+    }
+  }
+}
+
+fragment Fragment_V6Q on Object_IDV1ymp3 {
+  wqMTl
+}

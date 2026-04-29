@@ -1,0 +1,34 @@
+query B($x: Enum_B2skAmI) {
+  ... on Union_vWbd {
+    ...Fragment_YAT5
+    ...Fragment_yEGO9v
+    Bb0tIj: __typename
+    ... on Object_ncgQ {
+      ...Fragment_qgjC4jy67
+      St: h9c9(kXJS7h: $x)
+      ... on Union_HMwAqKV {
+        __typename
+      }
+    }
+  }
+  ... on Union_uc1h {
+    ...Fragment_yEGO9v
+    __typename
+  }
+}
+
+fragment Fragment_tqBu8nwjaE on Union_HMwAqKV {
+  __typename
+}
+
+fragment Fragment_YAT5 on Union_HMwAqKV {
+  ...Fragment_tqBu8nwjaE
+}
+
+fragment Fragment_yEGO9v on Union_uc1h {
+  ...Fragment_YAT5
+}
+
+fragment Fragment_qgjC4jy67 on Object_ncgQ {
+  h9c9(kXJS7h: null)
+}

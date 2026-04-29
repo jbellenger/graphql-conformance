@@ -1,0 +1,19 @@
+{
+  ...Fragment_V
+  ...Fragment_V
+  ...Fragment_V
+  lBWFDPByzD {
+    ...Fragment_V
+  }
+}
+
+fragment Fragment_QdcQ on Object_lWPnqdd @Directive_gOMint{
+  ... on Union_Z9mt @defer(if: false, label: "_") @Directive_gOMint {
+    __typename
+    jbA: __typename
+  }
+}
+
+fragment Fragment_V on Union_Z9mt {
+  ...Fragment_QdcQ
+}

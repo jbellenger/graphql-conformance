@@ -1,0 +1,31 @@
+query tVk2YUgy0E @experimental_disableErrorPropagation {
+  ...Fragment_RMOmZk8pL
+  ...Fragment_RMOmZk8pL
+  a0Pn {
+    __typename
+  }
+  BHe: kSxcQI65 {
+    dWjtp0n5
+  }
+  a0Pn {
+    ...Fragment_sJwjCRf
+  }
+  m6: x @skip(if: true)
+}
+
+fragment Fragment_RMOmZk8pL on Union_K7 {
+  __typename
+  __typename
+  ... on Union_K7 {
+    __typename
+  }
+  ... on Object_t6MpVEvS5 {
+    gEnc9ydmA {
+      f89bv: jhk5gHN
+    }
+  }
+}
+
+fragment Fragment_sJwjCRf on Object_t6MpVEvS5 {
+  bT0I: __typename
+}

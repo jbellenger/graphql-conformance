@@ -1,0 +1,22 @@
+query Uh0pagn {
+  ... on Union_Lbzb9 @Directive_uZ {
+    ...Fragment_utQpyXO
+    ...Fragment__
+    ... on Union_igtzwSl {
+      ...Fragment_utQpyXO
+    }
+  }
+}
+
+fragment Fragment__ on Object_Qt {
+  gXSRP {
+    m5N5i {
+      __typename
+    }
+  }
+  __typename
+}
+
+fragment Fragment_utQpyXO on Union_igtzwSl {
+  ...Fragment__
+}

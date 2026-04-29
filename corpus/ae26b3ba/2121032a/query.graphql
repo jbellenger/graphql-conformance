@@ -1,0 +1,13 @@
+query GNzOja {
+  ...Fragment_FdJtD9r
+}
+
+fragment Fragment_FdJtD9r on Object_OK @Directive_cF_cI5UykC{
+  __typename
+  ... on Object_OK {
+    __typename
+    ... on Union_MguHx1fN {
+      f7kuGkJQY: __typename @Directive_CV
+    }
+  }
+}

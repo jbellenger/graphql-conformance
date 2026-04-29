@@ -1,0 +1,29 @@
+query N5tAtW1 {
+  ...Fragment_VP3YXTolyp
+  ...Fragment_VP3YXTolyp
+  vokHpLv {
+    _jAtmN: __typename
+  }
+  vokHpLv {
+    __typename
+  }
+  vokHpLv @Directive_GbNopo {
+    Nm4iSmYj: __typename @Directive_GbNopo
+    __typename
+  }
+  VmH: nqBWj2F
+  nqBWj2F
+}
+
+fragment Fragment_jnU on Union_z_iZPYs {
+  __typename
+}
+
+fragment Fragment_VP3YXTolyp on Union_S @Directive_GbNopo{
+  ... on Object_WKg2Y0 {
+    ...Fragment_jnU@defer(if: true, label: "}h")
+    otd
+    __typename
+    otd
+  }
+}

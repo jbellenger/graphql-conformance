@@ -1,0 +1,19 @@
+query eqzl4 {
+  ...Fragment_OB7i2Xp
+}
+
+fragment Fragment_MG9Q on Object_CnLtJ6r {
+  fv {
+    f: __typename @include(if: false)
+  }
+  yNwx82VZl
+}
+
+fragment Fragment_OB7i2Xp on Union_i4MUFfvKmf {
+  ... on Interface_DI1hF {
+    ...Fragment_MG9Q
+    ... on Union_i4MUFfvKmf {
+      __typename
+    }
+  }
+}

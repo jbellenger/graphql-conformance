@@ -1,0 +1,39 @@
+{
+  ...Fragment_hvCGp
+  ... on Union_HwGWo1bgy {
+    ...Fragment_JX
+    __typename
+    __typename
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_al926fz_oq on Union_EVNGV {
+  __typename
+  __typename
+  __typename
+  ... {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_dsG on Union_EVNGV {
+  d3wVD5X: __typename
+}
+
+fragment Fragment_hvCGp on Object_K_CBeP {
+  ...Fragment_al926fz_oq
+  ...Fragment_dsG
+  ... on Union_HwGWo1bgy {
+    ...Fragment_al926fz_oq
+  }
+}
+
+fragment Fragment_JX on Union_HwGWo1bgy {
+  ...Fragment_dsG
+  ... on Union_EVNGV {
+    _MNkir: __typename
+  }
+}

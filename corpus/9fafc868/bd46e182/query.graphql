@@ -1,0 +1,10 @@
+query oHctMNSJ {
+  ...Fragment_wgs0@include(if: false)
+  ... on Union_JkYpEgJcJ {
+    ...Fragment_wgs0
+  }
+}
+
+fragment Fragment_wgs0 on Object_TbiiV {
+  e9KHoH: __typename
+}

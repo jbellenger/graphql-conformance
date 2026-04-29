@@ -1,0 +1,25 @@
+{
+  ... on Union_kBjGH93rW {
+    ...Fragment_B3f
+  }
+  ... on Union_Tpyf7q {
+    ...Fragment_B3f
+    ... on Union_kBjGH93rW {
+      __typename
+    }
+  }
+  ... on Union_kBjGH93rW {
+    __typename
+    __typename
+    ... on Union_VkwyVmq {
+      ZuxTL5H: __typename @Directive_DDw1q
+      Cw: __typename @include(if: false)
+    }
+  }
+}
+
+fragment Fragment_B3f on Union_Tpyf7q {
+  __typename
+  __typename
+  __typename
+}

@@ -1,0 +1,28 @@
+{
+  __typename
+  _tV {
+    mksuy
+  }
+  D4h: m2zH4 {
+    ...Fragment_k
+    ...Fragment_dC
+  }
+  ero0KfpGp: _tV {
+    ... on Union_AKK7vJqP {
+      ...Fragment_dC
+      ... on Union_QB8 {
+        __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_dC on Union_j4FrWKIm6 @Directive_LFcok{
+  __typename
+}
+
+fragment Fragment_k on Union_AKK7vJqP @Directive_QEe59ixnbV{
+  ...Fragment_dC
+  Xc5Hy6U: __typename
+}

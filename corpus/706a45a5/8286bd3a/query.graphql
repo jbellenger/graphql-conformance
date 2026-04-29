@@ -1,0 +1,9 @@
+query X9BGlNl($osamZ3G: Boolean!) @Directive_mD3NkM_0c9 {
+  ...Fragment_ym
+  io
+  dziK_: io @skip(if: $osamZ3G)
+}
+
+fragment Fragment_ym on Union_fAn {
+  __typename
+}

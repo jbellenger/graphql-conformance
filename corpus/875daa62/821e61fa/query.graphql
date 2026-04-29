@@ -1,0 +1,26 @@
+query vXoK_X {
+  ...Fragment_AnIV6L207
+  ... {
+    ...Fragment_AnIV6L207
+    ...Fragment_AnIV6L207
+    pnxZBt
+    pnxZBt @Directive_AF7pA
+  }
+}
+
+fragment Fragment_VSYYl on Object_rT0nTXS {
+  __typename
+  pnxZBt
+}
+
+fragment Fragment_AnIV6L207 on Object_rT0nTXS {
+  ... on Object_rT0nTXS {
+    ...Fragment_VSYYl
+    byvP8l7S {
+      p907QakFg: __typename
+    }
+    ... on Object_rT0nTXS {
+      pnxZBt
+    }
+  }
+}

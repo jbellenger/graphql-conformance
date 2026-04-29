@@ -1,0 +1,37 @@
+{
+  ...Fragment_f
+  ...Fragment_KXY8@Directive_OiNPpd_3
+  ...Fragment_T7@skip(if: true)
+  _N8F2G
+  t: __typename
+  ... on Union_xsxCCrOcmp {
+    ... on Object_nOqlJ {
+      ... on Object_nOqlJ {
+        xtqagir: __typename @skip(if: true)
+      }
+    }
+  }
+}
+
+fragment Fragment_T7 on Union_xsxCCrOcmp {
+  __typename
+}
+
+fragment Fragment_f on Object_gJEi {
+  ...Fragment_T7
+  ... on Union_xsxCCrOcmp {
+    ... on Object_gJEi {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_cL on Object_gJEi {
+  _N8F2G
+  __typename
+}
+
+fragment Fragment_KXY8 on Union_xsxCCrOcmp {
+  ...Fragment_cL
+  __typename
+}

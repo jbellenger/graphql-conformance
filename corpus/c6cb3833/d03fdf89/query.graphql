@@ -1,0 +1,20 @@
+query ($wR: ID, $mZB: Boolean!) {
+  raFq5FW
+  s5_tekLO(s96ixG: $wR) {
+    zhNKKOfIVg @include(if: false) @Directive_Bob5W31O(qDY4c0pNp7: -1.6769741399315246E+308) @skip(if: $mZB) {
+      ...Fragment_Rio6
+    }
+    t {
+      __typename
+    }
+    ... on Interface_B9rF {
+      __typename
+    }
+  }
+  __typename
+}
+
+fragment Fragment_Rio6 on Union_N5gYh {
+  vHxk_rup: __typename
+  __typename
+}

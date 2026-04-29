@@ -1,0 +1,15 @@
+query necFq {
+  ...Fragment_VzU0lvkN
+}
+
+fragment Fragment_VzU0lvkN on Object_U0UYG {
+  ... on Object_U0UYG {
+    ... on Object_U0UYG {
+      yiDc7_w6 @include(if: false)
+      sTaxz: __typename
+    }
+  }
+  ... on Object_U0UYG {
+    __typename
+  }
+}

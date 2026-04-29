@@ -1,0 +1,22 @@
+query phf {
+  ...Fragment_QNd1G
+  ...Fragment_lnn8ogvRYU
+  DF: zkOiY
+  pBQPr3
+}
+
+fragment Fragment_F4rs on Object_nkwt83 {
+  LqvPy: fv
+}
+
+fragment Fragment_lnn8ogvRYU on Union_Dp_VG @Directive_px32KX{
+  ...Fragment_F4rs
+  __typename
+  __typename @skip(if: true)
+  __typename
+}
+
+fragment Fragment_QNd1G on Union_RN9X @Directive_QTe3ERts{
+  ...Fragment_lnn8ogvRYU@Directive_px32KX
+  s2_TGN: __typename
+}

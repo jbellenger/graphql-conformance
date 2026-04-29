@@ -1,0 +1,19 @@
+{
+  ...Fragment_HUDvKgid
+}
+
+fragment Fragment_w5H on Union__S5IfKW {
+  __typename
+}
+
+fragment Fragment_VqWyrJ on Union_zmRdaZ3 @Directive_gj{
+  ...Fragment_w5H
+  __typename
+  __typename
+  gwP: __typename
+}
+
+fragment Fragment_HUDvKgid on Union__S5IfKW {
+  ...Fragment_VqWyrJ
+  __typename
+}

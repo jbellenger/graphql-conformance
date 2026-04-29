@@ -1,0 +1,46 @@
+{
+  ...Fragment_pAZn
+  ...Fragment_oY
+  ...Fragment_pAZn
+  z @skip(if: true)
+  ... on Union_p {
+    ...Fragment_oY
+  }
+  ... on Object_qmMb9 {
+    ...Fragment_NmNVh
+    ...Fragment_oY
+    jVp: kBTsYTr0R0 {
+      ...Fragment_pAZn
+      ... on Object_qmMb9 {
+        v6SQ {
+          __typename
+        }
+      }
+    }
+    ... on Union_p {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_oY on Union_s2mZdkmfCY {
+  __typename
+}
+
+fragment Fragment_pAZn on Object_qmMb9 @Directive_mzhIkHUjD{
+  ... on Union_s2mZdkmfCY {
+    ...Fragment_oY
+  }
+}
+
+fragment Fragment_a on Union_s2mZdkmfCY {
+  P1ky: __typename
+  __typename
+}
+
+fragment Fragment_NmNVh on Object_qmMb9 {
+  ...Fragment_a
+  ... {
+    z
+  }
+}

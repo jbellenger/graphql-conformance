@@ -1,0 +1,18 @@
+query v_w6 @Directive_xVTIC {
+  ...Fragment_zjdP
+  ... on Union_brfa_c {
+    TN0: __typename
+  }
+}
+
+fragment Fragment_zjdP on Union_brfa_c {
+  __typename
+  ... on Object_LtijX1k3wQ {
+    tQ_xY
+    mg1Ir9MU
+    ... on Object_LtijX1k3wQ {
+      tLOotLj7P: tQ_xY
+      tQ_xY
+    }
+  }
+}

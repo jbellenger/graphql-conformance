@@ -1,0 +1,19 @@
+query ($qOK: ID! = "A=") {
+  ...Fragment_EHtWL1QHWE
+  ...Fragment_Er@Directive_QrI3lT(cRvG_eiYjR: "P")
+}
+
+fragment Fragment_pItCJs on Union_Fg {
+  __typename
+}
+
+fragment Fragment_Er on Union_Fg {
+  ...Fragment_pItCJs
+  N92ujepqf: __typename
+  __typename
+}
+
+fragment Fragment_EHtWL1QHWE on Union_Fg @Directive_QrI3lT(cRvG_eiYjR: $qOK){
+  ...Fragment_Er
+  __typename
+}

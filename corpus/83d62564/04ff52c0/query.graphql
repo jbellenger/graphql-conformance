@@ -1,0 +1,17 @@
+query _al4JTQNIH {
+  ...Fragment_L22
+  ...Fragment_vQ
+  ...Fragment_L22
+}
+
+fragment Fragment_L22 on Union_i4MUFfvKmf {
+  nFYOh1caZ1: __typename
+  __typename
+  __typename
+}
+
+fragment Fragment_vQ on Object_CnLtJ6r {
+  ... on Interface_DI1hF {
+    ...Fragment_L22
+  }
+}

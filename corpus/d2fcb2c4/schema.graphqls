@@ -1,0 +1,135 @@
+schema {
+  query: Object_w
+}
+
+directive @Directive_D on OBJECT | ARGUMENT_DEFINITION | INTERFACE | UNION
+
+directive @Directive_E5I18cNeE on QUERY | MUTATION
+
+directive @Directive_e1rqGQgn(a1W7V: [Enum_H8St12nNm] = [ci, ci, ci], mKr1UI: Int) on SUBSCRIPTION | FRAGMENT_DEFINITION | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCALAR | OBJECT | FIELD_DEFINITION | ENUM | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+"This directive allows results to be deferred during execution"
+directive @defer(
+    "Deferred behaviour is controlled by this argument"
+    if: Boolean! = true,
+    "A unique label that represents the fragment being deferred"
+    label: String
+  ) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Marks the field, argument, input field or enum value as deprecated"
+directive @deprecated(
+    "The reason for the deprecation"
+    reason: String! = "No longer supported"
+  ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+"This directive disables error propagation when a non nullable field returns null for the given operation."
+directive @experimental_disableErrorPropagation on QUERY | MUTATION | SUBSCRIPTION
+
+"Directs the executor to include this field or fragment only when the `if` argument is true"
+directive @include(
+    "Included when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Indicates an Input Object is a OneOf Input Object."
+directive @oneOf on INPUT_OBJECT
+
+"Directs the executor to skip this field or fragment when the `if` argument is true."
+directive @skip(
+    "Skipped when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Exposes a URL that specifies the behaviour of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behaviour of this scalar."
+    url: String!
+  ) on SCALAR
+
+interface Interface_Jsm_L47R6 {
+  nuWaUf: Interface_Jsm_L47R6 @deprecated(reason : "}Y}")
+  oGg3C: Union_Nq9_UV
+}
+
+interface Interface_gS5H {
+  actu9Gjv: Object_j33OTkdu
+  tI: [Union_ng5H]!
+  zzAOYJ: Object_w
+}
+
+interface Interface_vPzLUwolN {
+  atFXy: Interface_vPzLUwolN
+  gZ: Object_w
+  o: Object_j33OTkdu
+}
+
+union Union_Nq9_UV = Object_nFAsKI_K | Object_w
+
+union Union_ng5H = Object_j33OTkdu | Object_nFAsKI_K | Object_w
+
+union Union_tL9muCy8 = Object_nFAsKI_K
+
+type Interface_Jsm_L47R6_STUB implements Interface_Jsm_L47R6 {
+  f5VrURNO: Union_Nq9_UV! @Directive_e1rqGQgn(a1W7V : [], mKr1UI : -1258175392)
+  nuWaUf: Interface_Jsm_L47R6 @deprecated(reason : "}Y}")
+  oGg3C: Union_Nq9_UV
+  s8: Enum_H8St12nNm
+}
+
+type Interface_gS5H_STUB implements Interface_gS5H {
+  actu9Gjv: Object_j33OTkdu
+  el3T3: Union_ng5H
+  gpqaS: Boolean
+  tI: [Union_ng5H]!
+  zzAOYJ: Object_w
+}
+
+type Interface_vPzLUwolN_STUB implements Interface_vPzLUwolN {
+  atFXy: Interface_vPzLUwolN
+  gZ: Object_w
+  o: Object_j33OTkdu
+  pLLuMH79: Enum_H8St12nNm
+  tL: [Union_Nq9_UV]
+}
+
+type Object_j33OTkdu {
+  aFNOLy: Object_nFAsKI_K
+  f8: Union_Nq9_UV
+  fvXN39h: Object_w
+}
+
+type Object_nFAsKI_K {
+  xrNf(us8: String): String
+}
+
+type Object_w {
+  pPek8fU: Int!
+}
+
+enum Enum_H8St12nNm {
+  FI4
+  ci
+  oZ
+}
+
+enum Enum_NGGGGGGGGG {
+  VelORtOGi5
+}
+
+enum Enum_ZPd8vlT2 {
+  VIDt
+  qaiqu3iM
+  r8Qc
+}
+
+input Input_GM {
+  z392BCQbvm: ID!
+}
+
+input Input_jH5s @oneOf {
+  vd: Enum_H8St12nNm
+}
+
+input Input_tUE @oneOf {
+  gt6: Enum_NGGGGGGGGG
+}

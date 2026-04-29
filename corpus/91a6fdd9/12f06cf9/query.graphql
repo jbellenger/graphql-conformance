@@ -1,0 +1,19 @@
+{
+  ...Fragment_LhwaC@skip(if: true)
+  ...Fragment_LhwaC
+  ...Fragment_LhwaC
+  __typename
+}
+
+fragment Fragment_LhwaC on Union_NOGOCpDh1u {
+  ... on Union_gqxQ {
+    __typename
+    u: __typename
+    ... on Object_DADvh_zO5 {
+      vp: __typename
+      _XHRN {
+        __typename
+      }
+    }
+  }
+}

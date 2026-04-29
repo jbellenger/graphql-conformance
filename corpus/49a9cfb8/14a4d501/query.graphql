@@ -1,0 +1,28 @@
+query AW2hY8f1($xcQ: Boolean!) {
+  ... on Union_G7C {
+    ...Fragment_g90fG
+    ...Fragment_g90fG
+  }
+  ... on Union_G7C {
+    ... @include(if: $xcQ) {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_g90fG on Object_O_9ntKHdA {
+  A_24h: fVKa7G6 {
+    pjwfv {
+      __typename
+    }
+  }
+  pD: vhB9L0Og(mMbk6sxp: null) {
+    q6q8htbZD_ @skip(if: true)
+  }
+  zp: fVKa7G6 {
+    __typename
+  }
+  ... on Object_O_9ntKHdA @defer(if: true, label: "") {
+    __typename
+  }
+}

@@ -1,0 +1,57 @@
+query hH($ogfA08: Enum_urGky4WdY@Directive_fLHL_ZrzY) {
+  ...Fragment_YkS
+  nGLejKGmKg {
+    ...Fragment_tX
+    uJ8PsgP {
+      ... on Interface_qw3HyG__STUB {
+        f04Gf1 @Directive_fLHL_ZrzY {
+          __typename @Directive_fLHL_ZrzY
+        }
+      }
+    }
+    ... on Object_aMS2 {
+      ... on Union_dqqqqqqqqq {
+        __typename
+        __typename
+      }
+    }
+  }
+  nGLejKGmKg {
+    ... on Object_aMS2 {
+      ryzVaw293f
+      ... on Union_dqqqqqqqqq {
+        pbrLEe9T: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_R2 on Object_w {
+  __typename
+  __typename
+}
+
+fragment Fragment_XCmIqSOK3 on Object_w {
+  ...Fragment_R2
+  nGLejKGmKg {
+    eZ1a(dVb3QE: $ogfA08)
+  }
+}
+
+fragment Fragment_YkS on Object_w {
+  ...Fragment_XCmIqSOK3
+  jaFRh: __typename
+  Oz7f9j: __typename
+  ... on Object_w {
+    __typename
+  }
+  ... on Object_w {
+    ...Fragment_XCmIqSOK3
+  }
+}
+
+fragment Fragment_tX on Interface_H {
+  ... on Union_XnskUMPa {
+    __typename
+  }
+}

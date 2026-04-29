@@ -1,0 +1,15 @@
+query nwy {
+  __typename
+  ... on Union_Lvr4IcD {
+    ...Fragment__RV8FpW
+    ...Fragment__RV8FpW
+    __typename
+  }
+  ... on Union_Lvr4IcD {
+    ...Fragment__RV8FpW
+  }
+}
+
+fragment Fragment__RV8FpW on Union_irvnTclb {
+  k: __typename
+}

@@ -1,0 +1,18 @@
+query ($deK: Input_J3GqIkGh! = {aWbi5RSn : 1955862294}) {
+  ...Fragment_l
+  __typename
+  ... on Union_MRp8hwB {
+    ...Fragment_sldNU
+    ...Fragment_sldNU@Directive_QELb(mOHuhN7SJ: {aWbi5RSn : 157870580}, aN6X2: Jpb)
+  }
+}
+
+fragment Fragment_sldNU on Union_B4A {
+  __typename
+}
+
+fragment Fragment_l on Union_B4A @Directive_QELb(mOHuhN7SJ: $deK, aN6X2: Jpb){
+  ... on Union_MRp8hwB {
+    ...Fragment_sldNU
+  }
+}

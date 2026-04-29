@@ -1,0 +1,14 @@
+query q0uc5lYc {
+  gd {
+    ...Fragment_ucD5ZOA
+    __typename
+  }
+}
+
+fragment Fragment_wYtNc on Union_V3IRwJ @Directive_CbDT{
+  __typename
+}
+
+fragment Fragment_ucD5ZOA on Union_k {
+  ...Fragment_wYtNc
+}

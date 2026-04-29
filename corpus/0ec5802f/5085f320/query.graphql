@@ -1,0 +1,27 @@
+query X @experimental_disableErrorPropagation {
+  ...Fragment_aFh
+}
+
+fragment Fragment_ZZamd on Object_n0g9gG {
+  vDnEYYj
+}
+
+fragment Fragment_TW on Union_Yss7C @Directive_ttfI{
+  ...Fragment_ZZamd
+  __typename
+  ... on Union_Yss7C @defer(if: true, label: "u") {
+    __typename
+  }
+}
+
+fragment Fragment_PtpTGHGxql on Union_Yss7C {
+  __typename
+  __typename
+  __typename
+}
+
+fragment Fragment_aFh on Object_ZnNw @Directive_ttfI{
+  ...Fragment_TW
+  ...Fragment_PtpTGHGxql
+  __typename
+}

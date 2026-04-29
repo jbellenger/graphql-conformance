@@ -1,0 +1,42 @@
+{
+  ...Fragment_nye6mpB
+  ... on Object_g3JuXPzWK0 {
+    g
+  }
+}
+
+fragment Fragment_sOncKb1k9 on Object_g3JuXPzWK0 {
+  ZJVG: g
+}
+
+fragment Fragment_szj2 on Interface__Xza2s {
+  i8n: __typename
+}
+
+fragment Fragment_nye6mpB on Object_g3JuXPzWK0 {
+  ...Fragment_sOncKb1k9
+  a2X6J {
+    ...Fragment_szj2
+    p8oudTkK(fzrdgmGow: "XKT")
+  }
+  ... on Object_g3JuXPzWK0 {
+    ...Fragment_sOncKb1k9
+    __typename
+    g
+    __typename
+    ... on Object_g3JuXPzWK0 @Directive_kbVcHumdiO {
+      g
+    }
+  }
+  ... on Object_g3JuXPzWK0 {
+    dCqE {
+      iwfZ: __typename
+    }
+    ... on Object_g3JuXPzWK0 @defer(if: false, label: "g6e") {
+      __typename
+      dCqE {
+        __typename
+      }
+    }
+  }
+}

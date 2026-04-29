@@ -1,0 +1,29 @@
+query mq6Bn {
+  ...Fragment_Nqw
+  ...Fragment_W5764@defer(if: true, label: "6t>")
+  ...Fragment_W5764
+  ... on Union_i4MUFfvKmf {
+    __typename
+  }
+  ... on Interface_DI1hF {
+    x3oIkTlPK {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_g_Wnpwr on Union_i4MUFfvKmf {
+  __typename
+}
+
+fragment Fragment_W5764 on Object_CnLtJ6r @Directive_RH{
+  ...Fragment_g_Wnpwr
+  mnL: __typename
+}
+
+fragment Fragment_Nqw on Union_i4MUFfvKmf {
+  ...Fragment_W5764
+  __typename
+  TTyY9RLlP: __typename
+  __typename
+}

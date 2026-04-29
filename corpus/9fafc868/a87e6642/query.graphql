@@ -1,0 +1,24 @@
+query @Directive_eOrdZXn {
+  ...Fragment_A
+  pUZ4 {
+    n {
+      __typename
+    }
+    ... on Object_TbiiV {
+      ...Fragment_A
+      ffns: pUZ4 {
+        __typename
+      }
+    }
+    ... on Union_JkYpEgJcJ {
+      __typename
+    }
+  }
+  ... on Union_JkYpEgJcJ {
+    sW01ODR: __typename
+  }
+}
+
+fragment Fragment_A on Union_JkYpEgJcJ {
+  p1QF9zbj: __typename
+}

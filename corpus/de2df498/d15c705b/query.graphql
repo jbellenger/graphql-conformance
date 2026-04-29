@@ -1,0 +1,56 @@
+query ($nKW: Boolean! = true, $nN: Input_issKvtC = {v : [null, []]}, $v: Float) {
+  ...Fragment_VI2WeO
+  QfpvCLnugd: __typename @skip(if: $nKW)
+  l {
+    gMYD(gn: 1.353518529292825E+308) @Directive_O_5k {
+      ...Fragment_VI2WeO
+    }
+    b43FmVD57 {
+      ...Fragment_VI2WeO
+    }
+    ... on Interface_K1kfD_STUB {
+      ...Fragment_trmqA1oXL
+      __typename @skip(if: true)
+      ... on Interface_K1kfD_STUB {
+        __typename
+      }
+    }
+    ... on Interface_K1kfD {
+      ...Fragment_trmqA1oXL
+      t_5P: __typename
+      r2AoTv0SRz: gMYD(gn: -1.0153477239597956E+308) @Directive_O_5k {
+        __typename
+      }
+    }
+  }
+  eSu8CMj28x
+  imGH: aVea7JdD(qpFxlAQT9: $nN)
+  f2HcFCT: l {
+    ...Fragment_trmqA1oXL
+    ...Fragment_trmqA1oXL
+    b43FmVD57 @skip(if: false) {
+      __typename @include(if: true)
+      __typename
+      __typename
+    }
+    yG_r: gMYD(gn: $v) {
+      ...Fragment_FtLxxwnlZr
+      ... on Object_EsX @skip(if: true) {
+        PStyzI5zPP: __typename
+      }
+    }
+    __typename
+  }
+}
+
+fragment Fragment_VI2WeO on Union_J9eyk2ah {
+  __typename
+}
+
+fragment Fragment_trmqA1oXL on Interface_K1kfD_STUB {
+  B5K9YBFFm: __typename
+}
+
+fragment Fragment_FtLxxwnlZr on Union_WtYcCfoorv {
+  dNJz7: __typename
+}

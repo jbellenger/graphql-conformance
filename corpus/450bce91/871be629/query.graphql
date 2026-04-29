@@ -1,0 +1,14 @@
+query _r {
+  c0IRt {
+    e {
+      ...Fragment_Hlw6iod@include(if: true)
+      __typename
+    }
+  }
+}
+
+fragment Fragment_Hlw6iod on Interface_o @Directive_zdyR{
+  e {
+    f9kjj6tl: __typename
+  }
+}

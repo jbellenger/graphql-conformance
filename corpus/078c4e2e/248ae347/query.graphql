@@ -1,0 +1,29 @@
+{
+  rMgf26Vr {
+    ... on Object_quv {
+      ... on Object_quv {
+        __typename
+      }
+    }
+    ... {
+      KQ1u: __typename
+    }
+  }
+  rMgf26Vr {
+    __typename
+    ... on Object_quv @skip(if: false) {
+      ...Fragment_GHzc
+      __typename @Directive_d
+      ... on Union_K {
+        __typename
+      }
+    }
+    ... on Object_quv {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_GHzc on Object_quv {
+  __typename
+}

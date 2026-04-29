@@ -1,0 +1,28 @@
+query ($tHPEFJk: Boolean!) @experimental_disableErrorPropagation {
+  __typename
+  oRRg6qihez
+  ... on Object_XWWcgjfap {
+    obO5KJ
+    obO5KJ
+  }
+  ... on Union_j {
+    ...Fragment_kz
+    __typename
+    a7AOfqwD_M: __typename
+    ... on Union_Cv {
+      MPHERiZ: __typename
+      ... on Union_j5muN2gZQC {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_kz on Object_CZnkLPBKE {
+  s5hZCVN @skip(if: $tHPEFJk) {
+    __typename
+  }
+  ... on Union_j5muN2gZQC {
+    __typename @skip(if: $tHPEFJk)
+  }
+}

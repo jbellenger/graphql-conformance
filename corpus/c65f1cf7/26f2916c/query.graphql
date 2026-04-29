@@ -1,0 +1,13 @@
+query Hj5VPj3UD {
+  ...Fragment_FLVoUdq4
+}
+
+fragment Fragment_p on Union_L5XmO {
+  __typename
+}
+
+fragment Fragment_FLVoUdq4 on Union_L5XmO {
+  ... on Union_L5XmO {
+    ...Fragment_p
+  }
+}

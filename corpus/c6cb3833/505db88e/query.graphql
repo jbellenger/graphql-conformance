@@ -1,0 +1,28 @@
+{
+  ...Fragment_ZZo6z
+  s5_tekLO(s96ixG: "ar?") {
+    __typename
+  }
+  __typename
+  mBzvm_j8rC: __typename
+  ... on Object_Ni8j7p8 @Directive_KdY {
+    ...Fragment_ZZo6z
+    ...Fragment_k1P
+  }
+}
+
+fragment Fragment__GsAu on Union_KbGI {
+  __typename
+  ... on Union_GKXOXT {
+    __typename
+  }
+}
+
+fragment Fragment_ZZo6z on Object_Ni8j7p8 {
+  ...Fragment__GsAu
+  ...Fragment__GsAu
+}
+
+fragment Fragment_k1P on Union_KbGI {
+  __typename
+}

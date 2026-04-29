@@ -1,0 +1,23 @@
+query B {
+  ...Fragment_kVWafurU
+  ... on Object_fJs2AedtNk {
+    Fh3p: __typename
+  }
+}
+
+fragment Fragment_q1mtify on Union_W9mLPgN {
+  __typename
+}
+
+fragment Fragment_rn8sci3y3Y on Union_pi {
+  ...Fragment_q1mtify
+  __typename
+  __typename
+}
+
+fragment Fragment_kVWafurU on Object_fJs2AedtNk {
+  ...Fragment_rn8sci3y3Y
+  ...Fragment_rn8sci3y3Y
+  __typename
+  __typename
+}

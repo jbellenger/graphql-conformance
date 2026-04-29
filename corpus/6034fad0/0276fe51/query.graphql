@@ -1,0 +1,20 @@
+query ($l29b: Boolean!) {
+  ...Fragment_blcPI
+  ... on Object_p0xCzxiUO {
+    E4x: __typename
+  }
+  ... on Union_dXxVcIdh {
+    ...Fragment_J2WP
+    ...Fragment_J2WP
+  }
+}
+
+fragment Fragment_J2WP on Object_vEFQ0t {
+  __typename
+  __typename
+}
+
+fragment Fragment_blcPI on Union_dXxVcIdh {
+  ...Fragment_J2WP
+  __typename @skip(if: $l29b)
+}
