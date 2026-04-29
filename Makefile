@@ -153,6 +153,7 @@ _test:
 _test-core: _test
 
 _gen-corpus:
+	$(MAKE) -C corpus-gen build
 	$(MAKE) -C corpus-gen gen
 
 _run-conformer:
