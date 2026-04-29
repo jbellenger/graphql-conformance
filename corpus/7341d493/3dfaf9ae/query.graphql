@@ -1,5 +1,0 @@
-query BbaX($oOosqzmKms: Boolean!) {
-  ... on Union_fN @skip(if: $oOosqzmKms) {
-    __typename
-  }
-}

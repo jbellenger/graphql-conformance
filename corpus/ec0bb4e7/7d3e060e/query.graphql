@@ -1,3 +1,0 @@
-query ($_: Boolean!) {
-  __typename @skip(if: $_)
-}

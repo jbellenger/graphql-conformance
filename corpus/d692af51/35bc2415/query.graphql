@@ -1,9 +1,0 @@
-query wDkIIFLf2($cGr1u0NZ: Boolean!@Directive_upPAnSd) {
-  ...Fragment_gAX6@skip(if: true)
-  ...Fragment_gAX6
-  ...Fragment_gAX6
-}
-
-fragment Fragment_gAX6 on Union_MkopXekwR {
-  __typename @skip(if: $cGr1u0NZ)
-}

@@ -1,5 +1,0 @@
-query t {
-  ... on Union_j7A7utz @include(if: false) {
-    __typename @skip(if: false)
-  }
-}

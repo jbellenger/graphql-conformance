@@ -1,8 +1,0 @@
-query BHA {
-  ...Fragment_KlDu@Directive_mtRjdyr
-  x @include(if: true)
-}
-
-fragment Fragment_KlDu on Union_K7 {
-  __typename
-}

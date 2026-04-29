@@ -1,9 +1,0 @@
-query HpbXhQs($fXpe18p: Boolean!) {
-  ...Fragment_D8rviwpYjA
-}
-
-fragment Fragment_D8rviwpYjA on Object_q {
-  ... on Object_q @skip(if: $fXpe18p) {
-    __typename
-  }
-}
