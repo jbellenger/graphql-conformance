@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, type ReactNode } from 'react';
 import {
   buildJsonDiffRows,
   computeCharDiff,
@@ -11,10 +11,20 @@ export interface JsonDiffProps {
   expected: unknown;
   actual: unknown;
   maxRows?: number;
+  // Optional right-aligned action slots (typically CopyButtons) in each
+  // column's header.
+  expectedActions?: ReactNode;
+  actualActions?: ReactNode;
 }
 
 // Two-column diff view for (expected, actual) JSON values.
-export function JsonDiff({ expected, actual, maxRows }: JsonDiffProps) {
+export function JsonDiff({
+  expected,
+  actual,
+  maxRows,
+  expectedActions,
+  actualActions,
+}: JsonDiffProps) {
   const rows = useMemo(
     () => buildJsonDiffRows(expected, actual),
     [expected, actual],
@@ -22,8 +32,18 @@ export function JsonDiff({ expected, actual, maxRows }: JsonDiffProps) {
   const visible = maxRows == null ? rows : rows.slice(0, maxRows);
   return (
     <div className="json-diff">
-      <div className="json-diff-header">Expected</div>
-      <div className="json-diff-header">Actual</div>
+      <div className="json-diff-header code-pane-header">
+        <span>Expected</span>
+        {expectedActions && (
+          <div className="code-pane-actions">{expectedActions}</div>
+        )}
+      </div>
+      <div className="json-diff-header code-pane-header">
+        <span>Actual</span>
+        {actualActions && (
+          <div className="code-pane-actions">{actualActions}</div>
+        )}
+      </div>
       {visible.map((row, idx) => (
         <DiffRowPair key={idx} row={row} />
       ))}
@@ -36,12 +56,15 @@ export interface JsonSingleProps {
   value: unknown;
   header?: string;
   maxRows?: number;
+  // Right-aligned action slot in the header (typically a CopyButton).
+  actions?: ReactNode;
 }
 
 export function JsonSingle({
   value,
   header = 'Response',
   maxRows,
+  actions,
 }: JsonSingleProps) {
   const lines = useMemo(
     () => JSON.stringify(value, null, 2).split('\n'),
@@ -50,10 +73,13 @@ export function JsonSingle({
   const visible = maxRows == null ? lines : lines.slice(0, maxRows);
   return (
     <div className="json-diff json-diff-single">
-      <div className="json-diff-header">{header}</div>
+      <div className="json-diff-header code-pane-header">
+        <span>{header}</span>
+        {actions && <div className="code-pane-actions">{actions}</div>}
+      </div>
       {visible.map((line, idx) => (
         <div key={idx} className="json-diff-line diff-same">
-          {line ? <JsonTokens tokens={tokenizeJsonText(line)} /> : ' '}
+          {line ? <JsonTokens tokens={tokenizeJsonText(line)} /> : ' '}
         </div>
       ))}
     </div>

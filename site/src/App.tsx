@@ -1,5 +1,6 @@
 import { HashRouter, Link, Route, Routes } from 'react-router-dom';
 import { Dashboard } from './routes/Dashboard';
+import { FailureDetail } from './routes/FailureDetail';
 import { ImplDetail } from './routes/ImplDetail';
 import { NotFound } from './routes/NotFound';
 import { REPO_URL } from './lib/repo';
@@ -30,7 +31,7 @@ export function App() {
           <Route path="/impl/:name/failures" element={<ImplDetail />} />
           <Route
             path="/impl/:name/failures/:testCaseId"
-            element={<ImplDetail />}
+            element={<FailureDetail />}
           />
           <Route path="/runs/:runId/impl/:name" element={<ImplDetail />} />
           <Route
@@ -39,7 +40,7 @@ export function App() {
           />
           <Route
             path="/runs/:runId/impl/:name/failures/:testCaseId"
-            element={<ImplDetail />}
+            element={<FailureDetail />}
           />
           <Route path="*" element={<NotFound />} />
         </Routes>

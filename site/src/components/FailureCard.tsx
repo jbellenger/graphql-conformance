@@ -1,216 +1,136 @@
-import { useState, useRef, useEffect, type MouseEvent, type KeyboardEvent } from 'react';
+import { Link } from 'react-router-dom';
 import type { Result } from '../repository/types';
 import { JsonDiff, JsonSingle } from './JsonDiff';
-import { buildJsonDiffRows } from '../lib/jsonDiff';
-import { repoBlobUrl } from '../lib/repo';
-
-const PREVIEW_ROWS = 4;
-const STDERR_PREVIEW_LINES = 3;
+import { CopyButton } from './CopyButton';
+import { LabeledField } from './LabeledField';
 
 export interface FailureCardProps {
   result: Result;
+  // Kept for callers that deep-link to a specific failure; currently just
+  // surfaces as a `data-highlighted` attribute on the card so the scroll
+  // target can be styled if needed.
   defaultExpanded?: boolean;
+  detailTo?: string;
 }
 
-// Decide whether a Result has enough content to warrant an expand toggle.
-function canExpand(result: Result): boolean {
-  if (result.expected != null && result.actual != null) {
-    const rows = buildJsonDiffRows(result.expected, result.actual);
-    if (rows.length > PREVIEW_ROWS) return true;
-  }
-  if (result.actual != null) {
-    const lines = JSON.stringify(result.actual, null, 2).split('\n');
-    if (lines.length > PREVIEW_ROWS) return true;
-  }
-  if (result.stderr) {
-    const lines = result.stderr.trim().split('\n');
-    if (lines.length > STDERR_PREVIEW_LINES) return true;
-  }
-  return false;
-}
-
-export function FailureCard({ result, defaultExpanded = false }: FailureCardProps) {
-  const [expanded, setExpanded] = useState(defaultExpanded);
-  const expandable = canExpand(result);
-  const articleRef = useRef<HTMLElement>(null);
-
-  // Keep local state aligned with route-driven defaultExpanded changes.
-  useEffect(() => {
-    setExpanded(defaultExpanded);
-  }, [defaultExpanded]);
-
-  const onToggle = () => {
-    if (!expandable) return;
-    setExpanded((v) => !v);
-  };
-
-  const onKey = (e: KeyboardEvent<HTMLElement>) => {
-    if (!expandable) return;
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      onToggle();
-    }
-  };
-
-  // Don't trigger expand when the user clicks within interactive content
-  // (links, buttons). The copy button below stops propagation.
-  const onClick = (e: MouseEvent<HTMLElement>) => {
-    const target = e.target as HTMLElement;
-    if (target.closest('a, button')) return;
-    onToggle();
-  };
-
-  const summary = getSummary(result);
-  const classes = [
-    'failure-card',
-    expanded ? 'is-expanded' : '',
-    expandable && !expanded ? 'is-collapsed' : '',
-    expandable ? 'is-interactive' : '',
-  ]
-    .filter(Boolean)
-    .join(' ');
-  const maxRows = expanded ? undefined : PREVIEW_ROWS;
-
+// Failure card rendered on the impl results page. Shows the test id, a
+// Details link to the full failure page, and the expected/actual response
+// panes. Deliberately does not truncate — callers that want a compressed
+// view can paginate at the list level instead.
+export function FailureCard({
+  result,
+  defaultExpanded = false,
+  detailTo,
+}: FailureCardProps) {
   return (
     <article
-      ref={articleRef}
-      className={classes}
+      className="failure-card"
       data-testid="failure-card"
       data-test-case-id={result.testCaseId}
-      {...(expandable
-        ? { tabIndex: 0, role: 'button', 'aria-expanded': expanded }
-        : { role: 'group' })}
-      onClick={onClick}
-      onKeyDown={onKey}
+      data-highlighted={defaultExpanded ? 'true' : undefined}
+      role="group"
     >
       <header className="failure-card-header">
-        <div className="failure-card-heading">
-          <div className="failure-card-label">Test</div>
-          <div className="failure-card-title-row">
-            <div className="failure-card-title mono">
-              <TestKeyLink testKey={result.testCaseId} />
-            </div>
-            <CopyButton text={`corpus/${result.testCaseId}`} />
+        <LabeledField label="Test" mono>{result.testCaseId}</LabeledField>
+        {detailTo && (
+          <div className="failure-card-actions">
+            <Link
+              className="failure-card-chip failure-card-detail-link"
+              to={detailTo}
+              aria-label={`View failure detail for ${result.testCaseId}`}
+            >
+              Details
+            </Link>
           </div>
-        </div>
-        {expandable && (
-          <span className="failure-card-chip">
-            {expanded ? 'Collapse' : 'Expand'}
-          </span>
         )}
       </header>
-      {summary && <div className="failure-card-summary">{summary}</div>}
       <div className="failure-card-body">
-        <FailureBody result={result} maxRows={maxRows} />
+        <FailureBody result={result} />
       </div>
     </article>
   );
 }
 
-function getSummary(result: Result): string | null {
-  if (result.error) return result.error;
-  if (result.status === 'fail') return 'Output differs';
-  if (result.status === 'excluded') return null; // response block speaks for itself
-  return null;
-}
-
-function FailureBody({
-  result,
-  maxRows,
-}: {
-  result: Result;
-  maxRows?: number;
-}) {
+function FailureBody({ result }: { result: Result }) {
   const parts: React.ReactNode[] = [];
 
   if (result.expected != null && result.actual != null && result.status === 'fail') {
     parts.push(
       <div key="diff" className="failure-diff-block">
-        <JsonDiff expected={result.expected} actual={result.actual} maxRows={maxRows} />
+        <JsonDiff
+          expected={result.expected}
+          actual={result.actual}
+          expectedActions={
+            <CopyButton
+              text={JSON.stringify(result.expected, null, 2)}
+              label="Copy expected response"
+              title="Copy expected response"
+            />
+          }
+          actualActions={
+            <CopyButton
+              text={JSON.stringify(result.actual, null, 2)}
+              label="Copy actual response"
+              title="Copy actual response"
+            />
+          }
+        />
       </div>,
     );
   } else if (result.actual != null) {
     parts.push(
       <div key="actual-single" className="failure-diff-block">
-        <JsonSingle value={result.actual} header="Response" maxRows={maxRows} />
+        <JsonSingle
+          value={result.actual}
+          header="Response"
+          actions={
+            <CopyButton
+              text={JSON.stringify(result.actual, null, 2)}
+              label="Copy response"
+              title="Copy response"
+            />
+          }
+        />
       </div>,
     );
   } else if (result.expected != null) {
     parts.push(
       <div key="expected-single" className="failure-diff-block">
-        <JsonSingle value={result.expected} header="Expected" maxRows={maxRows} />
+        <JsonSingle
+          value={result.expected}
+          header="Expected"
+          actions={
+            <CopyButton
+              text={JSON.stringify(result.expected, null, 2)}
+              label="Copy expected response"
+              title="Copy expected response"
+            />
+          }
+        />
       </div>,
     );
   }
 
-  if (result.stderr) {
+  // Prefer `error` (the driver's summarised message). Fall back to
+  // `stderr` only when there is no error message at all — showing both
+  // usually just duplicates the same information in two forms.
+  if (result.error) {
     parts.push(
-      <StderrBlock key="stderr" text={result.stderr} maxLines={maxRows == null ? undefined : STDERR_PREVIEW_LINES} />,
+      <TextBlock key="error" label="error" text={result.error} />,
+    );
+  } else if (result.stderr) {
+    parts.push(
+      <TextBlock key="stderr" label="stderr" text={result.stderr} />,
     );
   }
   return <>{parts}</>;
 }
 
-function StderrBlock({ text, maxLines }: { text: string; maxLines?: number }) {
-  const lines = text.trim().split('\n');
-  const visible = maxLines == null ? lines : lines.slice(0, maxLines);
+function TextBlock({ label, text }: { label: string; text: string }) {
   return (
     <div className="failure-extra-block">
-      <div className="detail-label">stderr</div>
-      <pre className="detail-pre">{visible.join('\n')}</pre>
+      <div className="detail-label">{label}</div>
+      <pre className="detail-pre">{text}</pre>
     </div>
-  );
-}
-
-function TestKeyLink({ testKey }: { testKey: string }) {
-  const parts = testKey.split('/');
-  const [schema, query, vars] = parts;
-  return (
-    <span className="failure-card-title-key">
-      <span>corpus/</span>
-      <a href={repoBlobUrl(`corpus/${schema}/schema.graphqls`)}>{schema}</a>
-      {'/'}
-      <a href={repoBlobUrl(`corpus/${schema}/${query}/query.graphql`)}>{query}</a>
-      {vars && (
-        <>
-          {'/'}
-          <a href={repoBlobUrl(`corpus/${schema}/${query}/${vars}/variables.json`)}>
-            {vars}
-          </a>
-        </>
-      )}
-    </span>
-  );
-}
-
-function CopyButton({ text }: { text: string }) {
-  const [copied, setCopied] = useState(false);
-
-  const onClick = async (e: MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    try {
-      if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(text);
-      }
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    } catch {
-      // clipboard unavailable; no-op
-    }
-  };
-
-  return (
-    <button
-      type="button"
-      className={`failure-card-copy${copied ? ' is-copied' : ''}`}
-      aria-label={`Copy ${text}`}
-      title="Copy test path"
-      onClick={onClick}
-    >
-      <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-        <path d="M7 3.5A2.5 2.5 0 0 1 9.5 1h5A2.5 2.5 0 0 1 17 3.5v7A2.5 2.5 0 0 1 14.5 13h-5A2.5 2.5 0 0 1 7 10.5z" />
-        <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H6v1.5h-.5A1 1 0 0 0 4.5 7.5v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V14H13v.5A2.5 2.5 0 0 1 10.5 17h-5A2.5 2.5 0 0 1 3 14.5z" />
-      </svg>
-    </button>
   );
 }

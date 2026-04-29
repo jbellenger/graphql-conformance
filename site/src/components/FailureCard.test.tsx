@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen, within } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { FailureCard } from './FailureCard';
 import type { Result } from '../repository/types';
 
@@ -24,7 +24,35 @@ describe('FailureCard', () => {
     expect(screen.getAllByText('Actual').length).toBeGreaterThan(0);
   });
 
-  it('renders a single-column response for an excluded result', () => {
+  it('renders the canonical test case id without a "corpus/" prefix and no copy button next to it', () => {
+    render(<FailureCard result={failResult()} />);
+    const card = screen.getByTestId('failure-card');
+    const value = card.querySelector('.labeled-field-value') as HTMLElement;
+    expect(value.textContent).toBe('aaaa/bbbb/cccc');
+    // No "corpus/" prefix and no copy button inside the labeled field.
+    expect(value.textContent).not.toMatch(/corpus\//);
+    const field = value.closest('.labeled-field') as HTMLElement;
+    expect(within(field).queryByRole('button')).toBeNull();
+  });
+
+  it('does not render "Output differs" or an expand/collapse chip', () => {
+    render(<FailureCard result={failResult()} />);
+    expect(screen.queryByText(/output differs/i)).toBeNull();
+    expect(screen.queryByText(/^Expand$/)).toBeNull();
+    expect(screen.queryByText(/^Collapse$/)).toBeNull();
+  });
+
+  it('renders copy buttons for the expected and actual diff panes', () => {
+    render(<FailureCard result={failResult()} />);
+    expect(
+      screen.getByRole('button', { name: /copy expected response/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: /copy actual response/i }),
+    ).toBeInTheDocument();
+  });
+
+  it('renders a single-column response for an excluded result with a copy button', () => {
     const result: Result = {
       id: 'r',
       runId: 'run',
@@ -38,9 +66,12 @@ describe('FailureCard', () => {
     render(<FailureCard result={result} />);
     expect(screen.getByText('Response')).toBeInTheDocument();
     expect(screen.queryByText('Expected')).toBeNull();
+    expect(
+      screen.getByRole('button', { name: /copy response/i }),
+    ).toBeInTheDocument();
   });
 
-  it('shows error message as summary and stderr block for error status', () => {
+  it('prefers the error message over stderr when both are present', () => {
     const result: Result = {
       id: 'r',
       runId: 'run',
@@ -51,28 +82,44 @@ describe('FailureCard', () => {
       stderr: 'oh\nno\nstack overflow',
     };
     render(<FailureCard result={result} />);
-    expect(screen.getByText('Maximum call stack size exceeded')).toBeInTheDocument();
-    expect(screen.getByText('stderr')).toBeInTheDocument();
+    expect(
+      screen.getByText('Maximum call stack size exceeded'),
+    ).toBeInTheDocument();
+    expect(screen.getByText('error')).toBeInTheDocument();
+    // stderr is suppressed when error already summarises the failure.
+    expect(screen.queryByText('stderr')).toBeNull();
+    expect(screen.queryByText(/oh\nno\nstack overflow/)).toBeNull();
   });
 
-  it('toggles expand when clicked on an expandable card', async () => {
-    const user = userEvent.setup();
-    // Construct an actual response with many lines to force expandability.
-    const manyErrors = Array.from({ length: 12 }, (_, i) => ({ message: `err${i}` }));
+  it('falls back to stderr when error is absent', () => {
     const result: Result = {
       id: 'r',
       runId: 'run',
-      implId: 'graphql-js-17',
+      implId: 'graphql-js-16',
       testCaseId: 'a/b/c',
-      status: 'excluded',
-      actual: { errors: manyErrors },
+      status: 'error',
+      stderr: 'oh\nno\nstack overflow',
     };
     render(<FailureCard result={result} />);
-    const card = screen.getByTestId('failure-card');
-    expect(card).toHaveAttribute('aria-expanded', 'false');
-    expect(screen.getByText('Expand')).toBeInTheDocument();
-    await user.click(card);
-    expect(card).toHaveAttribute('aria-expanded', 'true');
-    expect(screen.getByText('Collapse')).toBeInTheDocument();
+    expect(screen.getByText('stderr')).toBeInTheDocument();
+    expect(screen.getByText(/oh/)).toBeInTheDocument();
+  });
+
+  it('renders a Details link when detailTo is provided', () => {
+    render(
+      <MemoryRouter>
+        <FailureCard
+          result={failResult()}
+          detailTo="/runs/run-1/impl/graphql-java/failures/aaaa%2Fbbbb%2Fcccc"
+        />
+      </MemoryRouter>,
+    );
+    const link = screen.getByRole('link', {
+      name: /view failure detail for aaaa\/bbbb\/cccc/i,
+    });
+    expect(link).toHaveAttribute(
+      'href',
+      '/runs/run-1/impl/graphql-java/failures/aaaa%2Fbbbb%2Fcccc',
+    );
   });
 });

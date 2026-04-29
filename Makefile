@@ -176,6 +176,13 @@ _build-site:
 	if [ -d results/data ] && [ "$$(ls -A results/data 2>/dev/null)" ]; then \
 	  cp -R results/data/. site/dist/data/; \
 	fi
+	# Ship the corpus alongside the data so the failure detail page can load
+	# each test case's schema/query/variables text without an external fetch.
+	# Per-file static assets — only visited test cases are downloaded.
+	if [ -d corpus ] && [ "$$(ls -A corpus 2>/dev/null)" ]; then \
+	  rm -rf site/dist/data/corpus; \
+	  cp -R corpus site/dist/data/corpus; \
+	fi
 
 _serve-site: _build-site
 	@printf 'Serving site at http://localhost:8000\n'
