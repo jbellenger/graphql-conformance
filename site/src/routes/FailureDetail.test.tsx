@@ -78,7 +78,13 @@ function makeRepo(): FakeRepository {
   return new FakeRepository({
     impls: [
       { id: 'graphql-js-17', name: 'graphql-js-17', language: 'JavaScript' },
-      { id: 'graphql-java', name: 'graphql-java', language: 'Java' },
+      {
+        id: 'graphql-java',
+        name: 'graphql-java',
+        language: 'Java',
+        version: '22.3',
+        versionUrl: 'https://example.com/graphql-java/22.3',
+      },
       { id: 'graphql-ruby', name: 'graphql-ruby', language: 'Ruby' },
       { id: 'graphql-go', name: 'graphql-go', language: 'Go' },
     ],
@@ -619,7 +625,7 @@ describe('FailureDetail', () => {
     expect(head.children[1]).toBe(h2);
   });
 
-  it('renders the run id, timestamp, and test case id as labeled fields in the title card', async () => {
+  it('renders the run id, timestamp, test case id, and version as labeled fields in the title card', async () => {
     renderAt(
       '/runs/run-1/impl/graphql-java/failures/schema%2Fquery%2Fvars',
       makeRepo(),
@@ -636,11 +642,35 @@ describe('FailureDetail', () => {
     const fieldLabels = Array.from(
       titleCard.querySelectorAll('.labeled-field-label'),
     ).map((el) => el.textContent);
-    expect(fieldLabels).toEqual(['Test Case', 'Run', 'Timestamp']);
+    expect(fieldLabels).toEqual(['Test Case', 'Run', 'Timestamp', 'Version']);
 
     // Run id + test case id values are rendered (and mono).
     expect(within(titleCard).getByText('run-1')).toBeInTheDocument();
     expect(within(titleCard).getByText('schema/query/vars')).toBeInTheDocument();
+    // Version is rendered as an external link to the impl's versionUrl,
+    // matching the ImplDetail page's "Version" meta card.
+    const versionLink = within(titleCard).getByRole('link', { name: '22.3' });
+    expect(versionLink).toHaveAttribute(
+      'href',
+      'https://example.com/graphql-java/22.3',
+    );
+  });
+
+  it('renders the version as plain text when the impl has no versionUrl', async () => {
+    // graphql-go in makeRepo() has no version/versionUrl — should render
+    // "unknown" without a link.
+    renderAt(
+      '/runs/run-1/impl/graphql-go/failures/schema%2Fquery%2Fvars',
+      makeRepo(),
+    );
+    const titleCard = (await screen
+      .findByRole('heading', { name: 'graphql-go', level: 2 }))
+      .closest('.failure-detail-title-card') as HTMLElement;
+    const versionField = within(titleCard)
+      .getByText('Version')
+      .closest('.labeled-field') as HTMLElement;
+    expect(within(versionField).getByText('unknown')).toBeInTheDocument();
+    expect(within(versionField).queryByRole('link')).toBeNull();
   });
 
   it('omits the variables block when the test case has no variables id', async () => {

@@ -173,6 +173,9 @@ function FailureDetailView({
           <LabeledField label="Timestamp" bold={false}>
             {formatTimestamp(run.timestamp)}
           </LabeledField>
+          <LabeledField label="Version" mono>
+            <ImplVersion impl={impl} />
+          </LabeledField>
         </div>
       </section>
 
@@ -581,6 +584,17 @@ function StatusPill({
       {formatOutcome(status)}
     </span>
   );
+}
+
+// Mirrors the ImplDetail "Version" meta card: shows the impl version,
+// linked to `versionUrl` when present, plain text ("unknown" if absent)
+// otherwise.
+function ImplVersion({ impl }: { impl: Impl }) {
+  const value = impl.version ?? 'unknown';
+  if (impl.versionUrl) {
+    return <a href={impl.versionUrl}>{value}</a>;
+  }
+  return <>{value}</>;
 }
 
 interface OutcomeSummary {
