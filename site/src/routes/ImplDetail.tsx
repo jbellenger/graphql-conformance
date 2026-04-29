@@ -130,7 +130,7 @@ interface ImplDetailViewProps {
   history: ImplHistoryPoint[];
   results: Result[];
   highlightedTestCaseId?: string;
-  failuresRef: React.RefObject<HTMLElement>;
+  failuresRef: React.RefObject<HTMLElement | null>;
 }
 
 // Prefix that preserves the pinned-run URL segment when one is present; empty

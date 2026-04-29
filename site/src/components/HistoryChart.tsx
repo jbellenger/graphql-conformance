@@ -78,9 +78,7 @@ export function HistoryChart({ history }: HistoryChartProps) {
               border: '1px solid var(--color-border)',
               borderRadius: 8,
             }}
-            formatter={(v: number, name) =>
-              name === 'passPct' ? [`${v.toFixed(1)}%`, 'Pass rate'] : [v, name]
-            }
+            formatter={(v) => [`${Number(v).toFixed(1)}%`, 'Pass rate']}
             labelFormatter={(label, payload) => {
               const d = payload?.[0]?.payload as ChartDatum | undefined;
               return d ? formatFull(d.timestamp) : label;
