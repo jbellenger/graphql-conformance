@@ -1,0 +1,27 @@
+query ($iRGd3l: Boolean!) {
+  ... on Object_fizvL18jg9 {
+    ...Fragment_L
+    ghYY1J {
+      ...Fragment_Zqft
+    }
+    ghYY1J {
+      ...Fragment_Zqft
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_c7kX on Object_fizvL18jg9 {
+  c0IRt {
+    a1Zq5tIA
+  }
+}
+
+fragment Fragment_L on Object_fizvL18jg9 {
+  ...Fragment_c7kX
+}
+
+fragment Fragment_Zqft on Interface_vMI0s5InZK {
+  fPbJmC7K(y6TtkR5le6: {k : {adPUa : "8/"}}, fxYeet70: OMjS3UKDx) @include(if: $iRGd3l)
+}

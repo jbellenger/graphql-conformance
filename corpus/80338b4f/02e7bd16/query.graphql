@@ -1,0 +1,33 @@
+query sT_ {
+  ...Fragment_p
+  c0me6F {
+    ... on Union_icn8IBT0bK {
+      ...Fragment_agVDN3
+    }
+  }
+  ... on Union_RZYMM {
+    ...Fragment_p
+    __typename
+    __typename
+  }
+  ... on Union_vDiG {
+    ...Fragment_uKS
+    ...Fragment_p
+  }
+  ... on Interface_hDPBfy6 {
+    kxKF1
+  }
+}
+
+fragment Fragment_uKS on Union_vDiG @Directive_v61Fz{
+  wkfk: __typename
+}
+
+fragment Fragment_p on Union_vDiG {
+  ...Fragment_uKS
+  ...Fragment_uKS
+}
+
+fragment Fragment_agVDN3 on Object_jmJ {
+  __typename
+}

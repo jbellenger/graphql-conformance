@@ -1,0 +1,14 @@
+{
+  ...Fragment_L5z6IJmCh
+}
+
+fragment Fragment_rdixx on Interface_RX {
+  __typename
+}
+
+fragment Fragment_L5z6IJmCh on Object_WEy4PG {
+  za6Jz7z: rNN9 @skip(if: false) {
+    ...Fragment_rdixx
+  }
+  wrf5
+}

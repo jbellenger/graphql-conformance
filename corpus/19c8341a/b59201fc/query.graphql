@@ -1,0 +1,27 @@
+query aBhU {
+  ...Fragment_xfNp4@include(if: true)
+  ...Fragment_cO@skip(if: true)
+  ... on Union_fGxJQH {
+    qaXSoqda: __typename
+  }
+}
+
+fragment Fragment_H1R2 on Object_eE {
+  esP8PbHKY4: __typename
+  ... on Object_eE {
+    WEbVM8Drxo: lNJwpZU
+  }
+}
+
+fragment Fragment_xfNp4 on Union_xzs {
+  ...Fragment_H1R2
+  ... on Union_xzs {
+    __typename
+  }
+}
+
+fragment Fragment_cO on Union_fGxJQH @Directive_Y5AA{
+  ... on Object_vF53n {
+    __typename
+  }
+}

@@ -1,0 +1,14 @@
+query ge69gvYKQ {
+  __typename
+  ... on Object_vF53n {
+    ... {
+      __typename @Directive_K @include(if: false)
+      ... on Union_xzs {
+        iQtPVk: __typename
+      }
+    }
+  }
+  ... on Object_vF53n {
+    __typename
+  }
+}

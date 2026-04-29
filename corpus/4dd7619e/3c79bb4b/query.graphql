@@ -1,0 +1,16 @@
+query qM {
+  ...Fragment_TiCKJnLI
+}
+
+fragment Fragment_TiCKJnLI on Union_cm_bRn {
+  ... on Object_ZGrvQ98O {
+    ... on Union_cm_bRn {
+      __typename
+    }
+  }
+  ... {
+    ... on Union_cm_bRn {
+      __typename
+    }
+  }
+}

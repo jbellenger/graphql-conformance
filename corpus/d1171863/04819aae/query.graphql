@@ -1,0 +1,36 @@
+query yDbSBZ2 {
+  ...Fragment_jVsG@include(if: false)
+  zkF {
+    ...Fragment_iZdV2Iv
+  }
+  wU328 {
+    __typename
+    s: __typename
+  }
+  __typename
+  wU328 {
+    ...Fragment_jVsG
+  }
+}
+
+fragment Fragment_hXSHvG60m on Object_b {
+  wU328 {
+    w1lf: __typename @Directive_Y
+  }
+  zkF {
+    __typename
+  }
+}
+
+fragment Fragment_jVsG on Object_b {
+  ...Fragment_hXSHvG60m
+  wU328 {
+    __typename @Directive_Y
+  }
+}
+
+fragment Fragment_iZdV2Iv on Object_NQpq {
+  ... on Union_X @skip(if: false) {
+    __typename
+  }
+}

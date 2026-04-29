@@ -1,0 +1,45 @@
+query IwmW {
+  ...Fragment_Zz0q@defer(if: false, label: "AN")
+  eR: h1rv6lK3V {
+    __typename
+    ... on Interface_nD7MgpmDf {
+      e6toxvr3E
+    }
+    ... on Interface_nD7MgpmDf {
+      pl {
+        lX: __typename
+      }
+    }
+  }
+  ... on Object_ys {
+    ...Fragment_Zz0q
+    ... on Object_ys {
+      __typename
+    }
+  }
+  ... on Object_ys {
+    ...Fragment_jk
+    __typename
+    dZ5l04w {
+      tJeYrdtJB
+    }
+    ... on Union_M {
+      ... on Union_u {
+        __typename @Directive_wlZ4MmjEl
+      }
+    }
+  }
+}
+
+fragment Fragment_Zz0q on Union_M {
+  __typename
+  ... {
+    j: __typename
+  }
+}
+
+fragment Fragment_jk on Union_M {
+  ... on Interface_nD7MgpmDf {
+    __typename
+  }
+}

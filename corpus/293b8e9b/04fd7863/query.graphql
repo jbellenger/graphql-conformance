@@ -1,0 +1,22 @@
+query YMyJD2 {
+  ...Fragment_SHFy
+}
+
+fragment Fragment_Hagyg_E on Object_U0UYG {
+  xkW {
+    q @skip(if: false) {
+      vrp
+    }
+  }
+  yiDc7_w6
+}
+
+fragment Fragment_sHJk on Object_U0UYG {
+  ...Fragment_Hagyg_E
+  __typename
+}
+
+fragment Fragment_SHFy on Object_U0UYG {
+  ...Fragment_sHJk
+  ...Fragment_Hagyg_E
+}

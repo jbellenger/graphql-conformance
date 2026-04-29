@@ -1,0 +1,5 @@
+query ($tpzCt: Boolean! = true) {
+  i7aFmgUNG: m6N {
+    nz_DEvnK @skip(if: $tpzCt)
+  }
+}

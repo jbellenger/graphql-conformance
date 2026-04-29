@@ -1,0 +1,18 @@
+query eMyrE {
+  t8 @Directive_sb9jhxMzi {
+    ...Fragment_PpF
+    b: __typename
+    t8 {
+      ... on Object_itUi4 {
+        __typename
+      }
+    }
+  }
+  t8 {
+    gRsweoFFE
+  }
+}
+
+fragment Fragment_PpF on Union_fZ0I9 {
+  __typename
+}

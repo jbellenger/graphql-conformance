@@ -1,0 +1,12 @@
+query niVI {
+  ...Fragment_h
+  __typename
+}
+
+fragment Fragment_I on Object_TYaRdu {
+  __typename
+}
+
+fragment Fragment_h on Interface_M3vb {
+  ...Fragment_I
+}

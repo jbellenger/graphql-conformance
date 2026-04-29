@@ -1,0 +1,13 @@
+{
+  ... on Object_iaH0t5ssFK {
+    ...Fragment_QC
+    _LloLJbpp
+    ... on Object_iaH0t5ssFK {
+      ...Fragment_QC
+    }
+  }
+}
+
+fragment Fragment_QC on Object_iaH0t5ssFK {
+  _LloLJbpp @include(if: true)
+}

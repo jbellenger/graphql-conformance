@@ -1,0 +1,19 @@
+query NkcrtZaUM($ffxIF: Enum_B2skAmI = pvl) {
+  h9c9(kXJS7h: IdRXE5m)
+  ... on Union_vWbd @skip(if: false) {
+    ...Fragment_wddzWld
+    y: __typename
+  }
+}
+
+fragment Fragment_TUIEXPgUh9 on Object_ncgQ {
+  c7QvX4hb7: h9c9
+}
+
+fragment Fragment_wddzWld on Object_ncgQ {
+  ...Fragment_TUIEXPgUh9
+  uVyrLhIw: h9c9(kXJS7h: $ffxIF)
+  ... on Union_vWbd {
+    __typename
+  }
+}

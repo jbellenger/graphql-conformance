@@ -1,0 +1,4 @@
+query @experimental_disableErrorPropagation {
+  __typename @include(if: true)
+  o: __typename
+}

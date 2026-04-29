@@ -1,0 +1,36 @@
+query fx8w8OD_vM {
+  ...Fragment_kb
+  ...Fragment_rzydxLMR
+  ...Fragment_rzydxLMR
+  gWTggSUP: d
+  d
+  hrdLs1O {
+    __typename @include(if: false)
+    ... on Union_VUJTok {
+      __typename
+    }
+  }
+  ... on Interface_M3vb {
+    ...Fragment_rzydxLMR
+  }
+  ... on Interface_M3vb {
+    ...Fragment_kb
+    ... on Interface_M3vb @Directive_T {
+      ... on Union_GCUb {
+        P: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_rzydxLMR on Union_GCUb {
+  __typename
+}
+
+fragment Fragment_kb on Interface_M3vb {
+  d
+  zR: __typename
+  hrdLs1O {
+    ...Fragment_rzydxLMR
+  }
+}

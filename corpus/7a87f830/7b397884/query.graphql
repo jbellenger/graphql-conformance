@@ -1,0 +1,31 @@
+{
+  bpYi_ {
+    ...Fragment_ry6f7y
+  }
+  bpYi_ {
+    ...Fragment_ry6f7y
+    jHl6Jj @Directive_Kp4yIp {
+      oX7v1d
+      oX7v1d
+    }
+    bxIc
+  }
+}
+
+fragment Fragment_KjVHZo0hqz on Interface_A7fZ_STUB {
+  rGLE04: _hPhbbKWE {
+    __typename
+  }
+  yUBc6h @skip(if: false) {
+    cd: __typename
+  }
+}
+
+fragment Fragment_ry6f7y on Interface_A7fZ {
+  ...Fragment_KjVHZo0hqz
+  ... on Interface_A7fZ_STUB {
+    BgT8gednl: jHl6Jj {
+      oX7v1d
+    }
+  }
+}

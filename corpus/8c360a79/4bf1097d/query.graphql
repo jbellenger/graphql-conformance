@@ -1,0 +1,19 @@
+query uNa62o {
+  ...Fragment_TQ4F
+}
+
+fragment Fragment_XxZ35Fp on Union_kA7SuFOaML @Directive_pd{
+  __typename
+}
+
+fragment Fragment_c on Union_HS {
+  ...Fragment_XxZ35Fp
+  ... on Interface_F2nEqpOXyJ {
+    DpNAyZOrn2: __typename
+  }
+}
+
+fragment Fragment_TQ4F on Object_xSrwf0 {
+  ...Fragment_c
+  __typename
+}

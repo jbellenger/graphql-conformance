@@ -1,0 +1,22 @@
+query xN6c {
+  ... on Object_nJ_AH @defer {
+    ...Fragment_O1Zg5qWL
+    ...Fragment_OA2MdkufZG
+    p: __typename
+    ... on Object_nJ_AH @include(if: false) {
+      gUFU: qi
+    }
+  }
+}
+
+fragment Fragment_OA2MdkufZG on Union_dQNlRz {
+  __typename
+}
+
+fragment Fragment_O1Zg5qWL on Union_SlFuZsl3t7 {
+  ...Fragment_OA2MdkufZG
+  __typename
+  ... on Union_SlFuZsl3t7 {
+    PCPDhKr: __typename
+  }
+}

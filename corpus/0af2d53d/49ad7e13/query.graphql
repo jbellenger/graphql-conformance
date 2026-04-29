@@ -1,0 +1,20 @@
+query qu_nVp {
+  ...Fragment_KWJL8DY
+  U: __typename
+}
+
+fragment Fragment_JcDc6bN7 on Union_pi {
+  __typename
+}
+
+fragment Fragment_KWJL8DY on Object_fJs2AedtNk {
+  ... on Object_fJs2AedtNk {
+    ...Fragment_JcDc6bN7
+  }
+  ... on Union_pi {
+    __typename
+    ... on Object_uda3kZU {
+      u
+    }
+  }
+}

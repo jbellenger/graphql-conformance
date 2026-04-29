@@ -1,0 +1,42 @@
+query gRDow3Hqw {
+  s5_tekLO(s96ixG: "n,") {
+    ...Fragment_au
+  }
+  ... on Union_KbGI @defer(if: false, label: "Q") {
+    __typename
+    __typename
+    __typename
+    ... on Union_N5gYh {
+      ...Fragment_L3RVGiY
+    }
+    ... on Union_N5gYh {
+      ...Fragment_L3RVGiY
+      ... on Union_KbGI {
+        __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_U0zJk on Interface_B9rF_STUB {
+  ShamOJTvi: zhNKKOfIVg {
+    __typename
+  }
+  eDFzaHv {
+    raFq5FW
+  }
+}
+
+fragment Fragment_au on Interface_B9rF {
+  ...Fragment_U0zJk
+  ... on Interface_mDS5Hu0vJ {
+    zhNKKOfIVg {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_L3RVGiY on Union_KbGI {
+  __typename
+}

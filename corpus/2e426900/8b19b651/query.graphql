@@ -1,0 +1,41 @@
+query mna77($vl4Ia0o: Boolean!@Directive_sYUxIM) {
+  ...Fragment_L
+  ...Fragment_KQ9LQYS@include(if: $vl4Ia0o)
+  ...Fragment_A8W
+  ... on Object_iaH0t5ssFK {
+    _LloLJbpp
+  }
+}
+
+fragment Fragment_L on Object_iaH0t5ssFK {
+  _LloLJbpp
+  g0egRnmIX
+}
+
+fragment Fragment_nrq71eVs on Object_iaH0t5ssFK {
+  ...Fragment_L
+  kjJ7hb5k: g0egRnmIX
+  __typename
+  ... on Object_iaH0t5ssFK {
+    g0egRnmIX
+  }
+}
+
+fragment Fragment_KQ9LQYS on Object_iaH0t5ssFK {
+  ...Fragment_nrq71eVs@defer(if: true, label: "W")
+}
+
+fragment Fragment_TO56LU on Object_iaH0t5ssFK {
+  aHTeXA6o9J: kjJ7hb5k {
+    oZ7ieo
+  }
+  __typename
+  ... on Object_iaH0t5ssFK {
+    QXzKvCQU: g0egRnmIX
+  }
+}
+
+fragment Fragment_A8W on Object_iaH0t5ssFK {
+  ...Fragment_L
+  ...Fragment_TO56LU@skip(if: true) @defer(if: true, label: "")
+}

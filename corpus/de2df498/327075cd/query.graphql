@@ -1,0 +1,14 @@
+{
+  ...Fragment_aw8bXtN@Directive_NdZDTdVj @defer(if: true, label: "f4C")
+  ...Fragment_aw8bXtN
+  ...Fragment_aw8bXtN
+}
+
+fragment Fragment_el6IxhRfr on Union_WtYcCfoorv {
+  qq6Me: __typename
+}
+
+fragment Fragment_aw8bXtN on Union_xyy5 {
+  ...Fragment_el6IxhRfr
+  __typename
+}

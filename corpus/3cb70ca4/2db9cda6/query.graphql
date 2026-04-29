@@ -1,0 +1,22 @@
+query FHPlw8f9 {
+  ...Fragment_V7KlfoAA
+  ... on Object_Y_nI {
+    ...Fragment_V7KlfoAA@Directive_BM8ZZ5
+    ...Fragment_O
+    ... on Union_Zd9 {
+      ...Fragment_V7KlfoAA
+      __typename @Directive_UXjaEgeyO
+    }
+  }
+}
+
+fragment Fragment_V7KlfoAA on Union_Zd9 {
+  __typename
+  xwbbzSL35: __typename
+}
+
+fragment Fragment_O on Union_igV @Directive_DYuS{
+  ... on Union_Zd9 {
+    __typename
+  }
+}

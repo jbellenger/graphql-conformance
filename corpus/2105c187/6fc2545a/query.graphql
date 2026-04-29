@@ -1,0 +1,34 @@
+query nM {
+  wtRzY_(tT: WM9M8NQ6bm)
+  BXT8E: __typename
+  vokHpLv {
+    ...Fragment_LrF57M@Directive_qOJO
+    yf: __typename
+    ... on Union_z_iZPYs {
+      ... on Union_S {
+        m7: __typename
+      }
+    }
+    ... on Union_S {
+      ...Fragment_wYm_1iH
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_KRcLd4W on Object_R10Bp {
+  j8lfGDe4
+  ELSH0RQfYz: hI5J7Gf7o_
+}
+
+fragment Fragment_LrF57M on Object_R10Bp {
+  ...Fragment_KRcLd4W
+  ... on Union_z_iZPYs {
+    OpnAG: __typename
+  }
+}
+
+fragment Fragment_wYm_1iH on Union_z_iZPYs {
+  __typename
+}

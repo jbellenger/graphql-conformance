@@ -1,0 +1,27 @@
+query IgZ {
+  ...Fragment_v_vO22KNAS
+  ...Fragment_AMw@defer(if: false)
+  __typename
+}
+
+fragment Fragment_j on Union_OhU {
+  __typename
+}
+
+fragment Fragment_AMw on Union_utGCeET {
+  ...Fragment_j
+  ... on Union_OhU {
+    G2XvU: __typename
+  }
+}
+
+fragment Fragment_v_vO22KNAS on Object_QxW {
+  ...Fragment_AMw
+  ... on Union_utGCeET {
+    Nnof1: __typename
+  }
+  ... on Union_I__w {
+    ...Fragment_j
+    __typename
+  }
+}

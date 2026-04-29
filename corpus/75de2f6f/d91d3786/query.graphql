@@ -1,0 +1,14 @@
+query Os7tVPUKb_($gp_WxOKVxZ: Boolean!) @experimental_disableErrorPropagation {
+  ...Fragment_Azgzb6y
+}
+
+fragment Fragment_YSnGv on Object_ZV05xK {
+  ... on Union_jxgOJg {
+    __typename
+    __typename @skip(if: $gp_WxOKVxZ)
+  }
+}
+
+fragment Fragment_Azgzb6y on Union_jxgOJg @Directive_eEEX8te_Md{
+  ...Fragment_YSnGv
+}

@@ -1,0 +1,11 @@
+query tmACmw1eI9 @Directive_eEEX8te_Md {
+  ... on Union_jxgOJg {
+    ... on Object_ZV05xK {
+      ...Fragment_e@include(if: true)
+    }
+  }
+}
+
+fragment Fragment_e on Union_jxgOJg {
+  __typename
+}

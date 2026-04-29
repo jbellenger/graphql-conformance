@@ -1,0 +1,7 @@
+query Z1VpRik_h($y7iKzz: Boolean!) {
+  ...Fragment_B@include(if: $y7iKzz) @defer(if: true, label: "66")
+}
+
+fragment Fragment_B on Object_DSlaT {
+  __typename
+}

@@ -1,0 +1,7 @@
+query Hw($dx4hjZuG: Boolean!) {
+  ...Fragment_FZTNrZCJ
+}
+
+fragment Fragment_FZTNrZCJ on Object_jW {
+  dUaSOZ: __typename @include(if: $dx4hjZuG)
+}

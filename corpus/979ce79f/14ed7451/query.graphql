@@ -1,0 +1,14 @@
+query xVKoWj {
+  ... on Union_p {
+    ... on Union_Ak {
+      ...Fragment_mN
+      ... @Directive_mzhIkHUjD {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_mN on Union_p {
+  __typename
+}

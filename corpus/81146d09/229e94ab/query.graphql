@@ -1,0 +1,42 @@
+query rHmhyUnQk6($pdNU: Input_nppgXlXJz, $z656fca: Enum_BNbmryE, $d27f6I: Boolean! = false) @experimental_disableErrorPropagation {
+  Xc1k1v: plw2OiK(w6: $pdNU) {
+    ...Fragment_B4Ekb
+    ...Fragment_B4Ekb@Directive_te
+    f {
+      ... on Union_NuVz_efImg {
+        ZPxnrha: __typename
+      }
+    }
+    ... on Interface_F_STUB {
+      ...Fragment_B4Ekb
+      ... on Interface_F_STUB {
+        dGJ9a
+        dGJ9a
+      }
+    }
+    ... on Interface_F {
+      __typename @include(if: true)
+      f @Directive_AZ83nQQ9g5(yi2yJ: $z656fca) {
+        __typename
+      }
+    }
+  }
+  ... on Union_kJmSgG8F {
+    __typename
+    __typename
+    ... on Union_kJmSgG8F {
+      ...Fragment_m8A9G@include(if: $d27f6I)
+    }
+  }
+}
+
+fragment Fragment_B4Ekb on Interface_F_STUB {
+  ... on Interface_F_STUB {
+    __typename
+    __typename @include(if: true)
+  }
+}
+
+fragment Fragment_m8A9G on Union_j7A7utz {
+  __typename
+}

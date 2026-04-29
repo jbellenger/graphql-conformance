@@ -1,0 +1,12 @@
+query F7 {
+  ...Fragment_XD9z5
+  ...Fragment_YpgkZ7PEEs
+}
+
+fragment Fragment_YpgkZ7PEEs on Union_YmT {
+  __typename @Directive_AQjm
+}
+
+fragment Fragment_XD9z5 on Union_YmT {
+  ...Fragment_YpgkZ7PEEs
+}

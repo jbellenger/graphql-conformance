@@ -1,0 +1,13 @@
+query v {
+  ... on Object_A {
+    ...Fragment_S_K8MrSV
+    __typename
+  }
+}
+
+fragment Fragment_S_K8MrSV on Union_tEOp63 {
+  pdjpBT: __typename @Directive__vui_
+  ... on Object_vSF2HEmb {
+    sg
+  }
+}

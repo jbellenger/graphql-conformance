@@ -1,0 +1,6 @@
+query e {
+  __typename
+  ... on Object_O {
+    __typename
+  }
+}

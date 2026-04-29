@@ -1,0 +1,24 @@
+query @Directive_EUSI8AUiB5 {
+  ... on Union_hNu_iyIJsi {
+    __typename
+    ... on Object_Wtp {
+      ...Fragment_wY8bxS47
+      __typename
+    }
+  }
+  ... on Union_cgEVhYKi @skip(if: true) @Directive_KULbD0S @Directive_EUSI8AUiB5 {
+    __typename
+    HFtGY: __typename
+    __typename
+    ... on Union_cgEVhYKi {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_wY8bxS47 on Object_Wtp {
+  lcsfphTTC {
+    g52OHl
+  }
+  __typename
+}

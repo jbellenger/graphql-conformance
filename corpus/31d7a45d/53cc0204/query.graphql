@@ -1,0 +1,29 @@
+query ($tfk: Boolean!) {
+  ...Fragment_gIhd
+  fV @skip(if: false) {
+    ... on Interface_CcfVRq_lR @include(if: $tfk) {
+      ... on Interface_CcfVRq_lR_STUB {
+        cJ2RD954PM: v2 {
+          __typename
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_M on Union_wy {
+  __typename
+}
+
+fragment Fragment_ZFGwM_UvU on Union_Jp_JEwLQ2 @Directive_M5w(qRD2j79g: jsMnOLo_C){
+  ...Fragment_M
+  __typename
+}
+
+fragment Fragment_gIhd on Union_wy {
+  ...Fragment_ZFGwM_UvU
+  __typename
+  __typename
+  __typename
+  ZI0wS1T: __typename
+}

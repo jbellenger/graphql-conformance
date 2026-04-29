@@ -1,0 +1,42 @@
+query ($f: Boolean!) @experimental_disableErrorPropagation {
+  ...Fragment_MYgK
+  vnMfp_2 {
+    ...Fragment_hQ1y
+  }
+  ... on Union_YBNbUSH {
+    __typename
+  }
+  ... on Object_yv1 {
+    __typename
+  }
+}
+
+fragment Fragment_fUpyn9Mx on Object_yv1 {
+  d: __typename
+  vnMfp_2 {
+    __typename @include(if: $f)
+  }
+}
+
+fragment Fragment_hQ1y on Interface_w43 {
+  ov(jcd: false) {
+    __typename
+  }
+  Q: ov(jcd: true) {
+    __typename
+  }
+}
+
+fragment Fragment_MYgK on Object_yv1 {
+  ...Fragment_fUpyn9Mx
+  ...Fragment_fUpyn9Mx@defer(if: false, label: "-&.")
+  vnMfp_2 {
+    ...Fragment_hQ1y
+  }
+  ... on Object_yv1 {
+    ...Fragment_fUpyn9Mx
+    ... on Object_yv1 {
+      __typename
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  ...Fragment_oP@defer(if: false, label: "\\")
+  PE2WE682: __typename
+  ... on Union_O3 {
+    ...Fragment_oP
+    ...Fragment_oP
+  }
+  ... {
+    hKH28w
+  }
+  ... on Union_qaVsEHz {
+    ...Fragment_oP
+  }
+}
+
+fragment Fragment_ds on Object_SJS38Bn {
+  ... on Union_qaVsEHz {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_oP on Union_qaVsEHz {
+  ...Fragment_ds
+}

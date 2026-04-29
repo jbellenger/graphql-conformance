@@ -1,0 +1,29 @@
+query MCw1j @experimental_disableErrorPropagation {
+  ...Fragment_BQUGe8Z
+  ...Fragment_LT3@defer(if: false, label: "")
+}
+
+fragment Fragment_sMkY on Union_VcV89Z_Hm6 {
+  l5: __typename
+}
+
+fragment Fragment_h4aq on Object_gzHd4 {
+  ...Fragment_sMkY
+}
+
+fragment Fragment_BQUGe8Z on Union_VcV89Z_Hm6 @Directive_LT2CMLue{
+  ...Fragment_h4aq
+}
+
+fragment Fragment_LT3 on Union_tS_wa {
+  ...Fragment_BQUGe8Z
+  ... on Object_ksUsJfK {
+    __typename
+  }
+  ... on Union_tS_wa {
+    ... on Union_tS_wa {
+      __typename
+      __typename @Directive_LT2CMLue
+    }
+  }
+}

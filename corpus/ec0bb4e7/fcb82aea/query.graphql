@@ -1,0 +1,21 @@
+query ($tU: Boolean!) {
+  ...Fragment_fGpmq@Directive_nbli(gFI: {u4YiX_1y : jUMBfZ})
+  ... on Union_Lvr4IcD @include(if: $tU) {
+    ydoJPCq_x: __typename
+    __typename
+  }
+}
+
+fragment Fragment_zdy on Union_Lvr4IcD {
+  __typename
+  ... on Object_C_fYTBx3J2 {
+    __typename
+    d @Directive_nbli(gFI: {u4YiX_1y : jUMBfZ})
+  }
+}
+
+fragment Fragment_fGpmq on Object_C_fYTBx3J2 {
+  ...Fragment_zdy
+  ...Fragment_zdy
+  d @Directive__8w5U
+}

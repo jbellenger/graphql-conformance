@@ -1,0 +1,16 @@
+{
+  ... on Object_A {
+    ...Fragment_BFHNd9
+  }
+}
+
+fragment Fragment_B_Bj on Object_vSF2HEmb {
+  __typename
+}
+
+fragment Fragment_BFHNd9 on Union_tEOp63 {
+  ...Fragment_B_Bj
+  ... on Union_tEOp63 @defer(if: false, label: "t") {
+    __typename
+  }
+}

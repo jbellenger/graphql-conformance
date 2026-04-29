@@ -1,0 +1,17 @@
+query SM($zIdGRAHWy6: Boolean!) {
+  ... on Object_Ud8k @include(if: $zIdGRAHWy6) {
+    ...Fragment_ArW8
+    ...Fragment_ArW8
+    ... on Union_t {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_ArW8 on Union_t {
+  dkTi: __typename
+  ... on Union_hwGHM {
+    __typename
+    __typename
+  }
+}

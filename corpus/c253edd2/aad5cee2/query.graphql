@@ -1,0 +1,44 @@
+query BjYeUj {
+  __typename
+  ... on Object_q {
+    ...Fragment_A
+    ...Fragment_xvjRzy
+    ep7 {
+      cOP1
+    }
+    ep7 {
+      ...Fragment_E4wW9@defer(if: true, label: "")
+      mxCcBS9(yB: true)
+    }
+    Ovrr2: ep7 {
+      ...Fragment_E4wW9
+      mxCcBS9(yB: true) @include(if: true)
+      ... on Interface_QcP2gwiWU7 {
+        __typename
+      }
+    }
+  }
+  ... on Object_q {
+    d74LB2Ve: __typename
+  }
+}
+
+fragment Fragment_gzS0zmrGlY on Union_Xq6ss {
+  __typename
+}
+
+fragment Fragment_A on Union_cQvg3A81 {
+  ...Fragment_gzS0zmrGlY
+  xDe_mLFEC: __typename
+}
+
+fragment Fragment_xvjRzy on Union_Dx {
+  ... on Union_cQvg3A81 @Directive_GrXDYZ {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_E4wW9 on Interface_QcP2gwiWU7 {
+  __typename
+}

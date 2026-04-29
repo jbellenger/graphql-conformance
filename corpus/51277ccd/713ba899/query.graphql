@@ -1,0 +1,17 @@
+query xIr($fZjbMuMrKQ: Boolean! = false) {
+  ...Fragment_Sljz7P
+}
+
+fragment Fragment_n0fo3YzM on Union_tS_wa {
+  afWd4M9K8j: __typename
+}
+
+fragment Fragment_Sljz7P on Union_tS_wa {
+  __typename
+  ... on Union_tS_wa {
+    ...Fragment_n0fo3YzM
+    __typename
+    __typename @skip(if: $fZjbMuMrKQ)
+    __typename
+  }
+}

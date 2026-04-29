@@ -1,0 +1,18 @@
+query vC6z7Gn3 {
+  Kz: kmwNoRPa
+  ... on Object_hAcG5607A {
+    ...Fragment_FT
+  }
+  ... on Union_b {
+    ... on Union_b {
+      ilPM0aHkvJ: __typename
+    }
+    ... on Object_hAcG5607A {
+      ZOXnO9JZig: kmwNoRPa
+    }
+  }
+}
+
+fragment Fragment_FT on Union_b {
+  __typename
+}

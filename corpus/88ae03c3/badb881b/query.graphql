@@ -1,0 +1,32 @@
+query Tn1c4KcH1 {
+  ...Fragment_GaBduZF
+  ...Fragment_DmVb
+  ...Fragment_ZG
+}
+
+fragment Fragment_Xi on Union_F3fkH {
+  __typename
+}
+
+fragment Fragment_ZG on Union_EUph2fxoX {
+  ...Fragment_Xi
+  __typename
+}
+
+fragment Fragment_GaBduZF on Object_I0 {
+  ...Fragment_ZG
+  d7s
+  __typename
+  __typename
+  ... on Union_vpNFdADCI {
+    ...Fragment_ZG
+    ... on Union_vpNFdADCI {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_DmVb on Object_I0 {
+  w4Dr0: __typename
+  d7s
+}

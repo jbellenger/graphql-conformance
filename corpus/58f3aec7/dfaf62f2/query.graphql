@@ -1,0 +1,22 @@
+query cNCjA {
+  ...Fragment_ri
+  ...Fragment_ri
+  ...Fragment_ri
+  ... on Union_qHkwzMpe {
+    __typename
+  }
+  ... on Union_qHkwzMpe {
+    ...Fragment_ri
+    ...Fragment_ri
+  }
+}
+
+fragment Fragment_j8otf0 on Object_IqAdQOMfe {
+  ... on Object_IqAdQOMfe {
+    mT: __typename
+  }
+}
+
+fragment Fragment_ri on Union_qHkwzMpe {
+  ...Fragment_j8otf0
+}

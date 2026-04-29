@@ -1,0 +1,25 @@
+query ($h8u: Boolean!) {
+  ...Fragment_Vfqp
+  ...Fragment_Iea
+  ...Fragment_OWStN
+}
+
+fragment Fragment_OWStN on Object_fx2JwXI7V {
+  zkOiY
+}
+
+fragment Fragment_Iea on Object_fx2JwXI7V {
+  ...Fragment_OWStN
+  ... {
+    vCe2s0U9xU: __typename
+  }
+}
+
+fragment Fragment_Vfqp on Object_fx2JwXI7V {
+  ...Fragment_Iea@skip(if: false)
+  ... on Object_fx2JwXI7V {
+    ... on Object_fx2JwXI7V @include(if: $h8u) {
+      __typename
+    }
+  }
+}

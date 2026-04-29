@@ -1,0 +1,50 @@
+{
+  ...Fragment_n_nggho
+  __typename
+  qg {
+    ...Fragment_Ca9MUqc
+    __typename
+  }
+  ... on Union_HXkbp {
+    ...Fragment_n_nggho
+    ...Fragment_n_nggho
+    __typename
+    ... on Object_FujizSGnTm {
+      ...Fragment_n_nggho
+      ... on Object_FujizSGnTm {
+        wt4: izEeh {
+          __typename
+        }
+      }
+    }
+  }
+  ... on Union_gvrmxAudS {
+    ... @Directive_Q {
+      Zwn3UA: __typename
+    }
+    ... on Union_HXkbp {
+      __typename
+      __typename
+      ... on Union_HXkbp {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_n_nggho on Union_HXkbp {
+  __typename @Directive_Q
+}
+
+fragment Fragment_z7daQnOTmn on Interface_H {
+  uJ2_m0MYHx: rZhi3S
+}
+
+fragment Fragment_Ca9MUqc on Interface_H {
+  ...Fragment_z7daQnOTmn
+  ... on Interface_H_STUB {
+    kVCs8zce @skip(if: false) {
+      d498y: __typename
+    }
+  }
+}

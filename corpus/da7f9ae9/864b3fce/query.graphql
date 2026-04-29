@@ -1,0 +1,25 @@
+query gm($evXMM2W: Boolean! = false) {
+  ...Fragment_z@include(if: $evXMM2W)
+  ...Fragment_z@defer(if: false, label: "8")
+  hVpaiofYr {
+    __typename
+  }
+  dvaF_oieSI
+  hm6TPsVgo
+  hm6TPsVgo
+  dvaF_oieSI
+  ... on Object_ODKb5oyXT9 {
+    ... on Union_z_m {
+      __typename
+    }
+    ... on Object_ODKb5oyXT9 {
+      ... on Union_z_m {
+        lv7fJJz: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_z on Union_OcEZjSe {
+  __typename
+}

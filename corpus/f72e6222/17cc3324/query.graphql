@@ -1,0 +1,26 @@
+query My5v8U3y($gFvXG: Boolean!) {
+  ... on Object_pT0oXECZ {
+    ...Fragment_Ghxu4@Directive_JXHJcPXKK
+  }
+  ... on Union_gxzU {
+    ...Fragment_Ghxu4
+    __typename
+    __typename
+    __typename
+    __typename
+    ... {
+      __typename
+    }
+    ... on Union_gxzU {
+      ... @skip(if: $gFvXG) {
+        g: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Ghxu4 on Object_pT0oXECZ {
+  ... on Union_gxzU {
+    __typename @Directive_Ibc
+  }
+}

@@ -1,0 +1,37 @@
+query NXJ37k($t9HEq8: Boolean!) {
+  ...Fragment_e2
+  ... on Union_yRV6y {
+    ...Fragment_e2
+    __typename
+  }
+  ... on Object_p {
+    dmpolx {
+      ...Fragment_u
+    }
+  }
+  ... on Object_p {
+    ...Fragment_xi
+  }
+}
+
+fragment Fragment_ZzzkMUn7 on Union_SglOTgof2 {
+  __typename
+}
+
+fragment Fragment_u on Union_yRV6y {
+  ...Fragment_ZzzkMUn7
+  __typename
+  hW2rqye: __typename @include(if: true) @skip(if: $t9HEq8)
+  ... on Union_Qww0UYG {
+    __typename
+  }
+}
+
+fragment Fragment_e2 on Union_yRV6y {
+  ...Fragment_u
+}
+
+fragment Fragment_xi on Object_p {
+  ...Fragment_e2
+  __typename
+}

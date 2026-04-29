@@ -1,0 +1,35 @@
+query m0in5 {
+  ... on Union_qaVsEHz @Directive_JRTVWKaj {
+    ... on Union_qaVsEHz {
+      __typename
+      ... on Object_SJS38Bn {
+        __typename
+      }
+    }
+    ... on Object_bwS5Shl {
+      ... on Union_O3 {
+        __typename
+      }
+    }
+  }
+  ... on Union_qaVsEHz @include(if: false) {
+    ... on Union_qaVsEHz {
+      ...Fragment_K1cM
+      ... on Union_O3 {
+        __typename @include(if: true)
+        __typename
+      }
+    }
+    ... on Union_O3 {
+      __typename
+    }
+  }
+  ... on Union_O3 {
+    ...Fragment_K1cM@defer(if: false)
+    ...Fragment_K1cM
+  }
+}
+
+fragment Fragment_K1cM on Union_O3 {
+  Inx: __typename
+}

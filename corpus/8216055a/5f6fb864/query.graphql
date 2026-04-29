@@ -1,0 +1,20 @@
+query wTJaasy8VW {
+  ...Fragment_SDCJpqj
+  ... on Union_B4A {
+    __typename
+  }
+  ... on Object_ry_1 {
+    ... on Union_B4A {
+      ...Fragment_SDCJpqj
+    }
+    ... on Union_MRp8hwB {
+      ... on Object_ry_1 @Directive_QELb(mOHuhN7SJ: {aWbi5RSn : -864362904}, aN6X2: Jpb) {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_SDCJpqj on Union_B4A {
+  MTl70u: __typename
+}

@@ -1,0 +1,14 @@
+query Q58gBA {
+  ... on Union_G {
+    ...Fragment_Dgb
+    ...Fragment_YvViiveF@skip(if: true)
+  }
+}
+
+fragment Fragment_YvViiveF on Union_G {
+  __typename
+}
+
+fragment Fragment_Dgb on Object_I4Vx {
+  ...Fragment_YvViiveF
+}

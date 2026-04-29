@@ -1,0 +1,26 @@
+{
+  hv: g {
+    ... {
+      ...Fragment_x9oyZ9Ny1
+    }
+  }
+  ... on Object_DSlaT {
+    g {
+      p9G {
+        __typename
+      }
+      kdci
+      p9G {
+        KzvhwBG: __typename
+        __typename
+      }
+      ... on Object_DSlaT {
+        __typename @skip(if: true)
+      }
+    }
+  }
+}
+
+fragment Fragment_x9oyZ9Ny1 on Union_Dq2TD7CqX {
+  uaJgXY3: __typename
+}

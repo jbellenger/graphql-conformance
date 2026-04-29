@@ -1,0 +1,17 @@
+{
+  ... on Object_Cn2 {
+    ... on Object_Cn2 {
+      sMv: __typename
+    }
+    ... on Object_Cn2 {
+      ...Fragment_Fcv
+      y {
+        tZFAI6V3Le: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Fcv on Object_Cn2 @Directive_h4qruxD{
+  __typename
+}

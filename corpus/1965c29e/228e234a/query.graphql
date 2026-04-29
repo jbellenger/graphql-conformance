@@ -1,0 +1,30 @@
+{
+  ...Fragment_R0ZvMOWP7
+  ... on Object_ys {
+    ...Fragment_R0ZvMOWP7
+    ...Fragment_zebxzn
+  }
+}
+
+fragment Fragment_oV2j on Union_u {
+  __typename
+  im: __typename
+}
+
+fragment Fragment_LQVpn on Object_qTzAlkirSR {
+  Z: __typename @Directive_QAFZxS6
+}
+
+fragment Fragment_R0ZvMOWP7 on Object_ys {
+  v2: h1rv6lK3V {
+    ...Fragment_oV2j
+  }
+  ... on Union_M {
+    ...Fragment_LQVpn
+    __typename
+  }
+}
+
+fragment Fragment_zebxzn on Object_ys {
+  __typename
+}

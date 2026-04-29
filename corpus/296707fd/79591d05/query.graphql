@@ -1,0 +1,17 @@
+query K @experimental_disableErrorPropagation {
+  ... on Union_t {
+    aBq48Bzk: __typename
+  }
+  ... on Union_t {
+    ...Fragment_AGj_rH
+  }
+}
+
+fragment Fragment_mSpG46v on Union_hwGHM {
+  spzJ: __typename
+  __typename @Directive__e4u
+}
+
+fragment Fragment_AGj_rH on Object_j {
+  ...Fragment_mSpG46v@Directive_CEopdKj @skip(if: true)
+}

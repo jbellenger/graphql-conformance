@@ -1,0 +1,18 @@
+query MIHMnJ {
+  ...Fragment_ttgQ8
+  ...Fragment_PW
+}
+
+fragment Fragment_ttgQ8 on Object_gJEi {
+  __typename
+}
+
+fragment Fragment_PW on Union_xsxCCrOcmp {
+  ...Fragment_ttgQ8
+  ... on Union_QjR {
+    ...Fragment_ttgQ8
+    __typename
+    __typename @Directive_Sjz5Mnnw
+    __typename
+  }
+}

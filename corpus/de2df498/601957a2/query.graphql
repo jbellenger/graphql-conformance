@@ -1,0 +1,37 @@
+query N2vOGA8 {
+  ... on Union_xyy5 {
+    __typename
+  }
+  ... on Object_VSM {
+    ...Fragment_mAew
+    ...Fragment_mAew
+    __typename @include(if: true)
+    l {
+      b43FmVD57 {
+        __typename
+      }
+      gMYD(gn: null) @Directive_O_5k {
+        __typename @Directive_O_5k
+      }
+      ... on Interface_K1kfD {
+        __typename
+      }
+    }
+    ... on Union_xyy5 {
+      __typename
+      __typename
+      __typename
+      ... on Object_VSM {
+        aVea7JdD(qpFxlAQT9: {k : 2.8714091430001996E+306, v : null})
+      }
+    }
+  }
+  ... on Union_J9eyk2ah {
+    ...Fragment_mAew
+    ...Fragment_mAew
+  }
+}
+
+fragment Fragment_mAew on Union_xyy5 {
+  __typename
+}

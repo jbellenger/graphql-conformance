@@ -1,0 +1,37 @@
+query ($i2NrFtD: Boolean! = false) {
+  ...Fragment_t6SlDv
+  hu0dS_Esa {
+    ...Fragment_ty9Ajyt
+    ...Fragment_t6SlDv
+    __typename
+    __typename @Directive_pnk
+  }
+  ... on Union_OhU {
+    ... on Object_Yo {
+      ...Fragment_t6SlDv@skip(if: true)
+      a6e
+      ... on Union_OhU {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_ty9Ajyt on Object_QxW {
+  __typename
+}
+
+fragment Fragment_t6SlDv on Union_I__w {
+  HclJts2g: __typename @Directive_pnk @include(if: $i2NrFtD)
+  ... on Union_I__w {
+    ...Fragment_ty9Ajyt
+    JYCrd: __typename
+    ... on Object_psd6xFv7 @defer(if: true, label: "u") {
+      kt0: __typename
+    }
+  }
+  ... on Union_utGCeET @defer(label: "m") {
+    ...Fragment_ty9Ajyt
+    __typename
+  }
+}

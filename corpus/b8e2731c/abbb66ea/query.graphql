@@ -1,0 +1,17 @@
+{
+  ...Fragment_xg
+  ...Fragment_xg
+  ...Fragment_ZGw
+}
+
+fragment Fragment_ZGw on Object_q @Directive_fNnSaHNf{
+  c7P81GkOP: aOS042D
+}
+
+fragment Fragment_xg on Object_q {
+  ...Fragment_ZGw
+  LBxS2M: __typename
+  ... on Union_jAO {
+    ...Fragment_ZGw
+  }
+}

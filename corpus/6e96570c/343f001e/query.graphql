@@ -1,0 +1,19 @@
+query ($sLpv: Boolean!) {
+  ...Fragment_rtaZ5oxl@skip(if: $sLpv) @include(if: $sLpv)
+}
+
+fragment Fragment_SnrWYs5Rm on Union_vhaOf {
+  __typename
+}
+
+fragment Fragment_voP2y55Poy on Union_piAD {
+  ...Fragment_SnrWYs5Rm
+  __typename
+  ... on Union_vhaOf {
+    __typename
+  }
+}
+
+fragment Fragment_rtaZ5oxl on Object_EOL {
+  ...Fragment_voP2y55Poy@include(if: true)
+}

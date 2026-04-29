@@ -1,0 +1,20 @@
+query ($cIgtURj_mX: Input_J!@Directive_fNnSaHNf) {
+  ...Fragment_OOw96csBiq
+}
+
+fragment Fragment_t4aelR on Object_q {
+  W9r: gu1(fdc7Uh: {n58Aj0 : {kx : null}, _VmEKFS2 : {n58Aj0 : {kx : null}, _VmEKFS2 : {n58Aj0 : null, _VmEKFS2 : null}}}) {
+    i3E6DiW: kR3yDEr8v
+  }
+}
+
+fragment Fragment_OOw96csBiq on Object_q {
+  gu1(fdc7Uh: $cIgtURj_mX) {
+    ... on Interface_O3lGEJU1 {
+      jh9y: __typename
+    }
+  }
+  ... on Union_jAO {
+    ...Fragment_t4aelR
+  }
+}

@@ -1,0 +1,17 @@
+query k1EdYJNuJ {
+  ... on Object_PtuDH @Directive_AegZsF {
+    ...Fragment_mXfoP
+    z: __typename
+  }
+  ... {
+    ... on Union_MkopXekwR {
+      ... on Object_PtuDH {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_mXfoP on Object_PtuDH {
+  i
+}

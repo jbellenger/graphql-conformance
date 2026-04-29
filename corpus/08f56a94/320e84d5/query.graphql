@@ -1,0 +1,19 @@
+query Xwt {
+  ...Fragment_ik
+}
+
+fragment Fragment_vFD on Interface_qGA0Sr {
+  g
+}
+
+fragment Fragment_ik on Union_cegcqD {
+  ...Fragment_vFD
+  ...Fragment_vFD
+  __typename
+  ... on Interface_oklFf2T2JX {
+    ... on Union_tFz {
+      DjzWfij8I: __typename
+      __typename
+    }
+  }
+}

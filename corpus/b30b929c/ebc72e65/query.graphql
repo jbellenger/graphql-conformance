@@ -1,0 +1,4 @@
+query E($tM: Boolean! = true) @experimental_disableErrorPropagation {
+  __typename
+  __typename @include(if: $tM)
+}

@@ -1,0 +1,13 @@
+query @Directive_oL5I {
+  ...Fragment_suQ2R
+  ...Fragment_suQ2R@Directive_X8za
+  ...Fragment_suQ2R@Directive_X8za
+  ... on Union_Kth {
+    __typename
+  }
+}
+
+fragment Fragment_suQ2R on Union_KWYvnJbH {
+  __typename
+  __typename
+}

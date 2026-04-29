@@ -1,0 +1,28 @@
+query @experimental_disableErrorPropagation {
+  uR8zefL3DT
+  vhB9L0Og(mMbk6sxp: [{xtqePIM6S : {tv : null, tz1UODcjV3 : true}, ioki4yj0 : -7.658743574572542E+307}, null, {xtqePIM6S : {tv : null, tz1UODcjV3 : true}, ioki4yj0 : 2.1154071743803075E+307}]) {
+    __typename
+  }
+  AluuXtedUh: vhB9L0Og(mMbk6sxp: null) {
+    q6q8htbZD_
+  }
+  TgKE9eB: vhB9L0Og(mMbk6sxp: null) {
+    __typename
+  }
+  fVKa7G6 {
+    ...Fragment_JR04G
+    ...Fragment_vHNPw3q@Directive_afL
+  }
+}
+
+fragment Fragment_hef on Object_kYILSGMT {
+  __typename
+}
+
+fragment Fragment_JR04G on Union_G7C {
+  ...Fragment_hef
+}
+
+fragment Fragment_vHNPw3q on Object_kYILSGMT {
+  __typename
+}

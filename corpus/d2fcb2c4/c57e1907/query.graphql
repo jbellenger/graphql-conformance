@@ -1,0 +1,37 @@
+query ($oLfNZ8uqH: Boolean! = false) {
+  ...Fragment_Dv1OA
+  ... on Union_ng5H @skip(if: true) {
+    ...Fragment_Dv1OA
+    __typename
+  }
+  ... on Union_Nq9_UV {
+    __typename
+    __typename
+    ... on Object_nFAsKI_K {
+      xrNf(us8: "@U")
+      eTJIkL9: xrNf(us8: "(LU")
+    }
+    ... on Object_w {
+      Q: pPek8fU
+    }
+  }
+}
+
+fragment Fragment_bxkxs on Union_Nq9_UV {
+  __typename
+  ... on Union_Nq9_UV {
+    __typename
+  }
+}
+
+fragment Fragment_Dv1OA on Object_w {
+  ...Fragment_bxkxs
+  ...Fragment_bxkxs
+  ... {
+    eG: __typename
+    __typename @skip(if: $oLfNZ8uqH)
+    ... on Union_Nq9_UV {
+      __typename
+    }
+  }
+}

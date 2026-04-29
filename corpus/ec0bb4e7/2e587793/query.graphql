@@ -1,0 +1,32 @@
+query vSdDMw($yX: Input_haPcERPljT) {
+  ... on Union_Lvr4IcD {
+    __typename
+  }
+  ... on Union_Lvr4IcD {
+    ...Fragment_KaTj_1AZ4h
+    ...Fragment_KaTj_1AZ4h
+  }
+  ... {
+    ...Fragment_HxY1
+    ...Fragment_HxY1
+    ... on Union_Lvr4IcD {
+      ...Fragment_KaTj_1AZ4h
+      ... on Object_se {
+        wV7QkzI3(n41Mf9AV: $yX) {
+          __typename
+        }
+      }
+    }
+    ... on Union_Lvr4IcD {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_HxY1 on Union_Lvr4IcD {
+  WFzEqNw: __typename
+}
+
+fragment Fragment_KaTj_1AZ4h on Object_se {
+  ...Fragment_HxY1
+}

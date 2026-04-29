@@ -1,0 +1,36 @@
+query wJfAWH {
+  g
+  eEcEv0 {
+    ...Fragment_IM
+    HW017uID0: tECOQ8a {
+      ...Fragment_q2RqLDl
+      ... on Object_ny @Directive_cln3DgwB_ {
+        jU: l5N6mCM5m
+      }
+    }
+  }
+  g
+  ... on Union_cegcqD {
+    __typename
+    ... on Union_DPJ_CZeAQc {
+      ...Fragment_q2RqLDl
+      ... on Union_DPJ_CZeAQc {
+        __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Ru1mgD1TO on Interface_qGA0Sr {
+  Z7e: __typename
+}
+
+fragment Fragment_IM on Interface_qGA0Sr {
+  ...Fragment_Ru1mgD1TO
+  __typename
+}
+
+fragment Fragment_q2RqLDl on Object_ny {
+  wyjrP
+}

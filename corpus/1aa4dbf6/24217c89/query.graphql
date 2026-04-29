@@ -1,0 +1,38 @@
+query hjvfwhvPA @experimental_disableErrorPropagation {
+  ...Fragment_xL2wM
+  ...Fragment_xL2wM
+  ...Fragment_IU9Oi
+  __typename
+  __typename
+  pY8OgryH {
+    osGkQG: qm
+    __typename
+    __typename
+    ... on Union_W {
+      ...Fragment_hIiOG_KCac
+    }
+  }
+}
+
+fragment Fragment_IU9Oi on Object_k9p {
+  __typename
+}
+
+fragment Fragment_xL2wM on Object_k9p {
+  pY8OgryH @include(if: true) {
+    ... {
+      cd
+    }
+  }
+  mb
+  ... on Object_k9p {
+    ...Fragment_IU9Oi@defer(if: true, label: null)
+    ... on Object_k9p {
+      sDL
+    }
+  }
+}
+
+fragment Fragment_hIiOG_KCac on Union_zQQQQQQQQQ {
+  __typename
+}

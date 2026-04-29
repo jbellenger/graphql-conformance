@@ -1,0 +1,20 @@
+query ZJKA {
+  __typename
+  ... on Union_E3c {
+    ...Fragment_rFi
+    mIm4: __typename
+    ... on Object_ah7AKfslC {
+      cZC
+    }
+    ... on Union_La {
+      ...Fragment_rFi
+      ... on Interface_DUfZlh {
+        esp
+      }
+    }
+  }
+}
+
+fragment Fragment_rFi on Object_ah7AKfslC {
+  cZC
+}

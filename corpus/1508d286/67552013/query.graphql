@@ -1,0 +1,44 @@
+query bLksCjD($xnqil6yodZ: Boolean!@Directive_sb9jhxMzi) {
+  ... on Object_itUi4 @defer(if: true, label: "") {
+    __typename
+    t8 {
+      Kt3pr: gRsweoFFE
+    }
+    ... on Union_fZ0I9 {
+      __typename
+    }
+  }
+  ... on Object_itUi4 {
+    ...Fragment_dzpN1@Directive_A
+    __typename
+    ... on Union_fZ0I9 {
+      ... on Object_itUi4 {
+        b9TV5dAst: gRsweoFFE
+        t8 {
+          gRsweoFFE
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_TkI on Union_fZ0I9 {
+  __typename
+}
+
+fragment Fragment_dzpN1 on Object_itUi4 {
+  ...Fragment_TkI@Directive_sb9jhxMzi @Directive_A
+  t8 {
+    gRsweoFFE @Directive_A
+  }
+  IISu6JTW: t8 @skip(if: $xnqil6yodZ) @Directive_sb9jhxMzi {
+    t8 {
+      i4gkcKDl: gRsweoFFE
+    }
+    t8 @Directive_A {
+      t8 {
+        gRsweoFFE
+      }
+    }
+  }
+}

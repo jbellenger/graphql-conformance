@@ -1,0 +1,16 @@
+query _4 {
+  ... on Object_ys {
+    ...Fragment_um1w8q
+    ...Fragment_um1w8q
+    __typename @skip(if: true)
+    ... on Object_ys {
+      kErc {
+        W2MmQ3Y: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_um1w8q on Object_ys {
+  __typename
+}

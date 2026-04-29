@@ -1,0 +1,12 @@
+query BolcTbH {
+  ...Fragment_F9EzxmS
+  __typename
+}
+
+fragment Fragment_EfLxQpM8sX on Union_Sp0K0MOVe7 {
+  __typename
+}
+
+fragment Fragment_F9EzxmS on Union_Sp0K0MOVe7 {
+  ...Fragment_EfLxQpM8sX
+}

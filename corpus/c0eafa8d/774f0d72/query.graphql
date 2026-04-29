@@ -1,0 +1,24 @@
+query TBZl3M {
+  ...Fragment_X_cPT
+  ...Fragment_R4MrgKw
+  ... on Union_rV5Y6 @Directive_QBmlS7 {
+    ...Fragment_R4MrgKw
+    ...Fragment_X_cPT
+  }
+}
+
+fragment Fragment_X_cPT on Union_rV5Y6 {
+  __typename
+}
+
+fragment Fragment_t1oe72 on Union_iYvmbetl {
+  ...Fragment_X_cPT
+  ... on Union_iYvmbetl {
+    zsrQaAgfo: __typename
+  }
+}
+
+fragment Fragment_R4MrgKw on Union_rV5Y6 {
+  ...Fragment_t1oe72
+  h82jo: __typename
+}

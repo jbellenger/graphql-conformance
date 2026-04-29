@@ -1,0 +1,3 @@
+query ($h: Boolean!) {
+  oex: __typename @skip(if: $h)
+}

@@ -1,0 +1,12 @@
+query eq {
+  ...Fragment_a@skip(if: false)
+  ...Fragment_a
+  ... on Object_uaRy {
+    ...Fragment_a
+    ...Fragment_a
+  }
+}
+
+fragment Fragment_a on Union_m {
+  JoA9kmdL4c: __typename
+}

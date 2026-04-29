@@ -1,0 +1,18 @@
+{
+  ...Fragment_xYq2
+  ...Fragment_yQhI
+}
+
+fragment Fragment_xYq2 on Union_ZST4 {
+  BXg: __typename
+}
+
+fragment Fragment_yQhI on Union_ZST4 {
+  ... on Union_ZST4 {
+    ...Fragment_xYq2
+    __typename
+    ... on Object_sDWpqt {
+      vxgwWhfZf
+    }
+  }
+}

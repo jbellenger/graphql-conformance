@@ -1,0 +1,27 @@
+{
+  ...Fragment_fRvBSzU3Dd
+  ...Fragment_fRvBSzU3Dd
+  ...Fragment_Est
+  z
+  ... on Union_J6Ag {
+    __typename
+  }
+}
+
+fragment Fragment_fRvBSzU3Dd on Union_J6Ag {
+  __typename
+  __typename
+  __typename
+  __typename
+}
+
+fragment Fragment_aNkt8_P8K on Object_bfYzcR0_K3 {
+  __typename @Directive_QZU3
+}
+
+fragment Fragment_Est on Union_J6Ag {
+  __typename @Directive_QZU3
+  ... on Union_J6Ag {
+    ...Fragment_aNkt8_P8K
+  }
+}

@@ -1,0 +1,15 @@
+query Z {
+  nEhNy1lI {
+    ...Fragment_tN
+    ...Fragment_pHO2lfu
+  }
+}
+
+fragment Fragment_pHO2lfu on Union_aTnpoDzLGj {
+  __typename
+}
+
+fragment Fragment_tN on Object_YFZpo {
+  ...Fragment_pHO2lfu
+  tm5Cqs2VK: __typename
+}

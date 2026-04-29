@@ -1,0 +1,23 @@
+query qS_P {
+  ... on Union_EVNGV {
+    glXxLjd: __typename @Directive_d
+  }
+  ... on Union_HwGWo1bgy {
+    ...Fragment_P17kPt
+    xkkT89zj6p: __typename
+    __typename
+  }
+}
+
+fragment Fragment_zlw on Object_K_CBeP {
+  aDSerY6b1 {
+    __typename
+  }
+}
+
+fragment Fragment_P17kPt on Object_K_CBeP {
+  ...Fragment_zlw
+  rMgf26Vr {
+    WVzNPgdrJ: __typename @skip(if: false)
+  }
+}

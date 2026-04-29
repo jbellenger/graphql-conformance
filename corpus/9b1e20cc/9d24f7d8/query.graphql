@@ -1,0 +1,19 @@
+query U_M8 {
+  fur {
+    ...Fragment_UQtnchuqu@defer(if: true, label: "#af")
+    __typename
+  }
+  xyzst6c8E: myBg
+  fur {
+    T4GCbUd: __typename
+  }
+}
+
+fragment Fragment_nO7mR on Union_Db3 {
+  __typename
+}
+
+fragment Fragment_UQtnchuqu on Union_Db3 {
+  ...Fragment_nO7mR
+  __typename
+}

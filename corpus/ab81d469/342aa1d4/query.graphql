@@ -1,0 +1,19 @@
+query pO06l_ZL2 {
+  aSavwx {
+    __typename
+    ... on Union_YmT {
+      ...Fragment_YzGR
+      __typename
+    }
+    ... on Object_G2FYOt {
+      jG: __typename
+    }
+  }
+  udK_7 {
+    sacoM0cic: __typename
+  }
+}
+
+fragment Fragment_YzGR on Union_YmT {
+  __typename
+}

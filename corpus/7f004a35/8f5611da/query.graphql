@@ -1,0 +1,23 @@
+query L($gibPK: Int) {
+  ...Fragment_bZpAW8CV
+  pfoVQ: zeQm7r88m9(ow: 1897386526)
+}
+
+fragment Fragment_qJ on Object_RMPOG {
+  zeQm7r88m9: __typename
+  ... on Union_VA_6N5AS {
+    __typename
+  }
+}
+
+fragment Fragment_bZpAW8CV on Object_RMPOG {
+  ...Fragment_qJ
+  I: zeQm7r88m9(ow: $gibPK)
+  ... on Union_VA_6N5AS {
+    ...Fragment_qJ
+    ... on Object_RMPOG {
+      __typename
+      __typename
+    }
+  }
+}

@@ -1,0 +1,23 @@
+query EgEsa9q {
+  ...Fragment_S
+}
+
+fragment Fragment_S on Object_l {
+  bVZS {
+    seuO {
+      giV4 {
+        __typename @skip(if: true)
+      }
+      giV4 {
+        seuO {
+          __typename @skip(if: true) @Directive_C
+        }
+      }
+    }
+  }
+  bVZS {
+    ... on Interface_Xoln4Vm_pd_STUB {
+      __typename
+    }
+  }
+}

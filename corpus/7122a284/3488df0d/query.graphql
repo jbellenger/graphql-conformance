@@ -1,0 +1,19 @@
+query @experimental_disableErrorPropagation {
+  ...Fragment_YCFpP
+  ... on Union_gvrmxAudS @skip(if: false) {
+    s6aIRJj: __typename
+  }
+}
+
+fragment Fragment_HaHZA on Object_FujizSGnTm {
+  __typename
+}
+
+fragment Fragment_XXafzis1bs on Union_gvrmxAudS {
+  ...Fragment_HaHZA
+}
+
+fragment Fragment_YCFpP on Union_HXkbp {
+  ...Fragment_XXafzis1bs
+  HiGhGgF: __typename
+}

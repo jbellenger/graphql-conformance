@@ -1,0 +1,11 @@
+query ($ntPgQx0: Boolean!) {
+  ...Fragment_nSaM
+}
+
+fragment Fragment_niJCoo on Union_s2mZdkmfCY {
+  __typename @include(if: $ntPgQx0)
+}
+
+fragment Fragment_nSaM on Union_p {
+  ...Fragment_niJCoo
+}

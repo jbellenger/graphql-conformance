@@ -1,0 +1,40 @@
+query t1iel47 @experimental_disableErrorPropagation {
+  ...Fragment_wx5o9tsvWK
+  fPIlx {
+    __typename
+    ... on Union_TEG75dSj6T {
+      __typename
+    }
+  }
+  ... on Object_TElTFsqc0k {
+    cNu4WFxOkh: _ {
+      __typename
+    }
+    ... on Object_TElTFsqc0k {
+      ...Fragment_wx5o9tsvWK
+      fPIlx {
+        __typename
+        __typename
+      }
+      _ {
+        __typename @include(if: false)
+      }
+      ... on Object_TElTFsqc0k {
+        __typename
+      }
+    }
+    ... on Object_TElTFsqc0k {
+      ... on Object_TElTFsqc0k {
+        iWJq2UYz: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_ZBpSrqdZpe on Object_TElTFsqc0k {
+  __typename
+}
+
+fragment Fragment_wx5o9tsvWK on Object_TElTFsqc0k {
+  ...Fragment_ZBpSrqdZpe
+}

@@ -1,0 +1,21 @@
+query KJbu {
+  ...Fragment_TAy2tY
+}
+
+fragment Fragment_SW on Union_e_gItNANE2 {
+  __typename
+}
+
+fragment Fragment_TAy2tY on Union_e_gItNANE2 {
+  ...Fragment_SW
+  ...Fragment_SW
+  __typename
+  ... on Object_Ifl {
+    tajO0Zw0_ {
+      oMqGigorl4 @Directive_cu7GL9rJa
+    }
+    ... on Union_p6fSKG {
+      __typename
+    }
+  }
+}

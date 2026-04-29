@@ -1,0 +1,49 @@
+{
+  ...Fragment_dqMpW@defer(if: true, label: "w")
+  ctgGT {
+    ...Fragment_M9MpCs
+    ...Fragment_Dk
+    wMDW5xnI: jLx2M1Xzuf
+    jLx2M1Xzuf @include(if: true)
+    wsk: jLx2M1Xzuf
+    __typename
+    ... on Object_PUCAa {
+      __typename
+    }
+    ... on Union__4sCp1Bdz @Directive_ZF3m @defer(if: true, label: "l") {
+      ...Fragment_A
+      __typename
+      __typename
+      __typename
+      ... on Union_dX0Hr6OIR {
+        __typename
+      }
+    }
+  }
+  ... on Union__4sCp1Bdz {
+    ...Fragment_dqMpW
+    ... on Union__4sCp1Bdz @skip(if: false) {
+      n: __typename
+      ... on Union_dX0Hr6OIR {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_dqMpW on Union_dX0Hr6OIR {
+  L61HqP: __typename
+}
+
+fragment Fragment_Dk on Union__4sCp1Bdz {
+  ZrMR: __typename
+  __typename
+}
+
+fragment Fragment_M9MpCs on Object_PUCAa {
+  ...Fragment_Dk
+}
+
+fragment Fragment_A on Union__4sCp1Bdz {
+  __typename
+}

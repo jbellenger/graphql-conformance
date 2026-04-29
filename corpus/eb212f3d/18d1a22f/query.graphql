@@ -1,0 +1,16 @@
+query JwIAWgK1s {
+  __typename
+  xuwIHAWQH {
+    ...Fragment_ywFLx6Pu
+    ... on Object_j1QY {
+      vgUa
+    }
+    ... on Interface_JWoAuX {
+      ...Fragment_ywFLx6Pu
+    }
+  }
+}
+
+fragment Fragment_ywFLx6Pu on Interface_JWoAuX {
+  NNKH0wI2UC: __typename
+}

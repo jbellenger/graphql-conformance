@@ -1,0 +1,27 @@
+query h($jtIHBbLJy: Boolean!) {
+  ... on Object_h {
+    ...Fragment_ut
+    ...Fragment_ut
+    __typename
+    ... on Union_RZYMM {
+      ...Fragment_yhevBS7l
+    }
+  }
+  ... on Interface_hDPBfy6 {
+    ...Fragment_g5XOcu7l
+    ...Fragment_g5XOcu7l
+  }
+}
+
+fragment Fragment_g5XOcu7l on Union_RZYMM {
+  __typename
+}
+
+fragment Fragment_ut on Union_vDiG {
+  ...Fragment_g5XOcu7l
+  __typename @include(if: $jtIHBbLJy)
+}
+
+fragment Fragment_yhevBS7l on Union_RZYMM {
+  __typename
+}

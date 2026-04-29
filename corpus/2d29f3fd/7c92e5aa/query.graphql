@@ -1,0 +1,8 @@
+query ($qVG1bbW: Boolean!) {
+  ...Fragment_uCgNkmydH
+  __typename
+}
+
+fragment Fragment_uCgNkmydH on Object_jso1BN {
+  __typename @include(if: $qVG1bbW)
+}

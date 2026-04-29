@@ -1,0 +1,18 @@
+query V {
+  yMb
+  ... on Union_Ly2zpL {
+    __typename
+    __typename
+    __typename
+    __typename
+  }
+  ... on Object_Ui6at {
+    ...Fragment__hkeKXW
+  }
+}
+
+fragment Fragment__hkeKXW on Union_Ly2zpL {
+  ... on Union_Ly2zpL {
+    __typename
+  }
+}

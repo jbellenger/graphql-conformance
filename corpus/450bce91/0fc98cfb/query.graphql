@@ -1,0 +1,15 @@
+{
+  ...Fragment_FzyEX@Directive_zdyR
+  ...Fragment_FzyEX@defer(if: true)
+  ... {
+    xW
+  }
+}
+
+fragment Fragment_g on Object_fizvL18jg9 {
+  __typename
+}
+
+fragment Fragment_FzyEX on Object_fizvL18jg9 @Directive_zdyR{
+  ...Fragment_g@defer(if: false, label: "<\\") @include(if: true)
+}

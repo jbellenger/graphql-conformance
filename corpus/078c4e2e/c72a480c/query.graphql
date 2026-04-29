@@ -1,0 +1,14 @@
+query QB {
+  ... on Union_EVNGV {
+    __typename
+  }
+  ... on Union_EVNGV @Directive_JcLNLAml2 {
+    ...Fragment_BIMaOhSTEC
+  }
+}
+
+fragment Fragment_BIMaOhSTEC on Union_EVNGV {
+  ... on Union_EVNGV {
+    __typename
+  }
+}

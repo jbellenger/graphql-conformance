@@ -1,0 +1,23 @@
+query hg9y {
+  ...Fragment_Quz@include(if: true)
+}
+
+fragment Fragment_f29Hk0A on Object_gbF {
+  __typename
+}
+
+fragment Fragment_ePIIhYj on Object_VktPE_nQv {
+  qThYRhF4P
+}
+
+fragment Fragment_Quz on Union_rV5Y6 {
+  ...Fragment_f29Hk0A
+  __typename
+  ... on Union_iYvmbetl {
+    PJ7Le3Mv: __typename @skip(if: false)
+    __typename
+  }
+  ... on Object_VktPE_nQv {
+    ...Fragment_ePIIhYj@skip(if: false)
+  }
+}

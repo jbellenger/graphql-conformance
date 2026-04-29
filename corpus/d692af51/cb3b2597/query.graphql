@@ -1,0 +1,46 @@
+query jxRgf($exVTb_: Float, $ls0y87dIB: String!, $fzJToa: Boolean!) {
+  ...Fragment_IjA@include(if: $fzJToa)
+  ... on Union_MkopXekwR {
+    __typename
+    fuL: __typename
+    __typename
+  }
+  ... on Union_MkopXekwR {
+    __typename
+    __typename @skip(if: true)
+    ... on Union_MkopXekwR {
+      Y: __typename
+    }
+  }
+}
+
+fragment Fragment_v on Union_MkopXekwR {
+  __typename
+  ... on Union_MkopXekwR {
+    __typename
+  }
+}
+
+fragment Fragment_mEorOKxUz on Object_EPQqrLh {
+  czf {
+    __typename
+  }
+}
+
+fragment Fragment_IjA on Object_PtuDH {
+  ...Fragment_v
+  XoUEO: rK7QteO(ldiw5WI: $exVTb_) {
+    __typename
+  }
+  rK7QteO(ldiw5WI: 6.80940496779079E+307) {
+    ...Fragment_mEorOKxUz
+    czf {
+      zqv {
+        hQF6c(dSZ: $ls0y87dIB, i8vuG: $exVTb_)
+      }
+    }
+    ... on Object_EPQqrLh {
+      __typename
+    }
+  }
+}

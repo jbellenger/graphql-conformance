@@ -1,0 +1,13 @@
+query r {
+  ... on Object_nG {
+    ...Fragment_rXXE1kfw0
+    __typename
+    ... on Object_nG {
+      ...Fragment_rXXE1kfw0@defer(label: "2b")
+    }
+  }
+}
+
+fragment Fragment_rXXE1kfw0 on Object_nG @Directive_Zb9{
+  wftQMOr
+}

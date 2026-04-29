@@ -1,0 +1,33 @@
+query Vun($sBq34: Boolean!) {
+  x8_OVnjt @include(if: true) {
+    _pw_WlY
+  }
+  ... on Object_M8zf @include(if: $sBq34) {
+    ...Fragment_eVfvUXX
+    ... {
+      qzSUjTd7i {
+        __typename
+      }
+      ZNq: ckeh
+      ckeh
+      ... on Object_M8zf {
+        __typename
+      }
+    }
+  }
+  ... on Union_e7TcSfzCgf {
+    __typename
+    __typename
+  }
+  ... on Union_WSZ1tCM {
+    Fu2vO: __typename
+  }
+}
+
+fragment Fragment_yIlXdGows on Object_DWvlQu {
+  q9rcj6i1
+}
+
+fragment Fragment_eVfvUXX on Union__5ZydquBuw {
+  ...Fragment_yIlXdGows
+}

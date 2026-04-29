@@ -1,0 +1,36 @@
+query ($boJiaaPa: Boolean!) {
+  ...Fragment_nz
+  zsY {
+    ...Fragment_wnFLSY
+    ...Fragment_nz
+    __typename
+    tCJIE: __typename
+  }
+  ... on Union_s {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_m on Object_HY {
+  pBhRRw4
+}
+
+fragment Fragment_wnFLSY on Union_B {
+  ...Fragment_m
+  __typename @include(if: $boJiaaPa)
+}
+
+fragment Fragment_jbTEHo_Q on Union_B {
+  __typename
+}
+
+fragment Fragment_nz on Union_s {
+  ...Fragment_wnFLSY@include(if: $boJiaaPa)
+  ...Fragment_jbTEHo_Q
+  ... on Union_B {
+    ... on Union_mM_Dx1P6xl {
+      P4: __typename
+    }
+  }
+}

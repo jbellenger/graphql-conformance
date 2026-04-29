@@ -1,0 +1,44 @@
+query AT {
+  ... on Object_YnX6wfB {
+    __typename
+    ... on Union_j7A7utz {
+      __typename
+    }
+  }
+  ... on Object_YnX6wfB {
+    ...Fragment_krr@skip(if: false)
+    ...Fragment_krr
+    ... on Union_kJmSgG8F {
+      __typename
+    }
+  }
+  ... on Object_YnX6wfB {
+    ...Fragment_WJ
+    ... on Object_YnX6wfB @include(if: false) {
+      __typename
+    }
+    ... on Object_YnX6wfB {
+      ...Fragment_cvCyliZm7
+      __typename
+    }
+  }
+}
+
+fragment Fragment_krr on Union_j7A7utz {
+  __typename @skip(if: false)
+}
+
+fragment Fragment_WJ on Object_YnX6wfB {
+  ...Fragment_krr@defer(label: "%`=")
+  GoZSl1mB: plw2OiK(w6: {aHzBK : 1262564956}) {
+    lv: f {
+      b1Bjj {
+        __typename @include(if: true)
+      }
+    }
+  }
+}
+
+fragment Fragment_cvCyliZm7 on Union_kJmSgG8F {
+  Votaby: __typename
+}

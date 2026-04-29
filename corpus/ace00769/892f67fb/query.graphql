@@ -1,0 +1,50 @@
+query jQqJSTOk($vcL: Boolean!) {
+  ... on Union_Hv {
+    ...Fragment_z
+    ExXNRf: __typename
+  }
+  ... on Object_jAITro3 {
+    Oxy8TDOkF: __typename @Directive_WDb
+  }
+  ... on Object_jAITro3 {
+    ...Fragment_xgyz
+    ...Fragment_bd8s3ebmR
+    ... on Union_OmyqJih {
+      ...Fragment_ZvIQw_
+      EsdnZiw: __typename @skip(if: $vcL)
+      __typename
+      ... on Object_jAITro3 {
+        hq {
+          __typename
+        }
+        __typename
+      }
+    }
+    ... on Object_jAITro3 @Directive_WVgPQq8V9G {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_ovGZl on Object_Rzu3 {
+  jS1Io5N
+}
+
+fragment Fragment_z on Object_Rzu3 {
+  ...Fragment_ovGZl
+}
+
+fragment Fragment_bd8s3ebmR on Union_Hv {
+  Z9_XxgDAs: __typename @include(if: false)
+}
+
+fragment Fragment_xgyz on Union_OmyqJih {
+  ...Fragment_bd8s3ebmR
+  ... on Union_OmyqJih {
+    IWS7g5IE: __typename @include(if: $vcL)
+  }
+}
+
+fragment Fragment_ZvIQw_ on Object_jAITro3 @Directive_WVgPQq8V9G{
+  FifExJ: __typename
+}

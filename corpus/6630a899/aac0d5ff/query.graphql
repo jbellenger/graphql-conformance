@@ -1,0 +1,30 @@
+query Y {
+  ...Fragment__FnoqDa0xB
+  ...Fragment__FnoqDa0xB
+  ... on Object_w {
+    ...Fragment_vS_FH4
+    nGLejKGmKg {
+      ...Fragment_Vh
+      ryzVaw293f
+      GQ6sv: wwL68t6
+      ... on Interface_YmzL7 {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment__FnoqDa0xB on Object_w {
+  __typename
+}
+
+fragment Fragment_vS_FH4 on Object_w {
+  ...Fragment__FnoqDa0xB
+  ... on Object_w {
+    Aja46uJ0: __typename
+  }
+}
+
+fragment Fragment_Vh on Object_aMS2 {
+  __typename
+}

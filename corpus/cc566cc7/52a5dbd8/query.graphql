@@ -1,0 +1,17 @@
+{
+  ... on Object_mY {
+    ...Fragment_oCLrT9b
+    ...Fragment_oCLrT9b
+    VIgcylK7: __typename
+    __typename
+    kxQZVgOFML
+    kxQZVgOFML
+  }
+}
+
+fragment Fragment_oCLrT9b on Union_MgJo01fc0 {
+  __typename
+  ... on Union_MgJo01fc0 @skip(if: true) {
+    __typename
+  }
+}

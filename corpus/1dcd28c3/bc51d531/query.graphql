@@ -1,0 +1,5 @@
+query mmd {
+  ... on Union_O3 {
+    __typename
+  }
+}

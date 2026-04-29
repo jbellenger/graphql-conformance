@@ -1,0 +1,30 @@
+query h5KP {
+  ...Fragment_wwkSAMiX
+  ... on Object_bwS5Shl {
+    __typename @skip(if: false)
+  }
+  ... on Union_qaVsEHz {
+    ...Fragment_F
+    ...Fragment_wwkSAMiX
+  }
+  ... on Union_qaVsEHz {
+    ...Fragment_x44yf
+  }
+}
+
+fragment Fragment_wwkSAMiX on Union_O3 {
+  __typename
+  ... on Object_bwS5Shl {
+    ... on Object_bwS5Shl {
+      hKH28w @skip(if: true)
+    }
+  }
+}
+
+fragment Fragment_F on Union_qaVsEHz {
+  __typename
+}
+
+fragment Fragment_x44yf on Object_SJS38Bn {
+  __typename @Directive_Ed9fZq
+}

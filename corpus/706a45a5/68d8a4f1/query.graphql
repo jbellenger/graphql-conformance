@@ -1,0 +1,27 @@
+query ($h: Boolean!) @Directive_mD3NkM_0c9 {
+  ...Fragment_RwWZI
+}
+
+fragment Fragment_W6oD on Object_v {
+  ... on Object_v @skip(if: false) {
+    __typename
+    jI2riq2sw
+  }
+}
+
+fragment Fragment_xHLi8 on Union_fAn {
+  __typename
+}
+
+fragment Fragment_RwWZI on Union_fAn {
+  ...Fragment_W6oD
+  ... on Union_fAn {
+    ...Fragment_xHLi8
+    ... on Object_v {
+      __typename @include(if: $h)
+    }
+  }
+  ... on Object_Y9BlSkn {
+    ...Fragment_xHLi8
+  }
+}

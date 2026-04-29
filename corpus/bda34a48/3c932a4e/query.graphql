@@ -1,0 +1,16 @@
+{
+  ...Fragment_I
+}
+
+fragment Fragment_GuSJPVbW7 on Object_ooi4 {
+  rg
+  x @Directive_B
+}
+
+fragment Fragment_zjVCO on Interface_BZP {
+  ...Fragment_GuSJPVbW7
+}
+
+fragment Fragment_I on Object_ooi4 {
+  ...Fragment_zjVCO
+}

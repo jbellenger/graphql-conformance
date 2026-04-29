@@ -1,0 +1,16 @@
+query A($sEc6: Boolean!) {
+  ...Fragment_dGmHVV92
+  ... on Union_ZST4 @include(if: $sEc6) @defer(if: true) {
+    __typename @skip(if: $sEc6)
+  }
+  ... on Union_ZST4 {
+    ...Fragment_dGmHVV92
+  }
+  ... on Object_jUWQ @skip(if: false) {
+    __typename
+  }
+}
+
+fragment Fragment_dGmHVV92 on Union_ZST4 {
+  j8tARTn_C: __typename
+}

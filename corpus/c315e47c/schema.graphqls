@@ -1,0 +1,134 @@
+schema {
+  query: Object_nJ_AH
+}
+
+directive @Directive_T3 on MUTATION | SUBSCRIPTION | FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCHEMA | SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+directive @Directive_U on VARIABLE_DEFINITION | INTERFACE
+
+directive @Directive_hZ on QUERY | MUTATION | SUBSCRIPTION | FIELD | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCHEMA | SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+"This directive allows results to be deferred during execution"
+directive @defer(
+    "Deferred behaviour is controlled by this argument"
+    if: Boolean! = true,
+    "A unique label that represents the fragment being deferred"
+    label: String
+  ) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Marks the field, argument, input field or enum value as deprecated"
+directive @deprecated(
+    "The reason for the deprecation"
+    reason: String! = "No longer supported"
+  ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+"This directive disables error propagation when a non nullable field returns null for the given operation."
+directive @experimental_disableErrorPropagation on QUERY | MUTATION | SUBSCRIPTION
+
+"Directs the executor to include this field or fragment only when the `if` argument is true"
+directive @include(
+    "Included when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Indicates an Input Object is a OneOf Input Object."
+directive @oneOf on INPUT_OBJECT
+
+"Directs the executor to skip this field or fragment when the `if` argument is true."
+directive @skip(
+    "Skipped when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Exposes a URL that specifies the behaviour of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behaviour of this scalar."
+    url: String!
+  ) on SCALAR
+
+interface Interface_Ks {
+  xyuTQTpSuk: Float
+}
+
+interface Interface_ZA {
+  ioKMrbb: Interface_Ks
+  y: Union_ioiMzJvW
+}
+
+interface Interface_lfjfcp {
+  lmJc4k: Object_nJ_AH @Directive_T3
+  r1qUi0XvL: Enum_o6G
+  ubJ0NnC: [ID]
+}
+
+union Union_SlFuZsl3t7 @Directive_T3 = Object_KvDhtiSF | Object_nJ_AH
+
+union Union_dQNlRz = Object_KvDhtiSF | Object_f | Object_nJ_AH
+
+union Union_ioiMzJvW @Directive_hZ = Object_f
+
+type Interface_Ks_STUB implements Interface_Ks {
+  bgRPLmp6q: Object_f
+  dwA: Float
+  xyuTQTpSuk: Float
+}
+
+type Interface_ZA_STUB implements Interface_ZA {
+  ioKMrbb: Interface_Ks
+  xwhnna(uFJKmq36jh: Input_jKADpf7dYW = {r3A3erB : {r3A3erB : {r3A3erB : null, n : null, xazTvyL7U : null}, n : {fuS2eXxB : null, la5Co4D4j : null, qlMGLtN : null}, xazTvyL7U : []}, n : {fuS2eXxB : {fuS2eXxB : null, la5Co4D4j : null, qlMGLtN : null}, la5Co4D4j : {r3A3erB : null, n : null, xazTvyL7U : null}, qlMGLtN : {r3A3erB : null, n : null, xazTvyL7U : null}}, xazTvyL7U : null}): Union_dQNlRz
+  y: Union_ioiMzJvW
+}
+
+type Interface_lfjfcp_STUB implements Interface_lfjfcp @Directive_hZ {
+  as7gKoC6D(mdQ: [Input_jKADpf7dYW], ygbCQ9PNIB: Input_j87UqD = {p3lb : 1038388496, vN : EhXN97}): Float
+  lmJc4k: Object_nJ_AH @Directive_T3
+  mbM7_o1U: Enum_o6G
+  r1qUi0XvL: Enum_o6G
+  ubJ0NnC: [ID]
+}
+
+type Object_KvDhtiSF {
+  rTB5Q2Dew: Interface_ZA
+  uR: Int
+  xza3LC0JlW: Object_KvDhtiSF
+}
+
+type Object_f {
+  a4KwUr: Interface_ZA
+  iKWrxIPRH: Interface_Ks @deprecated(reason : "")
+}
+
+type Object_nJ_AH @Directive_T3 {
+  iDrDzra: Union_ioiMzJvW
+  qi: Int
+}
+
+enum Enum_UXX8g6QC {
+  S
+  ZyUes9J
+}
+
+enum Enum_o6G {
+  z4gufOI2
+}
+
+enum Enum_t0WbMOdT {
+  EhXN97
+}
+
+input Input_XQFb {
+  fuS2eXxB: Input_XQFb @deprecated(reason : ".NG")
+  la5Co4D4j: Input_jKADpf7dYW = {r3A3erB : {r3A3erB : {r3A3erB : null, n : null, xazTvyL7U : null}, n : null, xazTvyL7U : []}, n : {fuS2eXxB : null, la5Co4D4j : {r3A3erB : null, n : null}, qlMGLtN : {r3A3erB : null, n : null, xazTvyL7U : null}}, xazTvyL7U : [{p3lb : -1756787185, vN : null}, {p3lb : 821383548, vN : null}, {p3lb : -754902989, vN : null}]} @Directive_hZ
+  qlMGLtN: Input_jKADpf7dYW
+}
+
+input Input_j87UqD {
+  p3lb: Int! = 770652307
+  vN: Enum_t0WbMOdT
+}
+
+input Input_jKADpf7dYW {
+  n: Input_XQFb @Directive_hZ
+  r3A3erB: Input_jKADpf7dYW
+  xazTvyL7U: [Input_j87UqD]
+}

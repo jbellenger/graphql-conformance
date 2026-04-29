@@ -1,0 +1,11 @@
+query xqj5wc($kkNsU: [Enum_B], $nZ5FjFjxM: Boolean!) {
+  lBWFDPByzD {
+    __typename
+    __typename
+    ... on Union_Z9mt {
+      ... on Union_OUY5npv {
+        __typename @Directive_kc(uK: $kkNsU) @skip(if: $nZ5FjFjxM)
+      }
+    }
+  }
+}

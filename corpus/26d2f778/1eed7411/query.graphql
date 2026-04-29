@@ -1,0 +1,24 @@
+query HXl($dt6RUG: Boolean! = true) {
+  wwxpazMs {
+    ...Fragment_b3B
+  }
+  j0: wwxpazMs {
+    ...Fragment_A430uJV3b
+    ... on Union_rkKbTLKTF {
+      __typename @include(if: $dt6RUG)
+      ... on Union_rkKbTLKTF {
+        __typename
+        A: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_A430uJV3b on Object_AqnyBBL {
+  c: __typename
+}
+
+fragment Fragment_b3B on Union_akA {
+  ...Fragment_A430uJV3b
+  __typename @Directive_JNR1r2DOnU @include(if: $dt6RUG)
+}

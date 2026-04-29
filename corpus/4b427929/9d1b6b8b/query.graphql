@@ -1,0 +1,31 @@
+query PK1vvA166 {
+  fSk8y {
+    __typename
+  }
+  __typename
+  ... on Object_Q9iPqkl6V @skip(if: true) {
+    fSk8y {
+      ...Fragment_Wjqho9
+      ... on Interface_XhqtlEVr9_STUB {
+        hqImK66KoF: b
+        __typename
+      }
+    }
+    ... on Object_Q9iPqkl6V {
+      ...Fragment_Fl0PmsuU
+      ... on Object_Q9iPqkl6V {
+        H: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Wjqho9 on Interface_XhqtlEVr9_STUB {
+  iC_HRMvcJ8 {
+    __typename
+  }
+}
+
+fragment Fragment_Fl0PmsuU on Object_Q9iPqkl6V {
+  __typename
+}

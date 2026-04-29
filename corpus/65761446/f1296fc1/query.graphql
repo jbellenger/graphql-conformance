@@ -1,0 +1,17 @@
+query WXDt9POCQs {
+  ofD {
+    SRGFsgtV: __typename @Directive_L999999999
+  }
+  KSl7rMHcaV: ofD {
+    ...Fragment_tmb08kOWJ
+    ...Fragment_J
+  }
+}
+
+fragment Fragment_J on Union_CBi {
+  __typename
+}
+
+fragment Fragment_tmb08kOWJ on Object_l {
+  ...Fragment_J
+}

@@ -1,0 +1,22 @@
+{
+  ...Fragment_xknO5CxnK
+  ... {
+    ...Fragment_apuH
+    ...Fragment_YZ5p8ji0
+  }
+}
+
+fragment Fragment_apuH on Object_rT0nTXS {
+  pnxZBt
+}
+
+fragment Fragment_YZ5p8ji0 on Object_rT0nTXS {
+  ...Fragment_apuH
+  pnxZBt
+}
+
+fragment Fragment_xknO5CxnK on Object_rT0nTXS {
+  ...Fragment_YZ5p8ji0
+  ...Fragment_apuH
+  __typename
+}

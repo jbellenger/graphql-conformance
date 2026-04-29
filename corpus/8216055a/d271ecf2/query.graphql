@@ -1,0 +1,43 @@
+query z6IHV6IYr {
+  ...Fragment_lg
+  ...Fragment__cfj
+  ...Fragment_g9
+}
+
+fragment Fragment_LwX8G1 on Union_MRp8hwB {
+  __typename
+  __typename
+}
+
+fragment Fragment__cfj on Object_ry_1 @Directive_QELb(mOHuhN7SJ: {p1ePFy8 : []}, aN6X2: LBeURjdHBM){
+  ...Fragment_LwX8G1
+  __typename
+  ... on Union_B4A {
+    __typename
+  }
+}
+
+fragment Fragment_lg on Union_B4A {
+  ...Fragment__cfj
+  ... on Union_B4A @defer(if: false, label: "") {
+    __typename
+  }
+}
+
+fragment Fragment_SOn on Object_ry_1 @Directive_QELb(mOHuhN7SJ: {aWbi5RSn : 651803515}, aN6X2: LBeURjdHBM){
+  dRexej8 {
+    __typename
+  }
+  __typename
+}
+
+fragment Fragment_g9 on Object_ry_1 {
+  ...Fragment__cfj
+  __typename
+  ... on Union_B4A {
+    ...Fragment_SOn
+  }
+  ... on Union_MRp8hwB {
+    ...Fragment__cfj
+  }
+}

@@ -1,0 +1,27 @@
+query t4ks($mVwU3sl: Boolean!) {
+  ...Fragment_dBgs
+  ...Fragment_dBgs
+  g
+  g
+  ... on Object_g3JuXPzWK0 @include(if: $mVwU3sl) {
+    __typename
+    WFOxtuvz: __typename
+    dCqE {
+      ...Fragment_Zz
+    }
+    __typename
+  }
+}
+
+fragment Fragment_dBgs on Object_g3JuXPzWK0 {
+  qDbNm: dCqE {
+    __typename
+    __typename
+  }
+  __typename
+}
+
+fragment Fragment_Zz on Union_H222222222 {
+  __typename
+  iWPNeBF: __typename @Directive_kbVcHumdiO
+}

@@ -1,0 +1,36 @@
+query ($fUJnjT: Boolean!) {
+  ...Fragment_xJ4b
+  __typename @include(if: $fUJnjT)
+  yv6OIDJ7 {
+    ... on Union_OTF6Mv {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_JrKeGQfxF on Union_OTF6Mv {
+  __typename
+  __typename
+}
+
+fragment Fragment_xJ4b on Object_fRfBRGT0w_ {
+  pyYDn {
+    __typename
+  }
+  yv6OIDJ7 {
+    ...Fragment_JrKeGQfxF
+    BNusihsEdP: pyYDn {
+      __typename
+      __typename
+    }
+    ... on Union_d3zjhvR {
+      __typename
+    }
+  }
+  LBq58q9T: __typename
+  ... on Union_OTF6Mv {
+    ... on Union_OTF6Mv {
+      b1LeqP: __typename @Directive_I4d80j0FHs
+    }
+  }
+}

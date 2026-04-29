@@ -1,0 +1,10 @@
+query dtO {
+  ...Fragment_i
+  ... on Union_fAn {
+    __typename
+  }
+}
+
+fragment Fragment_i on Union_ZXqKL4VmSJ {
+  __typename
+}

@@ -1,0 +1,30 @@
+query N($vk8Il0Ks: Boolean! = false) {
+  ...Fragment_Rz01eNJdZ
+  ...Fragment_Rz01eNJdZ@include(if: $vk8Il0Ks)
+  x
+  kSxcQI65 {
+    __typename
+  }
+  ... on Object_clxS {
+    ... on Union_K7 {
+      ...Fragment_E7TYw
+      __typename
+      eyxu: __typename
+      WM4x9Iawgj: __typename
+    }
+    ... on Union_K7 @include(if: true) {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_E7TYw on Object_clxS {
+  __typename
+}
+
+fragment Fragment_Rz01eNJdZ on Union_K7 {
+  ...Fragment_E7TYw
+  ... on Object_clxS {
+    __typename
+  }
+}

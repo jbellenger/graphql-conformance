@@ -1,0 +1,36 @@
+{
+  ukpFS5s {
+    __typename
+  }
+  ukpFS5s {
+    Uplbf8xPCX: __typename
+  }
+  pnxZBt
+  byvP8l7S {
+    ...Fragment_VAQR36MO
+    ...Fragment_VAQR36MO
+    ... on Union_I620L7mhgw {
+      KYmcBgAnv: __typename
+      jRv: __typename
+      KHH: __typename @skip(if: true)
+    }
+    ... on Union_I620L7mhgw @skip(if: false) {
+      ...Fragment_xJ9hHO4n
+    }
+  }
+}
+
+fragment Fragment_VAQR36MO on Object_AlZ {
+  __typename
+  Jq: rOof4Q {
+    ckKH: aT58
+  }
+  rOof4Q {
+    __typename
+  }
+}
+
+fragment Fragment_xJ9hHO4n on Union_H6kk {
+  __typename
+  __typename
+}

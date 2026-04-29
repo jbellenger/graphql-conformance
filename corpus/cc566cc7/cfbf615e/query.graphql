@@ -1,0 +1,17 @@
+query US {
+  ...Fragment_zVJ
+}
+
+fragment Fragment_zVJ on Union_mIKFnuvg9 {
+  ... on Object_LMzK5FV5 {
+    au8Pm7noc1: r {
+      __typename
+    }
+    ... on Union_mIKFnuvg9 {
+      __typename
+    }
+  }
+  ... on Object_LMzK5FV5 {
+    l0Q1zf: __typename
+  }
+}

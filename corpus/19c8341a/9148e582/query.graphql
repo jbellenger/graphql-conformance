@@ -1,0 +1,4 @@
+query ($lnBRXx: Boolean!) {
+  lhheN
+  __typename @skip(if: $lnBRXx)
+}

@@ -1,0 +1,39 @@
+query sGmWFX43A {
+  ...Fragment_F90G
+  ...Fragment_T
+  ...Fragment_Pw3t
+}
+
+fragment Fragment_qu9jh on Object_WEy4PG {
+  JmksG2r1: wrf5
+}
+
+fragment Fragment_Pw3t on Object_WEy4PG {
+  ...Fragment_qu9jh
+  ... on Object_WEy4PG {
+    __typename
+  }
+}
+
+fragment Fragment_F90G on Object_WEy4PG {
+  ...Fragment_Pw3t
+  ...Fragment_Pw3t
+  N: wrf5
+}
+
+fragment Fragment_T on Union_e6YyZ {
+  __typename
+  ... on Union_e6YyZ {
+    ... on Object_WEy4PG @Directive_zUBiJ8 {
+      wrf5
+    }
+  }
+  ... on Union_e6YyZ {
+    __typename
+    __typename
+    __typename
+    ... on Union_e6YyZ {
+      __typename @include(if: false)
+    }
+  }
+}

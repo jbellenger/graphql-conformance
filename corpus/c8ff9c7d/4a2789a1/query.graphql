@@ -1,0 +1,35 @@
+query zgWRjBB3($q: Boolean!) {
+  jvC5z {
+    ...Fragment_PYvMjMWWeK
+    __typename
+    __typename
+    YH9mV2SwyT: __typename @include(if: false)
+    ... {
+      ...Fragment_PYvMjMWWeK
+      __typename
+      __typename @skip(if: $q)
+      __typename
+      ... {
+        __typename
+      }
+    }
+  }
+  M7QX2vnKE: jvC5z {
+    __typename
+    ... on Union_ojaXdfh {
+      __typename
+    }
+  }
+  ybQktwtq_7: __typename
+}
+
+fragment Fragment_X on Union_ojaXdfh {
+  __typename @skip(if: $q)
+}
+
+fragment Fragment_PYvMjMWWeK on Object_zIJ {
+  ...Fragment_X
+  ... on Object_zIJ {
+    __typename
+  }
+}

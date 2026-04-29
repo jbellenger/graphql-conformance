@@ -1,0 +1,50 @@
+query KpS {
+  ...Fragment_auMa
+  nGLejKGmKg {
+    ryzVaw293f
+  }
+  nGLejKGmKg {
+    ...Fragment_bQgdNIhLeb
+    ...Fragment_bQgdNIhLeb
+    ... on Interface_YmzL7 {
+      __typename @skip(if: false)
+    }
+  }
+  nGLejKGmKg {
+    ... on Interface_H {
+      ...Fragment_bQgdNIhLeb
+      ... on Object_aMS2 @defer(if: true, label: "'e") {
+        uJ8PsgP {
+          __typename
+        }
+      }
+    }
+    ... on Union_XnskUMPa {
+      Y: __typename
+    }
+  }
+}
+
+fragment Fragment_p on Object_w {
+  ... {
+    rcw: __typename
+    __typename
+  }
+}
+
+fragment Fragment_bQgdNIhLeb on Union_XnskUMPa {
+  __typename
+}
+
+fragment Fragment_auMa on Object_w {
+  ...Fragment_p@Directive_JK
+  nGLejKGmKg {
+    ...Fragment_bQgdNIhLeb
+    b: ryzVaw293f
+  }
+  nGLejKGmKg {
+    wwL68t6
+  }
+  NNyzDfw3nF: __typename
+  __typename
+}

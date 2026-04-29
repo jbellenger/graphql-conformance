@@ -1,0 +1,14 @@
+query u45wTWB3XP {
+  uzaZD
+  __typename
+  ... on Object_N_iGzp @Directive_evbiEV {
+    ... on Union_C9gqJEqn {
+      ...Fragment_ab1N@defer(if: true, label: "2")
+      __typename
+    }
+  }
+}
+
+fragment Fragment_ab1N on Union_C9gqJEqn {
+  __typename
+}

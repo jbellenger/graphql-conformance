@@ -1,0 +1,28 @@
+{
+  ...Fragment_W8e5D
+  ... on Object_bsyX1Jfzqo {
+    gN4nioGbeX: nvlM
+    ... on Object_bsyX1Jfzqo {
+      ... {
+        __typename
+      }
+    }
+    ... on Object_bsyX1Jfzqo {
+      ... on Object_bsyX1Jfzqo @Directive_xRWyhx {
+        gfEf
+      }
+    }
+  }
+}
+
+fragment Fragment_xi_pvK on Object_bsyX1Jfzqo {
+  gfEf
+  gfEf
+  ... on Object_bsyX1Jfzqo {
+    gfEf
+  }
+}
+
+fragment Fragment_W8e5D on Object_bsyX1Jfzqo @Directive_xRWyhx{
+  ...Fragment_xi_pvK
+}

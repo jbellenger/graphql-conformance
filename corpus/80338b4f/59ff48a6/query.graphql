@@ -1,0 +1,27 @@
+query c @Directive_v61Fz {
+  ...Fragment_tN
+  ...Fragment_tN@Directive_v61Fz
+  ...Fragment_tN
+  ... on Union_RZYMM {
+    ...Fragment_mYK8kcF
+    __typename
+    ... on Interface_hDPBfy6 {
+      e2M: kxKF1
+    }
+    ... {
+      ...Fragment_mYK8kcF
+    }
+  }
+}
+
+fragment Fragment_tN on Union_vDiG {
+  IP: __typename
+  ... on Interface_hDPBfy6 {
+    kxKF1
+    kxKF1
+  }
+}
+
+fragment Fragment_mYK8kcF on Object_Zopsp {
+  __typename
+}

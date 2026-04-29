@@ -1,0 +1,39 @@
+query JKsij($cL1o2IwO: Boolean! = false) {
+  ...Fragment_sUvWVKP9
+  ... on Object_lC {
+    ...Fragment_sUvWVKP9@defer(if: false, label: "k0") @skip(if: true)
+  }
+  ... on Union_s {
+    __typename @include(if: false)
+    __typename
+    __typename
+    ... {
+      ...Fragment_sUvWVKP9
+      ... on Object_lC {
+        bZV @Directive_NbWT9b {
+          tPhbJUre: __typename
+        }
+      }
+    }
+    ... on Union_p0JL4jFTJ @include(if: $cL1o2IwO) {
+      ... on Union_s {
+        __typename
+      }
+    }
+  }
+  ... on Union_s {
+    GY95: __typename
+  }
+}
+
+fragment Fragment_WyYlp4uLb on Interface_JWoAuX @Directive_NbWT9b{
+  __typename
+}
+
+fragment Fragment_sUvWVKP9 on Union_s {
+  ...Fragment_WyYlp4uLb
+  __typename
+  ... on Union_Wme10RCF {
+    __typename
+  }
+}

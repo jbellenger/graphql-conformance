@@ -1,0 +1,26 @@
+query ($o: Boolean!) @experimental_disableErrorPropagation {
+  nTaj {
+    ... on Interface_u8AB {
+      ... on Interface_p_STUB {
+        lZ5U6inpHl
+      }
+    }
+    ... on Interface_u8AB @include(if: $o) {
+      ... on Interface_p {
+        czEFZiAn
+      }
+    }
+  }
+  __typename
+  ... on Union_gW {
+    __typename
+  }
+  ... on Union_gW {
+    ...Fragment_C
+    ...Fragment_C
+  }
+}
+
+fragment Fragment_C on Object_xdy4 {
+  IG: __typename
+}

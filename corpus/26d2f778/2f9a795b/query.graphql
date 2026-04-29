@@ -1,0 +1,56 @@
+query Qf($a_JK: ID!@Directive_JNR1r2DOnU) {
+  ...Fragment__YmZ
+  ...Fragment_YK
+  MA: cWdzv9sofY(q_eM9Qui: "eT") {
+    ...Fragment_ZyBOdkf
+    ... on Union_Xg5 {
+      lxVUwp: __typename
+    }
+    ... on Union_Xg5 {
+      ...Fragment_ZyBOdkf
+    }
+  }
+  qnCGGG1: cWdzv9sofY(q_eM9Qui: ";") {
+    ...Fragment_ZyBOdkf
+  }
+  ... on Object_AqnyBBL {
+    ...Fragment__YmZ
+    ...Fragment_YK
+  }
+  ... on Union_rkKbTLKTF {
+    ...Fragment_YK
+    ...Fragment_Aimo
+  }
+  ... on Union_akA {
+    ... on Object_AqnyBBL {
+      ...Fragment_Aimo
+    }
+  }
+}
+
+fragment Fragment__YmZ on Object_AqnyBBL {
+  __typename
+}
+
+fragment Fragment_YK on Union_akA @Directive_JNR1r2DOnU{
+  ... on Object_AqnyBBL {
+    ...Fragment__YmZ
+    cWdzv9sofY(q_eM9Qui: "\\8>") {
+      mT6I6lPQ8
+    }
+    jWOhG4: wwxpazMs {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_ZyBOdkf on Object_yHffgzmN {
+  __typename
+}
+
+fragment Fragment_Aimo on Object_AqnyBBL {
+  ...Fragment_YK
+  RWj6vIuk: cWdzv9sofY(q_eM9Qui: $a_JK) {
+    mT6I6lPQ8 @skip(if: false)
+  }
+}

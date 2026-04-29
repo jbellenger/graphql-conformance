@@ -1,0 +1,28 @@
+query ycALse($mUpzjgTYR: Boolean! = true@Directive_Sjz5Mnnw) {
+  ...Fragment_tolVl
+  zIwwRBAWvt @Directive_Sjz5Mnnw {
+    xkQ2ldseV(rti: null)
+    tLlijXAoEc {
+      tLlijXAoEc {
+        __typename
+      }
+      ... on Interface_cqMofj_STUB {
+        xkQ2ldseV(rti: {d4w4sZrL1 : TVhCt2yM, f : null})
+      }
+    }
+    ... on Interface_cqMofj {
+      ...Fragment_e_Ul
+      ... @include(if: $mUpzjgTYR) {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_tolVl on Union_xsxCCrOcmp {
+  __typename
+}
+
+fragment Fragment_e_Ul on Interface_cqMofj {
+  FronlMb: xkQ2ldseV(rti: {d4w4sZrL1 : TVhCt2yM, f : true})
+}

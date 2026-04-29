@@ -1,0 +1,58 @@
+query ($s: Boolean!) {
+  ... on Object_dONtXZ {
+    ...Fragment__OwXg_pArK
+    ...Fragment__OwXg_pArK@defer(if: false, label: "RR0")
+  }
+  ... on Object_dONtXZ @defer(if: true, label: "sQ") {
+    ...Fragment__OwXg_pArK
+    n
+    VSUgFhqUrk: voXQDnEJ {
+      ...Fragment_mECBZL6
+      __typename @skip(if: $s)
+    }
+    n
+    ... {
+      __typename
+    }
+    ... on Object_dONtXZ {
+      ...Fragment__OwXg_pArK@defer(if: false, label: "a7")
+      ixLgwDyaUN {
+        eBZLe3: __typename
+      }
+    }
+  }
+  ... on Object_dONtXZ {
+    ...Fragment__OwXg_pArK
+    ...Fragment_ixEol
+  }
+}
+
+fragment Fragment_Qt6L8zcm on Union_L5XmO {
+  __typename
+  __typename
+}
+
+fragment Fragment__OwXg_pArK on Object_dONtXZ {
+  ...Fragment_Qt6L8zcm
+  XcI_TzBJ: __typename
+  voXQDnEJ {
+    __typename
+    __typename
+  }
+  n
+  ... on Object_dONtXZ {
+    __typename @include(if: false) @skip(if: false)
+  }
+}
+
+fragment Fragment_mECBZL6 on Interface_XW_I6q4ki {
+  j5HoBwJQ: __typename
+  b_Q
+}
+
+fragment Fragment_ixEol on Union_L5XmO {
+  __typename
+  ... on Union_L5XmO {
+    __typename
+  }
+}

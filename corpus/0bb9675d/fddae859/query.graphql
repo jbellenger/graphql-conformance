@@ -1,0 +1,15 @@
+query FFn2hoSPL($oqA3YtqkrH: Float) {
+  ... on Union_NroIHFvHL5 {
+    __typename
+  }
+  ... on Union_NroIHFvHL5 {
+    ...Fragment_JSn
+    __typename
+  }
+}
+
+fragment Fragment_JSn on Union_WHAZru {
+  ... on Object_e {
+    di(zLDU50Hn: $oqA3YtqkrH)
+  }
+}

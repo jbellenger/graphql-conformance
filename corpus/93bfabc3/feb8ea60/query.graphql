@@ -1,0 +1,28 @@
+query bus($kKY8WwubQR: Enum__TO, $zh9AF0_z1R: Boolean!) {
+  ip(m2Jw: f_n) {
+    ...Fragment_mcCm9r
+    zyjzWNuTy: ip(m2Jw: $kKY8WwubQR) {
+      dsUt: ip(m2Jw: $kKY8WwubQR) @include(if: $zh9AF0_z1R) {
+        oUAhX0: __typename
+      }
+      ... on Object_R6AoBWd {
+        __typename @skip(if: false)
+      }
+    }
+    __typename
+    lVOHg: ip {
+      ...Fragment_mcCm9r
+    }
+  }
+  __typename
+}
+
+fragment Fragment_WZ on Object_Qt {
+  __typename @skip(if: false)
+}
+
+fragment Fragment_mcCm9r on Union_Lbzb9 {
+  ...Fragment_WZ
+  WHMg: __typename
+  py6WZ: __typename @include(if: false)
+}

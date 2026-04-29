@@ -1,0 +1,39 @@
+{
+  ...Fragment_qhnh
+  tajO0Zw0_ @Directive_cu7GL9rJa {
+    ...Fragment_VLc@Directive_cu7GL9rJa
+    ... on Interface_Q {
+      ... {
+        jxbp: bda {
+          __typename
+        }
+        bda {
+          __typename
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_ep on Union_ptT2 {
+  __typename
+}
+
+fragment Fragment_qhnh on Union_p6fSKG {
+  ... on Union_e_gItNANE2 {
+    ...Fragment_ep
+    ... on Union_p6fSKG {
+      K47okkd: __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_Nl5g6 on Interface_Q_STUB {
+  oMqGigorl4 @include(if: false)
+}
+
+fragment Fragment_VLc on Interface_Q {
+  ...Fragment_Nl5g6
+  c55uuFkG2
+}

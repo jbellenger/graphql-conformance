@@ -1,0 +1,28 @@
+query wkb_htcLt {
+  ... on Union_YBNbUSH {
+    __typename
+  }
+  ... on Object_yv1 {
+    ...Fragment_Uomg9CQL
+    ... {
+      ...Fragment_Uomg9CQL
+      ... {
+        Yxp: vnMfp_2 {
+          ov(jcd: true) {
+            __typename
+          }
+        }
+        __typename
+      }
+    }
+  }
+  ... on Union_YBNbUSH {
+    ...Fragment_Uomg9CQL
+  }
+}
+
+fragment Fragment_Uomg9CQL on Object_yv1 {
+  vnMfp_2 {
+    __typename
+  }
+}

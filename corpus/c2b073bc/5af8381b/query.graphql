@@ -1,0 +1,70 @@
+query ($oYf65zWeG0: Enum_foRGu) {
+  ...Fragment_O9GV9ot84
+  cRYo {
+    ...Fragment_RXqd3e2P
+    ...Fragment_dS3oS8Zu
+  }
+  ... on Object_hBAtJG @defer(if: true, label: "m=*") {
+    gypkn2Pn3 {
+      __typename
+    }
+  }
+  ... on Object_hBAtJG {
+    ...Fragment_bC@Directive_Emx
+    ...Fragment_O9GV9ot84@Directive_Emx
+  }
+  ... on Union_tInnVc7NXL {
+    ...Fragment_RXqd3e2P
+    ...Fragment_YYKi9dxy
+  }
+}
+
+fragment Fragment_tgF on Object_hBAtJG {
+  tDZnvVRvkj(eEEa: $oYf65zWeG0) {
+    tk6FdI5p
+    Db: __typename @Directive_DCLCEMiB(o1Rgj: "*") @Directive_Emx
+  }
+  ... on Union_tInnVc7NXL @skip(if: false) {
+    __typename
+  }
+}
+
+fragment Fragment_O9GV9ot84 on Interface_fNTvQNV {
+  ...Fragment_tgF
+  ...Fragment_tgF
+  ... on Object_hBAtJG {
+    ...Fragment_tgF
+    qIhkb {
+      __typename
+    }
+    __typename
+    __typename
+  }
+  ... on Union_tInnVc7NXL {
+    __typename
+    __typename
+    ... on Interface_fNTvQNV @include(if: true) {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_bC on Union_tInnVc7NXL {
+  __typename
+}
+
+fragment Fragment_RXqd3e2P on Object_p {
+  ...Fragment_bC
+  __typename
+  u1
+}
+
+fragment Fragment_dS3oS8Zu on Object_p {
+  ... on Union_srPVMVqnpQ {
+    __typename
+  }
+}
+
+fragment Fragment_YYKi9dxy on Object_p {
+  __typename @Directive_sx
+}

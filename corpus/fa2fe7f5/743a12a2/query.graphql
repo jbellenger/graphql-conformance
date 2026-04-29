@@ -1,0 +1,27 @@
+query JM7cOq($nl: Boolean!) {
+  ...Fragment_BL
+  cb7xQcRv {
+    ...Fragment_BL@Directive_QEv
+    ...Fragment_BL
+  }
+  kv9uXMn
+  cb7xQcRv @skip(if: $nl) {
+    ...Fragment_jhCuj@include(if: $nl)
+    ...Fragment_jhCuj
+    ... {
+      ZIu0: __typename
+    }
+  }
+  ... on Union_Sp0K0MOVe7 @include(if: false) @skip(if: false) {
+    __typename
+  }
+}
+
+fragment Fragment_BL on Union_Sp0K0MOVe7 {
+  __typename
+  __typename
+}
+
+fragment Fragment_jhCuj on Union_w {
+  B: __typename
+}

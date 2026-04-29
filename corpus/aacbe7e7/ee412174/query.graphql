@@ -1,0 +1,14 @@
+query PySMB {
+  ... on Object_W4 {
+    ...Fragment_aJZm
+    ... on Union_XB_cB {
+      ...Fragment_aJZm
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_aJZm on Object_W4 {
+  Ks3GVFsOx: w_iB4
+}

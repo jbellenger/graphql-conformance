@@ -1,0 +1,9 @@
+query @experimental_disableErrorPropagation {
+  __typename
+  ... on Union_r {
+    __typename
+    ppde: __typename
+    __typename
+    __typename
+  }
+}

@@ -1,0 +1,29 @@
+query J {
+  ... on Union_OUY5npv {
+    ...Fragment_X4U
+  }
+  ... on Union_OUY5npv {
+    ...Fragment_zrh
+    ...Fragment_X4U
+    __typename
+    r1: __typename
+  }
+}
+
+fragment Fragment_Ls on Union_OUY5npv {
+  __typename
+  __typename
+}
+
+fragment Fragment_X4U on Union_HBM {
+  ...Fragment_Ls
+  __typename
+}
+
+fragment Fragment_zN192 on Object_qmyMKuaYjL {
+  __typename
+}
+
+fragment Fragment_zrh on Object_qmyMKuaYjL {
+  ...Fragment_zN192
+}

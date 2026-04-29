@@ -1,0 +1,47 @@
+query ($rxofRZd: Boolean!) {
+  ... on Object_DFkpk {
+    ...Fragment_oYfIs
+    ...Fragment_oYfIs
+    ... on Object_DFkpk {
+      ... on Union_N {
+        ShBo3M: __typename
+        __typename
+      }
+    }
+  }
+  ... on Union_N {
+    Ra9p3sH: __typename
+    usvC98m: __typename
+    __typename
+    ... on Object_I4Vx {
+      itF8GUs
+    }
+  }
+  ... on Object_DFkpk @Directive_G7 {
+    ... on Union_G {
+      ...Fragment_cgDHF9whi
+    }
+    ... on Object_DFkpk {
+      ...Fragment_cgDHF9whi
+      jDQ: wYYw7wxL1y
+      __typename
+      jH1iqqbz: wYYw7wxL1y @include(if: $rxofRZd)
+    }
+  }
+}
+
+fragment Fragment_cPxDg on Union_mdatp_k {
+  R_ogN: __typename
+}
+
+fragment Fragment_oYfIs on Union_N {
+  ...Fragment_cPxDg
+  __typename
+  ... on Union_mdatp_k {
+    __typename
+  }
+}
+
+fragment Fragment_cgDHF9whi on Union_N {
+  __typename
+}

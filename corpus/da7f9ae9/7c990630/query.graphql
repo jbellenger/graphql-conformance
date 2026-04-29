@@ -1,0 +1,45 @@
+query ($fqccz7Wpw: Boolean!) {
+  ...Fragment_qoDL4
+  ci2AkV: hVpaiofYr {
+    ... on Union_OcEZjSe {
+      ... on Object_mQj9v8 {
+        uB
+      }
+    }
+  }
+  SzLi: hVpaiofYr {
+    y {
+      hm6TPsVgo
+    }
+    uB
+    y @skip(if: false) {
+      __typename
+    }
+    ... on Object_mQj9v8 {
+      ...Fragment_qoDL4@include(if: $fqccz7Wpw)
+    }
+    ... on Object_mQj9v8 {
+      ...Fragment_dYKt1r
+      ... @defer(if: false, label: "[") {
+        __typename
+      }
+    }
+  }
+  __typename
+}
+
+fragment Fragment_dYKt1r on Union_OcEZjSe {
+  __typename
+  GQwo6: __typename
+}
+
+fragment Fragment_qoDL4 on Union_OcEZjSe {
+  ... on Object_wrkpt4 {
+    ... on Union_OcEZjSe {
+      __typename
+    }
+  }
+  ... on Union_t6NH @defer(if: true, label: "") {
+    ...Fragment_dYKt1r
+  }
+}

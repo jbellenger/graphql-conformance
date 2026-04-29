@@ -1,0 +1,42 @@
+{
+  ...Fragment_kWcdMcB
+  ...Fragment_kWcdMcB
+  ...Fragment_PWa
+}
+
+fragment Fragment_kWcdMcB on Union_whO {
+  ... on Union_jPneK9uTSy {
+    __typename
+    __typename
+    ... on Object_YuesW07 {
+      __typename
+    }
+  }
+  ... on Object_YuesW07 {
+    __typename
+  }
+}
+
+fragment Fragment__0faOHkx on Union_jPneK9uTSy {
+  __typename
+}
+
+fragment Fragment_wI4fo on Union_jPneK9uTSy {
+  __typename
+  __typename
+}
+
+fragment Fragment_PWa on Union_whO {
+  ...Fragment_kWcdMcB@include(if: true)
+  ...Fragment_kWcdMcB
+  ... on Object_YuesW07 {
+    ...Fragment__0faOHkx
+  }
+  ... on Union_vRQKA {
+    ...Fragment_wI4fo
+    I0Ly: __typename
+    ... on Union_jPneK9uTSy {
+      __typename
+    }
+  }
+}

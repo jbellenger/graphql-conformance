@@ -1,0 +1,16 @@
+{
+  ...Fragment_zbGGJXE
+  ... on Object_ksUsJfK {
+    ...Fragment_zbGGJXE
+  }
+  ... on Union_VcV89Z_Hm6 {
+    __typename @include(if: false)
+  }
+}
+
+fragment Fragment_zbGGJXE on Object_ksUsJfK {
+  ... on Union_VcV89Z_Hm6 {
+    __typename
+    __typename
+  }
+}

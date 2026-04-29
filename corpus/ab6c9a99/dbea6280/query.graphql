@@ -1,0 +1,20 @@
+query ($hWv: [Enum_PFoaJs] = [Bdo2, Bdo2, p], $yA4jQ_c: Boolean!) {
+  ...Fragment_t
+  QMHnIdfe: byf1E
+  cgI(g: $hWv)
+  u @skip(if: $yA4jQ_c)
+  ... on Object_P8_C0 {
+    ...Fragment_tYzvkzzS
+    ... on Object_P8_C0 {
+      byf1E
+    }
+  }
+}
+
+fragment Fragment_t on Object_P8_C0 {
+  DZ: __typename @skip(if: false)
+}
+
+fragment Fragment_tYzvkzzS on Union_VBq {
+  ...Fragment_t
+}

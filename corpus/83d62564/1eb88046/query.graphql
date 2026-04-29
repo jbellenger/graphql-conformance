@@ -1,0 +1,33 @@
+query @Directive_RH {
+  ...Fragment_ngZEX_WmK
+  UBliSyG: fv {
+    ... on Union_HyKNOQQE {
+      ...Fragment_JYVew3p5nH
+      LoT: __typename
+    }
+  }
+}
+
+fragment Fragment_ngZEX_WmK on Union_i4MUFfvKmf {
+  ... on Interface_DI1hF {
+    __typename
+  }
+  ... on Object_CnLtJ6r {
+    yNwx82VZl @Directive_tpZ4A
+    ... on Union_i4MUFfvKmf {
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_JYVew3p5nH on Object_X {
+  s9cft5 {
+    x3oIkTlPK {
+      __typename
+    }
+  }
+  s9cft5 {
+    N2t: yNwx82VZl
+  }
+}

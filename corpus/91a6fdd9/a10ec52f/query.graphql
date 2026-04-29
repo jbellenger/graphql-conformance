@@ -1,0 +1,22 @@
+{
+  ... on Object_DADvh_zO5 {
+    Qu7p3r: __typename
+    ... {
+      idQDW3Mb
+    }
+  }
+  ... on Union_gqxQ {
+    __typename @Directive_lyd
+  }
+  ... on Union_gqxQ {
+    ...Fragment_MMArvJ
+  }
+}
+
+fragment Fragment_EBjGI8HT on Union_NOGOCpDh1u {
+  __typename
+}
+
+fragment Fragment_MMArvJ on Union_NOGOCpDh1u {
+  ...Fragment_EBjGI8HT
+}

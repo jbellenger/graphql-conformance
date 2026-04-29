@@ -1,0 +1,39 @@
+query E2e {
+  ...Fragment_pu9FQ
+  ...Fragment_Cxo8t9XXPS
+  ... on Union_Sp0K0MOVe7 {
+    ... on Union_bZOn3AKcT {
+      ... on Object_hAZa {
+        rA7InNqUB {
+          __typename
+        }
+      }
+    }
+    ... on Union_w {
+      __typename
+      ... on Union_bZOn3AKcT {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Cxo8t9XXPS on Object_c {
+  kv9uXMn
+}
+
+fragment Fragment_cbY25 on Union_bZOn3AKcT {
+  __typename
+}
+
+fragment Fragment_pu9FQ on Object_c {
+  ...Fragment_Cxo8t9XXPS
+  ...Fragment_Cxo8t9XXPS
+  P2RI: cb7xQcRv {
+    ...Fragment_cbY25
+  }
+  __typename
+  ... on Union_Sp0K0MOVe7 {
+    __typename
+  }
+}

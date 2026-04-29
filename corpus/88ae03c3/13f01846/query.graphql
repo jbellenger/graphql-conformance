@@ -1,0 +1,26 @@
+query ($hR: Boolean!) @Directive_IfHT {
+  ... on Union_vpNFdADCI @defer(if: false, label: ",G") {
+    __typename
+  }
+  ... on Union_EUph2fxoX {
+    ...Fragment_qJb5
+    ... on Union_vpNFdADCI {
+      ...Fragment_qJb5@skip(if: $hR)
+    }
+    ... on Object_KW_KZF {
+      ...Fragment_qJb5
+      __typename
+      oDq5xx {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_qJb5 on Union_EUph2fxoX {
+  Ld5_yA: __typename
+  ... on Object_KW_KZF {
+    __typename
+    __typename @include(if: false)
+  }
+}

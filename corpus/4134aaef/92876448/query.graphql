@@ -1,0 +1,41 @@
+query @experimental_disableErrorPropagation {
+  ... on Union_ECtOJQ {
+    ...Fragment_dnV866SmXo
+    ...Fragment_Hod
+    exuE: __typename @Directive_Ih9ZGZpq @skip(if: false)
+    ... on Object_MpjEXW {
+      ...Fragment_Hod@include(if: true)
+      ff7xaDvi
+      __typename @Directive_Ih9ZGZpq
+      ff7xaDvi
+      ... {
+        rxAgBuP {
+          d
+        }
+        rxAgBuP {
+          __typename
+        }
+      }
+    }
+  }
+  ... on Object_MpjEXW {
+    ...Fragment_Hod
+  }
+  ... on Union_ECtOJQ {
+    ...Fragment_dnV866SmXo
+    ...Fragment_Hod
+  }
+}
+
+fragment Fragment_dnV866SmXo on Union_TOD @Directive_wAEM50PtFP{
+  __typename
+  __typename
+  __typename
+  ... on Union_TOD {
+    __typename
+  }
+}
+
+fragment Fragment_Hod on Union_ECtOJQ {
+  __typename
+}
