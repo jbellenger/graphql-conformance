@@ -1,0 +1,27 @@
+{
+  ...Fragment_c
+  ...Fragment_dOTBFl
+  iYmFzGWBq {
+    wgnGDa_dhS: hl
+  }
+}
+
+fragment Fragment_TtrTk on Union_DePp {
+  __typename @include(if: true)
+}
+
+fragment Fragment_c on Union_DePp {
+  __typename
+  ... on Object_F5 {
+    ...Fragment_TtrTk
+  }
+}
+
+fragment Fragment_NyJ on Union_yiE @Directive_S{
+  __typename
+}
+
+fragment Fragment_dOTBFl on Union_y @Directive_S{
+  ...Fragment_TtrTk
+  ...Fragment_NyJ
+}

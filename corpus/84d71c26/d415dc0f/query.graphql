@@ -1,0 +1,39 @@
+query X($sHXKuQHO: Boolean!) {
+  ...Fragment_P
+  P7mBi3dn: __typename
+  __typename
+  bXBF8aR {
+    ...Fragment_cdohkZUwT
+    ... {
+      ... on Interface_J2n02HuP {
+        szWztH: yvmzkZNMkW {
+          iLvb
+        }
+      }
+    }
+  }
+  ... on Union_avf {
+    ... on Object_mLU61Sm {
+      ...Fragment_P
+      ... on Union_avf {
+        __typename @include(if: $sHXKuQHO)
+      }
+    }
+  }
+  ... on Object_mLU61Sm {
+    x3RfsI: __typename
+  }
+}
+
+fragment Fragment_P on Object_mLU61Sm {
+  __typename
+}
+
+fragment Fragment_h295951t on Interface_J2n02HuP @Directive_HjQ1R{
+  bIzhs
+}
+
+fragment Fragment_cdohkZUwT on Interface_J2n02HuP {
+  ...Fragment_h295951t
+  lcu0KFlc @Directive_X(xJv: [-1266188268])
+}

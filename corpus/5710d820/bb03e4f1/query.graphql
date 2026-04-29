@@ -1,0 +1,34 @@
+query @Directive_rXDRkjY {
+  cfnU5EIyXu {
+    ...Fragment_MF5XNlAj@include(if: false)
+    ... on Union_Xu7jyJo {
+      __typename
+    }
+    ... on Object_f {
+      zuqafy5GTa: __typename
+      ... on Union_Xu7jyJo {
+        __typename
+      }
+    }
+  }
+  aFA6rRZ {
+    aFA6rRZ {
+      ... on Object_afdjMm_TSB @include(if: true) {
+        cfnU5EIyXu {
+          _2sru: __typename
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_qA84NxvH_h on Object_f {
+  gt2a03C {
+    __typename
+  }
+  kzf3
+}
+
+fragment Fragment_MF5XNlAj on Object_f {
+  ...Fragment_qA84NxvH_h@Directive_U
+}

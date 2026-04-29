@@ -1,0 +1,22 @@
+query Wwc {
+  hCk9JfEv @skip(if: true) {
+    __typename
+  }
+  ... on Interface_hY6EDx6 {
+    ... on Interface_hY6EDx6 {
+      xVW
+    }
+    ... on Interface_hY6EDx6 {
+      ...Fragment_LIrMq2pv
+      ... on Object_GZwlaH {
+        hCk9JfEv {
+          __typename
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_LIrMq2pv on Object_GZwlaH {
+  xVW
+}

@@ -1,0 +1,20 @@
+query B7kb9kfy {
+  ...Fragment_gCY@Directive_EROP8Y7Pqi
+  ...Fragment_gCY
+  ...Fragment_xUSpqy
+  ... on Union_OTYJTJv {
+    __typename
+  }
+  ... on Object_yVILZT {
+    ntY
+    __typename
+  }
+}
+
+fragment Fragment_gCY on Object_yVILZT {
+  ntY
+}
+
+fragment Fragment_xUSpqy on Union_OTYJTJv {
+  ...Fragment_gCY
+}

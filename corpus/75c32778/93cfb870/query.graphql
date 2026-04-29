@@ -1,0 +1,37 @@
+{
+  ... on Union_MWV9u {
+    ...Fragment_eS5TDQ
+  }
+  ... {
+    ...Fragment_gHwWzA
+    g3VfV
+    ... on Union_MWV9u {
+      ... {
+        __typename
+      }
+    }
+  }
+  ... on Union_MWV9u {
+    ... on Union_MWV9u {
+      __typename @include(if: true)
+    }
+  }
+}
+
+fragment Fragment_eS5TDQ on Union_NKhFpg02Y {
+  __typename
+  ... on Union_MWV9u {
+    __typename
+  }
+}
+
+fragment Fragment_tLpIOp5ob2 on Union_MWV9u {
+  __typename
+}
+
+fragment Fragment_gHwWzA on Object_hPDum {
+  ...Fragment_tLpIOp5ob2
+  ... on Union_MWV9u @Directive_R27C03W {
+    __typename
+  }
+}

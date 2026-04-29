@@ -1,0 +1,13 @@
+query ($vXgCJkYV: Boolean!) @Directive_Bz10 {
+  ...Fragment_Rbm1Tme
+}
+
+fragment Fragment_phRZQw7 on Object_nmWs1 {
+  ... on Union_vJ5YymIvHr {
+    jL: __typename
+  }
+}
+
+fragment Fragment_Rbm1Tme on Object_nmWs1 {
+  ...Fragment_phRZQw7@skip(if: $vXgCJkYV)
+}

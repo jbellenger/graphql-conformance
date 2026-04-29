@@ -1,0 +1,21 @@
+query G2wJj6o {
+  ...Fragment_l
+}
+
+fragment Fragment_afLQwtbzK on Object_muDZ {
+  h {
+    __typename
+  }
+  R5VLcHVc0: h {
+    __typename
+  }
+}
+
+fragment Fragment_l on Object_LNdyfVj {
+  bwGbk {
+    ...Fragment_afLQwtbzK
+    ... on Object_muDZ @skip(if: true) {
+      xVRHK
+    }
+  }
+}

@@ -1,0 +1,16 @@
+query sh {
+  ... {
+    ... on Union_F {
+      ...Fragment_t1DpO
+    }
+  }
+}
+
+fragment Fragment_t1DpO on Object_k1ZI2A {
+  cuFWU0Yf1: dc {
+    __typename
+  }
+  dc {
+    __typename
+  }
+}

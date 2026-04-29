@@ -1,0 +1,23 @@
+query @Directive_vDaC {
+  ...Fragment_yN
+  ...Fragment_yN
+  ... on Union_cx {
+    ... on Union_GQJkR {
+      ...Fragment_gACbpx
+    }
+  }
+  ... on Union_gybD8UWT5 {
+    RKSBA: __typename
+  }
+  ... on Union_cx {
+    __typename
+  }
+}
+
+fragment Fragment_yN on Union_GQJkR {
+  bU2c25mqbb: __typename
+}
+
+fragment Fragment_gACbpx on Interface_TcVInZtV5 {
+  __typename
+}

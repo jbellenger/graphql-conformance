@@ -1,0 +1,35 @@
+query _z7AG5z($imTdffS7Q: Boolean!) {
+  ...Fragment_Qw1F1q@defer(if: false, label: "6")
+  __typename
+  h {
+    __typename
+    kBOE7_oh: __typename
+    ... on Union__09bWHhS {
+      ...Fragment_Amq
+      __typename
+      __typename
+      ... on Union__09bWHhS {
+        Ts: __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_MvF9vRPlFT on Object_DPwy1UD {
+  __typename
+}
+
+fragment Fragment_Wyjo0 on Union_nwtD_r_s {
+  ...Fragment_MvF9vRPlFT
+  __typename
+  __typename
+}
+
+fragment Fragment_Qw1F1q on Object_DPwy1UD {
+  ...Fragment_Wyjo0@skip(if: $imTdffS7Q) @defer(if: true, label: "")
+}
+
+fragment Fragment_Amq on Object_EIXROZw {
+  __typename
+}

@@ -1,0 +1,43 @@
+query ($f: Boolean!) {
+  qc3uul {
+    xY @include(if: $f) @Directive_R_Z0TJW
+  }
+  qc3uul @include(if: false) {
+    __typename
+  }
+  ZrjZuB: k {
+    ...Fragment_qCueYPjl6
+    ...Fragment_iaH74QwHpU
+    k {
+      qc3uul {
+        __typename @include(if: $f)
+      }
+    }
+    ... on Union_IntIl {
+      __typename
+      ... on Object_OaETkQF2Vk {
+        __typename
+      }
+    }
+    ... on Union_ZVYu {
+      ...Fragment_qCueYPjl6
+      ... on Union_ZVYu {
+        __typename
+      }
+    }
+  }
+  __typename
+}
+
+fragment Fragment_iaH74QwHpU on Union_IntIl @Directive_R_Z0TJW{
+  __typename
+}
+
+fragment Fragment_qCueYPjl6 on Union_ZVYu {
+  ...Fragment_iaH74QwHpU
+  __typename
+  ... on Union_ZVYu @skip(if: false) @defer(if: false, label: "") {
+    __typename
+    __typename
+  }
+}

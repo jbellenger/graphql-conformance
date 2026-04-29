@@ -1,0 +1,11 @@
+query dIt_FtdR {
+  ...Fragment_I
+  __typename @Directive_sn1t
+  pfKlZya {
+    __typename
+  }
+}
+
+fragment Fragment_I on Union_nM {
+  __typename @skip(if: false)
+}

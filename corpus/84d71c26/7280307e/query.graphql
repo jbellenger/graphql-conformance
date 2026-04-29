@@ -1,0 +1,24 @@
+query C3l_AqU2 {
+  ... on Union_avf {
+    ...Fragment_zH
+    ...Fragment_zH
+    ... on Object_FkENuaqz {
+      iLvb
+    }
+  }
+  ... on Union_avf {
+    eZZ1anL: __typename
+  }
+}
+
+fragment Fragment_IV9ygWtMPv on Union_o9Oia8QgK {
+  __typename
+}
+
+fragment Fragment_zH on Object_FkENuaqz {
+  ...Fragment_IV9ygWtMPv
+  n {
+    __typename
+    iLvb
+  }
+}

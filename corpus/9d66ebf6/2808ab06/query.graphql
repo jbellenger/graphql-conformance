@@ -1,0 +1,21 @@
+query ($fMQlpfQC: Boolean! = true) {
+  pXSNJYzF1X {
+    __typename
+    ... on Object_vGI6LM {
+      ...Fragment_K
+    }
+  }
+  ... on Interface_rQI {
+    _JmRYo {
+      ... on Object_vGI6LM @Directive_saH4ui {
+        _JmRYo {
+          __typename @skip(if: $fMQlpfQC)
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_K on Union_P {
+  __typename
+}

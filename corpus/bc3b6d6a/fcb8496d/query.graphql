@@ -1,0 +1,25 @@
+{
+  ...Fragment_yttTgpXH
+  ...Fragment_zS86Wm_Y@Directive_HoBk
+  ...Fragment_V
+}
+
+fragment Fragment_V on Object_hO1D {
+  __typename
+}
+
+fragment Fragment_yttTgpXH on Object_hO1D {
+  ...Fragment_V
+  ... on Object_hO1D {
+    __typename
+  }
+}
+
+fragment Fragment_Nit on Object_hO1D {
+  __typename
+}
+
+fragment Fragment_zS86Wm_Y on Object_hO1D {
+  ...Fragment_Nit
+  ...Fragment_yttTgpXH
+}

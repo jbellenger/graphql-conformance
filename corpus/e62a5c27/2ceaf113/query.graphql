@@ -1,0 +1,61 @@
+query Bsj($xh: [[Enum_fnUyn]]! = [[gPEOxXy4Tc, gPEOxXy4Tc], [gPEOxXy4Tc, gPEOxXy4Tc, gPEOxXy4Tc]]) {
+  ...Fragment_SCorf
+  ...Fragment_SCorf
+  eFtFc {
+    ...Fragment_j0
+    ...Fragment_yA
+    irXh: is7KOaahxo @skip(if: true) @Directive_EjNycv(qdAiGHfo: $xh) {
+      ... on Union_eN7k5rs {
+        hjG: __typename
+      }
+    }
+    BZvgpXrQA: dn84
+    dn84
+    ... on Interface_avp_STUB {
+      ...Fragment_yA
+    }
+    ... on Interface_avp_STUB {
+      ... on Interface_avp_STUB {
+        dn84
+      }
+    }
+  }
+  __typename
+  eFtFc {
+    __typename
+  }
+}
+
+fragment Fragment_SCorf on Union_eN7k5rs {
+  __typename
+}
+
+fragment Fragment_JbqVubig on Interface_avp_STUB {
+  yx
+}
+
+fragment Fragment_j0 on Interface_avp_STUB {
+  ...Fragment_JbqVubig
+  ... on Interface_avp {
+    is7KOaahxo {
+      w2OFqN9: eFtFc {
+        yU
+      }
+    }
+  }
+}
+
+fragment Fragment_yA on Interface_avp {
+  ...Fragment_j0
+  is7KOaahxo {
+    eFtFc @Directive_mKGZ(ret: {gytKYU : gPEOxXy4Tc}) @include(if: true) {
+      is7KOaahxo {
+        __typename
+      }
+    }
+    rpDS1GQT9 {
+      unB61Ui64(cy7Gjanv1: {gytKYU : gPEOxXy4Tc})
+    }
+  }
+  yU
+}

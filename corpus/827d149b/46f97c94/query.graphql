@@ -1,0 +1,20 @@
+query r_ {
+  ... on Union_pCOBZA {
+    ...Fragment_Dd6Rz
+    ...Fragment_Dd6Rz
+  }
+  ... on Union_JhIHgMQ7vj @Directive_pND {
+    __typename
+  }
+}
+
+fragment Fragment_pq on Union_pCOBZA {
+  __typename
+}
+
+fragment Fragment_Dd6Rz on Object_X {
+  ...Fragment_pq
+  ... on Object_X {
+    __typename
+  }
+}

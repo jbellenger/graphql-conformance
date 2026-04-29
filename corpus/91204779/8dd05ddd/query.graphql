@@ -1,0 +1,21 @@
+query T {
+  ...Fragment_U2
+  ... on Union_efu9GeMlcC {
+    ... on Union_efu9GeMlcC {
+      __typename
+    }
+  }
+  ... on Union_efu9GeMlcC {
+    ...Fragment_U2
+    ...Fragment_U2
+    ... on Union_Ds_8yOQHcC {
+      ... on Object_wzyL5 {
+        GhCsT: nqk
+      }
+    }
+  }
+}
+
+fragment Fragment_U2 on Union_efu9GeMlcC {
+  __typename
+}

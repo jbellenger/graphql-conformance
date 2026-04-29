@@ -1,0 +1,3 @@
+query KLCmPV5dY0($sCBlEl: Boolean!) {
+  __typename @include(if: $sCBlEl)
+}

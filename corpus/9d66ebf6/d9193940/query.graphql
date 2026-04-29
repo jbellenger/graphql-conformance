@@ -1,0 +1,15 @@
+query NGQ9LUbY7 {
+  gkP: _JmRYo {
+    ...Fragment_ki
+    ... on Union_P {
+      MstRVO: __typename
+    }
+  }
+}
+
+fragment Fragment_ki on Union_P {
+  __typename
+  ... on Union_qMK {
+    __typename @skip(if: false)
+  }
+}

@@ -1,0 +1,25 @@
+{
+  ...Fragment_F6U
+  ... on Union_ofTIZn {
+    __typename
+  }
+}
+
+fragment Fragment_Z on Interface_Xtni0YO {
+  jOo
+}
+
+fragment Fragment_F6U on Interface_Xtni0YO {
+  ... on Union_W {
+    __typename
+  }
+  ... on Interface_Xtni0YO {
+    ...Fragment_Z
+    ... on Object_L528v {
+      nC {
+        akp: __typename
+      }
+      __typename
+    }
+  }
+}

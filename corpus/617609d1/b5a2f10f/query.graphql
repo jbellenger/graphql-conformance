@@ -1,0 +1,25 @@
+{
+  __typename
+  ... on Object_B {
+    ...Fragment_ISbdIX_Fw
+    ... {
+      ...Fragment_ISbdIX_Fw
+      ... on Union_EUKnM83wt3 {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_VQy on Object_B {
+  __typename
+  zjKeQ
+}
+
+fragment Fragment_ISbdIX_Fw on Object_B {
+  ...Fragment_VQy
+  zjKeQ
+  ... on Union_EUKnM83wt3 {
+    __typename @include(if: false)
+  }
+}

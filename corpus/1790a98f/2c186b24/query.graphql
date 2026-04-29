@@ -1,0 +1,33 @@
+{
+  ...Fragment_HI
+  ...Fragment_HI
+  ... on Object_SE {
+    ...Fragment_HI
+    ...Fragment_HI
+    ... on Object_SE {
+      __typename
+    }
+    ... on Union_Que {
+      ...Fragment_I1QS_w
+      ... on Union_Que {
+        __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_I1QS_w on Object_SE {
+  __typename
+}
+
+fragment Fragment_HI on Union_Que {
+  ...Fragment_I1QS_w
+  ...Fragment_I1QS_w@defer(if: false, label: "@!")
+  ... on Union_Que {
+    __typename
+    ... on Object_mOCp {
+      __typename
+    }
+  }
+}

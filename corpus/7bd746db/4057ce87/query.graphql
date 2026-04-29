@@ -1,0 +1,14 @@
+query @Directive_QeA3eVo {
+  ...Fragment_Ydi1
+}
+
+fragment Fragment_Ydi1 on Union_XB8W {
+  __typename
+  __typename
+  __typename
+  ... on Union_r0JK4cT_LY @Directive_cBl {
+    ... on Union_r0JK4cT_LY {
+      __typename
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  ...Fragment_vo
+  ... on Union_wJ {
+    ...Fragment_J6zZcL_v0
+    __typename
+  }
+  ... on Object_fh9C3Gr @defer(if: false, label: null) {
+    __typename
+  }
+}
+
+fragment Fragment_J6zZcL_v0 on Union_wJ {
+  ... on Union_Gerbar {
+    __typename
+  }
+}
+
+fragment Fragment_d on Union_Gerbar {
+  ... on Union_Gerbar {
+    __typename
+  }
+}
+
+fragment Fragment_vo on Union_wJ {
+  ...Fragment_J6zZcL_v0
+  ...Fragment_d
+  __typename
+  __typename
+  ... on Object_fh9C3Gr {
+    __typename
+    ... on Union_Gerbar {
+      __typename
+    }
+  }
+  ... on Union_Gerbar {
+    ErQt: __typename
+    __typename
+    __typename
+  }
+}

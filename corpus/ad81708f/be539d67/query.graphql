@@ -1,0 +1,7 @@
+query BwJcQHmSVG($oCj99: Boolean!@Directive_A2Jw) {
+  ey22Nzj
+  ... on Union_Mb4eZ6pae {
+    __typename
+    __typename @skip(if: $oCj99)
+  }
+}

@@ -1,0 +1,19 @@
+query h @Directive_fSEhuS2s {
+  ...Fragment_bxjMLLsJ
+  ... on Object_ofwG00b {
+    __typename
+  }
+  ... on Object_ofwG00b {
+    nP
+  }
+}
+
+fragment Fragment_U on Object_ofwG00b {
+  gGOglIX1R: __typename
+}
+
+fragment Fragment_bxjMLLsJ on Object_ofwG00b {
+  ... {
+    ...Fragment_U@defer(if: true, label: "")
+  }
+}

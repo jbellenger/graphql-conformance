@@ -1,0 +1,50 @@
+query _($dYrOHKUCS: Boolean!) @Directive_lo {
+  juovKH {
+    ...Fragment_kqzdLyo42
+    ...Fragment_kqzdLyo42
+  }
+  juovKH {
+    ...Fragment_kqzdLyo42
+    ...Fragment_kqzdLyo42
+    MoVJwvF: __typename
+    q7wi {
+      ...Fragment_pYEmSfBn3q
+      ... on Object_lO {
+        juovKH {
+          __typename @include(if: true)
+        }
+      }
+    }
+    q7wi {
+      R8_C0iWD: __typename
+    }
+    TCDI: q7wi {
+      __typename
+    }
+    ... on Union_m8iAX {
+      __typename
+    }
+    ... on Union_b {
+      __typename
+      ... on Object_Xb {
+        Jo8: __typename
+        nEcS82jGXA: uFk {
+          UEq1J0b: __typename
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_kqzdLyo42 on Object_lO {
+  juovKH {
+    __typename @include(if: $dYrOHKUCS)
+  }
+  ... on Union_b @skip(if: true) {
+    G0Qf: __typename
+  }
+}
+
+fragment Fragment_pYEmSfBn3q on Union_b {
+  __typename
+}

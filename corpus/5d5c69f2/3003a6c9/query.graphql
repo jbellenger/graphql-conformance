@@ -1,0 +1,16 @@
+query ayG_xvr($gQOM42qc: Float) {
+  ... {
+    rVEFuF3V4r(zWgDh0fu: $gQOM42qc) {
+      __typename
+      __typename
+    }
+    __typename
+    tXlnsF: rVEFuF3V4r(zWgDh0fu: null) {
+      ...Fragment_WdfbEdWoj
+    }
+  }
+}
+
+fragment Fragment_WdfbEdWoj on Union_IMe5hl {
+  __typename
+}

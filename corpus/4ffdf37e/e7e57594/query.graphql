@@ -1,0 +1,20 @@
+{
+  ...Fragment_baRj
+  ...Fragment_Ow2HtSpas
+  b6reyM63
+}
+
+fragment Fragment_wk on Union_XHaGdkArk {
+  wav: __typename
+}
+
+fragment Fragment_baRj on Object_n9SqpjO9Gv {
+  qAJk
+  ... on Union_fmF9JHMW3 @Directive_oBKHEbzob {
+    ...Fragment_wk
+  }
+}
+
+fragment Fragment_Ow2HtSpas on Object_n9SqpjO9Gv {
+  RXcfO: b6reyM63
+}

@@ -1,0 +1,19 @@
+query yywL2Kr {
+  sw: __typename
+  pfKlZya {
+    ...Fragment_BY5
+  }
+  __typename
+}
+
+fragment Fragment_hJFwY on Interface_TFNyY_STUB @Directive_pWp2E_ZBd{
+  __typename
+  __typename
+}
+
+fragment Fragment_BY5 on Interface_TFNyY {
+  ...Fragment_hJFwY
+  se9kX {
+    __typename
+  }
+}

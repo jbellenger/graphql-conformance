@@ -1,0 +1,142 @@
+schema {
+  query: Object_Dmmmmmmmmm
+}
+
+directive @Directive_JPy on QUERY | MUTATION | SUBSCRIPTION | FIELD | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCHEMA | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+directive @Directive_Zc on FIELD
+
+directive @Directive_yU9TiU4W on SUBSCRIPTION | FIELD | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | VARIABLE_DEFINITION | SCALAR | OBJECT | FIELD_DEFINITION | INTERFACE | UNION | ENUM | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+"This directive allows results to be deferred during execution"
+directive @defer(
+    "Deferred behaviour is controlled by this argument"
+    if: Boolean! = true,
+    "A unique label that represents the fragment being deferred"
+    label: String
+  ) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Marks the field, argument, input field or enum value as deprecated"
+directive @deprecated(
+    "The reason for the deprecation"
+    reason: String! = "No longer supported"
+  ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+"This directive disables error propagation when a non nullable field returns null for the given operation."
+directive @experimental_disableErrorPropagation on QUERY | MUTATION | SUBSCRIPTION
+
+"Directs the executor to include this field or fragment only when the `if` argument is true"
+directive @include(
+    "Included when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Indicates an Input Object is a OneOf Input Object."
+directive @oneOf on INPUT_OBJECT
+
+"Directs the executor to skip this field or fragment when the `if` argument is true."
+directive @skip(
+    "Skipped when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Exposes a URL that specifies the behaviour of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behaviour of this scalar."
+    url: String!
+  ) on SCALAR
+
+interface Interface_FX5POoxsdx {
+  dFZ(v1qdiLYbv: Enum_f0EuK, zY91bVLG: Enum_f0EuK): Interface_hglZLBJ
+  doBLezq_: Object_Dmmmmmmmmm
+  mZEbVHU4: [Object_FFBRpkPuB!]
+}
+
+interface Interface_XvFdQIZ {
+  cpsPj: Union_JAWB
+  hd2OMzS: Int!
+  nD: [Interface_hglZLBJ!]
+}
+
+interface Interface_hglZLBJ {
+  g2: Object_FFBRpkPuB
+}
+
+union Union_JAWB = Object_Dmmmmmmmmm
+
+union Union_bT32g8 @Directive_yU9TiU4W = Object_FFBRpkPuB
+
+union Union_sZhqWKRj = Object_FFBRpkPuB
+
+type Interface_FX5POoxsdx_STUB implements Interface_FX5POoxsdx {
+  d5hax5rzf: String
+  dFZ(v1qdiLYbv: Enum_f0EuK, zY91bVLG: Enum_f0EuK): Interface_hglZLBJ
+  doBLezq_: Object_Dmmmmmmmmm
+  mZEbVHU4: [Object_FFBRpkPuB!]
+  zZMCP_: Enum_DZQ7n2mc
+}
+
+type Interface_XvFdQIZ_STUB implements Interface_XvFdQIZ {
+  cpsPj: Union_JAWB
+  cw_yNPNU(t470b: Boolean!): ID! @deprecated(reason : "D=")
+  g: Enum_DZQ7n2mc
+  hd2OMzS: Int!
+  nD: [Interface_hglZLBJ!]
+  qFT2cLaWT6: [Object_g]
+}
+
+type Interface_hglZLBJ_STUB implements Interface_hglZLBJ {
+  exRSX0TIy: Enum_f0EuK @Directive_JPy
+  g2: Object_FFBRpkPuB
+  l: Object_g
+  oLfw(kHPBtMf0Wr: Enum_szL): Union_bT32g8!
+}
+
+type Object_Dmmmmmmmmm {
+  fCNKQ: String
+}
+
+type Object_FFBRpkPuB {
+  fACnf7ymh: Int
+  qQqORVEU: Float
+  ygFf6PzGy: String
+}
+
+type Object_g @Directive_yU9TiU4W {
+  oP5Zsq6G: ID
+  xhUc9: Interface_hglZLBJ
+  z6: Union_sZhqWKRj
+}
+
+enum Enum_DZQ7n2mc {
+  OArR
+  dZ1jHHV7Z @Directive_JPy
+  synY
+}
+
+enum Enum_f0EuK {
+  XO1mjV
+  d8e_03rPwB
+  owPfXIzHS
+}
+
+enum Enum_szL {
+  Krbe
+}
+
+input Input_GQe @oneOf {
+  nnyI02EWp: Enum_DZQ7n2mc
+  xZrB: Input_Zw
+  z2518: Int
+}
+
+input Input_Zw {
+  hkLnqCc8: Boolean = false
+  kvxhhN: [Enum_szL]! = [Krbe, Krbe, Krbe]
+}
+
+input Input_dMuROdq {
+  km9sP6: Input_dMuROdq = {xIVypTutu : {xZrB : {hkLnqCc8 : null, kvxhhN : []}}, lUP : "", km9sP6 : {xIVypTutu : {nnyI02EWp : OArR}, lUP : "=", km9sP6 : {xIVypTutu : null, lUP : null, km9sP6 : null}}}
+  lUP: String
+  xIVypTutu: Input_GQe @Directive_JPy @deprecated(reason : "AP")
+}

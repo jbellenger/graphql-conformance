@@ -1,0 +1,23 @@
+{
+  ...Fragment_SZ1fmo
+  ...Fragment_SZ1fmo
+  __typename
+}
+
+fragment Fragment_K67c on Union_rEG {
+  __typename
+}
+
+fragment Fragment_SZ1fmo on Object_eSTyTX0 {
+  ...Fragment_K67c
+  ...Fragment_K67c
+  ... on Union_rnQMi8hYpp {
+    ...Fragment_K67c
+    __typename
+    __typename
+    kuPAT: __typename
+    ... on Object_eSTyTX0 @skip(if: true) {
+      __typename
+    }
+  }
+}

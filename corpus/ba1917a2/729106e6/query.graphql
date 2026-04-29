@@ -1,0 +1,18 @@
+query IUMNEvMalT {
+  ... on Object_rRDWkUi @Directive_yif {
+    ... on Object_rRDWkUi {
+      ...Fragment_yuxW
+      lTK_EZJThO: __typename
+      ... on Union_MM {
+        __typename @Directive__eRcBA @include(if: false) @skip(if: false)
+      }
+    }
+    ... on Union_MM {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_yuxW on Union_MM {
+  HIY0GJAK: __typename @Directive_HZ2GISQJ2b
+}

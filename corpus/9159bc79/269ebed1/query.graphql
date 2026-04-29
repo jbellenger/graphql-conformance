@@ -1,0 +1,67 @@
+query ($tEUCJuczpa: [ID!], $ytFVLJNiT: Boolean!) {
+  ...Fragment_Xd9IatNj
+  ...Fragment_T
+  tO2mya28oJ(g53VL61gDm: ["u8a", "4", "!"]) @Directive_VP6qRlyO {
+    __typename
+  }
+  VfPk_k: tO2mya28oJ(g53VL61gDm: $tEUCJuczpa) {
+    ...Fragment_GIoA1j
+    ...Fragment_GIoA1j
+    ap5 {
+      ...Fragment_sdY5RI
+    }
+    ... on Interface_dG_STUB {
+      ...Fragment_GIoA1j
+      kiKRi9
+      ... on Interface_dG {
+        gwQNK: nQ374FWIrH
+      }
+    }
+  }
+  kW5v5 @Directive_vuqzyPR {
+    ...Fragment_IdulN7k_
+    __typename @skip(if: true)
+  }
+  ... on Union_k {
+    ...Fragment_A0_FuO1
+  }
+}
+
+fragment Fragment_lQt8Yk9 on Union_Qkl6DT {
+  __typename
+  ... on Object_eSlva {
+    qXxw1: nW0vv9S8
+  }
+}
+
+fragment Fragment_Xd9IatNj on Union_k {
+  ...Fragment_lQt8Yk9
+  __typename
+}
+
+fragment Fragment_T on Union_Qkl6DT {
+  tdHBNiP_z: __typename
+}
+
+fragment Fragment_sdY5RI on Interface_dG {
+  __typename
+}
+
+fragment Fragment_GIoA1j on Interface_dG_STUB {
+  ...Fragment_sdY5RI
+  ap5 @Directive_VP6qRlyO {
+    nQ374FWIrH
+  }
+  ... @skip(if: $ytFVLJNiT) {
+    d
+  }
+}
+
+fragment Fragment_A0_FuO1 on Object_eSlva {
+  __typename
+  nW0vv9S8
+}
+
+fragment Fragment_IdulN7k_ on Object_eSlva {
+  ...Fragment_A0_FuO1
+}

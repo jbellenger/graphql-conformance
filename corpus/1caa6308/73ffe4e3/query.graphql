@@ -1,0 +1,24 @@
+{
+  ... on Union_Ck {
+    ...Fragment_SxUuLsEG9o
+    __typename
+    ... on Object_os0nOC {
+      ...Fragment_Q9b
+    }
+  }
+  ... on Union_ydo {
+    ...Fragment_Q9b
+    ...Fragment_Q9b
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_SxUuLsEG9o on Object_MJeVvCGBN @Directive_B2sesnLI @Directive_lo0HVXtDE{
+  s
+}
+
+fragment Fragment_Q9b on Union_ydo {
+  __typename @Directive_lo0HVXtDE
+  __typename
+}

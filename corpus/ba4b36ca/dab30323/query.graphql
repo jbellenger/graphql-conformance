@@ -1,0 +1,23 @@
+query vNt4ogT0L2 {
+  ... on Union_IntIl @defer(if: true, label: "S%") @skip(if: true) {
+    ... on Object_OaETkQF2Vk {
+      ...Fragment_J
+      WSWvV8: k {
+        __typename
+      }
+      pqa1C0ZFSd
+    }
+    ... on Union_ruZgNQhR9 {
+      ...Fragment_J
+      ... on Union_ruZgNQhR9 {
+        YQocs2Px: __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_J on Union_ZVYu @Directive_R_Z0TJW{
+  FIF: __typename
+  __typename @include(if: true)
+}

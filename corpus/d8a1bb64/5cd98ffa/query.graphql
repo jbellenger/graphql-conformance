@@ -1,0 +1,15 @@
+query M {
+  ...Fragment_h_
+  h2pb
+  ... on Object_RtExt {
+    ...Fragment_h_
+  }
+}
+
+fragment Fragment_HLYPDVOJU on Union_BM {
+  __typename
+}
+
+fragment Fragment_h_ on Object_RtExt {
+  ...Fragment_HLYPDVOJU
+}

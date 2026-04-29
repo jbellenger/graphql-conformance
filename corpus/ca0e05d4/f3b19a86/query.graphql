@@ -1,0 +1,38 @@
+query X6Y1ULJ($d98eI4: Enum_mrqvk!) {
+  ...Fragment_DDipGd4EF
+  i: __typename
+  tCfApE6(ze3_BNr: Q) {
+    __typename
+  }
+  ... on Union_zmqRNYp {
+    __typename
+    NX: __typename
+    __typename
+  }
+}
+
+fragment Fragment_MqedJznZFs on Union_xt9 @Directive_GGLEHrF @Directive_fe{
+  __typename
+}
+
+fragment Fragment_DDipGd4EF on Object_ww {
+  ... {
+    ...Fragment_MqedJznZFs
+    tCfApE6(ze3_BNr: Q) {
+      __typename
+    }
+    u: tCfApE6(ze3_BNr: $d98eI4) {
+      q010upXP {
+        tCfApE6(ze3_BNr: Q) {
+          __typename
+        }
+      }
+      q010upXP {
+        oBCmlHD7: tCfApE6(ze3_BNr: $d98eI4) @Directive_fe {
+          __typename
+        }
+      }
+    }
+    __typename
+  }
+}

@@ -1,0 +1,37 @@
+{
+  ...Fragment_u9
+  zp0ELIKtsW {
+    x7LtwAVOs: __typename
+    x8M {
+      ... on Interface_kPGuEf {
+        oG79058kC
+      }
+    }
+    x8M {
+      oG79058kC @Directive_TiIcbst
+    }
+    ... {
+      ... on Object_h {
+        xKkXEv4ae8 @skip(if: false)
+      }
+    }
+    ... on Union_M @skip(if: false) {
+      ...Fragment_LUOZJxC
+      __typename
+      wQKg: __typename
+      __typename
+    }
+  }
+  __typename
+  ... on Object_cVQNX {
+    __typename
+  }
+}
+
+fragment Fragment_u9 on Object_cVQNX {
+  __typename
+}
+
+fragment Fragment_LUOZJxC on Union_M {
+  __typename
+}

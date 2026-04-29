@@ -1,0 +1,20 @@
+query j {
+  ...Fragment_mpn
+}
+
+fragment Fragment_xR4mjTbxt4 on Object_aRvyN74fx6 {
+  bsLwQscJ: __typename
+}
+
+fragment Fragment_mpn on Object_l8Qs {
+  L47UqyMCYe: __typename
+  ... on Union_exdaVa {
+    ...Fragment_xR4mjTbxt4
+  }
+  ... on Union_exdaVa {
+    __typename
+    ... on Union_exdaVa {
+      __typename
+    }
+  }
+}

@@ -1,0 +1,21 @@
+query ($xvkxLFC: Boolean!) {
+  ... on Union_MesTX {
+    __typename
+    ... on Union_MesTX {
+      ...Fragment_If
+    }
+    ... on Union_MesTX {
+      ...Fragment_If
+      ... on Object_Zzcj4Q {
+        qm8r7zFF
+      }
+    }
+  }
+  ... on Object_Zzcj4Q @skip(if: $xvkxLFC) {
+    ...Fragment_If
+  }
+}
+
+fragment Fragment_If on Object_Zzcj4Q {
+  __typename
+}

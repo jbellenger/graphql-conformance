@@ -1,0 +1,13 @@
+{
+  ...Fragment_JU
+  etHUgL4i {
+    sl_L @include(if: true)
+  }
+}
+
+fragment Fragment_JU on Union_GQJkR {
+  __typename
+  ... on Object_ho {
+    __typename
+  }
+}

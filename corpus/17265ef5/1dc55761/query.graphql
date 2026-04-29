@@ -1,0 +1,37 @@
+query M0($retZVF: Boolean!) {
+  y0X {
+    __typename @Directive_n65
+    ... on Object_ZV7bPt {
+      kWKM
+      ... on Union_dKkR {
+        __typename
+        __typename
+      }
+    }
+    ... on Union_dKkR {
+      ...Fragment_r5G_R34wOY
+    }
+  }
+  l
+  ... on Object_w0wT {
+    ...Fragment_FTQE
+    ...Fragment_FTQE
+    aMv6Cn1: l @include(if: $retZVF)
+  }
+}
+
+fragment Fragment_r5G_R34wOY on Union_dKkR {
+  o9: __typename
+}
+
+fragment Fragment_ip on Interface_s {
+  __typename
+}
+
+fragment Fragment_FTQE on Interface_s {
+  ...Fragment_ip
+  __typename @Directive_n65 @include(if: true)
+  ... on Object_w0wT @include(if: true) {
+    __typename
+  }
+}

@@ -1,0 +1,16 @@
+query n297W8 {
+  ...Fragment_u8OHlNZcj
+  mT1lt {
+    ...Fragment_u8OHlNZcj
+    __typename
+  }
+  i
+}
+
+fragment Fragment_eGTvBc on Union_ka0Olzsln {
+  __typename
+}
+
+fragment Fragment_u8OHlNZcj on Object_E {
+  ...Fragment_eGTvBc
+}

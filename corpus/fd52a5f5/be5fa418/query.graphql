@@ -1,0 +1,29 @@
+{
+  ...Fragment_TLtMP0qQm
+  ...Fragment_Z
+}
+
+fragment Fragment_r on Union_kuXXruEFa {
+  ... on Object_t @Directive_B7_ {
+    __typename
+  }
+}
+
+fragment Fragment_TLtMP0qQm on Union_kuXXruEFa {
+  ...Fragment_r
+  ... on Object_Rcq0e9VM2A {
+    ...Fragment_r
+    ... on Union_kuXXruEFa {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_Z on Union_kuXXruEFa {
+  ...Fragment_TLtMP0qQm
+  ... on Object_t {
+    ... on Union_FOHf9xAgv {
+      __typename
+    }
+  }
+}

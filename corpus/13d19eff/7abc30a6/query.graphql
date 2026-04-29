@@ -1,0 +1,19 @@
+query d {
+  ...Fragment_SHiefZiOT
+  ... on Union_c {
+    ...Fragment_qd62U65I4H
+    __typename
+  }
+}
+
+fragment Fragment_qd62U65I4H on Union_c {
+  __typename
+  ... on Union_k1ht {
+    __typename
+  }
+}
+
+fragment Fragment_SHiefZiOT on Union_c {
+  ...Fragment_qd62U65I4H
+  ...Fragment_qd62U65I4H
+}

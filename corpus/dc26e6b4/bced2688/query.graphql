@@ -1,0 +1,17 @@
+query YNG {
+  oM6X {
+    IQeb: __typename
+    ... {
+      ...Fragment__RQPz7Z3IE@include(if: false)
+    }
+  }
+  ... on Union_SmgCb5CDrX {
+    ... on Union_SmgCb5CDrX {
+      nA96d: __typename
+    }
+  }
+}
+
+fragment Fragment__RQPz7Z3IE on Union_ZO7HSJAY0 @Directive_Ex8Aiujd8N{
+  Ve9zOAgb: __typename
+}

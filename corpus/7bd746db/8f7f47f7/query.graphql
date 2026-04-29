@@ -1,0 +1,40 @@
+{
+  ...Fragment_L8hsTJr
+  ...Fragment_L8hsTJr@Directive_fZ
+  ...Fragment_r1Wo6qKnc
+  __typename
+}
+
+fragment Fragment_oKCIeAIV on Union_r0JK4cT_LY {
+  lUcuzs6_: __typename
+}
+
+fragment Fragment_EZixUSGD on Object_Et {
+  ...Fragment_oKCIeAIV
+  ... on Union_r0JK4cT_LY @defer(if: true, label: "I/") {
+    ODQu: __typename
+  }
+}
+
+fragment Fragment_L8hsTJr on Union_r0JK4cT_LY {
+  ...Fragment_EZixUSGD
+  ...Fragment_EZixUSGD@Directive_fZ
+}
+
+fragment Fragment_KvDoL13V on Object_Et {
+  ... on Union_r0JK4cT_LY {
+    __typename @skip(if: false)
+  }
+}
+
+fragment Fragment_r1Wo6qKnc on Union_XB8W {
+  ...Fragment_KvDoL13V
+  ... on Union_r0JK4cT_LY {
+    ...Fragment_EZixUSGD
+    __typename
+    ... on Union_XB8W @skip(if: true) {
+      __typename
+      __typename
+    }
+  }
+}

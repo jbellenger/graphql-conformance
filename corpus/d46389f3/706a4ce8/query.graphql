@@ -1,0 +1,18 @@
+query u4ND($yNkOr: Boolean!) {
+  ...Fragment_VvcnpweHa
+}
+
+fragment Fragment_k2CXorK on Object_L @Directive_ltEXUadH{
+  __typename @skip(if: $yNkOr)
+}
+
+fragment Fragment_wnMmNI1 on Object_L {
+  ...Fragment_k2CXorK
+  ... @skip(if: false) {
+    Mgwjvt1: dulW67Ki
+  }
+}
+
+fragment Fragment_VvcnpweHa on Union_yab {
+  ...Fragment_wnMmNI1
+}

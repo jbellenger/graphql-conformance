@@ -1,0 +1,25 @@
+query F_ {
+  ...Fragment_yE@Directive_ho
+  gpSfb
+  ... on Union_mbkP43_A {
+    ... on Union_iVC9081Lx {
+      ...Fragment_e_dqi2
+      ... on Union_iVC9081Lx {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_e_dqi2 on Union_iVC9081Lx {
+  __typename
+}
+
+fragment Fragment_yE on Union_mbkP43_A @Directive_ho{
+  if3: __typename
+  __typename
+  ... on Union_iVC9081Lx {
+    ...Fragment_e_dqi2
+    __typename
+  }
+}

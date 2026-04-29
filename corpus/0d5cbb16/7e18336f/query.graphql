@@ -1,0 +1,17 @@
+{
+  ...Fragment_zJFlF8pAH
+  kprK6Tl
+}
+
+fragment Fragment_uy2Q5dX25h on Object_N {
+  kprK6Tl
+}
+
+fragment Fragment_zJFlF8pAH on Union_B42BOSBkP {
+  ...Fragment_uy2Q5dX25h
+  ... on Object_N {
+    ... {
+      __typename
+    }
+  }
+}

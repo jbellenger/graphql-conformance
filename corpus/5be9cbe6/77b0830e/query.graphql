@@ -1,0 +1,32 @@
+query i($r_pJ: Boolean!) {
+  ... @Directive_igIct0(h: null) {
+    ...Fragment_a
+    ...Fragment_a
+  }
+  ... on Object_xI1ltEcP_3 {
+    NZh3c6: __typename
+  }
+  ... on Object_xI1ltEcP_3 {
+    ... @skip(if: $r_pJ) {
+      ... on Object_xI1ltEcP_3 @Directive_HTbWtste {
+        __typename
+      }
+    }
+    ... on Object_xI1ltEcP_3 {
+      ...Fragment_UJm16@defer(if: false, label: "B") @include(if: true)
+      ht
+    }
+  }
+}
+
+fragment Fragment_a on Union_pU3cI {
+  __typename
+  ... on Union_pU3cI {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_UJm16 on Union_pU3cI {
+  __typename
+}

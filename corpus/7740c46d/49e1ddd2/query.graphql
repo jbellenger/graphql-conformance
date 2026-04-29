@@ -1,0 +1,25 @@
+query y6U {
+  ...Fragment_jwF
+  ... @defer(if: true, label: "Kc") {
+    ...Fragment_xY
+    ...Fragment_jwF
+  }
+  ... on Union_yHuS {
+    ...Fragment_jwF@skip(if: false)
+  }
+  ... on Union_yHuS {
+    ...Fragment_jwF
+    BPbruO42: __typename
+  }
+}
+
+fragment Fragment_jwF on Object_TR92Ujbj {
+  __typename
+}
+
+fragment Fragment_xY on Union_yHuS {
+  __typename
+  ... on Union_yHuS {
+    A: __typename
+  }
+}

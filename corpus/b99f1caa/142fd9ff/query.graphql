@@ -1,0 +1,21 @@
+query @Directive_V5e52FYso {
+  ...Fragment_gHf
+  ...Fragment_yxwrmAd@defer(if: true, label: "h")
+}
+
+fragment Fragment_yxwrmAd on Union_nIUBqPw @Directive_EWc{
+  __typename
+}
+
+fragment Fragment_gHf on Union_nIUBqPw {
+  ... on Union_HrzOG {
+    ...Fragment_yxwrmAd
+    __typename
+    ... on Union_nIUBqPw {
+      __typename
+    }
+  }
+  ... on Object_Wt_abt {
+    __typename
+  }
+}

@@ -1,0 +1,36 @@
+query cSfxzg($es: Boolean!) {
+  ...Fragment_XWM7
+  ... on Object_s {
+    R: __typename
+  }
+  ... on Interface_ch {
+    ...Fragment_N
+    ...Fragment_BTikSRYk
+    __typename
+    qtdG0O(dFBGbPZ3P: false) {
+      __typename @skip(if: $es)
+    }
+    ... on Interface_ch {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_N on Union_mJeR_nAI {
+  __typename
+}
+
+fragment Fragment_XWM7 on Interface_ch {
+  ...Fragment_N
+  ...Fragment_N@skip(if: $es)
+  ... on Object_s {
+    __typename
+  }
+}
+
+fragment Fragment_BTikSRYk on Union_mJeR_nAI {
+  ...Fragment_N
+  ... on Union_mJeR_nAI {
+    __typename
+  }
+}

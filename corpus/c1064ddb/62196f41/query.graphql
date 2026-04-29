@@ -1,0 +1,16 @@
+query u8X {
+  lOVl {
+    __typename
+    lOVl {
+      __typename
+    }
+    ... on Object_ITSmBbTF {
+      ...Fragment_fdCiA6TNnb
+      __typename
+    }
+  }
+}
+
+fragment Fragment_fdCiA6TNnb on Union_hap {
+  __typename
+}

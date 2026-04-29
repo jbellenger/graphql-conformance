@@ -1,0 +1,38 @@
+{
+  ...Fragment_xHS
+}
+
+fragment Fragment_infQDTq on Object_cQouu0 {
+  __typename
+}
+
+fragment Fragment_V on Object_cQouu0 {
+  ...Fragment_infQDTq
+  aQE9u8H {
+    HVQYT: __typename
+  }
+  ... on Object_cQouu0 {
+    efshx {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_rBdP on Union_Ud @Directive_djvXfldRw{
+  ...Fragment_V
+  ... on Object_Vm {
+    __typename
+  }
+}
+
+fragment Fragment_xHS on Object_cQouu0 {
+  ...Fragment_V
+  ...Fragment_rBdP@include(if: true)
+  ... on Union_Ud {
+    __typename
+    ... on Union_mF {
+      __typename
+      __typename
+    }
+  }
+}

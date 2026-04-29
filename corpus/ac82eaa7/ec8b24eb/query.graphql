@@ -1,0 +1,10 @@
+query OEID5 {
+  ... on Object_A {
+    o: wSKgPR0M @skip(if: true) {
+      ... on Union_fvji {
+        __typename
+      }
+    }
+    __typename @skip(if: false)
+  }
+}

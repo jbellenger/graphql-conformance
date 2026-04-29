@@ -1,0 +1,18 @@
+{
+  ...Fragment_dsq8XWBB@Directive_X
+}
+
+fragment Fragment_e on Union_Ds_8yOQHcC {
+  __typename
+}
+
+fragment Fragment_dsq8XWBB on Object_HMefD_ {
+  __typename
+  __typename
+  kS_ {
+    ...Fragment_e
+    ... on Object_nXiXTZ {
+      t1JA
+    }
+  }
+}

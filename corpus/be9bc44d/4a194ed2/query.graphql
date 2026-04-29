@@ -1,0 +1,26 @@
+query zqzSluDA2 {
+  ... on Union_ywo {
+    ... on Object__5Lw0Mecas {
+      ...Fragment_NO
+    }
+    ... on Object__5Lw0Mecas {
+      ... on Object__5Lw0Mecas {
+        bH
+      }
+    }
+  }
+  ... on Object__5Lw0Mecas {
+    ...Fragment_NO
+  }
+  ... on Union_ywo {
+    ...Fragment_NO
+    ...Fragment_NO
+    __typename
+    __typename @skip(if: false)
+    CMrg: __typename
+  }
+}
+
+fragment Fragment_NO on Object__5Lw0Mecas {
+  __typename
+}

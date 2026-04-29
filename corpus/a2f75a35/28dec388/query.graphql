@@ -1,0 +1,21 @@
+query eq3TdT9R_($uM8zoWsz8: Boolean!) {
+  ...Fragment_R76bIcs
+  ...Fragment_R76bIcs
+  __typename
+}
+
+fragment Fragment__jywlcPaH on Union_HpGf6_t {
+  Q: __typename
+}
+
+fragment Fragment_R76bIcs on Object_yC3VF1 {
+  y {
+    ...Fragment__jywlcPaH
+    y {
+      __typename @include(if: $uM8zoWsz8)
+    }
+    tq: pMgPfw {
+      __typename
+    }
+  }
+}

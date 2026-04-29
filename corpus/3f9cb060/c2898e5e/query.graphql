@@ -1,0 +1,44 @@
+query vwbRm57m($mOQ6t1Y8p: Boolean! = false) {
+  ... on Union_wdb9 {
+    ... on Union_CLjL {
+      v_IGRy: __typename
+    }
+    ... on Union_wdb9 {
+      ...Fragment_hRoznF4_Vn
+    }
+  }
+  ... on Union_wdb9 {
+    ... on Object_hO0V8geoN {
+      __typename
+      ... @skip(if: $mOQ6t1Y8p) {
+        nqA
+      }
+    }
+    ... on Union_wdb9 {
+      ...Fragment_hRoznF4_Vn
+    }
+  }
+  ... on Union_wdb9 {
+    ...Fragment_PWJewSKl4
+    ... on Object_ryYiQ @defer(if: false, label: "T") {
+      XEYAg28: __typename
+      F0TOQ: __typename
+      ... on Union_y0BxF2 @include(if: true) {
+        __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_hRoznF4_Vn on Object_ryYiQ {
+  s_qj18TPPX: ac2W
+}
+
+fragment Fragment_NcKwtG0ptG on Object_j3FlFut {
+  __typename
+}
+
+fragment Fragment_PWJewSKl4 on Union_CLjL {
+  ...Fragment_NcKwtG0ptG
+}

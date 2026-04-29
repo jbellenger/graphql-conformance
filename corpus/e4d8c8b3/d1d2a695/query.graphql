@@ -1,0 +1,12 @@
+query @Directive_IcUs0B {
+  ...Fragment_j1w
+  ...Fragment_j1w
+  ... on Union_h_GZW {
+    ...Fragment_j1w
+    __typename
+  }
+}
+
+fragment Fragment_j1w on Union_QiKVQ {
+  __typename @Directive_IcUs0B
+}

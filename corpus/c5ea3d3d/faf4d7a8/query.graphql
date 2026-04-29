@@ -1,0 +1,10 @@
+query S {
+  ... on Union_TvQglQ8 {
+    ... on Union_d {
+      __typename
+    }
+  }
+  ... on Union_TvQglQ8 {
+    dP: __typename
+  }
+}

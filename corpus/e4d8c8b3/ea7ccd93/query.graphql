@@ -1,0 +1,22 @@
+query @Directive_IcUs0B {
+  P416: __typename
+  ... on Object_r {
+    d_PTST {
+      ... on Object_qqiQ9SFbzf {
+        ibi62r: om4KU
+      }
+    }
+  }
+  ... on Union_QiKVQ {
+    ... on Interface_zUGQr {
+      ...Fragment_hD6
+    }
+  }
+  ... on Object_r {
+    __typename
+  }
+}
+
+fragment Fragment_hD6 on Union_QiKVQ {
+  __typename
+}

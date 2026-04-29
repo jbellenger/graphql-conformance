@@ -1,0 +1,11 @@
+query B85OH @Directive_Q0xfx {
+  ...Fragment_Oajo7
+}
+
+fragment Fragment_CQiHh3fOE on Interface_G49ODORvP {
+  JfBUu: tKDD @include(if: false)
+}
+
+fragment Fragment_Oajo7 on Union_zrD6ySF1 {
+  ...Fragment_CQiHh3fOE
+}

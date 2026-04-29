@@ -1,0 +1,32 @@
+query SaWjtMS($oxlp4: Boolean! = false) {
+  ...Fragment_OtbcXJDWU6
+  ...Fragment_lau2
+  ...Fragment_OtbcXJDWU6
+  ... on Union_W {
+    ...Fragment__Y9hceQW
+    __typename @skip(if: $oxlp4)
+  }
+}
+
+fragment Fragment_ziLTi on Union_mpYV5HXb {
+  __typename
+}
+
+fragment Fragment_lau2 on Union_mpYV5HXb {
+  ...Fragment_ziLTi@skip(if: $oxlp4)
+  JY93GaY_g: __typename
+}
+
+fragment Fragment__Y9hceQW on Object_L528v {
+  nC {
+    __typename
+  }
+}
+
+fragment Fragment_OtbcXJDWU6 on Union_W {
+  ...Fragment_lau2@defer(if: false, label: "VR")
+  __typename
+  ... on Union_ofTIZn {
+    ...Fragment__Y9hceQW
+  }
+}

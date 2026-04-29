@@ -1,0 +1,35 @@
+{
+  ...Fragment_m
+  ...Fragment_m
+  ...Fragment_uB
+  nB0CUVZtH8: xcRR2J9 {
+    srZ7(kIy2k2xbNk: {uPIdF0OaIO : f9fIZYxTw}) {
+      apgi9 @Directive_rJPJZ
+      e: apgi9
+      ... on Interface_B2S_STUB {
+        PbGiox: rfwl4
+      }
+    }
+    __typename
+  }
+  ... on Object_fh9C3Gr {
+    ... on Union_Gerbar {
+      ...Fragment_uB@Directive_u0b
+      ... on Union_wJ {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_m on Object_fh9C3Gr {
+  ... on Union_Gerbar @include(if: false) @skip(if: true) {
+    __typename
+  }
+}
+
+fragment Fragment_uB on Union_Gerbar @Directive_u0b{
+  ... on Object_fh9C3Gr {
+    __typename
+  }
+}

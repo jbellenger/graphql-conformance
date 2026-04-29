@@ -1,0 +1,23 @@
+query GM {
+  __typename
+  z: olFYhAe {
+    ...Fragment_NRW
+    ...Fragment_NRW
+    ... on Object_Z7QiHm {
+      NuV: __typename
+    }
+    ... on Union_vm3YoXv0N {
+      sAAvtdkUVV: __typename @Directive_KLad
+      Ok: __typename
+    }
+  }
+}
+
+fragment Fragment_m7mHl on Object_e {
+  yxWMZ3V
+}
+
+fragment Fragment_NRW on Union_n01O {
+  ...Fragment_m7mHl@defer(label: "i>&")
+  __typename
+}

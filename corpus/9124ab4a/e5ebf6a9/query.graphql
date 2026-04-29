@@ -1,0 +1,11 @@
+query @Directive_LVaF {
+  ...Fragment_dODp9p@skip(if: true)
+  ...Fragment_dODp9p
+  ... on Object_Dm1XS3DX @Directive_LVaF {
+    __typename
+  }
+}
+
+fragment Fragment_dODp9p on Object_Dm1XS3DX {
+  __typename
+}

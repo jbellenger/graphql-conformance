@@ -1,0 +1,34 @@
+query qh {
+  ...Fragment_sLxLdqsdK8
+  ...Fragment_sLxLdqsdK8
+  q {
+    __typename
+    __typename
+    __typename
+    ... on Union_Z {
+      yzB: __typename
+    }
+  }
+  fbwxBF(ePyxB7uVD: {n0PJG : vj1e4mwHt, yB9Racql : -956878574, yQg : "~T"}) {
+    ...Fragment_sLxLdqsdK8
+    ... on Union_E {
+      ...Fragment_sLxLdqsdK8
+    }
+  }
+  q {
+    ...Fragment_sLxLdqsdK8
+  }
+  __typename
+}
+
+fragment Fragment_sLxLdqsdK8 on Union_E {
+  __typename
+  ... on Union_Z @skip(if: true) {
+    __typename @skip(if: true)
+  }
+  ... on Union_Z {
+    ... on Union_Z {
+      __typename
+    }
+  }
+}

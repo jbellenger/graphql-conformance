@@ -1,0 +1,20 @@
+query jsKv7Gs4 {
+  ...Fragment_gQ
+  xOYdtDHm2 {
+    __typename
+    ... on Union_MM {
+      __typename
+      ... on Union_gwjCvZs {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_S_yCV on Object_M {
+  hn2d5nd
+}
+
+fragment Fragment_gQ on Union_MM {
+  ...Fragment_S_yCV
+}

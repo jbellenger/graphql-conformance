@@ -1,0 +1,34 @@
+query tx3Zu {
+  ...Fragment_Mlf
+  ...Fragment_H_s@defer(label: "") @Directive_p9
+  ...Fragment_YMCyqoQW5@skip(if: true)
+  tCfApE6(ze3_BNr: Q) {
+    cOpYXe: __typename
+  }
+  __typename
+}
+
+fragment Fragment_YMCyqoQW5 on Union_zmqRNYp {
+  MxVEz: __typename
+  ... on Object_ww {
+    __typename @include(if: false)
+    __typename
+  }
+}
+
+fragment Fragment_H_s on Object_ww {
+  __typename
+}
+
+fragment Fragment_Mlf on Object_ww {
+  ...Fragment_YMCyqoQW5
+  ... {
+    ...Fragment_YMCyqoQW5
+    ... on Object_ww {
+      __typename
+    }
+  }
+  ... {
+    ...Fragment_H_s
+  }
+}

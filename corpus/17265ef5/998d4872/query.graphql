@@ -1,0 +1,48 @@
+query fP_H($hCe: Boolean!@Directive_MKloH) {
+  l
+  q6 {
+    __typename
+  }
+  ... on Interface_s {
+    arpLNeYS: q6 {
+      ...Fragment_ry
+    }
+  }
+  ... on Object_w0wT {
+    ...Fragment_a
+    ...Fragment_Y1chVY8
+    l @skip(if: false)
+  }
+  ... on Object_w0wT @include(if: $hCe) {
+    ...Fragment_Y1chVY8@include(if: true)
+    bTo: l
+    hyiC {
+      __typename @skip(if: $hCe) @Directive_n65
+    }
+    ... on Union_Tbn2HOEdf1 {
+      ...Fragment_Y1chVY8
+    }
+  }
+}
+
+fragment Fragment_ry on Object_ZV7bPt {
+  D_odrU: kWKM
+}
+
+fragment Fragment_nHq on Interface_s {
+  f: __typename
+}
+
+fragment Fragment_a on Interface_s {
+  ...Fragment_nHq
+  q6 {
+    U: __typename
+  }
+  ... on Union_Tbn2HOEdf1 {
+    __typename @include(if: true)
+  }
+}
+
+fragment Fragment_Y1chVY8 on Union_Tbn2HOEdf1 @Directive_n65{
+  pADa0TK: __typename
+}

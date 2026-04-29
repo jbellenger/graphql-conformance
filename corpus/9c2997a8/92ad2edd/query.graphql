@@ -1,0 +1,23 @@
+query P {
+  ...Fragment_MZEw4K
+  g {
+    tkRXPOnkT: __typename
+  }
+  ... on Union_rn {
+    __typename
+  }
+  ... on Object_JlCtS_ {
+    ...Fragment_MZEw4K
+    ...Fragment_MZEw4K
+    ... {
+      ...Fragment_MZEw4K
+    }
+  }
+  ... on Union_rn {
+    dc0IdTjNZp: __typename
+  }
+}
+
+fragment Fragment_MZEw4K on Object_JlCtS_ {
+  bzX_718Y: __typename
+}

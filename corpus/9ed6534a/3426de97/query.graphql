@@ -1,0 +1,26 @@
+query AbFl_e {
+  ...Fragment_pz1
+  ...Fragment_iG
+  ... on Union_nwtD_r_s {
+    zav: __typename @Directive_bqLD8IvSv
+    __typename
+    vIceGMdQ: __typename
+    ... on Object_DPwy1UD @defer(if: true, label: "-") {
+      __typename
+    }
+  }
+  ... on Union_nwtD_r_s {
+    _8mD: __typename
+  }
+}
+
+fragment Fragment_iG on Object_DPwy1UD {
+  __typename
+}
+
+fragment Fragment_pz1 on Union_nwtD_r_s @Directive_GbSmsDpn0H{
+  ...Fragment_iG
+  ...Fragment_iG
+  __typename
+  gZUOb: __typename
+}

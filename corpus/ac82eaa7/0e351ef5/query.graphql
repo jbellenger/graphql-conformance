@@ -1,0 +1,16 @@
+{
+  ...Fragment_lTcztzg
+}
+
+fragment Fragment_uGy0Q on Union_kROt8A3 @Directive_uReasV{
+  __typename
+}
+
+fragment Fragment_lTcztzg on Object_A {
+  ...Fragment_uGy0Q
+  ...Fragment_uGy0Q
+  ... on Union_kROt8A3 {
+    Sc0u2YiD8: __typename
+    iv: __typename
+  }
+}

@@ -1,0 +1,14 @@
+query e {
+  ...Fragment_uDArNOJ
+  __typename
+}
+
+fragment Fragment_RdULhvF8 on Object_ofwG00b {
+  nP
+}
+
+fragment Fragment_uDArNOJ on Object_ofwG00b {
+  ...Fragment_RdULhvF8
+  __typename
+  nP
+}

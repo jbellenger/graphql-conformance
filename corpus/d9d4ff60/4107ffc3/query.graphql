@@ -1,0 +1,19 @@
+{
+  ...Fragment_OMut
+  ...Fragment_OMut
+  ... on Union_rXFtRtq {
+    __typename
+    __typename @skip(if: false)
+  }
+}
+
+fragment Fragment_OMut on Union_rXFtRtq {
+  __typename
+  FiGplAN: __typename
+  ... on Object_tWyr {
+    ic
+  }
+  ... on Object_tWyr {
+    __typename
+  }
+}

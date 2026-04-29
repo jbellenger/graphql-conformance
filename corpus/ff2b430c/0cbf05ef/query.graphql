@@ -1,0 +1,28 @@
+query UrPXGC {
+  ... {
+    VPda8m: __typename
+    BZMJYDq3au: ezk81QN {
+      ...Fragment_c8PDw
+      __typename
+      __typename
+    }
+    ezk81QN {
+      ...Fragment_iC
+      __typename
+      ... on Union_DRI {
+        __typename
+      }
+    }
+    ezk81QN {
+      ...Fragment_iC
+    }
+  }
+}
+
+fragment Fragment_c8PDw on Union_DRI {
+  __typename
+}
+
+fragment Fragment_iC on Object_x__ @Directive_t{
+  ywLYhPGpt: __typename
+}

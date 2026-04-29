@@ -1,0 +1,47 @@
+query MlCUwYatB {
+  ...Fragment_d48t@Directive_TiIcbst
+  ... on Object_cVQNX {
+    ...Fragment_d48t
+    ...Fragment_d48t
+    ba: ePt_LWAE
+    ... on Object_cVQNX {
+      __typename
+    }
+    ... on Object_cVQNX {
+      ... {
+        Yrd3y: zp0ELIKtsW {
+          xKkXEv4ae8
+        }
+      }
+    }
+  }
+  ... on Object_cVQNX {
+    ... on Object_cVQNX {
+      ...Fragment_HPR2
+      __typename @include(if: false)
+      zp0ELIKtsW {
+        x8M {
+          oG79058kC
+        }
+        plZ3ziYAY: __typename
+      }
+      ... on Object_cVQNX {
+        UKwyq: __typename
+      }
+    }
+    ... on Object_cVQNX {
+      ... on Object_cVQNX {
+        ePt_LWAE
+        PfEQ: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_d48t on Object_cVQNX {
+  P: __typename
+}
+
+fragment Fragment_HPR2 on Object_cVQNX {
+  gOdHbLaPa @Directive_TiIcbst
+}

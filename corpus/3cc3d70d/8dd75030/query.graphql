@@ -1,0 +1,30 @@
+query pSr {
+  ... on Union_JFctNPd {
+    T: __typename
+    ... on Union_YC7rJw {
+      __typename @Directive_H
+    }
+    ... on Union_JFctNPd {
+      __typename
+    }
+  }
+  ... on Object_G7tLJx7FJm {
+    ...Fragment_t7
+    ...Fragment_sw
+    ... {
+      j6ngym72a(iB_qHrkPdu: q2v37NJCU) @Directive_ozxEiaM(vfdw: -3.533876725829636E+306) @skip(if: true)
+    }
+  }
+  ... on Object_G7tLJx7FJm {
+    __typename
+  }
+}
+
+fragment Fragment_sw on Object_G7tLJx7FJm @Directive_H{
+  __typename
+}
+
+fragment Fragment_t7 on Object_G7tLJx7FJm {
+  ...Fragment_sw
+  WuiE09DT2U: j6ngym72a(iB_qHrkPdu: null)
+}

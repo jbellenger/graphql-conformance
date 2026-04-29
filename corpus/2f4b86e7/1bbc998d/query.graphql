@@ -1,0 +1,22 @@
+query @Directive_cUjIW {
+  ...Fragment_CW_@Directive_cUjIW
+  __typename
+}
+
+fragment Fragment_YuMa on Union_bIh {
+  sKc: __typename @Directive_F
+  ... on Union_bIh {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_CW_ on Union_TEwpsv @Directive_cUjIW{
+  ...Fragment_YuMa
+  __typename
+  __typename
+  __typename
+  ... on Union_TEwpsv {
+    jQrKMTp: __typename
+  }
+}

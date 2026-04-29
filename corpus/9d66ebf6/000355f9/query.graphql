@@ -1,0 +1,16 @@
+{
+  ...Fragment_RHJb9bUWxm
+  ...Fragment_RHJb9bUWxm@defer(if: false, label: "`!")
+  ...Fragment_RHJb9bUWxm
+}
+
+fragment Fragment_jPfe1 on Object_vGI6LM {
+  y
+}
+
+fragment Fragment_RHJb9bUWxm on Union_qMK {
+  ...Fragment_jPfe1
+  ... on Union_qMK {
+    __typename
+  }
+}

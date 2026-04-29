@@ -1,0 +1,39 @@
+{
+  um(kFiNs9H: {fLQczEd : 7.702281296770116E+307, q9SoK : {fLQczEd : -1.17720321751806E+308}}) {
+    __typename
+  }
+  __typename
+  _knksk62pp: pWI9NE8VQ {
+    ...Fragment_f384AkA134
+    cgu
+    NRzu: pWI9NE8VQ {
+      ... on Interface_QLendjrHo {
+        cgu
+        pWI9NE8VQ {
+          cgu
+        }
+      }
+    }
+    pWI9NE8VQ {
+      ... on Interface_QLendjrHo @skip(if: false) {
+        __typename
+      }
+    }
+    cgu
+    ... {
+      cgu
+    }
+    ... on Interface_QLendjrHo {
+      ...Fragment_f384AkA134
+    }
+  }
+  xwi: cgu
+}
+
+fragment Fragment_Y on Union_r3fLDCqUv @Directive_jM3v @Directive_FXm8 @Directive_lA{
+  __typename
+}
+
+fragment Fragment_f384AkA134 on Interface_QLendjrHo {
+  ...Fragment_Y
+}

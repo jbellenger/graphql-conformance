@@ -1,0 +1,22 @@
+query h7u {
+  ... on Union_H6x97ATaaa {
+    ...Fragment_Bu@skip(if: true)
+    __typename @include(if: false)
+    ... on Object_yq5wHoX {
+      ...Fragment_Bu@defer(if: false, label: "g")
+      ey22Nzj
+    }
+    ... on Object_SIf {
+      ...Fragment_Bu
+      ... on Union_H6x97ATaaa {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Bu on Union_Mb4eZ6pae {
+  fOBgo4nXD: __typename
+  __typename
+  d8yNW9yBZa: __typename
+}

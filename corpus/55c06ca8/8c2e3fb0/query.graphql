@@ -1,0 +1,23 @@
+{
+  __typename
+  ... on Union_d_t1luAL4 {
+    ...Fragment_mO
+    ... on Object_z {
+      ...Fragment_GGg8
+    }
+    ... on Union_Ls {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_GGg8 on Union_Ls {
+  __typename
+}
+
+fragment Fragment_mO on Union_x8r {
+  ...Fragment_GGg8
+  __typename
+  __typename
+  __typename
+}

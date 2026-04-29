@@ -1,0 +1,36 @@
+query J {
+  ...Fragment_lxr0YRbzE
+}
+
+fragment Fragment_umgdbr5e on Object_ofwG00b {
+  __typename
+}
+
+fragment Fragment__zB0TqT on Union_IZXe {
+  __typename
+}
+
+fragment Fragment_vlrJ on Object_ofwG00b {
+  __typename
+}
+
+fragment Fragment_lxr0YRbzE on Object_ofwG00b {
+  ...Fragment_umgdbr5e
+  __typename
+  y {
+    ...Fragment__zB0TqT
+    ... {
+      __typename
+    }
+  }
+  ... on Object_ofwG00b {
+    ...Fragment_vlrJ
+  }
+  ... on Object_ofwG00b {
+    ...Fragment_vlrJ
+    __typename
+    ... on Object_ofwG00b {
+      nP
+    }
+  }
+}

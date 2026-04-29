@@ -1,0 +1,19 @@
+query k {
+  snX {
+    __typename
+    ... on Interface_pUwS2GHz_STUB {
+      ...Fragment_w_inirAS
+      _o
+      ... on Interface_pUwS2GHz_STUB {
+        gpfVVV8Z
+      }
+    }
+    ... on Interface_pUwS2GHz_STUB {
+      ifoDKyhtz
+    }
+  }
+}
+
+fragment Fragment_w_inirAS on Interface_pUwS2GHz_STUB {
+  _o
+}

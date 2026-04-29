@@ -1,0 +1,50 @@
+query u($qSm: Boolean!) {
+  ...Fragment_lGyQG_urn
+  nqA
+  nqA
+  ... on Object_hO0V8geoN {
+    ...Fragment_zUovtTucxm
+    ...Fragment_zUovtTucxm
+    nqA
+  }
+  ... on Union_wdb9 {
+    ...Fragment_yemMQhP
+    ...Fragment_zUovtTucxm
+    ... on Union_wdb9 {
+      __typename @Directive_ac
+      __typename
+    }
+    ... on Union_wdb9 {
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_R4k on Object_hO0V8geoN @Directive_K5h3ZJkMJ{
+  __typename
+}
+
+fragment Fragment_lGyQG_urn on Object_hO0V8geoN {
+  PF: __typename
+  ... on Object_hO0V8geoN {
+    ...Fragment_R4k@skip(if: false)
+    nqA
+    nqA
+  }
+  ... on Union_wdb9 {
+    ... on Object_hO0V8geoN {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_zUovtTucxm on Union_wdb9 {
+  nf6QFzZ: __typename
+}
+
+fragment Fragment_yemMQhP on Object_ryYiQ {
+  ... @skip(if: $qSm) {
+    JyjkiSHbb8: __typename
+  }
+}

@@ -1,0 +1,26 @@
+{
+  ...Fragment_duaUNF7
+  ...Fragment_ZbMp
+  a7: h @Directive_fUz {
+    ... {
+      __typename
+    }
+  }
+  __typename @Directive_bqLD8IvSv
+  __typename
+  h {
+    __typename
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_ZbMp on Union_nwtD_r_s {
+  __typename
+}
+
+fragment Fragment_duaUNF7 on Object_DPwy1UD {
+  ... on Object_DPwy1UD {
+    ...Fragment_ZbMp
+  }
+}

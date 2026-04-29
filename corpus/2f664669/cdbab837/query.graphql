@@ -1,0 +1,23 @@
+query oqXNC7kWbS {
+  ...Fragment_oTyAa05@Directive_r6
+  ...Fragment_oTyAa05
+  __typename
+  qm8r7zFF
+  __typename
+  ... on Object_Zzcj4Q @include(if: true) {
+    ...Fragment__bC8UhlkG@Directive_X
+    ...Fragment__bC8UhlkG@Directive_X
+  }
+  ... on Union_K4U60 {
+    ...Fragment__bC8UhlkG
+    ...Fragment_oTyAa05
+  }
+}
+
+fragment Fragment_oTyAa05 on Union_MesTX {
+  __typename
+}
+
+fragment Fragment__bC8UhlkG on Union_K4U60 {
+  __typename
+}

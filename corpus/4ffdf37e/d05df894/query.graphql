@@ -1,0 +1,39 @@
+query ($qFf: Boolean!) {
+  ...Fragment_uaUyZCDgYg
+  ...Fragment_m5BNB
+  ...Fragment_uaUyZCDgYg
+  __typename
+  ... on Union_fmF9JHMW3 {
+    ...Fragment_m5BNB
+    ...Fragment_YJ3H6gnp2Q
+    __typename
+  }
+}
+
+fragment Fragment_YJ3H6gnp2Q on Union_fmF9JHMW3 {
+  __typename
+}
+
+fragment Fragment_yu2ws on Union_XHaGdkArk {
+  ...Fragment_YJ3H6gnp2Q
+  __typename
+  __typename
+}
+
+fragment Fragment_uaUyZCDgYg on Object_n9SqpjO9Gv {
+  ...Fragment_yu2ws
+  __typename
+  ... on Object_n9SqpjO9Gv {
+    ... on Object_n9SqpjO9Gv {
+      __typename
+      __typename @skip(if: $qFf)
+    }
+  }
+  ... on Union_XHaGdkArk {
+    __typename
+  }
+}
+
+fragment Fragment_m5BNB on Union_fmF9JHMW3 {
+  ...Fragment_uaUyZCDgYg
+}

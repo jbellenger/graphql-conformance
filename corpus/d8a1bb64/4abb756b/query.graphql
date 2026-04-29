@@ -1,0 +1,23 @@
+{
+  __typename
+  ... on Union_idOm3E2hAr {
+    ...Fragment_rkvHn
+    ...Fragment_rkvHn
+    __typename
+    __typename
+    ... on Union_BM @Directive_aPuFS {
+      ...Fragment_rkvHn
+    }
+  }
+}
+
+fragment Fragment_pjxxp on Object_Rhj7ptv_ {
+  g7QrxZUZeM
+}
+
+fragment Fragment_rkvHn on Union_LKxR @Directive_nE5dvCnDj{
+  ...Fragment_pjxxp
+  ... on Object_Rhj7ptv_ {
+    __typename
+  }
+}

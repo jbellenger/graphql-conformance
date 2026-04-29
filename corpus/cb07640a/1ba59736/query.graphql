@@ -1,0 +1,72 @@
+query ($lwivLJ: Boolean!) {
+  ...Fragment_HLU8bW
+  ...Fragment_TdJ
+  ...Fragment_TdJ
+  qkpxFm {
+    qkpxFm {
+      wO @skip(if: true)
+    }
+    ... on Object_VLTktgEg {
+      ...Fragment_TdJ
+      ... on Union_n1I53oJt7 @Directive_IRrcdfQ {
+        __typename @include(if: $lwivLJ)
+      }
+    }
+  }
+  ... on Object_L7Z2 @Directive_cpb {
+    ...Fragment_qmDLW
+    ...Fragment_HLU8bW
+    ... on Object_L7Z2 {
+      s3N
+    }
+    ... on Union_ZveOI1hNs {
+      __typename
+    }
+  }
+  ... on Object_L7Z2 {
+    s3N
+  }
+  ... on Union_ZveOI1hNs {
+    ...Fragment_LlPuqN
+    ...Fragment_LlPuqN
+  }
+}
+
+fragment Fragment_LlPuqN on Union_ZveOI1hNs {
+  __typename
+  ... on Union_ZveOI1hNs {
+    BbEqEy5V: __typename
+  }
+}
+
+fragment Fragment_HLU8bW on Union_ZveOI1hNs {
+  ...Fragment_LlPuqN
+}
+
+fragment Fragment_qmDLW on Interface_A_ {
+  ... on Interface_A_ {
+    wO
+  }
+}
+
+fragment Fragment_TdJ on Interface_A_ {
+  ...Fragment_qmDLW
+  qkpxFm @include(if: $lwivLJ) {
+    ...Fragment_qmDLW
+    wO
+    FwoEl: wO
+  }
+  ... on Union_Om5szjC_QG {
+    ... on Union_n1I53oJt7 {
+      __typename
+      __typename
+    }
+  }
+  ... on Union_ZveOI1hNs {
+    ...Fragment_qmDLW
+    __typename
+    ... on Union_ZveOI1hNs @Directive_cpb {
+      __typename
+    }
+  }
+}

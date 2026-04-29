@@ -1,0 +1,10 @@
+query cKPg {
+  ahB: iDW @include(if: false) {
+    ...Fragment_atb9I
+    ...Fragment_atb9I
+  }
+}
+
+fragment Fragment_atb9I on Union_EMT {
+  __typename
+}

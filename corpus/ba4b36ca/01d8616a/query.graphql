@@ -1,0 +1,14 @@
+query ($zuZYUBc: Boolean! = true) {
+  ... on Union_ZVYu {
+    ...Fragment_kcddd2Jt@skip(if: $zuZYUBc)
+  }
+}
+
+fragment Fragment_kcddd2Jt on Interface_m4crRd7k {
+  __typename
+  __typename @include(if: false)
+  zOGqEBa8SI @skip(if: false)
+  ... on Interface_m4crRd7k {
+    __typename @Directive_R_Z0TJW @include(if: true)
+  }
+}

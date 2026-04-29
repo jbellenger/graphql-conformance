@@ -1,0 +1,17 @@
+query @Directive_B2sesnLI {
+  ...Fragment_AwSub
+  cbc
+}
+
+fragment Fragment_M on Union_ydo {
+  __typename
+}
+
+fragment Fragment_bx2o42v122 on Union_ydo @Directive_B2sesnLI{
+  ...Fragment_M
+}
+
+fragment Fragment_AwSub on Union_ydo {
+  ...Fragment_bx2o42v122
+  __typename
+}

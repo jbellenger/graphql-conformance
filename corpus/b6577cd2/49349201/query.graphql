@@ -1,0 +1,9 @@
+query UA4hx($wcl9zV: Boolean! = false) {
+  ... on Union_O8eEb @skip(if: $wcl9zV) {
+    ...Fragment_B9@defer(if: true, label: null) @skip(if: false)
+  }
+}
+
+fragment Fragment_B9 on Object_eSTyTX0 {
+  __typename
+}

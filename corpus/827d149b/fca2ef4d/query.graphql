@@ -1,0 +1,14 @@
+query ddCvMKO_a {
+  ...Fragment_eBIXDZC
+  R7fc0: ft1r
+  ... on Union_muVPBaaG {
+    __typename
+    ... on Interface_k @skip(if: false) {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_eBIXDZC on Union_muVPBaaG {
+  __typename
+}

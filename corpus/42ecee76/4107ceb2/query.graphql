@@ -1,0 +1,16 @@
+query G {
+  c {
+    pd {
+      e_xhqu9A72
+    }
+  }
+  c {
+    ...Fragment_A
+  }
+}
+
+fragment Fragment_A on Union_DLp {
+  ... on Object_POcuibH {
+    __typename
+  }
+}

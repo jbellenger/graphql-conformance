@@ -1,0 +1,21 @@
+query Q {
+  ... on Union_XHaGdkArk {
+    ... on Union_fmF9JHMW3 {
+      ... on Object_n9SqpjO9Gv {
+        erIuimNuP {
+          __typename
+        }
+        kI: erIuimNuP {
+          dDudu8vAY6
+        }
+      }
+    }
+    ... on Union_fmF9JHMW3 {
+      ...Fragment_G0qlmq
+    }
+  }
+}
+
+fragment Fragment_G0qlmq on Object_n9SqpjO9Gv {
+  qAJk
+}

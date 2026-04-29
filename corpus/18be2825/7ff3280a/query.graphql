@@ -1,0 +1,46 @@
+query JafSjyl($bxg1o2: Boolean!) {
+  jp3xS
+  ZDtTT8aUwC: jp3xS @Directive_phys @include(if: false)
+  ... on Union_uncl2Qc {
+    ...Fragment_Oz1KD
+  }
+  ... on Union_rRqFmNIh {
+    __typename
+    ... on Object_VzdpFHPa {
+      ...Fragment_Oz1KD
+      ... on Union_rRqFmNIh {
+        __typename @include(if: $bxg1o2)
+      }
+    }
+    ... on Object_PrWq {
+      __typename
+    }
+  }
+  ... on Union_rRqFmNIh {
+    ...Fragment_F
+    ... on Object_PrWq {
+      ...Fragment_Oz1KD
+      __typename
+      __typename
+      vgL: __typename
+    }
+    ... on Object_VzdpFHPa {
+      ... on Union_rRqFmNIh {
+        __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_F on Object_VzdpFHPa {
+  __typename
+}
+
+fragment Fragment_Oz1KD on Union_uncl2Qc {
+  ...Fragment_F
+  __typename
+  ... on Object_PrWq {
+    tJ
+  }
+}

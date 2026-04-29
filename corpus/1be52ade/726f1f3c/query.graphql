@@ -1,0 +1,15 @@
+query ($qmqj68: Boolean!) {
+  ...Fragment_iH1S9L
+  ...Fragment_iH1S9L
+  ...Fragment_iH1S9L
+  ... on Union_Gerbar {
+    __typename
+  }
+  ... on Union_wJ {
+    __typename @include(if: $qmqj68)
+  }
+}
+
+fragment Fragment_iH1S9L on Union_Gerbar {
+  JI: __typename
+}

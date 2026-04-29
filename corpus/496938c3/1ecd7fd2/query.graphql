@@ -1,0 +1,6 @@
+query Bis {
+  __typename
+  ... on Union_g {
+    e: __typename
+  }
+}

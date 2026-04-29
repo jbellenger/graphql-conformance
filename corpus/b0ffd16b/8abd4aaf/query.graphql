@@ -1,0 +1,16 @@
+query Kvh2 {
+  __typename
+  iEw546Y {
+    ...Fragment_Bv
+    __typename
+    ... on Object_zXp {
+      keXCah {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Bv on Union_UV5 {
+  __typename
+}

@@ -1,0 +1,12 @@
+query tRJT($gB0PTUzftr: Input_ew = {yQg : "w"}) {
+  ... on Object_jLry5OB {
+    lo: fbwxBF(ePyxB7uVD: $gB0PTUzftr) {
+      __typename
+    }
+    ... on Union_Z {
+      ... on Union_Z {
+        __typename
+      }
+    }
+  }
+}

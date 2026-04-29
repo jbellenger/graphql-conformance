@@ -1,0 +1,22 @@
+query ulpKguF {
+  ...Fragment_u_
+  ...Fragment_Gh1w3
+  __typename
+}
+
+fragment Fragment_e on Object_mpxXtOPqh3 {
+  __typename
+}
+
+fragment Fragment_nR4lygPc on Object_mpxXtOPqh3 {
+  ...Fragment_e
+}
+
+fragment Fragment_u_ on Union_zxiHV_hCa {
+  ...Fragment_nR4lygPc
+  ...Fragment_nR4lygPc
+}
+
+fragment Fragment_Gh1w3 on Union_zxiHV_hCa {
+  __typename @skip(if: true)
+}

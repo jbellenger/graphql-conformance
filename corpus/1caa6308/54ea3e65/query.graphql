@@ -1,0 +1,41 @@
+{
+  ... on Union_ydo {
+    ... on Union_Ck {
+      sQMwkUhyO: __typename
+      QDcvFmucB: __typename
+      Ag: __typename
+      ... on Union_Ck {
+        __typename
+      }
+    }
+  }
+  ... on Union_Ck {
+    __typename
+  }
+  ... on Object_os0nOC {
+    ...Fragment_ZCsa
+    __typename @Directive_lo0HVXtDE
+    ... on Object_os0nOC {
+      cbc
+    }
+    ... on Union_Ck {
+      ...Fragment_ZCsa
+      ... on Union_Ck {
+        mimW: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_YMg on Object_os0nOC {
+  wiEcekjrm {
+    lVFUZ {
+      wiNS: cbc
+    }
+  }
+}
+
+fragment Fragment_ZCsa on Object_os0nOC {
+  ...Fragment_YMg
+  __typename
+}

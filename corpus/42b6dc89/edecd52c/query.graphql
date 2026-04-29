@@ -1,0 +1,21 @@
+query B {
+  ...Fragment_kRBL9bKn@defer(if: false, label: "")
+}
+
+fragment Fragment_QGqdfDN5BC on Object_IZapD {
+  uR {
+    w
+  }
+}
+
+fragment Fragment_AbVLD9CV on Union_t11hjJ {
+  ...Fragment_QGqdfDN5BC
+  __typename
+  __typename
+}
+
+fragment Fragment_kRBL9bKn on Object_ma8i {
+  ...Fragment_AbVLD9CV
+  ...Fragment_AbVLD9CV
+  QyqTuMf6sZ: ozs9CW6as_
+}

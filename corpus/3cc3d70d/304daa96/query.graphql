@@ -1,0 +1,11 @@
+query oui {
+  ...Fragment_mX_T
+  ...Fragment_mX_T
+  KqXBc: __typename
+}
+
+fragment Fragment_mX_T on Object_G7tLJx7FJm {
+  ... on Union_JFctNPd {
+    __typename
+  }
+}

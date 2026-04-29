@@ -1,0 +1,39 @@
+query OXu25smhS($oCTor5aBQU: Boolean!) {
+  ... on Object_ivbme4MRt {
+    ...Fragment_Ayukn7U
+    ...Fragment_Ayukn7U
+    ... on Object_ivbme4MRt {
+      ...Fragment_mFrB
+      xp2sMRZ
+      b0: __typename
+      ... on Object_ivbme4MRt @defer(if: false) {
+        __typename
+      }
+    }
+  }
+  ... on Object_ivbme4MRt {
+    ... on Object_ivbme4MRt @defer(if: false, label: "S@") {
+      xp2sMRZ
+      __typename
+      __typename
+    }
+    ... on Object_ivbme4MRt {
+      ...Fragment_mFrB
+      xp2sMRZ
+      __typename
+      ... on Object_ivbme4MRt @skip(if: $oCTor5aBQU) {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Ayukn7U on Object_ivbme4MRt {
+  ... on Object_ivbme4MRt {
+    __typename @skip(if: $oCTor5aBQU)
+  }
+}
+
+fragment Fragment_mFrB on Object_ivbme4MRt {
+  __typename
+}

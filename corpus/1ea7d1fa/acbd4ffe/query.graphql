@@ -1,0 +1,38 @@
+query j($bWbnOt7Tn: Boolean!) {
+  ...Fragment_Mf1
+  pfKlZya {
+    __typename
+  }
+  ... on Union_nM {
+    __typename
+    __typename
+    __typename
+    __typename
+    ... on Union_WPISW0sMWg {
+      ... on Union_WPISW0sMWg {
+        __typename
+      }
+    }
+    ... on Object_zl @Directive_sn1t @skip(if: $bWbnOt7Tn) {
+      DGh5c0524: __typename
+      wGk: __typename
+      PxQHSZH2: pc {
+        __typename @include(if: true)
+      }
+      ... on Union_nM {
+        G0RO: __typename
+      }
+    }
+  }
+  ... on Union_foz {
+    ...Fragment_Mf1
+  }
+}
+
+fragment Fragment_Mf1 on Union_foz {
+  NFovTD: __typename @Directive_G1W_mKRx
+  __typename @Directive_sn1t
+  ... on Object_SGH0_b5Ck5 {
+    __typename
+  }
+}

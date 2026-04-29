@@ -1,0 +1,23 @@
+query bGs5o {
+  ...Fragment_lPl
+  ...Fragment_lPl
+  ... on Object_z {
+    ... on Object_z {
+      w41swgj9w
+    }
+  }
+  ... on Union_B76B {
+    __typename
+  }
+  ... {
+    w41swgj9w @Directive_Zw8iCcPsT
+  }
+}
+
+fragment Fragment_lPl on Union_B76B {
+  ... on Object_z {
+    ... on Union_B76B {
+      __typename
+    }
+  }
+}

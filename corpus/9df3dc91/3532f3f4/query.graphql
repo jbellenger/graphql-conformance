@@ -1,0 +1,24 @@
+{
+  ... on Object_gRe1 @Directive_G_x {
+    ...Fragment_r
+    ... on Object_gRe1 {
+      ...Fragment_B5uQVC57S
+    }
+    ... on Union_Oa9Xyu {
+      ...Fragment_B5uQVC57S@Directive_f
+      __typename
+    }
+  }
+}
+
+fragment Fragment_B5uQVC57S on Union_Oa9Xyu {
+  __typename
+  __typename
+}
+
+fragment Fragment_r on Object_gRe1 {
+  ...Fragment_B5uQVC57S
+  ... on Union_Oa9Xyu {
+    Uca8IOy_m: __typename
+  }
+}

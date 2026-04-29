@@ -1,0 +1,34 @@
+{
+  ...Fragment_Hj1
+  __typename
+  __typename
+  __typename
+  ... on Object_hO0V8geoN {
+    __typename
+  }
+  ... on Union_wdb9 @skip(if: true) {
+    __typename
+    ... on Object_ryYiQ {
+      __typename
+    }
+  }
+  ... on Union_wdb9 {
+    __typename
+  }
+}
+
+fragment Fragment_VDpbQ on Object_ryYiQ {
+  ac2W
+  ac2W
+}
+
+fragment Fragment_Ab on Union_wdb9 {
+  ...Fragment_VDpbQ
+  ... on Object_ryYiQ {
+    ac2W
+  }
+}
+
+fragment Fragment_Hj1 on Union_wdb9 @Directive_K5h3ZJkMJ{
+  ...Fragment_Ab
+}

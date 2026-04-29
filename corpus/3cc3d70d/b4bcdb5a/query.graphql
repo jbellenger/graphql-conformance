@@ -1,0 +1,18 @@
+query UhV1($lX_mtTAcIu: Enum_x_@Directive_Pna_) {
+  ... on Object_G7tLJx7FJm {
+    ...Fragment_yh9pfFea@defer(if: true, label: "E")
+    ...Fragment_I@defer(if: true, label: null)
+    __typename
+    __typename @Directive_Pna_
+    __typename
+    HYW: j6ngym72a(iB_qHrkPdu: $lX_mtTAcIu)
+  }
+}
+
+fragment Fragment_I on Object_G7tLJx7FJm {
+  j6ngym72a(iB_qHrkPdu: q2v37NJCU)
+}
+
+fragment Fragment_yh9pfFea on Union_JFctNPd {
+  ...Fragment_I
+}

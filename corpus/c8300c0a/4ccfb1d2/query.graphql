@@ -1,0 +1,31 @@
+query tYWA9W($jdAAdUXE: Boolean!) {
+  ...Fragment_ROsIZQ
+  ... on Union_qmrl {
+    ...Fragment_ROsIZQ
+  }
+  ... on Union_aFR8ChCx {
+    ...Fragment_ROsIZQ
+    ...Fragment_ROsIZQ
+    __typename
+    __typename @skip(if: $jdAAdUXE)
+    ... on Union_qmrl {
+      ...Fragment_txbg0n014h
+    }
+  }
+}
+
+fragment Fragment_txbg0n014h on Interface_Pg5BLnu {
+  LtT: __typename @Directive_XXavzFgS
+}
+
+fragment Fragment_ROsIZQ on Union_aFR8ChCx {
+  ... on Union_aFR8ChCx {
+    ...Fragment_txbg0n014h
+    ... on Union_qmrl {
+      __typename
+    }
+  }
+  ... on Interface_Pg5BLnu {
+    __typename
+  }
+}

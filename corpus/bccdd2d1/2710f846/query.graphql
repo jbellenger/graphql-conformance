@@ -1,0 +1,28 @@
+query @Directive_JPfUH4fQv(u3rXBH: Y_7Z7x) {
+  ...Fragment_I8Kk8TR9F
+  XvcjceW: __typename
+  ... on Union_cB1tP6 {
+    __typename
+  }
+  ... on Union_nTdVN @Directive_CHLLcR {
+    __typename
+  }
+}
+
+fragment Fragment_nkXf8B6D7S on Union_cB1tP6 {
+  __typename
+}
+
+fragment Fragment_I8Kk8TR9F on Union_cB1tP6 {
+  ... on Union_HEf {
+    ... on Union_nTdVN {
+      q_IST: __typename
+    }
+  }
+  ... on Object_QYU {
+    ...Fragment_nkXf8B6D7S
+    u {
+      __typename
+    }
+  }
+}

@@ -1,0 +1,45 @@
+query ($wzC: [Boolean]) {
+  iQtt_lFD(fP: gyP1Dy8Lm) {
+    zTM
+  }
+  ... on Union_xZ {
+    ...Fragment_JHi
+    __typename
+  }
+  ... on Object_i {
+    ...Fragment_JHi
+    iQtt_lFD(fP: gyP1Dy8Lm) {
+      ...Fragment_oHc1e2
+      __typename
+      ... on Interface_K5yEwJBrEw_STUB {
+        UhVGn9TA: zTM(fM: $wzC)
+      }
+    }
+    __typename
+    ... {
+      ...Fragment_JHi
+      ... on Union_xZ {
+        __typename
+      }
+    }
+    ... on Union_NRDz {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_FNE on Object_ksw {
+  __typename @include(if: true)
+}
+
+fragment Fragment_JHi on Union_NRDz {
+  ...Fragment_FNE
+  __typename @Directive_nMmLPuHG
+  ... on Union_xZ {
+    __typename
+  }
+}
+
+fragment Fragment_oHc1e2 on Interface_K5yEwJBrEw_STUB {
+  __typename
+}

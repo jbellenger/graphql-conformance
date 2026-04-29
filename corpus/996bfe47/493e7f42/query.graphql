@@ -1,0 +1,12 @@
+query uDw2_0 @Directive_iS6 {
+  ...Fragment_OtaU8P0@defer(if: true, label: "\"P")
+}
+
+fragment Fragment_OtaU8P0 on Object_JBblhzCdz {
+  ... on Union_FSm8rY {
+    ... on Object_JBblhzCdz @Directive_K {
+      __typename @Directive_iS6
+      zqR1b
+    }
+  }
+}

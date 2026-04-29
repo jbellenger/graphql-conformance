@@ -1,0 +1,17 @@
+query hAjAhC {
+  ...Fragment_hmOo
+}
+
+fragment Fragment_sx on Union_SU1R93OwaV {
+  mcVpEA: __typename
+}
+
+fragment Fragment_hmOo on Object_yVILZT {
+  ntY
+  ... on Union_SU1R93OwaV {
+    ...Fragment_sx
+    __typename
+    __typename
+    Y7mXGq: __typename
+  }
+}

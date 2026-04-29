@@ -1,0 +1,50 @@
+query ($qSpD: Boolean!) {
+  ... @Directive_hNZmoUK {
+    ...Fragment_Ij0R4B
+    ...Fragment_Ij0R4B
+    comBkbi: lOVl {
+      __typename
+      lOVl {
+        __typename
+      }
+      ... on Object_ITSmBbTF {
+        __typename
+      }
+    }
+    u_uS {
+      oJpTE: __typename @include(if: true)
+    }
+    u_uS {
+      ...Fragment_Ng
+      __typename
+      ... on Union_hap {
+        __typename
+      }
+    }
+    ... on Object_ITSmBbTF {
+      ...Fragment_Ng
+      lOVl {
+        u_uS {
+          kUHXQK: __typename
+        }
+        lOVl {
+          __typename
+        }
+      }
+      ... on Object_ITSmBbTF {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Ij0R4B on Union_hap {
+  ... on Union_Tl2k4zkam {
+    __typename
+  }
+}
+
+fragment Fragment_Ng on Union_hap {
+  __typename
+  __typename @include(if: $qSpD)
+}

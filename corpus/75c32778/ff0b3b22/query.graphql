@@ -1,0 +1,15 @@
+query @Directive_RbiG {
+  ...Fragment_W5It
+  ...Fragment_lbkugHHo
+}
+
+fragment Fragment_lbkugHHo on Object_hPDum {
+  ... on Object_hPDum {
+    g3VfV
+  }
+}
+
+fragment Fragment_W5It on Union_MWV9u {
+  ...Fragment_lbkugHHo
+  ...Fragment_lbkugHHo
+}

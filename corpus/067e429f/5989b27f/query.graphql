@@ -1,0 +1,20 @@
+query rM4r1wm($bTCR: Input_DAY = {fLQczEd : 1.0099292073182443E+308, q9SoK : null}) {
+  cgu
+  YQJ1O9: um {
+    ...Fragment_zh5plou
+    ...Fragment_zh5plou
+  }
+}
+
+fragment Fragment_hvu6ww25 on Object_U92jm3n0Y {
+  E: um(kFiNs9H: $bTCR) {
+    XT00gnpI: __typename
+  }
+  cgu
+}
+
+fragment Fragment_zh5plou on Interface_QLendjrHo {
+  ...Fragment_hvu6ww25
+  cgu @skip(if: false)
+  gVMW: __typename
+}

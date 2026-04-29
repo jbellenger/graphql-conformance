@@ -1,0 +1,41 @@
+query f6br {
+  ... on Union_rn {
+    ...Fragment_Gx3egNWwP
+    ...Fragment_e
+    ... on Union_xB {
+      ...Fragment_e
+    }
+    ... on Object_tCN @Directive_r {
+      ...Fragment_Pe44Z1S6QP
+      TXtd: vUgvydGnB
+      A6Syb0: __typename
+    }
+  }
+  ... on Object_JlCtS_ {
+    kAB: __typename
+  }
+  ... on Union_rn {
+    ... on Object_tCN {
+      ...Fragment_e
+    }
+  }
+}
+
+fragment Fragment_Ly on Object_tCN @Directive_bwT{
+  lWWak8cdD
+}
+
+fragment Fragment_Gx3egNWwP on Union_rn {
+  ...Fragment_Ly
+  ... on Union_FhH64v9MI {
+    __typename @include(if: true)
+  }
+}
+
+fragment Fragment_e on Union_rn {
+  __typename
+}
+
+fragment Fragment_Pe44Z1S6QP on Union_FhH64v9MI {
+  __typename
+}

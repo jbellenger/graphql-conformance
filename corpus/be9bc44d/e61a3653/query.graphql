@@ -1,0 +1,32 @@
+query pucA {
+  ...Fragment_yzykjMZ
+  ...Fragment_yzykjMZ
+  __typename
+}
+
+fragment Fragment_YUKS on Union_mB6Azj {
+  __typename @include(if: true) @Directive_PaDGIqLS3
+  __typename
+}
+
+fragment Fragment_o9IR on Union_ywo {
+  __typename
+}
+
+fragment Fragment_yzykjMZ on Object__5Lw0Mecas {
+  ...Fragment_YUKS@defer(if: true)
+  ...Fragment_YUKS
+  osFeWvF4vr @skip(if: true) {
+    ...Fragment_o9IR
+  }
+  ... on Union_mB6Azj {
+    __typename
+    __typename @skip(if: true)
+  }
+  ... on Union_mB6Azj {
+    ... on Union_mB6Azj @Directive_ZB {
+      j: __typename
+      __typename
+    }
+  }
+}

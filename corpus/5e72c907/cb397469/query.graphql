@@ -1,0 +1,24 @@
+query JMAYUc5($w: Boolean!) {
+  ...Fragment_yu_Yi
+  ...Fragment_kgM
+  ... on Object_L1YLG {
+    ...Fragment_yu_Yi
+    ...Fragment_yu_Yi
+  }
+}
+
+fragment Fragment_kgM on Union_Fc8E {
+  __typename
+}
+
+fragment Fragment_yu_Yi on Union_Fc8E @Directive_Crvbp_pN{
+  __typename
+  __typename @include(if: false)
+  ... on Object_L1YLG {
+    ...Fragment_kgM
+    __typename
+    ... {
+      __typename @skip(if: $w)
+    }
+  }
+}

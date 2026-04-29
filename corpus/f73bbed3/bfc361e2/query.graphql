@@ -1,0 +1,27 @@
+query ($zafk: Boolean! = true) @Directive_DI_eP {
+  ... on Object_UN36PcO {
+    ...Fragment_NUmMKEK_
+    ...Fragment_NUmMKEK_
+    __typename
+    RqiYne2Qk_: iYKDsiXLwt
+  }
+  ... on Union_PWHIf7e1p @include(if: $zafk) {
+    ... on Union_e2o7lp8 {
+      __typename
+      ... on Union_PWHIf7e1p {
+        __typename @Directive_BXPawLgG
+      }
+    }
+    ... on Union_PWHIf7e1p @skip(if: $zafk) {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_SeuKRSQk on Object_UN36PcO {
+  iYKDsiXLwt
+}
+
+fragment Fragment_NUmMKEK_ on Object_UN36PcO {
+  ...Fragment_SeuKRSQk
+}

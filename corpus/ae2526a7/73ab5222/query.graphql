@@ -1,0 +1,19 @@
+{
+  ...Fragment_QgK
+  ...Fragment_QgK@include(if: false)
+}
+
+fragment Fragment_dHWNaSi on Object_GZwlaH {
+  hCk9JfEv @Directive_UtDBf5SRj {
+    t2__QvTN: __typename
+  }
+}
+
+fragment Fragment_Ao on Interface_hY6EDx6 {
+  ...Fragment_dHWNaSi
+  xVW
+}
+
+fragment Fragment_QgK on Object_GZwlaH {
+  ...Fragment_Ao
+}

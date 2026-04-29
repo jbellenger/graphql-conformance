@@ -1,0 +1,21 @@
+query VV5V {
+  o {
+    ...Fragment_Tu4AOK
+    ... on Interface_RP {
+      ...Fragment_Tu4AOK
+      XsXy: aT
+      yfEwQAun
+      aT
+    }
+    ... on Interface_RP_STUB {
+      ...Fragment_Tu4AOK@include(if: false)
+      ... {
+        j3nQo
+      }
+    }
+  }
+}
+
+fragment Fragment_Tu4AOK on Interface_RP @Directive_y{
+  __typename
+}

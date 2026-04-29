@@ -1,0 +1,33 @@
+query fFDgG7FQbh($dz9gavA_FK: Input_v1v) {
+  ...Fragment_TwUxDZkH
+}
+
+fragment Fragment_XJjg on Union_QKXsfN0 {
+  __typename
+}
+
+fragment Fragment_YVfjf8X on Union_LgfkGDzZL2 {
+  ...Fragment_XJjg
+  ... on Union_LgfkGDzZL2 @skip(if: true) {
+    __typename
+  }
+}
+
+fragment Fragment_LYc4x7m5 on Object_Z6hhaJ87 {
+  __typename
+}
+
+fragment Fragment_TwUxDZkH on Union_QKXsfN0 @Directive_Wv_Mk33K{
+  ...Fragment_YVfjf8X@Directive_vidwr(oNf: $dz9gavA_FK)
+  ... on Union_zF {
+    ...Fragment_LYc4x7m5@skip(if: false)
+    __typename
+  }
+  ... on Union_zF {
+    __typename
+    __typename
+    ... on Object_Y {
+      __typename
+    }
+  }
+}

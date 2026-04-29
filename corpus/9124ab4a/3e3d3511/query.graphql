@@ -1,0 +1,33 @@
+query KV {
+  ...Fragment_EEP8V
+  iDW {
+    __typename
+  }
+  a @skip(if: false) {
+    ...Fragment_YY5dIFgO@Directive_LVaF
+    ... on Object_lKq3WYPzD {
+      j(aRicBn00e: {vfZXgC7aT : mmSVRZTXS, r8AUp : true, bQ89 : rdd}, dGtqTmZ1Eb: "")
+    }
+  }
+  I_R9h: pYLPsVVbq {
+    ...Fragment_YY5dIFgO
+    ...Fragment_YY5dIFgO
+  }
+}
+
+fragment Fragment_kyps8H on Interface_mGwJhvG {
+  __typename
+}
+
+fragment Fragment_EEP8V on Object_Dm1XS3DX {
+  ...Fragment_kyps8H
+  pYLPsVVbq {
+    __typename
+  }
+}
+
+fragment Fragment_YY5dIFgO on Object_lKq3WYPzD {
+  ... on Union_EMT {
+    __typename
+  }
+}

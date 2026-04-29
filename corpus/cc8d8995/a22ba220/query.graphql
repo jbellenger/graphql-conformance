@@ -1,0 +1,22 @@
+query J4i($zZN5W: Boolean!) {
+  ... on Union_NRDz {
+    ...Fragment_mnuCMWJ
+    __typename
+    z: __typename
+    cpa46wn: __typename
+    __typename
+  }
+}
+
+fragment Fragment_oKBeW on Object_i {
+  __typename
+}
+
+fragment Fragment_mnuCMWJ on Union_xZ {
+  ...Fragment_oKBeW
+  __typename @include(if: $zZN5W)
+  ... on Union_xZ {
+    __typename
+    __typename
+  }
+}

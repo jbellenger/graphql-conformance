@@ -1,0 +1,16 @@
+query rkan1oXc {
+  ...Fragment_HJZrdz
+  ...Fragment_o71k4Kyzc@skip(if: true)
+}
+
+fragment Fragment_HJZrdz on Union_yHuS {
+  __typename
+  __typename
+  fV_YO: __typename
+  __typename
+}
+
+fragment Fragment_o71k4Kyzc on Union_yHuS {
+  ...Fragment_HJZrdz
+  ...Fragment_HJZrdz
+}

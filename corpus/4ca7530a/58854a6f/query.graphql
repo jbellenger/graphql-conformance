@@ -1,0 +1,21 @@
+query UIo6nN8kE3 {
+  ...Fragment_s
+  ...Fragment_c0nEY7pej
+  X: ht_pI
+}
+
+fragment Fragment_c0nEY7pej on Object_PFI8yNbA {
+  ht_pI
+}
+
+fragment Fragment_Ie5SJBl on Object_PFI8yNbA {
+  ...Fragment_c0nEY7pej
+  r5 {
+    __typename
+  }
+}
+
+fragment Fragment_s on Union_cQ {
+  ...Fragment_Ie5SJBl
+  LafnEWn: __typename
+}

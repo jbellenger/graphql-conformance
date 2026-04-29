@@ -1,0 +1,39 @@
+query d8osZ {
+  __typename
+  qd {
+    aDxyhZ_kp: uXrXF @include(if: true)
+    ... on Interface_mzAQ {
+      ...Fragment_vxosHV@Directive_yARKPl(yO6R: eUoQYA)
+      __typename
+      vVV8YbNuo {
+        a3XRo1F
+      }
+    }
+    ... on Interface_mzAQ_STUB {
+      ...Fragment_vxosHV
+      uXrXF
+    }
+  }
+  awF79 {
+    nhpx4t
+  }
+  __typename
+  ... on Union_t {
+    ...Fragment_L2t3x@defer(if: true, label: "K;c")
+  }
+}
+
+fragment Fragment_vxosHV on Interface_mzAQ @Directive_yARKPl{
+  __typename
+}
+
+fragment Fragment_Mq9Nq0X on Union_t @Directive_yARKPl(yO6R: eUoQYA){
+  __typename
+}
+
+fragment Fragment_L2t3x on Union_t {
+  ...Fragment_Mq9Nq0X
+  ... on Union_t {
+    __typename
+  }
+}

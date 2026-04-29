@@ -1,0 +1,26 @@
+query i {
+  ...Fragment_KdEZF61
+  xPGRB_ @Directive_JPk7EbWKBn(lmqE: hAYFZ8Fx)
+  ... on Union_FV4AsTv {
+    ...Fragment_e
+    ... on Object_j1X {
+      ...Fragment_KdEZF61
+      __typename
+      xPGRB_
+      ... on Union_VAowkKl1d {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_e on Union_VAowkKl1d {
+  ... on Union_VAowkKl1d {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_KdEZF61 on Union_FV4AsTv {
+  ...Fragment_e@Directive_qlZNCbj
+}

@@ -1,0 +1,62 @@
+{
+  ...Fragment_wRswTKveMh@include(if: true)
+  fg46AVV {
+    ...Fragment_iCvUzDAph
+    ...Fragment_Bu6_h
+    __typename
+    __typename
+    YN: eR {
+      __typename
+    }
+    __typename
+  }
+  ... on Object_hO1D {
+    ...Fragment_wRswTKveMh
+    ...Fragment_gC
+  }
+  ... {
+    ...Fragment_gC
+    ...Fragment_HYT1V
+    fg46AVV {
+      ... on Object_nptM {
+        eR: __typename
+        lwfDIbGM {
+          __typename
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_wRswTKveMh on Object_hO1D {
+  Hx6O8eJBR: x {
+    __typename
+  }
+}
+
+fragment Fragment_Bu6_h on Union_L {
+  __typename
+}
+
+fragment Fragment_iCvUzDAph on Union_QEGoPbf1 {
+  ...Fragment_Bu6_h
+  ... on Union_QEGoPbf1 {
+    __typename
+  }
+}
+
+fragment Fragment_gC on Object_hO1D {
+  ...Fragment_wRswTKveMh
+  ... on Object_hO1D {
+    __typename
+  }
+}
+
+fragment Fragment_HYT1V on Object_hO1D {
+  fg46AVV {
+    Ih8rhgG_: __typename
+  }
+  x {
+    __typename
+  }
+}

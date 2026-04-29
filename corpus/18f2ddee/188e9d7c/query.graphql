@@ -1,0 +1,36 @@
+query ($jh: Input_ew) {
+  q {
+    ...Fragment_V
+    ... on Union_Z {
+      __typename
+      __typename
+      ... on Object_jLry5OB {
+        __typename
+        xfo: k0qyL {
+          __typename
+        }
+      }
+    }
+  }
+  k0qyL {
+    __typename
+    __typename
+  }
+  fbwxBF(ePyxB7uVD: $jh) {
+    ...Fragment_V@defer(if: false, label: "(&<")
+    gqcLXm1A: __typename
+  }
+  k0qyL {
+    ...Fragment_V
+    ... on Union_E {
+      ...Fragment_V@skip(if: true)
+      ... on Union_Z {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_V on Union_Z {
+  __typename
+}

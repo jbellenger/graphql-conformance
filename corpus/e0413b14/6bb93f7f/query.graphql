@@ -1,0 +1,21 @@
+query AQyD3 {
+  ...Fragment_aZin0
+  ...Fragment_je594
+}
+
+fragment Fragment_lsM on Object_WYx3 {
+  rmXKzc: __typename
+}
+
+fragment Fragment_je594 on Object_WYx3 {
+  ...Fragment_lsM
+  __typename
+  ... on Union_S {
+    __typename
+  }
+}
+
+fragment Fragment_aZin0 on Object_WYx3 @Directive_Bq{
+  ...Fragment_lsM
+  ...Fragment_je594
+}

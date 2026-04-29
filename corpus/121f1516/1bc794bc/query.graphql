@@ -1,0 +1,14 @@
+query kRR {
+  __typename
+  ... on Object_gDxh {
+    ...Fragment_wWGdignFS
+  }
+}
+
+fragment Fragment_wWGdignFS on Union_YGiZ {
+  ... on Object_gDxh {
+    egslbnQ {
+      __typename
+    }
+  }
+}

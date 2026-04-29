@@ -1,0 +1,24 @@
+query ($itKSXDlsE: Boolean!) {
+  s1 {
+    jTS: a5 {
+      ...Fragment_CYrJi7
+      ... on Interface_dn7kaexPam_STUB {
+        pjE {
+          vY: __typename
+        }
+        ZQSERxH9Y: pjE {
+          Wy: pjE {
+            __typename
+          }
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_CYrJi7 on Interface_dn7kaexPam_STUB {
+  rAWi_ @include(if: false)
+  pjE @include(if: $itKSXDlsE) {
+    __typename
+  }
+}

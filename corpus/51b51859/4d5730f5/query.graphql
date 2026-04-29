@@ -1,0 +1,8 @@
+query ($nvS: Boolean!) {
+  ... on Union_hzilhjcqAr {
+    __typename @include(if: $nvS)
+    ... on Union_x @include(if: $nvS) {
+      __typename
+    }
+  }
+}

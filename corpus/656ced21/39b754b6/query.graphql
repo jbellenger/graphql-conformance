@@ -1,0 +1,37 @@
+{
+  ... on Object_pDiTNo {
+    ...Fragment_LK04RsLO
+    ... on Union_t {
+      ...Fragment_LK04RsLO
+      LIeN: __typename
+      ... on Union_t {
+        wsOwsA: __typename
+      }
+    }
+  }
+  ... on Union_t {
+    ...Fragment_zSb9cXjDA
+    ...Fragment_LK04RsLO
+    __typename
+    __typename
+    __typename
+  }
+  ... on Union_t @skip(if: true) {
+    __typename
+  }
+}
+
+fragment Fragment_zSb9cXjDA on Object_pDiTNo {
+  __typename
+}
+
+fragment Fragment_LK04RsLO on Union_t {
+  ...Fragment_zSb9cXjDA
+  VM48: __typename
+  ... on Object_pDiTNo {
+    __typename
+    awF79 {
+      __typename
+    }
+  }
+}

@@ -1,0 +1,17 @@
+query vnEO($itH: Boolean!) @Directive_ACuaiJ {
+  ...Fragment_tRoTfBm
+  ...Fragment_tRoTfBm
+  b0 {
+    qg
+  }
+}
+
+fragment Fragment_l5928g on Object_S @Directive_WKakPElks(k_z: 1.6826143713030777E+308){
+  ... on Object_S {
+    vW0FPot_DJ
+  }
+}
+
+fragment Fragment_tRoTfBm on Object_S {
+  ...Fragment_l5928g@skip(if: $itH)
+}

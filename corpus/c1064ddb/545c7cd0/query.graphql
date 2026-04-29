@@ -1,0 +1,3 @@
+query O8($hd: Boolean!@Directive_hNZmoUK) {
+  pFo: __typename @include(if: $hd)
+}

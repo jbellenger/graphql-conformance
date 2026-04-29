@@ -1,0 +1,32 @@
+{
+  ...Fragment_qV3@defer(label: null)
+  ...Fragment_Yxl
+}
+
+fragment Fragment_sRbZSk on Object_r6mU4 @Directive_upw0{
+  __typename
+}
+
+fragment Fragment_xLM0xTThuy on Union_EP {
+  ...Fragment_sRbZSk
+}
+
+fragment Fragment_LyZE9gpMH on Union_EP {
+  __typename
+  __typename
+}
+
+fragment Fragment_qV3 on Object_r6mU4 {
+  ...Fragment_xLM0xTThuy
+  aIvpj1 {
+    ...Fragment_LyZE9gpMH
+    ... on Union_KEKp9Io {
+      __typename
+    }
+  }
+  __typename
+}
+
+fragment Fragment_Yxl on Object_r6mU4 {
+  ...Fragment_xLM0xTThuy
+}

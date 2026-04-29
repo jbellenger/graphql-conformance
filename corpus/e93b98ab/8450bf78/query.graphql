@@ -1,0 +1,13 @@
+query @Directive_Pxo {
+  ...Fragment_VYWEHlh5Ur
+  ...Fragment_VYWEHlh5Ur
+  ...Fragment_VYWEHlh5Ur
+}
+
+fragment Fragment_idWRH on Union_EA850 {
+  __typename
+}
+
+fragment Fragment_VYWEHlh5Ur on Union_EA850 {
+  ...Fragment_idWRH
+}

@@ -1,0 +1,84 @@
+query ($pY: Boolean! = true) {
+  ...Fragment_f@skip(if: false)
+  ... on Object_TR92Ujbj {
+    ...Fragment_qtpf
+    ...Fragment_T7mi
+    j0 @Directive_U6BQDa3 {
+      vV9iY2 {
+        __typename
+      }
+      vV9iY2 {
+        __typename @Directive_iab
+      }
+    }
+    ... on Union_yHuS {
+      __typename
+      ... on Union_t7 {
+        __typename
+      }
+    }
+    ... on Object_TR92Ujbj {
+      __typename
+    }
+  }
+  ... on Object_TR92Ujbj @skip(if: false) @Directive_iab {
+    ...Fragment_f
+    vV9iY2 {
+      __typename
+    }
+    nvFIs3ee: vV9iY2 {
+      sb: __typename
+    }
+    __typename
+    ... {
+      ... on Object_TR92Ujbj {
+        j0 {
+          __typename
+        }
+      }
+    }
+    ... {
+      __typename
+    }
+  }
+  ... on Object_TR92Ujbj {
+    ...Fragment_qtpf
+    ... on Union_yHuS {
+      __typename
+      JRdjv: __typename
+      __typename
+      ... {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_qtpf on Union_yHuS {
+  __typename @skip(if: $pY)
+}
+
+fragment Fragment_f on Object_TR92Ujbj {
+  j0 {
+    ...Fragment_qtpf
+    ... {
+      tQ: vV9iY2 {
+        BIC: __typename
+      }
+    }
+  }
+  vV9iY2 @include(if: true) {
+    ... on Object_znUwi3 {
+      x7pr: __typename
+      __typename
+    }
+  }
+  __typename
+}
+
+fragment Fragment_T7mi on Union_yHuS {
+  ... on Object_znUwi3 {
+    A: mWknqw
+    mWknqw
+  }
+}

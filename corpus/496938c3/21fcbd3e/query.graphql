@@ -1,0 +1,12 @@
+query bl2iDkB_Kh @Directive_BuQAMJ6 {
+  ...Fragment_wLikYfwx
+}
+
+fragment Fragment_ZW on Union_exdaVa {
+  __typename
+}
+
+fragment Fragment_wLikYfwx on Object_l8Qs {
+  ...Fragment_ZW
+  ...Fragment_ZW
+}

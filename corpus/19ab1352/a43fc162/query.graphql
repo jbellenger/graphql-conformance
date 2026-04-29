@@ -1,0 +1,16 @@
+query swUski {
+  ...Fragment_VRtQnHXk6V
+  ...Fragment_VRtQnHXk6V
+}
+
+fragment Fragment_VRtQnHXk6V on Union_EEQmr {
+  __typename
+  ... on Object_FOrW3 @defer(if: true, label: null) {
+    zGVGHpdp
+  }
+  ... on Object_AqqewV1_ {
+    ... on Object_AqqewV1_ {
+      __typename
+    }
+  }
+}

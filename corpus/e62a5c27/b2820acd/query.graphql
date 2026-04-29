@@ -1,0 +1,26 @@
+query I {
+  ...Fragment_K9v
+  ...Fragment_K9v
+}
+
+fragment Fragment_ir on Object_faFnLw {
+  __typename
+}
+
+fragment Fragment_WzzegA2pj on Union_eN7k5rs {
+  ...Fragment_ir
+}
+
+fragment Fragment_dnAU on Union_O {
+  __typename
+}
+
+fragment Fragment_K9v on Union_eN7k5rs {
+  ...Fragment_WzzegA2pj
+  ... on Object_H8s8Ug3 {
+    ...Fragment_dnAU
+  }
+  ... on Object_faFnLw {
+    ...Fragment_dnAU
+  }
+}

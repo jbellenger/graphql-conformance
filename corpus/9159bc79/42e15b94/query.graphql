@@ -1,0 +1,15 @@
+query hfuR1E {
+  ...Fragment_ogKoEMs
+  __typename @Directive_vuqzyPR @include(if: true)
+  ... on Union_Qkl6DT {
+    __typename
+  }
+  ... on Union_k {
+    __typename
+  }
+}
+
+fragment Fragment_ogKoEMs on Union_k {
+  __typename
+  __typename
+}

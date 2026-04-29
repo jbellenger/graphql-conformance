@@ -1,0 +1,32 @@
+query udaA0x2Jt {
+  ...Fragment_k6u6V
+  AdxitKN4a_: __typename
+  ... on Union_avf {
+    ...Fragment_k6u6V
+    ...Fragment_k6u6V@Directive_Eo1
+    ... on Object_mLU61Sm {
+      __typename
+    }
+    ... on Union_o9Oia8QgK {
+      ... {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_qO55HqF4 on Union_o9Oia8QgK {
+  __typename
+}
+
+fragment Fragment_k6u6V on Object_mLU61Sm @Directive_Eo1{
+  ... on Union_avf {
+    ...Fragment_qO55HqF4
+    __typename
+    __typename @Directive_X(xJv: [-120361443, 479362269]) @Directive_HjQ1R
+    __typename
+    ... on Union_avf {
+      __typename
+    }
+  }
+}

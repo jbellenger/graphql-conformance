@@ -1,0 +1,9 @@
+query Nf {
+  ... on Union_Ne {
+    ...Fragment_HwQ1F8H
+  }
+}
+
+fragment Fragment_HwQ1F8H on Union_Ne {
+  q: __typename
+}

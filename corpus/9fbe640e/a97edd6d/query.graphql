@@ -1,0 +1,30 @@
+query BWD3mWzp {
+  ... on Union_W {
+    ... on Union_mpYV5HXb {
+      ... on Interface_Xtni0YO {
+        __typename
+      }
+    }
+    ... on Interface_Xtni0YO {
+      ...Fragment_f3MWdgqrCc
+      ... on Interface_Xtni0YO {
+        __typename @include(if: false)
+      }
+    }
+  }
+  ... on Union_mpYV5HXb {
+    ...Fragment_IS9pB_4m
+    ...Fragment_IS9pB_4m
+  }
+}
+
+fragment Fragment_f3MWdgqrCc on Union_W {
+  __typename
+}
+
+fragment Fragment_IS9pB_4m on Union_W {
+  __typename
+  ... on Object_L528v {
+    __typename
+  }
+}

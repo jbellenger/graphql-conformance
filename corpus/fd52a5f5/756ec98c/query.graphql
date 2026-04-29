@@ -1,0 +1,31 @@
+query Y7kjJ0Dct1 {
+  ...Fragment_Vc4
+  pyB @skip(if: true) @include(if: false)
+  pyB
+  pyB
+  iadimmRsQZ: s1 {
+    ... on Object_JZyc {
+      __typename
+    }
+  }
+  s1 {
+    ...Fragment_lzqXc
+  }
+}
+
+fragment Fragment_Vc4 on Object_Rcq0e9VM2A {
+  EFAYLizjVE: pyB
+}
+
+fragment Fragment_DZT on Union_P {
+  __typename
+}
+
+fragment Fragment_lzqXc on Union_P {
+  ...Fragment_DZT
+  __typename
+  ... on Union_P {
+    __typename
+    __typename
+  }
+}

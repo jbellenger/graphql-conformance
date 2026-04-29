@@ -1,0 +1,58 @@
+{
+  p: li8 {
+    ...Fragment_KpT5Lu
+    ...Fragment_gC5nE4JMT1
+  }
+  Wln02Q0Oc: qtCJx_Rei
+  qtCJx_Rei
+  mLDOQT: li8 {
+    __typename
+    ... on Object_Ateh2pl {
+      ...Fragment_fVSTAM9RF
+      ... on Union_MC1sRu {
+        __typename
+        uwyIRUe: __typename
+      }
+    }
+  }
+  ... on Object_BNi {
+    qtCJx_Rei
+    pV_mLzl6: __typename
+    ... on Object_BNi {
+      __typename
+    }
+  }
+  ... on Object_BNi {
+    ...Fragment_y4IPn
+    ...Fragment_y4IPn
+    qtCJx_Rei
+    qtCJx_Rei
+    __typename
+    ... on Object_BNi @defer(if: true, label: "") {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_gC5nE4JMT1 on Union_h0E_whCE {
+  upd: __typename
+}
+
+fragment Fragment_KpT5Lu on Object_VjHUcvtMV {
+  ...Fragment_gC5nE4JMT1
+  eqI: dZdQIbc5V {
+    __typename
+  }
+  ... on Union_MC1sRu @defer(if: true, label: "!") {
+    __typename
+    ejiD: __typename
+  }
+}
+
+fragment Fragment_fVSTAM9RF on Union_MC1sRu {
+  __typename
+}
+
+fragment Fragment_y4IPn on Object_BNi {
+  __typename
+}

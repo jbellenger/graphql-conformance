@@ -1,0 +1,40 @@
+query Dn5d($tktBi6QEN: Boolean!) {
+  ...Fragment_DgxU
+  ...Fragment_bMWrgbX@defer(label: "6O.")
+  ...Fragment_QhOXpVn1tK
+  __typename
+}
+
+fragment Fragment_kH on Union_ywo {
+  __typename
+}
+
+fragment Fragment_bMWrgbX on Union_ywo {
+  ...Fragment_kH
+  __typename
+}
+
+fragment Fragment_DgxU on Object__5Lw0Mecas {
+  ...Fragment_bMWrgbX
+  bH
+  __typename
+  osFeWvF4vr {
+    ...Fragment_bMWrgbX
+    bH
+    __typename
+    __typename
+    ... on Object__5Lw0Mecas {
+      osFeWvF4vr {
+        bH
+      }
+      __typename
+    }
+  }
+  bH
+}
+
+fragment Fragment_QhOXpVn1tK on Union_mB6Azj {
+  ...Fragment_DgxU
+  __typename @skip(if: $tktBi6QEN)
+  __typename
+}

@@ -1,0 +1,35 @@
+{
+  sCX @include(if: true) {
+    ...Fragment_H9EgZxR8K_@skip(if: false)
+    ...Fragment_H9EgZxR8K_
+  }
+  ... on Union_rnQMi8hYpp {
+    ...Fragment_i@defer(if: false)
+    ... on Object_M22hFV {
+      ...Fragment_hzgQJ9
+    }
+    ... on Union_rnQMi8hYpp @defer(if: true, label: "") {
+      ...Fragment_hzgQJ9
+    }
+  }
+}
+
+fragment Fragment_H9EgZxR8K_ on Interface_HIifn {
+  __typename
+  h
+  N7fl: h
+  ... on Object__KnPVwLq {
+    fdo4R
+    n {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_i on Union_O8eEb {
+  __typename
+}
+
+fragment Fragment_hzgQJ9 on Object_M22hFV {
+  __typename
+}

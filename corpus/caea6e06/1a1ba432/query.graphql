@@ -1,0 +1,18 @@
+query lQWFWKMI {
+  ...Fragment_Lc
+  ... on Object_Dmmmmmmmmm {
+    __typename
+  }
+}
+
+fragment Fragment_DIpau on Union_JAWB {
+  __typename
+}
+
+fragment Fragment_Lc on Object_Dmmmmmmmmm {
+  ...Fragment_DIpau
+  __typename
+  fCNKQ
+  Kfu4TS2rB: __typename @Directive_JPy
+  __typename @include(if: true)
+}

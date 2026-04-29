@@ -1,0 +1,29 @@
+{
+  ...Fragment_Bo1d0
+}
+
+fragment Fragment_xOvHv on Union_EA850 {
+  AyA5IKFn: __typename @Directive_y8IKuN
+}
+
+fragment Fragment_W7qwCF on Union_EA850 {
+  ...Fragment_xOvHv
+}
+
+fragment Fragment_dTeiDJU on Union_EA850 {
+  ...Fragment_xOvHv
+  __typename
+}
+
+fragment Fragment_Bo1d0 on Object_L {
+  ...Fragment_W7qwCF
+  ...Fragment_dTeiDJU
+  ... on Union_wdCy2WYQ6 {
+    ... on Union_EA850 {
+      __typename
+    }
+  }
+  ... on Union_wdCy2WYQ6 {
+    ...Fragment_xOvHv
+  }
+}

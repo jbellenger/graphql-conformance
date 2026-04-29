@@ -1,0 +1,24 @@
+query wOl {
+  gy_X3X8aD8: __typename
+  ... {
+    leyBUXFdA(pGwzbCY: -2.8519113941716715E+307) {
+      ... on Object_N4VkYhFB {
+        __typename
+        ufGyf6(wWA: [kwG6KQl, kwG6KQl]) {
+          __typename
+        }
+      }
+    }
+    ... on Object_KVyRtAk {
+      ...Fragment_eKEGiF
+      ... on Union_PPmo @defer(if: true, label: "") {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_eKEGiF on Union_PPmo {
+  __typename
+  Wi37CCcyG9: __typename
+}

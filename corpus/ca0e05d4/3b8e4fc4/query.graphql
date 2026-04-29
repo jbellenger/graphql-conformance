@@ -1,0 +1,22 @@
+{
+  ...Fragment_n2
+  ...Fragment_n2
+  ...Fragment_n2
+}
+
+fragment Fragment_eTEM on Object_ww {
+  __typename
+}
+
+fragment Fragment_n2 on Union_zmqRNYp {
+  __typename
+  __typename
+  __typename
+  __typename
+  ... on Object_ww {
+    ...Fragment_eTEM@Directive_GGLEHrF
+  }
+  ... on Union_Erp8FK_PeU {
+    ...Fragment_eTEM
+  }
+}

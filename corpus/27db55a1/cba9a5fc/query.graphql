@@ -1,0 +1,5 @@
+query Br {
+  ... on Object_E {
+    i @Directive_nM_H7
+  }
+}

@@ -1,0 +1,33 @@
+query vuAE_WGp {
+  ... on Object_BMh {
+    ...Fragment_K
+    _rg: bRdB {
+      __typename
+      ... on Object_BMh {
+        eI7q_SwM1: __typename
+      }
+    }
+    ... on Object_BMh {
+      __typename
+    }
+    ... {
+      ...Fragment_K
+      bRdB {
+        Q3CDCkW: __typename
+      }
+      __typename @include(if: true) @skip(if: true)
+    }
+  }
+  ... on Object_BMh {
+    ...Fragment_K
+    ...Fragment_K
+    VJVfe_J: __typename
+  }
+}
+
+fragment Fragment_K on Object_BMh {
+  __typename
+  ... {
+    j91nUkbGQN: __typename
+  }
+}

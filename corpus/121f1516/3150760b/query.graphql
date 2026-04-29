@@ -1,0 +1,23 @@
+query SSnQjiCc0 {
+  ...Fragment_B1o9Y
+  mrRTXR {
+    EJCqiP: d06spS
+  }
+  ... on Union_YGiZ {
+    __typename
+  }
+}
+
+fragment Fragment__29nB on Object_gDxh {
+  __typename
+}
+
+fragment Fragment_B1o9Y on Object_gDxh {
+  ...Fragment__29nB
+  W8bhr9vJI: mrRTXR {
+    d06spS
+    ... on Union_YGiZ {
+      __typename
+    }
+  }
+}

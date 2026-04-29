@@ -1,0 +1,30 @@
+query @Directive_C {
+  ...Fragment_tULFrvhzE
+  ...Fragment_tULFrvhzE
+  ...Fragment_Cba
+  ... on Union_x363 {
+    ...Fragment_tULFrvhzE
+    __typename
+  }
+  ... on Union_sjr @include(if: false) {
+    ...Fragment_Cba
+    ...Fragment_x2
+  }
+}
+
+fragment Fragment_Cba on Union_sjr {
+  __typename
+  __typename
+}
+
+fragment Fragment_x2 on Union_x363 {
+  ...Fragment_Cba
+  ... on Object_BF {
+    vMxAr
+  }
+}
+
+fragment Fragment_tULFrvhzE on Object_BF {
+  ...Fragment_x2
+  ...Fragment_Cba
+}

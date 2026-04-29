@@ -1,0 +1,20 @@
+{
+  ... on Union_cx {
+    __typename
+  }
+  ... on Object_V {
+    ...Fragment_Yk
+    ... on Union_gybD8UWT5 {
+      ...Fragment_Yk@defer(if: false)
+    }
+    ... on Union_gybD8UWT5 {
+      ...Fragment_Yk
+    }
+  }
+}
+
+fragment Fragment_Yk on Object_V {
+  ... on Union_cx {
+    __typename
+  }
+}

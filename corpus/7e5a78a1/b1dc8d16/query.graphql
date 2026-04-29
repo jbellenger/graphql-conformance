@@ -1,0 +1,32 @@
+query f04V {
+  ...Fragment_lT8
+  __typename
+}
+
+fragment Fragment_xzzmsE1ro on Union_sYbNZMI {
+  __typename
+}
+
+fragment Fragment_LtlFDqZ on Union_syvgL {
+  ...Fragment_xzzmsE1ro
+  JYqOFbJK: __typename
+  j: __typename
+}
+
+fragment Fragment_lEkUpNhTYb on Union_syvgL {
+  __typename
+}
+
+fragment Fragment_lT8 on Object_IV3 {
+  ...Fragment_LtlFDqZ
+  ...Fragment_LtlFDqZ
+  ... on Object_IV3 @Directive_gm2LkQIEV {
+    ...Fragment_lEkUpNhTYb
+    szsV
+    __typename
+    __typename
+    ... on Union_syvgL {
+      __typename
+    }
+  }
+}

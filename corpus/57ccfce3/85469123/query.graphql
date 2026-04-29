@@ -1,0 +1,30 @@
+query DDsW($d0GW8AW: Boolean!) {
+  ... on Object_BAVEltu {
+    o {
+      GKbrGTkL3D: yfEwQAun
+    }
+    o {
+      ...Fragment_c8
+      aT
+      ... on Interface_RP {
+        yfEwQAun
+      }
+    }
+    ... on Union_QONO {
+      ...Fragment_qmrVY
+      G2klyeWZpj: __typename @include(if: $d0GW8AW)
+      ... on Union_ms3 {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_c8 on Interface_RP_STUB {
+  z: yfEwQAun
+}
+
+fragment Fragment_qmrVY on Union_ms3 {
+  __typename
+  __typename
+}

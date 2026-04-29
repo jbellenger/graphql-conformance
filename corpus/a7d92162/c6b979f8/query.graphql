@@ -1,0 +1,19 @@
+{
+  _2dOE5 {
+    ...Fragment_YkryG7a
+    ...Fragment_ePl
+    __typename
+    GGYxy: __typename
+  }
+}
+
+fragment Fragment_ePl on Union_wXU @Directive_CUYpTn{
+  __typename
+}
+
+fragment Fragment_YkryG7a on Union_wXU {
+  ...Fragment_ePl
+  ... on Object_NThWS2VX {
+    __typename
+  }
+}

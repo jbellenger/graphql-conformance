@@ -1,0 +1,29 @@
+query ($rSGX: Boolean!) {
+  ... on Union_x363 {
+    ...Fragment_hTuKPCEg8I
+    ...Fragment_xxevO
+  }
+  ... {
+    ohEONZ {
+      ...Fragment_R9@Directive_C
+      ... on Union_x363 {
+        __typename
+      }
+    }
+  }
+  ... on Union_x363 {
+    __typename
+  }
+}
+
+fragment Fragment_xxevO on Union_VDi {
+  KF00wrm: __typename
+}
+
+fragment Fragment_hTuKPCEg8I on Object_BF {
+  ...Fragment_xxevO
+}
+
+fragment Fragment_R9 on Union_sjr {
+  __typename @include(if: $rSGX)
+}

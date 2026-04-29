@@ -1,0 +1,43 @@
+query VFQ {
+  ...Fragment_jSC
+  vY(ajGmNhvhD: TJg) {
+    __typename
+  }
+  vY(ajGmNhvhD: TJg) {
+    ... on Union_R {
+      __typename
+    }
+    ... on Object_FyH {
+      ...Fragment_qi
+      Ay: f7O {
+        __typename
+      }
+    }
+  }
+  fnYBcre
+}
+
+fragment Fragment_LhY2nucO2F on Union_R {
+  __typename
+}
+
+fragment Fragment_jSC on Union_R {
+  op333D: __typename
+  ... on Object_Qv2tD1yKq {
+    ...Fragment_LhY2nucO2F
+    e: fnYBcre
+  }
+  ... on Object_FyH {
+    ...Fragment_LhY2nucO2F
+    __typename
+    ... on Union_d9pIxT {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_qi on Object_FyH {
+  f7O {
+    __typename
+  }
+}

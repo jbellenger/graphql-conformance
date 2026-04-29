@@ -1,0 +1,25 @@
+query fRbzsjK @Directive_BXPawLgG {
+  ...Fragment_pZq546
+  __typename
+  iYKDsiXLwt
+  __typename
+  ... on Object_UN36PcO {
+    __typename
+    iYKDsiXLwt
+  }
+}
+
+fragment Fragment_EDT9tzBGn on Union_PWHIf7e1p {
+  I3ORSCbaw: __typename
+}
+
+fragment Fragment_nk98YwT on Union_PWHIf7e1p {
+  ...Fragment_EDT9tzBGn
+  __typename
+  P9fKpJCm: __typename
+  __typename
+}
+
+fragment Fragment_pZq546 on Union_PWHIf7e1p {
+  ...Fragment_nk98YwT
+}

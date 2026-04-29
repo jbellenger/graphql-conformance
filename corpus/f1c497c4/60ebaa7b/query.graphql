@@ -1,0 +1,44 @@
+query vnU($k8CMC8wPs: Boolean!) {
+  ...Fragment_BaC
+  __typename
+  w41swgj9w
+  __typename @skip(if: $k8CMC8wPs)
+  ... on Union_B76B {
+    ...Fragment_ODKT8
+    ...Fragment_Y
+    ... on Union_B76B {
+      __typename
+      __typename
+      gl: __typename
+    }
+  }
+  ... on Union_B76B {
+    ... on Object_z @skip(if: $k8CMC8wPs) {
+      w41swgj9w
+      __typename
+    }
+  }
+}
+
+fragment Fragment_ODKT8 on Object_z {
+  __typename @skip(if: true)
+}
+
+fragment Fragment_BaC on Union_B76B {
+  __typename
+  ... on Union_B76B {
+    ...Fragment_ODKT8
+  }
+  ... on Union_B76B {
+    __typename
+  }
+}
+
+fragment Fragment_y9 on Object_z {
+  w41swgj9w
+}
+
+fragment Fragment_Y on Object_z {
+  ...Fragment_y9
+  __typename @include(if: true)
+}

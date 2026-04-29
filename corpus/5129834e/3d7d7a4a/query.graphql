@@ -1,0 +1,32 @@
+query r06 @Directive_GL2fY6e {
+  kosYoTX {
+    ...Fragment_RoXmv
+    r8qGhu3: __typename
+    h: __typename
+    bNxjmn: __typename
+    tu3BOw
+    ... on Interface_eI7LXbkDz0 {
+      tu3BOw
+      ... on Interface_eI7LXbkDz0_STUB {
+        tu3BOw
+      }
+    }
+    ... on Interface_eI7LXbkDz0_STUB {
+      ... on Interface_eI7LXbkDz0 {
+        QNmJhU: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_o on Interface_eI7LXbkDz0_STUB {
+  tu3BOw
+}
+
+fragment Fragment_RoXmv on Interface_eI7LXbkDz0 {
+  ...Fragment_o
+  tu3BOw
+  ... on Interface_eI7LXbkDz0_STUB @skip(if: false) {
+    z5I: qI
+  }
+}

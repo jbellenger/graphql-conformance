@@ -1,0 +1,23 @@
+{
+  ...Fragment_E1xz79
+  zaymdg: adK0QxKz3V
+}
+
+fragment Fragment_yCQv on Object_nnouKdL9 {
+  __typename
+}
+
+fragment Fragment_M5 on Union_z3iRHI {
+  ...Fragment_yCQv@defer(if: false, label: "*6")
+}
+
+fragment Fragment_E1xz79 on Object_nnouKdL9 {
+  ...Fragment_M5
+  ...Fragment_yCQv
+  s96 {
+    __typename
+    ... on Union_Y {
+      __typename
+    }
+  }
+}

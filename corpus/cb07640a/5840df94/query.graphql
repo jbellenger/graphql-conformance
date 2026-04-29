@@ -1,0 +1,36 @@
+query ($_DY6JOlGa: Boolean!) {
+  ... on Union_ZveOI1hNs {
+    ...Fragment_n9GURo@skip(if: $_DY6JOlGa)
+    ...Fragment_n9GURo
+    __typename
+    ... on Object_L7Z2 {
+      ... {
+        s3N @include(if: $_DY6JOlGa)
+      }
+    }
+  }
+  ... {
+    ...Fragment_RYBZC3k
+    ...Fragment_RYBZC3k
+  }
+}
+
+fragment Fragment_n9GURo on Object_L7Z2 {
+  wO
+  s3N
+  dX {
+    FYqTk1No: oSDfOG8 {
+      wO
+    }
+    jV_BA5E {
+      r
+    }
+  }
+  ... on Interface_A_ {
+    r8BxmTVw: wO @include(if: false)
+  }
+}
+
+fragment Fragment_RYBZC3k on Union_ZveOI1hNs {
+  ...Fragment_n9GURo@Directive_cpb
+}

@@ -1,0 +1,35 @@
+query V5x {
+  ...Fragment_Z1
+  ...Fragment_sqA
+  ...Fragment_Z1
+  ... on Union_R {
+    __typename
+    ... on Object_Qv2tD1yKq {
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_sqA on Object_Qv2tD1yKq {
+  __typename
+}
+
+fragment Fragment_pdDBSRi on Union_R {
+  ...Fragment_sqA
+}
+
+fragment Fragment__sw on Union_R {
+  ...Fragment_pdDBSRi
+  __typename
+  __typename
+  s6l: __typename
+  ... on Union_d9pIxT {
+    __typename @Directive__2
+  }
+}
+
+fragment Fragment_Z1 on Object_Qv2tD1yKq {
+  ...Fragment_pdDBSRi
+  ...Fragment__sw
+}

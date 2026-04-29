@@ -1,0 +1,19 @@
+query GUFiZAr {
+  ...Fragment_pQKz
+  puMdkAP {
+    ... on Union_HEf {
+      ...Fragment_pQKz
+      __typename
+      Bjf7px: __typename
+      ... on Object_lhsu5iZ {
+        ho1lVT2u
+      }
+    }
+  }
+}
+
+fragment Fragment_pQKz on Object_lhsu5iZ {
+  ... on Object_lhsu5iZ {
+    G2: __typename
+  }
+}

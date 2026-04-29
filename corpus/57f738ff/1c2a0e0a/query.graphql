@@ -1,0 +1,26 @@
+query _PsxtLhS {
+  __typename
+  qf
+  ... {
+    ...Fragment_w6
+    ...Fragment_G
+    ... on Object_ns {
+      j
+    }
+    ... on Union_o1shAhMM {
+      ...Fragment_MfKFG9Rw
+    }
+  }
+}
+
+fragment Fragment_w6 on Union_GnjF6efLi {
+  z_ol3ch7: __typename
+}
+
+fragment Fragment_G on Object_ns {
+  bZndZPK4cK: __typename
+}
+
+fragment Fragment_MfKFG9Rw on Object_ns {
+  qf
+}

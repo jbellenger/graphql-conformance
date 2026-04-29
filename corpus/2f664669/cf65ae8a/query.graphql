@@ -1,0 +1,28 @@
+query ($g: Boolean!) {
+  ...Fragment_FF
+  ... on Union_K4U60 {
+    ... on Union_MesTX {
+      ...Fragment_tu
+      ... on Union_K4U60 {
+        __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_cK6 on Union_MesTX {
+  __typename
+}
+
+fragment Fragment_tu on Union_K4U60 {
+  ...Fragment_cK6@Directive_r6 @include(if: $g)
+}
+
+fragment Fragment_FF on Union_MesTX {
+  ...Fragment_tu
+  __typename
+  ... on Object_Zzcj4Q {
+    ...Fragment_tu
+  }
+}

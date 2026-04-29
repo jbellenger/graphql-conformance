@@ -1,0 +1,32 @@
+query uxmHr($i_: Boolean! = false) {
+  aFA6rRZ {
+    aFA6rRZ {
+      ...Fragment_WUOJ
+    }
+    aFA6rRZ {
+      aFA6rRZ {
+        __typename
+      }
+      ... on Union_Xu7jyJo {
+        MolTjN6Y: __typename
+      }
+    }
+    ... on Union_i6_6wUwZc9 @defer(if: true, label: "/X") {
+      kdZdW: __typename
+      __typename
+      __typename
+    }
+    ... {
+      ...Fragment_g
+      __typename @skip(if: $i_)
+    }
+  }
+}
+
+fragment Fragment_WUOJ on Union_Xu7jyJo {
+  JqELbIY7k: __typename
+}
+
+fragment Fragment_g on Object_afdjMm_TSB {
+  __typename
+}

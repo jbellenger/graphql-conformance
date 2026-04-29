@@ -1,0 +1,37 @@
+query @Directive_T {
+  qm8r7zFF
+  __typename
+  ... on Union_K4U60 {
+    ...Fragment_In
+    ...Fragment_In
+    ... on Object_Zzcj4Q {
+      wqvUx: __typename
+    }
+    ... on Object_AtMPPdqBEM {
+      JAcA: jbyo
+      ... on Object_AtMPPdqBEM {
+        jbyo(f7QY: {q : {c : XeqSWQ3, mCwYmHd5Ip : {q : null, pfgWasH : null}, h : {yA : null, xNNDOe0Lfv : null, ac7N7 : null}}, pfgWasH : XeqSWQ3})
+      }
+    }
+  }
+  ... on Object_Zzcj4Q {
+    ... on Union_MesTX {
+      ...Fragment_In
+      ... on Object_Zzcj4Q {
+        qm8r7zFF
+        T: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_KCGP on Union_K4U60 {
+  __typename
+}
+
+fragment Fragment_In on Object_Zzcj4Q {
+  ...Fragment_KCGP@include(if: false)
+  ... on Union_K4U60 {
+    __typename
+  }
+}

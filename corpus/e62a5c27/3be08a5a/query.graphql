@@ -1,0 +1,12 @@
+query uEn1gcb6O {
+  ...Fragment_w6HU
+  ...Fragment_w6HU
+  ...Fragment_w6HU
+  ... on Object_faFnLw {
+    __typename
+  }
+}
+
+fragment Fragment_w6HU on Union_eN7k5rs {
+  bp: __typename
+}

@@ -1,0 +1,24 @@
+query ($mz5dJSKa: Boolean!) {
+  ...Fragment_dR9y7EEo@skip(if: $mz5dJSKa)
+  tHY
+  ... on Object_GZwlaH {
+    tHY
+  }
+  ... {
+    ...Fragment_dR9y7EEo
+    xVW
+  }
+}
+
+fragment Fragment_dk on Interface_rz3I1dmkP @Directive_g{
+  g
+}
+
+fragment Fragment_dR9y7EEo on Object_GZwlaH {
+  hCk9JfEv {
+    ...Fragment_dk
+    ... on Interface_rz3I1dmkP {
+      __typename
+    }
+  }
+}

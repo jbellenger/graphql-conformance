@@ -1,0 +1,14 @@
+{
+  __typename
+  ... on Object_IV3 {
+    ...Fragment_J5ECorsdS3
+  }
+}
+
+fragment Fragment_Hjgvvy on Object_IV3 {
+  __typename
+}
+
+fragment Fragment_J5ECorsdS3 on Union_syvgL {
+  ...Fragment_Hjgvvy
+}

@@ -1,0 +1,13 @@
+query ($a_zOiWXMDh: Boolean!) {
+  RN5hEyW: __typename
+  ... on Union_sUFi {
+    ... on Object_POcuibH @Directive_eA_esb_PR {
+      __typename @skip(if: $a_zOiWXMDh)
+    }
+    ... {
+      __typename
+      __typename @Directive_eA_esb_PR
+      __typename
+    }
+  }
+}

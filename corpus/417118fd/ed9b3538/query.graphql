@@ -1,0 +1,36 @@
+query ($nTvMiYNVl: Boolean! = true) {
+  ...Fragment_GiOod
+  ... on Object_kK {
+    ...Fragment_GiOod@include(if: $nTvMiYNVl)
+    ...Fragment_e_Ywk6
+    __typename
+    ... on Object_kK {
+      __typename @Directive_vclH
+    }
+  }
+  ... on Object_kK {
+    __typename
+  }
+  ... on Union_WXG5aIW8nO {
+    ...Fragment_e_Ywk6
+    ... on Object_n {
+      ...Fragment_GiOod
+      Pcy3Cg: __typename
+      __typename
+      ... on Object_n {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_GiOod on Union_WXG5aIW8nO {
+  R: __typename @skip(if: true)
+}
+
+fragment Fragment_e_Ywk6 on Object_kK {
+  aH8sOMReS: fdQAf4im {
+    NA9goX9: __typename
+  }
+  __typename
+}

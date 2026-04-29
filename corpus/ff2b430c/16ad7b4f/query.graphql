@@ -1,0 +1,32 @@
+{
+  ...Fragment_l5RdI39F
+  ... on Object_y9u {
+    ezk81QN {
+      ...Fragment_dcc
+      __typename
+      __typename
+    }
+    ... on Object_y9u {
+      ...Fragment_L
+    }
+  }
+  ... on Union_nkk {
+    ...Fragment_L
+    ... on Object_y9u {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_l5RdI39F on Object_y9u {
+  __typename
+}
+
+fragment Fragment_dcc on Union_DRI {
+  __typename
+}
+
+fragment Fragment_L on Union_nkk {
+  __typename
+  Q: __typename
+}

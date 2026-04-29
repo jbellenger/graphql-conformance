@@ -1,0 +1,9 @@
+query twx @Directive_nI1Qi8 {
+  ...Fragment_nC
+  ...Fragment_nC@include(if: true)
+  ...Fragment_nC
+}
+
+fragment Fragment_nC on Object_r {
+  WZViNtXTq: __typename
+}

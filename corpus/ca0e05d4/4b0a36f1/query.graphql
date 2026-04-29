@@ -1,0 +1,32 @@
+query HwcaAwDmxn($al5Vog: Enum_mrqvk!) @Directive_GGLEHrF {
+  ...Fragment_V@defer(label: "/F")
+  Mi: tCfApE6(ze3_BNr: $al5Vog) {
+    __typename
+  }
+  __typename
+}
+
+fragment Fragment_GlU5jyerSK on Union_Erp8FK_PeU {
+  __typename
+}
+
+fragment Fragment_ecuvX on Union_xt9 {
+  ...Fragment_GlU5jyerSK
+  tngCVqi: __typename
+  ... on Object_ww {
+    tCfApE6(ze3_BNr: Q) {
+      tJw0TzRWS(mVQ: {kfvFlC4bC : ebR}) {
+        __typename
+      }
+    }
+    __typename @include(if: false)
+  }
+}
+
+fragment Fragment_V on Union_xt9 {
+  ...Fragment_ecuvX
+  ...Fragment_ecuvX
+  aMZ: __typename @Directive_GGLEHrF
+  __typename
+  __typename
+}

@@ -1,0 +1,14 @@
+{
+  ... on Object_xI1ltEcP_3 {
+    ... on Union_pU3cI {
+      ...Fragment_JTt7zBe
+    }
+  }
+  ... on Object_xI1ltEcP_3 {
+    ht
+  }
+}
+
+fragment Fragment_JTt7zBe on Union_pU3cI {
+  __typename @include(if: true)
+}

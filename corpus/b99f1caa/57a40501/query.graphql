@@ -1,0 +1,42 @@
+query @Directive_EWc {
+  ...Fragment_uQzI@include(if: false)
+  MxYjUx: qYf6 {
+    tGjWLGtHR
+  }
+  qYf6: __typename
+  ... on Union_nIUBqPw {
+    ...Fragment_Ksk
+    ...Fragment_Ksk@skip(if: false)
+    __typename
+    __typename
+    __typename
+    ... on Union_lFpsAJEf {
+      __typename
+    }
+  }
+  ... on Union_nIUBqPw @Directive_EWc {
+    ...Fragment_o
+    ...Fragment_o
+  }
+  ... on Union_nIUBqPw {
+    __typename
+  }
+}
+
+fragment Fragment_Ksk on Object_Wt_abt {
+  hw: tHNffSaZcV
+}
+
+fragment Fragment_uQzI on Object_O7uKa @Directive_V5e52FYso{
+  ... {
+    __typename
+  }
+  ... on Union_nIUBqPw {
+    ...Fragment_Ksk
+    __typename
+  }
+}
+
+fragment Fragment_o on Object_kl7EGK {
+  tGjWLGtHR
+}

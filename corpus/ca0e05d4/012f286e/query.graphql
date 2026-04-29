@@ -1,0 +1,29 @@
+query @Directive_fe {
+  ...Fragment_I
+  ...Fragment_kPrNX7qDZ5@Directive_p9
+  kMz3KLm: tCfApE6(ze3_BNr: mPmA7D) {
+    __typename
+    q010upXP {
+      __typename
+    }
+    RYDAF6: __typename
+  }
+}
+
+fragment Fragment_I on Union_Erp8FK_PeU {
+  __typename
+  __typename
+  ... on Union_xt9 {
+    __typename
+  }
+}
+
+fragment Fragment_kPrNX7qDZ5 on Union_zmqRNYp {
+  __typename
+  ... on Union_Erp8FK_PeU {
+    ...Fragment_I@defer(if: false, label: "9Ke")
+    ... on Object_ww {
+      __typename
+    }
+  }
+}

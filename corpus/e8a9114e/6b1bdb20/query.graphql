@@ -1,0 +1,47 @@
+query YB67($kTMJN9xnK: Boolean!) {
+  ... on Object_lO {
+    ...Fragment_AiDSbp4q6R
+    q7wi {
+      __typename
+      ... on Union_m8iAX {
+        hN9xcxW: __typename
+      }
+    }
+    JiAL: juovKH {
+      ...Fragment_ykK
+      q7wi {
+        __typename
+      }
+    }
+  }
+  ... on Union_m8iAX {
+    __typename
+    __typename
+    __typename
+    __typename
+  }
+  ... on Union_b {
+    ...Fragment_ykK
+    ...Fragment_AiDSbp4q6R
+    ... on Union_NM {
+      ...Fragment_ykK
+    }
+    ... {
+      ...Fragment_AiDSbp4q6R
+      ... on Union_NM {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_ykK on Union_b {
+  __typename
+}
+
+fragment Fragment_AiDSbp4q6R on Object_lO @Directive__JAj61TYgJ{
+  ...Fragment_ykK
+  ... on Union_m8iAX {
+    __typename @include(if: $kTMJN9xnK)
+  }
+}

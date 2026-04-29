@@ -1,0 +1,26 @@
+query ($qqY: [Boolean!]) {
+  h {
+    ...Fragment_koZ3BD
+  }
+  h {
+    ... on Object_EIXROZw {
+      x1kDD(m9ss0FWS7: $qqY, robRw: YhqEhG2f)
+      ddZpVyRzo {
+        xj9IqsmRk
+      }
+    }
+    ... on Union_shp5o {
+      ...Fragment_koZ3BD
+      __typename
+    }
+  }
+  __typename
+  __typename
+  __typename
+}
+
+fragment Fragment_koZ3BD on Union_shp5o {
+  ... on Union__09bWHhS {
+    __typename
+  }
+}

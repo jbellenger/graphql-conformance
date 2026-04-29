@@ -1,0 +1,19 @@
+query SFkCVT6tbz {
+  ...Fragment_g
+  ...Fragment_XRuiYM5
+}
+
+fragment Fragment_Tct on Union_S {
+  __typename
+}
+
+fragment Fragment_XRuiYM5 on Object_WYx3 {
+  ...Fragment_Tct@skip(if: false)
+}
+
+fragment Fragment_g on Object_WYx3 @Directive_Bq @Directive_N{
+  ...Fragment_XRuiYM5
+  ... @defer(if: true, label: "w$5") {
+    __typename
+  }
+}

@@ -1,0 +1,31 @@
+{
+  __typename
+  C515B: __typename
+  ... on Interface_U {
+    __typename
+  }
+  ... on Union_EEQmr {
+    ... on Union_NfjDEi {
+      ...Fragment_SqCSccJd1
+      ... on Union_EEQmr {
+        CcgGLzwl: __typename
+      }
+    }
+    ... on Union_NfjDEi @Directive_ufdAYD {
+      __typename
+    }
+  }
+  ... on Interface_U {
+    __typename
+    F1Fyr: qNaeMH1Jed
+    qNaeMH1Jed
+    qZm7znMZK: e6yBTi6 {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_SqCSccJd1 on Union_EEQmr {
+  __typename @include(if: false)
+  __typename
+}

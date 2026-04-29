@@ -1,0 +1,5 @@
+{
+  ... on Union_xF @defer(if: true, label: "[_") {
+    __typename
+  }
+}

@@ -1,0 +1,29 @@
+query ($d9JnvD8S: Boolean!) {
+  ... on Object_xI1ltEcP_3 {
+    ht
+  }
+  ... on Object_xI1ltEcP_3 {
+    ...Fragment_jZyELzC@Directive_igIct0(h: QZG1S)
+    tO: bKSmH {
+      ... on Object_sKJ3vz {
+        x2Y2wi
+      }
+    }
+    ... on Union_pU3cI {
+      __typename
+      __typename
+    }
+    ... on Union_pU3cI @defer(label: "}Q/") {
+      __typename
+      __typename @include(if: $d9JnvD8S)
+    }
+  }
+}
+
+fragment Fragment_AfaX on Union_pU3cI {
+  qb: __typename
+}
+
+fragment Fragment_jZyELzC on Union_pU3cI {
+  ...Fragment_AfaX
+}

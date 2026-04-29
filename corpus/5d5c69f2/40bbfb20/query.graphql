@@ -1,0 +1,40 @@
+query nQ0($xd8CiSKqVQ: Float = 4.176296265034442E+307@Directive_M, $c: Boolean!) {
+  rVEFuF3V4r(zWgDh0fu: 4.70908033499187E+306) {
+    ...Fragment_V050AI
+  }
+  isFDs0gz
+  ... on Object_F {
+    ...Fragment_V050AI
+    P: rVEFuF3V4r(zWgDh0fu: -8.33191896132234E+307) {
+      ...Fragment_W8Qnkh
+    }
+    __typename
+    ... on Object_F @include(if: $c) {
+      ...Fragment_AhNigDw7vn
+      phLPUfbu8u: rVEFuF3V4r(zWgDh0fu: $xd8CiSKqVQ) {
+        a: __typename @Directive_qKsZ4g
+      }
+    }
+    ... on Union_a2h @skip(if: true) {
+      ... on Object_F {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_CnA0PCRl on Union_IMe5hl {
+  __typename
+}
+
+fragment Fragment_V050AI on Union_a2h {
+  ...Fragment_CnA0PCRl@Directive_M @include(if: true)
+}
+
+fragment Fragment_W8Qnkh on Union_a2h {
+  __typename
+}
+
+fragment Fragment_AhNigDw7vn on Union_a2h {
+  __typename
+}

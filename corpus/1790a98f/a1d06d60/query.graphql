@@ -1,0 +1,14 @@
+query sWO0qejN {
+  ... on Object_SE {
+    ... on Union_Que {
+      ...Fragment_VbqYO7@include(if: true)
+    }
+    ... on Union_Que {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_VbqYO7 on Object_qIcsq7M {
+  __typename
+}

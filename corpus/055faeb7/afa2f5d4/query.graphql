@@ -1,0 +1,31 @@
+query joNpF0z9 {
+  m1ztytiyt {
+    gyXxrD
+    __typename
+  }
+  m1ztytiyt {
+    gyXxrD @include(if: false) @Directive_u9CT
+    gyXxrD
+    ... on Interface_lun17 {
+      ...Fragment_kQ
+    }
+    ... on Union_s7PEnFz {
+      ...Fragment_kQ
+    }
+  }
+  ... on Union_s7PEnFz {
+    ...Fragment_aDeOLhb1
+    ...Fragment_aDeOLhb1@Directive_TCJs8xM
+  }
+}
+
+fragment Fragment_kQ on Interface_lun17 {
+  jG5miIo6: __typename
+}
+
+fragment Fragment_aDeOLhb1 on Interface_lun17 {
+  ...Fragment_kQ
+  ... on Union_s7PEnFz {
+    VDx: __typename
+  }
+}

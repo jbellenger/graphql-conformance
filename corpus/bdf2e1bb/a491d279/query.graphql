@@ -1,0 +1,67 @@
+query ULlzaAg6wK($y6: Boolean!) @Directive_GYk3 {
+  ...Fragment_mFX
+  ...Fragment_mFX
+  __typename
+  ... on Union_kbvn1Yqowd @include(if: false) {
+    ...Fragment_mFX
+    __typename
+    __typename
+    __typename
+    __typename
+    ... on Object_ClW @include(if: true) {
+      ...Fragment_xIz94
+      c3CrXUd4 {
+        i
+      }
+      i
+      c3CrXUd4 {
+        lc89
+      }
+    }
+  }
+  ... on Union_kbvn1Yqowd {
+    ... on Object_kb {
+      ... on Object_kb {
+        __typename
+      }
+    }
+    ... on Object_kb {
+      ...Fragment_mFX
+    }
+  }
+  ... on Object_kb {
+    ... {
+      h4d: __typename
+      or6 {
+        __typename
+      }
+      jLIK: __typename
+    }
+    ... on Object_kb {
+      or6 {
+        __typename
+        __typename
+      }
+      ... on Union_kbvn1Yqowd {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_mFX on Object_kb {
+  ... on Union_kbvn1Yqowd {
+    __typename
+    __typename
+    ... on Union_kbvn1Yqowd {
+      hskr: __typename
+    }
+  }
+  ... on Object_kb @Directive_jTseHzpoKx @include(if: $y6) {
+    __typename
+  }
+}
+
+fragment Fragment_xIz94 on Union_kbvn1Yqowd {
+  qYZzit: __typename
+}

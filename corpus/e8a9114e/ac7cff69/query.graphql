@@ -1,0 +1,23 @@
+query jl {
+  ... on Union_m8iAX {
+    ...Fragment_LOjcq1jKdN
+    ... on Object_j {
+      cT0WhG: __typename
+      x3
+    }
+  }
+  ... on Union_b @Directive_oFy {
+    ...Fragment_LOjcq1jKdN
+  }
+  ... on Union_b {
+    ODpmVXad: __typename
+    __typename
+  }
+}
+
+fragment Fragment_LOjcq1jKdN on Object_lO {
+  ... on Union_b {
+    __typename
+    __typename @skip(if: true)
+  }
+}

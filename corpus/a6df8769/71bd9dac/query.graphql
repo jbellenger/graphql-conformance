@@ -1,0 +1,23 @@
+{
+  bRdB {
+    ...Fragment_la
+  }
+}
+
+fragment Fragment_MzqMAj on Object_BMh {
+  __typename
+}
+
+fragment Fragment_la on Object_BMh {
+  ...Fragment_MzqMAj
+  __typename
+  __typename
+  bRdB {
+    bRdB {
+      __typename
+    }
+  }
+  ... {
+    fMWYXQt2S: __typename
+  }
+}

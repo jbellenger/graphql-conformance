@@ -1,0 +1,13 @@
+query H7 {
+  ...Fragment_SFbO3Q
+  ...Fragment_SFbO3Q@defer(if: false, label: "m")
+}
+
+fragment Fragment_m on Object__5RImjW {
+  __typename
+}
+
+fragment Fragment_SFbO3Q on Object__5RImjW {
+  ...Fragment_m
+  __typename
+}

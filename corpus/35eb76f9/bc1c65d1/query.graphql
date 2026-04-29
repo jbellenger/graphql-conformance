@@ -1,0 +1,23 @@
+query ($s2jMHOSd: Boolean!) {
+  ...Fragment_Q8w
+  ...Fragment_GpEO
+  ...Fragment_Q8w
+}
+
+fragment Fragment_Q8w on Object__Xgg @Directive_hIT{
+  vSU76yk
+  __typename
+  vSU76yk @skip(if: $s2jMHOSd)
+}
+
+fragment Fragment_GpEO on Object__Xgg @Directive_hIT{
+  vSU76yk
+  __typename
+  vSU76yk
+  ... on Union_wzeoRDteYK @Directive_vdQLp7CUf {
+    ...Fragment_Q8w
+    ... on Union_wzeoRDteYK {
+      __typename
+    }
+  }
+}

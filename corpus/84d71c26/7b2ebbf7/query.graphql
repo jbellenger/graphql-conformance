@@ -1,0 +1,42 @@
+{
+  ...Fragment_RgH
+  __typename
+  ... on Object_mLU61Sm {
+    ...Fragment_RgH
+    ... on Union_avf @defer(if: true, label: "") @include(if: false) {
+      __typename
+    }
+  }
+  ... on Union_avf {
+    ...Fragment_sgfSwVzZY@defer(if: true, label: "v")
+  }
+  ... on Object_mLU61Sm {
+    __typename
+    ... {
+      __typename
+    }
+    ... on Union_avf {
+      ...Fragment_RgH
+      __typename
+    }
+  }
+}
+
+fragment Fragment_sgfSwVzZY on Object_mLU61Sm {
+  ... on Object_mLU61Sm {
+    __typename
+  }
+}
+
+fragment Fragment_RgH on Object_mLU61Sm {
+  ...Fragment_sgfSwVzZY
+  ...Fragment_sgfSwVzZY
+  ... on Union_avf {
+    ...Fragment_sgfSwVzZY
+    __typename
+    ... on Union_avf {
+      __typename
+      __typename
+    }
+  }
+}

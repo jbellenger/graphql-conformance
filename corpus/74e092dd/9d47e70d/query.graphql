@@ -1,0 +1,15 @@
+{
+  z93 {
+    ...Fragment_DaW08UY6
+    ...Fragment_DaW08UY6
+  }
+  __typename
+}
+
+fragment Fragment_S01gRj7Ka on Interface_p5Vzuie_STUB {
+  __typename
+}
+
+fragment Fragment_DaW08UY6 on Interface_p5Vzuie_STUB @Directive_mI6vq{
+  ...Fragment_S01gRj7Ka
+}

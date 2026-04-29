@@ -1,0 +1,28 @@
+query ($lD: Float) {
+  ...Fragment__3S
+  isFDs0gz
+  ... {
+    rVEFuF3V4r(zWgDh0fu: $lD) {
+      ...Fragment_hh7app6K5
+    }
+  }
+}
+
+fragment Fragment_hh7app6K5 on Object_n2af {
+  ... on Object_n2af {
+    xa
+  }
+}
+
+fragment Fragment__3S on Union_a2h {
+  ...Fragment_hh7app6K5
+  ... on Union_a2h @include(if: true) @Directive_qKsZ4g {
+    ...Fragment_hh7app6K5
+    ... on Object_n2af @defer(if: true, label: "x8") {
+      o5R43 {
+        __typename
+      }
+      xa
+    }
+  }
+}

@@ -1,0 +1,7 @@
+query ($xBiM7Ii: Boolean!) {
+  ...Fragment_M1T3TMc
+}
+
+fragment Fragment_M1T3TMc on Interface_R0FT9 {
+  wZkLmm @include(if: $xBiM7Ii)
+}

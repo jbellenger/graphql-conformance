@@ -1,0 +1,23 @@
+{
+  ...Fragment_cWJ9oBtl
+  __typename
+}
+
+fragment Fragment_jQ on Union_o1shAhMM {
+  __typename
+}
+
+fragment Fragment_JOA on Object_Wwdo {
+  __typename @Directive_GUt9G_LFW
+}
+
+fragment Fragment_cWJ9oBtl on Union_GnjF6efLi {
+  __typename
+  ... on Object_ns {
+    ...Fragment_jQ
+    lKWGe7B3w8: j
+  }
+  ... on Union_JUETW {
+    ...Fragment_JOA
+  }
+}

@@ -1,0 +1,28 @@
+{
+  __typename
+  ... on Object_XEh {
+    Gp0dS: __typename
+    kosYoTX {
+      ...Fragment_SrK
+      tu3BOw
+    }
+    ... on Union__ {
+      UHu5uq_: __typename
+      ... on Union__ {
+        __typename
+        __typename
+      }
+    }
+    ... on Union__ {
+      ...Fragment_miM
+    }
+  }
+}
+
+fragment Fragment_SrK on Interface_eI7LXbkDz0_STUB {
+  T: tu3BOw
+}
+
+fragment Fragment_miM on Object_SX {
+  __typename
+}

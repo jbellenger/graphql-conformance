@@ -1,0 +1,21 @@
+query @Directive_GL2fY6e {
+  ...Fragment_F3dG0r
+  ...Fragment_F3dG0r
+}
+
+fragment Fragment_kS1hPTpy0 on Union_MQ {
+  VdnKuxDV: __typename
+}
+
+fragment Fragment_F3dG0r on Union__ @Directive_GL2fY6e{
+  __typename
+  ... on Union_hFwA6Reav {
+    __typename @Directive_aCg
+  }
+  ... on Union_hFwA6Reav {
+    ...Fragment_kS1hPTpy0
+    mPl_: __typename
+    T13: __typename
+    D: __typename
+  }
+}

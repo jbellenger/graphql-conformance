@@ -1,0 +1,18 @@
+query JSjA {
+  ...Fragment_rNba7s1L
+  __typename
+  __typename
+}
+
+fragment Fragment_nx_GKG4 on Union_B {
+  __typename
+}
+
+fragment Fragment_rNba7s1L on Union_B {
+  ... on Object_v3SzEN {
+    __typename
+  }
+  ... on Union_aHa5eR0J5 {
+    ...Fragment_nx_GKG4
+  }
+}

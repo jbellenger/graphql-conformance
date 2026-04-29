@@ -1,0 +1,17 @@
+{
+  ...Fragment_Fa
+  ... on Object_ivbme4MRt {
+    TwQYxhNcsw: xp2sMRZ
+  }
+}
+
+fragment Fragment_rgAD on Object_ivbme4MRt {
+  ... {
+    xp2sMRZ
+  }
+}
+
+fragment Fragment_Fa on Object_ivbme4MRt {
+  ...Fragment_rgAD
+  ...Fragment_rgAD
+}

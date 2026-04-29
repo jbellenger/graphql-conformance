@@ -1,0 +1,31 @@
+query u9GSXpMHX {
+  stvL: bRdB {
+    __typename
+  }
+  u7_DZX {
+    ...Fragment_SzCcWfh
+    ...Fragment_SzCcWfh
+    ... on Union_MWLdgc {
+      ...Fragment_SzCcWfh
+      ... {
+        __typename
+      }
+    }
+  }
+  ... on Object_BMh {
+    ...Fragment_vC6ri7Y
+    u7_DZX {
+      __typename @skip(if: true)
+    }
+  }
+}
+
+fragment Fragment_SzCcWfh on Union_HEuBE {
+  DNq2y: __typename
+}
+
+fragment Fragment_vC6ri7Y on Object_BMh {
+  bRdB {
+    __typename
+  }
+}

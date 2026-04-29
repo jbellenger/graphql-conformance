@@ -1,0 +1,53 @@
+{
+  ...Fragment_E2d_xVjh2A
+  ...Fragment_QRVoVQ8_DU
+  ...Fragment_OLNF_4
+  _70oVu: um(kFiNs9H: {fLQczEd : 1.2185841493696838E+308, q9SoK : {fLQczEd : 1.410222392194618E+308, q9SoK : {q9SoK : null}}}) @skip(if: false) {
+    ... on Object_f1 {
+      ...Fragment_OLNF_4
+      ... on Union_r3fLDCqUv {
+        y: __typename
+        __typename
+      }
+    }
+  }
+  um(kFiNs9H: {fLQczEd : 1.190968204809702E+308, q9SoK : {fLQczEd : -1.2614512292237892E+308, q9SoK : {q9SoK : null}}}) {
+    __typename
+  }
+  pWI9NE8VQ {
+    __typename
+    ... on Union_r3fLDCqUv {
+      ...Fragment_E2d_xVjh2A
+      mimX2A: __typename
+    }
+  }
+  __typename
+  cgu
+}
+
+fragment Fragment_QRVoVQ8_DU on Object_U92jm3n0Y {
+  __typename
+  ... on Object_U92jm3n0Y {
+    __typename
+  }
+}
+
+fragment Fragment_E2d_xVjh2A on Interface_QLendjrHo {
+  ...Fragment_QRVoVQ8_DU
+  ...Fragment_QRVoVQ8_DU
+}
+
+fragment Fragment_oGqGT3Q on Object_f1 {
+  gAW
+}
+
+fragment Fragment_OLNF_4 on Union_r3fLDCqUv {
+  ... on Union_SQ {
+    ...Fragment_oGqGT3Q
+    __typename
+    ... on Union_SQ {
+      __typename
+      __typename
+    }
+  }
+}

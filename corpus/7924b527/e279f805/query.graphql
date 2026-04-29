@@ -1,0 +1,55 @@
+{
+  ... on Object_c {
+    ...Fragment_ow
+    hhjPPLQ {
+      u5 {
+        wK {
+          __typename
+        }
+        d9 @Directive_HkYpOlaJvf {
+          va4a: kp
+        }
+      }
+      ... @Directive_VTsZFor @include(if: true) {
+        u5 {
+          __typename
+        }
+        u5 @Directive_HkYpOlaJvf {
+          wK {
+            __typename
+          }
+        }
+      }
+    }
+    X: u5 {
+      ...Fragment_Z9Oig
+      __typename
+      ... on Union_p {
+        __typename
+        __typename
+      }
+    }
+    U9: __typename
+    ... on Object_c {
+      ... on Object_c {
+        hhjPPLQ {
+          u5 {
+            Op: __typename
+          }
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_ow on Object_c {
+  J: __typename
+}
+
+fragment Fragment_Z9Oig on Object_fgAjVG76Pc {
+  d9 {
+    kp: d6L {
+      __typename
+    }
+  }
+}

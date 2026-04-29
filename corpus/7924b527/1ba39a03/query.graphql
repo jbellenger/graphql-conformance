@@ -1,0 +1,30 @@
+{
+  u5 {
+    ...Fragment_QPeYS
+    ...Fragment_pgel
+    __typename
+    d9 @skip(if: true) {
+      bFYymJ: __typename
+    }
+    ... on Union_y7seHTQUjo {
+      __typename
+    }
+    ... on Union_OUuWmLByA {
+      HopnFGdAN: __typename
+      __typename
+      __typename
+    }
+  }
+  __typename
+}
+
+fragment Fragment_pgel on Union_y7seHTQUjo @Directive_fnsXp_R{
+  __typename
+}
+
+fragment Fragment_QPeYS on Union_p {
+  ...Fragment_pgel
+  ... on Union_y7seHTQUjo {
+    __typename
+  }
+}

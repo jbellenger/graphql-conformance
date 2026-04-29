@@ -1,0 +1,28 @@
+{
+  ... on Union_TvQglQ8 @Directive_Ok6kpamnKj {
+    ...Fragment_I
+    ...Fragment_I
+  }
+  ... on Union_TvQglQ8 {
+    ... on Union_Hb5Bmdru0_ {
+      ...Fragment_I
+      __typename
+      __typename
+      ... on Union_TvQglQ8 @defer(if: true, label: null) {
+        __typename
+      }
+    }
+    ... on Union_d {
+      ...Fragment_I
+      gB2z8xzF: __typename
+      __typename
+      ... on Object_ZNwv {
+        DiSRfP0: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_I on Union_TvQglQ8 {
+  __typename
+}

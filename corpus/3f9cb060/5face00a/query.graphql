@@ -1,0 +1,29 @@
+{
+  nqA
+  ... on Union_wdb9 @include(if: false) {
+    ... on Object_hO0V8geoN {
+      ...Fragment_ZzyB4n
+    }
+    ... on Union_CLjL {
+      ...Fragment_ZzyB4n
+      ... on Union_y0BxF2 {
+        __typename
+      }
+    }
+  }
+  ... on Union_wdb9 {
+    ... on Object_ryYiQ {
+      __typename
+    }
+    ... on Union_y0BxF2 {
+      __typename
+      ... on Object_ryYiQ {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_ZzyB4n on Union_wdb9 {
+  __typename
+}

@@ -1,0 +1,22 @@
+query RuJ {
+  ...Fragment_XeE@defer(if: false, label: "9+")
+  iPwNA: hswnn7emV
+  h3Gypa
+}
+
+fragment Fragment_sf3l on Union_k1ht {
+  __typename
+}
+
+fragment Fragment_Dr on Union_c @Directive_EBLoPA{
+  ...Fragment_sf3l
+  __typename
+  __typename
+  ... on Object_kvHhe {
+    h3Gypa
+  }
+}
+
+fragment Fragment_XeE on Union_c {
+  ...Fragment_Dr
+}

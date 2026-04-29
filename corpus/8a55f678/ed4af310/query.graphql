@@ -1,0 +1,23 @@
+query Lp6BOX {
+  ...Fragment_K
+  ...Fragment_K@skip(if: false)
+}
+
+fragment Fragment_K on Object_erg {
+  KBWa5Fm7I1: i1Yq7Y @Directive_Tp9 @Directive_OvUOs8t9p
+  qyiXG53JLA {
+    W9: __typename
+    ... on Interface_LkKk9_STUB {
+      vpIvCu4 {
+        vpIvCu4 {
+          __typename
+        }
+      }
+    }
+  }
+  ... on Object_erg {
+    ... on Object_erg {
+      i1Yq7Y
+    }
+  }
+}

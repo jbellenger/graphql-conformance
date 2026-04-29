@@ -1,0 +1,35 @@
+query ($fUjK: Boolean!) {
+  ...Fragment_RFkn
+  ...Fragment_RFkn
+  __typename
+  e6yBTi6 {
+    w: __typename
+    PLvQ4l: __typename
+    ... on Union_EEQmr @defer(label: "!-c") {
+      __typename
+      __typename
+    }
+  }
+  qNaeMH1Jed @include(if: $fUjK)
+}
+
+fragment Fragment_AncT48n7os on Union_EEQmr {
+  __typename
+}
+
+fragment Fragment_M9djJX on Object_AqqewV1_ {
+  ...Fragment_AncT48n7os@include(if: false)
+}
+
+fragment Fragment_NeCk_M on Union_EEQmr {
+  ...Fragment_M9djJX
+}
+
+fragment Fragment_RFkn on Union_EEQmr {
+  ...Fragment_M9djJX
+  ...Fragment_NeCk_M
+  __typename
+  __typename
+  __typename @skip(if: true)
+  bytOzV78: __typename
+}

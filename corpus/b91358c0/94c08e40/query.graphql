@@ -1,0 +1,16 @@
+{
+  ...Fragment_HnO8eIIP
+  OwNEs4Elp: fnYBcre
+}
+
+fragment Fragment_ZOS67r1F on Union_d9pIxT @Directive_P{
+  __typename
+  ... on Union_R {
+    __typename
+    __typename @skip(if: false)
+  }
+}
+
+fragment Fragment_HnO8eIIP on Union_R {
+  ...Fragment_ZOS67r1F
+}

@@ -1,0 +1,22 @@
+{
+  ...Fragment_h
+  ...Fragment_h@include(if: true)
+  ...Fragment_h
+  ... on Union_HEf {
+    __typename
+  }
+}
+
+fragment Fragment_EpNu3 on Union_cB1tP6 {
+  __typename
+}
+
+fragment Fragment_AL5QND3Xd on Union_HEf {
+  ...Fragment_EpNu3@Directive_RE
+}
+
+fragment Fragment_h on Union_cB1tP6 {
+  ...Fragment_AL5QND3Xd
+  __typename
+  __typename
+}

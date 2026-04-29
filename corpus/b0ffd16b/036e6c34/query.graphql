@@ -1,0 +1,44 @@
+query hIpD($pdL: Boolean!) @Directive_AGsN {
+  ...Fragment_KS
+  ...Fragment_KS
+  cGiqS4wSQ
+  __typename
+  cGiqS4wSQ
+  iEw546Y @include(if: $pdL) {
+    ...Fragment_MwdNOhN4a
+    ...Fragment_KS
+  }
+  cGiqS4wSQ
+  ... on Union_UV5 {
+    __typename
+  }
+  ... on Object_zXp {
+    ... on Object_zXp {
+      ...Fragment_KS
+      __typename
+    }
+  }
+  ... on Object_zXp {
+    __typename
+  }
+}
+
+fragment Fragment__3jN1 on Union_UV5 {
+  __typename
+  __typename
+}
+
+fragment Fragment_MwdNOhN4a on Object_zXp {
+  ...Fragment__3jN1@defer(if: true, label: "7P9")
+  iEw546Y {
+    __typename
+  }
+  ... on Union_UV5 {
+    __typename
+    yETQuD0V: __typename
+  }
+}
+
+fragment Fragment_KS on Object_zXp {
+  ...Fragment_MwdNOhN4a
+}

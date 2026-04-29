@@ -1,0 +1,33 @@
+query e3($yBOb0V: Boolean!) {
+  hCk9JfEv {
+    ...Fragment_Wy
+    ...Fragment_Wy
+    ... on Interface_P {
+      ...Fragment_Wy
+    }
+    ... on Interface_rz3I1dmkP {
+      ... on Interface_rz3I1dmkP_STUB {
+        nvq48: g
+      }
+    }
+  }
+  ... on Union_HWh0 {
+    __typename
+  }
+  ... on Interface_hY6EDx6 {
+    xVW
+  }
+}
+
+fragment Fragment_Wy on Interface_P_STUB {
+  f
+  s6 {
+    slAyHmXzbS: g @skip(if: $yBOb0V)
+  }
+  gdWWl {
+    __typename
+  }
+  ... on Interface_rz3I1dmkP {
+    __typename
+  }
+}

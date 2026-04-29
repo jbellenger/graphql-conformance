@@ -1,0 +1,16 @@
+query I8($e: Boolean!) {
+  ... on Object_c {
+    u5 {
+      fhum: d9 {
+        d6L {
+          __typename @include(if: true) @skip(if: false)
+        }
+      }
+      y82nbxUrCO
+      ... on Union_OUuWmLByA @include(if: $e) {
+        iVP: __typename
+      }
+    }
+    __typename
+  }
+}

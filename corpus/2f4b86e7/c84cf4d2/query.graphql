@@ -1,0 +1,25 @@
+query ($f6sr8R: Input_Y8Zn) {
+  ...Fragment_Rk
+  ...Fragment_Rk@defer(if: false, label: "v!")
+  BlxB3: __typename
+  __typename
+  ... on Union_TEwpsv {
+    __typename
+  }
+}
+
+fragment Fragment_wxft697z7 on Object_D58U2Z6Z {
+  cVihO1h(h: $f6sr8R) @Directive_cUjIW
+}
+
+fragment Fragment_ve5 on Union_l {
+  ...Fragment_wxft697z7
+}
+
+fragment Fragment_Rk on Union_TEwpsv {
+  ...Fragment_ve5
+  ...Fragment_ve5
+  __typename
+  deC: __typename
+  __typename
+}

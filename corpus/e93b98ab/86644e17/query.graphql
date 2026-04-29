@@ -1,0 +1,10 @@
+query jJlUClb9kL {
+  ... on Union_EA850 {
+    ...Fragment_DIV@defer(if: true, label: "n{y")
+    __typename
+  }
+}
+
+fragment Fragment_DIV on Union_gTo {
+  __typename
+}

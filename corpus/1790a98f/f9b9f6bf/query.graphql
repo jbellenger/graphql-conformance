@@ -1,0 +1,36 @@
+query d7W4z($tA: Boolean! = true) {
+  h2hpA @skip(if: $tA) {
+    __typename @Directive_BEIfKP4WG8(tq6EYzf_: null) @skip(if: $tA)
+    __typename
+    __typename
+  }
+  __typename
+  h2hpA {
+    ...Fragment_bW
+    ... on Object_qIcsq7M {
+      RXy: eSL2EGAMt {
+        u5AJ72UL
+      }
+    }
+    ... on Union_eVul {
+      __typename
+    }
+  }
+  ... on Union_Que {
+    ... on Object_SE {
+      ... on Object_SE {
+        ii3Ifh(rTDDkev: RIq727Xz) @skip(if: $tA)
+      }
+    }
+  }
+}
+
+fragment Fragment_KmD on Union_xYHu9bho {
+  __typename
+}
+
+fragment Fragment_bW on Union_Que {
+  ...Fragment_KmD
+  __typename
+  __typename
+}

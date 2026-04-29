@@ -1,0 +1,45 @@
+query MVl($d_iK: [Input_Vpt]) {
+  ...Fragment_enKXrxu
+  ...Fragment_enKXrxu
+  ...Fragment_enKXrxu
+  gOidQFad
+  ... on Union_AXeBf6v3sK @Directive_PUda6NR {
+    ...Fragment_enKXrxu
+    ...Fragment_ai9M
+    __typename
+  }
+  ... on Object_bDDDDDDDDD {
+    ... on Union_AXeBf6v3sK {
+      ...Fragment_ai9M
+      ... on Object_ChcGq {
+        lrL5
+      }
+    }
+    ... on Union_AXeBf6v3sK {
+      ...Fragment_ai9M
+      gFiXGz_: __typename
+      vmvw7Lcu: __typename
+      ... on Union_AXeBf6v3sK {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_enKXrxu on Object_bDDDDDDDDD @Directive_PUda6NR{
+  ... on Union_AXeBf6v3sK {
+    NMQ4l: __typename
+  }
+  ... on Union_O3 {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_ai9M on Union_O3 {
+  ...Fragment_enKXrxu
+  __typename
+  ... on Union_AXeBf6v3sK {
+    __typename @Directive_f4(jND: $d_iK)
+  }
+}

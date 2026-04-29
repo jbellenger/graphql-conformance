@@ -1,0 +1,18 @@
+query tGnAx4Js {
+  ...Fragment_kWfLd
+  ... on Interface_hY6EDx6 @defer(label: null) {
+    xVW
+  }
+  ... on Union_HWh0 {
+    ... on Union_HWh0 @defer(if: true, label: ":") {
+      ...Fragment_kWfLd
+      ... on Interface_hY6EDx6 {
+        xVW
+      }
+    }
+  }
+}
+
+fragment Fragment_kWfLd on Object_GZwlaH {
+  tHY
+}

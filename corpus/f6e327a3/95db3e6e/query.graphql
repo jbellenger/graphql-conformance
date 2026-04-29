@@ -1,0 +1,20 @@
+query @Directive_l3dF {
+  ...Fragment_tUCfa
+  rQsNqKhNv: kwX
+}
+
+fragment Fragment_yY on Object_vd5FzuQql {
+  kwX
+  kwX @Directive_wO6
+  kwX
+}
+
+fragment Fragment_tUCfa on Object_vd5FzuQql {
+  ...Fragment_yY
+  ...Fragment_yY
+  ... on Object_vd5FzuQql {
+    ... on Object_vd5FzuQql {
+      kwX
+    }
+  }
+}

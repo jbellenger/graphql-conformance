@@ -1,0 +1,11 @@
+query RZeA {
+  ...Fragment_Dq92A3zuet
+}
+
+fragment Fragment_a4 on Union_Y_ {
+  __typename
+}
+
+fragment Fragment_Dq92A3zuet on Object_SGq {
+  ...Fragment_a4
+}

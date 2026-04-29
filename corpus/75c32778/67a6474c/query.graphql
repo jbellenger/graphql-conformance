@@ -1,0 +1,42 @@
+query P {
+  g3VfV
+  g3VfV
+  ERn6OeP1: g3VfV @skip(if: true) @include(if: false) @Directive_RbiG
+  ... on Object_hPDum @Directive_RbiG {
+    ...Fragment_Jj8u0TdeP
+    g3VfV
+    ... on Object_hPDum {
+      __typename
+    }
+    ... on Object_hPDum {
+      ...Fragment_Jj8u0TdeP
+    }
+  }
+  ... on Object_hPDum {
+    ...Fragment_Qpgd
+    ...Fragment_Jj8u0TdeP
+    __typename
+    ... on Object_hPDum {
+      ...Fragment_cT3If
+    }
+    ... on Object_hPDum {
+      ...Fragment_cT3If
+    }
+  }
+  ... on Object_hPDum {
+    ...Fragment_Qpgd
+    g3VfV
+  }
+}
+
+fragment Fragment_Jj8u0TdeP on Union_MWV9u {
+  __typename
+}
+
+fragment Fragment_Qpgd on Object_hPDum {
+  ...Fragment_Jj8u0TdeP
+}
+
+fragment Fragment_cT3If on Object_hPDum {
+  g3VfV
+}

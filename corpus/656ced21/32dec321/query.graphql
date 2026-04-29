@@ -1,0 +1,7 @@
+query ($e: Boolean!) {
+  qd @skip(if: $e) {
+    ... {
+      __typename
+    }
+  }
+}

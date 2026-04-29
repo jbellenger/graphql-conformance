@@ -1,0 +1,27 @@
+{
+  ...Fragment_xiSea4px
+  ...Fragment_WtbXr
+  ...Fragment_WtbXr
+  __typename
+  q2z
+}
+
+fragment Fragment_xiSea4px on Object_OWEIJjb {
+  lp
+  q2z
+  wc78hUps: q2z
+  lp
+}
+
+fragment Fragment_ig on Object_OWEIJjb {
+  ...Fragment_xiSea4px
+  xRrbdOb8pc
+  yHQIGiusb: xRrbdOb8pc @Directive_ZyGMfhjgJM
+}
+
+fragment Fragment_WtbXr on Object_OWEIJjb {
+  ...Fragment_ig
+  xRrbdOb8pc
+  lp
+  lp
+}

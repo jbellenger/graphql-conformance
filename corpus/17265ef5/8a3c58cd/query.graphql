@@ -1,0 +1,14 @@
+query kNlDUA70Ub {
+  ...Fragment_DpIn5
+  ...Fragment_DpIn5
+  ...Fragment_eXE6L
+}
+
+fragment Fragment_eXE6L on Object_w0wT {
+  l
+}
+
+fragment Fragment_DpIn5 on Object_w0wT {
+  ...Fragment_eXE6L
+  ...Fragment_eXE6L
+}

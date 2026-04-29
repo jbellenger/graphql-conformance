@@ -1,0 +1,32 @@
+query qPFaJUv {
+  ...Fragment_M1Z
+  ...Fragment_M1Z@defer(if: false)
+  ...Fragment_qLV9Nv5
+  y77H7ujk3: __typename
+}
+
+fragment Fragment_FsuEg on Union_Hwd {
+  __typename
+}
+
+fragment Fragment_ZjCwkBKdi_ on Union_ybA {
+  ...Fragment_FsuEg@include(if: true)
+  __typename @skip(if: false)
+  __typename
+  __typename
+  ... on Object_w8yuGV {
+    i: dZpTGDw
+  }
+}
+
+fragment Fragment_M1Z on Object_E {
+  ...Fragment_ZjCwkBKdi_
+  ... on Union_ka0Olzsln {
+    __typename
+  }
+}
+
+fragment Fragment_qLV9Nv5 on Union_ybA {
+  ...Fragment_ZjCwkBKdi_
+  ...Fragment_M1Z
+}

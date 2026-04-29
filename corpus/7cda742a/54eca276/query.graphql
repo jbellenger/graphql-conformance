@@ -1,0 +1,13 @@
+query Y70i {
+  ...Fragment_V9WG
+}
+
+fragment Fragment_Jhw7ku on Union_p4nb {
+  ... on Union_A {
+    eX: __typename @Directive_YmYyC
+  }
+}
+
+fragment Fragment_V9WG on Union_A {
+  ...Fragment_Jhw7ku@Directive_vGfU9ZN4N
+}

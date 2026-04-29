@@ -1,0 +1,25 @@
+query @Directive_ysXM2OB {
+  ...Fragment_hCt
+  ... on Object_snF @defer(if: false, label: null) {
+    ...Fragment_b
+    ... {
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_hCt on Object_snF {
+  ... on Object_snF {
+    ... on Object_snF {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_b on Object_snF @Directive_ysXM2OB{
+  ...Fragment_hCt
+  ... on Object_snF {
+    __typename
+  }
+}

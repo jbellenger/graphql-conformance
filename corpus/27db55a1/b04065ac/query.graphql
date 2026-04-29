@@ -1,0 +1,13 @@
+query v {
+  ...Fragment_Pol0LLTe3K
+  ...Fragment_h_T
+  ...Fragment_Pol0LLTe3K
+}
+
+fragment Fragment_h_T on Union_ka0Olzsln {
+  __typename
+}
+
+fragment Fragment_Pol0LLTe3K on Union_ybA {
+  ...Fragment_h_T
+}

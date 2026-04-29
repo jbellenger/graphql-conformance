@@ -1,0 +1,28 @@
+query ($m4E: Float, $h: Boolean!) {
+  KPUJfKP: leyBUXFdA(pGwzbCY: $m4E) {
+    Cnsn9b1IP: __typename
+  }
+  ... on Object_KVyRtAk {
+    ...Fragment_LQX
+    ...Fragment_hQjQp5sR@include(if: $h)
+  }
+}
+
+fragment Fragment_j on Union_PPmo {
+  b: __typename
+}
+
+fragment Fragment_LQX on Object_KVyRtAk {
+  ...Fragment_j
+  ... on Union_PPmo @Directive_N2 {
+    __typename
+  }
+}
+
+fragment Fragment_hQjQp5sR on Union_PPmo {
+  ...Fragment_j
+  Cl4jrWuNtK: __typename @include(if: true)
+  ... on Union_zr1Q {
+    __typename
+  }
+}

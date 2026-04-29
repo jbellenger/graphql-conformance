@@ -1,0 +1,41 @@
+query MqHML8x2F9 {
+  ... on Object_FOrW3 {
+    ...Fragment_LV0xbgQz4
+    ...Fragment_LV0xbgQz4
+    c: e6yBTi6 {
+      ...Fragment_LV0xbgQz4
+    }
+    e6yBTi6 {
+      ...Fragment_Q9Nb7
+      __typename
+      j {
+        __typename @skip(if: true)
+      }
+      ... {
+        j {
+          __typename
+        }
+      }
+    }
+    zGVGHpdp
+    e6yBTi6 {
+      __typename
+    }
+  }
+  ... on Object_FOrW3 {
+    qNaeMH1Jed
+  }
+  ... on Interface_U {
+    pgz7w1mJ4: qNaeMH1Jed
+  }
+}
+
+fragment Fragment_LV0xbgQz4 on Union_EEQmr {
+  ... on Union_EEQmr {
+    __typename
+  }
+}
+
+fragment Fragment_Q9Nb7 on Object_AqqewV1_ @Directive_ufdAYD{
+  __typename
+}

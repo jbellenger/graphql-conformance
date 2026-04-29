@@ -1,0 +1,21 @@
+query gPp {
+  ... {
+    ...Fragment_nAdgjbFmN3
+    ...Fragment_nAdgjbFmN3
+    ... on Object_gDxh {
+      __typename
+    }
+  }
+  ... on Union_YGiZ {
+    ...Fragment_nAdgjbFmN3
+    ...Fragment_nAdgjbFmN3
+    __typename
+    q3C: __typename
+  }
+}
+
+fragment Fragment_nAdgjbFmN3 on Union_YGiZ {
+  ... on Union_eB {
+    __typename @Directive_Ikrg_c3qe @skip(if: false)
+  }
+}

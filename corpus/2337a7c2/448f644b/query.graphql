@@ -1,0 +1,17 @@
+{
+  ... on Object__5RImjW @include(if: true) {
+    ...Fragment_F1@Directive_m8x3w
+  }
+}
+
+fragment Fragment_iEcVNd on Object__5RImjW {
+  lVzGnb: __typename @include(if: true)
+}
+
+fragment Fragment_F1 on Object__5RImjW {
+  ...Fragment_iEcVNd
+  jS
+  nFSKBvRXoB {
+    __typename
+  }
+}

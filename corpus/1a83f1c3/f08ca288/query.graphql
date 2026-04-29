@@ -1,0 +1,37 @@
+query H {
+  ...Fragment_tnxA
+  xe16FkAgSh {
+    ...Fragment_csKvd
+    ...Fragment_OfxI697
+    tJ8X8lnUg {
+      ...Fragment_csKvd
+      __typename
+    }
+    ... on Object_p @defer(if: true, label: "'n7") {
+      FfmX1gW: __typename
+    }
+  }
+}
+
+fragment Fragment_HCUS5_ on Union_JK0MbQ {
+  __typename
+}
+
+fragment Fragment_tnxA on Union_JK0MbQ {
+  ...Fragment_HCUS5_
+  __typename
+  __typename
+  __typename
+}
+
+fragment Fragment_csKvd on Union_Fs8nUVh3 {
+  ... on Union_JK0MbQ {
+    __typename
+  }
+}
+
+fragment Fragment_OfxI697 on Object_p {
+  ... on Object_p {
+    __typename
+  }
+}

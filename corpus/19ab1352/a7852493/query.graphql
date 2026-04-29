@@ -1,0 +1,22 @@
+{
+  ...Fragment_s6a
+  ...Fragment_rx_2GY
+  ...Fragment_s6a
+  zGVGHpdp
+  qNaeMH1Jed
+}
+
+fragment Fragment_U5UqC on Object_FOrW3 {
+  zGVGHpdp
+}
+
+fragment Fragment_rx_2GY on Object_FOrW3 {
+  ...Fragment_U5UqC
+  ... on Union_EEQmr {
+    __typename @include(if: true)
+  }
+}
+
+fragment Fragment_s6a on Interface_U {
+  ...Fragment_rx_2GY
+}

@@ -1,0 +1,40 @@
+query S {
+  cfnU5EIyXu @skip(if: true) {
+    ...Fragment_cVJ2il3
+    gt2a03C {
+      a8Fk: nxZOd {
+        __typename
+      }
+      Y: __typename
+      CRmEEXG1: __typename
+    }
+    gt2a03C {
+      ... @defer(if: true, label: null) {
+        nxZOd {
+          __typename
+        }
+      }
+    }
+    ... on Object_f {
+      pq1cgtYo_2: kzf3 @Directive_rXDRkjY
+      ... on Union_Xu7jyJo {
+        __typename
+      }
+    }
+  }
+  ... on Union_i6_6wUwZc9 {
+    ...Fragment_M
+    Ex8h4CErXA: __typename
+    __typename
+  }
+}
+
+fragment Fragment_cVJ2il3 on Object_f {
+  ... on Union_Xu7jyJo {
+    eCdTo: __typename
+  }
+}
+
+fragment Fragment_M on Union_QKB7Es {
+  __typename
+}

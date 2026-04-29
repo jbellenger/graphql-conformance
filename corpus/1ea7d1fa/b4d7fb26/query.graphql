@@ -1,0 +1,37 @@
+query MDS {
+  ...Fragment_a@Directive_G1W_mKRx
+  __typename
+  pfKlZya {
+    ...Fragment_uIzN
+    ...Fragment_pTl
+  }
+  __typename
+}
+
+fragment Fragment_a on Union_foz {
+  __typename
+}
+
+fragment Fragment_tmbx6msm on Interface_TFNyY_STUB {
+  __typename
+}
+
+fragment Fragment_uIzN on Interface_TFNyY_STUB {
+  ...Fragment_tmbx6msm
+  ds2Y: wTa4 {
+    _
+    MGanuZ: eou
+  }
+  ... on Interface_TFNyY @defer(label: "") {
+    se9kX {
+      __typename
+    }
+    se9kX {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_pTl on Interface_TFNyY {
+  __typename
+}

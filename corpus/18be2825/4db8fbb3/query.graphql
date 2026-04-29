@@ -1,0 +1,18 @@
+query c {
+  __typename
+  jp3xS
+  ... on Union_rRqFmNIh {
+    ... on Union_uncl2Qc {
+      __typename @Directive_YBMHzq
+      ... @defer(if: true, label: "I") {
+        __typename
+      }
+    }
+    ... on Union_uncl2Qc {
+      owV1m7GTT: __typename @Directive_phys
+      ... on Object_PrWq {
+        tJ
+      }
+    }
+  }
+}

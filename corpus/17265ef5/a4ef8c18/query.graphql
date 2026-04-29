@@ -1,0 +1,28 @@
+query @Directive_n65 {
+  ... on Union_Tbn2HOEdf1 {
+    ... on Interface_s {
+      __typename
+    }
+  }
+  ... on Object_w0wT {
+    ...Fragment_gdpf09
+    __typename
+    ... on Union_Tbn2HOEdf1 {
+      ...Fragment_gdpf09
+    }
+  }
+  ... on Interface_s {
+    __typename
+  }
+}
+
+fragment Fragment_j5D1v on Union_Tbn2HOEdf1 {
+  __typename
+}
+
+fragment Fragment_gdpf09 on Object_w0wT {
+  ...Fragment_j5D1v
+  hyiC {
+    __typename
+  }
+}

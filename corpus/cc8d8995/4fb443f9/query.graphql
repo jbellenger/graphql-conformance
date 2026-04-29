@@ -1,0 +1,14 @@
+query WLV0NPTe($ra2tP: Boolean! = false) {
+  ... on Union_NRDz @skip(if: $ra2tP) {
+    ...Fragment_QbBqJZNCQg
+    ... on Union_NRDz {
+      u: __typename
+    }
+  }
+}
+
+fragment Fragment_QbBqJZNCQg on Object_ksw {
+  ... on Union_NRDz {
+    uHz5KE: __typename
+  }
+}

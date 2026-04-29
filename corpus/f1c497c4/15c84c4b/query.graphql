@@ -1,0 +1,35 @@
+query H3kvu($bcKUgRwX: Boolean!) {
+  ...Fragment_KlHq3a6Wx@skip(if: $bcKUgRwX)
+  ...Fragment_KlHq3a6Wx
+  __typename
+  ... on Object_z {
+    __typename
+  }
+  ... on Union_B76B {
+    __typename
+    __typename
+  }
+  ... on Union_B76B {
+    ...Fragment_SV
+    ...Fragment_KlHq3a6Wx
+    wh1t: __typename
+    ... {
+      ...Fragment_SV
+    }
+  }
+}
+
+fragment Fragment_SV on Object_z {
+  __typename
+}
+
+fragment Fragment_KlHq3a6Wx on Object_z {
+  ... on Union_B76B {
+    ... on Union_B76B {
+      __typename
+    }
+  }
+  ... on Union_B76B @defer(label: "") {
+    ...Fragment_SV
+  }
+}

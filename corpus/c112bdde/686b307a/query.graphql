@@ -1,0 +1,17 @@
+query rwXrAIb {
+  ... on Union_QKXsfN0 {
+    ...Fragment_AReeT
+    ...Fragment_AReeT
+    ... on Union_QKXsfN0 {
+      ...Fragment_tIq0P2jFcY
+    }
+  }
+}
+
+fragment Fragment_AReeT on Union_LgfkGDzZL2 {
+  __typename
+}
+
+fragment Fragment_tIq0P2jFcY on Union_LgfkGDzZL2 {
+  __typename
+}

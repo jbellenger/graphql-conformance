@@ -1,0 +1,19 @@
+query p {
+  ...Fragment_S
+  ... on Object_OWEIJjb @defer {
+    q2z
+  }
+}
+
+fragment Fragment_fOg2pYT on Object_OWEIJjb {
+  gDe0_Aei: lp
+}
+
+fragment Fragment_S on Object_OWEIJjb {
+  ...Fragment_fOg2pYT
+  lp
+  __typename @Directive_M7aOCtc
+  ... on Object_OWEIJjb {
+    __typename
+  }
+}

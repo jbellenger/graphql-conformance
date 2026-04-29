@@ -1,0 +1,45 @@
+query i71PjlkQ6D($yxbvhxA: Boolean!) {
+  dRk7Pz78 {
+    ...Fragment_PA3nvg4KMI
+    ...Fragment_EkyISB@skip(if: $yxbvhxA)
+    ft1r
+  }
+  cOJY {
+    gOqTttp
+    Md: gOqTttp @include(if: $yxbvhxA)
+  }
+  ... on Union_JhIHgMQ7vj {
+    ...Fragment_PA3nvg4KMI
+  }
+  ... on Union_pCOBZA {
+    ... on Union_JhIHgMQ7vj {
+      __typename
+      __typename
+      ... on Union_pCOBZA {
+        __typename
+      }
+    }
+    ... on Object_q8i {
+      s__ {
+        xhQ4cz
+      }
+      kHF
+      aLCLcB3bJ @skip(if: false)
+      ... on Union_pCOBZA {
+        LHi: __typename
+      }
+    }
+  }
+  ... on Union_pCOBZA {
+    ...Fragment_EkyISB
+    __typename
+  }
+}
+
+fragment Fragment_PA3nvg4KMI on Union_muVPBaaG {
+  __typename
+}
+
+fragment Fragment_EkyISB on Union_JhIHgMQ7vj @Directive_Nf50e{
+  __typename
+}

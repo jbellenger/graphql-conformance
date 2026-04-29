@@ -1,0 +1,23 @@
+query uI {
+  ...Fragment_kek_q
+}
+
+fragment Fragment_HZU7laJk9 on Object_DPwy1UD {
+  ... {
+    __typename
+    h {
+      p5mZzKy5t: __typename
+    }
+  }
+}
+
+fragment Fragment_kek_q on Object_DPwy1UD {
+  ...Fragment_HZU7laJk9
+  ...Fragment_HZU7laJk9
+  h {
+    __typename
+    ... on Union_shp5o {
+      __typename
+    }
+  }
+}

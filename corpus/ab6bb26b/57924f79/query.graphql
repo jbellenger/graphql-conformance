@@ -1,0 +1,17 @@
+query ($s1: Input_PN = {dc : {zZ : {hnmk5LLy : null, zZ : null, ldCq : null}, ldCq : 642881886}}@Directive_dxQrK2(oH: {djk : "", wtRxmP : vmSKb5kk, dc : {zZ : {hnmk5LLy : null, zZ : null, ldCq : null}}}) @Directive_mDrUMUXH, $abx42g: Boolean!) {
+  __typename
+  ... {
+    __typename
+    aAt(zThZV: {djk : "{=", wtRxmP : A94f, dc : {hnmk5LLy : "F<", zZ : {zZ : null, ldCq : null}, ldCq : -940974027}}) {
+      swWt8X3si(sy_: {djk : ",`u", wtRxmP : null, dc : {hnmk5LLy : "NX="}})
+      ... on Interface_trqg2FQC @include(if: $abx42g) {
+        VAjpKboU: swWt8X3si(sy_: $s1)
+      }
+    }
+    cmkgd0gCli: aAt(zThZV: {djk : "", wtRxmP : null, dc : {zZ : {hnmk5LLy : null, zZ : null}, ldCq : 1862632935}}) {
+      hzos {
+        u
+      }
+    }
+  }
+}

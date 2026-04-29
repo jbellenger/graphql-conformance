@@ -1,0 +1,19 @@
+query Q3YY08($h: Boolean!) {
+  ...Fragment_vkt3IHZWQ
+  ...Fragment_vkt3IHZWQ
+  yZ: g1t0
+  g1t0
+}
+
+fragment Fragment_vkt3IHZWQ on Object_snF {
+  __typename
+  ... on Object_snF @include(if: false) {
+    ... on Object_snF @include(if: $h) {
+      __typename
+      __typename
+    }
+  }
+  ... on Object_snF {
+    __typename
+  }
+}

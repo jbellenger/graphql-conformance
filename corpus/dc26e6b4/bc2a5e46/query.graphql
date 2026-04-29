@@ -1,0 +1,18 @@
+query GIlBiJoCu {
+  __typename
+  oM6X {
+    ...Fragment_KwexV35@include(if: true)
+    ...Fragment_KwexV35
+  }
+}
+
+fragment Fragment_KwexV35 on Object_xn1G {
+  qLmmS {
+    __typename
+    sSwuEjYns @skip(if: false)
+  }
+  ... on Union_my {
+    __typename
+    B: __typename
+  }
+}

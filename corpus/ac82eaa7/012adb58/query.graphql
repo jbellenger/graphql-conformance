@@ -1,0 +1,48 @@
+query ABEkFNUY($wZzxzu: Boolean!) {
+  ...Fragment_yWoxYUQ53B
+  ...Fragment__Ff@skip(if: $wZzxzu) @include(if: false)
+  ...Fragment_X
+  wSKgPR0M {
+    __typename @skip(if: $wZzxzu)
+  }
+  wSKgPR0M {
+    nB: __typename
+    nU {
+      ...Fragment_q0h1x8MWeA
+      __typename
+    }
+    t: __typename
+    ... on Union_VoeSiNstm {
+      ...Fragment_q0h1x8MWeA
+    }
+  }
+  GuZ2B7B: wSKgPR0M {
+    ...Fragment_q0h1x8MWeA
+    nU {
+      ...Fragment_q0h1x8MWeA
+      __typename
+      Rf9fgjNuP: __typename
+    }
+  }
+}
+
+fragment Fragment_X on Object_A {
+  __typename
+}
+
+fragment Fragment_yWoxYUQ53B on Object_A {
+  ...Fragment_X@defer(if: false, label: "B")
+  ... on Union_kROt8A3 {
+    __typename @Directive_uReasV
+  }
+}
+
+fragment Fragment_q0h1x8MWeA on Union_fvji {
+  __typename @skip(if: true)
+}
+
+fragment Fragment__Ff on Object_A {
+  wSKgPR0M {
+    ...Fragment_q0h1x8MWeA@defer(if: false, label: "\\2G")
+  }
+}

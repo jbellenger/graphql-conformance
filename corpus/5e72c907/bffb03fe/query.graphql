@@ -1,0 +1,29 @@
+{
+  ...Fragment_E7IKR
+  ...Fragment_cGeMdYHn
+  bfg3XNq: __typename
+  Z7mZIadEB: teYU @Directive_WOZcBG11
+}
+
+fragment Fragment_DnM2UVbxZ on Union__ {
+  __typename
+}
+
+fragment Fragment_cGeMdYHn on Union__ {
+  ...Fragment_DnM2UVbxZ@Directive_WOZcBG11
+  FD7vuuYdwV: __typename
+  ... on Union_Fc8E {
+    __typename
+  }
+}
+
+fragment Fragment_E7IKR on Object_L1YLG {
+  ...Fragment_cGeMdYHn
+  __typename
+  ... on Union_ewmF {
+    __typename
+  }
+  ... on Object_L1YLG {
+    _F2lpam: teYU
+  }
+}

@@ -1,0 +1,19 @@
+query mmM {
+  __typename
+  __typename
+  ... on Union_S8vtpQ {
+    ... on Object_tji48Kq {
+      ...Fragment_pFa
+    }
+    ... on Object_oJ7BF {
+      ... on Union_n79KQSTd0P {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_pFa on Union_D1EmbJ {
+  __typename
+  H: __typename
+}

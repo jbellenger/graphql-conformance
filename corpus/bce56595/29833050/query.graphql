@@ -1,0 +1,10 @@
+query hdocgTrQ($_xPspCBn: Boolean!) {
+  ... on Union_Hant @include(if: $_xPspCBn) {
+    __typename
+    __typename
+    __typename
+    ... on Object_gOyX {
+      u: atCo5O
+    }
+  }
+}

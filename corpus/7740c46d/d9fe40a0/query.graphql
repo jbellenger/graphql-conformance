@@ -1,0 +1,24 @@
+query ($_rK: Boolean!) {
+  ...Fragment_PR3@skip(if: $_rK)
+  j0 {
+    __typename
+  }
+  vV9iY2 {
+    __typename @Directive_U6BQDa3
+  }
+  ... on Object_TR92Ujbj {
+    ...Fragment_PR3
+    ...Fragment_bw1LgAZ
+    KIjKDsBM3x: __typename
+  }
+}
+
+fragment Fragment_PR3 on Object_TR92Ujbj {
+  __typename
+}
+
+fragment Fragment_bw1LgAZ on Object_TR92Ujbj {
+  vV9iY2 {
+    __typename
+  }
+}

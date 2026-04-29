@@ -1,0 +1,25 @@
+{
+  ...Fragment_UlseC7XGU_@Directive_Nf50e
+  ...Fragment_bAgx1jQg
+  ...Fragment_bAgx1jQg
+  ... on Union_muVPBaaG {
+    __typename
+  }
+}
+
+fragment Fragment_bAgx1jQg on Union_JhIHgMQ7vj {
+  __typename
+}
+
+fragment Fragment_UlseC7XGU_ on Union_JhIHgMQ7vj {
+  __typename
+  eP4blNusyl: __typename @include(if: true)
+  __typename
+  __typename
+  ... on Object_X {
+    ...Fragment_bAgx1jQg
+  }
+  ... on Object_X {
+    ft1r
+  }
+}

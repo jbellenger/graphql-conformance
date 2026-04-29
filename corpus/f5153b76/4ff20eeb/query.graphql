@@ -1,0 +1,17 @@
+query MlNZ_xroYK {
+  ... on Object_jTQPkt @skip(if: false) {
+    ...Fragment_qO8zS
+    ...Fragment_qO8zS@Directive_kNk
+  }
+  ... on Object_jTQPkt {
+    __typename
+  }
+}
+
+fragment Fragment_njJbOBc on Union_gh7U_vt {
+  __typename @Directive_kNk
+}
+
+fragment Fragment_qO8zS on Object_jTQPkt {
+  ...Fragment_njJbOBc
+}

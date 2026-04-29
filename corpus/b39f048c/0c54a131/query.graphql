@@ -1,0 +1,49 @@
+query rt2cX @Directive_rxE6Kgo {
+  ...Fragment_i9h
+  k4FbQOOI(oh4w2GYh: true) {
+    ...Fragment_rl44DZ
+  }
+  kerB: k4FbQOOI(oh4w2GYh: false, iwmCVu: Y2rHf) {
+    ...Fragment_rl44DZ
+    ...Fragment_rl44DZ
+    __typename
+  }
+  z71PD4i4Qq {
+    ...Fragment_rl44DZ
+  }
+  z71PD4i4Qq {
+    ... on Object_XBYK9qQ {
+      __typename
+    }
+  }
+  ... on Union_p0iMQvM4C {
+    ...Fragment_i9h
+    ...Fragment_i9h
+    gQ5ZrgirBN: __typename
+  }
+}
+
+fragment Fragment_i9h on Object_jiak1ryq {
+  xuTU: z71PD4i4Qq {
+    ... on Object_XBYK9qQ {
+      __typename @include(if: false)
+    }
+  }
+  ... on Union_p0iMQvM4C {
+    tToB: __typename
+  }
+  ... on Union_p0iMQvM4C {
+    ... on Object_jiak1ryq @include(if: true) {
+      __typename
+      z71PD4i4Qq {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_rl44DZ on Object_XBYK9qQ {
+  ... on Object_XBYK9qQ {
+    __typename
+  }
+}

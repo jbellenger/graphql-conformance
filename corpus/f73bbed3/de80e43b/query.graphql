@@ -1,0 +1,29 @@
+query lD($mxGWwp0I: Boolean!) {
+  ... on Union_e2o7lp8 @include(if: $mxGWwp0I) {
+    ...Fragment_YO7aEr@skip(if: true)
+    ...Fragment_YO7aEr
+    Zf: __typename
+    ... on Union_e2o7lp8 {
+      __typename
+      ... on Object_UN36PcO {
+        S8X6KarIz: iYKDsiXLwt
+      }
+    }
+    ... on Union_PWHIf7e1p {
+      ...Fragment_YO7aEr
+      __typename
+      ... on Object_UN36PcO {
+        iYKDsiXLwt
+      }
+    }
+  }
+  ... on Union_cRdTJd5 {
+    RO6BVV8: __typename
+  }
+}
+
+fragment Fragment_YO7aEr on Union_e2o7lp8 {
+  ... on Object_UN36PcO {
+    __typename
+  }
+}

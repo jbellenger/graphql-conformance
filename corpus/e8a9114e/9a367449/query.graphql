@@ -1,0 +1,18 @@
+query DTzzG74KN {
+  juovKH {
+    ...Fragment_pzIHmbM
+    ...Fragment_c9n2
+  }
+}
+
+fragment Fragment_c9n2 on Union_b {
+  __typename
+  __typename
+}
+
+fragment Fragment_pzIHmbM on Union_b {
+  ...Fragment_c9n2
+  ... on Union_NM {
+    rBF: __typename
+  }
+}

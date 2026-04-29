@@ -1,0 +1,29 @@
+query ($gS7HWQ: Boolean!) {
+  ...Fragment_vdnKEI@defer(if: true, label: "")
+  __typename
+  __typename
+}
+
+fragment Fragment_F8 on Object_kK {
+  fdQAf4im {
+    __typename
+  }
+  _a5T: fdQAf4im {
+    __typename
+  }
+}
+
+fragment Fragment_YU9j3Wq07 on Union_WXG5aIW8nO {
+  ...Fragment_F8
+  thbRQg: __typename
+  ... on Object_kK {
+    qmKIU {
+      __typename @skip(if: $gS7HWQ)
+    }
+    __typename
+  }
+}
+
+fragment Fragment_vdnKEI on Union_WXG5aIW8nO {
+  ...Fragment_YU9j3Wq07
+}

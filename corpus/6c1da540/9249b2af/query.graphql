@@ -1,0 +1,38 @@
+{
+  ...Fragment_TYuF2H5Y
+  ... on Union_SU1R93OwaV {
+    ... on Object_yVILZT {
+      ...Fragment_TYuF2H5Y
+      OUIrHlI: ntY
+      ... on Union_OTYJTJv {
+        __typename @Directive_EROP8Y7Pqi
+      }
+    }
+    ... on Object_ADU101HXej {
+      ...Fragment_TYuF2H5Y
+      kmJ
+    }
+  }
+  ... on Union_OTYJTJv @Directive_EROP8Y7Pqi {
+    ...Fragment_TYuF2H5Y
+    __typename @Directive_qHDcP
+  }
+  ... on Union_SU1R93OwaV {
+    ...Fragment_TYuF2H5Y
+    ...Fragment_TYuF2H5Y
+    __typename
+  }
+}
+
+fragment Fragment_TYuF2H5Y on Union_SU1R93OwaV {
+  __typename
+  ... on Union_SU1R93OwaV {
+    __typename
+    ... on Union_SU1R93OwaV {
+      __typename
+    }
+  }
+  ... on Object_yVILZT {
+    __typename
+  }
+}

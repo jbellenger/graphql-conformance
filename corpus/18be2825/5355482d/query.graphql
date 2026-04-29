@@ -1,0 +1,24 @@
+query mozBCo {
+  ...Fragment_rX
+  ...Fragment_XIUwi
+  ...Fragment_XIUwi
+  __typename @skip(if: false)
+  jp3xS
+  ... on Object_VzdpFHPa {
+    ...Fragment_rX
+    __typename
+  }
+}
+
+fragment Fragment_XIUwi on Union_uncl2Qc {
+  __typename
+}
+
+fragment Fragment_rX on Union_rRqFmNIh @Directive_YBMHzq{
+  ... on Union_rRqFmNIh {
+    ...Fragment_XIUwi
+  }
+  ... on Object_VzdpFHPa {
+    __typename
+  }
+}

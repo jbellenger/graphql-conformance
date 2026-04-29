@@ -1,0 +1,20 @@
+query Jz7 {
+  ...Fragment_ghygdHdZ_4
+  ... on Object_w0wT {
+    q6 {
+      ...Fragment_UhqCbb
+      X: __typename
+      ... on Union_FMBqvPl {
+        __typename @Directive_MKloH
+      }
+    }
+  }
+}
+
+fragment Fragment_ghygdHdZ_4 on Interface_s {
+  __typename
+}
+
+fragment Fragment_UhqCbb on Union_Tbn2HOEdf1 {
+  __typename
+}

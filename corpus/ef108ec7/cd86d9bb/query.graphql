@@ -1,0 +1,38 @@
+query ($jZB: Boolean!) @Directive_fj_CMfC {
+  ...Fragment_Aqdy0xJHeZ@defer(if: true, label: "r ")
+  ohEONZ {
+    __typename
+    ... on Union_x363 {
+      ...Fragment_Aqdy0xJHeZ
+      __typename
+      ... on Union_x363 {
+        __typename
+      }
+    }
+    ... on Object_QiP {
+      ...Fragment_F52jyYpzn_
+      Bn5: xQlaBQv @skip(if: $jZB)
+      xQlaBQv
+      wAFoyft(icQSP: F7Q1)
+    }
+  }
+  vMxAr
+}
+
+fragment Fragment_wXn on Object_BF {
+  __typename
+}
+
+fragment Fragment_Aqdy0xJHeZ on Union_x363 {
+  ... on Union_VDi {
+    ...Fragment_wXn
+    __typename
+  }
+  ... on Union_VDi {
+    __typename
+  }
+}
+
+fragment Fragment_F52jyYpzn_ on Object_QiP {
+  xQlaBQv @skip(if: false)
+}

@@ -1,0 +1,19 @@
+query YDQvtM9wI($yWH: Boolean!) {
+  ...Fragment_AbJRnmuJl0@skip(if: true)
+  ... on Union_XB8W {
+    __typename
+  }
+}
+
+fragment Fragment_hc on Union_r0JK4cT_LY {
+  __typename
+}
+
+fragment Fragment_kh7 on Union_r0JK4cT_LY {
+  ...Fragment_hc@include(if: $yWH)
+  __typename
+}
+
+fragment Fragment_AbJRnmuJl0 on Object_Et {
+  ...Fragment_kh7
+}

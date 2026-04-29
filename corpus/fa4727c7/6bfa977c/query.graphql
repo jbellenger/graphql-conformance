@@ -1,0 +1,26 @@
+query EErqC @Directive_KIP2YYRl {
+  bwGbk {
+    ...Fragment_wQAP@skip(if: false) @Directive_ozv
+  }
+  A: __typename
+  __typename
+  ... on Object_LNdyfVj {
+    oqLk9x1: __typename
+    ... on Object_LNdyfVj {
+      KNRT8xIDer: __typename
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_n6m1GvNIjU on Union_li6DPuuP {
+  FQA: __typename
+}
+
+fragment Fragment_wQAP on Union_li6DPuuP {
+  ...Fragment_n6m1GvNIjU
+  ... on Object_muDZ {
+    __typename
+  }
+}

@@ -1,0 +1,18 @@
+query cczw {
+  aIvpj1 {
+    ...Fragment_e3SS
+    ...Fragment_e3SS
+    ... on Object_r6mU4 @skip(if: false) {
+      __typename
+    }
+    ... on Union_KEKp9Io {
+      ...Fragment_e3SS
+    }
+  }
+}
+
+fragment Fragment_e3SS on Union_KEKp9Io {
+  ... on Object_r6mU4 {
+    __typename
+  }
+}

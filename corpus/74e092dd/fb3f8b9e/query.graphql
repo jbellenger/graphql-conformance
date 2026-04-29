@@ -1,0 +1,44 @@
+query Uf {
+  ...Fragment_BoeUYSWyNW
+  UeIEUYHeRT: __typename
+  z93 @Directive_fF2rO_6l(xS: false) {
+    lFN
+  }
+  z93 {
+    y: __typename
+  }
+  z93 {
+    __typename
+  }
+  z93 {
+    ...Fragment_VCtAVl
+    ...Fragment_af
+  }
+  ... on Object_VFqLqVz9 {
+    __typename
+  }
+}
+
+fragment Fragment_p on Object_L6ghv54I7i {
+  __typename
+  __typename
+}
+
+fragment Fragment_j23uoUX3m on Union_D {
+  ...Fragment_p
+}
+
+fragment Fragment_BoeUYSWyNW on Union_KcfLK {
+  ...Fragment_j23uoUX3m
+  ...Fragment_j23uoUX3m
+}
+
+fragment Fragment_VCtAVl on Interface_p5Vzuie_STUB {
+  ... on Interface_p5Vzuie {
+    lFN
+  }
+}
+
+fragment Fragment_af on Interface_p5Vzuie {
+  lFN
+}

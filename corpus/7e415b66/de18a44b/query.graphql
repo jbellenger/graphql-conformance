@@ -1,0 +1,29 @@
+query ($f: Input_cpgQC5qw@Directive_UaQ, $nIn6dsh8h: String) @Directive_XeX1vdfk6(qata0X2i9H: {bmS : -9.915817219602002E+307}, niy5rLiBYg: "N") {
+  ... {
+    ...Fragment__OGE
+    ...Fragment_U6d4
+  }
+  ... on Object_X {
+    ... on Object_X {
+      ...Fragment_U6d4
+      ... on Object_X {
+        __typename @Directive_XeX1vdfk6(qata0X2i9H: $f, niy5rLiBYg: $nIn6dsh8h)
+        GTawts5y0n: __typename
+      }
+    }
+    ... on Union_U5OAK9d93M @include(if: false) {
+      ...Fragment__OGE
+    }
+  }
+  ... on Object_X {
+    zZeQ1: wHM @include(if: true)
+  }
+}
+
+fragment Fragment__OGE on Object_X {
+  jD: k
+}
+
+fragment Fragment_U6d4 on Object_X {
+  cQ93: __typename
+}

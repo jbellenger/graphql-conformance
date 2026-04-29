@@ -1,0 +1,17 @@
+query EYlJWiQ {
+  ...Fragment_gIV4
+  ...Fragment_wBHZyf_
+  ...Fragment_gIV4
+  juovKH {
+    ...Fragment_wBHZyf_
+  }
+  u: __typename
+}
+
+fragment Fragment_gIV4 on Union_b {
+  __typename
+}
+
+fragment Fragment_wBHZyf_ on Union_b {
+  __typename
+}

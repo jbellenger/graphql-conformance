@@ -1,0 +1,21 @@
+{
+  ...Fragment_F
+  ... on Union_LXJAcBW {
+    __typename
+    __typename
+    ... on Union_ZxYPb2 {
+      ...Fragment_F
+      ... on Union_ZxYPb2 {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_F on Union_ZxYPb2 {
+  ... on Union_LXJAcBW {
+    ... on Object_djfsAb {
+      __typename
+    }
+  }
+}

@@ -1,0 +1,67 @@
+query ($f8v3: Input_m) {
+  ...Fragment_ix@defer(label: "vG[")
+  xbi {
+    CAIIPdsnoT: yHEHMvAtfr {
+      __typename @Directive_CUYpTn
+    }
+  }
+  xbi {
+    ... on Union_wXU {
+      ...Fragment_fM2kS
+      ... on Union_wXU {
+        __typename
+        __typename
+      }
+    }
+  }
+  __typename
+  xbi {
+    jkIiW {
+      qbK4(om7_ILPIIh: $f8v3) {
+        __typename
+      }
+      __typename
+      __typename
+      ... on Interface_PLqFW_STUB {
+        m0cBkw0_
+      }
+    }
+  }
+  ... on Union_kehNR {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_fKRefk4hV on Union_F @Directive_CUYpTn{
+  __typename
+}
+
+fragment Fragment_QXHtYj on Union_F {
+  ...Fragment_fKRefk4hV
+}
+
+fragment Fragment_fM2kS on Object_NThWS2VX {
+  jkIiW {
+    __typename
+  }
+}
+
+fragment Fragment_ix on Object_k1ZI2A {
+  ...Fragment_QXHtYj
+  ...Fragment_fKRefk4hV
+  xbi {
+    ...Fragment_fM2kS
+  }
+  xbi {
+    __typename
+  }
+  ... {
+    ... on Union_kehNR {
+      __typename
+    }
+  }
+  ... on Union_F {
+    QGfF: __typename
+  }
+}

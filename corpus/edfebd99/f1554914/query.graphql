@@ -1,0 +1,36 @@
+query apu($ym4: Boolean!) {
+  ...Fragment_zJ@skip(if: true)
+  ... on Object_fxSNYLzYR {
+    ...Fragment_n8zaPvb
+    ... on Union_hpn @defer(if: false, label: "") {
+      __typename
+    }
+    ... on Object_fxSNYLzYR {
+      dB5a @skip(if: $ym4)
+    }
+  }
+  ... on Object_fxSNYLzYR {
+    ...Fragment_n8zaPvb
+  }
+  ... on Union_hpn {
+    ...Fragment_n8zaPvb
+    ... on Union_hpn {
+      ...Fragment_zJ
+      R6F: __typename @Directive_xOhO
+      ... on Object_fxSNYLzYR {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_n8zaPvb on Union_hpn {
+  __typename @skip(if: $ym4)
+  ... on Object_fxSNYLzYR {
+    dB5a
+  }
+}
+
+fragment Fragment_zJ on Object_fxSNYLzYR {
+  ...Fragment_n8zaPvb
+}

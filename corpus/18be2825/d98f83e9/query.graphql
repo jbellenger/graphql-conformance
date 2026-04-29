@@ -1,0 +1,13 @@
+{
+  ...Fragment_xo
+  ... on Union_uncl2Qc {
+    __typename @include(if: false) @Directive_phys
+  }
+  ... on Object_VzdpFHPa {
+    ...Fragment_xo
+  }
+}
+
+fragment Fragment_xo on Union_rRqFmNIh {
+  __typename
+}

@@ -1,0 +1,19 @@
+query D0KWZR($pm3Qj80u: Boolean! = true) {
+  ...Fragment_y3L
+}
+
+fragment Fragment_I41JJ on Interface_pUwS2GHz {
+  _o @skip(if: $pm3Qj80u) @Directive_flgFO4
+}
+
+fragment Fragment_y3L on Object_JQyTBCD {
+  L: olcNWWoTKb {
+    ...Fragment_I41JJ
+    ... on Interface_pUwS2GHz_STUB {
+      ifoDKyhtz
+    }
+  }
+  olcNWWoTKb {
+    ...Fragment_I41JJ
+  }
+}

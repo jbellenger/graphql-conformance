@@ -1,0 +1,24 @@
+query Wu5CcVo($tQ: Boolean!) @Directive_flgFO4 {
+  ...Fragment_qdm
+  olcNWWoTKb {
+    nxp0Wfu9
+    CFqXo: nxp0Wfu9
+  }
+  __typename
+}
+
+fragment Fragment_SdC3 on Object_JQyTBCD {
+  __typename
+}
+
+fragment Fragment_qdm on Object_JQyTBCD {
+  ...Fragment_SdC3@Directive_flgFO4
+  ... on Object_JQyTBCD {
+    __typename
+  }
+  ... {
+    ... on Object_JQyTBCD @include(if: $tQ) @Directive_i7FYdFpd {
+      __typename
+    }
+  }
+}

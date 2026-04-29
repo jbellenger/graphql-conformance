@@ -1,0 +1,19 @@
+query JwfeT {
+  ...Fragment_guSGB
+  ... on Union_zxiHV_hCa {
+    __typename
+  }
+}
+
+fragment Fragment_UxJ6CxNu on Union_zxiHV_hCa {
+  __typename
+}
+
+fragment Fragment_guSGB on Object_mpxXtOPqh3 {
+  ... on Union_zxiHV_hCa {
+    ...Fragment_UxJ6CxNu
+    __typename
+    __typename
+    __typename
+  }
+}

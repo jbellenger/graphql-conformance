@@ -1,0 +1,28 @@
+query gqHnRx6z4y {
+  ...Fragment_kQaFglIn
+  ...Fragment_TifX
+  ... on Interface_wWYZbv9u {
+    __typename
+  }
+}
+
+fragment Fragment_lMZwRWzOuR on Interface_wWYZbv9u {
+  __typename
+}
+
+fragment Fragment_kQaFglIn on Interface_wWYZbv9u {
+  eds4F_b: eds4F_b {
+    ...Fragment_lMZwRWzOuR
+    hvp @Directive_Pv {
+      MWcF: __typename
+    }
+    __typename
+    PrwtIV_6p: hvp {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_TifX on Interface_wWYZbv9u {
+  mB1pHKtdc_
+}

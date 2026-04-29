@@ -1,0 +1,26 @@
+{
+  ...Fragment_em
+}
+
+fragment Fragment_c on Union_Mb4eZ6pae {
+  __typename
+  __typename
+  __typename
+}
+
+fragment Fragment_em on Union_H6x97ATaaa {
+  ...Fragment_c
+  ... on Object_yq5wHoX {
+    __typename
+    ey22Nzj
+    ... on Union_Mb4eZ6pae {
+      __typename
+    }
+  }
+  ... on Object_yq5wHoX {
+    __typename
+    ... on Object_yq5wHoX @Directive_A2Jw {
+      ey22Nzj
+    }
+  }
+}

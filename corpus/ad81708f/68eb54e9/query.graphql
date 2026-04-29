@@ -1,0 +1,11 @@
+query T {
+  ...Fragment_h_u
+}
+
+fragment Fragment_pw8yYEQDJM on Union_H6x97ATaaa {
+  __typename
+}
+
+fragment Fragment_h_u on Object_yq5wHoX {
+  ...Fragment_pw8yYEQDJM
+}

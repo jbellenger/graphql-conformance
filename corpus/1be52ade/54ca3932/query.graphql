@@ -1,0 +1,42 @@
+query Hdgmf {
+  xcRR2J9 {
+    ... on Object_fh9C3Gr {
+      __typename
+      ... on Union_wJ @skip(if: true) {
+        __typename
+      }
+    }
+  }
+  srZ7 {
+    aJNkvk
+    fLe9epHwa: apgi9
+    aJNkvk @include(if: false)
+    __typename: aJNkvk
+    ... on Interface_B2S_STUB {
+      rfwl4
+      baGbpm {
+        __typename
+      }
+      ... on Interface_B2S_STUB {
+        wGOC6t: __typename
+        aJNkvk
+      }
+    }
+  }
+  ... on Union_wJ {
+    ...Fragment_w3pJYml2
+    __typename
+    DXM4: __typename
+    __typename @skip(if: false)
+  }
+  ... on Union_wJ {
+    __typename
+  }
+}
+
+fragment Fragment_w3pJYml2 on Object_p4pqw @Directive_u0b{
+  o3ex2 {
+    __typename
+  }
+  __typename
+}

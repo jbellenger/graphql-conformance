@@ -1,0 +1,40 @@
+query nsBP {
+  ...Fragment_E3LO3fVxn
+  lcqtiSdo {
+    ntco6: __typename
+    __typename
+    __typename
+    wFIKfNZ: __typename
+    ... on Union_PiiXCN {
+      __typename
+      __typename
+    }
+  }
+  __typename
+}
+
+fragment Fragment_j2CAmRF on Object_SWngjlRgCD {
+  yrjjFh: __typename
+}
+
+fragment Fragment_E3LO3fVxn on Union_p4nb {
+  ...Fragment_j2CAmRF
+  __typename
+  __typename
+  VcwRf: __typename
+  ... {
+    ...Fragment_j2CAmRF
+    __typename
+    ... on Union_A {
+      __typename
+    }
+  }
+  ... on Union_p4nb {
+    ...Fragment_j2CAmRF
+    __typename @Directive_YmYyC
+    _ZvsZCJ7: __typename
+    ... {
+      __typename
+    }
+  }
+}

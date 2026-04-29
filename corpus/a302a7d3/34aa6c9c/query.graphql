@@ -1,0 +1,30 @@
+query KG {
+  ...Fragment_P4UT
+  ...Fragment_bSnfz
+  ... on Object_cVQNX {
+    ... on Object_cVQNX {
+      gOdHbLaPa
+      gOdHbLaPa
+    }
+  }
+  ... {
+    ...Fragment_P4UT
+    zp0ELIKtsW {
+      ... on Object_h {
+        xKkXEv4ae8
+      }
+    }
+    __typename
+  }
+}
+
+fragment Fragment_bSnfz on Object_cVQNX {
+  ePt_LWAE
+  ... on Object_cVQNX {
+    u: __typename
+  }
+}
+
+fragment Fragment_P4UT on Object_cVQNX {
+  ...Fragment_bSnfz
+}

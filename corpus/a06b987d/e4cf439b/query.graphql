@@ -1,0 +1,23 @@
+query yWRwSHdAGr {
+  ... on Object_w7PV0 {
+    ...Fragment_ssHRvye
+    ...Fragment_ssHRvye
+  }
+  ... on Interface_i6UE {
+    BMLCv: __typename
+  }
+  ... on Object_w7PV0 {
+    o4Xi
+  }
+}
+
+fragment Fragment_SMIX3 on Union_y75jv1sZV7 {
+  __typename @Directive_gMjNAbo
+}
+
+fragment Fragment_ssHRvye on Object_w7PV0 {
+  ...Fragment_SMIX3
+  ... on Interface_i6UE {
+    xcVgWU9: __typename
+  }
+}

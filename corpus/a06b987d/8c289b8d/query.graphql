@@ -1,0 +1,35 @@
+query Ynj1MkD($dtdQ: Boolean!@Directive_gMjNAbo) {
+  ACO9: o4Xi
+  ... on Interface_i6UE {
+    ...Fragment_MXLa
+    ...Fragment_MXLa
+    of7 {
+      LqS: __typename @skip(if: $dtdQ)
+    }
+    __typename
+    o4Xi
+    of7 @skip(if: $dtdQ) {
+      ...Fragment_ttrSg82E
+      __typename
+      o: __typename
+      ... on Union_C {
+        __typename
+      }
+    }
+  }
+  ... {
+    ...Fragment_qh
+  }
+}
+
+fragment Fragment_MXLa on Object_w7PV0 @Directive_J0l0qE{
+  o4Xi @include(if: false)
+}
+
+fragment Fragment_ttrSg82E on Union_y75jv1sZV7 {
+  __typename
+}
+
+fragment Fragment_qh on Object_w7PV0 {
+  __typename
+}

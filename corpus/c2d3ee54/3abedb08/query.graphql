@@ -1,0 +1,22 @@
+query NtMtn {
+  ... on Union_S8vtpQ {
+    __typename
+  }
+  ... {
+    ...Fragment_xfh1l
+    ...Fragment_xfh1l
+    bsw(yE3iASxZ_: {aaG : {ob : ilYxt_5Cz}})
+  }
+}
+
+fragment Fragment_G4 on Union_n79KQSTd0P {
+  __typename
+}
+
+fragment Fragment_xfh1l on Object_oJ7BF {
+  ...Fragment_G4
+  __typename
+  ... on Union_S8vtpQ {
+    dre3I4ve: __typename
+  }
+}

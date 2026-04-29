@@ -1,0 +1,13 @@
+query J1A {
+  ...Fragment_rF5
+}
+
+fragment Fragment_TKu on Union_S {
+  __typename
+}
+
+fragment Fragment_rF5 on Union_S @Directive_N{
+  ... on Object_WYx3 {
+    ...Fragment_TKu
+  }
+}

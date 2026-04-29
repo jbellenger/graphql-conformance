@@ -1,0 +1,14 @@
+{
+  ...Fragment_r_qb6rnKIM
+}
+
+fragment Fragment_sYj5j on Union_QuRK90zO {
+  ... on Object_uX5bplLYT {
+    __typename
+  }
+}
+
+fragment Fragment_r_qb6rnKIM on Union_mJeR_nAI {
+  ...Fragment_sYj5j
+  ...Fragment_sYj5j
+}

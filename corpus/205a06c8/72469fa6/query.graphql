@@ -1,0 +1,20 @@
+query GVJzQT {
+  ...Fragment_ehCUNS
+  ...Fragment_ehCUNS
+  ihKHfJyA {
+    ... on Union_I8i {
+      ...Fragment_ehCUNS
+      ... on Object_F {
+        __typename
+      }
+    }
+    ... {
+      __typename
+    }
+  }
+  __typename
+}
+
+fragment Fragment_ehCUNS on Union_I8i @Directive_Bh(n: {}){
+  L3P: __typename
+}

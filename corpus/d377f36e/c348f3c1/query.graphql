@@ -1,0 +1,29 @@
+query Z8pYr_eD {
+  ...Fragment_OOpANc_C0t
+  __typename
+  ... on Union_xF {
+    __typename
+  }
+}
+
+fragment Fragment_S on Object_fu7wXUUW {
+  l9G
+}
+
+fragment Fragment_u on Union_xF {
+  __typename
+}
+
+fragment Fragment_OOpANc_C0t on Object_fu7wXUUW {
+  ...Fragment_S
+  ...Fragment_S
+  l9G
+  l9G
+  ... on Union_xF {
+    ...Fragment_S
+  }
+  ... on Object_fu7wXUUW {
+    ...Fragment_u
+    qJtKw
+  }
+}

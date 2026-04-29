@@ -1,0 +1,15 @@
+query HrsUjFUq {
+  ... on Object_s @skip(if: true) {
+    ... on Union_mJeR_nAI {
+      ...Fragment_FRWLHs
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_FRWLHs on Object_RrRi74r {
+  FX_88: nQX {
+    d2C
+  }
+}

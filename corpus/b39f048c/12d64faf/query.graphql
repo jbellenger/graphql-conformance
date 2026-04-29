@@ -1,0 +1,18 @@
+query eWyJ {
+  ... on Union_p0iMQvM4C {
+    __typename
+    N8atj: __typename
+    __typename
+    __typename @Directive_MqZB
+    ... on Object_jiak1ryq {
+      ...Fragment_crie
+      ... @defer(if: true, label: "^") {
+        RWOGNERvg: cSp
+      }
+    }
+  }
+}
+
+fragment Fragment_crie on Union_p0iMQvM4C {
+  __typename
+}

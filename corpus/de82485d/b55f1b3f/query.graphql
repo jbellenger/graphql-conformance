@@ -1,0 +1,13 @@
+query ($xPR1u: Boolean!) {
+  l {
+    pQ
+  }
+  l {
+    rTQRp @Directive_MJRfa5k {
+      ... on Object_b {
+        __typename @include(if: false)
+      }
+    }
+    __typename @include(if: $xPR1u)
+  }
+}

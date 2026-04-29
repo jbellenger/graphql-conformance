@@ -1,0 +1,17 @@
+query a($bAy: Boolean!) @Directive_LiC {
+  ...Fragment_ttwNA5
+}
+
+fragment Fragment_hqEbdmiVkz on Union_idOm3E2hAr {
+  __typename
+}
+
+fragment Fragment_ttwNA5 on Union_idOm3E2hAr {
+  ...Fragment_hqEbdmiVkz
+  kAcV: __typename
+  Nsxu1: __typename
+  __typename
+  ... on Object_RtExt {
+    h2pb @skip(if: $bAy)
+  }
+}

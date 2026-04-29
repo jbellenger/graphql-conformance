@@ -1,0 +1,84 @@
+query iZmaWvr($vww: Boolean! = false) {
+  YjIQJ3xhCa: __typename
+  Jy6tQP: g1 {
+    ...Fragment_vFFXUXT3W
+    ...Fragment_vFFXUXT3W
+    mevPHhhnfH {
+      ...Fragment_okW9CA5Wc
+      wVrnyevfXz
+      __typename
+    }
+    ... on Union_ms3 {
+      ...Fragment_vFFXUXT3W
+      __typename @Directive_y
+    }
+    ... on Union_nxGJ {
+      ...Fragment_vFFXUXT3W
+      ... on Union_ms3 {
+        __typename
+      }
+    }
+  }
+  o @Directive_y {
+    __typename
+    ... on Interface_RP_STUB {
+      __typename
+    }
+    ... on Interface_RP {
+      __typename
+    }
+  }
+  zhZvhd: o {
+    ...Fragment_n
+    ...Fragment_n
+    __typename
+    yfEwQAun
+  }
+  ... on Union_QONO {
+    ...Fragment_W6
+    ...Fragment_adYuT5Aa9
+    ... on Union_ms3 {
+      ...Fragment_vFFXUXT3W
+    }
+    ... on Union_ms3 {
+      ...Fragment_adYuT5Aa9
+    }
+  }
+  ... {
+    ... on Object_BAVEltu {
+      ...Fragment_W6
+      o {
+        __typename
+      }
+    }
+  }
+  ... on Object_BAVEltu {
+    ...Fragment_W6
+    fHn2702i: g1 {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_vFFXUXT3W on Object_L {
+  __typename
+}
+
+fragment Fragment_okW9CA5Wc on Interface_M1oijr {
+  Dr: __typename
+}
+
+fragment Fragment_n on Interface_RP @Directive_y{
+  ... on Interface_RP_STUB @skip(if: false) {
+    __typename
+    j3nQo @skip(if: true)
+  }
+}
+
+fragment Fragment_adYuT5Aa9 on Object_Np58f9yIc {
+  __typename @Directive_y @skip(if: $vww)
+}
+
+fragment Fragment_W6 on Union_QONO {
+  ...Fragment_adYuT5Aa9
+}

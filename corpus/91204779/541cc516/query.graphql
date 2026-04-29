@@ -1,0 +1,39 @@
+query sgJz($iHodZFh: Boolean!) {
+  ...Fragment_uDNP7PrQq
+  __typename
+  ... on Object_HMefD_ {
+    __typename
+    ... on Object_HMefD_ {
+      ... on Union_efu9GeMlcC {
+        __typename
+        __typename
+      }
+    }
+  }
+  ... {
+    ...Fragment_RR
+    c9rvyZ @skip(if: true)
+    ... on Union_efu9GeMlcC {
+      __typename @include(if: $iHodZFh)
+    }
+    ... on Object_HMefD_ {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_RR on Union_efu9GeMlcC {
+  __typename
+}
+
+fragment Fragment_uDNP7PrQq on Object_HMefD_ {
+  ... on Object_HMefD_ {
+    __typename
+  }
+  ... on Union_efu9GeMlcC {
+    ...Fragment_RR
+    __typename
+    __typename
+    __typename
+  }
+}

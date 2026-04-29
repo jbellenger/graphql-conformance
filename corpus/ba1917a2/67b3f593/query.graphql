@@ -1,0 +1,17 @@
+query pL3 {
+  ... on Union_MM {
+    ...Fragment_SYgP
+    ... on Object_rRDWkUi {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_Kw on Union_MM @Directive_yif{
+  __typename
+}
+
+fragment Fragment_SYgP on Union_MM {
+  ...Fragment_Kw
+  __typename
+}

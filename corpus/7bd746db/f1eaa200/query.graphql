@@ -1,0 +1,40 @@
+query tcqqSpLUhH {
+  TAN9Iy: ohoB {
+    ...Fragment_a8LF
+    ...Fragment_a8LF
+    QaIu: tiRe2C8y {
+      ...Fragment_a8LF
+      tiRe2C8y {
+        __typename
+      }
+    }
+    tiRe2C8y {
+      __typename
+      fdaw: __typename
+      __typename @include(if: false)
+    }
+    __typename
+    MTt: __typename
+    ... on Union_XB8W {
+      tB9bV: __typename
+      __typename
+      __typename
+      ... on Object_Et {
+        __typename
+        __typename
+      }
+    }
+    ... {
+      ...Fragment_i1_D4bnAXp
+      __typename
+    }
+  }
+}
+
+fragment Fragment_a8LF on Union_XB8W {
+  ZVldpEtWG: __typename
+}
+
+fragment Fragment_i1_D4bnAXp on Object_p {
+  __typename
+}

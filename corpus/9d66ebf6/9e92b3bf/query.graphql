@@ -1,0 +1,38 @@
+{
+  ... on Interface_rQI {
+    __typename
+  }
+  ... on Union_qMK {
+    __typename @skip(if: true)
+  }
+  ... on Object__S {
+    vVgY4: _JmRYo @include(if: true) {
+      ...Fragment_jVIUBkcsS
+      __typename
+      ... on Union_P {
+        __typename
+        __typename
+      }
+    }
+    _JmRYo {
+      ... on Union_E8lNfILz {
+        jOX0: __typename
+        __typename
+      }
+    }
+    ... on Union_qMK {
+      ...Fragment_jh4E9h
+      ... on Union_P {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_jVIUBkcsS on Object_vGI6LM {
+  __typename
+}
+
+fragment Fragment_jh4E9h on Union_P {
+  __typename
+}

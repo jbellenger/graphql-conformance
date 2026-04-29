@@ -1,0 +1,26 @@
+query cKKFDIR1 {
+  teYU
+  __typename
+  DC8ePyBHw: teYU
+  ... on Object_L1YLG {
+    __typename
+    teYU
+    teYU
+    teYU
+    ... on Union__ {
+      __typename
+      ... on Object_L1YLG {
+        O: __typename @Directive_WOZcBG11
+      }
+    }
+  }
+  ... on Union_Fc8E {
+    ...Fragment_xDb
+  }
+}
+
+fragment Fragment_xDb on Union_ewmF {
+  ... on Union_Fc8E {
+    __typename
+  }
+}

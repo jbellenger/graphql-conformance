@@ -1,0 +1,13 @@
+query tQJF {
+  __typename @include(if: true)
+  ... {
+    ...Fragment_YZdS0OeCE
+    ...Fragment_YZdS0OeCE
+  }
+}
+
+fragment Fragment_YZdS0OeCE on Union_ZxYPb2 {
+  ... on Union_ZxYPb2 {
+    __typename
+  }
+}

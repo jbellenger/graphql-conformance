@@ -1,0 +1,26 @@
+query q4wVP($vlWnzR3UPY: Input__RqDZxEkT) {
+  fL4vZJ {
+    ... on Interface_GFCi1_STUB {
+      cc8aq {
+        hTxH {
+          pZ6 {
+            __typename @include(if: false)
+          }
+        }
+        FYX: hTxH {
+          poZzimkR @Directive_fdlAxoRox
+        }
+      }
+      n5osaX94cZ(zUa6piN6WZ: $vlWnzR3UPY)
+      ... on Interface_GFCi1_STUB {
+        w: n5osaX94cZ(zUa6piN6WZ: {x0oiQPWAo : JWlEslhJNX, w9V : UWgr0nnxF})
+        __typename
+      }
+    }
+    ... on Interface_GFCi1 {
+      ... on Interface_GFCi1 {
+        T1c_MK23: n5osaX94cZ(zUa6piN6WZ: {x0oiQPWAo : JWlEslhJNX, w9V : UWgr0nnxF})
+      }
+    }
+  }
+}

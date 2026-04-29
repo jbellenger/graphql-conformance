@@ -1,0 +1,28 @@
+{
+  xe16FkAgSh {
+    ...Fragment_N5sl
+    ...Fragment_u9FzN
+  }
+}
+
+fragment Fragment_y on Union_JK0MbQ @Directive_edxa(dY8XHAnLX: true){
+  __typename
+}
+
+fragment Fragment_N5sl on Union_Fs8nUVh3 {
+  ...Fragment_y
+}
+
+fragment Fragment_MHlfPssQQi on Object_p {
+  bnzeABYEx {
+    btH6s_t
+  }
+}
+
+fragment Fragment_u9FzN on Object_p {
+  ...Fragment_MHlfPssQQi
+  ... on Union_Fs8nUVh3 {
+    __typename
+    __typename
+  }
+}

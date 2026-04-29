@@ -1,0 +1,12 @@
+query yYesZD {
+  ...Fragment_T
+  ...Fragment_T
+  ... on Union_yab {
+    __typename
+  }
+}
+
+fragment Fragment_T on Union_yab {
+  __typename
+  bKTsa: __typename
+}

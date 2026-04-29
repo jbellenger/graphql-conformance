@@ -1,0 +1,18 @@
+{
+  ...Fragment_rA
+}
+
+fragment Fragment_L03 on Interface_oNuE {
+  _: h
+}
+
+fragment Fragment_F34eV3xmcj on Interface_KwcIux {
+  ...Fragment_L03
+  ... on Union_to65FfMLEz @defer(label: "") {
+    __typename
+  }
+}
+
+fragment Fragment_rA on Interface_KwcIux @Directive_a{
+  ...Fragment_F34eV3xmcj
+}

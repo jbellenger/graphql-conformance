@@ -1,0 +1,15 @@
+{
+  ...Fragment_g__J@defer(if: true, label: "z") @include(if: true)
+  ...Fragment_g__J@defer(if: true, label: "r")
+  __typename
+}
+
+fragment Fragment_EfumSy on Union_ofTIZn {
+  __typename
+}
+
+fragment Fragment_g__J on Interface_Xtni0YO {
+  ... on Union_W {
+    ...Fragment_EfumSy
+  }
+}

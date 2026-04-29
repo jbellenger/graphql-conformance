@@ -1,0 +1,22 @@
+query ($unSen: Boolean!@Directive_Bh(n: {r5P : H3Jg})) {
+  ...Fragment_jWGjn5S
+  ...Fragment_jWGjn5S
+}
+
+fragment Fragment_jWGjn5S on Union_I8i {
+  ... on Object_F {
+    ihKHfJyA {
+      pQwJ6m5q: __typename
+      __typename @include(if: true)
+    }
+    ... on Union_I8i {
+      bUb_H: __typename
+      __typename
+    }
+  }
+  ... on Interface_cx7xYBSMSg {
+    ... on Interface_IWMZO_P @include(if: $unSen) {
+      __typename
+    }
+  }
+}

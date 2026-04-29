@@ -1,0 +1,20 @@
+query ($n: [Input_Vpt]) {
+  ... on Union_O3 {
+    ...Fragment_SJ6Ltufbc
+    ...Fragment_EshRGJjO
+    __typename
+  }
+}
+
+fragment Fragment_EshRGJjO on Union_O3 {
+  M: __typename
+}
+
+fragment Fragment_SJ6Ltufbc on Object_bDDDDDDDDD {
+  ...Fragment_EshRGJjO
+  di7uKYf(cEsGj: {wg8t0b5tzk : null, eNsMdY : -9.678585550598893E+307}) {
+    __typename
+  }
+  gOidQFad
+  zoM @Directive_f4(jND: $n)
+}

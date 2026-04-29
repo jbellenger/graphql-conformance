@@ -1,0 +1,23 @@
+query kLg7SV {
+  isFDs0gz
+  rVEFuF3V4r(zWgDh0fu: 3.686182862468317E+307) @skip(if: false) {
+    __typename
+    ... on Object_n2af {
+      ...Fragment_EdUV88
+    }
+  }
+  isFDs0gz @include(if: true) @Directive_qKsZ4g
+  ... on Object_F {
+    isFDs0gz
+  }
+  ... on Union_a2h {
+    ...Fragment_EdUV88
+  }
+  ... on Object_F {
+    k: isFDs0gz @Directive_M
+  }
+}
+
+fragment Fragment_EdUV88 on Union_a2h {
+  __typename
+}

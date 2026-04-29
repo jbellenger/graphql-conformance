@@ -1,0 +1,19 @@
+query TDdOTcm2 {
+  ...Fragment_xp
+  ...Fragment_U2O9qqZ
+  ...Fragment_xp
+}
+
+fragment Fragment_U2O9qqZ on Object_snF {
+  VJoAgy: g1t0
+}
+
+fragment Fragment_Z3WUll on Object_snF {
+  ...Fragment_U2O9qqZ
+}
+
+fragment Fragment_xp on Object_snF {
+  ...Fragment_Z3WUll
+  __typename
+  K7: g1t0
+}

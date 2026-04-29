@@ -1,0 +1,23 @@
+query Y_bYKmR {
+  __typename
+  ... on Object_fxSNYLzYR @skip(if: true) @Directive_xOhO {
+    ...Fragment_MMHT_H
+    ... on Union_hpn {
+      yeDQ: __typename
+    }
+    ... {
+      ...Fragment_MMHT_H
+      ... on Object_fxSNYLzYR {
+        dB5a
+      }
+    }
+  }
+}
+
+fragment Fragment_pkgTDAP1 on Union_hpn {
+  __typename
+}
+
+fragment Fragment_MMHT_H on Object_fxSNYLzYR @Directive_xOhO{
+  ...Fragment_pkgTDAP1
+}

@@ -1,0 +1,35 @@
+query gI {
+  ...Fragment_ZLjT
+  jYRe(xY1CHVBVNF: aobovk)
+  ... on Union_wT9 {
+    __typename
+    __typename
+    __typename
+  }
+  ... on Union_qNeE7Vbxl {
+    ...Fragment_ZLjT
+  }
+  ... on Union_qNeE7Vbxl {
+    __typename
+  }
+}
+
+fragment Fragment_Kkbf9jk8H on Object_PzBm @Directive_pGIVZ{
+  ... on Union_qNeE7Vbxl {
+    __typename @skip(if: false)
+  }
+}
+
+fragment Fragment_B70 on Object_PzBm {
+  ... on Union_qNeE7Vbxl {
+    __typename
+  }
+}
+
+fragment Fragment_ZLjT on Union_KhNM @Directive_pGIVZ{
+  ...Fragment_Kkbf9jk8H
+  ...Fragment_B70
+  ... on Object_PzBm {
+    mEUYvilX: sZn
+  }
+}

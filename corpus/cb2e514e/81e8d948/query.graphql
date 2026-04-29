@@ -1,0 +1,24 @@
+query G0t2NSV {
+  ...Fragment_iyUOPSP
+  ...Fragment_iyUOPSP
+  __typename
+}
+
+fragment Fragment_ILQS3 on Object_XBYPh {
+  __typename
+}
+
+fragment Fragment_PulY5Hdf04 on Union_B {
+  __typename @include(if: true) @Directive_LNRB4NzD
+}
+
+fragment Fragment_iyUOPSP on Union_aHa5eR0J5 @Directive_M6{
+  ...Fragment_ILQS3
+  __typename
+  ... on Object_v3SzEN {
+    ...Fragment_PulY5Hdf04
+    ... on Union_B {
+      JlY8IRTRa: __typename
+    }
+  }
+}

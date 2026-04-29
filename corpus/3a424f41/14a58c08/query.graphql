@@ -1,0 +1,10 @@
+query C($e: Boolean! = false) {
+  ...Fragment_Zuis
+}
+
+fragment Fragment_Zuis on Object_j1X {
+  xPGRB_
+  ... on Object_j1X {
+    xPGRB_ @skip(if: $e)
+  }
+}

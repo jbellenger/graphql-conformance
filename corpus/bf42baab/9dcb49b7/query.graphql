@@ -1,0 +1,23 @@
+{
+  ... on Object_BNi {
+    ...Fragment_V20ccnQ0
+    ...Fragment_V20ccnQ0
+    ... {
+      ...Fragment_GLhhzAQv
+      qtCJx_Rei
+    }
+  }
+}
+
+fragment Fragment_Y8Lpeyfv on Object_BNi {
+  HA: qtCJx_Rei
+}
+
+fragment Fragment_V20ccnQ0 on Object_BNi {
+  ...Fragment_Y8Lpeyfv
+  qtCJx_Rei
+}
+
+fragment Fragment_GLhhzAQv on Object_BNi {
+  qtCJx_Rei
+}

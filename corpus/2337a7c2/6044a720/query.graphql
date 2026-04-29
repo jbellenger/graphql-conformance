@@ -1,0 +1,21 @@
+query he9KSxb26 {
+  ...Fragment_BhaYJoCyB
+  jS
+}
+
+fragment Fragment_Dt on Object__5RImjW @Directive_m8x3w{
+  asXncvG3d
+}
+
+fragment Fragment_CzrUST9yH on Object__5RImjW {
+  ...Fragment_Dt
+  __typename
+}
+
+fragment Fragment_BhaYJoCyB on Object__5RImjW {
+  ...Fragment_CzrUST9yH
+  __typename
+  ... on Object__5RImjW {
+    jS
+  }
+}

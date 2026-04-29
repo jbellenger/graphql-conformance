@@ -1,0 +1,27 @@
+{
+  ...Fragment_XK
+  ...Fragment_XK
+  ... on Object_Wii1CP_nf {
+    ...Fragment_Q2
+    ... on Union_mbkP43_A {
+      ...Fragment_Q2
+      ... on Object_Wii1CP_nf {
+        __typename
+      }
+    }
+  }
+  ... on Union_iVC9081Lx @include(if: false) {
+    ... on Object_Wii1CP_nf {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_Q2 on Union_iVC9081Lx {
+  __typename
+}
+
+fragment Fragment_XK on Union_iVC9081Lx {
+  ...Fragment_Q2
+  ...Fragment_Q2
+}

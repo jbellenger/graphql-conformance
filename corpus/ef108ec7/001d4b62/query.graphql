@@ -1,0 +1,7 @@
+query ($oQ0hEZTw: Boolean!) {
+  ...Fragment_i@include(if: $oQ0hEZTw)
+}
+
+fragment Fragment_i on Object_BF {
+  __typename
+}

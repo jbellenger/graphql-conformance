@@ -1,0 +1,23 @@
+query qJ0y2ZF3($hOgW: Boolean!) {
+  ...Fragment_JV8mK
+  ...Fragment_cWy0qA
+  ... on Object__Xgg {
+    ...Fragment_JV8mK
+    ... on Union_euQlI9HDm {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_JV8mK on Union_wzeoRDteYK @Directive_hIT{
+  HaNoJ7znpY: __typename
+  __typename
+  __typename
+}
+
+fragment Fragment_cWy0qA on Object__Xgg {
+  vSU76yk
+  ... on Union_euQlI9HDm {
+    __typename @skip(if: $hOgW)
+  }
+}

@@ -1,0 +1,23 @@
+query aUdtx {
+  ... on Interface_ch {
+    __typename @Directive_Kcvyfz1V1G
+    __typename
+    ... {
+      ...Fragment_T_I
+      of: qtdG0O {
+        __typename
+        __typename
+      }
+    }
+    ... on Interface_ch {
+      ...Fragment_T_I
+    }
+  }
+}
+
+fragment Fragment_T_I on Interface_ch {
+  c8Zmm2fZH: __typename
+  qtdG0O(dFBGbPZ3P: null) {
+    __typename
+  }
+}

@@ -1,0 +1,13 @@
+query ($_31oVBIv: Boolean! = false, $duXeAWtnC: Enum_n5Gqy2_X0d! = Irc77eMDuy) {
+  ... on Object_j1X {
+    __typename @skip(if: false)
+  }
+  ... on Union_VAowkKl1d @skip(if: false) @Directive_lq0eRMIqQq {
+    ...Fragment_E
+    ...Fragment_E
+  }
+}
+
+fragment Fragment_E on Union_VAowkKl1d {
+  __typename @include(if: $_31oVBIv) @Directive_JPk7EbWKBn(lmqE: $duXeAWtnC)
+}

@@ -1,0 +1,29 @@
+{
+  ...Fragment_LmK
+  ...Fragment_kxSWF
+  ...Fragment_LmK
+  z {
+    ...Fragment_kxSWF
+    ... {
+      ... on Interface_kFFwJiRkG @Directive_rOmROvkA {
+        qR(oI: q)
+      }
+    }
+  }
+}
+
+fragment Fragment_KJFhL_P on Union_noPusmoZvg {
+  __typename
+}
+
+fragment Fragment_kxSWF on Union_noPusmoZvg @Directive_vFyss7E{
+  ...Fragment_KJFhL_P
+  ... on Object_I @include(if: true) {
+    qR(oI: q)
+  }
+}
+
+fragment Fragment_LmK on Object_gYPi {
+  ...Fragment_kxSWF
+  j8k: bOH3iM
+}

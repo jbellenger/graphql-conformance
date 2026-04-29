@@ -1,0 +1,23 @@
+{
+  ...Fragment_lZ7U
+  ...Fragment_lZ7U
+  ...Fragment_lZ7U
+}
+
+fragment Fragment_Ha on Union_EUKnM83wt3 {
+  ... on Object_B {
+    __typename @include(if: false)
+  }
+}
+
+fragment Fragment_lZ7U on Object_B {
+  ...Fragment_Ha
+  zjKeQ
+  zjKeQ
+  ... on Union_EUKnM83wt3 {
+    ...Fragment_Ha
+    ... on Object_Gz {
+      hTTktwodiW
+    }
+  }
+}

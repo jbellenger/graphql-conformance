@@ -1,0 +1,19 @@
+{
+  ... on Object_Xo {
+    ...Fragment_loR96
+    yR0e
+    ... on Object_Xo {
+      ...Fragment_loR96
+    }
+    ... on Object_Xo {
+      yR0e
+    }
+  }
+}
+
+fragment Fragment_loR96 on Object_Xo {
+  __typename
+  ... on Object_Xo {
+    __typename
+  }
+}

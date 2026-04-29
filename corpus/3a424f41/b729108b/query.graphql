@@ -1,0 +1,25 @@
+query ub36pfP($jGi4_sdOI: Boolean! = true) {
+  ...Fragment_tM2EVFou
+  ...Fragment_TRBvlqUyAF
+  ...Fragment_tM2EVFou
+  Yf: __typename
+  __typename
+}
+
+fragment Fragment_TRBvlqUyAF on Object_j1X {
+  YQh: __typename
+}
+
+fragment Fragment_tM2EVFou on Object_j1X {
+  ... on Union_VAowkKl1d {
+    btL: __typename
+  }
+  ... on Object_j1X {
+    ...Fragment_TRBvlqUyAF@skip(if: true) @Directive_JPk7EbWKBn(lmqE: nb_)
+    xPGRB_
+    ... on Union_FV4AsTv {
+      __typename @skip(if: $jGi4_sdOI)
+      CdSXLzqdY: __typename
+    }
+  }
+}

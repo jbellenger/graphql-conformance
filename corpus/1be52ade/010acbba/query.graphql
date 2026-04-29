@@ -1,0 +1,11 @@
+query ($gK9l8Jiu: Boolean!) {
+  ...Fragment_r
+  ...Fragment_r
+  BT: srZ7(kIy2k2xbNk: {uPIdF0OaIO : f9fIZYxTw}) {
+    __typename @include(if: $gK9l8Jiu)
+  }
+}
+
+fragment Fragment_r on Union_wJ @Directive_u0b{
+  yEhK: __typename
+}

@@ -1,0 +1,21 @@
+query X58BDl0 {
+  ...Fragment_mmpvUYst
+}
+
+fragment Fragment_mmpvUYst on Object_SGq {
+  ... on Union_Y_ {
+    __typename
+    MhXFSRfxaA: __typename @skip(if: false)
+    __typename
+  }
+  ... on Object_SGq {
+    oG9Jx {
+      __typename
+    }
+    __typename
+    WxC0Z3P: oG9Jx {
+      __typename
+      __typename
+    }
+  }
+}

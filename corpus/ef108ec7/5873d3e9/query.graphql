@@ -1,0 +1,17 @@
+{
+  ...Fragment_fwi85u
+  ... @skip(if: false) @include(if: false) {
+    ...Fragment_fwi85u
+    ... on Object_BF {
+      ... on Union_VDi {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_fwi85u on Union_x363 {
+  __typename
+  bgZAIEk: __typename
+  __typename
+}

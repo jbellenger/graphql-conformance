@@ -1,0 +1,75 @@
+query f4 @Directive_MKloH {
+  ...Fragment_u
+  ...Fragment_LA5441
+  l
+  ... on Object_w0wT {
+    ... on Union_Tbn2HOEdf1 @skip(if: true) {
+      __typename
+    }
+    ... on Interface_s {
+      ...Fragment_u
+    }
+  }
+  ... on Interface_s {
+    ...Fragment_Z@defer(if: true, label: "%")
+  }
+  ... on Object_w0wT {
+    y0X @Directive_MKloH {
+      ...Fragment_XEYCQyx_UD
+      __typename @Directive_n65
+      ... {
+        prpaRWF: __typename
+      }
+    }
+    q6 {
+      ...Fragment_LA5441@Directive_MKloH
+      __typename
+      RM: __typename
+      __typename
+    }
+    qFJWcc: l
+    __typename
+    ... on Object_w0wT {
+      ...Fragment_Klxd
+    }
+    ... on Union_Tbn2HOEdf1 {
+      ...Fragment_Klxd
+    }
+  }
+}
+
+fragment Fragment_Klxd on Object_w0wT {
+  ... on Union_Tbn2HOEdf1 {
+    __typename
+  }
+}
+
+fragment Fragment_u on Object_w0wT {
+  ...Fragment_Klxd
+  hyiC {
+    __typename
+  }
+  ... on Interface_s {
+    ...Fragment_Klxd
+    ... on Union_Tbn2HOEdf1 @include(if: true) {
+      __typename
+    }
+  }
+  ... on Interface_s {
+    uvro1A4: __typename
+  }
+}
+
+fragment Fragment_LA5441 on Union_Tbn2HOEdf1 {
+  __typename
+}
+
+fragment Fragment_Z on Object_w0wT {
+  ... on Union_Tbn2HOEdf1 {
+    __typename
+  }
+}
+
+fragment Fragment_XEYCQyx_UD on Object_ZV7bPt @Directive_n65{
+  kWKM
+}

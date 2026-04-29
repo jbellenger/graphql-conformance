@@ -1,0 +1,17 @@
+{
+  ...Fragment_p
+  ...Fragment_T3RuL_gLX
+  ...Fragment_p
+  ozs9CW6as_
+  ... on Union_t11hjJ @include(if: false) {
+    __typename @skip(if: true)
+  }
+}
+
+fragment Fragment_p on Union_t11hjJ {
+  __typename
+}
+
+fragment Fragment_T3RuL_gLX on Object_ma8i {
+  ozs9CW6as_
+}

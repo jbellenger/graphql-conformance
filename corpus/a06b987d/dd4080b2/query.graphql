@@ -1,0 +1,49 @@
+{
+  ...Fragment_jgVNU
+  ... on Interface_i6UE @defer(if: false) {
+    ...Fragment_g3up5u6zf
+    __typename
+    ... on Object_w7PV0 {
+      o4Xi
+      of7 {
+        __typename
+      }
+    }
+  }
+  ... {
+    mcu
+  }
+}
+
+fragment Fragment_g3up5u6zf on Object_w7PV0 {
+  mcu
+}
+
+fragment Fragment_OX0nz on Object_w7PV0 {
+  ...Fragment_g3up5u6zf
+  of7 {
+    GU57jCB: __typename @include(if: true)
+  }
+  mcu
+  mcu @Directive_J0l0qE
+}
+
+fragment Fragment_c47cI9CQ7 on Interface_i6UE @Directive_gMjNAbo{
+  __typename
+}
+
+fragment Fragment_jgVNU on Object_w7PV0 {
+  ...Fragment_OX0nz
+  ... on Interface_i6UE {
+    ...Fragment_c47cI9CQ7
+    ... on Union_y75jv1sZV7 {
+      __typename
+    }
+  }
+  ... on Union_y75jv1sZV7 {
+    ...Fragment_c47cI9CQ7
+    ... on Union_ZuWB {
+      __typename
+    }
+  }
+}

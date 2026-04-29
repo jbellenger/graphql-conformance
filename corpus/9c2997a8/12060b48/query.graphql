@@ -1,0 +1,29 @@
+query FwCqzxnWV {
+  ...Fragment_lQhsY
+  __typename
+}
+
+fragment Fragment_bUStS on Object_tCN {
+  vUgvydGnB
+}
+
+fragment Fragment_ybit on Union_rn {
+  ...Fragment_bUStS@defer(if: true, label: "LqN")
+  ... on Object_tCN {
+    lWWak8cdD
+  }
+}
+
+fragment Fragment_lQhsY on Object_JlCtS_ {
+  ...Fragment_ybit@defer(if: true, label: "(%") @skip(if: false)
+  ...Fragment_ybit
+  g {
+    ... on Union_xB {
+      __typename
+    }
+  }
+  ... on Union_rn {
+    __typename
+    __typename
+  }
+}

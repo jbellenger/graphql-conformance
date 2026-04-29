@@ -1,0 +1,8 @@
+query veZR($nexvC: Boolean! = false) {
+  ...Fragment_qX
+}
+
+fragment Fragment_qX on Union_exdaVa {
+  __typename @include(if: $nexvC)
+  __typename
+}

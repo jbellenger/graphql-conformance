@@ -1,0 +1,20 @@
+query xdqoo1C6 {
+  c9rvyZ
+  kS_ {
+    ...Fragment_Rme3xDWQm
+    w32Jmb4gF {
+      __typename
+    }
+    __typename
+  }
+  okYQdyS5NW: kS_ {
+    __typename @include(if: true)
+  }
+}
+
+fragment Fragment_Rme3xDWQm on Object_nXiXTZ {
+  ... on Union_Ds_8yOQHcC {
+    __typename @skip(if: true)
+    gM8Na: __typename
+  }
+}

@@ -1,0 +1,32 @@
+query jw7NnL($qhp: Boolean!) {
+  nTqO {
+    ...Fragment_eJZN1
+    ...Fragment_eJZN1
+  }
+  AEhxNDs6re: __typename
+  nTqO {
+    ...Fragment_eJZN1
+    __typename
+  }
+  ... on Object_Ocw7Qczvlw {
+    ...Fragment_eJZN1
+    ...Fragment_eJZN1@skip(if: $qhp)
+    ... on Union_bIh @Directive_cUjIW {
+      oIR: __typename
+    }
+    ... on Object_Ocw7Qczvlw {
+      ...Fragment_eJZN1
+      NUdg: _k5g
+      _k5g
+      ... on Union_TEwpsv {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_eJZN1 on Object_Ocw7Qczvlw {
+  ... on Union_TEwpsv {
+    __typename
+  }
+}

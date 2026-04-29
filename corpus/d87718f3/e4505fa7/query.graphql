@@ -1,0 +1,40 @@
+{
+  ...Fragment_uG
+  iYmFzGWBq {
+    ...Fragment_R7jUUP
+    rdmhxJcRZ: hl
+  }
+  __typename
+  tyN3ij8D: __typename
+}
+
+fragment Fragment_wlTv8Z on Union_y {
+  __typename
+  __typename @include(if: true)
+}
+
+fragment Fragment_uG on Object_F5 {
+  ...Fragment_wlTv8Z
+  ...Fragment_wlTv8Z
+  ... on Union_DePp {
+    C: __typename
+  }
+}
+
+fragment Fragment_wfFy48u7 on Interface_PnkwkYPwwA {
+  __typename
+}
+
+fragment Fragment_R7jUUP on Interface_L @Directive_raaaaaaaaa{
+  ...Fragment_wfFy48u7
+  __typename
+  eAJ7cHoj {
+    zTctWvJ3Qd
+  }
+  zC2IMm {
+    gvs: dqZKub
+  }
+  ... on Interface_L_STUB {
+    __typename
+  }
+}

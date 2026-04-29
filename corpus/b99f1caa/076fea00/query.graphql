@@ -1,0 +1,22 @@
+query @Directive_EWc {
+  ...Fragment_u5M2
+  ...Fragment_u
+  qYf6 {
+    tGjWLGtHR
+    ... on Union_lFpsAJEf {
+      ... on Union_nIUBqPw {
+        __typename @include(if: false)
+      }
+    }
+  }
+}
+
+fragment Fragment_u on Object_O7uKa {
+  uiTs: __typename
+}
+
+fragment Fragment_u5M2 on Object_O7uKa @Directive_EWc{
+  ...Fragment_u
+  ...Fragment_u
+  __typename
+}

@@ -1,0 +1,16 @@
+query VuV5gbF {
+  ...Fragment_kK4I
+  ...Fragment_kK4I@include(if: true)
+  ... on Union_idOm3E2hAr {
+    __typename
+  }
+}
+
+fragment Fragment_kK4I on Union_LKxR {
+  ... on Object_RtExt {
+    k
+    ... on Union_idOm3E2hAr {
+      __typename
+    }
+  }
+}

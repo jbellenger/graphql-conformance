@@ -1,0 +1,19 @@
+{
+  ... on Union_Oa9Xyu @include(if: true) {
+    ...Fragment_gs
+    __typename
+    __typename
+    ... on Union_zx {
+      ... on Union_Dgsgzb {
+        __typename
+      }
+    }
+    ... on Union_Dgsgzb {
+      W: __typename
+    }
+  }
+}
+
+fragment Fragment_gs on Object_gRe1 {
+  z
+}

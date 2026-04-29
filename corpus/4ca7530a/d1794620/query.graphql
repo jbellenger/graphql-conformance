@@ -1,0 +1,28 @@
+{
+  ... on Object_PFI8yNbA @defer(label: "O") {
+    r5 {
+      ...Fragment_E
+      ... on Interface_RCKzpo_STUB {
+        kPymsq {
+          __typename
+        }
+      }
+    }
+    ZnF: bb7BRbIA5 @skip(if: true) @include(if: false) {
+      ... on Interface_dTZwr_STUB {
+        jjhe
+      }
+    }
+    ... on Union_cQ {
+      __typename
+      __typename
+    }
+  }
+  ... on Object_PFI8yNbA {
+    ht_pI
+  }
+}
+
+fragment Fragment_E on Interface_RCKzpo {
+  __typename
+}

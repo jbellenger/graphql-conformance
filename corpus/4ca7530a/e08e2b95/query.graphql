@@ -1,0 +1,19 @@
+query SueypAXWy @Directive_vnCLfd1M {
+  ... on Union_cQ {
+    ...Fragment_zA
+    ...Fragment_zA
+    ... on Union_cQ @skip(if: false) @defer(if: true, label: "'AY") {
+      ...Fragment_zA
+      XaI: __typename @skip(if: true)
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_zA on Object_PFI8yNbA {
+  ht_pI
+  ... {
+    x: ht_pI
+  }
+}

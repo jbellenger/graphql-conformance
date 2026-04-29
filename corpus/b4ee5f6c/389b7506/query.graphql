@@ -1,0 +1,22 @@
+query I8R52nR($yOrajGSQRl: Boolean!) {
+  ...Fragment_i9XS
+  ...Fragment_i9XS
+  ... on Object_SGq {
+    ...Fragment_i9XS
+    __typename
+    __typename
+    nZ6HeQ
+  }
+  ... on Union_Y_ {
+    __typename @include(if: $yOrajGSQRl)
+  }
+}
+
+fragment Fragment_i9XS on Object_SGq {
+  ... on Object_SGq {
+    cFQVp: nZ6HeQ
+    ... on Union_Y_ {
+      __typename
+    }
+  }
+}

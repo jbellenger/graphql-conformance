@@ -1,0 +1,18 @@
+query Zxr {
+  ...Fragment_VfgWj23fp
+  pfKlZya {
+    __typename
+  }
+  pfKlZya @Directive_G1W_mKRx {
+    __typename
+  }
+}
+
+fragment Fragment_v9bt1NK on Union_foz @Directive_G1W_mKRx{
+  __typename
+  __typename
+}
+
+fragment Fragment_VfgWj23fp on Union_foz {
+  ...Fragment_v9bt1NK
+}

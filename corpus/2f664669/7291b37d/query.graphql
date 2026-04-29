@@ -1,0 +1,22 @@
+query r {
+  ... on Union_MesTX {
+    ...Fragment_zRax@Directive_X
+    __typename
+    __typename
+    __typename @skip(if: true)
+    ... {
+      ...Fragment_KGqQyOzu
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_KGqQyOzu on Union_MesTX {
+  __typename @skip(if: true) @include(if: false)
+}
+
+fragment Fragment_zRax on Object_Zzcj4Q {
+  ...Fragment_KGqQyOzu
+  qm8r7zFF
+}

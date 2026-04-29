@@ -1,0 +1,34 @@
+{
+  ...Fragment_nEyXsS
+  __typename
+  __typename
+  olcNWWoTKb {
+    ...Fragment_rBT1_
+    ... on Interface_pUwS2GHz {
+      ...Fragment_rBT1_
+      _o
+    }
+  }
+  __typename
+  c47pKfuMk1
+  ... on Object_JQyTBCD {
+    ...Fragment_nEyXsS
+    ... {
+      ...Fragment_VUNT
+    }
+  }
+}
+
+fragment Fragment_VUNT on Object_JQyTBCD @Directive_flgFO4{
+  ... {
+    c47pKfuMk1
+  }
+}
+
+fragment Fragment_nEyXsS on Object_JQyTBCD {
+  ...Fragment_VUNT
+}
+
+fragment Fragment_rBT1_ on Interface_pUwS2GHz {
+  nxp0Wfu9
+}

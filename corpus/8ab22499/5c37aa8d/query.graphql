@@ -1,0 +1,13 @@
+query rQiuy5P($aRWPD2: Boolean!) {
+  ... on Object_S {
+    ...Fragment_YTaxxJNw6@Directive_ACuaiJ
+  }
+}
+
+fragment Fragment_YTaxxJNw6 on Object_S {
+  ... {
+    cdkYdBe6 @skip(if: $aRWPD2) {
+      __typename
+    }
+  }
+}

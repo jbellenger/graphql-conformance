@@ -1,0 +1,23 @@
+query ($sILj0uOog: Boolean! = false@Directive__Y) {
+  ... {
+    ...Fragment_Doy1vNp54
+    qtCJx_Rei @skip(if: $sILj0uOog)
+    __typename
+    qtCJx_Rei
+    P9hB: __typename
+    ... on Object_BNi {
+      qtCJx_Rei
+    }
+    ... on Object_BNi {
+      ...Fragment_Doy1vNp54
+      NbmHy: __typename
+      ... on Object_BNi {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Doy1vNp54 on Object_BNi {
+  qtCJx_Rei
+}

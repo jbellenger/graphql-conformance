@@ -1,0 +1,26 @@
+query nFRNHD0($u0otsXF7h: Int = -1125685883, $w6v: [Float]) {
+  ... on Object_Xo {
+    ...Fragment_Or5oaiB
+    ...Fragment_Or5oaiB
+    ... on Object_Xo {
+      ...Fragment_Or5oaiB@Directive_ZUg(tZ: $w6v)
+    }
+    ... on Object_Xo {
+      yR0e
+    }
+  }
+}
+
+fragment Fragment_SB3DTD on Object_Xo {
+  yR0e
+}
+
+fragment Fragment_Or5oaiB on Union_d_t1luAL4 {
+  ...Fragment_SB3DTD
+  __typename
+  __typename
+  __typename
+  ... on Union_Ls {
+    T5k: __typename @Directive_Qg0V(o: $u0otsXF7h)
+  }
+}

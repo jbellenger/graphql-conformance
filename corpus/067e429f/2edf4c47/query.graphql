@@ -1,0 +1,20 @@
+query S4Oq($qLz: Boolean!@Directive_jM3v) {
+  pWI9NE8VQ @include(if: true) {
+    ... on Interface_QLendjrHo {
+      ...Fragment_Ypf@skip(if: $qLz)
+    }
+  }
+  ... on Union_r3fLDCqUv @include(if: true) {
+    ...Fragment_r3xKT3
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_Ypf on Object_U92jm3n0Y {
+  cgu
+}
+
+fragment Fragment_r3xKT3 on Union_r3fLDCqUv {
+  ...Fragment_Ypf
+}

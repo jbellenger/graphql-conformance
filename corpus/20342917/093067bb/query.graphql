@@ -1,0 +1,24 @@
+query ($eBut8ncm1: Boolean!) {
+  mL4mzhhJ: bOH3iM @skip(if: $eBut8ncm1)
+  ... on Union_noPusmoZvg {
+    __typename
+    ... on Object_I {
+      ...Fragment_SWjOXryQt
+    }
+    ... on Interface_kFFwJiRkG {
+      ...Fragment_SWjOXryQt
+      akVR(lNdebSF: ["", ""]) {
+        v0p6
+      }
+      ... on Union_noPusmoZvg {
+        __typename
+        bfrZOP6jP: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_SWjOXryQt on Union_noPusmoZvg {
+  __typename
+  __typename @Directive_rOmROvkA
+}

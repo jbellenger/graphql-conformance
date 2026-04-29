@@ -1,0 +1,16 @@
+query ($j19PD_Ntd: Int, $zHgx: Boolean!) {
+  pxV {
+    ... on Interface_eYNx3oDLy_STUB {
+      l679uS5l {
+        sd: ubje {
+          ckCx(lL79do: $j19PD_Ntd) @skip(if: $zHgx)
+        }
+        ubje {
+          __typename
+        }
+      }
+      wmJyf2pcoA(eYusE5yF: "o:")
+      tz51plr
+    }
+  }
+}

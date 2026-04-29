@@ -1,0 +1,19 @@
+query vS1yng {
+  ...Fragment_Nm4
+  ... {
+    ... on Object_z {
+      __typename
+    }
+  }
+  ... on Object_z {
+    ... on Object_z @defer(if: true, label: "M") @include(if: true) @skip(if: false) {
+      ... on Union_B76B {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Nm4 on Object_z {
+  Fc05xD9HO: __typename
+}

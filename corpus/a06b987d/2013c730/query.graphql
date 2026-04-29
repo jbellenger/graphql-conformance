@@ -1,0 +1,29 @@
+{
+  ... on Object_w7PV0 {
+    ...Fragment_EQ8fa
+    ...Fragment_EQ8fa
+    ... {
+      o4Xi
+    }
+    ... on Union_y75jv1sZV7 {
+      ...Fragment_EQ8fa
+      __typename
+    }
+  }
+  ... {
+    o4Xi
+  }
+  ... on Interface_i6UE {
+    ...Fragment_EQ8fa
+    ...Fragment_EQ8fa
+    o4Xi
+    DVC: o4Xi
+  }
+}
+
+fragment Fragment_EQ8fa on Interface_i6UE {
+  ... on Union_y75jv1sZV7 {
+    __typename
+    __typename
+  }
+}

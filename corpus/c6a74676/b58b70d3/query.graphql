@@ -1,0 +1,34 @@
+{
+  ...Fragment_W7P1jB_6t
+  __typename
+  raCnzmAec: __typename
+  ... on Object_mpxXtOPqh3 @defer(if: true, label: "3r") {
+    ...Fragment_W7P1jB_6t
+    ...Fragment_W7P1jB_6t
+    _C4K_LY {
+      __typename
+      ... on Object_F6f1Kf {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_WDJncIJL on Union_gs {
+  __typename
+  __typename
+}
+
+fragment Fragment_W7P1jB_6t on Object_mpxXtOPqh3 {
+  _C4K_LY {
+    ...Fragment_WDJncIJL@Directive_sY0sRvHKE2
+    sIuh: __typename
+    ... on Object_F6f1Kf {
+      a: enEeL3jBtk
+    }
+  }
+  _C4K_LY {
+    __typename @Directive_z
+  }
+  oaws3to9Hy: __typename
+}

@@ -1,0 +1,31 @@
+query FrHNhl($zpyPC0cG: Boolean!) {
+  ...Fragment_aZyvUt
+  ls: __typename
+  ... @skip(if: $zpyPC0cG) {
+    ... on Object_Y {
+      FV: guu77fB
+    }
+    ... on Union_Nv7l8bLjnj @include(if: $zpyPC0cG) @defer(if: true, label: "Nq7") {
+      ... on Object_Z4 {
+        gkzdU9: nWyv_zMpcU
+      }
+    }
+  }
+}
+
+fragment Fragment_etb5fqmyV on Object_Y {
+  guu77fB
+  ... on Union_Nv7l8bLjnj {
+    __typename
+  }
+}
+
+fragment Fragment_aZyvUt on Object_Y {
+  ...Fragment_etb5fqmyV
+  ... on Union_Nv7l8bLjnj {
+    rF3_: __typename
+    ... on Object_Y {
+      __typename
+    }
+  }
+}

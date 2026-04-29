@@ -1,0 +1,25 @@
+query PLBCERzsC {
+  ...Fragment_cIVLAE
+  ...Fragment_cIVLAE
+  ... on Union_Rbbbbbbbbb {
+    zd: __typename
+    __typename
+    __typename
+    __typename
+    ... on Union_Rbbbbbbbbb @include(if: true) {
+      __typename
+    }
+    ... on Object_b {
+      l {
+        __typename
+      }
+    }
+  }
+  ... on Union_auxhDXZN6C {
+    __typename
+  }
+}
+
+fragment Fragment_cIVLAE on Union_Rbbbbbbbbb {
+  __typename
+}

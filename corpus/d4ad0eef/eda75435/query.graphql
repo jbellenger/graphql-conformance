@@ -1,0 +1,42 @@
+query j {
+  ...Fragment_VZqgH7z18
+  ...Fragment_mJ8P
+  y {
+    xs: __typename @Directive__t5m5ld @Directive_fSEhuS2s
+  }
+  y {
+    __typename
+  }
+}
+
+fragment Fragment_cmT on Object_ofwG00b {
+  uaqxTYZke: ch7x {
+    p2Sd {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_mJ8P on Object_ofwG00b {
+  ch7x {
+    W: __typename
+  }
+}
+
+fragment Fragment_VZqgH7z18 on Object_ofwG00b {
+  ...Fragment_cmT
+  ...Fragment_mJ8P
+  nP
+  ... {
+    ... on Object_ofwG00b {
+      nP
+    }
+  }
+  ... on Object_ofwG00b {
+    ...Fragment_cmT
+    ... on Object_ofwG00b {
+      nP @skip(if: false)
+      nP
+    }
+  }
+}

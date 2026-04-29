@@ -1,0 +1,14 @@
+{
+  ...Fragment_hdnO0c
+}
+
+fragment Fragment_ZzWfIaeSk on Union_euQlI9HDm {
+  __typename
+}
+
+fragment Fragment_hdnO0c on Object__Xgg {
+  ...Fragment_ZzWfIaeSk
+  ... on Union_wzeoRDteYK {
+    ...Fragment_ZzWfIaeSk@Directive_hIT
+  }
+}

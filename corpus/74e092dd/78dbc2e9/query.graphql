@@ -1,0 +1,19 @@
+query TlttXpC {
+  __typename
+  ... on Union_Bd {
+    __typename
+    ... on Object_VFqLqVz9 {
+      ...Fragment_S6C1x
+      ... on Union_D {
+        __typename
+      }
+    }
+    ... on Object_VFqLqVz9 {
+      ...Fragment_S6C1x
+    }
+  }
+}
+
+fragment Fragment_S6C1x on Union_Bd {
+  __typename
+}

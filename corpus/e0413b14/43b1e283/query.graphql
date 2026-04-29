@@ -1,0 +1,34 @@
+query Xotzok4ycx {
+  __typename
+  ... on Object_WYx3 {
+    h
+    __typename
+    s {
+      __typename
+      ... on Interface_JP8Xo {
+        __typename
+      }
+    }
+  }
+  ... on Union_S {
+    ...Fragment_Dj
+    ...Fragment_Dj
+    __typename
+    ... on Union_S {
+      go0: __typename
+    }
+  }
+  ... on Union_S {
+    ...Fragment_Dj
+    __typename
+  }
+}
+
+fragment Fragment_NC_kNqT on Union_S @Directive_Bq{
+  __typename
+  sx5FVDf: __typename
+}
+
+fragment Fragment_Dj on Object_WYx3 {
+  ...Fragment_NC_kNqT
+}

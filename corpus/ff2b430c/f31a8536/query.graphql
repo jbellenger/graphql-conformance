@@ -1,0 +1,19 @@
+query ZIFknafU7($jfihVztBOZ: Boolean!) {
+  ...Fragment_vJFSKj9
+  __typename
+}
+
+fragment Fragment_mK on Union_nkk {
+  __typename
+  __typename
+}
+
+fragment Fragment_vJFSKj9 on Union_nkk {
+  ... on Union_nkk {
+    ...Fragment_mK
+    __typename
+    ... on Object_y9u {
+      __typename @include(if: $jfihVztBOZ)
+    }
+  }
+}

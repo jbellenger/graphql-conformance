@@ -1,0 +1,38 @@
+{
+  ...Fragment_va9Gt9C
+  ... on Union_nwtD_r_s {
+    ...Fragment_T22RjkaNnu
+    ...Fragment_rh1F
+  }
+}
+
+fragment Fragment_T22RjkaNnu on Union_nwtD_r_s @Directive_GbSmsDpn0H{
+  Y39t6: __typename
+}
+
+fragment Fragment_rh1F on Object_DPwy1UD {
+  ...Fragment_T22RjkaNnu
+  __typename
+  y: h {
+    __typename
+  }
+}
+
+fragment Fragment_VSiQK on Union_shp5o {
+  __typename
+}
+
+fragment Fragment_va9Gt9C on Object_DPwy1UD {
+  ...Fragment_rh1F
+  ...Fragment_T22RjkaNnu@defer(if: false, label: "h^A")
+  h @Directive_bqLD8IvSv {
+    ...Fragment_VSiQK
+    ... on Union__09bWHhS {
+      __typename
+    }
+  }
+  __typename
+  ... on Union_nwtD_r_s {
+    __typename
+  }
+}

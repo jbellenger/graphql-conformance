@@ -1,0 +1,22 @@
+query UvkxOD9Z {
+  ... on Union_K4U60 @defer(if: true, label: ">c") @include(if: true) {
+    __typename
+    ... on Object_AtMPPdqBEM {
+      ...Fragment_h
+      tRfP {
+        __typename
+      }
+      tRfP {
+        __typename
+      }
+    }
+  }
+  ... on Union_K4U60 {
+    ...Fragment_h
+    ...Fragment_h
+  }
+}
+
+fragment Fragment_h on Union_K4U60 @Directive_X{
+  __typename
+}

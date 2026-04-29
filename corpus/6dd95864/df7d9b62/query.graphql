@@ -1,0 +1,3 @@
+query ($uT4j_dg: Boolean! = false) {
+  a @skip(if: $uT4j_dg)
+}

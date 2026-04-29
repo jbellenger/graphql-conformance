@@ -1,0 +1,38 @@
+query zO9C9M1f {
+  ...Fragment_W
+  __typename
+  viQ3Ci: __typename
+  leyBUXFdA {
+    ...Fragment_rDLiK
+    ... on Object_N4VkYhFB {
+      __typename
+      ... on Union_kKHj {
+        __typename
+      }
+    }
+    ... on Object_N4VkYhFB {
+      ...Fragment_rDLiK
+      ufGyf6(wWA: [kwG6KQl, A2WG6LXrVX, kwG6KQl]) {
+        __typename
+      }
+    }
+  }
+  __typename
+}
+
+fragment Fragment_xZTiu on Union_zr1Q {
+  __typename
+  __typename
+  __typename
+}
+
+fragment Fragment_W on Union_zr1Q {
+  ...Fragment_xZTiu
+}
+
+fragment Fragment_rDLiK on Object_N4VkYhFB {
+  ... on Union_kKHj {
+    __typename
+    __typename
+  }
+}

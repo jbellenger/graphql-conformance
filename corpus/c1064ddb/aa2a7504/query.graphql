@@ -1,0 +1,16 @@
+query SZutGot0U @Directive_hNZmoUK {
+  ...Fragment_x
+}
+
+fragment Fragment_IZBReK9Xf on Object_yq7o_O2 {
+  __typename
+  ... on Interface_UUi {
+    tEB
+  }
+}
+
+fragment Fragment_x on Union_hap @Directive_i{
+  ...Fragment_IZBReK9Xf
+  __typename
+  __typename
+}

@@ -1,0 +1,25 @@
+query @Directive_TCJs8xM {
+  ...Fragment_t
+  ... on Union_s7PEnFz {
+    ...Fragment_t
+    ...Fragment_t
+    __typename
+    __typename
+    __typename
+    ... on Union_s7PEnFz {
+      ...Fragment_MzXUVMo1z
+    }
+  }
+  ... on Object_e {
+    jNIpPj4J
+  }
+}
+
+fragment Fragment_t on Union_s7PEnFz {
+  nAc: __typename
+  __typename
+}
+
+fragment Fragment_MzXUVMo1z on Interface_lun17 {
+  gyXxrD
+}

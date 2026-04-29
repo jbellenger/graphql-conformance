@@ -1,0 +1,28 @@
+{
+  sCX {
+    ...Fragment_dy
+    ... on Object__KnPVwLq {
+      ... on Interface_HIifn {
+        h @skip(if: false)
+      }
+    }
+    ... on Interface_HIifn {
+      ...Fragment_lS0fhM
+      XB: __typename
+    }
+  }
+  __typename
+  __typename @Directive_bY
+}
+
+fragment Fragment_EORc10vc on Object__KnPVwLq {
+  __typename
+}
+
+fragment Fragment_dy on Object__KnPVwLq {
+  ...Fragment_EORc10vc
+}
+
+fragment Fragment_lS0fhM on Interface_HIifn {
+  __typename
+}

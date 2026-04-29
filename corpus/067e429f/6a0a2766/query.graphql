@@ -1,0 +1,43 @@
+query NS($bJ: Boolean!@Directive_lA) {
+  ... on Object_U92jm3n0Y {
+    pWI9NE8VQ {
+      ...Fragment_Kfc9D5o_F
+    }
+    pWI9NE8VQ {
+      ...Fragment_Kfc9D5o_F
+      ... on Object_U92jm3n0Y {
+        __typename
+      }
+    }
+  }
+  ... on Union_r3fLDCqUv @Directive_lA {
+    ... on Object_f1 @defer(if: false, label: "<") {
+      gAW
+    }
+    ... on Union_SQ {
+      __typename
+    }
+  }
+  ... {
+    ...Fragment_Kfc9D5o_F
+    vTuQkpg9I9: pWI9NE8VQ {
+      ...Fragment_Kfc9D5o_F
+      pWI9NE8VQ @include(if: false) {
+        a: cgu @include(if: $bJ)
+      }
+      pWI9NE8VQ {
+        cgu
+      }
+      pWI9NE8VQ @Directive_jM3v {
+        cgu @skip(if: $bJ) @include(if: $bJ)
+      }
+      ... on Interface_QLendjrHo {
+        A42pX: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Kfc9D5o_F on Interface_QLendjrHo {
+  cgu @include(if: false)
+}

@@ -1,0 +1,17 @@
+query riiMEGkGC9 {
+  ...Fragment__zWL
+}
+
+fragment Fragment_wup_kqC0ML on Union_NM {
+  __typename
+  __typename
+}
+
+fragment Fragment__zWL on Union_b {
+  __typename
+  ... on Union_NM {
+    ...Fragment_wup_kqC0ML@defer(if: false, label: "")
+    __typename
+    __typename
+  }
+}

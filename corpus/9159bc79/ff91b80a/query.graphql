@@ -1,0 +1,10 @@
+query I {
+  ... on Union_k {
+    ...Fragment_t7_8uF6uG@defer(if: true, label: "G")
+    ...Fragment_t7_8uF6uG
+  }
+}
+
+fragment Fragment_t7_8uF6uG on Union_Qkl6DT {
+  __typename
+}

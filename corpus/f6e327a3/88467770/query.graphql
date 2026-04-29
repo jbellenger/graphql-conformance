@@ -1,0 +1,26 @@
+query nTc5vSF {
+  ...Fragment_n3
+  ...Fragment_EmnxIHzY
+  iX: kwX
+  __typename
+  kwX
+}
+
+fragment Fragment_pVkxv on Object_vd5FzuQql @Directive_Gilj8{
+  GN: kwX @skip(if: true)
+}
+
+fragment Fragment_n3 on Object_vd5FzuQql {
+  ...Fragment_pVkxv
+  ...Fragment_pVkxv
+}
+
+fragment Fragment_EmnxIHzY on Object_vd5FzuQql {
+  ... on Object_vd5FzuQql {
+    ...Fragment_n3
+    uH894I1oj
+    ... on Object_vd5FzuQql {
+      bSKZG6DbLI: __typename
+    }
+  }
+}

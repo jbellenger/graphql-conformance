@@ -1,0 +1,21 @@
+query ($eUZ4rj: Boolean!) {
+  nmsqV0_uR: fCNKQ @Directive_yU9TiU4W
+  ... on Union_JAWB {
+    ...Fragment_bG8XCwBe
+    ...Fragment_uJ4nRo5
+    ... on Object_Dmmmmmmmmm @include(if: $eUZ4rj) {
+      fCNKQ
+    }
+  }
+}
+
+fragment Fragment_uJ4nRo5 on Object_Dmmmmmmmmm {
+  fCNKQ
+}
+
+fragment Fragment_bG8XCwBe on Union_JAWB {
+  ...Fragment_uJ4nRo5
+  __typename
+  __typename
+  __typename
+}

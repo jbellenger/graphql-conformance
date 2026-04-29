@@ -1,0 +1,75 @@
+query ($lYUf80ONNE: Boolean! = false) {
+  ...Fragment_llYMUE
+  oWYc: __typename
+  __typename @skip(if: true)
+  iYmFzGWBq {
+    ...Fragment_VNP1Bzqi5@Directive_nLnD7yubWG
+    ...Fragment_XI9of
+    ie: zC2IMm {
+      ...Fragment__EZPFsciNH
+      __typename
+      ... on Interface_xucIZk_STUB {
+        dqZKub
+        v2ZWyu6h {
+          __typename
+        }
+      }
+    }
+    ... on Interface_PnkwkYPwwA {
+      hl
+    }
+    ... on Interface_L_STUB {
+      ...Fragment_XI9of
+      hl
+    }
+  }
+  FOz7ym: iYmFzGWBq {
+    ...Fragment_VNP1Bzqi5
+    ... on Interface_PnkwkYPwwA_STUB {
+      zC2IMm: __typename @Directive_nLnD7yubWG
+    }
+  }
+  ... on Object_F5 {
+    iYmFzGWBq {
+      __typename
+    }
+    iYmFzGWBq {
+      hl @skip(if: true)
+      zC2IMm {
+        v2ZWyu6h {
+          hhD
+        }
+        v2ZWyu6h {
+          hhD
+        }
+      }
+      eAJ7cHoj {
+        e9gdEtwTg: zTctWvJ3Qd
+      }
+    }
+  }
+}
+
+fragment Fragment_llYMUE on Union_y {
+  __typename
+  ocSN: __typename
+  __typename
+  q3L: __typename @include(if: $lYUf80ONNE)
+}
+
+fragment Fragment_VNP1Bzqi5 on Interface_L_STUB {
+  hl
+  nH9iGSSp {
+    __typename
+  }
+}
+
+fragment Fragment_XI9of on Interface_L {
+  ... on Interface_L {
+    __typename
+  }
+}
+
+fragment Fragment__EZPFsciNH on Interface_xucIZk {
+  YerDA9: dqZKub
+}

@@ -1,0 +1,52 @@
+query ud8($il: Boolean!) {
+  ...Fragment_WH
+  ezk81QN {
+    Zc: __typename
+  }
+  ezk81QN {
+    ...Fragment_WdytkVG
+    o_Fk0O8zFL: __typename @Directive_t
+    ... on Object_pJRUW {
+      pM
+    }
+    ... on Object_x__ {
+      __typename
+    }
+  }
+  ... on Union_nkk {
+    ...Fragment_HMlv
+  }
+  ... on Object_y9u {
+    ezk81QN {
+      ... {
+        __typename @Directive_t
+      }
+    }
+  }
+}
+
+fragment Fragment_HMlv on Object_y9u {
+  __typename
+}
+
+fragment Fragment_WH on Union_nkk {
+  FLMm0n: __typename
+  ... on Union_nkk {
+    ...Fragment_HMlv@skip(if: true)
+    ... on Union_nkk {
+      __typename
+      Nr: __typename
+    }
+  }
+}
+
+fragment Fragment_HRJ4aDDc on Object_x__ @Directive_t{
+  n4YF @include(if: $il)
+  n4YF
+}
+
+fragment Fragment_WdytkVG on Object_x__ {
+  ...Fragment_HRJ4aDDc
+  n4YF
+  __typename
+}

@@ -1,0 +1,35 @@
+query bMPwUuuCsY @Directive_a {
+  ...Fragment_Rz0fXU
+  ...Fragment_CZTcrjsl
+  ...Fragment_Rz0fXU
+  w4x: mSiNzJ {
+    ... on Union_to65FfMLEz {
+      __typename
+      __typename
+      __typename
+    }
+    ... on Union_to65FfMLEz {
+      ...Fragment_WT@include(if: false)
+    }
+  }
+  ... on Interface_oNuE {
+    ...Fragment_WT
+    ... on Union_zrD6ySF1 {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_Rz0fXU on Object_xiw1a {
+  qvQ9GHoL4G
+}
+
+fragment Fragment_CZTcrjsl on Interface_KwcIux {
+  ... on Interface_KwcIux {
+    ...Fragment_Rz0fXU
+  }
+}
+
+fragment Fragment_WT on Interface_oNuE {
+  h
+}

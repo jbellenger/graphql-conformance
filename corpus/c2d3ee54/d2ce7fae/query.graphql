@@ -1,0 +1,8 @@
+query nI($jpYjNGJs: Boolean!) {
+  ...Fragment_nRR
+  ...Fragment_nRR@include(if: $jpYjNGJs)
+}
+
+fragment Fragment_nRR on Object_oJ7BF {
+  __typename
+}

@@ -1,0 +1,14 @@
+{
+  h {
+    ...Fragment_B@skip(if: true)
+    ... on Union__09bWHhS {
+      ...Fragment_B
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_B on Union__09bWHhS {
+  __typename
+}

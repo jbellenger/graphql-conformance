@@ -1,0 +1,16 @@
+query Hf5NJ {
+  w41swgj9w
+  ... on Object_z {
+    ... on Union_B76B {
+      ...Fragment_IUFyBC45JJ
+      lm7puM: __typename
+    }
+  }
+  ... on Union_B76B {
+    ...Fragment_IUFyBC45JJ
+  }
+}
+
+fragment Fragment_IUFyBC45JJ on Union_B76B {
+  __typename
+}

@@ -1,0 +1,23 @@
+query @Directive_VpIwJgTbQn {
+  wSKgPR0M {
+    __typename
+    ... on Union_fvji {
+      __typename @Directive_uReasV
+      __typename
+    }
+    ... on Object_bu7E5 @skip(if: true) {
+      ...Fragment_Cxct1
+      nU {
+        kE: __typename
+      }
+      __typename
+      ... on Union_VoeSiNstm @skip(if: false) {
+        fHjC8E: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Cxct1 on Object_bu7E5 {
+  JW6: __typename @Directive_uReasV
+}

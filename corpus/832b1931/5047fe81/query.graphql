@@ -1,0 +1,28 @@
+query ($e28elmVRL: Boolean!) {
+  ... on Union_D1l {
+    ... on Object_U {
+      dA
+    }
+    ... on Union_D1l {
+      __typename
+      ... on Union_D1l @include(if: $e28elmVRL) {
+        __typename
+      }
+    }
+  }
+  ... on Union_vS3Ak {
+    ...Fragment_U
+    ...Fragment_Flfup
+  }
+}
+
+fragment Fragment_Flfup on Union_D1l {
+  __typename
+}
+
+fragment Fragment_U on Object_MKEyuf9JS {
+  ...Fragment_Flfup
+  ... on Union_vS3Ak {
+    S3: __typename
+  }
+}

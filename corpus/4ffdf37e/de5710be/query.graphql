@@ -1,0 +1,18 @@
+query nDNXXB {
+  ...Fragment_dmsaXMkF
+  ...Fragment_thB3bgFgk
+  ... on Union_XHaGdkArk {
+    __typename
+  }
+}
+
+fragment Fragment_thB3bgFgk on Union_XHaGdkArk {
+  __typename
+  ... on Union_fmF9JHMW3 {
+    __typename
+  }
+}
+
+fragment Fragment_dmsaXMkF on Object_n9SqpjO9Gv {
+  ...Fragment_thB3bgFgk
+}

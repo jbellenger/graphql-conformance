@@ -1,0 +1,24 @@
+{
+  ... on Object_HMefD_ @Directive_X {
+    ...Fragment_ugPj9@Directive_X
+  }
+  ... {
+    c9rvyZ
+  }
+  ... on Object_HMefD_ {
+    ...Fragment_ugPj9
+    ...Fragment_q
+    Wcnj: c9rvyZ
+  }
+}
+
+fragment Fragment_ugPj9 on Object_HMefD_ {
+  ... {
+    c9rvyZ
+  }
+}
+
+fragment Fragment_q on Union_efu9GeMlcC {
+  __typename
+  fmqI6sFgwE: __typename
+}

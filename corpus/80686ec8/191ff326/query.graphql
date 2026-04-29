@@ -1,0 +1,18 @@
+query HEtM3l0TYV {
+  aIvpj1 {
+    ...Fragment_NfE4
+    __typename
+    ... on Union_KEKp9Io {
+      ... on Union_KEKp9Io @include(if: false) {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_NfE4 on Object_r6mU4 {
+  b: __typename
+  aIvpj1 @include(if: false) {
+    __typename
+  }
+}

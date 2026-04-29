@@ -1,0 +1,24 @@
+query _R {
+  ... on Union_KhNM {
+    ... on Union_qNeE7Vbxl {
+      med3ylmp: __typename
+      ... on Union_wT9 {
+        __typename
+      }
+    }
+    ... on Union_qNeE7Vbxl {
+      ...Fragment_D8km
+    }
+  }
+  ... on Union_qNeE7Vbxl {
+    ...Fragment_D8km
+    ...Fragment_D8km
+  }
+  ... on Union_qNeE7Vbxl @include(if: true) {
+    fS: __typename
+  }
+}
+
+fragment Fragment_D8km on Union_wT9 {
+  __typename
+}

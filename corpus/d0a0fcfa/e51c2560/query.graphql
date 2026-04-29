@@ -1,0 +1,16 @@
+query RBv0s6iD($il: Boolean!) {
+  ...Fragment_P0i
+}
+
+fragment Fragment_VriDd on Object_V {
+  ... on Union_gybD8UWT5 {
+    __typename
+  }
+}
+
+fragment Fragment_P0i on Union_gybD8UWT5 {
+  ...Fragment_VriDd
+  ...Fragment_VriDd@skip(if: $il)
+  __typename
+  __typename
+}

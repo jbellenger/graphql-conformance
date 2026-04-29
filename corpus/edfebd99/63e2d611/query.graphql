@@ -1,0 +1,20 @@
+{
+  ...Fragment_ZyFs_
+  ... on Union_hpn {
+    bLjg: __typename
+  }
+}
+
+fragment Fragment_mh on Object_fxSNYLzYR {
+  Wp: __typename
+}
+
+fragment Fragment_ZyFs_ on Object_fxSNYLzYR {
+  ... on Union_hpn {
+    ...Fragment_mh
+    __typename
+  }
+  ... on Union_hpn {
+    __typename
+  }
+}

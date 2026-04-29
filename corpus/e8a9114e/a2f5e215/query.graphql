@@ -1,0 +1,48 @@
+query eEHTgeKeQ {
+  q7wi {
+    ...Fragment_YCgc2vnWF
+    uPoWa2ghFH: __typename
+    __typename @skip(if: false)
+    ... on Object_Xb {
+      ...Fragment_Qas9L9X
+      ... on Union_NM {
+        __typename
+      }
+    }
+  }
+  q7wi {
+    ...Fragment_YCgc2vnWF@Directive_lo
+    __typename
+    ... on Object_lO {
+      __typename
+    }
+  }
+  q7wi {
+    ...Fragment_YCgc2vnWF
+    ... on Object_Xb {
+      ZmlOIsNmZ: __typename
+    }
+  }
+}
+
+fragment Fragment__qn4qbbvR on Union_NM {
+  __typename
+  __typename
+}
+
+fragment Fragment_YCgc2vnWF on Union_NM {
+  ...Fragment__qn4qbbvR
+}
+
+fragment Fragment_Qas9L9X on Object_Xb {
+  bkZ3gllu {
+    a {
+      __typename
+    }
+  }
+  bkZ3gllu {
+    Hdxl7gHc_: a {
+      u6Yb
+    }
+  }
+}

@@ -1,0 +1,23 @@
+query Z3j {
+  aR7 {
+    a3ck
+    __typename
+    ... on Interface_pfKwG9tmho {
+      a3ck
+    }
+    ... on Interface_pfKwG9tmho {
+      ...Fragment_zhLWiMyO
+    }
+  }
+  aR7 {
+    IZXGVLJJ: a3ck
+    __typename
+    ... on Interface_pfKwG9tmho_STUB {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_zhLWiMyO on Interface_pfKwG9tmho_STUB {
+  a3ck
+}

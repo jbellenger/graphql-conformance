@@ -1,0 +1,34 @@
+query ($xWjIOVY: Boolean!) {
+  ...Fragment_PA8O@defer(if: false, label: "v#V")
+  ...Fragment_PA8O
+  ...Fragment_Bc_b
+  __typename
+  ... on Union_mbkP43_A {
+    ...Fragment_PA8O
+    ...Fragment_Bc_b
+    ... on Union_mbkP43_A {
+      ...Fragment_Bc_b
+      __typename
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_Bc_b on Union_mbkP43_A {
+  __typename @Directive_IZTv5
+  __typename
+}
+
+fragment Fragment_PA8O on Union_iVC9081Lx {
+  __typename
+  ... on Union_mbkP43_A {
+    ...Fragment_Bc_b@include(if: $xWjIOVY)
+    __typename
+    __typename
+    XwQDDO56j: __typename
+  }
+  ... on Object_Wii1CP_nf {
+    gpSfb
+  }
+}

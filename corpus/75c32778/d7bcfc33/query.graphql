@@ -1,0 +1,13 @@
+{
+  ...Fragment_A
+}
+
+fragment Fragment_pBq6kEyRtq on Object_IHI8T8PH {
+  __typename
+}
+
+fragment Fragment_A on Union_MWV9u @Directive_RbiG @Directive_ZfXuEmDccE{
+  ...Fragment_pBq6kEyRtq
+  ...Fragment_pBq6kEyRtq@defer(if: false, label: "*")
+  __typename
+}

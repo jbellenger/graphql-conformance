@@ -1,0 +1,25 @@
+query E {
+  kS_ {
+    ...Fragment_sI29QgFM9@Directive_X
+  }
+  kS_ {
+    w32Jmb4gF {
+      ... on Union_P9f_sea {
+        __typename
+      }
+    }
+    bSH3t7cnK
+  }
+}
+
+fragment Fragment_Zq on Union_Ds_8yOQHcC @Directive_X{
+  __typename
+}
+
+fragment Fragment_sI29QgFM9 on Union_Ds_8yOQHcC {
+  ...Fragment_Zq
+  __typename
+  ... {
+    __typename
+  }
+}

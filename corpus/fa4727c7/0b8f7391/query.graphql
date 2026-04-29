@@ -1,0 +1,38 @@
+{
+  ...Fragment_e4sx6hMc
+  __typename
+  __typename
+  bwGbk {
+    ...Fragment_MPWpVLlsf
+  }
+  ... {
+    __typename
+    ... on Object_LNdyfVj {
+      __typename
+    }
+  }
+  ... on Object_LNdyfVj {
+    evYbwlRgR: __typename
+  }
+  ... @skip(if: false) {
+    ... on Object_LNdyfVj {
+      ...Fragment_e4sx6hMc
+      ... {
+        __typename
+      }
+    }
+    ... on Object_LNdyfVj {
+      ...Fragment_e4sx6hMc
+    }
+  }
+}
+
+fragment Fragment_e4sx6hMc on Object_LNdyfVj {
+  __typename
+}
+
+fragment Fragment_MPWpVLlsf on Union_li6DPuuP {
+  e: __typename
+  __typename @Directive_ozv
+  __typename
+}

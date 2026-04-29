@@ -1,0 +1,23 @@
+query ($zSx: Boolean!) {
+  ...Fragment_A7jb@skip(if: $zSx)
+  gaJd
+  ... on Union_ZO7HSJAY0 {
+    ...Fragment_A7jb
+    __typename
+  }
+}
+
+fragment Fragment_HNS7 on Union_ZO7HSJAY0 {
+  __typename
+  __typename
+  RE2: __typename
+}
+
+fragment Fragment_My2 on Object_npY {
+  sSwuEjYns
+}
+
+fragment Fragment_A7jb on Object_npY {
+  ...Fragment_HNS7
+  ...Fragment_My2
+}

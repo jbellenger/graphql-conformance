@@ -1,0 +1,30 @@
+query cgjUAA9z7h {
+  ...Fragment_nKQ
+  ... on Object_hPDum {
+    Vb: g3VfV
+    ... on Object_hPDum {
+      g3VfV
+    }
+  }
+  ... on Object_hPDum {
+    ... on Object_hPDum {
+      ...Fragment_CU
+      g3VfV
+    }
+  }
+}
+
+fragment Fragment_n on Union_MWV9u {
+  __typename
+  __typename
+  __typename
+}
+
+fragment Fragment_nKQ on Object_hPDum {
+  ...Fragment_n
+  __typename
+}
+
+fragment Fragment_CU on Union_MWV9u {
+  __typename
+}

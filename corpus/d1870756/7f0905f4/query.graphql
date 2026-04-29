@@ -1,0 +1,30 @@
+query ($y: Boolean!) {
+  ...Fragment_HauiHKaw@include(if: $y)
+  nwm(z1Xpre1vU: false) {
+    ...Fragment_HJK_
+  }
+}
+
+fragment Fragment_OrPUzFHG on Union_LXJAcBW {
+  __typename
+}
+
+fragment Fragment_GCJa on Union_ZxYPb2 {
+  ...Fragment_OrPUzFHG
+}
+
+fragment Fragment_HauiHKaw on Object_djfsAb {
+  ...Fragment_GCJa
+  yum0nJMDqp: __typename
+  __typename
+  ... on Union_LXJAcBW @include(if: true) {
+    ...Fragment_OrPUzFHG
+  }
+}
+
+fragment Fragment_HJK_ on Object_NFflHBSi3 {
+  ... {
+    o3e0reMt1C
+    nuMHoTt7_c: __typename
+  }
+}

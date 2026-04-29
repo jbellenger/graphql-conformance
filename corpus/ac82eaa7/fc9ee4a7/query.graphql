@@ -1,0 +1,36 @@
+query yNe {
+  ...Fragment_rhNoZ8QpXB
+  __typename
+  wSKgPR0M {
+    ...Fragment_Y
+  }
+  ... on Union_kROt8A3 {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_RDdx3z4 on Union_kROt8A3 {
+  __typename
+}
+
+fragment Fragment_mVW0s on Union_kROt8A3 {
+  ...Fragment_RDdx3z4
+}
+
+fragment Fragment_acZeDIsM on Object_A @Directive_uReasV{
+  nQjE_O4: __typename @include(if: true)
+}
+
+fragment Fragment_rhNoZ8QpXB on Object_A {
+  ...Fragment_mVW0s
+  ...Fragment_mVW0s
+  __typename
+  ... on Union_kROt8A3 {
+    ...Fragment_acZeDIsM@include(if: true)
+  }
+}
+
+fragment Fragment_Y on Object_bu7E5 {
+  t: __typename
+}

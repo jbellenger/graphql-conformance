@@ -1,0 +1,23 @@
+{
+  ... {
+    or6 {
+      ...Fragment_XvXaZQ9R
+    }
+    ... on Union_kbvn1Yqowd {
+      ...Fragment_XvXaZQ9R
+    }
+  }
+  ... on Union_kbvn1Yqowd {
+    ... on Union_kbvn1Yqowd {
+      j: __typename
+    }
+  }
+  ... on Union_kbvn1Yqowd {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_XvXaZQ9R on Union_kbvn1Yqowd {
+  __typename
+}

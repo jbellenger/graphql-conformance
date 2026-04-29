@@ -1,0 +1,21 @@
+query hK3lQ {
+  sZn
+  oJ {
+    ...Fragment_olc
+    ...Fragment_olc
+    p {
+      ... on Interface_JHTnd3_STUB {
+        bDvC4HMW: x_7Zw_Y
+        o2hMWj: wiLruCYRc
+      }
+    }
+    CHA60zC: yS4E @skip(if: true)
+  }
+  oJ {
+    gvePVXjwdM: __typename
+  }
+}
+
+fragment Fragment_olc on Union_wT9 {
+  __typename
+}

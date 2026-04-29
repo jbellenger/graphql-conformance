@@ -1,0 +1,26 @@
+{
+  q7wi {
+    ...Fragment_lbp3EM
+    ... on Union_NM {
+      oEq5BOt0: __typename
+    }
+  }
+  ... on Union_b {
+    ...Fragment_SjDAZNVK34
+    hd: __typename
+  }
+  ... on Union_b @Directive_oFy {
+    zD9W: __typename
+  }
+}
+
+fragment Fragment_SjDAZNVK34 on Union_b {
+  p: __typename
+}
+
+fragment Fragment_lbp3EM on Object_Xb {
+  ...Fragment_SjDAZNVK34
+  ... on Object_Xb {
+    __typename
+  }
+}

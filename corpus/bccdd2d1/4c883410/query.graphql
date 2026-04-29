@@ -1,0 +1,35 @@
+{
+  ...Fragment_Z8tP
+  ... on Object_lhsu5iZ @skip(if: false) @Directive_JPfUH4fQv(u3rXBH: Y_7Z7x) {
+    ...Fragment_Z8tP
+    ...Fragment_EkZ4_u
+    B3dfkjw4: __typename
+    ... on Union_cB1tP6 {
+      ... on Object_lhsu5iZ {
+        __typename
+      }
+    }
+    ... on Union_nTdVN {
+      ...Fragment_sJMwD9PV
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_EkZ4_u on Object_lhsu5iZ {
+  __typename
+}
+
+fragment Fragment_Z8tP on Object_lhsu5iZ {
+  ... on Union_cB1tP6 {
+    ...Fragment_EkZ4_u
+    ... on Union_HEf {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_sJMwD9PV on Union_nTdVN {
+  __typename
+}

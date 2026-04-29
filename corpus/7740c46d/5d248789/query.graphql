@@ -1,0 +1,30 @@
+query VA($oWKWhj: Boolean!) {
+  ...Fragment_BXq
+  vV9iY2 {
+    _: __typename
+    __typename
+  }
+}
+
+fragment Fragment_sy95 on Union_yHuS {
+  __typename
+}
+
+fragment Fragment_PYa0 on Union_t7 {
+  ...Fragment_sy95
+  __typename
+  ... on Union_yHuS {
+    __typename
+  }
+}
+
+fragment Fragment_H0L on Object_znUwi3 {
+  ... on Union_yHuS {
+    __typename
+  }
+}
+
+fragment Fragment_BXq on Union_yHuS {
+  ...Fragment_PYa0@include(if: $oWKWhj)
+  ...Fragment_H0L
+}

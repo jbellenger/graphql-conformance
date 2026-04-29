@@ -1,0 +1,17 @@
+{
+  ...Fragment_Yl
+  ...Fragment_Yl
+}
+
+fragment Fragment_Yw on Interface_lun17 {
+  __typename
+}
+
+fragment Fragment_Yl on Union_viUg1 {
+  ... on Union_s7PEnFz {
+    ...Fragment_Yw
+  }
+  ... on Object_e {
+    YEtImzl8d: __typename
+  }
+}

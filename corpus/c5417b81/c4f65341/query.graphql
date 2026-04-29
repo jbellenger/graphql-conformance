@@ -1,0 +1,34 @@
+query IC($vA_Jp: Boolean!) {
+  uFLKh @include(if: false)
+  cS {
+    ...Fragment_mPUWjI
+    __typename
+  }
+  ... on Object_nmWs1 {
+    ...Fragment_LdixkE
+    ... on Union_vJ5YymIvHr {
+      ... on Object_VCwI {
+        __typename @include(if: $vA_Jp)
+      }
+    }
+    ... {
+      ...Fragment_LdixkE
+      ... on Object_nmWs1 {
+        zxa
+      }
+    }
+  }
+}
+
+fragment Fragment_mPUWjI on Object_wsGi7 @Directive_w{
+  ... on Union_rAQ @skip(if: $vA_Jp) {
+    Jh: __typename
+  }
+}
+
+fragment Fragment_LdixkE on Union_vJ5YymIvHr {
+  __typename
+  ... on Union_rAQ {
+    fYfjD: __typename
+  }
+}

@@ -1,0 +1,37 @@
+query @Directive_HZ2GISQJ2b {
+  ...Fragment_YK2Cv0J_nx
+  xNHdwJ {
+    EwNZCnVVs: ksub1fnO
+  }
+  ... on Object_rRDWkUi {
+    ...Fragment_YK2Cv0J_nx
+    ...Fragment_V7
+    xNHdwJ {
+      noyjZ
+    }
+    __typename
+    ... on Object_rRDWkUi {
+      __typename
+    }
+    ... on Union_MM {
+      BnKy: __typename
+    }
+  }
+  ... on Union_MM {
+    ...Fragment_YK2Cv0J_nx@skip(if: true)
+    __typename
+  }
+  ... on Union_MM {
+    __typename
+  }
+}
+
+fragment Fragment_V7 on Object_rRDWkUi {
+  ... on Object_rRDWkUi {
+    __typename
+  }
+}
+
+fragment Fragment_YK2Cv0J_nx on Union_MM {
+  ...Fragment_V7
+}

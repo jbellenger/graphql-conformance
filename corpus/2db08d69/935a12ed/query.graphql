@@ -1,0 +1,52 @@
+query yKKzQ {
+  ...Fragment_aav
+  __typename
+  ... on Union_e {
+    ...Fragment_T_4exoE
+  }
+}
+
+fragment Fragment_E on Interface_GFCi1_STUB {
+  xB3
+}
+
+fragment Fragment_Bo1 on Object_N3r {
+  poZzimkR @Directive_lgQr(agb7: h55ZY)
+}
+
+fragment Fragment_T_4exoE on Object_fM3Jzd {
+  fL4vZJ {
+    iGqpknC {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_aav on Object_fM3Jzd {
+  fL4vZJ {
+    ... on Interface_GFCi1_STUB {
+      xB3
+    }
+  }
+  __typename
+  fL4vZJ {
+    ...Fragment_E
+  }
+  hTxH {
+    ...Fragment_Bo1
+    vIJcjjQFl6: __typename
+    __typename
+    ... on Union_K3ViHkgSc {
+      __typename
+    }
+  }
+  ... on Object_fM3Jzd {
+    __typename @Directive_Bqigl5V
+    gY: fL4vZJ {
+      __typename
+    }
+  }
+  ... on Object_fM3Jzd {
+    ...Fragment_T_4exoE
+  }
+}

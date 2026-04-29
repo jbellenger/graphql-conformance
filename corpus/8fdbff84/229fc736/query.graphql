@@ -1,0 +1,36 @@
+query ($jmck: Boolean!) {
+  ...Fragment_P
+  ...Fragment_P@skip(if: $jmck)
+  ...Fragment_P
+  ... on Union_Nv7l8bLjnj {
+    ...Fragment_P
+    ...Fragment_P
+    __typename
+  }
+  ... on Union_Nv7l8bLjnj {
+    xyW04: __typename
+    ... on Object_YM {
+      ... on Union_Nv7l8bLjnj {
+        __typename
+      }
+    }
+  }
+  ... on Union_Nv7l8bLjnj {
+    __typename
+    ... on Union_Nv7l8bLjnj {
+      __typename
+    }
+    ... on Union_eOW9 {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_P on Object_Y {
+  __typename
+  ... on Object_Y {
+    ... on Union_Nv7l8bLjnj {
+      __typename
+    }
+  }
+}

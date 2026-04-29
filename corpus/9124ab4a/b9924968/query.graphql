@@ -1,0 +1,46 @@
+query jYq9T {
+  ...Fragment_JTaCTsfw
+  ...Fragment_JTaCTsfw@Directive_JLl9p0Ok7M(vaF38aO: {vfZXgC7aT : Dwy0u, r8AUp : true, bQ89 : rdd})
+  on: tS0s {
+    tS0s {
+      ... on Object_Dm1XS3DX {
+        kyR0: __typename
+      }
+    }
+    ... on Object_Dm1XS3DX {
+      ...Fragment_JTaCTsfw
+    }
+  }
+}
+
+fragment Fragment_SUqK on Object_Dm1XS3DX {
+  __typename
+}
+
+fragment Fragment_JTaCTsfw on Interface_mGwJhvG {
+  ...Fragment_SUqK
+  ... on Object_Dm1XS3DX {
+    Az0lWeuGo: iDW {
+      LdPs_6kGY: __typename
+      cuM {
+        __typename
+      }
+    }
+    pYLPsVVbq {
+      __typename
+    }
+    pBc: a {
+      __typename
+    }
+    ... @Directive_FgO0a(xKQ: mmSVRZTXS) @include(if: true) @defer(if: false, label: ";c,") {
+      c85XQ: pYLPsVVbq {
+        o: __typename
+      }
+    }
+  }
+  ... on Interface_mGwJhvG {
+    ... on Interface_mGwJhvG {
+      __typename
+    }
+  }
+}

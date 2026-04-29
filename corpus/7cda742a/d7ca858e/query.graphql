@@ -1,0 +1,12 @@
+query quK69R0($xW: Boolean!) {
+  ... @include(if: $xW) {
+    ...Fragment_gA
+    ... on Union_A {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_gA on Union_p4nb {
+  __typename
+}

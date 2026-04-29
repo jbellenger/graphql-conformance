@@ -1,0 +1,15 @@
+query bLy {
+  ...Fragment_f9FXk5Di4
+}
+
+fragment Fragment_X1DG2gP on Union_zrD6ySF1 {
+  __typename
+}
+
+fragment Fragment_f9FXk5Di4 on Union_to65FfMLEz {
+  Vr: __typename
+  ... on Interface_KwcIux {
+    ...Fragment_X1DG2gP
+    qvQ9GHoL4G
+  }
+}

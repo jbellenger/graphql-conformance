@@ -1,0 +1,23 @@
+{
+  ...Fragment_tRSLNz7D3
+  ...Fragment_tRSLNz7D3
+}
+
+fragment Fragment_lO4 on Object_k {
+  ... on Union_sUFi {
+    __typename
+  }
+}
+
+fragment Fragment_tRSLNz7D3 on Union_sUFi @Directive_eA_esb_PR{
+  ...Fragment_lO4
+  __typename
+  ... on Union_sUFi {
+    ... on Object_k @include(if: true) @Directive_au5 {
+      d7vZN8YDy
+      wXN7XOBIho: n {
+        x8A1x
+      }
+    }
+  }
+}

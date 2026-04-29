@@ -1,0 +1,26 @@
+{
+  ... on Object_pohZTfqITI {
+    __typename
+  }
+  ... on Object_pohZTfqITI {
+    ...Fragment_J760k9ESW@Directive_PqvjLc17
+    ...Fragment_J760k9ESW
+  }
+  ... on Object_pohZTfqITI {
+    __typename
+    ... {
+      a
+    }
+    ... on Object_pohZTfqITI {
+      ...Fragment_J760k9ESW
+      ... on Object_pohZTfqITI {
+        a
+      }
+    }
+  }
+}
+
+fragment Fragment_J760k9ESW on Object_pohZTfqITI {
+  a
+  P9vFB8G: a
+}

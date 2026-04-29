@@ -1,0 +1,16 @@
+{
+  ...Fragment_OiME
+}
+
+fragment Fragment_q on Union_yjL {
+  __typename
+}
+
+fragment Fragment_OiME on Union_t11hjJ {
+  ... on Union_G0MsfH {
+    ...Fragment_q
+  }
+  ... on Union_G0MsfH {
+    __typename
+  }
+}

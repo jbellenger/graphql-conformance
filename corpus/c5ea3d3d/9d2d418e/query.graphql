@@ -1,0 +1,24 @@
+query T5C9 {
+  ...Fragment_JoZRiXFp
+  ... on Union_TvQglQ8 {
+    __typename
+  }
+}
+
+fragment Fragment_E on Union_Hb5Bmdru0_ {
+  __typename
+  __typename
+}
+
+fragment Fragment_JoZRiXFp on Object_DzzS57z {
+  ugep
+  d5FA: __typename
+  ... on Union_TvQglQ8 {
+    ...Fragment_E
+    __typename @skip(if: true)
+    __typename
+    ... on Object_ZNwv {
+      __typename
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  ...Fragment_q
+  ...Fragment_qxYUw
+  ... {
+    ... on Object_Y22q {
+      yR @skip(if: true) {
+        __typename
+      }
+      __typename
+      ... on Object_Y22q {
+        dEV4ti
+      }
+    }
+  }
+}
+
+fragment Fragment_qxYUw on Union_mTH0XB {
+  __typename
+}
+
+fragment Fragment_q on Object_Y22q {
+  ...Fragment_qxYUw
+  yR @skip(if: false) {
+    ... on Union_mTH0XB {
+      M: __typename
+    }
+  }
+  yR {
+    ...Fragment_qxYUw@include(if: true)
+    __typename
+  }
+}

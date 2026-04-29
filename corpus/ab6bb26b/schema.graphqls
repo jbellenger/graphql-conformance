@@ -1,0 +1,146 @@
+schema {
+  query: Object_DXDljOe
+}
+
+directive @Directive_dxQrK2(oH: Input_PN, vqNB9QB8Q: Input_X) repeatable on QUERY | MUTATION | SUBSCRIPTION | FIELD | FRAGMENT_DEFINITION | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCHEMA | SCALAR | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+directive @Directive_mDrUMUXH on QUERY | MUTATION | SUBSCRIPTION | FIELD | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCHEMA | SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | ENUM_VALUE | INPUT_OBJECT
+
+directive @Directive_z on INLINE_FRAGMENT | FIELD_DEFINITION
+
+"This directive allows results to be deferred during execution"
+directive @defer(
+    "Deferred behaviour is controlled by this argument"
+    if: Boolean! = true,
+    "A unique label that represents the fragment being deferred"
+    label: String
+  ) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Marks the field, argument, input field or enum value as deprecated"
+directive @deprecated(
+    "The reason for the deprecation"
+    reason: String! = "No longer supported"
+  ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+"This directive disables error propagation when a non nullable field returns null for the given operation."
+directive @experimental_disableErrorPropagation on QUERY | MUTATION | SUBSCRIPTION
+
+"Directs the executor to include this field or fragment only when the `if` argument is true"
+directive @include(
+    "Included when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Indicates an Input Object is a OneOf Input Object."
+directive @oneOf on INPUT_OBJECT
+
+"Directs the executor to skip this field or fragment when the `if` argument is true."
+directive @skip(
+    "Skipped when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Exposes a URL that specifies the behaviour of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behaviour of this scalar."
+    url: String!
+  ) on SCALAR
+
+interface Interface_CkOm {
+  d1j5vfgrFS: Interface_cWYPRY1IpA
+  iN: Union_uYzsmGD1!
+  u: [Enum_OWgY_gB]
+}
+
+interface Interface_cWYPRY1IpA implements Interface_CkOm @Directive_dxQrK2(oH : {djk : " p", wtRxmP : A94f, dc : {hnmk5LLy : "-", ldCq : 23478351}}, vqNB9QB8Q : {wz : Gtz0}) {
+  d1j5vfgrFS: Interface_cWYPRY1IpA
+  iN: Union_uYzsmGD1!
+  jvUTf: ID
+  o7F8fugyI: Union_bsJjWoLkDR
+  u: [Enum_OWgY_gB]
+}
+
+interface Interface_trqg2FQC {
+  hzos: Interface_cWYPRY1IpA
+  swWt8X3si(sy_: Input_PN): Float
+}
+
+union Union__MS = Object_DXDljOe | Object_oW0gyrN
+
+union Union_bsJjWoLkDR = Object_DXDljOe | Object_vHWJrZGV
+
+union Union_uYzsmGD1 = Object_oW0gyrN | Object_vHWJrZGV
+
+type Interface_CkOm_STUB implements Interface_CkOm {
+  _mpN1Oa2x: Union__MS
+  d1j5vfgrFS: Interface_cWYPRY1IpA
+  h3aV8o: Interface_trqg2FQC
+  iN: Union_uYzsmGD1!
+  rQs(pRHG9u: ID): Union_uYzsmGD1
+  u: [Enum_OWgY_gB]
+}
+
+type Interface_cWYPRY1IpA_STUB implements Interface_CkOm & Interface_cWYPRY1IpA {
+  d1j5vfgrFS: Interface_cWYPRY1IpA
+  iN: Union_uYzsmGD1!
+  jvUTf: ID
+  o7F8fugyI: Union_bsJjWoLkDR
+  u: [Enum_OWgY_gB]
+  zmWAP: [[Object_DXDljOe]]! @deprecated(reason : "VVo")
+}
+
+type Interface_trqg2FQC_STUB implements Interface_trqg2FQC {
+  hU1q9u: Object_DXDljOe
+  hzos: Interface_cWYPRY1IpA
+  oUUN(d8mXCKN8t2: Enum_OWgY_gB = dVY7jvHC08): Float
+  swWt8X3si(sy_: Input_PN): Float
+  x7rC3mk8XP: Enum_OWgY_gB!
+}
+
+type Object_DXDljOe {
+  aAt(zThZV: Input_PN): Interface_trqg2FQC
+}
+
+type Object_oW0gyrN {
+  _: Interface_trqg2FQC
+  vPTQL: Enum_ralpUo5g4 @Directive_z
+  y12PF: Enum_ralpUo5g4
+}
+
+type Object_vHWJrZGV {
+  _Dghajnri: Object_vHWJrZGV
+  fX8PrHWViD: Enum_OWgY_gB
+  lHBslGg: Interface_CkOm
+}
+
+enum Enum_OWgY_gB {
+  dVY7jvHC08
+}
+
+enum Enum_mG2c {
+  Gtz0
+  V
+  fZbRl9PNKQ
+}
+
+enum Enum_ralpUo5g4 {
+  A94f
+  H
+  vmSKb5kk
+}
+
+input Input_PN {
+  dc: Input_zJ6XDi80Y = {hnmk5LLy : "]", zZ : {hnmk5LLy : null, zZ : null, ldCq : -2064132685}, ldCq : 1113961346} @deprecated(reason : "LR^")
+  djk: ID
+  wtRxmP: Enum_ralpUo5g4 @deprecated(reason : "")
+}
+
+input Input_X {
+  wz: Enum_mG2c
+}
+
+input Input_zJ6XDi80Y {
+  hnmk5LLy: String
+  ldCq: Int
+  zZ: Input_zJ6XDi80Y
+}

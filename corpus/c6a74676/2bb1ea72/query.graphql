@@ -1,0 +1,16 @@
+query PF8H9VBZWS {
+  ...Fragment_pLA6
+  ... on Union_zxiHV_hCa {
+    xPsXEZUdT: __typename
+  }
+  ... on Union_zxiHV_hCa {
+    __typename
+  }
+  ... on Object_mpxXtOPqh3 @include(if: true) {
+    RWp0fc: __typename
+  }
+}
+
+fragment Fragment_pLA6 on Union_zxiHV_hCa {
+  __typename
+}

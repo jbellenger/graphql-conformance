@@ -1,0 +1,31 @@
+query Nqjrf3ii($lf: Input_Bkv6) @Directive_JLl9p0Ok7M(vaF38aO: $lf) {
+  a {
+    ... on Union_EMT {
+      __typename
+    }
+  }
+  Zxy5i6TB: tS0s {
+    ...Fragment_Rvps
+    ...Fragment_VYaELe3
+  }
+  __typename
+  hqVTTGmV: __typename
+}
+
+fragment Fragment_Rvps on Interface_mGwJhvG {
+  __typename
+  a {
+    __typename
+  }
+}
+
+fragment Fragment_VYaELe3 on Interface_mGwJhvG {
+  a {
+    __typename
+  }
+  ... on Object_Dm1XS3DX @defer(if: false, label: null) {
+    tS0s {
+      __typename
+    }
+  }
+}

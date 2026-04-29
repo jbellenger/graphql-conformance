@@ -1,0 +1,20 @@
+{
+  ...Fragment_HOpUXNi
+  ...Fragment_HOpUXNi
+  CK: s {
+    uDMY3
+  }
+}
+
+fragment Fragment_tS8oRHJ on Union_S {
+  __typename
+  IHPJHxyx2: __typename
+}
+
+fragment Fragment_j6 on Union_S {
+  ...Fragment_tS8oRHJ
+}
+
+fragment Fragment_HOpUXNi on Object_WYx3 {
+  ...Fragment_j6
+}

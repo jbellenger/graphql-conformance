@@ -1,0 +1,15 @@
+query j5gXvr9__7($g0WA: Boolean!) {
+  ynKB5mWV
+  ... on Union_w {
+    ...Fragment__D@include(if: $g0WA)
+    ...Fragment__D
+  }
+}
+
+fragment Fragment_Jvoa on Union_Em {
+  __typename
+}
+
+fragment Fragment__D on Union_Em {
+  ...Fragment_Jvoa
+}

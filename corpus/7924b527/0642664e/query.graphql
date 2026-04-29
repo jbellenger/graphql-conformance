@@ -1,0 +1,34 @@
+{
+  ...Fragment_X
+}
+
+fragment Fragment_wY on Object_c {
+  u5 {
+    __typename
+  }
+}
+
+fragment Fragment_Y_PfrDMQN8 on Object_c {
+  __typename
+}
+
+fragment Fragment_X on Object_c {
+  ...Fragment_wY
+  YC0: hhjPPLQ {
+    ...Fragment_Y_PfrDMQN8
+    ... on Object_c {
+      __typename
+      __typename
+    }
+  }
+  u5 {
+    FV41w0uG: __typename @skip(if: true)
+  }
+  ... on Object_c @skip(if: false) {
+    ...Fragment_Y_PfrDMQN8
+    ... on Object_c {
+      __typename
+      __typename
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  ...Fragment_GvEmp
+}
+
+fragment Fragment_GvEmp on Union_TtgwKyEjzA @Directive_E{
+  __typename
+  ... on Object_hGJ {
+    __typename @skip(if: true)
+    __typename
+  }
+}

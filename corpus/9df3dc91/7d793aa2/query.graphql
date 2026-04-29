@@ -1,0 +1,8 @@
+query D {
+  ...Fragment_bBr5Q8
+  ...Fragment_bBr5Q8@include(if: true)
+}
+
+fragment Fragment_bBr5Q8 on Union_Oa9Xyu {
+  __typename
+}

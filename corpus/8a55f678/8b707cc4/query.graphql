@@ -1,0 +1,30 @@
+query @Directive_iJLCREsc {
+  ...Fragment_jubiMZvp
+  ... on Object_erg {
+    ... on Object_erg {
+      ...Fragment_kcZAj2aI@defer(if: true, label: ";~")
+      ... {
+        __typename
+      }
+    }
+    ... on Object_erg {
+      ...Fragment_Dz16G5PQR6
+    }
+  }
+  ... on Object_erg {
+    __typename
+  }
+}
+
+fragment Fragment_Dz16G5PQR6 on Object_erg @Directive_iJLCREsc @Directive_OvUOs8t9p{
+  __typename
+}
+
+fragment Fragment_jubiMZvp on Object_erg @Directive_OvUOs8t9p{
+  ...Fragment_Dz16G5PQR6
+  __typename
+}
+
+fragment Fragment_kcZAj2aI on Object_erg {
+  i1Yq7Y
+}

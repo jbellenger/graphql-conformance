@@ -1,0 +1,34 @@
+{
+  ...Fragment_L
+  ...Fragment_L
+  ezk81QN {
+    ... on Union_RRovZiAQ {
+      ...Fragment_ctLlwcclZ0
+      __typename
+    }
+    ... on Object_x__ {
+      ...Fragment_ctLlwcclZ0@Directive_t
+      ... on Union_DRI {
+        __typename
+      }
+    }
+  }
+  __typename
+  ezk81QN {
+    ... on Union_RRovZiAQ {
+      __typename
+      ... on Union_DRI {
+        __typename @Directive_t
+      }
+    }
+  }
+}
+
+fragment Fragment_L on Object_y9u {
+  __typename
+}
+
+fragment Fragment_ctLlwcclZ0 on Union_DRI {
+  __typename
+  __typename
+}

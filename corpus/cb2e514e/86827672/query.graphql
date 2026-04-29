@@ -1,0 +1,26 @@
+{
+  ...Fragment_rEU
+  __typename
+  upBm1V {
+    ...Fragment_rEU
+    Xknv: upBm1V {
+      ...Fragment_rEU
+      ... on Union_aHa5eR0J5 {
+        __typename
+      }
+    }
+    __typename
+    ... on Union_aHa5eR0J5 {
+      ... on Object_v3SzEN {
+        upBm1V {
+          __typename
+        }
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_rEU on Object_v3SzEN {
+  __typename
+}

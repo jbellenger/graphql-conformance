@@ -1,0 +1,31 @@
+query @Directive_WOZcBG11 {
+  ...Fragment_zlW@defer(if: false, label: null)
+  ...Fragment_c
+  ... on Object_L1YLG {
+    ... on Union_Fc8E {
+      __typename
+    }
+  }
+  ... on Object_L1YLG {
+    ...Fragment_c@skip(if: false)
+    ...Fragment_c
+    teYU
+  }
+}
+
+fragment Fragment_zlW on Union__ {
+  __typename
+}
+
+fragment Fragment_c on Union_ewmF {
+  F41wcsOZ1: __typename
+  __typename
+  ... on Object_L1YLG {
+    ...Fragment_zlW
+  }
+  ... on Union_ewmF {
+    ... on Object_L1YLG {
+      teYU
+    }
+  }
+}

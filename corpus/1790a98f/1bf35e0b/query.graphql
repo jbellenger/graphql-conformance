@@ -1,0 +1,18 @@
+query ($rMFI: Enum_hf9Z8xgT) {
+  ii3Ifh(rTDDkev: $rMFI)
+  ... on Object_SE {
+    ...Fragment_rEFVG1I
+    ozW87Vsm: ii3Ifh
+  }
+}
+
+fragment Fragment_IFI on Object_SE {
+  __typename
+}
+
+fragment Fragment_rEFVG1I on Object_SE {
+  ...Fragment_IFI
+  AiNR: h2hpA {
+    __typename
+  }
+}

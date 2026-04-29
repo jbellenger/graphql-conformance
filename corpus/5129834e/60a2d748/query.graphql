@@ -1,0 +1,34 @@
+{
+  ...Fragment_yU3nD
+  ...Fragment_yU3nD
+  __typename @Directive_GL2fY6e
+  ... on Union__ {
+    ...Fragment_yU3nD
+    ...Fragment_yU3nD
+  }
+  ... on Union__ {
+    ...Fragment_Rr5IFF4z
+    ... on Union_MQ {
+      ...Fragment_yU3nD
+    }
+  }
+  ... on Union__ {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_Rr5IFF4z on Object_SX {
+  qN
+}
+
+fragment Fragment_yU3nD on Union__ {
+  ...Fragment_Rr5IFF4z
+  __typename
+  __typename @Directive_aCg
+  __typename
+  __typename
+  ... on Union_hFwA6Reav {
+    K_f: __typename
+  }
+}

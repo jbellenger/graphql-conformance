@@ -1,0 +1,18 @@
+query FHxNFG @Directive_Ok6kpamnKj {
+  ...Fragment_PSphho
+  ugep
+  ... on Union_TvQglQ8 {
+    ...Fragment_xSaN7Vc
+  }
+}
+
+fragment Fragment_PSphho on Object_DzzS57z {
+  ugep
+}
+
+fragment Fragment_xSaN7Vc on Union_Hb5Bmdru0_ {
+  __typename @include(if: false)
+  ... on Union_d {
+    __typename
+  }
+}

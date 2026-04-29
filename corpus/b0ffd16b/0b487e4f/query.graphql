@@ -1,0 +1,19 @@
+query hp2CI0l($wJe: Boolean!) {
+  ...Fragment_vVi7EoSyXh
+  ... {
+    ...Fragment_vVi7EoSyXh
+    ...Fragment_vVi7EoSyXh
+    F1RYM: __typename
+  }
+}
+
+fragment Fragment_Gtv7VAGs on Union_UV5 {
+  __typename
+}
+
+fragment Fragment_vVi7EoSyXh on Union_Yj7 {
+  ... on Union_Yj7 @include(if: $wJe) {
+    ...Fragment_Gtv7VAGs
+    __typename
+  }
+}

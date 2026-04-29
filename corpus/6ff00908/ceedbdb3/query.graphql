@@ -1,0 +1,12 @@
+query hlt {
+  ... on Union_Ud {
+    ... on Union_mF {
+      ...Fragment_nzwq
+      __typename
+    }
+  }
+}
+
+fragment Fragment_nzwq on Union_Ud {
+  __typename
+}

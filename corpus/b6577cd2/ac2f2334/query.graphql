@@ -1,0 +1,18 @@
+query D {
+  ...Fragment_GExqq7Zo
+  __typename
+  ... on Union_rEG {
+    ... on Union_rnQMi8hYpp {
+      __typename
+    }
+    ... on Union_rEG {
+      ... on Union_rnQMi8hYpp {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_GExqq7Zo on Union_rEG {
+  __typename @skip(if: true) @Directive_bY
+}

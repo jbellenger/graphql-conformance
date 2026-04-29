@@ -1,0 +1,37 @@
+query QwIJ($v: Boolean!) {
+  sCX @include(if: false) {
+    ...Fragment_xPgET8xI
+    __typename
+    ... on Interface_HIifn @include(if: true) @skip(if: $v) {
+      ...Fragment_xPgET8xI
+      ... on Interface_HIifn @skip(if: $v) @Directive_bY @include(if: false) {
+        h
+      }
+    }
+    ... on Interface_HIifn {
+      h
+    }
+  }
+  ... on Union_rEG {
+    __typename
+    x7: __typename
+    __typename
+    __typename
+    ... on Union_rEG {
+      ...Fragment_hvUoc
+      ... on Union_rnQMi8hYpp {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_xPgET8xI on Object__KnPVwLq {
+  ... on Interface_HIifn {
+    h
+  }
+}
+
+fragment Fragment_hvUoc on Union_rEG {
+  __typename
+}

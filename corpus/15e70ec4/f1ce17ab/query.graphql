@@ -1,0 +1,22 @@
+query dVXB0a @Directive_yozJBsznT {
+  ... on Object_I {
+    ...Fragment_P8WVBH1ci@Directive_DqxcTEDqi
+    ...Fragment_ZL
+    d_
+    __typename
+    __typename
+    d_
+  }
+}
+
+fragment Fragment_g4T on Union_H {
+  __typename
+}
+
+fragment Fragment_P8WVBH1ci on Union_SXg575TjDS {
+  ...Fragment_g4T
+}
+
+fragment Fragment_ZL on Union_SXg575TjDS {
+  __typename
+}

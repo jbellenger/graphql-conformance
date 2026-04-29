@@ -1,0 +1,19 @@
+query Qn_di7xHt {
+  ...Fragment_Sw@Directive_TSHfh1
+  ...Fragment_Sw
+  ...Fragment_Sw
+  ... on Object_pDiTNo {
+    V1C4: __typename
+  }
+}
+
+fragment Fragment_F_IZNEC on Object_pDiTNo {
+  __typename
+}
+
+fragment Fragment_Sw on Union_t {
+  __typename
+  ... on Object_pDiTNo {
+    ...Fragment_F_IZNEC
+  }
+}

@@ -1,0 +1,36 @@
+{
+  N: bXBF8aR {
+    ...Fragment_Z0QLMivvX
+    ...Fragment_dvpG
+  }
+  __typename
+  ... {
+    ...Fragment_QnbTE5
+    XPPjG1: __typename
+    __typename
+  }
+  ... on Object_mLU61Sm {
+    __typename
+  }
+}
+
+fragment Fragment_dvpG on Interface_J2n02HuP_STUB {
+  _8: __typename
+}
+
+fragment Fragment_Z0QLMivvX on Interface_J2n02HuP_STUB {
+  ...Fragment_dvpG@Directive_HjQ1R
+  yvmzkZNMkW {
+    xGWFBL0R0K: iLvb
+  }
+  nLJUpql: eHuhP9uFZ {
+    __typename
+  }
+  ... on Interface_J2n02HuP {
+    lcu0KFlc @include(if: true)
+  }
+}
+
+fragment Fragment_QnbTE5 on Object_mLU61Sm {
+  __typename
+}

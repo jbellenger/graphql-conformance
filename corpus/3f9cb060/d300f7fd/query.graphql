@@ -1,0 +1,20 @@
+{
+  ... on Union_wdb9 {
+    ...Fragment_J1MtpD9D
+    __typename
+    WXa: __typename
+  }
+  ... on Union_wdb9 {
+    xlVeP_: __typename @Directive_GROdNIVW4 @include(if: true)
+  }
+}
+
+fragment Fragment_KxiAQg8s on Object_j3FlFut {
+  sK8gX {
+    FeH: __typename
+  }
+}
+
+fragment Fragment_J1MtpD9D on Union_CLjL {
+  ...Fragment_KxiAQg8s
+}

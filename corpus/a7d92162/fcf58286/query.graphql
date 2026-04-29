@@ -1,0 +1,17 @@
+query nNaAu0wk($yOwx: Boolean!) {
+  ...Fragment_bYCyN2L0k
+  ... on Union_kehNR {
+    tUxV: __typename
+  }
+}
+
+fragment Fragment_Nfw on Object_k {
+  __typename
+}
+
+fragment Fragment_bYCyN2L0k on Union_F {
+  ...Fragment_Nfw
+  ...Fragment_Nfw
+  cyZ: __typename
+  __typename @skip(if: $yOwx)
+}

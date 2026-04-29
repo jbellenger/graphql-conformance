@@ -1,0 +1,15 @@
+query wZ5p {
+  ho1lVT2u
+  ... on Object_lhsu5iZ {
+    ...Fragment_FljgXwcJ9z
+    __typename
+  }
+}
+
+fragment Fragment_RBovy on Object_QYU @Directive_RE{
+  __typename
+}
+
+fragment Fragment_FljgXwcJ9z on Union_nTdVN {
+  ...Fragment_RBovy
+}

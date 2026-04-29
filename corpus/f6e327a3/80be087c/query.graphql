@@ -1,0 +1,16 @@
+query m {
+  ...Fragment_VrO8ktlRc5
+  ...Fragment_oF8a6ld
+  ...Fragment_oF8a6ld
+}
+
+fragment Fragment_VrO8ktlRc5 on Object_vd5FzuQql {
+  WbZQnN9a: uH894I1oj
+}
+
+fragment Fragment_oF8a6ld on Object_vd5FzuQql {
+  ...Fragment_VrO8ktlRc5
+  ... on Object_vd5FzuQql {
+    __typename
+  }
+}

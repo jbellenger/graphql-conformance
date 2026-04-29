@@ -1,0 +1,39 @@
+query wKYE6W($m7: Input_cpgQC5qw) @Directive_XeX1vdfk6(qata0X2i9H: $m7, niy5rLiBYg: "K  ") {
+  ...Fragment_GI0
+  pnTIj {
+    ...Fragment_pD294mSgKV
+    ...Fragment_Elo8pDt
+    __typename
+    ... on Union_f {
+      ...Fragment_a1PXDJBW
+    }
+  }
+  lOZI: k
+  ... on Union_SbkV {
+    __typename
+  }
+}
+
+fragment Fragment_GI0 on Union_SbkV @Directive_gDbH0LesCd{
+  __typename
+}
+
+fragment Fragment_s on Union_f {
+  LeGqM: __typename
+}
+
+fragment Fragment_pD294mSgKV on Object_EFnMB {
+  ...Fragment_s
+  lGrP0G8: __typename
+}
+
+fragment Fragment_Elo8pDt on Object_EFnMB {
+  ...Fragment_pD294mSgKV
+}
+
+fragment Fragment_a1PXDJBW on Interface_BRm4uR {
+  __typename
+  ETULz8nhD: gFnUcz {
+    r: __typename @include(if: false)
+  }
+}

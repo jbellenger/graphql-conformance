@@ -1,0 +1,46 @@
+{
+  ...Fragment_UPyVH6s
+  qsPC7Bzcr: xOYdtDHm2 {
+    __typename
+    __typename
+    __typename
+  }
+  xOYdtDHm2 @include(if: false) {
+    __typename
+    __typename
+  }
+  mAlO7: xNHdwJ {
+    ...Fragment_SFRy7XrJXG
+  }
+  ... on Object_rRDWkUi {
+    __typename
+  }
+  ... {
+    ...Fragment_LAx9N4v
+    ...Fragment_LAx9N4v
+    ... on Object_rRDWkUi {
+      ... on Object_rRDWkUi {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_LAx9N4v on Object_rRDWkUi {
+  xOYdtDHm2 {
+    __typename
+  }
+}
+
+fragment Fragment_UPyVH6s on Object_rRDWkUi @Directive_yif{
+  ...Fragment_LAx9N4v
+  bxWB0L: xNHdwJ {
+    __typename
+  }
+}
+
+fragment Fragment_SFRy7XrJXG on Object_u6NA {
+  ... on Object_u6NA {
+    noyjZ
+  }
+}

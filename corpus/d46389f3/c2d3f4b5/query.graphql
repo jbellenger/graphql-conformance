@@ -1,0 +1,25 @@
+query G7tAbc2hGX($vrtgj: Boolean!) {
+  ...Fragment_XuTMFP2
+  bl6p5Yx64z: __typename
+  ... on Union_yab @defer(if: false, label: "Kw") {
+    ...Fragment_XuTMFP2
+    ...Fragment_XuTMFP2
+  }
+  ... on Object_L {
+    ariFqX: __typename @include(if: false)
+  }
+  ... @include(if: $vrtgj) {
+    ...Fragment_XuTMFP2
+    ... on Union_yab {
+      __typename
+      __typename @Directive_ltEXUadH
+      ... on Object_L {
+        dulW67Ki
+      }
+    }
+  }
+}
+
+fragment Fragment_XuTMFP2 on Object_L {
+  __typename
+}

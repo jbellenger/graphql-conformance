@@ -1,0 +1,34 @@
+{
+  ...Fragment_Ii8j
+  ...Fragment_q2b
+  ...Fragment_q2b
+  __typename
+  ... on Union_GnjF6efLi {
+    __typename
+  }
+  ... on Union_o1shAhMM @Directive_RzD9N @defer(label: " ") {
+    ...Fragment_Ii8j
+    ... on Object_bG7K {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_Ii8j on Object_ns @Directive_GUt9G_LFW{
+  ... {
+    qf
+  }
+}
+
+fragment Fragment_q2b on Union_o1shAhMM {
+  ...Fragment_Ii8j
+  ... on Object_bG7K {
+    __typename
+  }
+  ... on Object_ns @include(if: true) {
+    ...Fragment_Ii8j@include(if: true)
+    ... on Union_GnjF6efLi {
+      __typename
+    }
+  }
+}

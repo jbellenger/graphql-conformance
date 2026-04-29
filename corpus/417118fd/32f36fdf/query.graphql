@@ -1,0 +1,43 @@
+{
+  ...Fragment_nIgMxqhP4N
+  ... on Union_WXG5aIW8nO {
+    ... on Interface_kT {
+      ...Fragment_r1
+      __typename
+    }
+  }
+  ... on Object_kK {
+    l: fdQAf4im {
+      ...Fragment_b
+    }
+    fdQAf4im {
+      __typename
+      ... on Union_QqP @defer(if: false, label: "") {
+        aeHfCkDG: __typename
+      }
+    }
+    ... on Union_WXG5aIW8nO {
+      __typename
+    }
+  }
+  ... on Object_kK {
+    qmKIU {
+      ... on Union__r_ {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_nIgMxqhP4N on Object_kK {
+  __typename
+}
+
+fragment Fragment_r1 on Interface_kT {
+  __typename
+}
+
+fragment Fragment_b on Object_Dm {
+  __typename
+  __typename
+}

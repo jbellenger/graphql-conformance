@@ -1,0 +1,21 @@
+{
+  ...Fragment_YbK6FZ7aW
+  ... on Union_ZveOI1hNs @Directive_vYWbqcM {
+    ...Fragment_mWPcR
+    __typename
+    ... on Object_L7Z2 {
+      ...Fragment_mWPcR
+      ... on Interface_A_ {
+        wO
+      }
+    }
+  }
+}
+
+fragment Fragment_YbK6FZ7aW on Object_L7Z2 {
+  __typename
+}
+
+fragment Fragment_mWPcR on Object_L7Z2 {
+  ...Fragment_YbK6FZ7aW
+}

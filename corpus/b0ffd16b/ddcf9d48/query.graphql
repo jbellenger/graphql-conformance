@@ -1,0 +1,24 @@
+query DqMID2lf {
+  ...Fragment_rQXUEV
+  ...Fragment_rQXUEV
+  ...Fragment_rQXUEV
+  __typename @include(if: true)
+  keXCah {
+    ...Fragment_rQXUEV
+    ...Fragment_ooH4
+  }
+}
+
+fragment Fragment_rQXUEV on Union_UV5 {
+  ... on Union_pb {
+    OWF: __typename
+    jAty6kO_: __typename
+    ... on Union_Yj7 {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_ooH4 on Object_s5 {
+  zW
+}

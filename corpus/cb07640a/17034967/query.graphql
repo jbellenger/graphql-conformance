@@ -1,0 +1,23 @@
+query cgPW_n0FD4 {
+  wO
+  s3N
+  ... on Interface_A_ {
+    ... on Object_L7Z2 {
+      ... on Object_L7Z2 {
+        n: s3N
+      }
+    }
+  }
+  ... on Union_ZveOI1hNs {
+    ...Fragment_QDBd
+    ...Fragment_QDBd
+    __typename
+    tz: __typename
+  }
+}
+
+fragment Fragment_QDBd on Union_ZveOI1hNs {
+  ... on Interface_A_ {
+    __typename
+  }
+}

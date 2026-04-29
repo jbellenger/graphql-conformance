@@ -1,0 +1,48 @@
+query _7($f9QKe3Yj: Boolean!) {
+  sL3bl: pXSNJYzF1X @skip(if: $f9QKe3Yj) {
+    ...Fragment_Ba
+    __typename
+  }
+  pXSNJYzF1X {
+    __typename
+  }
+  _JmRYo {
+    __typename
+    ... on Interface_rQI {
+      ...Fragment_HrEaLQM
+    }
+  }
+  ... on Object__S {
+    ...Fragment_Ba
+    ...Fragment_Ba
+    pXSNJYzF1X @skip(if: false) @include(if: false) {
+      ... on Union_E8lNfILz {
+        __typename
+      }
+    }
+    pXSNJYzF1X {
+      ...Fragment__o
+    }
+    rqhJyTiy6y: sQZXxVv4
+    pXSNJYzF1X {
+      ...Fragment_c0WSdKGJ
+    }
+  }
+}
+
+fragment Fragment_HrEaLQM on Union_P @Directive_hE7{
+  __typename @include(if: true)
+}
+
+fragment Fragment_Ba on Union_qMK {
+  ...Fragment_HrEaLQM
+  __typename
+}
+
+fragment Fragment__o on Union_E8lNfILz {
+  __typename
+}
+
+fragment Fragment_c0WSdKGJ on Union_E8lNfILz {
+  v2: __typename
+}

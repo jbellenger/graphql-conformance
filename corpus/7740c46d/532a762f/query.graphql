@@ -1,0 +1,27 @@
+query @Directive_iab {
+  ...Fragment_aebilEpfA
+}
+
+fragment Fragment_HBnALh on Object_TR92Ujbj {
+  qhpc1Uw9: vV9iY2 {
+    __typename
+  }
+  vV9iY2 {
+    __typename
+  }
+  j0 {
+    vV9iY2 {
+      __typename
+    }
+  }
+  ... on Union_yHuS {
+    __typename
+  }
+}
+
+fragment Fragment_aebilEpfA on Object_TR92Ujbj {
+  ...Fragment_HBnALh
+  ... on Object_TR92Ujbj {
+    Ynwb19w: __typename
+  }
+}

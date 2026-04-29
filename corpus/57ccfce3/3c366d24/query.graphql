@@ -1,0 +1,22 @@
+query crn {
+  __typename
+  o {
+    ... on Interface_RP_STUB {
+      __typename
+    }
+    ... {
+      ...Fragment_m53CaDJxs
+    }
+  }
+  ... on Union_QONO {
+    ... on Object_Np58f9yIc {
+      wye7 {
+        PH8okg_: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_m53CaDJxs on Interface_RP {
+  aT
+}

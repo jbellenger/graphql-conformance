@@ -1,0 +1,11 @@
+query ($fYr7D: Boolean! = false) {
+  ...Fragment_F5xe9g5SHG
+  ...Fragment_F5xe9g5SHG
+  __typename
+  xPGRB_ @skip(if: $fYr7D)
+  __typename
+}
+
+fragment Fragment_F5xe9g5SHG on Union_FV4AsTv {
+  __typename
+}

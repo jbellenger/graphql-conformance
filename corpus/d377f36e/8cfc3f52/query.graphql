@@ -1,0 +1,14 @@
+query JLrMAvSVul($q0A: Boolean!) {
+  ... on Object_fu7wXUUW {
+    l9G
+    qJtKw
+    ... on Object_fu7wXUUW @defer(if: true, label: "{Q") @include(if: $q0A) {
+      ... on Union_xF {
+        QH0ZHoO9OP: __typename
+      }
+    }
+    ... on Union_xF {
+      __typename
+    }
+  }
+}

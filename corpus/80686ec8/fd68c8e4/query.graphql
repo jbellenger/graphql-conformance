@@ -1,0 +1,36 @@
+query iLXythCw @Directive_pmyABFMHH {
+  ...Fragment_M4H
+  ...Fragment_KuT24odio_
+  ...Fragment_KuT24odio_
+  ... on Object_r6mU4 {
+    ... on Object_r6mU4 {
+      ...Fragment_x0b@defer(if: true, label: "@")
+    }
+  }
+  ... on Object_r6mU4 @defer(if: true) {
+    __typename
+  }
+  ... on Union_KEKp9Io {
+    ...Fragment_x0b
+    ... on Object_r6mU4 {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_x0b on Union_EP {
+  __typename
+}
+
+fragment Fragment_KuT24odio_ on Object_r6mU4 {
+  ...Fragment_x0b
+  __typename
+}
+
+fragment Fragment_M4H on Object_r6mU4 {
+  ...Fragment_KuT24odio_
+  ...Fragment_x0b
+  ... on Union_KEKp9Io {
+    ...Fragment_KuT24odio_
+  }
+}

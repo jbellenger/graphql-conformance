@@ -1,0 +1,18 @@
+query X6B8S7kUj {
+  ...Fragment_QXiJr780t
+  __typename @include(if: true)
+  ... on Object_SWngjlRgCD {
+    ...Fragment_QXiJr780t
+    ...Fragment_QXiJr780t
+    ... on Union_p4nb {
+      ... on Union_PiiXCN {
+        tQ: __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_QXiJr780t on Union_A @Directive_YmYyC{
+  __typename
+}

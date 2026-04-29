@@ -1,0 +1,28 @@
+query rh($bnfkn9: Input_Pz5bSa4 = {kbY39c9c : null, uAIV : "9c"}) {
+  lcqtiSdo(nu2Jpo: {kbY39c9c : X73f8, uAIV : "Gr", tA : RUwf}) {
+    ... on Object_W3EvWq {
+      cpWxe {
+        uZu: __typename
+      }
+    }
+    ... on Union_PiiXCN {
+      ...Fragment_Iy
+      ... on Object_W3EvWq {
+        __typename @skip(if: true)
+      }
+    }
+  }
+  NqDJ: lcqtiSdo {
+    __typename @Directive_tyFmlf93
+  }
+  wN7Nyhctj1: lcqtiSdo(nu2Jpo: {uAIV : "Lt4", tA : null}) {
+    __typename
+  }
+  dp: lcqtiSdo(nu2Jpo: $bnfkn9) {
+    OK: __typename
+  }
+}
+
+fragment Fragment_Iy on Union_p4nb {
+  __typename
+}

@@ -1,0 +1,29 @@
+query FQSemXAi($waSjq: Input_PN@Directive_dxQrK2(vqNB9QB8Q: {wz : fZbRl9PNKQ}, oH: {djk : "7", dc : {hnmk5LLy : "(Ro", zZ : {hnmk5LLy : null, ldCq : null}, ldCq : null}})) {
+  aAt(zThZV: null) {
+    ... on Interface_trqg2FQC_STUB {
+      x7rC3mk8XP
+      swWt8X3si(sy_: $waSjq)
+      hzos @include(if: true) {
+        MjrEC431: o7F8fugyI {
+          __typename
+        }
+        o7F8fugyI {
+          __typename
+        }
+      }
+    }
+  }
+  ... on Union__MS @include(if: false) {
+    ...Fragment_kQzW
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_hD on Object_vHWJrZGV {
+  __typename
+}
+
+fragment Fragment_kQzW on Union_uYzsmGD1 {
+  ...Fragment_hD@Directive_mDrUMUXH
+}

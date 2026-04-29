@@ -1,0 +1,27 @@
+query cG {
+  ...Fragment_jc7V
+  ... on Union_Nv7l8bLjnj @skip(if: true) {
+    __typename
+  }
+}
+
+fragment Fragment_PomWqagCBf on Union_eOW9 {
+  KJKSZ2: __typename
+}
+
+fragment Fragment_brS8xYUVZN on Union_Nv7l8bLjnj {
+  __typename
+}
+
+fragment Fragment_jc7V on Union_Nv7l8bLjnj {
+  ...Fragment_PomWqagCBf
+  ... on Object_Z4 @skip(if: true) {
+    __typename
+  }
+  ... on Object_Y @defer(if: true, label: "P,R") {
+    ...Fragment_brS8xYUVZN
+    ... on Object_Y {
+      __typename
+    }
+  }
+}

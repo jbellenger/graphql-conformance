@@ -1,0 +1,28 @@
+query hGn6W {
+  ... on Union_O8eEb @include(if: false) {
+    ... on Union_rnQMi8hYpp {
+      ...Fragment_t
+      __typename
+      ... on Union_rnQMi8hYpp {
+        LMEkRAGuC: __typename
+      }
+    }
+  }
+  ... on Object_eSTyTX0 {
+    ...Fragment_DcEBz
+    ...Fragment_MUNeQURGmf
+  }
+}
+
+fragment Fragment_t on Object_M22hFV {
+  __typename
+}
+
+fragment Fragment_MUNeQURGmf on Union_rEG {
+  __typename
+  lGyhGyb: __typename
+}
+
+fragment Fragment_DcEBz on Object_eSTyTX0 {
+  ...Fragment_MUNeQURGmf
+}

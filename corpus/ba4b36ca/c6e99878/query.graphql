@@ -1,0 +1,42 @@
+query rgm($z: Boolean!) {
+  ...Fragment_hjQ49y_gP
+  ...Fragment_hjQ49y_gP
+  ... on Union_ruZgNQhR9 @skip(if: $z) {
+    ...Fragment_X94D
+    __typename
+    ... on Object_uBR74qhE {
+      ...Fragment_wX
+    }
+    ... on Object_uBR74qhE {
+      ...Fragment_r3vyg
+      ... on Interface_m4crRd7k {
+        sAvqm: v8
+      }
+    }
+  }
+}
+
+fragment Fragment_wX on Union_ZVYu @Directive_R_Z0TJW{
+  __typename
+}
+
+fragment Fragment_zxQlWPHN on Union_ZVYu {
+  ...Fragment_wX
+  ... on Object_uBR74qhE @include(if: $z) {
+    BqKFVxCur: zOGqEBa8SI
+  }
+}
+
+fragment Fragment_hjQ49y_gP on Union_ZVYu {
+  ...Fragment_zxQlWPHN
+  __typename
+  __typename
+}
+
+fragment Fragment_X94D on Object_OaETkQF2Vk {
+  __typename
+}
+
+fragment Fragment_r3vyg on Interface_m4crRd7k {
+  __typename
+}

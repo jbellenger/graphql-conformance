@@ -1,0 +1,22 @@
+query ($g3urgOFFDh: Boolean) @Directive_Zbd {
+  ...Fragment_CzOLM
+  ...Fragment_uzaXfnU
+}
+
+fragment Fragment_uzaXfnU on Union_RYMumtU {
+  __typename
+}
+
+fragment Fragment_CzOLM on Object_N @Directive_Fy2h{
+  ...Fragment_uzaXfnU
+  m5A {
+    __typename
+    __typename
+    ... on Interface_jeWY_STUB {
+      JOP27W: wXJG(uMgzK7: $g3urgOFFDh) {
+        __typename @include(if: true)
+      }
+    }
+  }
+  __typename
+}

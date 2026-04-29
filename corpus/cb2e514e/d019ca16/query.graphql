@@ -1,0 +1,26 @@
+query TZkwUvU($yIwFH_N: Boolean!) {
+  ...Fragment_iFtLZ
+  ...Fragment_fx4M9gs2bs
+}
+
+fragment Fragment_fx4M9gs2bs on Object_v3SzEN {
+  ... on Union_B {
+    __typename
+  }
+}
+
+fragment Fragment_iFtLZ on Object_v3SzEN {
+  ...Fragment_fx4M9gs2bs
+  ... on Object_v3SzEN @Directive_QtDr {
+    __typename
+  }
+  ... on Object_v3SzEN {
+    ...Fragment_fx4M9gs2bs@include(if: true) @skip(if: $yIwFH_N)
+    upBm1V {
+      WXHrAwI: __typename
+      niYymSliPP: __typename
+    }
+    __typename
+    __typename
+  }
+}

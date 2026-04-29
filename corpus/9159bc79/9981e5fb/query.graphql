@@ -1,0 +1,35 @@
+{
+  V1TjObxYwP: p {
+    t {
+      __typename
+    }
+    ... on Union_Qkl6DT {
+      j: __typename
+    }
+  }
+  n4Bd7epXbW: kW5v5 {
+    ...Fragment_XOoHixV04c
+    ...Fragment_FI
+    __typename
+  }
+  ... on Union_Qkl6DT {
+    ...Fragment_FI
+    ...Fragment_XOoHixV04c
+    __typename
+    ... on Union_Qkl6DT {
+      ...Fragment_FI
+    }
+    ... on Interface_bUNAqCFE9 {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_FI on Union_Qkl6DT {
+  __typename @include(if: false)
+}
+
+fragment Fragment_XOoHixV04c on Union_k {
+  ...Fragment_FI
+  o8Ztpvq: __typename
+}

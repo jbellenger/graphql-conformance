@@ -1,0 +1,40 @@
+query ($sjBC: Boolean! = true) {
+  qWdcj: ho1lVT2u
+  __typename
+  jtOv9fPkZ6: __typename
+  G4YnSl: puMdkAP {
+    ... on Object_QYU {
+      ...Fragment_qSSz3
+      ... on Union_nTdVN {
+        __typename
+      }
+    }
+    ... on Object_QYU {
+      __typename
+    }
+  }
+  ... on Union_nTdVN @skip(if: $sjBC) {
+    ...Fragment_qSSz3
+    __typename
+  }
+  ... on Union_cB1tP6 {
+    P: __typename
+    Nv5sdVTK: __typename
+    __typename
+    wYoSqDzkD: __typename
+    ... on Object_QYU {
+      ...Fragment_qSSz3
+    }
+    ... {
+      PZKjVk7a2: __typename
+      VGpGh3M: __typename
+    }
+  }
+  ... on Object_lhsu5iZ {
+    zDC17KGRaM
+  }
+}
+
+fragment Fragment_qSSz3 on Union_cB1tP6 {
+  aWAMmkYip: __typename
+}

@@ -1,0 +1,16 @@
+{
+  ... on Union_fP9dHMkhh @include(if: true) {
+    ...Fragment_hnCa
+    __typename @Directive_Xq
+  }
+}
+
+fragment Fragment_Xc on Union_h3j {
+  __typename
+}
+
+fragment Fragment_hnCa on Union_wWuid {
+  ...Fragment_Xc
+  __typename
+  ip0PDOv: __typename
+}

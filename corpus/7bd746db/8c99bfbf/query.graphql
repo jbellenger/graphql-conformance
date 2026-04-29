@@ -1,0 +1,31 @@
+query N4BTZUlLR {
+  ...Fragment_tmJ
+  ...Fragment_QRsNua_5b
+  ... on Union_XB8W {
+    ... on Union_r0JK4cT_LY {
+      ...Fragment_tmJ
+    }
+    ... on Union_XB8W {
+      __typename
+      __typename @skip(if: true)
+      __typename
+      ... on Object_Et {
+        ohoB: __typename @Directive_fZ
+      }
+    }
+  }
+}
+
+fragment Fragment_NMUWxuSeyL on Union_XB8W {
+  __typename
+  __typename
+}
+
+fragment Fragment_QRsNua_5b on Union_r0JK4cT_LY {
+  ...Fragment_NMUWxuSeyL@Directive_QeA3eVo
+  __typename
+}
+
+fragment Fragment_tmJ on Union_XB8W {
+  ...Fragment_QRsNua_5b
+}

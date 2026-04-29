@@ -1,0 +1,13 @@
+{
+  ...Fragment_ROr6m@include(if: false)
+}
+
+fragment Fragment_S_5j8v on Union_mFvFMyOh @Directive_M6{
+  ... on Union_B {
+    __typename
+  }
+}
+
+fragment Fragment_ROr6m on Union_B {
+  ...Fragment_S_5j8v
+}

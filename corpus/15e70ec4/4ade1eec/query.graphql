@@ -1,0 +1,13 @@
+query VS @Directive_yozJBsznT {
+  ...Fragment_xys5
+}
+
+fragment Fragment_rs14CM1E1 on Union_H {
+  __typename
+}
+
+fragment Fragment_xys5 on Union_zL110jXF {
+  ... on Union_H {
+    ...Fragment_rs14CM1E1
+  }
+}

@@ -1,0 +1,36 @@
+{
+  ...Fragment_Z@Directive_nI1Qi8
+  ...Fragment_GkD0NzeuN4
+  ...Fragment_GkD0NzeuN4
+  _HVFs {
+    ...Fragment_l0m23A1I@Directive_BL4W6scIHB
+    ...Fragment_BEnpm3A3Xh
+    Rnxmq_W1UY: f3RYKAYH
+    ... on Union_RM41 {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_Z on Union_bRDPVmhP {
+  exNTMe39g: __typename @skip(if: false)
+}
+
+fragment Fragment_GkD0NzeuN4 on Object_r {
+  ...Fragment_Z
+  ... on Union_bRDPVmhP {
+    ...Fragment_Z
+    __typename
+  }
+  ... on Union_RM41 {
+    HYg: __typename
+  }
+}
+
+fragment Fragment_BEnpm3A3Xh on Union_bRDPVmhP {
+  __typename @skip(if: true)
+}
+
+fragment Fragment_l0m23A1I on Union_RM41 {
+  ...Fragment_BEnpm3A3Xh
+}

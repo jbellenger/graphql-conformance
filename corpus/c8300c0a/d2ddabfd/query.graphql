@@ -1,0 +1,16 @@
+{
+  ... on Interface_Pg5BLnu {
+    ...Fragment_m2
+    ... on Interface_Pg5BLnu {
+      ...Fragment__GsP7
+    }
+  }
+}
+
+fragment Fragment__GsP7 on Object_TeAStluS1f @Directive_XXavzFgS{
+  taR06HWzm
+}
+
+fragment Fragment_m2 on Union_aFR8ChCx {
+  ...Fragment__GsP7
+}

@@ -1,0 +1,19 @@
+query yXQ3Ip1 {
+  ...Fragment_n_C85U
+  ... on Union_yab {
+    ip: __typename
+  }
+}
+
+fragment Fragment_leEJ3L on Object_L @Directive_ltEXUadH{
+  __typename
+}
+
+fragment Fragment_XhdYKRIj on Union_yab {
+  __typename
+}
+
+fragment Fragment_n_C85U on Union_yab {
+  ...Fragment_leEJ3L
+  ...Fragment_XhdYKRIj
+}

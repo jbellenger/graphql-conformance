@@ -1,0 +1,147 @@
+schema {
+  query: Object_zXp
+}
+
+directive @Directive_AGsN on QUERY | MUTATION | FIELD | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | INLINE_FRAGMENT | SCHEMA | SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+directive @Directive_YFrIep on QUERY | MUTATION | SUBSCRIPTION | FRAGMENT_SPREAD | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCALAR | FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM | INPUT_FIELD_DEFINITION
+
+directive @Directive_zj7J(q06lrqqORy: Enum_lXa8mZfvj @Directive_AGsN) on QUERY | MUTATION | SUBSCRIPTION | FIELD | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+"This directive allows results to be deferred during execution"
+directive @defer(
+    "Deferred behaviour is controlled by this argument"
+    if: Boolean! = true,
+    "A unique label that represents the fragment being deferred"
+    label: String
+  ) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Marks the field, argument, input field or enum value as deprecated"
+directive @deprecated(
+    "The reason for the deprecation"
+    reason: String! = "No longer supported"
+  ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+"This directive disables error propagation when a non nullable field returns null for the given operation."
+directive @experimental_disableErrorPropagation on QUERY | MUTATION | SUBSCRIPTION
+
+"Directs the executor to include this field or fragment only when the `if` argument is true"
+directive @include(
+    "Included when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Indicates an Input Object is a OneOf Input Object."
+directive @oneOf on INPUT_OBJECT
+
+"Directs the executor to skip this field or fragment when the `if` argument is true."
+directive @skip(
+    "Skipped when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Exposes a URL that specifies the behaviour of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behaviour of this scalar."
+    url: String!
+  ) on SCALAR
+
+interface Interface_OCyTPD_ {
+  fx7vPXT: ID
+  q6: Boolean
+  yHy: Interface_TevRKYbp
+}
+
+interface Interface_TevRKYbp {
+  idwu2SQ: Enum_OneYpr
+  nmOq5k: Interface_TevRKYbp
+  tneIraZgb(r6Sn: Enum_ODgd_MF): Object_zXp
+}
+
+interface Interface_qzOZHj {
+  c: Interface_TevRKYbp
+  gU3Ds: String!
+  t: Object_XkKI8
+}
+
+union Union_UV5 @Directive_AGsN = Object_XkKI8 | Object_zXp
+
+union Union_Yj7 = Object_s5 | Object_zXp
+
+union Union_pb = Object_XkKI8 | Object_s5
+
+type Interface_OCyTPD__STUB implements Interface_OCyTPD_ {
+  fx7vPXT: ID
+  p: Enum_ODgd_MF
+  q6: Boolean
+  yHy: Interface_TevRKYbp
+}
+
+type Interface_TevRKYbp_STUB implements Interface_TevRKYbp {
+  iF: Interface_TevRKYbp
+  idwu2SQ: Enum_OneYpr
+  nmOq5k: Interface_TevRKYbp
+  p: Int
+  tneIraZgb(r6Sn: Enum_ODgd_MF): Object_zXp
+}
+
+type Interface_qzOZHj_STUB implements Interface_qzOZHj {
+  c: Interface_TevRKYbp
+  gU3Ds: String!
+  m: Interface_OCyTPD_
+  ozxAS: Enum_ODgd_MF
+  t: Object_XkKI8
+  vPPCIO: Enum_ODgd_MF!
+}
+
+type Object_XkKI8 {
+  lUR: Enum_lXa8mZfvj!
+  nieBQh: Object_XkKI8
+}
+
+type Object_s5 {
+  eBnrYvEImc: [Float]
+  y7HD98O3DW(p: Enum_ODgd_MF! @Directive_AGsN): Object_s5 @Directive_YFrIep
+  zW: ID
+}
+
+type Object_zXp @Directive_zj7J(q06lrqqORy : null) {
+  cGiqS4wSQ: String
+  iEw546Y: Union_Yj7
+  keXCah: Union_Yj7
+}
+
+enum Enum_ODgd_MF {
+  Iji6
+  epeSKQ
+  w7jXd
+}
+
+enum Enum_OneYpr {
+  BOXeJiS9 @deprecated(reason : "")
+  GKscETNMH
+  a
+}
+
+enum Enum_lXa8mZfvj @Directive_AGsN {
+  A
+  QWiPiTy
+  e0
+}
+
+input Input_Bnd5LbGAHr @Directive_zj7J(q06lrqqORy : A) {
+  _7mdUpfD3j: Int
+  hasQ: Input_Bnd5LbGAHr
+  pikk: [Enum_ODgd_MF] = [w7jXd, epeSKQ, w7jXd]
+}
+
+input Input_eiu9lxkg @oneOf {
+  bamq: Input_rOkuUA
+  rMO: Input_rOkuUA
+  sS: [Float]
+}
+
+input Input_rOkuUA {
+  at: Enum_lXa8mZfvj
+  qct8FE: Input_eiu9lxkg
+}

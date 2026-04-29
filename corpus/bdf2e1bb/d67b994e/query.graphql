@@ -1,0 +1,45 @@
+query TFf($peeQr: Boolean! = false) {
+  ...Fragment__@skip(if: $peeQr)
+  ... on Union_kbvn1Yqowd {
+    ...Fragment__@Directive_GYk3
+    __typename @skip(if: false)
+  }
+  ... on Union_kbvn1Yqowd {
+    ...Fragment__
+    ...Fragment__
+    VEqYyySa9t: __typename
+    __typename
+    __typename
+    __typename @skip(if: false)
+    ... on Object_ClW {
+      ... on Object_ClW {
+        __typename
+      }
+    }
+    ... on Union_imAHqkYR {
+      ...Fragment__
+      zftq: __typename @skip(if: true) @Directive_HSYQ
+    }
+  }
+  ... on Union_kbvn1Yqowd {
+    ...Fragment_eu_mIN1
+  }
+}
+
+fragment Fragment_n5BvVrDf_s on Object_kb {
+  __typename
+}
+
+fragment Fragment__ on Union_kbvn1Yqowd {
+  __typename
+  ... on Object_kb {
+    ...Fragment_n5BvVrDf_s
+  }
+}
+
+fragment Fragment_eu_mIN1 on Object_kb {
+  or6 {
+    __typename
+  }
+  __typename
+}

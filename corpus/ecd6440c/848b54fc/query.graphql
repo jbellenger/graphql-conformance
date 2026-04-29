@@ -1,0 +1,22 @@
+query @Directive_pGIVZ {
+  sZn @include(if: true)
+  sZn
+  __typename
+  jYRe
+  ... {
+    oJ {
+      p {
+        o2hMWj
+      }
+      p {
+        w
+      }
+    }
+    ... on Union_KhNM {
+      __typename
+    }
+    ... on Object_PzBm {
+      __typename
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  ...Fragment_vg4xs6np
+  ...Fragment_r
+  ... on Object_gRe1 {
+    ...Fragment_vg4xs6np
+    j1iOu4pXj(sPhPo: " a") {
+      ... on Interface_D7 @skip(if: true) {
+        __typename
+      }
+    }
+    ... on Object_gRe1 {
+      ...Fragment_DUw
+    }
+  }
+}
+
+fragment Fragment_vg4xs6np on Object_gRe1 @Directive_f{
+  z
+  ... on Union_Oa9Xyu {
+    __typename
+    ... on Union_Oa9Xyu {
+      __typename
+    }
+  }
+  ... {
+    p9: z
+  }
+}
+
+fragment Fragment_r on Union_Oa9Xyu {
+  __typename
+}
+
+fragment Fragment_DUw on Union_Dgsgzb {
+  __typename
+}

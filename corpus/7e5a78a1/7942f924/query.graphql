@@ -1,0 +1,27 @@
+{
+  __typename
+  ... on Object_IV3 {
+    ... on Union_syvgL {
+      ...Fragment_SZuiQib
+    }
+    ... on Object_IV3 {
+      ...Fragment_vKpJG_lP8
+    }
+  }
+  ... on Object_IV3 {
+    ... on Union_syvgL {
+      __typename
+    }
+  }
+  ... on Union_syvgL {
+    __typename
+  }
+}
+
+fragment Fragment_SZuiQib on Object_LTEUvZ {
+  KNr: pwudK1B
+}
+
+fragment Fragment_vKpJG_lP8 on Union_syvgL {
+  __typename
+}

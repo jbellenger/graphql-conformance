@@ -1,0 +1,34 @@
+query nWKa($kvkN: Boolean! = true, $hXZdfz3gC: Float) {
+  ...Fragment_z0TCK0mgLR
+  ...Fragment_z0TCK0mgLR
+  ...Fragment_z0TCK0mgLR
+  kZBv6JZ: leyBUXFdA(pGwzbCY: $hXZdfz3gC) @Directive_Zg7yusO3E @include(if: true) {
+    qIeI8TpA_O: __typename
+  }
+  ... on Union_zr1Q {
+    ... on Union_PPmo {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_nv4Ey on Union_zr1Q {
+  __typename
+}
+
+fragment Fragment_oMp6 on Union_PPmo {
+  ...Fragment_nv4Ey
+  __typename @skip(if: $kvkN)
+  __typename
+  en8JX: __typename
+  ... on Object_KVyRtAk {
+    leyBUXFdA(pGwzbCY: -1.7972798093088532E+308) {
+      GmyAc: __typename @include(if: false)
+    }
+  }
+}
+
+fragment Fragment_z0TCK0mgLR on Object_KVyRtAk {
+  ...Fragment_oMp6
+  ...Fragment_oMp6
+}

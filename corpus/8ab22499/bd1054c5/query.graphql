@@ -1,0 +1,51 @@
+query ($dS: Boolean!) {
+  ...Fragment_sP
+  b0 {
+    ...Fragment_sP
+    rxaY1 {
+      ...Fragment_O
+      __typename
+    }
+    rxaY1 {
+      ... on Union_Z {
+        s: __typename
+      }
+    }
+    rxaY1 {
+      rxaY1 {
+        Y: qg
+      }
+      ... on Union_QRtFa6q {
+        __typename @include(if: $dS)
+      }
+    }
+    ... on Union_QRtFa6q {
+      ...Fragment_OW15BUdDz
+      ... on Union_Z {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_YkX on Union_wC {
+  __typename
+}
+
+fragment Fragment_O on Union_Z {
+  ...Fragment_YkX
+  __typename
+  ... on Union_QRtFa6q {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_sP on Union_QRtFa6q {
+  ...Fragment_O@Directive_ACuaiJ
+  __typename
+}
+
+fragment Fragment_OW15BUdDz on Union_QRtFa6q {
+  KjcyRsbl: __typename @Directive_WKakPElks(k_z: -7.191147640307644E+307)
+}

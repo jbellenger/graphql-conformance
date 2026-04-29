@@ -1,0 +1,9 @@
+query W2($q28WC0tFl: Boolean!) {
+  ... on Object_e {
+    m1ztytiyt {
+      ... on Union_s7PEnFz @skip(if: $q28WC0tFl) {
+        lGpquA: __typename
+      }
+    }
+  }
+}

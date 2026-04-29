@@ -1,0 +1,12 @@
+query Iv60FG9Rc4 {
+  ...Fragment_pRZv9H69Kl
+  __typename
+  ... on Object_PFI8yNbA @include(if: true) @Directive_jvHUrHqn5 {
+    ...Fragment_pRZv9H69Kl
+  }
+}
+
+fragment Fragment_pRZv9H69Kl on Union_cQ {
+  __typename
+  __typename
+}

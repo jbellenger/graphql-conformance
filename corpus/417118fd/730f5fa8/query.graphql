@@ -1,0 +1,26 @@
+query ($vUNw: Enum_Q, $w5ED4Km1Uz: ID, $qGVHA: String!) {
+  ...Fragment_Rt@Directive_D_ezi3H
+  ... on Union_WXG5aIW8nO {
+    ...Fragment_xJhr
+    __typename
+    wPKAjv8z3M: __typename
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_xJhr on Object_n {
+  q6k2xRC(mV: $vUNw)
+}
+
+fragment Fragment_Rt on Union_WXG5aIW8nO {
+  ... on Interface_Wt4QRX {
+    ...Fragment_xJhr
+    __typename
+    ... on Interface_kT {
+      svK8r(dFKSBp5: $w5ED4Km1Uz, bn7: $qGVHA) @Directive_vclH {
+        q6k2xRC(mV: cXH)
+      }
+    }
+  }
+}

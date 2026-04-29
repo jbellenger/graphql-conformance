@@ -1,0 +1,27 @@
+{
+  ...Fragment_GieFzo8U5N
+  ...Fragment_AG
+  ...Fragment_oWAV5P0ujH
+  __typename
+}
+
+fragment Fragment_oWAV5P0ujH on Union_JFctNPd {
+  __typename
+}
+
+fragment Fragment_GieFzo8U5N on Union_JFctNPd {
+  ...Fragment_oWAV5P0ujH
+  __typename @skip(if: false)
+  ... on Object_G7tLJx7FJm {
+    Vk: __typename
+  }
+  ... on Union_YC7rJw @Directive_Pna_ {
+    ... on Union_YC7rJw {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_AG on Object_G7tLJx7FJm {
+  ...Fragment_GieFzo8U5N
+}

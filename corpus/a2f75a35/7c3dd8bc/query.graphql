@@ -1,0 +1,24 @@
+query jRX1($zZ: Boolean! = false@Directive_BPbw6) {
+  ...Fragment_tRNvnA
+  ...Fragment_tRNvnA@include(if: $zZ)
+  ...Fragment_tRNvnA@Directive_PhvQKgD(nXD: e)
+  ... on Union_DEXlsuP30 {
+    __typename
+    ... on Object_yC3VF1 {
+      ...Fragment_tRNvnA
+      zaPq9I: pMgPfw {
+        __typename
+      }
+    }
+  }
+  ... on Union_DEXlsuP30 {
+    ...Fragment_tRNvnA@Directive_PhvQKgD(nXD: jJ4NMSJiku)
+    __typename
+    __typename
+    sucM: __typename
+  }
+}
+
+fragment Fragment_tRNvnA on Object_yC3VF1 {
+  __typename
+}

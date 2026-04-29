@@ -1,0 +1,22 @@
+query @Directive_RzD9N {
+  ...Fragment_c1SYx84X
+  ...Fragment_c1SYx84X
+  __typename
+  qf
+  ... {
+    SeDfOVBj: qf @Directive_GUt9G_LFW
+    j
+    qf
+    ... on Union_GnjF6efLi {
+      __typename
+      K2NeXB: __typename
+    }
+    ... on Union_o1shAhMM {
+      ...Fragment_c1SYx84X
+    }
+  }
+}
+
+fragment Fragment_c1SYx84X on Union_GnjF6efLi {
+  __typename @include(if: false)
+}

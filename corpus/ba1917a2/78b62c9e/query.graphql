@@ -1,0 +1,31 @@
+{
+  xNHdwJ {
+    ...Fragment_B5GUl1s
+    ... on Union_VTre {
+      ...Fragment_B5GUl1s
+      __typename @Directive__eRcBA
+    }
+  }
+  ... on Object_rRDWkUi {
+    ...Fragment_Ovnnc
+    ...Fragment_Od
+    __typename
+  }
+}
+
+fragment Fragment_B5GUl1s on Interface_mE3TEblm {
+  ksub1fnO
+  we0
+}
+
+fragment Fragment_Ovnnc on Union_MM @Directive_HZ2GISQJ2b{
+  __typename
+}
+
+fragment Fragment_Od on Union_MM {
+  __typename
+  __typename
+  ... on Union_VTre {
+    __typename
+  }
+}

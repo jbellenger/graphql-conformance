@@ -1,0 +1,30 @@
+query ($bS7hFU: Boolean!) {
+  ... on Object_gDxh @skip(if: $bS7hFU) {
+    ... on Union_YGiZ {
+      ...Fragment_Hp06r9PUmh@defer(label: "tKl")
+      __typename @Directive_Ikrg_c3qe
+    }
+  }
+  ... on Union_eB {
+    mzNG: __typename
+    ... on Union_eB {
+      ...Fragment_m
+    }
+    ... on Union_eB {
+      ...Fragment_mgnaImz
+    }
+  }
+}
+
+fragment Fragment_Hp06r9PUmh on Object_wm {
+  My: __typename
+  __typename
+}
+
+fragment Fragment_m on Object_gDxh {
+  PLM5bxqCdP: __typename
+}
+
+fragment Fragment_mgnaImz on Union_vB4P_pD {
+  __typename
+}

@@ -1,0 +1,13 @@
+query nI {
+  ...Fragment_k
+}
+
+fragment Fragment_yt4al on Union_ruZgNQhR9 {
+  ... on Union_ZVYu @skip(if: true) {
+    __typename
+  }
+}
+
+fragment Fragment_k on Union_IntIl {
+  ...Fragment_yt4al@include(if: true)
+}

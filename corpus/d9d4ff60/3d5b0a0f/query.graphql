@@ -1,0 +1,34 @@
+query cDzzES {
+  ...Fragment_Gd
+  ... on Union_W_j {
+    ...Fragment_Xun86KqWqL
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_Xun86KqWqL on Union_W_j {
+  __typename
+}
+
+fragment Fragment_DAkmNjlift on Union_W_j {
+  ...Fragment_Xun86KqWqL
+  q1y: __typename
+  __typename
+  Wll: __typename
+}
+
+fragment Fragment_Gd on Object_tWyr @Directive_J5QPhazs{
+  ...Fragment_DAkmNjlift
+  _rkNOz0h6
+  _rkNOz0h6
+  ... on Union_rXFtRtq {
+    ...Fragment_Xun86KqWqL
+    ... on Union_W_j {
+      __typename
+    }
+  }
+  ... on Object_tWyr {
+    ...Fragment_DAkmNjlift
+  }
+}

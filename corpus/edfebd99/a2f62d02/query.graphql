@@ -1,0 +1,38 @@
+{
+  dB5a
+  lby
+  dB5a
+  dB5a
+  ... {
+    ... on Union_hpn {
+      ...Fragment_c
+      ... on Object_fxSNYLzYR {
+        gTMRS: __typename
+      }
+    }
+  }
+  ... on Union_hpn {
+    ...Fragment_c
+  }
+  ... on Union_hpn {
+    __typename
+    __typename
+    ... on Union_hpn {
+      __typename
+    }
+    ... on Union_hpn {
+      ...Fragment_y
+      EAZ: __typename
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_c on Object_fxSNYLzYR @Directive_K{
+  dB5a
+}
+
+fragment Fragment_y on Object_fxSNYLzYR {
+  lby
+}

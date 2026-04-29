@@ -1,0 +1,27 @@
+query dfVE($r: Boolean!@Directive_w) {
+  _JmRYo {
+    ...Fragment_cPR
+    ... on Object__S @include(if: $r) {
+      ...Fragment_b9qK
+      ... on Interface_rQI {
+        ssQb: __typename
+      }
+    }
+    ... on Interface_rQI {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_cPR on Object_vGI6LM {
+  __typename
+}
+
+fragment Fragment_b9qK on Object__S @Directive_hE7{
+  mTqelYzd: _JmRYo {
+    __typename
+  }
+  _JmRYo {
+    __typename
+  }
+}

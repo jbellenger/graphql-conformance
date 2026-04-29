@@ -1,0 +1,41 @@
+query CeaNo1($wXkl7: Boolean!) {
+  ...Fragment_YjkFRjoG6j
+  ...Fragment_YjkFRjoG6j@Directive_gMjNAbo
+  ... on Union_y75jv1sZV7 {
+    ...Fragment_VdD5
+    ...Fragment_p4XFf
+    ... on Union_ZuWB {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_YjkFRjoG6j on Union_y75jv1sZV7 {
+  O: __typename
+  __typename
+  ... on Union_y75jv1sZV7 {
+    __typename @include(if: $wXkl7)
+    ... on Object_w7PV0 @skip(if: true) {
+      of7 {
+        __typename
+      }
+      SCO: of7 {
+        __typename
+      }
+    }
+  }
+  ... on Object_w7PV0 {
+    o4Xi
+  }
+}
+
+fragment Fragment_p4XFf on Object_w7PV0 {
+  o4Xi
+}
+
+fragment Fragment_VdD5 on Object_w7PV0 {
+  ...Fragment_p4XFf
+  ... {
+    OF: mcu
+  }
+}

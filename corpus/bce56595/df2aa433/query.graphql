@@ -1,0 +1,34 @@
+query ($dNWDkAbhw: Boolean! = false) @Directive_LpqMB(dS6: zdDFwLrTT9) {
+  ...Fragment_u_
+  ...Fragment_Df
+  g53250lLLL
+}
+
+fragment Fragment_Df on Interface_wzTn8GER6B {
+  ... on Interface_nMFiR_STUB {
+    o
+  }
+}
+
+fragment Fragment_ELdaXTga on Union_ei9i {
+  __typename
+  e: __typename
+}
+
+fragment Fragment_u_ on Union_ei9i {
+  ...Fragment_Df
+  __typename
+  __typename
+  ... on Object_gOyX @defer(if: true, label: "`") {
+    ... on Union_Hant {
+      __typename @include(if: $dNWDkAbhw)
+    }
+  }
+  ... on Object_gOyX {
+    ...Fragment_ELdaXTga
+    g53250lLLL
+    ... on Object_gOyX {
+      atCo5O
+    }
+  }
+}

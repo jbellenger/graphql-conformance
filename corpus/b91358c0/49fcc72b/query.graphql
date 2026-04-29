@@ -1,0 +1,16 @@
+{
+  ...Fragment_z5fMan@Directive_P
+  ZxIq: __typename
+}
+
+fragment Fragment_h on Object_Qv2tD1yKq {
+  vY(ajGmNhvhD: TJg) {
+    __typename
+    TiTo7: __typename
+  }
+}
+
+fragment Fragment_z5fMan on Object_Qv2tD1yKq {
+  ...Fragment_h@skip(if: true)
+  __typename
+}

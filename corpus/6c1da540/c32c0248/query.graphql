@@ -1,0 +1,21 @@
+{
+  ...Fragment_R
+  ... on Union_OTYJTJv {
+    ...Fragment_R
+    ...Fragment_R
+    __typename
+    ENTd86pIpB: __typename @Directive_qHDcP
+  }
+}
+
+fragment Fragment_R on Union_SU1R93OwaV {
+  ... on Object_yVILZT {
+    ntY
+  }
+  ... on Object_ADU101HXej {
+    ... on Union_SU1R93OwaV {
+      __typename
+      __typename
+    }
+  }
+}

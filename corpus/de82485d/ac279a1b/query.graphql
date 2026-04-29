@@ -1,0 +1,23 @@
+query EmU79LCtMI($bD7: Boolean!) {
+  ...Fragment_hL7RFEqt
+  ...Fragment_Jtrc
+}
+
+fragment Fragment_Jtrc on Object_b {
+  u7: l {
+    g9cpP: pQ
+  }
+}
+
+fragment Fragment_hL7RFEqt on Object_b {
+  ...Fragment_Jtrc
+  ... on Union_auxhDXZN6C {
+    __typename @Directive_dJx6xK3F9
+    __typename @skip(if: $bD7)
+  }
+  ... on Union_Rbbbbbbbbb {
+    ... on Union_Rbbbbbbbbb {
+      __typename
+    }
+  }
+}

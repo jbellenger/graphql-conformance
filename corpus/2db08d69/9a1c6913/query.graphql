@@ -1,0 +1,15 @@
+{
+  ...Fragment_RFUZ3
+}
+
+fragment Fragment_F2wZgA on Union_e {
+  __typename
+}
+
+fragment Fragment_yx on Union_e {
+  ...Fragment_F2wZgA
+}
+
+fragment Fragment_RFUZ3 on Object_fM3Jzd {
+  ...Fragment_yx
+}

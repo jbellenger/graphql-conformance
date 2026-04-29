@@ -1,0 +1,21 @@
+{
+  ... on Union_GQJkR {
+    ...Fragment_T1YndMOyZx
+  }
+  ... on Object_V {
+    __typename
+  }
+  ... on Union_cx @Directive_vDaC {
+    ... on Union_cx {
+      ...Fragment_T1YndMOyZx
+    }
+  }
+}
+
+fragment Fragment_dgYul on Union_cx {
+  __typename
+}
+
+fragment Fragment_T1YndMOyZx on Object_V {
+  ...Fragment_dgYul
+}

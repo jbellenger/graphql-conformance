@@ -1,0 +1,22 @@
+{
+  ...Fragment_TSV
+  b0 {
+    ...Fragment_TSV
+    ...Fragment_vlgx
+    ... on Object_u3OI {
+      qg
+    }
+  }
+}
+
+fragment Fragment_vlgx on Union_Z {
+  __typename
+}
+
+fragment Fragment_TJy7kOoBGH on Union_QRtFa6q {
+  ...Fragment_vlgx@include(if: true)
+}
+
+fragment Fragment_TSV on Union_QRtFa6q @Directive_WKakPElks(k_z: -4.41279616680967E+307){
+  ...Fragment_TJy7kOoBGH
+}

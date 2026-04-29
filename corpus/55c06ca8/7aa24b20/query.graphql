@@ -1,0 +1,26 @@
+query jeyS4HY3jT($kTWoGAEed: Boolean!) {
+  ... on Object_Xo {
+    ...Fragment_JW
+    ...Fragment_B
+    ... {
+      __typename @include(if: $kTWoGAEed) @skip(if: $kTWoGAEed)
+    }
+    ... on Union_d_t1luAL4 {
+      ... on Object_Xo {
+        ZSInzTiN: yR0e @include(if: false)
+      }
+    }
+  }
+}
+
+fragment Fragment_JW on Union_d_t1luAL4 {
+  __typename
+}
+
+fragment Fragment_Bv7 on Object_Xo {
+  __typename
+}
+
+fragment Fragment_B on Object_Xo {
+  ...Fragment_Bv7
+}

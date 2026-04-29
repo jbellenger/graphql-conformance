@@ -1,0 +1,45 @@
+query FA6t_Ik {
+  ...Fragment_mvdsXtQP
+  ...Fragment_mvdsXtQP
+  ... on Object_PzBm {
+    ... on Union_KhNM {
+      ...Fragment_J2
+      ... on Union_KhNM {
+        __typename
+        __typename
+      }
+    }
+  }
+  ... on Union_KhNM {
+    ...Fragment_zLRFi
+  }
+  ... on Union_wT9 {
+    ...Fragment_Sz7yjrovR
+    ...Fragment_mvdsXtQP
+    __typename
+  }
+}
+
+fragment Fragment_zLRFi on Object_PzBm {
+  __typename
+}
+
+fragment Fragment_Sz7yjrovR on Union_wT9 {
+  ...Fragment_zLRFi
+}
+
+fragment Fragment_mvdsXtQP on Union_wT9 {
+  ...Fragment_Sz7yjrovR
+  ...Fragment_zLRFi
+  ... on Union_qNeE7Vbxl {
+    __typename @Directive_pGIVZ
+  }
+  ... on Union_KhNM {
+    HaF: __typename @Directive_pGIVZ
+    __typename
+  }
+}
+
+fragment Fragment_J2 on Union_KhNM {
+  BuatO: __typename
+}

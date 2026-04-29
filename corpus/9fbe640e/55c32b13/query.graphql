@@ -1,0 +1,25 @@
+query RBA {
+  ...Fragment_z
+  ...Fragment_y667uVMF
+}
+
+fragment Fragment_z on Union_W {
+  __typename
+}
+
+fragment Fragment_Nx_c on Union_mpYV5HXb {
+  __typename @skip(if: false)
+}
+
+fragment Fragment_y667uVMF on Union_mpYV5HXb {
+  ...Fragment_z
+  ... on Union_ofTIZn {
+    isRFCy: __typename
+  }
+  ... on Interface_Xtni0YO {
+    ...Fragment_Nx_c
+    icZIWVUwNi {
+      d2TM: __typename
+    }
+  }
+}

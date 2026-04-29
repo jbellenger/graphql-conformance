@@ -1,0 +1,29 @@
+query ($hZouH: Boolean!) {
+  __typename
+  pfKlZya {
+    __typename @include(if: false)
+    __typename @skip(if: true)
+    __typename
+    ... on Interface_TFNyY_STUB @Directive_sn1t {
+      ...Fragment_KNi4g
+      __typename
+      ... on Interface_TFNyY @defer(if: true) @Directive_sn1t {
+        se9kX {
+          __typename @skip(if: $hZouH)
+        }
+        se9kX {
+          __typename
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_KNi4g on Interface_TFNyY_STUB {
+  se9kX {
+    __typename
+  }
+  wTa4 {
+    _ @Directive_G1W_mKRx
+  }
+}

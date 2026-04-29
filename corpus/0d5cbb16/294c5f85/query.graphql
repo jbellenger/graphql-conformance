@@ -1,0 +1,34 @@
+query aF7oIvh {
+  f_qMA @include(if: false)
+  f_qMA @Directive_Fy2h
+  kprK6Tl
+  XWlf: m5A {
+    __typename
+  }
+  kprK6Tl @Directive_Fy2h
+  ... on Union_B42BOSBkP {
+    ...Fragment_jec0f9GJ
+    ...Fragment_jec0f9GJ
+  }
+  ... on Object_N {
+    __typename
+  }
+  ... on Union_B42BOSBkP {
+    __typename
+    ... on Object_phLUc {
+      ...Fragment_J
+      q1iewxcZ: i1vzloSM @include(if: true)
+    }
+  }
+}
+
+fragment Fragment_jec0f9GJ on Object_phLUc {
+  i1vzloSM
+  ... on Union_RYMumtU {
+    __typename
+  }
+}
+
+fragment Fragment_J on Union_RYMumtU {
+  __typename
+}

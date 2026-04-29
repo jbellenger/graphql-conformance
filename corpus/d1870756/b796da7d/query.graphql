@@ -1,0 +1,15 @@
+query ($ylLOzvXdgr: Boolean!) {
+  nwm(z1Xpre1vU: true) {
+    ...Fragment_QzqUsYC28j
+    __typename
+    o3e0reMt1C @include(if: $ylLOzvXdgr)
+    ... {
+      IjXCL: o3e0reMt1C
+    }
+  }
+}
+
+fragment Fragment_QzqUsYC28j on Object_NFflHBSi3 {
+  o3e0reMt1C
+  __typename
+}

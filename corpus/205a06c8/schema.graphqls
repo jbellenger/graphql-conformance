@@ -1,0 +1,140 @@
+schema {
+  query: Object_F
+}
+
+directive @Directive_Bh(n: Input_Z9d!) on MUTATION | FRAGMENT_DEFINITION | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCHEMA | SCALAR | OBJECT | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM_VALUE | INPUT_OBJECT
+
+directive @Directive_MKKKKKKKKK(fFxyohbu: Input_Z9d) on QUERY | SUBSCRIPTION | FIELD | FRAGMENT_DEFINITION | INLINE_FRAGMENT | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+directive @Directive_zt4bB7P on QUERY | MUTATION | FRAGMENT_DEFINITION | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCHEMA | SCALAR | OBJECT | FIELD_DEFINITION | UNION | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+"This directive allows results to be deferred during execution"
+directive @defer(
+    "Deferred behaviour is controlled by this argument"
+    if: Boolean! = true,
+    "A unique label that represents the fragment being deferred"
+    label: String
+  ) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Marks the field, argument, input field or enum value as deprecated"
+directive @deprecated(
+    "The reason for the deprecation"
+    reason: String! = "No longer supported"
+  ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+"This directive disables error propagation when a non nullable field returns null for the given operation."
+directive @experimental_disableErrorPropagation on QUERY | MUTATION | SUBSCRIPTION
+
+"Directs the executor to include this field or fragment only when the `if` argument is true"
+directive @include(
+    "Included when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Indicates an Input Object is a OneOf Input Object."
+directive @oneOf on INPUT_OBJECT
+
+"Directs the executor to skip this field or fragment when the `if` argument is true."
+directive @skip(
+    "Skipped when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Exposes a URL that specifies the behaviour of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behaviour of this scalar."
+    url: String!
+  ) on SCALAR
+
+interface Interface_IWMZO_P @Directive_Bh(n : {r5P : NpTgIH29}) {
+  _9j68728j: Union_UXi
+  dPeIPIpEcc: Union_PKkMY
+  o: Int
+}
+
+interface Interface_Q implements Interface_IWMZO_P & Interface_cx7xYBSMSg {
+  _9j68728j: Union_UXi
+  dPeIPIpEcc: Union_PKkMY
+  jd1x8: Enum_kjZ6O93R @Directive_zt4bB7P
+  o: Int
+  oD71nwl(q8nGzGjY: Enum_wVOpdaW @Directive_Bh(n : {r5P : H3Jg})): Interface_cx7xYBSMSg
+  u: [[Enum_kjZ6O93R]]!
+}
+
+interface Interface_cx7xYBSMSg {
+  jd1x8: Enum_kjZ6O93R @Directive_zt4bB7P
+  u: [[Enum_kjZ6O93R]]!
+}
+
+union Union_I8i @Directive_MKKKKKKKKK(fFxyohbu : {r5P : u}) = Object_C | Object_F | Object_v76vGrydC3
+
+union Union_PKkMY @Directive_zt4bB7P = Object_C
+
+union Union_UXi = Object_v76vGrydC3
+
+type Interface_IWMZO_P_STUB implements Interface_IWMZO_P {
+  _9j68728j: Union_UXi
+  dPeIPIpEcc: Union_PKkMY
+  kCc9Q70M4: Union_UXi!
+  o: Int
+}
+
+type Interface_Q_STUB implements Interface_IWMZO_P & Interface_Q & Interface_cx7xYBSMSg {
+  _9j68728j: Union_UXi
+  bivD: ID!
+  dPeIPIpEcc: Union_PKkMY
+  jd1x8: Enum_kjZ6O93R @Directive_zt4bB7P
+  o: Int
+  oD71nwl(q8nGzGjY: Enum_wVOpdaW @Directive_Bh(n : {r5P : H3Jg})): Interface_cx7xYBSMSg
+  smL: [Union_I8i!]!
+  u: [[Enum_kjZ6O93R]]!
+}
+
+type Object_C implements Interface_cx7xYBSMSg {
+  ioMfAr: Object_v76vGrydC3
+  jd1x8: Enum_kjZ6O93R @Directive_zt4bB7P
+  kcnNVk: Interface_IWMZO_P
+  u: [[Enum_kjZ6O93R]]!
+  vJsTy: Enum_kjZ6O93R
+}
+
+type Object_F {
+  ihKHfJyA: Union_PKkMY! @Directive_MKKKKKKKKK(fFxyohbu : {r5P : NpTgIH29})
+  zAS: [Union_PKkMY]!
+}
+
+type Object_v76vGrydC3 {
+  wb: [Interface_cx7xYBSMSg]!
+}
+
+enum Enum_jaXGPdo29 {
+  bFN
+  rfE8rLX
+}
+
+enum Enum_kjZ6O93R {
+  OkGb
+  Ty
+  cZ8
+}
+
+enum Enum_wVOpdaW {
+  H3Jg
+  NpTgIH29
+  u @Directive_zt4bB7P
+}
+
+input Input_Z9d {
+  r5P: Enum_wVOpdaW
+}
+
+input Input__ {
+  f48wI: Enum_wVOpdaW
+  vtWLe4g: Enum_wVOpdaW! @Directive_zt4bB7P
+  xzYrm: Enum_jaXGPdo29 @Directive_zt4bB7P
+}
+
+input Input_pO_ {
+  mMA_sBAj: Int
+  tF6CN1mE: Input_pO_ = {tF6CN1mE : {tF6CN1mE : {tF6CN1mE : null, mMA_sBAj : null}, mMA_sBAj : -845961601}, mMA_sBAj : -632884619}
+}

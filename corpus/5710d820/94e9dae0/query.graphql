@@ -1,0 +1,35 @@
+{
+  AxZ: cfnU5EIyXu {
+    ...Fragment_K26Qe8s
+    ...Fragment_SDRXh
+    gt2a03C {
+      nxZOd {
+        __typename
+      }
+      ... on Interface_PFx {
+        qZb7u5
+      }
+    }
+    ... on Union_Xu7jyJo {
+      ...Fragment_K26Qe8s
+    }
+  }
+  ... on Union_Xu7jyJo {
+    ...Fragment_K26Qe8s
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_SDRXh on Object_f {
+  kzf3
+}
+
+fragment Fragment_K26Qe8s on Object_f {
+  ...Fragment_SDRXh
+  kzf3
+  gt2a03C @include(if: false) {
+    __typename
+  }
+  __typename
+}

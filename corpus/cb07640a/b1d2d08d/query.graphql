@@ -1,0 +1,25 @@
+query Yu($oI: [Enum_e7]) {
+  Ceb8PqIK4o: qkpxFm {
+    wO
+  }
+  oSDfOG8 @Directive_IRrcdfQ {
+    Xgi: wyLQSP0r(bZrDijm: $oI) {
+      wO @Directive_IRrcdfQ
+    }
+    oSDfOG8 {
+      ...Fragment__zlVOib
+      ... on Union_Om5szjC_QG {
+        YD2M: __typename
+      }
+    }
+    ... on Interface_A_ @skip(if: true) @Directive_cpb {
+      wO
+      __typename
+    }
+  }
+  wO @skip(if: false)
+}
+
+fragment Fragment__zlVOib on Interface_A_ {
+  wO
+}

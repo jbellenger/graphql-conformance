@@ -1,0 +1,15 @@
+query E5q9nq1N {
+  TCCL: pyB
+  s1 {
+    ... on Object_JZyc {
+      ...Fragment_lQ
+      a5 {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_lQ on Object_JZyc {
+  __typename
+}

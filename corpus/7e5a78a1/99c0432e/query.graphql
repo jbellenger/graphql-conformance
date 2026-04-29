@@ -1,0 +1,29 @@
+query @Directive__p {
+  ...Fragment_jpBGXg
+  ...Fragment_Bf
+  ...Fragment_Bf
+  __typename
+  __typename
+  szsV
+  wnkvWO5c2h: __typename @include(if: false)
+}
+
+fragment Fragment_x01sKpvWD on Object_IV3 {
+  szsV
+  szsV
+}
+
+fragment Fragment_jpBGXg on Object_IV3 {
+  ... on Object_IV3 {
+    ...Fragment_x01sKpvWD
+    __typename
+    szsV
+  }
+  ... on Union_syvgL {
+    y1WVeYt3B: __typename
+  }
+}
+
+fragment Fragment_Bf on Object_IV3 {
+  szsV
+}

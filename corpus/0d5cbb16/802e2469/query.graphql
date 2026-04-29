@@ -1,0 +1,22 @@
+{
+  ...Fragment_kH
+  ...Fragment_Fdt08U9
+  ...Fragment_Fdt08U9
+  kprK6Tl
+}
+
+fragment Fragment_dySPfb on Object_phLUc {
+  __typename
+}
+
+fragment Fragment_kH on Union_RYMumtU {
+  ...Fragment_dySPfb
+  ...Fragment_dySPfb
+}
+
+fragment Fragment_Fdt08U9 on Union_RYMumtU {
+  ...Fragment_kH
+  ... {
+    ...Fragment_kH
+  }
+}

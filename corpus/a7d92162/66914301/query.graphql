@@ -1,0 +1,30 @@
+{
+  _2dOE5 {
+    __typename @Directive_CUYpTn
+    ... on Object_NThWS2VX {
+      ...Fragment_XguY_
+      AN3: jkIiW {
+        __typename
+      }
+      ... on Union_wXU {
+        __typename
+        __typename
+      }
+    }
+  }
+  xbi {
+    ...Fragment_XguY_
+    __typename
+    ... on Union_wXU @skip(if: true) {
+      __typename
+    }
+    ... on Union_wXU {
+      GKK: __typename
+    }
+  }
+}
+
+fragment Fragment_XguY_ on Union_wXU {
+  __typename
+  __typename
+}

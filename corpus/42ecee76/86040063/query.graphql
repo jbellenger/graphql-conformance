@@ -1,0 +1,17 @@
+{
+  ...Fragment_l
+}
+
+fragment Fragment_d3m on Object_k @Directive_SzhY{
+  ... on Object_k {
+    d7vZN8YDy
+  }
+}
+
+fragment Fragment_l on Union_sUFi {
+  ...Fragment_d3m
+  ... on Union_sUFi {
+    __typename
+    __typename
+  }
+}

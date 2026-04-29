@@ -1,0 +1,28 @@
+query ($cCZH0Q3m: Boolean!) {
+  ...Fragment_b
+  XL5Qf: lOVl {
+    __typename
+    __typename
+    ... on Union_hap {
+      ...Fragment_OMV
+    }
+    ... on Object_ITSmBbTF {
+      ...Fragment_OMV
+      u_uS {
+        __typename @include(if: $cCZH0Q3m)
+      }
+      __typename
+    }
+  }
+}
+
+fragment Fragment_OMV on Union_hap {
+  __typename
+  __typename
+}
+
+fragment Fragment_b on Object_ITSmBbTF {
+  u_uS {
+    ...Fragment_OMV
+  }
+}

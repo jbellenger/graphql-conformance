@@ -1,0 +1,18 @@
+{
+  ...Fragment_zdQ8_auL@Directive_JPy
+  ...Fragment_mb@skip(if: true)
+}
+
+fragment Fragment_zdQ8_auL on Object_Dmmmmmmmmm {
+  fCNKQ
+}
+
+fragment Fragment_X on Object_Dmmmmmmmmm {
+  ...Fragment_zdQ8_auL
+  __typename
+}
+
+fragment Fragment_mb on Object_Dmmmmmmmmm {
+  ...Fragment_X@Directive_yU9TiU4W
+  fCNKQ
+}

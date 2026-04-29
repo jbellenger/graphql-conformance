@@ -1,0 +1,12 @@
+query Xl {
+  ...Fragment_VRmti
+}
+
+fragment Fragment_VRmti on Union_cQ {
+  ... on Object_PFI8yNbA {
+    ... on Union_cQ {
+      __typename
+      __typename
+    }
+  }
+}

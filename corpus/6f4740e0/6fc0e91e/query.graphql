@@ -1,0 +1,49 @@
+query ($szP: Enum_mho1LuYQ, $tTNjwM: Boolean!) {
+  ...Fragment_MjWu20T
+  ...Fragment_MjWu20T
+  ...Fragment_MjWu20T
+  ynbdwA2(pM1UIIwJ: $szP) {
+    ...Fragment_q7jKL
+    ...Fragment_q7jKL
+  }
+  ... on Object_uz {
+    ...Fragment__UF
+    ... on Union_fP9dHMkhh {
+      ...Fragment__UF
+    }
+  }
+  ... on Union_fP9dHMkhh {
+    __typename
+    ... on Union_fP9dHMkhh @include(if: $tTNjwM) {
+      ...Fragment_xwa7x
+    }
+    ... on Union_wWuid {
+      ...Fragment_xwa7x
+      __typename
+      ... on Union_h3j {
+        LgMERM: __typename @Directive_jw1_a
+      }
+    }
+  }
+}
+
+fragment Fragment_MjWu20T on Union_fP9dHMkhh {
+  __typename
+}
+
+fragment Fragment_q7jKL on Interface_S26iuBf_STUB @Directive_GxtI9{
+  ... on Interface_S26iuBf {
+    __typename
+  }
+}
+
+fragment Fragment__UF on Object_uz {
+  ...Fragment_MjWu20T@Directive_jw1_a
+  ... on Union_fP9dHMkhh {
+    __typename
+  }
+}
+
+fragment Fragment_xwa7x on Union_h3j @Directive_Xq{
+  __typename
+}

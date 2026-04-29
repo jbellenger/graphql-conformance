@@ -1,0 +1,23 @@
+query ($ppcp0fe: Boolean!) {
+  ...Fragment_CDTeYVgCTd
+}
+
+fragment Fragment_x on Object_BMh {
+  __typename @include(if: $ppcp0fe)
+}
+
+fragment Fragment_CDTeYVgCTd on Object_BMh {
+  B4: bRdB {
+    bRdB @skip(if: $ppcp0fe) {
+      __typename
+      u7_DZX {
+        __typename @include(if: $ppcp0fe)
+      }
+    }
+    __typename
+  }
+  ... on Object_BMh {
+    ...Fragment_x
+    __typename
+  }
+}

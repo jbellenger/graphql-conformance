@@ -1,0 +1,24 @@
+{
+  ...Fragment_OBBIlugL
+}
+
+fragment Fragment_q on Object_pohZTfqITI {
+  soJx: __typename @skip(if: false)
+}
+
+fragment Fragment_OBBIlugL on Object_pohZTfqITI {
+  ...Fragment_q
+  ...Fragment_q
+  pTIRlCl2
+  ... on Object_pohZTfqITI {
+    ...Fragment_q
+  }
+  ... on Object_pohZTfqITI {
+    __typename
+    a @Directive_mq_tiP
+    pTIRlCl2
+    ... on Object_pohZTfqITI {
+      a
+    }
+  }
+}

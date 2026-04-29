@@ -1,0 +1,14 @@
+query nbGgJt($qfBCF2: Boolean!) {
+  ... on Union_iAS {
+    ...Fragment_XL7q9eG
+  }
+}
+
+fragment Fragment_XL7q9eG on Object_KFG6mPJ6bH {
+  Sm: __typename
+  _Kl7KUZsS: rSrcZ
+  ... on Union_iAS @include(if: $qfBCF2) {
+    __typename
+    __typename
+  }
+}

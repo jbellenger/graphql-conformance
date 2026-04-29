@@ -1,0 +1,93 @@
+query lJz8Pjsi($s: Float, $f1FujPNJl: Input_yR3) {
+  ...Fragment_UnimK
+  ...Fragment_s2vf1JDC
+  ...Fragment_UnimK
+  srZ7(kIy2k2xbNk: {uPIdF0OaIO : f9fIZYxTw}) {
+    ... on Interface_B2S_STUB {
+      kx(vyqEGRVW: $s) {
+        __typename
+      }
+      TPgJ: aJNkvk
+      yoMAkXiW: kx(vyqEGRVW: null) {
+        lF: h {
+          yG3l: __typename @Directive_u0b
+        }
+      }
+    }
+  }
+  FZa: srZ7(kIy2k2xbNk: $f1FujPNJl) {
+    ... on Interface_B2S_STUB {
+      sAZ: aJNkvk @Directive_rJPJZ
+      kx(vyqEGRVW: $s) {
+        ki
+        __typename @include(if: true)
+      }
+      ... {
+        __typename
+      }
+    }
+  }
+  IG7X: __typename
+  xcRR2J9 {
+    ...Fragment_s2vf1JDC
+    X_GlRcp: __typename
+    ... on Object_fh9C3Gr {
+      __typename
+    }
+    ... on Object_fh9C3Gr {
+      ...Fragment_Ip
+      srZ7(kIy2k2xbNk: $f1FujPNJl) {
+        rfwl4
+        rfwl4
+      }
+      ... on Union_Gerbar {
+        __typename
+      }
+    }
+  }
+  xcRR2J9 @Directive_rJPJZ {
+    oV: __typename
+  }
+  ... on Union_wJ {
+    ...Fragment_yyI
+    __typename
+  }
+}
+
+fragment Fragment_yyI on Object_fh9C3Gr {
+  ... on Object_fh9C3Gr {
+    KeVCZ: srZ7(kIy2k2xbNk: null) {
+      HNME0tvvti: __typename
+    }
+    xcRR2J9 {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_UnimK on Union_wJ {
+  ...Fragment_yyI@include(if: false)
+  ...Fragment_yyI
+  ... on Object_fh9C3Gr @defer(if: false, label: "8gU") {
+    ...Fragment_yyI
+    ... on Union_wJ {
+      __typename
+    }
+  }
+  ... on Object_fh9C3Gr {
+    xcRR2J9 {
+      OmB_KcrG6: __typename
+    }
+    xcRR2J9 {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_s2vf1JDC on Union_wJ {
+  __typename
+}
+
+fragment Fragment_Ip on Union_wJ {
+  __typename
+}

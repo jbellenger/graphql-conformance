@@ -1,0 +1,25 @@
+query nF4cD9S {
+  ...Fragment_b1pD2Xyz@Directive_paOR
+  ...Fragment_b1pD2Xyz
+  ... on Union_Z {
+    ...Fragment_b1pD2Xyz
+    __typename
+    __typename
+  }
+  ... on Union_Z @defer(if: true, label: "") {
+    ...Fragment_M@skip(if: false)
+    ...Fragment_b1pD2Xyz@Directive_D @skip(if: false)
+    __typename
+  }
+  ... on Union_E {
+    __typename
+  }
+}
+
+fragment Fragment_M on Union_E {
+  __typename
+}
+
+fragment Fragment_b1pD2Xyz on Union_Z {
+  ...Fragment_M
+}

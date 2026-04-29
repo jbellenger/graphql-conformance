@@ -1,0 +1,51 @@
+query ($cOYVNH: [Boolean], $yQ: Boolean!) {
+  iQtt_lFD(fP: gyP1Dy8Lm) {
+    ...Fragment_qxHKZS
+    ...Fragment_qxHKZS@skip(if: true)
+    bmAI @skip(if: $yQ) {
+      ...Fragment_O7g
+      __typename
+      AMl2fd4: __typename
+    }
+    ... on Interface_K5yEwJBrEw_STUB {
+      ... on Interface_K5yEwJBrEw {
+        __typename
+      }
+    }
+  }
+  __typename
+  cZAu: wVq
+  iQtt_lFD(fP: gyP1Dy8Lm) @include(if: true) {
+    ...Fragment_mr0WyvA8
+    zTM(fM: $cOYVNH)
+    y9qZa4n: zTM(fM: [])
+  }
+  ... on Object_i @Directive_n {
+    Habiv: __typename
+  }
+  ... on Object_i {
+    __typename
+  }
+}
+
+fragment Fragment_mr0WyvA8 on Interface_K5yEwJBrEw_STUB @Directive_nMmLPuHG{
+  __typename
+}
+
+fragment Fragment_qxHKZS on Interface_K5yEwJBrEw @Directive_nMmLPuHG{
+  ...Fragment_mr0WyvA8
+  zTM(fM: $cOYVNH)
+  bmAI {
+    __typename
+  }
+  ... on Interface_K5yEwJBrEw_STUB @defer(label: "?/") {
+    _dh8GvbXH: zTM(fM: [false])
+    _8: bmAI {
+      LOVnK3IJ: __typename @Directive_nMmLPuHG
+    }
+  }
+}
+
+fragment Fragment_O7g on Union_hMs1 {
+  __typename
+}

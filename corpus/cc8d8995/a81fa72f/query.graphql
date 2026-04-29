@@ -1,0 +1,18 @@
+query EWVLiSz0j {
+  ...Fragment_vttL4
+  ...Fragment_vttL4
+  ...Fragment_vttL4
+  iQtt_lFD(fP: gyP1Dy8Lm) {
+    ... on Interface_K5yEwJBrEw {
+      ...Fragment_qtPbTw0U
+    }
+  }
+}
+
+fragment Fragment_vttL4 on Union_NRDz {
+  __typename
+}
+
+fragment Fragment_qtPbTw0U on Interface_K5yEwJBrEw {
+  zTM(fM: [false, false, false])
+}

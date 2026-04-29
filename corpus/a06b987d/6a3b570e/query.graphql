@@ -1,0 +1,50 @@
+{
+  ... on Union_y75jv1sZV7 {
+    ...Fragment_bNu_
+    ... on Interface_i6UE {
+      ...Fragment_y@defer(if: true, label: "")
+      ... on Object_w7PV0 {
+        o4Xi
+      }
+    }
+  }
+  ... on Union_y75jv1sZV7 {
+    NqZUS7sW: __typename
+  }
+  ... on Union_y75jv1sZV7 {
+    ...Fragment_dWhdmlZybq
+    __typename
+    ... on Object_w7PV0 {
+      QRNQIaf: __typename
+    }
+    ... on Interface_i6UE {
+      ...Fragment_tZ_I
+      of7 {
+        __typename
+      }
+      o4Xi
+      mo: of7 {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_dWhdmlZybq on Interface_i6UE {
+  of7 {
+    __typename
+  }
+}
+
+fragment Fragment_bNu_ on Interface_i6UE @Directive_J0l0qE{
+  ...Fragment_dWhdmlZybq
+  __typename
+}
+
+fragment Fragment_y on Object_w7PV0 {
+  __typename
+}
+
+fragment Fragment_tZ_I on Object_w7PV0 {
+  __typename
+}

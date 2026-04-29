@@ -1,0 +1,52 @@
+{
+  ...Fragment_HeCZ@Directive_Gq
+  ...Fragment_Z
+  d_PTST @Directive_IcUs0B {
+    _6h314: __typename
+  }
+  d_PTST {
+    ...Fragment_P9Z94
+    ...Fragment_z0
+  }
+  ... on Union_h_GZW {
+    ... on Union_y91 {
+      __typename
+    }
+  }
+  ... on Union_QiKVQ {
+    ...Fragment_HeCZ
+  }
+}
+
+fragment Fragment_N on Union_y91 {
+  __typename
+}
+
+fragment Fragment_HeCZ on Object_r {
+  ... on Union_QiKVQ {
+    ...Fragment_N
+    ... on Union_QiKVQ {
+      __typename
+    }
+  }
+  ... on Union_h_GZW @defer(if: true, label: "<{") {
+    __typename @skip(if: true)
+  }
+}
+
+fragment Fragment_Z on Object_r {
+  ... on Object_r {
+    ...Fragment_HeCZ
+  }
+  ... on Union_h_GZW {
+    __typename
+  }
+}
+
+fragment Fragment_P9Z94 on Interface_jRjjsU {
+  o_vpoVrY
+}
+
+fragment Fragment_z0 on Interface_zUGQr {
+  ...Fragment_N
+}

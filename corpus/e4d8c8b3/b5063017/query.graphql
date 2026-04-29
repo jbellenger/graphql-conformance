@@ -1,0 +1,20 @@
+query @Directive_IcUs0B {
+  ... on Union_QiKVQ {
+    ...Fragment_q
+    ... on Object_qqiQ9SFbzf {
+      mnVazdESoL
+    }
+  }
+}
+
+fragment Fragment_k0_FhK on Interface_jRjjsU {
+  __typename
+  y6lhds8f: o_vpoVrY
+}
+
+fragment Fragment_q on Union_QiKVQ {
+  ...Fragment_k0_FhK
+  ... on Union_h_GZW {
+    __typename @include(if: false)
+  }
+}

@@ -1,0 +1,44 @@
+query Q8o9NeA {
+  ...Fragment_HY043MEO
+  Ws9OkA2akS: mT1lt {
+    ...Fragment_npu
+    ...Fragment_HY043MEO
+    __typename
+    __typename
+    ... on Union_ka0Olzsln {
+      O9JHa: __typename
+      SUq: __typename
+      __typename
+      ... on Union_ybA {
+        __typename
+      }
+    }
+  }
+  mT1lt {
+    ...Fragment_cGTnqoNPYg
+    __typename
+  }
+  ... on Union_ka0Olzsln {
+    __typename
+  }
+}
+
+fragment Fragment_cGTnqoNPYg on Union_ybA {
+  __typename
+}
+
+fragment Fragment_HY043MEO on Union_ybA {
+  ...Fragment_cGTnqoNPYg@defer(if: true, label: "blm")
+  ...Fragment_cGTnqoNPYg
+  __typename
+  ... on Object_w8yuGV {
+    ...Fragment_cGTnqoNPYg
+    ... on Union_Hwd {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_npu on Object_E {
+  i @Directive_nM_H7 @skip(if: false)
+}

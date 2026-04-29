@@ -1,0 +1,28 @@
+{
+  ... on Union_fP9dHMkhh {
+    ...Fragment_M
+    ...Fragment_m1jEL9@defer
+    __typename
+    __typename @skip(if: false) @Directive_Xq
+    StpkqD: __typename
+    ... on Union_wWuid {
+      __typename
+      ... on Union_fP9dHMkhh {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_HZRUY4YLBy on Union_fP9dHMkhh {
+  __typename
+}
+
+fragment Fragment_M on Object_uz {
+  ...Fragment_HZRUY4YLBy
+}
+
+fragment Fragment_m1jEL9 on Union_h3j @Directive_Xq{
+  __typename
+  __typename @Directive_Xq
+}

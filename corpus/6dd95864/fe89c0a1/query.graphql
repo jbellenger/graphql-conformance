@@ -1,0 +1,19 @@
+query @Directive_ZU3N3 {
+  yqj: __typename @Directive_ZU3N3
+  ... on Object_pohZTfqITI {
+    ... on Object_pohZTfqITI {
+      ...Fragment_o70
+    }
+  }
+  ... on Object_pohZTfqITI {
+    dQBp: a
+  }
+  ... on Object_pohZTfqITI {
+    __typename
+    Qg: pTIRlCl2
+  }
+}
+
+fragment Fragment_o70 on Object_pohZTfqITI {
+  pTIRlCl2 @Directive_ZU3N3
+}

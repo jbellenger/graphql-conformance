@@ -1,0 +1,18 @@
+query g5NdE {
+  or6 {
+    ...Fragment_SWUZ
+    ...Fragment_SWUZ
+    __typename
+    ... on Union_kbvn1Yqowd {
+      ...Fragment_sJY
+    }
+  }
+}
+
+fragment Fragment_SWUZ on Union_VnUSOzS {
+  __typename
+}
+
+fragment Fragment_sJY on Object_ClW {
+  xw2: lc89
+}

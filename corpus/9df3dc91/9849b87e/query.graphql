@@ -1,0 +1,16 @@
+query ($thXAl6wf: Boolean! = true) {
+  ...Fragment_fGRv2q1Qb6
+  ... on Object_gRe1 {
+    __typename @include(if: $thXAl6wf) @Directive_f
+    __typename
+  }
+}
+
+fragment Fragment_fGRv2q1Qb6 on Object_gRe1 {
+  ... on Union_Dgsgzb {
+    ... on Union_zx {
+      __typename
+      __typename
+    }
+  }
+}

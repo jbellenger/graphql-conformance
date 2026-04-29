@@ -1,0 +1,36 @@
+query ($xlf: Boolean!) {
+  ...Fragment_osMEBe
+  ...Fragment_illIRBy@include(if: $xlf)
+  __typename
+  ... on Union_OTYJTJv {
+    UpdPnqPdc: __typename
+    ... on Object_yVILZT {
+      __typename
+    }
+    ... on Object_yVILZT {
+      __typename
+      ... on Union_SU1R93OwaV {
+        __typename
+      }
+    }
+  }
+  ... on Union_OTYJTJv {
+    __typename
+  }
+}
+
+fragment Fragment_illIRBy on Object_yVILZT {
+  __typename
+}
+
+fragment Fragment_za_ on Object_yVILZT {
+  ...Fragment_illIRBy
+  ... on Union_OTYJTJv @include(if: false) {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_osMEBe on Union_OTYJTJv {
+  ...Fragment_za_
+}

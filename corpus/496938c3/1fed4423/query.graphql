@@ -1,0 +1,33 @@
+query SFn($ePWfyhnsXs: Boolean!) @Directive_BBGk {
+  ngWHjAZLC {
+    __typename
+  }
+  ... on Object_l8Qs {
+    ... on Union_exdaVa @Directive_BuQAMJ6 {
+      ...Fragment_ajEYyXi
+    }
+  }
+  ... on Union_exdaVa {
+    ...Fragment_ajEYyXi
+    ...Fragment_ajEYyXi
+    ... {
+      ... on Object_aRvyN74fx6 {
+        c
+      }
+    }
+    ... on Union_exdaVa {
+      __typename
+    }
+  }
+  ... @skip(if: $ePWfyhnsXs) {
+    ... on Union_exdaVa {
+      ... on Union_g {
+        QeKLnr: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_ajEYyXi on Union_g {
+  __typename
+}

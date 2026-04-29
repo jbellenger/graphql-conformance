@@ -1,0 +1,32 @@
+{
+  ngWHjAZLC {
+    p8kMb5SqG: xgogfI8Y {
+      q_dN
+    }
+  }
+  ngWHjAZLC {
+    ...Fragment_b5@Directive__
+    ...Fragment_a
+  }
+  yvh4 @include(if: false)
+}
+
+fragment Fragment_d9IPxw on Interface_gq9xisx {
+  xgogfI8Y @Directive__ {
+    q_dN
+  }
+}
+
+fragment Fragment_b5 on Interface_gq9xisx_STUB {
+  ...Fragment_d9IPxw@skip(if: false)
+  ... on Interface_gq9xisx_STUB {
+    _P_
+    __typename
+  }
+}
+
+fragment Fragment_a on Interface_gq9xisx @Directive_BBGk{
+  ... on Interface_gq9xisx {
+    __typename
+  }
+}

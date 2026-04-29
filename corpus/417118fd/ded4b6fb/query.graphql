@@ -1,0 +1,18 @@
+query ($kixncM08: Boolean!) {
+  ...Fragment_wLKBjZrVU
+  ... on Union_WXG5aIW8nO @include(if: $kixncM08) {
+    __typename
+    STtCTY: __typename
+  }
+}
+
+fragment Fragment_kt_e6 on Interface_Wt4QRX {
+  ... on Interface_kT {
+    __typename
+  }
+}
+
+fragment Fragment_wLKBjZrVU on Union_WXG5aIW8nO {
+  ...Fragment_kt_e6
+  __typename
+}

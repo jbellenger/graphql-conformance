@@ -1,0 +1,12 @@
+query q5i($vFNY: Boolean!) {
+  wSKgPR0M {
+    ... @skip(if: $vFNY) {
+      nU @Directive_uReasV {
+        __typename
+      }
+      ... on Union_VoeSiNstm {
+        __typename
+      }
+    }
+  }
+}

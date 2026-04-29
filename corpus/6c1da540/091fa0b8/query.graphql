@@ -1,0 +1,15 @@
+query P {
+  ...Fragment_zwOcGpq
+}
+
+fragment Fragment_bVAI on Union_OTYJTJv {
+  __typename
+}
+
+fragment Fragment_ga1 on Union_OTYJTJv {
+  ...Fragment_bVAI
+}
+
+fragment Fragment_zwOcGpq on Union_SU1R93OwaV {
+  ...Fragment_ga1
+}

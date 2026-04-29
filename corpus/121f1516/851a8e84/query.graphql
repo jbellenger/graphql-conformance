@@ -1,0 +1,40 @@
+{
+  ...Fragment_Qunv8hJwl
+  ...Fragment_Qunv8hJwl
+  ... on Object_gDxh {
+    ... on Union_eB {
+      OWFGLu99: __typename
+      BWBt: __typename
+    }
+    ... on Union_YGiZ {
+      _sX4PEpNgk: __typename
+      ... on Object_wm @include(if: false) {
+        d06spS
+      }
+    }
+  }
+  ... on Union_YGiZ {
+    ...Fragment_JdtQqj
+    ...Fragment_JdtQqj
+  }
+}
+
+fragment Fragment_Qunv8hJwl on Union_eB {
+  __typename: __typename
+}
+
+fragment Fragment_WaDA1RLbg on Union_YGiZ {
+  aLQC: __typename
+  SqVm: __typename
+}
+
+fragment Fragment_JdtQqj on Object_wm {
+  ...Fragment_WaDA1RLbg
+  uNIJ5pkyI {
+    __typename
+  }
+  d06spS
+  ... on Object_wm {
+    d06spS
+  }
+}

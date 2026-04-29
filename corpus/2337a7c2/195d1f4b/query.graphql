@@ -1,0 +1,60 @@
+query a($hRg: Boolean!, $mfqXS: Enum_GN4q0z5SCg) {
+  ...Fragment_kH9Zt1dP
+  ...Fragment_kH9Zt1dP
+  hhLv: jS
+  nFSKBvRXoB {
+    ... on Interface_JOBGS {
+      ...Fragment_ty806y
+      __typename
+      __typename
+      __typename @skip(if: $hRg) @Directive_m8x3w
+      ... on Interface_JOBGS {
+        __typename
+      }
+    }
+    ... on Union_UUmf6RJ {
+      ...Fragment_ty806y
+    }
+  }
+  __typename
+  ... on Object__5RImjW {
+    ...Fragment_kH9Zt1dP
+    ... on Object__5RImjW {
+      ... on Object__5RImjW {
+        nFSKBvRXoB @Directive_m8x3w {
+          z {
+            __typename @skip(if: true)
+          }
+        }
+      }
+    }
+    ... on Object__5RImjW {
+      ... on Object__5RImjW @include(if: true) {
+        __typename
+      }
+    }
+  }
+  ... on Object__5RImjW @Directive_s {
+    ...Fragment_kH9Zt1dP
+    asXncvG3d
+    nFSKBvRXoB {
+      ...Fragment_ty806y
+      z @include(if: true) {
+        pyd65lWTdj {
+          __typename
+        }
+      }
+      tR(lFzqve: $mfqXS) {
+        huWrD
+      }
+    }
+  }
+}
+
+fragment Fragment_kH9Zt1dP on Object__5RImjW @Directive_m8x3w{
+  jS
+}
+
+fragment Fragment_ty806y on Interface_JOBGS {
+  __typename
+}

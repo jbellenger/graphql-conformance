@@ -1,0 +1,14 @@
+{
+  ... on Union_DEXlsuP30 {
+    ... on Union_DEXlsuP30 {
+      ...Fragment_GP08h@skip(if: true)
+    }
+    ... on Object_yC3VF1 {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_GP08h on Object_yC3VF1 {
+  __typename @skip(if: false)
+}

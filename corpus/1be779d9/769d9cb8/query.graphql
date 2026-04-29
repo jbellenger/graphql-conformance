@@ -1,0 +1,10 @@
+query ODR5 {
+  ...Fragment_LLy
+  eEn {
+    __typename
+  }
+}
+
+fragment Fragment_LLy on Object_s {
+  __typename
+}

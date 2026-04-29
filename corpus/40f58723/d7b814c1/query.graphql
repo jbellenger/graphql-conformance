@@ -1,0 +1,36 @@
+query ockJCKYngu {
+  ...Fragment_Ywl
+  snX {
+    ...Fragment_aJ
+    ... {
+      ...Fragment_aJ
+      ... on Interface_pUwS2GHz {
+        nxp0Wfu9
+      }
+    }
+    ... on Interface_pUwS2GHz {
+      Pd49YKMH: nxp0Wfu9
+      ... on Interface_pUwS2GHz {
+        gpfVVV8Z
+      }
+    }
+  }
+  snX {
+    ... {
+      __typename
+    }
+    ... on Interface_pUwS2GHz_STUB {
+      nxp0Wfu9
+    }
+  }
+}
+
+fragment Fragment_Ywl on Object_JQyTBCD {
+  __typename
+}
+
+fragment Fragment_aJ on Interface_pUwS2GHz_STUB {
+  ... on Interface_pUwS2GHz {
+    gpfVVV8Z @Directive_i7FYdFpd
+  }
+}

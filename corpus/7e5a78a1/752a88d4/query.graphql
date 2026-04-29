@@ -1,0 +1,39 @@
+{
+  __typename
+  __typename
+  szsV
+  pRcvEpr: __typename
+  szsV
+  ... on Union_syvgL {
+    ...Fragment_kSp3n5WRf
+    ...Fragment_kSp3n5WRf
+    ... on Union_syvgL {
+      ...Fragment_kSp3n5WRf
+    }
+    ... on Union_sYbNZMI {
+      ...Fragment_kSp3n5WRf
+      ... on Object_kP15jPh_i @Directive_gm2LkQIEV {
+        __typename
+      }
+    }
+  }
+  ... {
+    ... on Union_syvgL {
+      ... on Union_h {
+        __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Ta on Interface_rP3aG {
+  __typename
+}
+
+fragment Fragment_kSp3n5WRf on Union_h {
+  ...Fragment_Ta
+  ... on Object_LTEUvZ {
+    __typename
+  }
+}

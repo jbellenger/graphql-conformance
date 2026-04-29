@@ -1,0 +1,30 @@
+query WVBIZ {
+  ... on Union_eN7k5rs {
+    ...Fragment_aGdoC7D
+  }
+  ... on Union_eN7k5rs @include(if: false) {
+    ... on Union_eN7k5rs @defer(if: false, label: "^") {
+      ...Fragment_DPU
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_DPU on Object_H8s8Ug3 {
+  oKlZjd {
+    __typename
+  }
+  oKlZjd {
+    __typename
+  }
+}
+
+fragment Fragment_aGdoC7D on Object_H8s8Ug3 {
+  ...Fragment_DPU
+  ws {
+    __typename
+  }
+  unB61Ui64(cy7Gjanv1: {gytKYU : gPEOxXy4Tc})
+  __typename
+}

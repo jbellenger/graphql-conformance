@@ -1,0 +1,17 @@
+query ($bpMiRr: Boolean!) {
+  ... on Union_x {
+    ...Fragment_ah@skip(if: true)
+    ...Fragment_tUs@include(if: $bpMiRr)
+  }
+}
+
+fragment Fragment_tUs on Object__5X {
+  __typename
+}
+
+fragment Fragment_ah on Union_x {
+  ...Fragment_tUs
+  ... on Object__5X {
+    G_iUu1tN2o: __typename
+  }
+}

@@ -1,0 +1,16 @@
+query KEyMYpcOv @Directive_Pxo {
+  ...Fragment_kulA
+  aAlR9
+}
+
+fragment Fragment_brhIen on Union_wdCy2WYQ6 @Directive_y8IKuN{
+  ... on Union_EA850 {
+    __typename
+    dcrPA: __typename
+  }
+}
+
+fragment Fragment_kulA on Union_wdCy2WYQ6 {
+  ...Fragment_brhIen
+  ...Fragment_brhIen
+}

@@ -1,0 +1,23 @@
+query ($kOUhriBzTn: Boolean!) {
+  ...Fragment_zKqG60Ag@Directive_ysXM2OB
+  __typename @include(if: $kOUhriBzTn)
+  __typename
+}
+
+fragment Fragment_rZD on Object_snF {
+  __typename
+}
+
+fragment Fragment_r on Object_snF {
+  ...Fragment_rZD
+  __typename
+  ... on Object_snF {
+    __typename
+    g1t0
+  }
+}
+
+fragment Fragment_zKqG60Ag on Object_snF {
+  ...Fragment_r
+  __typename
+}

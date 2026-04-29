@@ -1,0 +1,17 @@
+query q @Directive_oEK3U {
+  tQRN {
+    ...Fragment_C@Directive_klNrm
+    ...Fragment_C
+    __typename
+    vLIq: __typename
+  }
+}
+
+fragment Fragment_C on Object_s7sl {
+  wjjyt_: r
+  __typename
+  ... on Object_s7sl {
+    OGYou: __typename @Directive_oEK3U
+    __typename
+  }
+}

@@ -1,0 +1,16 @@
+query L($c_Kxos: Boolean) @Directive_r9nhBPJ_Av(qk5A17W9: [ghWI4FD, ghWI4FD]) @Directive_fF2rO_6l(xS: false) {
+  ...Fragment_gU4W2
+  ...Fragment_vXv_QSpvzv@defer(if: true, label: "")
+  ...Fragment_gU4W2
+}
+
+fragment Fragment_vXv_QSpvzv on Union_KcfLK {
+  tMwFj7m: __typename
+}
+
+fragment Fragment_gU4W2 on Union_Bd {
+  ... on Union_D {
+    ...Fragment_vXv_QSpvzv
+    __typename @Directive_fF2rO_6l(xS: $c_Kxos)
+  }
+}

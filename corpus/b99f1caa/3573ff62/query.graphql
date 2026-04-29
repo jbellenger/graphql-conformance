@@ -1,0 +1,19 @@
+query Bqs0YUxB8w {
+  ...Fragment_bQBzOH
+  qYf6 {
+    ...Fragment_nO3hUFS
+    __typename
+  }
+}
+
+fragment Fragment_nO3hUFS on Union_nIUBqPw {
+  zvYeveT2: __typename
+}
+
+fragment Fragment_a95Vn on Object_kl7EGK {
+  ...Fragment_nO3hUFS@defer(if: true)
+}
+
+fragment Fragment_bQBzOH on Union_nIUBqPw {
+  ...Fragment_a95Vn
+}

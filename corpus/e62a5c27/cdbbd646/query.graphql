@@ -1,0 +1,24 @@
+query ($zz: Boolean!) {
+  ... on Union_eN7k5rs {
+    ...Fragment_Fr3ukSnqd
+    ... on Object_H8s8Ug3 {
+      ...Fragment_MT05
+    }
+    ... on Union_O {
+      ...Fragment_MT05
+    }
+  }
+  ... on Object_faFnLw {
+    __typename
+  }
+}
+
+fragment Fragment_MT05 on Union_O {
+  __typename @Directive_mKGZ(ret: {gytKYU : gPEOxXy4Tc}) @include(if: $zz)
+  __typename
+}
+
+fragment Fragment_Fr3ukSnqd on Union_YR {
+  ...Fragment_MT05@Directive_EjNycv(qdAiGHfo: [[gPEOxXy4Tc]])
+  yCi: __typename
+}

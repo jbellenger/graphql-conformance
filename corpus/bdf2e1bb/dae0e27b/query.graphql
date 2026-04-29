@@ -1,0 +1,14 @@
+query lrKP4aPOq($nQLvFZ: Boolean!) {
+  SrHm18: __typename
+  ... on Union_kbvn1Yqowd {
+    ...Fragment_KT504jRIn
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_KT504jRIn on Union_imAHqkYR {
+  ... on Union_kbvn1Yqowd @skip(if: $nQLvFZ) {
+    __typename
+  }
+}

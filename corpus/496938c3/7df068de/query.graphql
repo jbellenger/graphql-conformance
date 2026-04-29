@@ -1,0 +1,43 @@
+query OdhqhPN {
+  ...Fragment_kAnc4upNp5
+  ...Fragment_M
+  ... {
+    __typename
+  }
+  ... on Object_l8Qs {
+    ...Fragment_kAnc4upNp5
+    __typename
+    __typename
+    zXawPAt6G(g5Lp: MN7XpNwuA) {
+      ... on Interface_gq9xisx_STUB {
+        jY3RMx5Lyl @skip(if: false)
+      }
+    }
+    OpeC6gb: ngWHjAZLC @include(if: false) {
+      xgogfI8Y {
+        q_dN
+      }
+      ... on Interface_gq9xisx_STUB {
+        M: __typename
+      }
+    }
+    ... on Union_g {
+      ...Fragment_kAnc4upNp5
+      __typename
+    }
+  }
+}
+
+fragment Fragment_kAnc4upNp5 on Union_exdaVa {
+  __typename
+  __typename
+  __typename
+  __typename
+  ... on Union_exdaVa {
+    __typename
+  }
+}
+
+fragment Fragment_M on Union_exdaVa {
+  ...Fragment_kAnc4upNp5
+}

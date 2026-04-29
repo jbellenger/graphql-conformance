@@ -1,0 +1,48 @@
+query ZPL {
+  ... on Union_xFaz {
+    ... on Object_XCq6tBM9Jp {
+      ... on Union_Ne {
+        __typename
+      }
+    }
+  }
+  ... on Object_JEpX {
+    ...Fragment_nOGk9Roqq5
+  }
+  ... {
+    ...Fragment_i_gx
+    fNq2: tQRN {
+      __typename
+    }
+    ... on Union_xFaz {
+      ...Fragment_w4HcCO
+      __typename
+    }
+    ... on Union_Ne {
+      ...Fragment_w4HcCO
+      ... on Union_xFaz {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_i_gx on Object_JEpX @Directive_klNrm{
+  j2u4Qx {
+    __typename
+  }
+  tQRN {
+    __typename
+  }
+}
+
+fragment Fragment_nOGk9Roqq5 on Object_JEpX {
+  ...Fragment_i_gx
+  ... on Union_Ne {
+    __typename
+  }
+}
+
+fragment Fragment_w4HcCO on Object_JEpX {
+  __typename
+}

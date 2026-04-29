@@ -1,0 +1,25 @@
+query ($oqmvkuq: Boolean!@Directive_yif) {
+  __typename
+  xOYdtDHm2 {
+    ...Fragment_dWwCWk1
+    _k4R5: __typename @include(if: $oqmvkuq)
+    __typename
+    __typename
+  }
+  ... on Object_rRDWkUi @skip(if: false) @Directive__eRcBA {
+    __typename
+    ... on Object_rRDWkUi {
+      xOYdtDHm2 {
+        __typename @Directive__eRcBA @Directive_HZ2GISQJ2b
+      }
+    }
+    ... on Object_rRDWkUi {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_dWwCWk1 on Union_VTre {
+  __typename
+  __typename
+}

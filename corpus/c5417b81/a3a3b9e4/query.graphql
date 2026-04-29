@@ -1,0 +1,20 @@
+{
+  __typename
+  ... on Union_vJ5YymIvHr {
+    __typename
+  }
+  ... on Union_vJ5YymIvHr {
+    ...Fragment_d2oTMf
+  }
+  ... on Union_vJ5YymIvHr {
+    ... on Union_rAQ {
+      ...Fragment_d2oTMf
+    }
+  }
+}
+
+fragment Fragment_d2oTMf on Union_ZSmweyiu {
+  ... on Union_rAQ @Directive_Z {
+    __typename
+  }
+}

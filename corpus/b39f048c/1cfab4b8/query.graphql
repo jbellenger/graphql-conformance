@@ -1,0 +1,27 @@
+query ($b: Boolean!, $lNpgQ3O: Enum_mT1IKLAqF) {
+  ... on Object_jiak1ryq {
+    ...Fragment_I
+    ...Fragment_I
+  }
+  ... on Object_jiak1ryq {
+    reV: cSp
+  }
+}
+
+fragment Fragment_I on Object_jiak1ryq {
+  z71PD4i4Qq @include(if: true) {
+    __typename
+  }
+  svJ9D: k4FbQOOI(oh4w2GYh: $b, iwmCVu: Y2rHf) {
+    IdHVuFzl: __typename
+  }
+  k4FbQOOI(oh4w2GYh: false, iwmCVu: Y2rHf) {
+    K5F: __typename
+    __typename
+  }
+  ... {
+    bvEqguDh: k4FbQOOI(oh4w2GYh: true, iwmCVu: $lNpgQ3O) {
+      __typename
+    }
+  }
+}

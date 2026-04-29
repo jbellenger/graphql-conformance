@@ -1,0 +1,34 @@
+{
+  ...Fragment_X
+  ...Fragment_Tp
+}
+
+fragment Fragment_Tp on Union_n01O {
+  ... on Union_vm3YoXv0N {
+    __typename
+  }
+}
+
+fragment Fragment_ArCSEpX on Object_GCqjR @Directive_j{
+  olFYhAe {
+    __typename
+  }
+  Jeb5: olFYhAe {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_X on Object_GCqjR {
+  ...Fragment_Tp
+  ...Fragment_ArCSEpX
+  h3Hjej: olFYhAe {
+    __typename
+  }
+  ... on Union_n01O {
+    ...Fragment_ArCSEpX
+    ... on Union_n01O {
+      __typename
+    }
+  }
+}

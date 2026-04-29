@@ -1,0 +1,19 @@
+query t {
+  ...Fragment_a9yz@include(if: true)
+  ...Fragment_a9yz
+  ...Fragment_a9yz
+}
+
+fragment Fragment_U on Object_N {
+  f_qMA
+}
+
+fragment Fragment_a9yz on Union_RYMumtU {
+  q1Ayh1tRB2: __typename
+  ... on Union_B42BOSBkP @include(if: true) {
+    ...Fragment_U
+    ... on Object_phLUc {
+      __typename
+    }
+  }
+}

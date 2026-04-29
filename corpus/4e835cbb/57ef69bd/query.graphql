@@ -1,0 +1,20 @@
+query Pif9wFA {
+  ...Fragment_BIatt
+  ... on Object_snF {
+    g1t0
+  }
+}
+
+fragment Fragment_pkSKql6M1 on Object_snF {
+  y: g1t0 @Directive_Q
+  g1t0
+  Tne: __typename @include(if: false)
+  ... on Object_snF {
+    g1t0
+  }
+}
+
+fragment Fragment_BIatt on Object_snF {
+  ...Fragment_pkSKql6M1
+  __typename
+}

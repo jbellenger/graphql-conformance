@@ -1,0 +1,18 @@
+{
+  ...Fragment_tG5Q3tcl
+}
+
+fragment Fragment_o1vYHvz on Union_Y {
+  U: __typename
+}
+
+fragment Fragment_tG5Q3tcl on Object_nnouKdL9 {
+  __typename
+  s96 {
+    ...Fragment_o1vYHvz
+    ... {
+      __typename
+    }
+  }
+  adK0QxKz3V
+}

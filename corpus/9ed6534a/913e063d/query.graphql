@@ -1,0 +1,31 @@
+{
+  ...Fragment_JnlGjeLm
+  h {
+    __typename
+  }
+  jpuSLgSmh: __typename
+  ... on Union_nwtD_r_s {
+    ...Fragment_JnlGjeLm
+    ...Fragment_JnlGjeLm
+    ... on Object_DPwy1UD {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_JnlGjeLm on Object_DPwy1UD {
+  __typename
+  ... on Object_DPwy1UD {
+    __typename
+    h {
+      RMz: __typename
+    }
+  }
+  ... on Object_DPwy1UD {
+    gPc: __typename @skip(if: false)
+    ... on Union_nwtD_r_s {
+      F7Juxjk: __typename
+      __typename
+    }
+  }
+}

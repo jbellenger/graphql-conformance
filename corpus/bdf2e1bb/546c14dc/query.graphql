@@ -1,0 +1,36 @@
+{
+  ...Fragment_lj
+  ...Fragment_lj
+  ...Fragment_lj
+  ... on Object_kb {
+    ...Fragment_UYxbcOZa
+    ... on Union_kbvn1Yqowd {
+      __typename
+      ... on Union_kbvn1Yqowd @include(if: false) {
+        __typename
+      }
+    }
+  }
+  ... on Object_kb {
+    ...Fragment_lj@defer(if: true, label: "")
+    ...Fragment_UYxbcOZa
+    ... on Object_kb @defer(if: false, label: "p9s") {
+      ...Fragment_UYxbcOZa
+    }
+    ... {
+      __typename
+    }
+  }
+  ... on Union_kbvn1Yqowd {
+    __typename
+  }
+}
+
+fragment Fragment_lj on Union_kbvn1Yqowd {
+  __typename
+}
+
+fragment Fragment_UYxbcOZa on Union_kbvn1Yqowd {
+  __typename @Directive_HSYQ
+  __typename
+}

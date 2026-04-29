@@ -1,0 +1,39 @@
+query W3i9S4NA($dTpt0RbA6: Int, $sp50MTpoMB: [Float]) {
+  ...Fragment_VQ
+  ...Fragment_VQ
+  ...Fragment_VQ
+  ... {
+    ... on Object_Xo {
+      __typename
+      dx9z: __typename
+    }
+    ... on Union_d_t1luAL4 @skip(if: true) {
+      ... on Object_pIr {
+        w_SmwdvAW
+      }
+    }
+  }
+  ... on Union_d_t1luAL4 {
+    ...Fragment_pd
+    ...Fragment_VQ
+    __typename
+    gogbxVkjG: __typename @Directive_ZUg(tZ: [1.122313456283516E+308, null])
+  }
+}
+
+fragment Fragment_VQ on Union_d_t1luAL4 {
+  __typename
+}
+
+fragment Fragment_pd on Object_z {
+  b {
+    yjT6LFRE @Directive_Qg0V(o: $dTpt0RbA6) @Directive_ZUg(tZ: $sp50MTpoMB) {
+      jUvCk(x3sz: hXQrfbl3)
+    }
+  }
+  ... on Object_z {
+    b {
+      __typename
+    }
+  }
+}

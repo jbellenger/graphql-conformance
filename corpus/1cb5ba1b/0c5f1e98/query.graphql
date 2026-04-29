@@ -1,0 +1,14 @@
+query P {
+  ... on Union_bRDPVmhP {
+    ... on Object_r @Directive_BL4W6scIHB {
+      ...Fragment_qwAto
+      _HVFs @Directive_BL4W6scIHB {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_qwAto on Union_bRDPVmhP {
+  __typename
+}

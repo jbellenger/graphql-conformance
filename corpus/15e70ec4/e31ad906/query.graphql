@@ -1,0 +1,29 @@
+{
+  ...Fragment__MY4G3_h
+  d_
+}
+
+fragment Fragment_DP on Object_efB2fpT {
+  ... on Union_H {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_Iwmsi8Lt on Union_zL110jXF {
+  ... on Object_I {
+    d_
+  }
+}
+
+fragment Fragment__MY4G3_h on Union_zL110jXF {
+  ...Fragment_DP
+  ...Fragment_Iwmsi8Lt
+  ... on Object_I {
+    ...Fragment_Iwmsi8Lt
+    ... on Union_H {
+      __typename
+      QStqTn0Vby: __typename @include(if: false)
+    }
+  }
+}

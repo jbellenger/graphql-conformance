@@ -1,0 +1,17 @@
+query PwsIJ {
+  ...Fragment_b8p
+  __typename
+}
+
+fragment Fragment_qVOq on Union_idOm3E2hAr @Directive_aPuFS{
+  __typename @Directive_LiC
+}
+
+fragment Fragment_b8p on Union_idOm3E2hAr {
+  ... on Object_RtExt {
+    ...Fragment_qVOq@defer(if: false, label: "")
+    ... on Union_idOm3E2hAr {
+      __typename
+    }
+  }
+}

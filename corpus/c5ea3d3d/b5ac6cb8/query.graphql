@@ -1,0 +1,55 @@
+query HWL {
+  ...Fragment_yidyXz
+  __typename
+  hpzTjOF: __typename
+  __typename
+  ugep @skip(if: true)
+  ... on Object_DzzS57z {
+    __typename
+    ... on Union_TvQglQ8 {
+      ...Fragment_ZVPaHU0Z
+      __typename
+      __typename
+      __typename
+    }
+  }
+  ... on Union_TvQglQ8 {
+    ... on Union_TvQglQ8 {
+      zznaLWPEk: __typename
+    }
+    ... on Object_ZNwv {
+      ...Fragment_FLbW5ITmV@Directive_Ok6kpamnKj
+      ... on Union_TvQglQ8 {
+        __typename
+        __typename @include(if: false)
+      }
+    }
+  }
+  ... on Union_TvQglQ8 {
+    ... on Object_DzzS57z {
+      ...Fragment_yidyXz
+      ugep
+    }
+    ... on Object_DzzS57z {
+      ugep @Directive_Ok6kpamnKj
+    }
+  }
+}
+
+fragment Fragment_ZVPaHU0Z on Object_DzzS57z {
+  jbpmh8Q: __typename
+}
+
+fragment Fragment_H1i52 on Union_TvQglQ8 {
+  ...Fragment_ZVPaHU0Z
+}
+
+fragment Fragment_yidyXz on Object_DzzS57z {
+  ...Fragment_H1i52@include(if: true)
+  __typename
+  ugep
+}
+
+fragment Fragment_FLbW5ITmV on Union_TvQglQ8 {
+  __typename
+}

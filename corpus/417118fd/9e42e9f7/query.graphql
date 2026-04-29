@@ -1,0 +1,23 @@
+{
+  gJvIvcwZK: qmKIU {
+    __typename @Directive_vclH
+  }
+  u8: fdQAf4im {
+    ... on Union__r_ {
+      __typename
+    }
+  }
+  qmKIU {
+    __typename
+    __typename
+  }
+  qmKIU @include(if: true) {
+    ...Fragment_A0qFkWObHn
+  }
+}
+
+fragment Fragment_A0qFkWObHn on Union_QqP {
+  ... on Object_Dm {
+    dc: __typename
+  }
+}

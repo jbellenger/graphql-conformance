@@ -1,0 +1,23 @@
+query ($mMT3vgnQ3q: Boolean!) {
+  ... on Object_BF {
+    ...Fragment_eh
+    ...Fragment_QTwx1dS
+    vMxAr
+  }
+  ... on Union_VDi @Directive_fj_CMfC @include(if: true) {
+    __typename
+  }
+}
+
+fragment Fragment_QTwx1dS on Object_BF {
+  vMxAr
+}
+
+fragment Fragment_eh on Union_sjr {
+  ...Fragment_QTwx1dS
+  __typename @include(if: $mMT3vgnQ3q)
+  t_: __typename
+  ... on Union_sjr {
+    __typename
+  }
+}

@@ -1,0 +1,18 @@
+query ZhDfAv4 {
+  ...Fragment_WX
+}
+
+fragment Fragment_KvkVIrsC on Union_i6_6wUwZc9 {
+  __typename
+  ... on Object_Ckf0 {
+    mk6LFCSd
+  }
+}
+
+fragment Fragment_WX on Object_afdjMm_TSB {
+  ...Fragment_KvkVIrsC
+  ...Fragment_KvkVIrsC
+  aFA6rRZ {
+    __typename
+  }
+}

@@ -1,0 +1,19 @@
+{
+  ...Fragment_fawnm
+  ko: pMgPfw {
+    PP: hk @Directive_PhvQKgD(nXD: jJ4NMSJiku)
+  }
+}
+
+fragment Fragment_i9W_MAc on Union_DEXlsuP30 {
+  __typename
+}
+
+fragment Fragment_CbCecZ1 on Union_DEXlsuP30 {
+  ...Fragment_i9W_MAc
+  __typename
+}
+
+fragment Fragment_fawnm on Union_HpGf6_t {
+  ...Fragment_CbCecZ1
+}
