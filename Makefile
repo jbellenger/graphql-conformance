@@ -145,7 +145,7 @@ _build-smoke:
 	$(MAKE) -C conformer build
 
 _test:
-	cd site && npm ci && npm test
+	cd site && npm ci && npm test && npm run build
 	$(MAKE) -C results test
 	$(MAKE) -C corpus-gen test
 	$(MAKE) -C conformer test
