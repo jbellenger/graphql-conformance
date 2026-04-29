@@ -140,23 +140,18 @@ function FailureDetailView({
   const reference = implById.get(run.referenceImplId);
   const failureListHref = `${implHref(runId, impl.id)}/failures`;
   const historySummary = summarizeOutcomes(history);
-  // "All results for this test" covers every non-reference impl. The
-  // summary counts the whole pool (so "not scored" reflects impls that
+  // "All results for this test" covers every impl (reference included).
+  // The summary counts the whole pool (so "not scored" reflects impls that
   // fell out / were excluded upstream); the table only renders scored
   // rows so the unscored ones don't clutter the list.
-  const allImplOutcomes = runOutcomes.filter(
-    (outcome) => outcome.implId !== run.referenceImplId,
-  );
-  const peerSummary = summarizeOutcomes(allImplOutcomes);
-  const peerOutcomes = allImplOutcomes
+  const peerSummary = summarizeOutcomes(runOutcomes);
+  const peerOutcomes = runOutcomes
     .filter((outcome) => isScoredStatus(outcome.status))
-    .sort((a, b) => {
-      const byStatus = statusOrder(a.status) - statusOrder(b.status);
-      if (byStatus !== 0) return byStatus;
-      return implLabel(implById, a.implId).localeCompare(
+    .sort((a, b) =>
+      implLabel(implById, a.implId).localeCompare(
         implLabel(implById, b.implId),
-      );
-    });
+      ),
+    );
   const failedRuns = history
     .filter((outcome) => outcome.status === 'fail' || outcome.status === 'error')
     .sort((a, b) => b.timestamp.localeCompare(a.timestamp));
@@ -201,7 +196,7 @@ function FailureDetailView({
           header="Actual"
           hasValue={hasResultField(result, 'actual')}
           value={result.actual}
-          empty="No actual response was captured for this result."
+          empty="No response recorded"
           extra={<ErrorOrStderrBlock result={result} />}
         />
       </div>
@@ -660,13 +655,6 @@ function implLabel(implById: Map<string, Impl>, implId: string): string {
 
 function hasResultField(result: Result, field: 'expected' | 'actual'): boolean {
   return Object.prototype.hasOwnProperty.call(result, field);
-}
-
-function statusOrder(status: TestCaseOutcomeStatus): number {
-  if (status === 'fail') return 0;
-  if (status === 'error') return 1;
-  if (status === 'pass') return 2;
-  return 3;
 }
 
 function formatOutcome(status: Result['status'] | TestCaseOutcomeStatus): string {

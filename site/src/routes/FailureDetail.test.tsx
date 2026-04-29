@@ -179,9 +179,10 @@ describe('FailureDetail', () => {
     expect(
       screen.getByRole('heading', { name: 'All Results For This Test' }),
     ).toBeInTheDocument();
-    // Counts all non-reference impls: graphql-java (fail, current), graphql-ruby
-    // (pass), graphql-go (error) → 1 pass of 3.
-    expect(screen.getByText('1 of 3 implementations passed.')).toBeInTheDocument();
+    // Counts all impls including the reference: graphql-js-17 (pass),
+    // graphql-java (fail, current), graphql-ruby (pass), graphql-go (error)
+    // → 2 pass of 4.
+    expect(screen.getByText('2 of 4 implementations passed.')).toBeInTheDocument();
   });
 
   it('links peer failures to their own failure detail page', async () => {
@@ -274,12 +275,12 @@ describe('FailureDetail', () => {
     // No rows for skipped (ruby) or excluded (go) peers.
     expect(within(peerCard).queryByText('graphql-ruby')).toBeNull();
     expect(within(peerCard).queryByText('graphql-go')).toBeNull();
-    // The summary counts the full pool — 1 scored (java: fail), 2 unscored
-    // (ruby: skipped, go: excluded) → "0 of 1 implementations passed" + the
-    // "not scored" segment surfaced in the meta.
+    // The summary counts the full pool — 1 scored (java: fail), 3 unscored
+    // (js-17 reference: excluded, ruby: skipped, go: excluded) → "0 of 1
+    // implementations passed" + the "not scored" segment surfaced in the meta.
     expect(within(peerCard).getByText('0 of 1 implementations passed.'))
       .toBeInTheDocument();
-    expect(within(peerCard).getByText(/2 not scored/)).toBeInTheDocument();
+    expect(within(peerCard).getByText(/3 not scored/)).toBeInTheDocument();
     // The "NOT SCORED" pill is no longer used anywhere on the page.
     expect(document.querySelector('.status-pill-skipped')).toBeNull();
   });
@@ -317,8 +318,8 @@ describe('FailureDetail', () => {
       name: 'All Results For This Test',
     });
     const peerCard = peerHeading.closest('.failure-peer-card') as HTMLElement;
-    // 3 scored / 0 unscored → no "not scored" text in the meta line.
-    expect(within(peerCard).getByText(/1 passed · 2 failed/)).toBeInTheDocument();
+    // 4 scored / 0 unscored → no "not scored" text in the meta line.
+    expect(within(peerCard).getByText(/2 passed · 2 failed/)).toBeInTheDocument();
     expect(within(peerCard).queryByText(/not scored/i)).toBeNull();
   });
 
