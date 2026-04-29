@@ -21,6 +21,42 @@ use GraphQL\Type\Definition\UnionType;
 use GraphQL\Type\Schema;
 use GraphQL\Utils\BuildSchema;
 
+// Convert PHP fatal errors (OOM, stack overflow, E_USER_ERROR, ...) into a
+// 5xx JSON envelope. Without this, `php -S` defaults emit an HTML error page
+// that the conformer reports as "invalid JSON from driver".
+function registerFatalHandler(): void
+{
+    ini_set('display_errors', '0');
+    ini_set('html_errors', '0');
+
+    register_shutdown_function(static function (): void {
+        $err = error_get_last();
+        if ($err === null) {
+            return;
+        }
+        $fatalMask = E_ERROR | E_PARSE | E_CORE_ERROR | E_COMPILE_ERROR
+            | E_USER_ERROR | E_RECOVERABLE_ERROR;
+        if (($err['type'] & $fatalMask) === 0) {
+            return;
+        }
+        if (headers_sent()) {
+            return;
+        }
+        http_response_code(500);
+        header('Content-Type: application/json');
+        echo json_encode([
+            'errors' => [[
+                'message' => sprintf(
+                    'driver fatal error: %s at %s:%d',
+                    $err['message'],
+                    $err['file'],
+                    $err['line']
+                ),
+            ]],
+        ]);
+    });
+}
+
 function collectUnionMembers(DocumentNode $document): array
 {
     $result = [];
@@ -131,7 +167,15 @@ function buildHarnessSchema(string $schemaText): Schema
     return $schema;
 }
 
-$method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+registerFatalHandler();
+
+if (!isset($_SERVER['REQUEST_METHOD'])) {
+    // Loaded from a non-HTTP context (e.g., a test); only the helpers and
+    // fatal handler are needed. Skip request dispatch.
+    return;
+}
+
+$method = $_SERVER['REQUEST_METHOD'];
 $path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
 
 if ($method === 'GET' && $path === '/health') {
