@@ -1,0 +1,152 @@
+[
+  {
+    "id": "4d2a49b1-a9f0-41d8-81dc-f00cb9d01aaa",
+    "runId": "730fe751-2fba-470d-9a8f-cfd2646058ed",
+    "implId": "async-graphql",
+    "testCaseId": "034907e7/08233559/724a47a1",
+    "status": "error",
+    "expected": {
+      "data": {
+        "__typename": "Object_jGekrLP4U",
+        "c5GCEDZ": "id",
+        "n_kMSMjl": "id"
+      }
+    },
+    "error": "build schema: \"Input_DRDr\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.",
+    "stderr": "{\"errors\":[{\"message\":\"build schema: \\\"Input_DRDr\\\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.\"}]}"
+  },
+  {
+    "id": "9af7aedb-1597-415c-881d-d439a54af413",
+    "runId": "730fe751-2fba-470d-9a8f-cfd2646058ed",
+    "implId": "async-graphql",
+    "testCaseId": "034907e7/09274984/e1d651ba",
+    "status": "error",
+    "expected": {
+      "data": {
+        "Uf": "Object_jGekrLP4U",
+        "__typename": "Object_jGekrLP4U",
+        "a": "id"
+      }
+    },
+    "error": "build schema: \"Input_DRDr\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.",
+    "stderr": "{\"errors\":[{\"message\":\"build schema: \\\"Input_DRDr\\\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.\"}]}"
+  },
+  {
+    "id": "936ee8d1-0fa5-48c0-8495-385fb4e26285",
+    "runId": "730fe751-2fba-470d-9a8f-cfd2646058ed",
+    "implId": "async-graphql",
+    "testCaseId": "034907e7/09274984/f00482f3",
+    "status": "error",
+    "expected": {
+      "data": {
+        "Uf": "Object_jGekrLP4U",
+        "__typename": "Object_jGekrLP4U",
+        "a": "id"
+      }
+    },
+    "error": "build schema: \"Input_DRDr\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.",
+    "stderr": "{\"errors\":[{\"message\":\"build schema: \\\"Input_DRDr\\\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.\"}]}"
+  },
+  {
+    "id": "2b540b2b-3970-4c21-8db8-fe17a90a96b6",
+    "runId": "730fe751-2fba-470d-9a8f-cfd2646058ed",
+    "implId": "async-graphql",
+    "testCaseId": "034907e7/4f583e2d/44136fa3",
+    "status": "error",
+    "expected": {
+      "data": {
+        "c5GCEDZ": "id"
+      }
+    },
+    "error": "build schema: \"Input_DRDr\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.",
+    "stderr": "{\"errors\":[{\"message\":\"build schema: \\\"Input_DRDr\\\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.\"}]}"
+  },
+  {
+    "id": "236aee68-4c55-4943-8bc7-23fc470e6727",
+    "runId": "730fe751-2fba-470d-9a8f-cfd2646058ed",
+    "implId": "async-graphql",
+    "testCaseId": "034907e7/5f421a36/44136fa3",
+    "status": "error",
+    "expected": {
+      "data": {
+        "lPfrwoN": "Object_jGekrLP4U"
+      }
+    },
+    "error": "build schema: \"Input_DRDr\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.",
+    "stderr": "{\"errors\":[{\"message\":\"build schema: \\\"Input_DRDr\\\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.\"}]}"
+  },
+  {
+    "id": "0630e45d-7aaf-48ef-880f-c667923f4347",
+    "runId": "730fe751-2fba-470d-9a8f-cfd2646058ed",
+    "implId": "async-graphql",
+    "testCaseId": "034907e7/7990cc4f/44136fa3",
+    "status": "error",
+    "expected": {
+      "data": {
+        "dQ6WtE34": true,
+        "__typename": "Object_jGekrLP4U"
+      }
+    },
+    "error": "build schema: \"Input_DRDr\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.",
+    "stderr": "{\"errors\":[{\"message\":\"build schema: \\\"Input_DRDr\\\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.\"}]}"
+  },
+  {
+    "id": "6f0636bc-22aa-440b-8937-829dcf7af17c",
+    "runId": "730fe751-2fba-470d-9a8f-cfd2646058ed",
+    "implId": "async-graphql",
+    "testCaseId": "034907e7/93c616f0/44136fa3",
+    "status": "error",
+    "expected": {
+      "data": {
+        "__typename": "Object_jGekrLP4U",
+        "c5GCEDZ": "id"
+      }
+    },
+    "error": "build schema: \"Input_DRDr\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.",
+    "stderr": "{\"errors\":[{\"message\":\"build schema: \\\"Input_DRDr\\\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.\"}]}"
+  },
+  {
+    "id": "ba7645a6-9c82-437a-8473-16acebcf3801",
+    "runId": "730fe751-2fba-470d-9a8f-cfd2646058ed",
+    "implId": "async-graphql",
+    "testCaseId": "034907e7/caf52a10/44136fa3",
+    "status": "error",
+    "expected": {
+      "data": {
+        "c5GCEDZ": "id"
+      }
+    },
+    "error": "build schema: \"Input_DRDr\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.",
+    "stderr": "{\"errors\":[{\"message\":\"build schema: \\\"Input_DRDr\\\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.\"}]}"
+  },
+  {
+    "id": "172fa8f8-f62c-4df0-8e5e-c544656d8d51",
+    "runId": "730fe751-2fba-470d-9a8f-cfd2646058ed",
+    "implId": "async-graphql",
+    "testCaseId": "034907e7/d42e84e4/44136fa3",
+    "status": "error",
+    "expected": {
+      "data": {
+        "c5GCEDZ": "id"
+      }
+    },
+    "error": "build schema: \"Input_DRDr\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.",
+    "stderr": "{\"errors\":[{\"message\":\"build schema: \\\"Input_DRDr\\\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.\"}]}"
+  },
+  {
+    "id": "de933b67-23e1-4cd7-865a-90b7a1efec77",
+    "runId": "730fe751-2fba-470d-9a8f-cfd2646058ed",
+    "implId": "async-graphql",
+    "testCaseId": "034907e7/ea93ad2f/44136fa3",
+    "status": "error",
+    "expected": {
+      "data": {
+        "__typename": "Object_jGekrLP4U",
+        "L": "Object_jGekrLP4U",
+        "a": "id"
+      }
+    },
+    "error": "build schema: \"Input_DRDr\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.",
+    "stderr": "{\"errors\":[{\"message\":\"build schema: \\\"Input_DRDr\\\" references itself either directly or through referenced Input Objects, at least one of the fields in the chain of references must be either a nullable or a List type.\"}]}"
+  }
+]

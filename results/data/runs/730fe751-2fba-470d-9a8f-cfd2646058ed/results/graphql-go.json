@@ -1,0 +1,276 @@
+[
+  {
+    "id": "6eb80740-b2ac-479f-8e91-b14bfc1067b6",
+    "runId": "730fe751-2fba-470d-9a8f-cfd2646058ed",
+    "implId": "graphql-go",
+    "testCaseId": "03573f34/2e32a08b/08277c86",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_lpJFn",
+        "H3Nl_": "Object_lpJFn",
+        "puaq39dlg": {
+          "deWZL": "XtCw_c"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Syntax Error GraphQL request (1:33) Expected $, found @\n\n1: query ($kJ8hrxR: Boolean! = true@Directive_RtXxkf) {\n                                   ^\n2:   ...Fragment_Q\n",
+          "locations": [
+            {
+              "line": 1,
+              "column": 33
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "003f467f-3594-4d3e-8692-886bccb1fd65",
+    "runId": "730fe751-2fba-470d-9a8f-cfd2646058ed",
+    "implId": "graphql-go",
+    "testCaseId": "03573f34/2e32a08b/179ab86c",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_lpJFn",
+        "H3Nl_": "Object_lpJFn",
+        "puaq39dlg": {
+          "deWZL": "XtCw_c"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Syntax Error GraphQL request (1:33) Expected $, found @\n\n1: query ($kJ8hrxR: Boolean! = true@Directive_RtXxkf) {\n                                   ^\n2:   ...Fragment_Q\n",
+          "locations": [
+            {
+              "line": 1,
+              "column": 33
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "f3cb28ea-c73c-448e-8c58-f56edc4997fe",
+    "runId": "730fe751-2fba-470d-9a8f-cfd2646058ed",
+    "implId": "graphql-go",
+    "testCaseId": "03573f34/844439df/3cbd2fee",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_lpJFn"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Syntax Error GraphQL request (1:36) Expected $, found @\n\n1: query y90y6ZiH9($u4jGeH6z: Boolean!@Directive_RtXxkf) {\n                                      ^\n2:   ... on Object_lpJFn {\n",
+          "locations": [
+            {
+              "line": 1,
+              "column": 36
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "f6254f9d-a957-468f-8391-366e9098505e",
+    "runId": "730fe751-2fba-470d-9a8f-cfd2646058ed",
+    "implId": "graphql-go",
+    "testCaseId": "03573f34/844439df/64d17f61",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_lpJFn"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Syntax Error GraphQL request (1:36) Expected $, found @\n\n1: query y90y6ZiH9($u4jGeH6z: Boolean!@Directive_RtXxkf) {\n                                      ^\n2:   ... on Object_lpJFn {\n",
+          "locations": [
+            {
+              "line": 1,
+              "column": 36
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "63a0a08e-a76c-49d6-8c6f-73b7813b08af",
+    "runId": "730fe751-2fba-470d-9a8f-cfd2646058ed",
+    "implId": "graphql-go",
+    "testCaseId": "03573f34/db6ebcb1/457e9b63",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "P": "Object_lpJFn",
+        "oM": "Object_lpJFn"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Variable \"$rbEuY2\" of type \"Boolean!\" is required and will not use the default value. Perhaps you meant to use type \"Boolean\".",
+          "locations": [
+            {
+              "line": 1,
+              "column": 36
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "4c4aa7e9-0403-499e-8163-e0e1df9a3f49",
+    "runId": "730fe751-2fba-470d-9a8f-cfd2646058ed",
+    "implId": "graphql-go",
+    "testCaseId": "03573f34/db6ebcb1/b116a709",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "P": "Object_lpJFn"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Variable \"$rbEuY2\" of type \"Boolean!\" is required and will not use the default value. Perhaps you meant to use type \"Boolean\".",
+          "locations": [
+            {
+              "line": 1,
+              "column": 36
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "3e2a1ed4-209f-4759-8f77-c61a8bc1b714",
+    "runId": "730fe751-2fba-470d-9a8f-cfd2646058ed",
+    "implId": "graphql-go",
+    "testCaseId": "0899731f/9a5daa04/7d1ec464",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "k": "iS",
+        "sn6N8tbgL": "id",
+        "__typename": "Object_ARs"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Variable \"$b\" of type \"Boolean!\" is required and will not use the default value. Perhaps you meant to use type \"Boolean\".",
+          "locations": [
+            {
+              "line": 1,
+              "column": 28
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "f7e7a498-6297-46e0-86c9-6c6d8a501a6d",
+    "runId": "730fe751-2fba-470d-9a8f-cfd2646058ed",
+    "implId": "graphql-go",
+    "testCaseId": "0899731f/9a5daa04/fc0f22db",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "k": "iS",
+        "sn6N8tbgL": "id",
+        "__typename": "Object_ARs"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Variable \"$b\" of type \"Boolean!\" is required and will not use the default value. Perhaps you meant to use type \"Boolean\".",
+          "locations": [
+            {
+              "line": 1,
+              "column": 28
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "f724f5a2-9b9a-4308-8aa1-8518d5176493",
+    "runId": "730fe751-2fba-470d-9a8f-cfd2646058ed",
+    "implId": "graphql-go",
+    "testCaseId": "08c504e7/01330b7e/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_Q",
+        "xsTsIOm": "Gx"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Directive \"@defer\" argument \"if\" of type \"Boolean!\" is required but not provided.",
+          "locations": [
+            {
+              "line": 21,
+              "column": 24
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "582633ee-87bc-4674-8f31-d40c7d6ae582",
+    "runId": "730fe751-2fba-470d-9a8f-cfd2646058ed",
+    "implId": "graphql-go",
+    "testCaseId": "0eed9e38/e7f853d8/0bab813f",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_IY6OS5"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Directive \"@defer\" argument \"if\" of type \"Boolean!\" is required but not provided.",
+          "locations": [
+            {
+              "line": 11,
+              "column": 27
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
