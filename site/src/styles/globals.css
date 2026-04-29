@@ -257,6 +257,25 @@ tr:hover td { background: var(--color-surface-alt); }
   margin: 0;
 }
 
+/* Response sections use the header's <p> as an "impl name + optional
+   reference pill" label — give it dashboard-style bold/dark treatment and
+   flex-align so the pill sits vertically centered with the text. */
+.failure-response-card .detail-section-header p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.failure-response-card .detail-section-header .reference-pill.inline-pill {
+  /* Inside a flex row, reset the baseline tweak the inline-pill normally
+     needs so the pill sits centered without extra vertical offset. */
+  margin-left: 0;
+  vertical-align: baseline;
+  margin-bottom: 0;
+}
+
 .detail-rate-row { margin-top: 1rem; }
 .detail-rate {
   font-size: 2.5rem;
@@ -305,6 +324,10 @@ tr:hover td { background: var(--color-surface-alt); }
 }
 
 .chart-card .chart-container {
+  padding: 0.5rem 1.25rem 1.25rem 1.25rem;
+}
+
+.failure-history-card .chart-container {
   padding: 0.5rem 1.25rem 1.25rem 1.25rem;
 }
 
@@ -392,19 +415,6 @@ tr:hover td { background: var(--color-surface-alt); }
   background: var(--color-surface);
 }
 .failure-card:first-child { border-top: none; }
-.failure-card.is-interactive {
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-.failure-card.is-interactive:hover,
-.failure-card.is-interactive:focus-visible,
-.failure-card.is-expanded {
-  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-}
-.failure-card.is-interactive:focus-visible {
-  outline: none;
-  box-shadow: inset 0 0 0 2px var(--color-primary-soft);
-}
 
 .failure-card-header {
   display: grid;
@@ -413,8 +423,14 @@ tr:hover td { background: var(--color-surface-alt); }
   align-items: start;
   margin-bottom: 0.4rem;
 }
-.failure-card-heading { min-width: 0; }
-.failure-card-label {
+
+/* LabeledField — "LABEL / value" stacked block shared by the FailureCard
+   heading and the FailureDetail title card, so the two surfaces render
+   test ids, run ids, timestamps, etc. with a consistent visual treatment. */
+.labeled-field {
+  min-width: 0;
+}
+.labeled-field-label {
   color: var(--color-text-subtle);
   font-size: 0.7rem;
   font-weight: 700;
@@ -422,26 +438,22 @@ tr:hover td { background: var(--color-surface-alt); }
   letter-spacing: 0.05em;
   margin-bottom: 0.12rem;
 }
-.failure-card-title {
+.labeled-field-value {
   color: var(--color-text);
   font-size: 0.92rem;
   font-weight: 700;
   line-height: 1.35;
   word-break: break-word;
 }
-.failure-card-title-row {
-  display: inline-flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  max-width: 100%;
+.labeled-field-value.is-regular {
+  font-weight: 400;
 }
-.failure-card-title a { color: inherit; }
 
-.failure-card-copy {
+.copy-button {
   flex: 0 0 auto;
-  width: 1.55rem;
+  min-width: 1.55rem;
   height: 1.55rem;
+  padding: 0 0.35rem;
   border: 1px solid #d0d7de;
   border-radius: 0.38rem;
   background: var(--color-surface);
@@ -453,26 +465,32 @@ tr:hover td { background: var(--color-surface-alt); }
   box-shadow: 0 1px 0 rgba(27, 31, 36, 0.04);
   transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
 }
-.failure-card-copy:hover {
+.copy-button:hover {
   background: #f6f8fa;
   border-color: #afb8c1;
   color: #24292f;
 }
-.failure-card-copy:focus-visible {
+.copy-button:focus-visible {
   outline: none;
   border-color: #748ffc;
   box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.14);
 }
-.failure-card-copy.is-copied {
+.copy-button.is-copied {
   background: #ebfbee;
   border-color: #b2f2bb;
   color: #2b8a3e;
+  cursor: default;
 }
-.failure-card-copy svg {
+.copy-button svg {
   width: 0.82rem;
   height: 0.82rem;
   display: block;
   fill: currentColor;
+}
+.copy-button-confirmation {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .failure-card-chip {
@@ -490,33 +508,168 @@ tr:hover td { background: var(--color-surface-alt); }
   text-transform: uppercase;
   white-space: nowrap;
 }
-
-.failure-card-summary {
-  color: #495057;
-  margin-bottom: 0.55rem;
-  font-size: 0.95rem;
+.failure-card-actions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  flex-wrap: wrap;
 }
+.failure-card-detail-link {
+  text-decoration: none;
+  background: var(--color-primary-surface);
+  color: var(--color-primary);
+}
+.failure-card-detail-link:hover {
+  text-decoration: none;
+  background: #dbe4ff;
+}
+
 .failure-card-body {
   display: grid;
   gap: 0.55rem;
-  position: relative;
-}
-.failure-card.is-collapsed .failure-card-body { overflow: hidden; }
-.failure-card.is-collapsed .failure-card-body::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 3.25rem;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.92) 58%, rgba(255, 255, 255, 1) 100%);
-  pointer-events: none;
 }
 
-.failure-json-grid {
+/* ---- Failure detail page ---- */
+
+.failure-detail-title-card {
+  padding: 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+.failure-detail-title-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.failure-detail-title-head h2 { margin: 0; }
+.failure-detail-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.85rem 1.25rem;
+}
+.failure-response-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+}
+.failure-response-body {
+  display: grid;
   gap: 0.75rem;
+  padding: 0.5rem 1.25rem 1.25rem 1.25rem;
+}
+.failure-response-empty {
+  color: var(--color-text-muted);
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.8rem;
+}
+/* Stacked rate panel (percentage / stats / bar). Matches the dashboard's
+   ReferenceCard and ImplRow visual so pass-rate presentations feel
+   identical across the site. */
+.failure-rate-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.85rem 1.25rem 0.85rem 1.25rem;
+}
+.failure-rate-summary .pass-rate-value {
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+.failure-peer-table-wrap {
+  overflow-x: auto;
+  margin-top: 0.5rem;
+}
+.failure-peer-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.failure-peer-table th,
+.failure-peer-table td {
+  padding: 0.75rem 1.25rem;
+  text-align: left;
+  border-top: 1px solid var(--color-border);
+  vertical-align: middle;
+}
+.failure-peer-table th {
+  background: var(--color-border-soft);
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.failure-peer-table td:last-child {
+  width: 1%;
+  white-space: nowrap;
+}
+.failure-peer-empty {
+  padding: 1rem 1.25rem 1.25rem 1.25rem;
+}
+.failure-peer-table tr.is-current {
+  background: var(--color-primary-surface);
+}
+.failure-peer-table tr.is-current td {
+  border-left: 3px solid var(--color-primary);
+}
+.failure-peer-table tr.is-current td + td {
+  border-left: none;
+}
+.failure-peer-current-label {
+  font-weight: 700;
+  color: var(--color-text);
+}
+.failure-inputs-body {
+  display: grid;
+  gap: 1rem;
+  padding: 0.5rem 1.25rem 1.25rem 1.25rem;
+}
+.failure-artifact-empty {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  padding: 0.35rem 0.1rem;
+}
+
+/* GraphQL syntax highlighting — deliberately similar hues to the JSON colors
+   so the two code panes feel coherent. */
+.gql-keyword { color: #5f3dc4; font-weight: 600; }
+.gql-name { color: #1864ab; }
+.gql-variable { color: #ae3ec9; }
+.gql-directive { color: #d6336c; }
+.gql-string { color: #c92a2a; }
+.gql-number { color: #2f9e44; }
+.gql-boolean { color: #2b8a3e; }
+.gql-null { color: #495057; font-style: italic; }
+.gql-comment { color: #868e96; font-style: italic; }
+.gql-punctuation { color: #495057; }
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.65rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.status-pill-pass {
+  background: #ebfbee;
+  color: #2b8a3e;
+}
+.status-pill-fail,
+.status-pill-error {
+  background: #fff5f5;
+  color: #c92a2a;
+}
+.status-pill-excluded {
+  background: #fff9db;
+  color: #e67700;
 }
 
 /* ---- JSON diff ---- */
@@ -546,6 +699,25 @@ tr:hover td { background: var(--color-surface-alt); }
   color: #495057;
 }
 .json-diff-header + .json-diff-header { border-left: 1px solid var(--color-border); }
+
+/* Pane header variant with a right-aligned actions slot (e.g. copy button). */
+.code-pane-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+.code-pane-actions {
+  display: inline-flex;
+  gap: 0.3rem;
+}
+/* Scroll body when the pane opts in (e.g. the full-schema pane). */
+.json-diff.json-diff-scrollable .code-pane-body {
+  max-height: 420px;
+  overflow: auto;
+}
 .json-diff-line {
   min-width: 0;
   padding: 0.12rem 0.75rem;
@@ -586,8 +758,9 @@ tr:hover td { background: var(--color-surface-alt); }
   padding: 0.5rem;
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  overflow-x: auto;
-  white-space: pre;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
   margin: 0.25rem 0 0 0;
   max-height: 300px;
   overflow-y: auto;
@@ -664,7 +837,7 @@ tr:hover td { background: var(--color-surface-alt); }
   .dashboard-layout { grid-template-columns: 1fr; }
   .pass-rate-cell { min-width: 0; }
   .failure-card-header,
-  .failure-json-grid {
+  .failure-response-grid {
     grid-template-columns: 1fr;
   }
   .json-diff { grid-template-columns: 1fr; }

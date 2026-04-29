@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useImpls, useRunOrLatest } from '../repository/hooks';
 import type { Impl, Run } from '../repository/types';
 import { computeRunStats, formatRunStatsLine } from '../lib/runStats';
+import { PassRateBar } from '../components/PassRateBar';
 import { NotFound } from './NotFound';
 
 export function Dashboard() {
@@ -250,14 +251,3 @@ function ImplRow({
   );
 }
 
-function PassRateBar({ passPct }: { passPct: number }) {
-  const tone = passPct >= 95 ? 'bar-pass' : passPct >= 50 ? 'bar-warn' : 'bar-fail';
-  return (
-    <div className="bar-container" aria-label={`${passPct.toFixed(1)}% passing`}>
-      <div
-        className={`bar-fill ${tone}`}
-        style={{ width: `${Math.max(0, Math.min(100, passPct))}%` }}
-      />
-    </div>
-  );
-}

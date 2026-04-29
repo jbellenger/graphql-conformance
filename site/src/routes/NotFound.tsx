@@ -24,7 +24,7 @@ export function NotFound({
         />
       </div>
       <div className="not-found-copy">
-        <h3>Not found</h3>
+        <h3>Not Found</h3>
         <p>{message}</p>
         {fallbacks.length > 0 && (
           <ul className="not-found-links">

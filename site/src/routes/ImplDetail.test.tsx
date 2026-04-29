@@ -17,17 +17,9 @@ function renderAt(initialPath: string, repo: FakeRepository) {
           <Routes>
             <Route path="/impl/:name" element={<ImplDetail />} />
             <Route path="/impl/:name/failures" element={<ImplDetail />} />
-            <Route
-              path="/impl/:name/failures/:testCaseId"
-              element={<ImplDetail />}
-            />
             <Route path="/runs/:runId/impl/:name" element={<ImplDetail />} />
             <Route
               path="/runs/:runId/impl/:name/failures"
-              element={<ImplDetail />}
-            />
-            <Route
-              path="/runs/:runId/impl/:name/failures/:testCaseId"
               element={<ImplDetail />}
             />
           </Routes>
@@ -116,15 +108,15 @@ describe('ImplDetail', () => {
     expect(card.getAttribute('data-test-case-id')).toBe('aa/bb/cc');
   });
 
-  it('expands the targeted failure card when deep-linking with testCaseId', async () => {
-    // testCaseId contains slashes; they must be URL-encoded in the path.
-    renderAt('/impl/graphql-java/failures/aa%2Fbb%2Fcc', makeRepo());
-    const card = await screen.findByTestId('failure-card');
-    // Card becomes expandable only when content is large; our single-line
-    // fail won't be expandable here, so we just assert that rendering works
-    // with the testCaseId param. A larger payload is covered in FailureCard's
-    // own unit tests.
-    expect(card.getAttribute('data-test-case-id')).toBe('aa/bb/cc');
+  it('links each failure card to the single-failure detail page', async () => {
+    renderAt('/runs/run-1/impl/graphql-java/failures', makeRepo());
+    const link = await screen.findByRole('link', {
+      name: /view failure detail for aa\/bb\/cc/i,
+    });
+    expect(link).toHaveAttribute(
+      'href',
+      '/runs/run-1/impl/graphql-java/failures/aa%2Fbb%2Fcc',
+    );
   });
 
   it('renders NotFound for an unknown impl', async () => {

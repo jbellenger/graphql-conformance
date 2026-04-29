@@ -140,6 +140,16 @@ function runPrefix(runId: string | undefined): string {
   return runId ? `/runs/${encodeURIComponent(runId)}` : '';
 }
 
+function failureDetailHref(
+  runId: string | undefined,
+  implId: string,
+  testCaseId: string,
+): string {
+  return `${runPrefix(runId)}/impl/${encodeURIComponent(
+    implId,
+  )}/failures/${encodeURIComponent(testCaseId)}`;
+}
+
 function ImplDetailView({
   impl,
   run,
@@ -274,6 +284,7 @@ function ImplDetailView({
                 key={r.id}
                 result={r}
                 defaultExpanded={r.testCaseId === highlightedTestCaseId}
+                detailTo={failureDetailHref(runId, impl.id, r.testCaseId)}
               />
             ))}
           </div>
@@ -337,7 +348,7 @@ function RunsHistoryTable({
   return (
     <section className="card detail-section-card runs-history-card">
       <div className="detail-section-header">
-        <h3>Other runs</h3>
+        <h3>Other Runs</h3>
         <p>Last {rows.length} {rows.length === 1 ? 'run' : 'runs'}</p>
       </div>
       <div className="runs-history-scroll">
@@ -431,7 +442,7 @@ function ZeroFailures() {
         />
       </div>
       <div className="zero-failures-copy">
-        <h3>No failures in this run</h3>
+        <h3>No Failures in This Run</h3>
         <p>All tests passed.</p>
       </div>
     </section>
