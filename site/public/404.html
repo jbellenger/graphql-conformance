@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>GraphQL Conformance</title>
+  <script>
+    // SPA fallback for GitHub Pages. Github serves 404.html for any unknown
+    // path; we redirect back to the SPA entry with the original path encoded
+    // in the query string, and main.tsx restores it before React Router runs.
+    // Based on https://github.com/rafgraph/spa-github-pages (MIT).
+    (function () {
+      var segmentsToKeep = 1; // "/graphql-conformance" is 1 segment
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + segmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(segmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    })();
+  </script>
+</head>
+<body></body>
+</html>
