@@ -4,12 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Conformance test results for open-source GraphQL implementations against a reference (graphql-js).">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' https://static.cloudflareinsights.com; connect-src 'self' https://cloudflareinsights.com;">
   <link rel="icon" href="icons/happy-face.svg" type="image/svg+xml">
   <title>GraphQL Conformance</title>
 </head>
 <body>
   <div id="app"></div>
   <script type="module" src="/src/main.tsx"></script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "384c4c89ad5b4e849f0f1eec15c84772"}'></script>
 </body>
 </html>
