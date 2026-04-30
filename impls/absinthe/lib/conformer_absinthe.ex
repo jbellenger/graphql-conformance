@@ -281,7 +281,7 @@ defmodule ConformerAbsinthe do
 
     if directive_definition_complete?(Enum.reverse(updated) |> Enum.join("\n")) do
       {blank_lines, remainder} = take_blank_lines(rest, [])
-      {Enum.reverse(blank_lines, updated), remainder}
+      {Enum.reverse(updated, blank_lines), remainder}
     else
       take_directive_definition(rest, updated)
     end
