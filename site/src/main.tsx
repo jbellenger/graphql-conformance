@@ -4,7 +4,10 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { App } from './App';
 import { RepositoryProvider } from './repository/context';
 import { StaticJsonRepository } from './repository/StaticJsonRepository';
+import { normalizeBootstrapUrl } from './lib/spaRedirect';
 import './styles/globals.css';
+
+normalizeBootstrapUrl(window, import.meta.env.BASE_URL);
 
 const repository = new StaticJsonRepository(`${import.meta.env.BASE_URL}data/`);
 const queryClient = new QueryClient({
