@@ -22,7 +22,11 @@ fn ast_type_to_typeref(ty: &async_graphql::parser::types::Type) -> TypeRef {
         BaseType::Named(name) => TypeRef::Named(name.to_string().into()),
         BaseType::List(inner) => TypeRef::List(Box::new(ast_type_to_typeref(inner))),
     };
-    TypeRef::NonNull(Box::new(inner))
+    if ty.nullable {
+        inner
+    } else {
+        TypeRef::NonNull(Box::new(inner))
+    }
 }
 
 fn build_schema_v2(
@@ -138,6 +142,9 @@ fn build_schema_v2(
             }
             TypeKind::InputObject(io) => {
                 let mut input = InputObject::new(&name);
+                if td.directives.iter().any(|d| d.node.name.node.as_str() == "oneOf") {
+                    input = input.oneof();
+                }
                 for field in &io.fields {
                     let field_name = field.node.name.node.to_string();
                     let type_ref = ast_type_to_typeref(&field.node.ty.node);
@@ -403,3 +410,82 @@ async fn main() {
     let listener = tokio::net::TcpListener::bind(addr).await.expect("bind");
     axum::serve(listener, app).await.expect("serve");
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn build(sdl: &str) -> Result<Schema, String> {
+        build_schema_v2(
+            sdl,
+            Arc::new(HashMap::new()),
+            Arc::new(HashMap::new()),
+            Arc::new(HashMap::new()),
+        )
+    }
+
+    #[test]
+    fn ast_type_to_typeref_preserves_nullability() {
+        let doc = parse_schema("type Q { a: Int b: Int! c: [Int] d: [Int!]! }").unwrap();
+        let obj = doc.definitions.iter().find_map(|d| match d {
+            TypeSystemDefinition::Type(t) => match &t.node.kind {
+                TypeKind::Object(o) => Some(o),
+                _ => None,
+            },
+            _ => None,
+        }).unwrap();
+        let refs: Vec<TypeRef> = obj
+            .fields
+            .iter()
+            .map(|f| ast_type_to_typeref(&f.node.ty.node))
+            .collect();
+        assert!(matches!(refs[0], TypeRef::Named(_)), "a: Int should be nullable");
+        assert!(matches!(refs[1], TypeRef::NonNull(_)), "b: Int! should be non-null");
+        assert!(matches!(refs[2], TypeRef::List(_)), "c: [Int] should be nullable list");
+        assert!(matches!(refs[3], TypeRef::NonNull(_)), "d: [Int!]! should be non-null list");
+    }
+
+    #[test]
+    fn self_referential_oneof_input_loads() {
+        // Regression for https://jbellenger.github.io/graphql-conformance/impl/async-graphql
+        // schema 034907e7: a @oneOf input with a self-reference through a nullable field
+        // must load successfully. Before the fix, ast_type_to_typeref wrapped every type
+        // in NonNull, which tripped async-graphql's recursive-input validator.
+        let sdl = r#"
+            type Query { q: Int }
+            input Input_DRDr @oneOf {
+                e6: Input_DRDr
+                jOleAx: Enum_JG1svr
+            }
+            enum Enum_JG1svr { A B }
+        "#;
+        build(sdl).expect("schema should load");
+    }
+
+    #[test]
+    fn oneof_directive_is_propagated_to_schema() {
+        let sdl = r#"
+            type Query { q: Int }
+            input I @oneOf { a: String b: Int }
+        "#;
+        let schema = build(sdl).expect("schema should load");
+        let printed = schema.sdl();
+        assert!(
+            printed.contains("@oneOf") || printed.contains("oneOf"),
+            "rendered SDL should keep the @oneOf directive, got: {printed}"
+        );
+    }
+
+    #[test]
+    fn non_oneof_self_reference_through_nullable_field_loads() {
+        // Plain self-referential input is legal as long as the cycle passes through
+        // a nullable or list field. Guards against regressing nullability handling
+        // independent of @oneOf.
+        let sdl = r#"
+            type Query { q: Int }
+            input R { self: R name: String! }
+        "#;
+        build(sdl).expect("schema should load");
+    }
+}
+
