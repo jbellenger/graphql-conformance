@@ -1,10 +1,8 @@
 import { useMemo, type ReactNode } from 'react';
-import { JsonTokens } from './JsonTokens';
-import { GraphqlTokens } from './GraphqlTokens';
-import { tokenizeJsonText } from '../lib/jsonHighlight';
-import { tokenizeGraphql } from '../lib/graphqlHighlight';
+import { Highlight } from 'prism-react-renderer';
+import type { CodeLanguage } from '../lib/codeHighlight';
 
-export type CodeLanguage = 'json' | 'graphql';
+export type { CodeLanguage } from '../lib/codeHighlight';
 
 export interface CodePaneProps {
   header: string;
@@ -23,10 +21,14 @@ export interface CodePaneProps {
   actions?: ReactNode;
 }
 
-// Shared code-rendering pane used by the failure detail page. Matches the
-// visual treatment of JsonDiff's single-column view (border, uppercase
-// header bar, tokenised rows) so the "expected/actual response" panes and
-// the "test input" schema/query/variables panes look identical.
+// Empty theme — styling comes from CSS (`.token.keyword`, `.token.string`,
+// etc.) so it matches the rest of the site's palette without inline styles.
+const EMPTY_THEME = { plain: {}, styles: [] };
+
+// Read-only code pane with Prism syntax highlighting and a line-number
+// gutter. Long lines soft-wrap (no horizontal scrollbars). Used for the
+// schema/query/variables panes on the failure detail page and for the
+// single-column response view.
 export function CodePane({
   header,
   text,
@@ -35,38 +37,52 @@ export function CodePane({
   scrollable = false,
   actions,
 }: CodePaneProps) {
-  const lines = useMemo(() => text.split('\n'), [text]);
-  const visible = maxRows == null ? lines : lines.slice(0, maxRows);
+  const displayText = useMemo(() => {
+    if (maxRows == null) return text;
+    return text.split('\n').slice(0, maxRows).join('\n');
+  }, [text, maxRows]);
 
-  const classes = [
-    'json-diff',
-    'json-diff-single',
-    'code-pane',
-    scrollable ? 'json-diff-scrollable' : '',
+  const bodyClass = [
+    'code-pane-body',
+    scrollable ? 'is-scrollable' : '',
   ]
     .filter(Boolean)
     .join(' ');
 
   return (
-    <div className={classes} data-testid="code-pane" data-language={language}>
-      <div className="json-diff-header code-pane-header">
+    <div className="code-pane" data-testid="code-pane" data-language={language}>
+      <div className="code-pane-header">
         <span>{header}</span>
         {actions && <div className="code-pane-actions">{actions}</div>}
       </div>
-      <div className="code-pane-body">
-        {visible.map((line, idx) => (
-          <div key={idx} className="json-diff-line diff-same">
-            {line ? renderTokens(line, language) : ' '}
-          </div>
-        ))}
+      <div className={bodyClass}>
+        <Highlight code={displayText} language={language} theme={EMPTY_THEME}>
+          {({ tokens, getLineProps, getTokenProps }) => (
+            <pre className="code-pre" aria-label={header}>
+              {tokens.map((line, i) => {
+                const lineProps = getLineProps({ line });
+                return (
+                  <div
+                    {...lineProps}
+                    key={i}
+                    className={`code-line ${lineProps.className ?? ''}`.trim()}
+                  >
+                    <span className="code-line-number" aria-hidden="true">
+                      {i + 1}
+                    </span>
+                    <span className="code-line-content">
+                      {line.map((token, key) => {
+                        const tokenProps = getTokenProps({ token });
+                        return <span {...tokenProps} key={key} />;
+                      })}
+                    </span>
+                  </div>
+                );
+              })}
+            </pre>
+          )}
+        </Highlight>
       </div>
     </div>
   );
-}
-
-function renderTokens(line: string, language: CodeLanguage) {
-  if (language === 'graphql') {
-    return <GraphqlTokens tokens={tokenizeGraphql(line)} />;
-  }
-  return <JsonTokens tokens={tokenizeJsonText(line)} />;
 }

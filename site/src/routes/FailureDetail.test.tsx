@@ -171,11 +171,18 @@ describe('FailureDetail', () => {
       within(expected).getByText('Reference', { selector: '.reference-pill' }),
     ).toBeInTheDocument();
     expect(within(expected).queryByText(/Reference:/)).toBeNull();
-    expect(within(expected).getByText('"x":')).toBeInTheDocument();
-    expect(within(expected).getByText('1')).toBeInTheDocument();
+    // Prism tokenises JSON keys and colons separately, so `"x":` isn't a
+    // single text node. Match the key token. Numbers use the
+    // `.token.number` class to distinguish from the line-number gutter.
+    expect(within(expected).getByText('"x"')).toBeInTheDocument();
+    expect(
+      within(expected).getByText('1', { selector: '.token.number' }),
+    ).toBeInTheDocument();
     expect(within(actual).getByText('graphql-java')).toBeInTheDocument();
-    expect(within(actual).getByText('"x":')).toBeInTheDocument();
-    expect(within(actual).getByText('2')).toBeInTheDocument();
+    expect(within(actual).getByText('"x"')).toBeInTheDocument();
+    expect(
+      within(actual).getByText('2', { selector: '.token.number' }),
+    ).toBeInTheDocument();
 
     expect(
       screen.getByRole('heading', { name: 'History' }),
@@ -446,13 +453,15 @@ describe('FailureDetail', () => {
     expect(
       within(input).getByRole('heading', { name: /test input/i }),
     ).toBeInTheDocument();
-    // Tokens split the raw text into multiple spans; read each pane's
-    // combined textContent to recover what a user sees.
+    // Tokens split the raw text into multiple spans; combine each pane's
+    // line-content cells (gutter excluded) to recover what a user sees.
     await waitFor(() => {
       const panes = input.querySelectorAll('[data-testid="code-pane"]');
       expect(panes).toHaveLength(3);
       const bodyText = (p: Element) =>
-        (p.querySelector('.code-pane-body') as HTMLElement).textContent;
+        Array.from(p.querySelectorAll('.code-line-content'))
+          .map((el) => el.textContent)
+          .join('');
       expect(bodyText(panes[0])).toBe('type Query { answer: Int! }');
       expect(bodyText(panes[1])).toBe('query { answer }');
       expect(bodyText(panes[2])).toBe('{"v":42}');
@@ -474,14 +483,16 @@ describe('FailureDetail', () => {
       expect(input.querySelectorAll('[data-testid="code-pane"]')).toHaveLength(3);
     });
     const panes = input.querySelectorAll('[data-testid="code-pane"]');
-    // Schema pane: the `type` keyword gets the gql-keyword class.
-    expect(
-      within(panes[0] as HTMLElement).getByText('type'),
-    ).toHaveClass('gql-keyword');
-    // Variables pane: the "v": lexeme is a JSON key.
-    expect(
-      within(panes[2] as HTMLElement).getByText('"v":'),
-    ).toHaveClass('json-key');
+    // Schema pane: the `type` keyword gets Prism's `.token.keyword` class.
+    const keywordHit = Array.from(
+      (panes[0] as HTMLElement).querySelectorAll('.token.keyword'),
+    ).find((el) => el.textContent === 'type');
+    expect(keywordHit).toBeTruthy();
+    // Variables pane: Prism tags the JSON key as `.token.property`.
+    const propertyHit = Array.from(
+      (panes[2] as HTMLElement).querySelectorAll('.token.property'),
+    ).find((el) => el.textContent === '"v"');
+    expect(propertyHit).toBeTruthy();
   });
 
   it('renders a copy button for each artifact and no corpus link', async () => {

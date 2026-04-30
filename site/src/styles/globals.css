@@ -633,18 +633,35 @@ tr:hover td { background: var(--color-surface-alt); }
   padding: 0.35rem 0.1rem;
 }
 
-/* GraphQL syntax highlighting — deliberately similar hues to the JSON colors
-   so the two code panes feel coherent. */
-.gql-keyword { color: #5f3dc4; font-weight: 600; }
-.gql-name { color: #1864ab; }
-.gql-variable { color: #ae3ec9; }
-.gql-directive { color: #d6336c; }
-.gql-string { color: #c92a2a; }
-.gql-number { color: #2f9e44; }
-.gql-boolean { color: #2b8a3e; }
-.gql-null { color: #495057; font-style: italic; }
-.gql-comment { color: #868e96; font-style: italic; }
-.gql-punctuation { color: #495057; }
+/* Prism token styling — one palette drives both the single-column CodePane
+   and the two-column JsonDiff. GraphQL SDL and JSON both produce tokens
+   tagged `keyword`, `string`, `number`, `punctuation`, etc., so per-language
+   overrides live in the nearest `[data-language=...]` ancestor when they
+   need to diverge (e.g. the GraphQL `property` ≠ JSON `property`). */
+.token.keyword { color: #5f3dc4; font-weight: 600; }
+.token.builtin { color: #5f3dc4; }
+.token.class-name { color: #1864ab; }
+.token.attr-name { color: #1864ab; }
+.token.fragment { color: #1864ab; font-weight: 600; }
+.token.variable { color: #ae3ec9; }
+.token.atrule,
+.token.directive { color: #d6336c; }
+.token.string { color: #c92a2a; }
+.token.description { color: #868e96; font-style: italic; }
+.token.number { color: #2f9e44; }
+.token.boolean { color: #2b8a3e; }
+.token.null,
+.token.constant { color: #495057; font-style: italic; }
+.token.comment { color: #868e96; font-style: italic; }
+.token.punctuation { color: #495057; }
+.token.operator { color: #495057; }
+/* JSON `property` is the key on the left of a colon — readable as teal
+   here, matching the old `.json-key` hue. Override the class-name hue
+   above within a JSON pane since Prism also tags JSON property as
+   `attr-name` in some releases. */
+[data-language='json'] .token.property { color: #0b7285; }
+[data-language='json'] .token.attr-name { color: #0b7285; }
+[data-language='json'] .token.number { color: #5f3dc4; }
 .status-pill {
   display: inline-flex;
   align-items: center;
@@ -672,24 +689,30 @@ tr:hover td { background: var(--color-surface-alt); }
   color: #e67700;
 }
 
-/* ---- JSON diff ---- */
+/* ---- Code viewer (CodePane + JsonDiff) ----
 
+   Both the single-pane CodePane and the two-column JsonDiff share a common
+   layout: a header bar (uppercase label + actions slot) stacked over a
+   scrollable body. Lines inside the body are CSS grid rows with an auto
+   line-number gutter, so numbers stay aligned regardless of content length,
+   and a single scroll container owns the horizontal overflow (not each
+   line — that was the source of the per-line scrollbar bug). */
+
+.code-pane,
 .json-diff {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   border: 1px solid var(--color-border);
   border-radius: 8px;
   overflow: hidden;
   background: var(--color-bg);
 }
-.json-diff.json-diff-single {
-  grid-template-columns: minmax(0, 1fr);
-}
-.json-diff.json-diff-single > :nth-child(even) {
-  border-left: none;
-}
-.json-diff-header {
-  padding: 0.45rem 0.75rem;
+
+/* Header bar — shared between CodePane and JsonDiff column headers. */
+.code-pane-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
   background: var(--color-border-soft);
   border-bottom: 1px solid var(--color-border);
   font-size: 0.72rem;
@@ -698,51 +721,94 @@ tr:hover td { background: var(--color-surface-alt); }
   letter-spacing: 0.04em;
   color: #495057;
 }
-.json-diff-header + .json-diff-header { border-left: 1px solid var(--color-border); }
-
-/* Pane header variant with a right-aligned actions slot (e.g. copy button). */
-.code-pane-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
 .code-pane-actions {
   display: inline-flex;
   gap: 0.3rem;
+  align-items: center;
 }
-/* Scroll body when the pane opts in (e.g. the full-schema pane). */
-.json-diff.json-diff-scrollable .code-pane-body {
-  max-height: 420px;
-  overflow: auto;
+
+/* Body = vertical scroll container only. Long lines soft-wrap, so there's
+   no horizontal overflow and no per-line or pane-level horizontal
+   scrollbar. */
+.code-pane-body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--color-bg);
 }
-.json-diff-line {
-  min-width: 0;
-  padding: 0.12rem 0.75rem;
+.code-pane-body.is-scrollable { max-height: 420px; }
+
+.code-pre {
+  margin: 0;
+  padding: 0.35rem 0;
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  white-space: pre;
-  overflow-x: auto;
-  border-top: 1px solid #edf0f2;
+  background: transparent;
 }
-.json-diff > :nth-child(even) { border-left: 1px solid var(--color-border); }
 
+/* Each source line is a grid row: [line-number | content]. */
+.code-line {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  align-items: start;
+}
+.code-line-number {
+  padding: 0.05rem 0.65rem 0.05rem 0.5rem;
+  text-align: right;
+  color: var(--color-text-subtle);
+  user-select: none;
+  background: var(--color-bg);
+  border-right: 1px solid var(--color-border-soft);
+  font-variant-numeric: tabular-nums;
+}
+.code-line-content {
+  padding: 0.05rem 0.75rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Two-column JsonDiff layout — headers sit in one row, body below holds
+   both columns side-by-side. Soft-wrap keeps columns aligned without
+   horizontal scroll. */
+.json-diff-headers {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+.json-diff-headers .code-pane-header + .code-pane-header {
+  border-left: 1px solid var(--color-border);
+}
+.json-diff-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 420px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+/* Odd-indexed cells (the right column) get the divider. */
+.json-diff-body > :nth-child(even) {
+  border-left: 1px solid var(--color-border);
+}
+
+/* Single-column JsonDiff variant (JsonSingle). */
+.json-diff.json-diff-single .json-diff-headers { grid-template-columns: 1fr; }
+.json-diff-body.json-diff-body-single { grid-template-columns: 1fr; }
+.json-diff-body.json-diff-body-single > :nth-child(even) { border-left: none; }
+
+/* Diff row backgrounds — applied on the whole row (gutter included) so the
+   line-number cell shares the row's tint. */
 .diff-same { background: var(--color-bg); }
 .diff-empty { background: var(--color-surface-alt); }
 .diff-removed { background: #fff5f5; }
 .diff-added { background: #ebfbee; }
+.code-line.diff-removed .code-line-number { background: #fff5f5; }
+.code-line.diff-added .code-line-number { background: #ebfbee; }
+.code-line.diff-empty .code-line-number { background: var(--color-surface-alt); }
 
 .diff-char { border-radius: 3px; padding: 0 0.05rem; }
 .diff-char-removed { background: rgba(250, 82, 82, 0.18); }
 .diff-char-added { background: rgba(64, 192, 87, 0.2); }
-
-.json-key { color: #0b7285; }
-.json-string { color: #c92a2a; }
-.json-number { color: #5f3dc4; }
-.json-boolean { color: #2b8a3e; }
-.json-null { color: #495057; font-style: italic; }
 
 .detail-label {
   font-size: 0.75rem;
@@ -840,8 +906,10 @@ tr:hover td { background: var(--color-surface-alt); }
   .failure-response-grid {
     grid-template-columns: 1fr;
   }
-  .json-diff { grid-template-columns: 1fr; }
-  .json-diff > :nth-child(even) { border-left: none; }
+  .json-diff-headers { grid-template-columns: 1fr; }
+  .json-diff-headers .code-pane-header + .code-pane-header { border-left: none; }
+  .json-diff-body { grid-template-columns: 1fr; }
+  .json-diff-body > :nth-child(even) { border-left: none; }
   .zero-failures-card,
   .not-found-card {
     grid-template-columns: 1fr;

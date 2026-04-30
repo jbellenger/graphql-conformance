@@ -4,8 +4,7 @@ import {
   computeCharDiff,
   type DiffRow,
 } from '../lib/jsonDiff';
-import { tokenizeJsonText } from '../lib/jsonHighlight';
-import { JsonTokens } from './JsonTokens';
+import { renderPrismTokens, tokenizeLine } from '../lib/codeHighlight';
 
 export interface JsonDiffProps {
   expected: unknown;
@@ -17,7 +16,9 @@ export interface JsonDiffProps {
   actualActions?: ReactNode;
 }
 
-// Two-column diff view for (expected, actual) JSON values.
+// Two-column diff view for (expected, actual) JSON values. Long lines
+// soft-wrap so the two columns stay aligned without introducing horizontal
+// scroll.
 export function JsonDiff({
   expected,
   actual,
@@ -30,23 +31,28 @@ export function JsonDiff({
     [expected, actual],
   );
   const visible = maxRows == null ? rows : rows.slice(0, maxRows);
+
   return (
-    <div className="json-diff">
-      <div className="json-diff-header code-pane-header">
-        <span>Expected</span>
-        {expectedActions && (
-          <div className="code-pane-actions">{expectedActions}</div>
-        )}
+    <div className="json-diff" data-testid="json-diff">
+      <div className="json-diff-headers">
+        <div className="code-pane-header">
+          <span>Expected</span>
+          {expectedActions && (
+            <div className="code-pane-actions">{expectedActions}</div>
+          )}
+        </div>
+        <div className="code-pane-header">
+          <span>Actual</span>
+          {actualActions && (
+            <div className="code-pane-actions">{actualActions}</div>
+          )}
+        </div>
       </div>
-      <div className="json-diff-header code-pane-header">
-        <span>Actual</span>
-        {actualActions && (
-          <div className="code-pane-actions">{actualActions}</div>
-        )}
+      <div className="json-diff-body">
+        {visible.map((row, idx) => (
+          <DiffRowPair key={idx} row={row} lineNumber={idx + 1} />
+        ))}
       </div>
-      {visible.map((row, idx) => (
-        <DiffRowPair key={idx} row={row} />
-      ))}
     </div>
   );
 }
@@ -71,39 +77,59 @@ export function JsonSingle({
     [value],
   );
   const visible = maxRows == null ? lines : lines.slice(0, maxRows);
+
   return (
-    <div className="json-diff json-diff-single">
-      <div className="json-diff-header code-pane-header">
-        <span>{header}</span>
-        {actions && <div className="code-pane-actions">{actions}</div>}
-      </div>
-      {visible.map((line, idx) => (
-        <div key={idx} className="json-diff-line diff-same">
-          {line ? <JsonTokens tokens={tokenizeJsonText(line)} /> : ' '}
+    <div className="json-diff json-diff-single" data-testid="json-diff">
+      <div className="json-diff-headers">
+        <div className="code-pane-header">
+          <span>{header}</span>
+          {actions && <div className="code-pane-actions">{actions}</div>}
         </div>
-      ))}
+      </div>
+      <div className="json-diff-body json-diff-body-single">
+        {visible.map((line, idx) => (
+          <div key={idx} className="code-line diff-same">
+            <span className="code-line-number" aria-hidden="true">
+              {idx + 1}
+            </span>
+            <span className="code-line-content">
+              {line ? renderPrismTokens(tokenizeLine(line, 'json')) : ' '}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
 
-function DiffRowPair({ row }: { row: DiffRow }) {
+function DiffRowPair({ row, lineNumber }: { row: DiffRow; lineNumber: number }) {
   const leftClass = classForSide(row, 'left');
   const rightClass = classForSide(row, 'right');
   return (
     <>
-      <div className={`json-diff-line ${leftClass}`}>
-        <DiffLineContent
-          text={row.leftText}
-          otherText={row.rightText}
-          mode={row.mode === 'modified' ? 'modified-left' : row.mode}
-        />
+      <div className={`code-line ${leftClass}`}>
+        <span className="code-line-number" aria-hidden="true">
+          {lineNumber}
+        </span>
+        <span className="code-line-content">
+          <DiffLineContent
+            text={row.leftText}
+            otherText={row.rightText}
+            mode={row.mode === 'modified' ? 'modified-left' : row.mode}
+          />
+        </span>
       </div>
-      <div className={`json-diff-line ${rightClass}`}>
-        <DiffLineContent
-          text={row.rightText}
-          otherText={row.leftText}
-          mode={row.mode === 'modified' ? 'modified-right' : row.mode}
-        />
+      <div className={`code-line ${rightClass}`}>
+        <span className="code-line-number" aria-hidden="true">
+          {lineNumber}
+        </span>
+        <span className="code-line-content">
+          <DiffLineContent
+            text={row.rightText}
+            otherText={row.leftText}
+            mode={row.mode === 'modified' ? 'modified-right' : row.mode}
+          />
+        </span>
       </div>
     </>
   );
@@ -137,15 +163,15 @@ function DiffLineContent({
     const { prefix, changed, suffix } = computeCharDiff(text, otherText);
     return (
       <>
-        {prefix && <JsonTokens tokens={tokenizeJsonText(prefix)} />}
+        {prefix && renderPrismTokens(tokenizeLine(prefix, 'json'), 'p-')}
         {changed && (
           <span className={`diff-char diff-char-${variant}`}>
-            <JsonTokens tokens={tokenizeJsonText(changed)} />
+            {renderPrismTokens(tokenizeLine(changed, 'json'), 'c-')}
           </span>
         )}
-        {suffix && <JsonTokens tokens={tokenizeJsonText(suffix)} />}
+        {suffix && renderPrismTokens(tokenizeLine(suffix, 'json'), 's-')}
       </>
     );
   }
-  return <JsonTokens tokens={tokenizeJsonText(text)} />;
+  return <>{renderPrismTokens(tokenizeLine(text, 'json'))}</>;
 }
