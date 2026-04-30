@@ -39,6 +39,9 @@ defmodule ConformerAbsinthe do
   def resolve_abstract_type(%{__conformer_type_name: type_name}, _resolution), do: type_name
   def resolve_abstract_type(_, _resolution), do: nil
 
+  def serialize_scalar(value), do: value
+  def parse_scalar(value), do: {:ok, value}
+
   defp prepare_schema(schema_text) do
     {:ok, blueprint} = Absinthe.Phase.Parse.run(schema_text, [])
     definitions = blueprint.input.definitions
@@ -78,6 +81,16 @@ defmodule ConformerAbsinthe do
 
           def hydrate(%Absinthe.Blueprint.Schema.UnionTypeDefinition{}, _),
             do: [resolve_type: &ConformerAbsinthe.resolve_abstract_type/2]
+
+          def hydrate(%Absinthe.Blueprint.Schema.ScalarTypeDefinition{name: name}, _)
+              when name in ["Int", "Float", "String", "Boolean", "ID"],
+              do: []
+
+          def hydrate(%Absinthe.Blueprint.Schema.ScalarTypeDefinition{}, _),
+            do: [
+              serialize: &ConformerAbsinthe.serialize_scalar/1,
+              parse: &ConformerAbsinthe.parse_scalar/1
+            ]
 
           def hydrate(_, _), do: []
         end
@@ -281,7 +294,7 @@ defmodule ConformerAbsinthe do
 
     if directive_definition_complete?(Enum.reverse(updated) |> Enum.join("\n")) do
       {blank_lines, remainder} = take_blank_lines(rest, [])
-      {Enum.reverse(blank_lines, updated), remainder}
+      {Enum.reverse(updated, blank_lines), remainder}
     else
       take_directive_definition(rest, updated)
     end
