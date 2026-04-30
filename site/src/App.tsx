@@ -1,4 +1,4 @@
-import { HashRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import { Dashboard } from './routes/Dashboard';
 import { FailureDetail } from './routes/FailureDetail';
 import { ImplDetail } from './routes/ImplDetail';
@@ -7,7 +7,7 @@ import { REPO_URL } from './lib/repo';
 
 export function App() {
   return (
-    <HashRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <header className="site-header">
         <div className="site-header-inner">
           <h1>
@@ -45,7 +45,7 @@ export function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
