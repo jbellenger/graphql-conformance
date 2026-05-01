@@ -114,7 +114,7 @@ serve-site:
 	@$(DOCKER) rm -f $(SERVE_CONTAINER_NAME) >/dev/null 2>&1 || true
 	$(DOCKER_RUN) make -C /work _build-site
 	@printf 'Serving site at http://localhost:8000\n'
-	$(DOCKER_RUN_BASE) --name $(SERVE_CONTAINER_NAME) -p 8000:8000 $(IMAGE) python3 -u -m http.server 8000 -d /work/site/dist
+	$(DOCKER_RUN_BASE) --name $(SERVE_CONTAINER_NAME) -p 8000:8000 $(IMAGE) python3 -u /work/scripts/serve-site.py 8000 /work/site/dist
 
 ci-smoke:
 	$(DOCKER_RUN) make -C /work _ci-smoke
@@ -177,7 +177,7 @@ _build-site:
 
 _serve-site: _build-site
 	@printf 'Serving site at http://localhost:8000\n'
-	@exec python3 -m http.server 8000 -d site/dist
+	@exec python3 -u scripts/serve-site.py 8000 site/dist
 
 _ci-smoke:
 	$(MAKE) _build-smoke
