@@ -138,6 +138,7 @@ function FailureDetailView({
   const artifacts = useCorpusArtifacts(testCaseId);
   const implById = new Map(impls.map((i) => [i.id, i]));
   const reference = implById.get(run.referenceImplId);
+  const isReference = impl.id === run.referenceImplId;
   const failureListHref = `${implHref(runId, impl.id)}/failures`;
   const historySummary = summarizeOutcomes(history);
   // "All results for this test" covers every impl (reference included).
@@ -152,8 +153,21 @@ function FailureDetailView({
         implLabel(implById, b.implId),
       ),
     );
+  // "Failed Runs" for this (impl × test case). A reference's own failures
+  // carry the `excluded` status in the backend model (because they're
+  // excluded from differential testing for everyone else) — on the
+  // reference's own page we relabel them as failures so the pill and
+  // surrounding copy read uniformly with non-reference pages.
+  const failedRunStatuses: TestCaseOutcomeStatus[] = isReference
+    ? ['excluded']
+    : ['fail', 'error'];
   const failedRuns = history
-    .filter((outcome) => outcome.status === 'fail' || outcome.status === 'error')
+    .filter((outcome) => failedRunStatuses.includes(outcome.status))
+    .map((outcome) =>
+      isReference && outcome.status === 'excluded'
+        ? { ...outcome, status: 'fail' as const }
+        : outcome,
+    )
     .sort((a, b) => b.timestamp.localeCompare(a.timestamp));
 
   return (
@@ -164,8 +178,18 @@ function FailureDetailView({
 
       <section className="card failure-detail-title-card">
         <div className="failure-detail-title-head">
-          <StatusPill status={result.status} />
-          <h2>{impl.name}</h2>
+          {/* On the reference's own detail page, the backend's 'excluded'
+              status is really "the reference failed this test". Render it
+              as a failure from the reference's POV (other impls still see
+              it as an exclusion — that framing lives on non-reference
+              pages). */}
+          <StatusPill status={isReference ? 'fail' : result.status} />
+          <h2>
+            {impl.name}
+            {isReference && (
+              <span className="reference-pill inline-pill">Reference</span>
+            )}
+          </h2>
         </div>
         <div className="failure-detail-fields">
           <LabeledField label="Test Case" mono>{testCaseId}</LabeledField>
@@ -177,32 +201,54 @@ function FailureDetailView({
             <ImplVersion impl={impl} />
           </LabeledField>
         </div>
+        {isReference && (
+          <div className="reference-note">
+            Failing tests are excluded from conformance testing.
+          </div>
+        )}
       </section>
 
-      <div className="failure-response-grid">
+      {isReference ? (
         <ResponseSection
-          title="Expected Response"
+          title="Response"
           subtitle={
             <>
-              {reference?.name ?? run.referenceImplId}
+              {impl.name}
               <span className="reference-pill inline-pill">Reference</span>
             </>
           }
-          header="Expected"
-          hasValue={hasResultField(result, 'expected')}
-          value={result.expected}
-          empty="No reference response was captured for this result."
-        />
-        <ResponseSection
-          title="Actual Response"
-          subtitle={impl.name}
-          header="Actual"
+          header="Response"
           hasValue={hasResultField(result, 'actual')}
           value={result.actual}
           empty="No response recorded"
           extra={<ErrorOrStderrBlock result={result} />}
         />
-      </div>
+      ) : (
+        <div className="failure-response-grid">
+          <ResponseSection
+            title="Expected Response"
+            subtitle={
+              <>
+                {reference?.name ?? run.referenceImplId}
+                <span className="reference-pill inline-pill">Reference</span>
+              </>
+            }
+            header="Expected"
+            hasValue={hasResultField(result, 'expected')}
+            value={result.expected}
+            empty="No reference response was captured for this result."
+          />
+          <ResponseSection
+            title="Actual Response"
+            subtitle={impl.name}
+            header="Actual"
+            hasValue={hasResultField(result, 'actual')}
+            value={result.actual}
+            empty="No response recorded"
+            extra={<ErrorOrStderrBlock result={result} />}
+          />
+        </div>
+      )}
 
       <TestInputSection
         loading={artifacts.isLoading}
@@ -214,11 +260,21 @@ function FailureDetailView({
         <section className="card detail-section-card failure-history-card chart-card">
           <div className="detail-section-header">
             <h3>History</h3>
-            <p>{formatRateSummary(historySummary, 'scored runs')}</p>
+            <p>
+              {isReference
+                ? formatReferenceRateSummary(historySummary)
+                : formatRateSummary(historySummary, 'scored runs')}
+            </p>
           </div>
-          <RateSummary summary={historySummary} />
+          <RateSummary
+            summary={historySummary}
+            referenceMode={isReference}
+          />
           <div className="chart-container">
-            <TestCaseHistoryChart history={history} />
+            <TestCaseHistoryChart
+              history={history}
+              referenceMode={isReference}
+            />
           </div>
         </section>
         <div className="runs-history-slot">
@@ -231,20 +287,23 @@ function FailureDetailView({
         </div>
       </div>
 
-      <section className="card detail-section-card failure-peer-card">
-        <div className="detail-section-header">
-          <h3>All Results For This Test</h3>
-          <p>{formatPeerRateSummary(peerSummary)}</p>
-        </div>
-        <RateSummary summary={peerSummary} />
-        <PeerOutcomeTable
-          outcomes={peerOutcomes}
-          implById={implById}
-          runId={runId}
-          testCaseId={testCaseId}
-          currentImplId={impl.id}
-        />
-      </section>
+      {!isReference && (
+        <section className="card detail-section-card failure-peer-card">
+          <div className="detail-section-header">
+            <h3>All Results For This Test</h3>
+            <p>{formatPeerRateSummary(peerSummary)}</p>
+          </div>
+          <RateSummary summary={peerSummary} />
+          <PeerOutcomeTable
+            outcomes={peerOutcomes}
+            implById={implById}
+            runId={runId}
+            testCaseId={testCaseId}
+            currentImplId={impl.id}
+            referenceImplId={run.referenceImplId}
+          />
+        </section>
+      )}
     </div>
   );
 }
@@ -377,16 +436,28 @@ function ResponseSection({
 // Mirrors the dashboard's reference/impl-row presentation: big percentage,
 // small stats subtext, full-width bar — stacked rather than a 3-column row.
 // Uses the shared `PassRateBar` so tone thresholds stay in sync.
-function RateSummary({ summary }: { summary: OutcomeSummary }) {
-  const pct = summary.passPct;
+function RateSummary({
+  summary,
+  referenceMode = false,
+}: {
+  summary: OutcomeSummary;
+  // In reference-impl context, `excluded` outcomes *are* the reference's
+  // own failures. Fold them into the failed count (instead of leaving them
+  // as "not scored") and compute the percentage over pass+excluded.
+  referenceMode?: boolean;
+}) {
+  const pct = referenceMode ? referencePassPct(summary) : summary.passPct;
   return (
     <div className="failure-rate-summary">
       <div className="pass-rate-value">
         {pct == null ? 'n/a' : `${pct.toFixed(1)}%`}
       </div>
       <div className="pass-rate-meta">
-        {summary.passed} passed · {summary.failed} failed
-        {summary.unscored > 0 ? ` · ${summary.unscored} not scored` : ''}
+        {referenceMode
+          ? `${summary.passed} passed · ${summary.excluded} failed`
+          : `${summary.passed} passed · ${summary.failed} failed${
+              summary.unscored > 0 ? ` · ${summary.unscored} not scored` : ''
+            }`}
       </div>
       <div className="full-width-bar">
         <PassRateBar passPct={pct ?? 0} />
@@ -501,12 +572,14 @@ function PeerOutcomeTable({
   runId,
   testCaseId,
   currentImplId,
+  referenceImplId,
 }: {
   outcomes: TestCaseOutcome[];
   implById: Map<string, Impl>;
   runId: string | undefined;
   testCaseId: string;
   currentImplId: string;
+  referenceImplId: string;
 }) {
   if (outcomes.length === 0) {
     return (
@@ -527,6 +600,15 @@ function PeerOutcomeTable({
         <tbody>
           {outcomes.map((outcome) => {
             const isCurrent = outcome.implId === currentImplId;
+            const isReference = outcome.implId === referenceImplId;
+            const label = implLabel(implById, outcome.implId);
+            const nameNode = isCurrent ? (
+              <span className="failure-peer-current-label">{label}</span>
+            ) : (
+              <Link to={peerOutcomeHref(runId, outcome, testCaseId)}>
+                {label}
+              </Link>
+            );
             return (
               <tr
                 key={outcome.implId}
@@ -534,14 +616,9 @@ function PeerOutcomeTable({
                 aria-current={isCurrent ? 'true' : undefined}
               >
                 <td>
-                  {isCurrent ? (
-                    <span className="failure-peer-current-label">
-                      {implLabel(implById, outcome.implId)}
-                    </span>
-                  ) : (
-                    <Link to={peerOutcomeHref(runId, outcome, testCaseId)}>
-                      {implLabel(implById, outcome.implId)}
-                    </Link>
+                  {nameNode}
+                  {isReference && (
+                    <span className="reference-pill inline-pill">Reference</span>
                   )}
                 </td>
                 <td>
@@ -634,6 +711,25 @@ function summarizeOutcomes(outcomes: TestCaseOutcome[]): OutcomeSummary {
 function formatRateSummary(summary: OutcomeSummary, noun: string): string {
   if (summary.scored === 0) return `No ${noun} for this test case.`;
   return `${summary.passed} of ${summary.scored} ${noun} passed.`;
+}
+
+// Reference impl's pass rate is taken over pass+excluded (the only two
+// outcomes the reference produces). On the reference's own pages,
+// `excluded` is the reference's failure — render it with failure language.
+function referenceTotal(summary: OutcomeSummary): number {
+  return summary.passed + summary.excluded;
+}
+
+function referencePassPct(summary: OutcomeSummary): number | null {
+  const total = referenceTotal(summary);
+  if (total === 0) return null;
+  return Math.round((summary.passed / total) * 1000) / 10;
+}
+
+function formatReferenceRateSummary(summary: OutcomeSummary): string {
+  const total = referenceTotal(summary);
+  if (total === 0) return 'No runs for this test case.';
+  return `${summary.passed} of ${total} runs passed.`;
 }
 
 function formatPeerRateSummary(summary: OutcomeSummary): string {

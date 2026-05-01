@@ -1,6 +1,6 @@
 import type { KeyboardEvent, MouseEvent } from 'react';
-import { useEffect, useMemo, useRef } from 'react';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useMemo } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import {
   useImpl,
   useImplHistory,
@@ -23,7 +23,6 @@ const RECENT_RUNS_LIMIT = 20;
 
 export function ImplDetail() {
   const { name, testCaseId, runId } = useParams();
-  const location = useLocation();
   const impls = useImpls();
   const impl = useImpl(name ?? '');
   const runQuery = useRunOrLatest(runId);
@@ -33,34 +32,24 @@ export function ImplDetail() {
     implId: name,
   });
 
-  const failuresRef = useRef<HTMLElement>(null);
-
-  // Scroll to the failures section when the route includes /failures. Fires
-  // any time the pathname becomes /failures (including in-page navigation
-  // like clicking the "Failed" meta card when already on the impl page) or
-  // when the results shard finishes loading. If a testCaseId is present,
-  // scroll to that specific card instead of the section header.
+  // Deep links to a specific failing test (/failures/:testCaseId) scroll
+  // that card into view once the data is ready. The bare /failures route is
+  // intentionally not auto-scrolled — users clicking "Back to failures" from
+  // a detail page found the post-load jump disorienting.
   useEffect(() => {
     const ready =
       impls.data && impl.data && runQuery.data && results.data !== undefined;
     if (!ready) return;
-    if (!/\/failures/.test(location.pathname)) return;
+    if (!testCaseId) return;
 
     requestAnimationFrame(() => {
-      if (testCaseId) {
-        const card = document.querySelector(
-          `[data-test-case-id="${CSS.escape(testCaseId)}"]`,
-        );
-        if (card instanceof HTMLElement) {
-          card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          card.focus?.();
-          return;
-        }
+      const card = document.querySelector(
+        `[data-test-case-id="${CSS.escape(testCaseId)}"]`,
+      );
+      if (card instanceof HTMLElement) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        card.focus?.();
       }
-      failuresRef.current?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
     });
   }, [
     impls.data,
@@ -68,7 +57,6 @@ export function ImplDetail() {
     runQuery.data,
     results.data,
     testCaseId,
-    location.pathname,
   ]);
 
   if (!name) {
@@ -118,7 +106,6 @@ export function ImplDetail() {
       history={history.data ?? []}
       results={results.data ?? []}
       highlightedTestCaseId={testCaseId}
-      failuresRef={failuresRef}
     />
   );
 }
@@ -130,7 +117,6 @@ interface ImplDetailViewProps {
   history: ImplHistoryPoint[];
   results: Result[];
   highlightedTestCaseId?: string;
-  failuresRef: React.RefObject<HTMLElement | null>;
 }
 
 // Prefix that preserves the pinned-run URL segment when one is present; empty
@@ -157,7 +143,6 @@ function ImplDetailView({
   history,
   results,
   highlightedTestCaseId,
-  failuresRef,
 }: ImplDetailViewProps) {
   const stats = computeRunStats(run, impl);
   const isReference = impl.id === run.referenceImplId;
@@ -265,17 +250,12 @@ function ImplDetailView({
       )}
 
       {hasItems ? (
-        <section
-          id="failures"
-          ref={failuresRef}
-          className="card detail-section-card"
-        >
+        <section className="card detail-section-card">
           <div className="detail-section-header">
-            <h3>{isReference ? 'Excluded Tests' : 'Failing Tests'}</h3>
+            <h3>Failing Tests</h3>
             <p>
-              {byStatus.length}{' '}
-              {isReference ? 'exclusion' : 'failure'}
-              {byStatus.length === 1 ? '' : 's'} in this run.
+              {byStatus.length} failure{byStatus.length === 1 ? '' : 's'} in
+              this run.
             </p>
           </div>
           <div className="failure-list">
