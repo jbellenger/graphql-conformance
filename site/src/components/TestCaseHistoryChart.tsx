@@ -12,6 +12,11 @@ import type { TestCaseOutcome } from '../lib/testCaseOutcomes';
 
 export interface TestCaseHistoryChartProps {
   history: TestCaseOutcome[];
+  // Reference-impl variant. In the default (differential) view, `excluded`
+  // outcomes are unscored and plot as gaps. For the reference's own page,
+  // `excluded` means the reference itself failed — plot those as 0% so the
+  // history reads as pass/fail over time.
+  referenceMode?: boolean;
 }
 
 interface ChartDatum {
@@ -21,7 +26,10 @@ interface ChartDatum {
   outcome: string;
 }
 
-export function TestCaseHistoryChart({ history }: TestCaseHistoryChartProps) {
+export function TestCaseHistoryChart({
+  history,
+  referenceMode = false,
+}: TestCaseHistoryChartProps) {
   const data = useMemo<ChartDatum[]>(() => {
     return [...history]
       .sort((a, b) => a.timestamp.localeCompare(b.timestamp))
@@ -31,12 +39,16 @@ export function TestCaseHistoryChart({ history }: TestCaseHistoryChartProps) {
         passPct:
           point.status === 'pass'
             ? 100
-            : point.status === 'excluded' || point.status === 'skipped'
-              ? null
-              : 0,
-        outcome: formatOutcome(point.status),
+            : point.status === 'excluded'
+              ? referenceMode
+                ? 0
+                : null
+              : point.status === 'skipped'
+                ? null
+                : 0,
+        outcome: formatOutcome(point.status, referenceMode),
       }));
-  }, [history]);
+  }, [history, referenceMode]);
 
   if (data.length === 0) return null;
 
@@ -113,10 +125,15 @@ function formatFull(isoTimestamp: string): string {
   return d.toLocaleString();
 }
 
-function formatOutcome(status: TestCaseOutcome['status']): string {
+function formatOutcome(
+  status: TestCaseOutcome['status'],
+  referenceMode: boolean,
+): string {
   if (status === 'pass') return 'Passed';
   if (status === 'fail') return 'Failed';
   if (status === 'error') return 'Errored';
   if (status === 'skipped') return 'Not scored';
-  return 'Excluded';
+  // `excluded` for the reference's own view is a failure — everyone else
+  // sees it as an exclusion.
+  return referenceMode ? 'Failed' : 'Excluded';
 }

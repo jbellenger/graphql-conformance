@@ -825,4 +825,168 @@ describe('FailureDetail', () => {
     expect(within(actual).getByText('stderr')).toBeInTheDocument();
     expect(within(actual).getByText('noisy dump')).toBeInTheDocument();
   });
+
+  it('tags the reference impl in the peer table with a Reference pill', async () => {
+    renderAt(
+      '/runs/run-1/impl/graphql-java/failures/schema%2Fquery%2Fvars',
+      makeRepo(),
+    );
+    const peerHeading = await screen.findByRole('heading', {
+      name: 'All Results For This Test',
+    });
+    const peerCard = peerHeading.closest('.failure-peer-card') as HTMLElement;
+    const refRow = within(peerCard)
+      .getByText('graphql-js-17')
+      .closest('tr') as HTMLElement;
+    expect(
+      within(refRow).getByText('Reference', { selector: '.reference-pill' }),
+    ).toBeInTheDocument();
+    // Non-reference rows don't get the pill.
+    const javaRow = within(peerCard)
+      .getByText('graphql-java')
+      .closest('tr') as HTMLElement;
+    expect(
+      within(javaRow).queryByText('Reference', { selector: '.reference-pill' }),
+    ).toBeNull();
+  });
+
+  describe('when the failure is for the reference impl', () => {
+    function renderReferencePage() {
+      const runId = 'run-ref';
+      const repo = new FakeRepository({
+        impls: [
+          { id: 'graphql-js-17', name: 'graphql-js-17', language: 'JavaScript' },
+          { id: 'graphql-java', name: 'graphql-java', language: 'Java' },
+        ],
+        runs: [
+          {
+            id: runId,
+            timestamp: '2026-04-24T12:00:00Z',
+            referenceImplId: 'graphql-js-17',
+            implIds: ['graphql-js-17', 'graphql-java'],
+            excluded: 1,
+            resultsByImpl: {
+              'graphql-js-17': implRunResults('graphql-js-17', {
+                total: 1,
+                passed: 0,
+              }),
+              'graphql-java': implRunResults('graphql-java', {
+                total: 1,
+                passed: 1,
+              }),
+            },
+          },
+        ],
+        results: [
+          {
+            id: 'ref-excl',
+            runId,
+            implId: 'graphql-js-17',
+            testCaseId,
+            status: 'excluded',
+            actual: { errors: [{ message: 'schema load crash' }] },
+          },
+        ],
+      });
+      return renderAt(
+        `/runs/${runId}/impl/graphql-js-17/failures/schema%2Fquery%2Fvars`,
+        repo,
+      );
+    }
+
+    it('shows the Reference pill next to the impl name in the title card', async () => {
+      renderReferencePage();
+      const h2 = await screen.findByRole('heading', {
+        name: /graphql-js-17/,
+        level: 2,
+      });
+      expect(
+        within(h2).getByText('Reference', { selector: '.reference-pill' }),
+      ).toBeInTheDocument();
+    });
+
+    it('shows the conformance-exclusion note in the title card', async () => {
+      renderReferencePage();
+      const titleCard = (await screen
+        .findByRole('heading', { name: /graphql-js-17/, level: 2 }))
+        .closest('.failure-detail-title-card') as HTMLElement;
+      expect(
+        within(titleCard).getByText(
+          /excluded from conformance testing/i,
+        ),
+      ).toBeInTheDocument();
+    });
+
+    it('renders a single "Response" card instead of Expected/Actual', async () => {
+      renderReferencePage();
+      await screen.findByRole('heading', { name: /graphql-js-17/, level: 2 });
+      expect(
+        screen.getByRole('heading', { name: 'Response', level: 3 }),
+      ).toBeInTheDocument();
+      expect(
+        screen.queryByRole('heading', { name: 'Expected Response' }),
+      ).toBeNull();
+      expect(
+        screen.queryByRole('heading', { name: 'Actual Response' }),
+      ).toBeNull();
+    });
+
+    it('hides the All Results card but keeps History and Failed Runs', async () => {
+      renderReferencePage();
+      await screen.findByRole('heading', { name: /graphql-js-17/, level: 2 });
+      expect(
+        screen.getByRole('heading', { name: 'History' }),
+      ).toBeInTheDocument();
+      // From the reference's own POV the label is still "Failed Runs" — the
+      // "excluded" framing lives on non-reference pages.
+      expect(
+        screen.getByRole('heading', { name: 'Failed Runs' }),
+      ).toBeInTheDocument();
+      expect(
+        screen.queryByRole('heading', { name: 'Excluded Runs' }),
+      ).toBeNull();
+      // Peer card ("All Results") has no story to tell on a reference page.
+      expect(
+        screen.queryByRole('heading', { name: 'All Results For This Test' }),
+      ).toBeNull();
+    });
+
+    it('renders the top status pill as "Failed" (not "Excluded")', async () => {
+      renderReferencePage();
+      const h2 = await screen.findByRole('heading', {
+        name: /graphql-js-17/,
+        level: 2,
+      });
+      const head = h2.closest('.failure-detail-title-head') as HTMLElement;
+      const pill = head.querySelector('.status-pill') as HTMLElement;
+      expect(pill.className).toMatch(/status-pill-fail/);
+      expect(pill.className).not.toMatch(/status-pill-excluded/);
+      expect(pill.textContent).toBe('Failed');
+    });
+
+    it('populates the History summary using failure wording (passed/failed)', async () => {
+      renderReferencePage();
+      const heading = await screen.findByRole('heading', { name: 'History' });
+      const card = heading.closest('.failure-history-card') as HTMLElement;
+      // One run, reference failed → 0 passed / 1 total in reference view.
+      expect(within(card).getByText('0 of 1 runs passed.')).toBeInTheDocument();
+      expect(within(card).getByText('0 passed · 1 failed')).toBeInTheDocument();
+    });
+
+    it('lists failed runs in the Failed Runs table with a FAILED pill', async () => {
+      renderReferencePage();
+      const heading = await screen.findByRole('heading', {
+        name: 'Failed Runs',
+      });
+      const card = heading.closest('.runs-history-card') as HTMLElement;
+      const row = within(card).getByTestId('failure-runs-row-run-ref');
+      expect(row).toBeInTheDocument();
+      expect(within(card).getByText('1 run with failures'))
+        .toBeInTheDocument();
+      // Row pill renders as FAILED (not EXCLUDED) on the reference's page.
+      const pill = row.querySelector('.status-pill') as HTMLElement;
+      expect(pill.className).toMatch(/status-pill-fail/);
+      expect(pill.textContent).toBe('Failed');
+    });
+  });
 });
