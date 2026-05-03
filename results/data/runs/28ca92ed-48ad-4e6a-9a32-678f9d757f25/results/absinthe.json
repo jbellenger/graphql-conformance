@@ -1,0 +1,178 @@
+[
+  {
+    "id": "f6a3dbfe-8901-4038-8054-c30493917fa4",
+    "runId": "28ca92ed-48ad-4e6a-9a32-678f9d757f25",
+    "implId": "absinthe",
+    "testCaseId": "03573f34/2e32a08b/08277c86",
+    "status": "error",
+    "expected": {
+      "data": {
+        "__typename": "Object_lpJFn",
+        "H3Nl_": "Object_lpJFn",
+        "puaq39dlg": {
+          "deWZL": "XtCw_c"
+        }
+      }
+    },
+    "error": "no function clause matching in Absinthe.Blueprint.Directive.placement/1",
+    "stderr": "{\"errors\":[{\"message\":\"no function clause matching in Absinthe.Blueprint.Directive.placement/1\"}]}"
+  },
+  {
+    "id": "591a7ca1-f8ac-4e54-8f81-7c96b11fb743",
+    "runId": "28ca92ed-48ad-4e6a-9a32-678f9d757f25",
+    "implId": "absinthe",
+    "testCaseId": "03573f34/2e32a08b/179ab86c",
+    "status": "error",
+    "expected": {
+      "data": {
+        "__typename": "Object_lpJFn",
+        "H3Nl_": "Object_lpJFn",
+        "puaq39dlg": {
+          "deWZL": "XtCw_c"
+        }
+      }
+    },
+    "error": "no function clause matching in Absinthe.Blueprint.Directive.placement/1",
+    "stderr": "{\"errors\":[{\"message\":\"no function clause matching in Absinthe.Blueprint.Directive.placement/1\"}]}"
+  },
+  {
+    "id": "e6305c71-b546-4590-8c92-6676325f865c",
+    "runId": "28ca92ed-48ad-4e6a-9a32-678f9d757f25",
+    "implId": "absinthe",
+    "testCaseId": "067e429f/104a4553/44136fa3",
+    "status": "error",
+    "expected": {
+      "data": {
+        "__typename": "Object_U92jm3n0Y"
+      }
+    },
+    "error": "Compilation failed:\n---------------------------------------\n## Locations\nnofile:0\n\nField name \"__yyo2pb\" starts with two leading underscores.\n\nType system artifacts must not begin with two leading underscores.\n\n> GraphQL type system authors must not define any types, fields, arguments,\n> or any other type system artifact with two leading underscores.\n\nReference: https://github.com/facebook/graphql/blob/master/spec/Section%204%20--%20Introspection.md#naming-conventions\n\n",
+    "stderr": "{\"errors\":[{\"message\":\"Compilation failed:\\n---------------------------------------\\n## Locations\\nnofile:0\\n\\nField name \\\"__yyo2pb\\\" starts with two leading underscores.\\n\\nType system artifacts must not begin with two leading underscores.\\n\\n> GraphQL type system authors must not define any types, fields, arguments,\\n> or any other type system artifact with two leading underscores.\\n\\nReference: https://github.com/facebook/graphql/blob/master/spec/Section%204%20--%20Introspection.md#naming-conventions\\n\\n\"}]}"
+  },
+  {
+    "id": "94d501f3-5ec8-4a8b-8197-83688a8c7575",
+    "runId": "28ca92ed-48ad-4e6a-9a32-678f9d757f25",
+    "implId": "absinthe",
+    "testCaseId": "067e429f/2edf4c47/40f37770",
+    "status": "error",
+    "expected": {
+      "data": {
+        "pWI9NE8VQ": {
+          "cgu": "str"
+        },
+        "cgu": "str",
+        "__typename": "Object_U92jm3n0Y"
+      }
+    },
+    "error": "Compilation failed:\n---------------------------------------\n## Locations\nnofile:0\n\nField name \"__yyo2pb\" starts with two leading underscores.\n\nType system artifacts must not begin with two leading underscores.\n\n> GraphQL type system authors must not define any types, fields, arguments,\n> or any other type system artifact with two leading underscores.\n\nReference: https://github.com/facebook/graphql/blob/master/spec/Section%204%20--%20Introspection.md#naming-conventions\n\n",
+    "stderr": "{\"errors\":[{\"message\":\"Compilation failed:\\n---------------------------------------\\n## Locations\\nnofile:0\\n\\nField name \\\"__yyo2pb\\\" starts with two leading underscores.\\n\\nType system artifacts must not begin with two leading underscores.\\n\\n> GraphQL type system authors must not define any types, fields, arguments,\\n> or any other type system artifact with two leading underscores.\\n\\nReference: https://github.com/facebook/graphql/blob/master/spec/Section%204%20--%20Introspection.md#naming-conventions\\n\\n\"}]}"
+  },
+  {
+    "id": "f9f6f130-effe-49aa-8ea1-7e0a63e05129",
+    "runId": "28ca92ed-48ad-4e6a-9a32-678f9d757f25",
+    "implId": "absinthe",
+    "testCaseId": "067e429f/2edf4c47/f444c2b7",
+    "status": "error",
+    "expected": {
+      "data": {
+        "pWI9NE8VQ": {},
+        "cgu": "str",
+        "__typename": "Object_U92jm3n0Y"
+      }
+    },
+    "error": "Compilation failed:\n---------------------------------------\n## Locations\nnofile:0\n\nField name \"__yyo2pb\" starts with two leading underscores.\n\nType system artifacts must not begin with two leading underscores.\n\n> GraphQL type system authors must not define any types, fields, arguments,\n> or any other type system artifact with two leading underscores.\n\nReference: https://github.com/facebook/graphql/blob/master/spec/Section%204%20--%20Introspection.md#naming-conventions\n\n",
+    "stderr": "{\"errors\":[{\"message\":\"Compilation failed:\\n---------------------------------------\\n## Locations\\nnofile:0\\n\\nField name \\\"__yyo2pb\\\" starts with two leading underscores.\\n\\nType system artifacts must not begin with two leading underscores.\\n\\n> GraphQL type system authors must not define any types, fields, arguments,\\n> or any other type system artifact with two leading underscores.\\n\\nReference: https://github.com/facebook/graphql/blob/master/spec/Section%204%20--%20Introspection.md#naming-conventions\\n\\n\"}]}"
+  },
+  {
+    "id": "20d7fd03-ae87-4ec0-8831-43688a9fb193",
+    "runId": "28ca92ed-48ad-4e6a-9a32-678f9d757f25",
+    "implId": "absinthe",
+    "testCaseId": "067e429f/32346071/44136fa3",
+    "status": "error",
+    "expected": {
+      "data": {}
+    },
+    "error": "Compilation failed:\n---------------------------------------\n## Locations\nnofile:0\n\nField name \"__yyo2pb\" starts with two leading underscores.\n\nType system artifacts must not begin with two leading underscores.\n\n> GraphQL type system authors must not define any types, fields, arguments,\n> or any other type system artifact with two leading underscores.\n\nReference: https://github.com/facebook/graphql/blob/master/spec/Section%204%20--%20Introspection.md#naming-conventions\n\n",
+    "stderr": "{\"errors\":[{\"message\":\"Compilation failed:\\n---------------------------------------\\n## Locations\\nnofile:0\\n\\nField name \\\"__yyo2pb\\\" starts with two leading underscores.\\n\\nType system artifacts must not begin with two leading underscores.\\n\\n> GraphQL type system authors must not define any types, fields, arguments,\\n> or any other type system artifact with two leading underscores.\\n\\nReference: https://github.com/facebook/graphql/blob/master/spec/Section%204%20--%20Introspection.md#naming-conventions\\n\\n\"}]}"
+  },
+  {
+    "id": "2b638611-b3c4-4656-8831-f7cc11be2992",
+    "runId": "28ca92ed-48ad-4e6a-9a32-678f9d757f25",
+    "implId": "absinthe",
+    "testCaseId": "067e429f/53dcaa6b/44136fa3",
+    "status": "error",
+    "expected": {
+      "data": {
+        "__typename": "Object_U92jm3n0Y",
+        "pWI9NE8VQ": {
+          "__typename": "Object_U92jm3n0Y"
+        }
+      }
+    },
+    "error": "Compilation failed:\n---------------------------------------\n## Locations\nnofile:0\n\nField name \"__yyo2pb\" starts with two leading underscores.\n\nType system artifacts must not begin with two leading underscores.\n\n> GraphQL type system authors must not define any types, fields, arguments,\n> or any other type system artifact with two leading underscores.\n\nReference: https://github.com/facebook/graphql/blob/master/spec/Section%204%20--%20Introspection.md#naming-conventions\n\n",
+    "stderr": "{\"errors\":[{\"message\":\"Compilation failed:\\n---------------------------------------\\n## Locations\\nnofile:0\\n\\nField name \\\"__yyo2pb\\\" starts with two leading underscores.\\n\\nType system artifacts must not begin with two leading underscores.\\n\\n> GraphQL type system authors must not define any types, fields, arguments,\\n> or any other type system artifact with two leading underscores.\\n\\nReference: https://github.com/facebook/graphql/blob/master/spec/Section%204%20--%20Introspection.md#naming-conventions\\n\\n\"}]}"
+  },
+  {
+    "id": "e2864cca-9832-4930-8c09-5c849664e52d",
+    "runId": "28ca92ed-48ad-4e6a-9a32-678f9d757f25",
+    "implId": "absinthe",
+    "testCaseId": "067e429f/5989b27f/211a8742",
+    "status": "error",
+    "expected": {
+      "data": {
+        "cgu": "str",
+        "YQJ1O9": {
+          "E": {
+            "XT00gnpI": "Object_U92jm3n0Y"
+          },
+          "cgu": "str",
+          "gVMW": "Object_U92jm3n0Y"
+        }
+      }
+    },
+    "error": "Compilation failed:\n---------------------------------------\n## Locations\nnofile:0\n\nField name \"__yyo2pb\" starts with two leading underscores.\n\nType system artifacts must not begin with two leading underscores.\n\n> GraphQL type system authors must not define any types, fields, arguments,\n> or any other type system artifact with two leading underscores.\n\nReference: https://github.com/facebook/graphql/blob/master/spec/Section%204%20--%20Introspection.md#naming-conventions\n\n",
+    "stderr": "{\"errors\":[{\"message\":\"Compilation failed:\\n---------------------------------------\\n## Locations\\nnofile:0\\n\\nField name \\\"__yyo2pb\\\" starts with two leading underscores.\\n\\nType system artifacts must not begin with two leading underscores.\\n\\n> GraphQL type system authors must not define any types, fields, arguments,\\n> or any other type system artifact with two leading underscores.\\n\\nReference: https://github.com/facebook/graphql/blob/master/spec/Section%204%20--%20Introspection.md#naming-conventions\\n\\n\"}]}"
+  },
+  {
+    "id": "6ba00d35-6919-4910-89ef-7f3598828aef",
+    "runId": "28ca92ed-48ad-4e6a-9a32-678f9d757f25",
+    "implId": "absinthe",
+    "testCaseId": "067e429f/5989b27f/2eb49031",
+    "status": "error",
+    "expected": {
+      "data": {
+        "cgu": "str",
+        "YQJ1O9": {
+          "E": {
+            "XT00gnpI": "Object_U92jm3n0Y"
+          },
+          "cgu": "str",
+          "gVMW": "Object_U92jm3n0Y"
+        }
+      }
+    },
+    "error": "Compilation failed:\n---------------------------------------\n## Locations\nnofile:0\n\nField name \"__yyo2pb\" starts with two leading underscores.\n\nType system artifacts must not begin with two leading underscores.\n\n> GraphQL type system authors must not define any types, fields, arguments,\n> or any other type system artifact with two leading underscores.\n\nReference: https://github.com/facebook/graphql/blob/master/spec/Section%204%20--%20Introspection.md#naming-conventions\n\n",
+    "stderr": "{\"errors\":[{\"message\":\"Compilation failed:\\n---------------------------------------\\n## Locations\\nnofile:0\\n\\nField name \\\"__yyo2pb\\\" starts with two leading underscores.\\n\\nType system artifacts must not begin with two leading underscores.\\n\\n> GraphQL type system authors must not define any types, fields, arguments,\\n> or any other type system artifact with two leading underscores.\\n\\nReference: https://github.com/facebook/graphql/blob/master/spec/Section%204%20--%20Introspection.md#naming-conventions\\n\\n\"}]}"
+  },
+  {
+    "id": "397c0cea-26dc-4c6c-8883-98577477a64a",
+    "runId": "28ca92ed-48ad-4e6a-9a32-678f9d757f25",
+    "implId": "absinthe",
+    "testCaseId": "067e429f/5989b27f/b0443fa6",
+    "status": "error",
+    "expected": {
+      "data": {
+        "cgu": "str",
+        "YQJ1O9": {
+          "E": {
+            "XT00gnpI": "Object_U92jm3n0Y"
+          },
+          "cgu": "str",
+          "gVMW": "Object_U92jm3n0Y"
+        }
+      }
+    },
+    "error": "Compilation failed:\n---------------------------------------\n## Locations\nnofile:0\n\nField name \"__yyo2pb\" starts with two leading underscores.\n\nType system artifacts must not begin with two leading underscores.\n\n> GraphQL type system authors must not define any types, fields, arguments,\n> or any other type system artifact with two leading underscores.\n\nReference: https://github.com/facebook/graphql/blob/master/spec/Section%204%20--%20Introspection.md#naming-conventions\n\n",
+    "stderr": "{\"errors\":[{\"message\":\"Compilation failed:\\n---------------------------------------\\n## Locations\\nnofile:0\\n\\nField name \\\"__yyo2pb\\\" starts with two leading underscores.\\n\\nType system artifacts must not begin with two leading underscores.\\n\\n> GraphQL type system authors must not define any types, fields, arguments,\\n> or any other type system artifact with two leading underscores.\\n\\nReference: https://github.com/facebook/graphql/blob/master/spec/Section%204%20--%20Introspection.md#naming-conventions\\n\\n\"}]}"
+  }
+]
