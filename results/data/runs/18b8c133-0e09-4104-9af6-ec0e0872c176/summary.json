@@ -1,0 +1,240 @@
+{
+  "id": "18b8c133-0e09-4104-9af6-ec0e0872c176",
+  "timestamp": "2026-05-09T13:03:29.822Z",
+  "referenceImplId": "graphql-js-17",
+  "implIds": [
+    "graphql-js-17",
+    "graphql-js-16",
+    "grafast",
+    "graphql-java",
+    "viaduct",
+    "graphql-go",
+    "graphql-php",
+    "graphql-core",
+    "graphql-ruby",
+    "hot-chocolate",
+    "graphql-dotnet",
+    "async-graphql",
+    "absinthe",
+    "gqlgen",
+    "juniper",
+    "lacinia"
+  ],
+  "excluded": 27,
+  "resultsByImpl": {
+    "graphql-js-17": {
+      "implId": "graphql-js-17",
+      "total": 2233,
+      "passed": 2206,
+      "failed": 0,
+      "errored": 0,
+      "falloutAfter": null,
+      "results": []
+    },
+    "graphql-js-16": {
+      "implId": "graphql-js-16",
+      "total": 165,
+      "passed": 155,
+      "failed": 0,
+      "errored": 10,
+      "falloutAfter": 165,
+      "results": []
+    },
+    "grafast": {
+      "implId": "grafast",
+      "total": 165,
+      "passed": 155,
+      "failed": 0,
+      "errored": 10,
+      "falloutAfter": 165,
+      "results": []
+    },
+    "graphql-java": {
+      "implId": "graphql-java",
+      "total": 2206,
+      "passed": 2206,
+      "failed": 0,
+      "errored": 0,
+      "falloutAfter": null,
+      "results": []
+    },
+    "viaduct": {
+      "implId": "viaduct",
+      "total": 2206,
+      "passed": 2206,
+      "failed": 0,
+      "errored": 0,
+      "falloutAfter": null,
+      "results": []
+    },
+    "graphql-go": {
+      "implId": "graphql-go",
+      "total": 43,
+      "passed": 33,
+      "failed": 10,
+      "errored": 0,
+      "falloutAfter": 43,
+      "results": []
+    },
+    "graphql-php": {
+      "implId": "graphql-php",
+      "total": 1131,
+      "passed": 1121,
+      "failed": 0,
+      "errored": 10,
+      "falloutAfter": 1131,
+      "results": []
+    },
+    "graphql-core": {
+      "implId": "graphql-core",
+      "total": 165,
+      "passed": 155,
+      "failed": 0,
+      "errored": 10,
+      "falloutAfter": 165,
+      "results": []
+    },
+    "graphql-ruby": {
+      "implId": "graphql-ruby",
+      "total": 50,
+      "passed": 40,
+      "failed": 10,
+      "errored": 0,
+      "falloutAfter": 50,
+      "results": []
+    },
+    "hot-chocolate": {
+      "implId": "hot-chocolate",
+      "total": 2206,
+      "passed": 2203,
+      "failed": 3,
+      "errored": 0,
+      "falloutAfter": null,
+      "results": []
+    },
+    "graphql-dotnet": {
+      "implId": "graphql-dotnet",
+      "total": 78,
+      "passed": 68,
+      "failed": 1,
+      "errored": 9,
+      "falloutAfter": 78,
+      "results": []
+    },
+    "async-graphql": {
+      "implId": "async-graphql",
+      "total": 15,
+      "passed": 5,
+      "failed": 10,
+      "errored": 0,
+      "falloutAfter": 15,
+      "results": []
+    },
+    "absinthe": {
+      "implId": "absinthe",
+      "total": 44,
+      "passed": 34,
+      "failed": 0,
+      "errored": 10,
+      "falloutAfter": 44,
+      "results": []
+    },
+    "gqlgen": {
+      "implId": "gqlgen",
+      "total": 2206,
+      "passed": 2204,
+      "failed": 2,
+      "errored": 0,
+      "falloutAfter": null,
+      "results": []
+    },
+    "juniper": {
+      "implId": "juniper",
+      "total": 186,
+      "passed": 176,
+      "failed": 10,
+      "errored": 0,
+      "falloutAfter": 186,
+      "results": []
+    },
+    "lacinia": {
+      "implId": "lacinia",
+      "total": 12,
+      "passed": 2,
+      "failed": 0,
+      "errored": 10,
+      "falloutAfter": 12,
+      "results": []
+    }
+  },
+  "_conformerMeta": {
+    "corpusFingerprint": "3e9837b5e8581f5e37550028f16cf097ca57ef53d99df98277124f9f94d33694",
+    "runnableCount": 2206,
+    "implMeta": {
+      "graphql-js-17": {
+        "imageDigest": "sha256:d386cf56266503503f59dd103afc8ce4ef61696b2e212e22ca6bfc85e154dedc",
+        "version": "17.0.0-alpha.14"
+      },
+      "graphql-js-16": {
+        "imageDigest": "sha256:f08acdb2454b80cfd2f1105a46353a31290a2bd475a805f3f23b9f9b58cd1f7b",
+        "version": "16.14.0"
+      },
+      "grafast": {
+        "imageDigest": "sha256:8037e7406fb7da18ada5f65d3a7354b684e6351bb98b922b349dd647a1e823c9",
+        "version": "1.0.1"
+      },
+      "graphql-java": {
+        "imageDigest": "sha256:35b0873e745ac659b81d19b5e6fc0384035cbaaa8fc5b3d608d4b9594b4f3ec7",
+        "version": "26.0"
+      },
+      "viaduct": {
+        "imageDigest": "sha256:de4203a4bd763677a0ca63c6b71b4da25010309d9ce1242957d9115ae2d9bc24",
+        "version": "0.30.0"
+      },
+      "graphql-go": {
+        "imageDigest": "sha256:eb985dc62178ecb89507122279b90993b22100f674cb79c08efc6c72e6ff82af",
+        "version": "0.8.1"
+      },
+      "graphql-php": {
+        "imageDigest": "sha256:8ba4e65b65d6b052ee767d7d304d758ef53bed56465e3811ce7a369e7d714638",
+        "version": "15.32.3"
+      },
+      "graphql-core": {
+        "imageDigest": "sha256:48cdacc436a848b976853347d68b1316dbc9154f8501519f193fe4ec05a703bf",
+        "version": "3.2.8"
+      },
+      "graphql-ruby": {
+        "imageDigest": "sha256:100da769ac6af02496877d7c26fdfe47e2b31abf66f0cf9948843d99f15c18d8",
+        "version": "2.6.1"
+      },
+      "hot-chocolate": {
+        "imageDigest": "sha256:4c95c6b9b213ef3af728151de36840cae5c3d5a50dc275ff24e699911d0b50cd",
+        "version": "15.1.16"
+      },
+      "graphql-dotnet": {
+        "imageDigest": "sha256:8174e47db39ce919c07af543ac47091a3c70b04070289728659a2adce2ca32a0",
+        "version": "8.8.4"
+      },
+      "async-graphql": {
+        "imageDigest": "sha256:d240f2e788a84419be47b8a22e63699cf19ecb3a309cb7d41e366691d152f62f",
+        "version": "7.2.1"
+      },
+      "absinthe": {
+        "imageDigest": "sha256:8edaa370909706f041cdc1ecff1f23b0a2e736c94bfc2958d723ceef5df0fc1b",
+        "version": "1.10.0"
+      },
+      "gqlgen": {
+        "imageDigest": "sha256:53c40e5d4097191146056e76b84e202804b27395efc696af097000cfa3edf378",
+        "version": "0.17.90"
+      },
+      "juniper": {
+        "imageDigest": "sha256:ee8acd5a67883543977b278a28f2f6fa85eda03994c9aa79fb0e3ebc0539fee9",
+        "version": "0.17.1"
+      },
+      "lacinia": {
+        "imageDigest": "sha256:0b73af4bc99073dc769916c58d8dc506f43523360745a3805205231fdd0754f4",
+        "version": "1.2.2"
+      }
+    }
+  }
+}
