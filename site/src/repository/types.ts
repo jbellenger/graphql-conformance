@@ -11,6 +11,19 @@ export interface Impl {
   repoUrl?: string;
   version?: string;
   versionUrl?: string;
+  versionUrlTemplate?: string;
+}
+
+export interface RunImplMeta {
+  imageDigest?: string | null;
+  version?: string | null;
+  versionUrl?: string | null;
+}
+
+export interface ConformerMeta {
+  corpusFingerprint?: string;
+  runnableCount?: number;
+  implMeta?: Record<string, RunImplMeta>;
 }
 
 export interface Run {
@@ -25,6 +38,7 @@ export interface Run {
   // shard. Corpus size = resultsByImpl[referenceImplId].total.
   excluded: number;
   resultsByImpl: Record<string, ImplRunResults>;
+  _conformerMeta?: ConformerMeta;
 }
 
 // Per-impl breakdown of a Run. `total` is what this impl was subjected to;

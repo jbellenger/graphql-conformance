@@ -18,6 +18,7 @@ import { HistoryChart } from '../components/HistoryChart';
 import { FailureCard } from '../components/FailureCard';
 import { computeRunStats, formatRunStatsLine } from '../lib/runStats';
 import { NotFound } from './NotFound';
+import { implForRun } from '../lib/runImpl';
 
 const RECENT_RUNS_LIMIT = 20;
 
@@ -98,9 +99,11 @@ export function ImplDetail() {
     return <NotFound message="No data for this impl." />;
   }
 
+  const runImpl = implForRun(impl.data, runQuery.data);
+
   return (
     <ImplDetailView
-      impl={impl.data}
+      impl={runImpl}
       run={runQuery.data}
       runId={runId}
       history={history.data ?? []}

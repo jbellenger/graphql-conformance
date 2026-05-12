@@ -5,6 +5,7 @@ import type { Impl, Run } from '../repository/types';
 import { computeRunStats, formatRunStatsLine } from '../lib/runStats';
 import { PassRateBar } from '../components/PassRateBar';
 import { NotFound } from './NotFound';
+import { implForRun } from '../lib/runImpl';
 
 export function Dashboard() {
   const { runId } = useParams();
@@ -42,10 +43,11 @@ export function Dashboard() {
 
   const run = runQuery.data;
   const isPinned = runId != null;
-  const reference = impls.data.find((i) => i.id === run.referenceImplId) ?? null;
+  const runImpls = impls.data.map((i) => implForRun(i, run));
+  const reference = runImpls.find((i) => i.id === run.referenceImplId) ?? null;
   // Sort non-reference impls by pass rate descending; fall back to impl name
   // so the order is stable for ties.
-  const others = impls.data
+  const others = runImpls
     .filter((i) => i.id !== run.referenceImplId)
     .slice()
     .sort((a, b) => {
@@ -250,4 +252,3 @@ function ImplRow({
     </tr>
   );
 }
-

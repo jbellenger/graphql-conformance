@@ -667,6 +667,65 @@ describe('FailureDetail', () => {
     );
   });
 
+  it('renders the implementation version recorded for the pinned failure run', async () => {
+    const result: Result = {
+      id: 'java-old',
+      runId: 'run-old',
+      implId: 'graphql-java',
+      testCaseId,
+      status: 'fail',
+      expected: { data: { x: 1 } },
+      actual: { data: { x: 2 } },
+    };
+    const repo = new FakeRepository({
+      impls: [
+        { id: 'graphql-js-17', name: 'graphql-js-17', language: 'JavaScript' },
+        {
+          id: 'graphql-java',
+          name: 'graphql-java',
+          language: 'Java',
+          version: '26.0',
+          versionUrl:
+            'https://github.com/graphql-java/graphql-java/releases/tag/v26.0',
+        },
+      ],
+      runs: [
+        {
+          id: 'run-old',
+          timestamp: '2026-05-11T14:31:28.571Z',
+          referenceImplId: 'graphql-js-17',
+          implIds: ['graphql-js-17', 'graphql-java'],
+          excluded: 0,
+          resultsByImpl: {
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 1, passed: 1 }),
+            'graphql-java': implRunResults('graphql-java', { total: 1, passed: 0, failed: 1 }),
+          },
+          _conformerMeta: {
+            implMeta: {
+              'graphql-java': { version: '25.0' },
+            },
+          },
+        },
+      ],
+      results: [result],
+    });
+
+    renderAt(
+      '/runs/run-old/impl/graphql-java/failures/schema%2Fquery%2Fvars',
+      repo,
+    );
+
+    const titleCard = (await screen
+      .findByRole('heading', { name: 'graphql-java', level: 2 }))
+      .closest('.failure-detail-title-card') as HTMLElement;
+    const versionLink = within(titleCard).getByRole('link', { name: '25.0' });
+    expect(versionLink).toHaveAttribute(
+      'href',
+      'https://github.com/graphql-java/graphql-java/releases/tag/v25.0',
+    );
+    expect(within(titleCard).queryByText('26.0')).toBeNull();
+  });
+
   it('renders the version as plain text when the impl has no versionUrl', async () => {
     // graphql-go in makeRepo() has no version/versionUrl — should render
     // "unknown" without a link.

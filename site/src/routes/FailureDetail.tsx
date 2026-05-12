@@ -21,6 +21,7 @@ import type {
 } from '../lib/testCaseOutcomes';
 import type { CorpusArtifact, CorpusArtifacts } from '../lib/corpusArtifacts';
 import { NotFound } from './NotFound';
+import { implForRun } from '../lib/runImpl';
 
 export function FailureDetail() {
   const { name, runId, testCaseId } = useParams();
@@ -100,10 +101,13 @@ export function FailureDetail() {
     );
   }
 
+  const runImpl = implForRun(impl.data, runQuery.data);
+  const runImpls = (impls.data ?? []).map((i) => implForRun(i, runQuery.data!));
+
   return (
     <FailureDetailView
-      impl={impl.data}
-      impls={impls.data ?? []}
+      impl={runImpl}
+      impls={runImpls}
       run={runQuery.data}
       runId={runId}
       result={result.data}

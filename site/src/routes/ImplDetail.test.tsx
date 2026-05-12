@@ -169,6 +169,54 @@ describe('ImplDetail', () => {
     expect(detailRate?.textContent).not.toMatch(/99\.0%/);
   });
 
+  it('renders the implementation version recorded for the pinned run', async () => {
+    const oldRunId = 'older-run';
+    const repo = new FakeRepository({
+      impls: [
+        {
+          id: 'graphql-js-17',
+          name: 'graphql-js-17',
+          language: 'JavaScript',
+          version: '17.0.0-beta.1',
+          versionUrl:
+            'https://github.com/graphql/graphql-js/releases/tag/v17.0.0-beta.1',
+        },
+      ],
+      runs: [
+        {
+          id: oldRunId,
+          timestamp: '2026-05-11T14:31:28.571Z',
+          referenceImplId: 'graphql-js-17',
+          implIds: ['graphql-js-17'],
+          excluded: 0,
+          resultsByImpl: {
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 100, passed: 98 }),
+          },
+          _conformerMeta: {
+            implMeta: {
+              'graphql-js-17': {
+                imageDigest: 'sha256:old',
+                version: '17.0.0-alpha.14',
+              },
+            },
+          },
+        },
+      ],
+    });
+
+    renderAt(`/runs/${oldRunId}/impl/graphql-js-17`, repo);
+
+    await screen.findByText('graphql-js-17');
+    const versionLink = screen.getByRole('link', {
+      name: '17.0.0-alpha.14',
+    });
+    expect(versionLink).toHaveAttribute(
+      'href',
+      'https://github.com/graphql/graphql-js/releases/tag/v17.0.0-alpha.14',
+    );
+    expect(screen.queryByText('17.0.0-beta.1')).toBeNull();
+  });
+
   it('renders NotFound with an impl-latest fallback when runId is unknown', async () => {
     renderAt('/runs/bogus-run/impl/graphql-java', makeRepo());
     const card = await screen.findByTestId('not-found');

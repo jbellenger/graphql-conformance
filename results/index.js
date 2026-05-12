@@ -34,8 +34,9 @@ class FileData {
 //   impls/<implId>/history.json               — ImplHistoryPoint[]
 //
 // `_conformerMeta` lives only on per-run summary files. It carries the
-// imageDigest / corpusFingerprint that incremental-skip needs and that the
-// site does not. Keeping it out of runs.json keeps the public list lean.
+// imageDigest / corpusFingerprint that incremental-skip needs, plus
+// run-scoped impl version metadata for historical dashboard pages. Keeping it
+// out of runs.json keeps the public list lean.
 class ResultsStore {
   constructor(data) {
     this._data = data;
@@ -55,7 +56,7 @@ class ResultsStore {
   //                      counts and empty results: [].
   //   resultsByImpl    — Record<implId, Result[]> of non-pass results.
   //   conformerMeta    — { corpusFingerprint,
-  //                        implMeta: { [implId]: { imageDigest, version } } }
+  //                        implMeta: { [implId]: { imageDigest, version, versionUrl } } }
   //   impls            — Impl[] (current, ordered; reference first).
   writeRun({ run, resultsByImpl, conformerMeta, impls }) {
     if (!run || !run.id) throw new Error('writeRun: run.id is required');

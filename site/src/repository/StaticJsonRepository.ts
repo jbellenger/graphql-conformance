@@ -16,7 +16,7 @@ import type { Repository, ResultFilter, TestCaseFilter } from './Repository';
 // On-disk layout (produced by tools/build-data.mjs):
 //   impls.json                           — Impl[]
 //   runs.json                            — Run[] (newest first, lightweight)
-//   runs/<runId>/summary.json            — Run with counts-only ImplRunResults
+//   runs/<runId>/summary.json            — Run with counts-only ImplRunResults and run metadata
 //   runs/<runId>/results/<implId>.json   — Result[] for (run, impl) shard
 //   test-cases/<id>.json                 — TestCase
 //   test-cases-hand-crafted.json         — TestCase[]
@@ -77,7 +77,8 @@ export class StaticJsonRepository implements Repository {
 
   async getLatestRun(): Promise<Run | null> {
     const runs = await this.listRuns({ limit: 1 });
-    return runs[0] ?? null;
+    if (!runs[0]) return null;
+    return (await this.getRun(runs[0].id)) ?? runs[0];
   }
 
   async getRun(id: string): Promise<Run | null> {

@@ -402,6 +402,66 @@ describe('Dashboard', () => {
     );
   });
 
+  it('uses run-scoped versions on pinned dashboards', async () => {
+    const repo = new FakeRepository({
+      impls: [
+        {
+          id: 'graphql-js-17',
+          name: 'graphql-js-17',
+          language: 'JavaScript',
+          version: '17.0.0-beta.1',
+          versionUrl:
+            'https://github.com/graphql/graphql-js/releases/tag/v17.0.0-beta.1',
+        },
+        {
+          id: 'graphql-java',
+          name: 'graphql-java',
+          language: 'Java',
+          version: '26.0',
+          versionUrl:
+            'https://github.com/graphql-java/graphql-java/releases/tag/v26.0',
+        },
+      ],
+      runs: [
+        {
+          id: 'old-run',
+          timestamp: '2026-05-11T14:31:28.571Z',
+          referenceImplId: 'graphql-js-17',
+          implIds: ['graphql-js-17', 'graphql-java'],
+          excluded: 0,
+          resultsByImpl: {
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 100, passed: 98 }),
+            'graphql-java': implRunResults('graphql-java', { total: 100, passed: 95, failed: 5 }),
+          },
+          _conformerMeta: {
+            implMeta: {
+              'graphql-js-17': { version: '17.0.0-alpha.14' },
+              'graphql-java': { version: '25.0' },
+            },
+          },
+        },
+      ],
+    });
+
+    renderAtPath(repo, '/runs/old-run');
+
+    const refCard = await screen.findByRole('link', {
+      name: /View graphql-js-17 details/i,
+    });
+    expect(
+      within(refCard).getByRole('link', { name: '17.0.0-alpha.14' }),
+    ).toHaveAttribute(
+      'href',
+      'https://github.com/graphql/graphql-js/releases/tag/v17.0.0-alpha.14',
+    );
+    const row = await screen.findByTestId('dashboard-row-graphql-java');
+    expect(within(row).getByRole('link', { name: '25.0' })).toHaveAttribute(
+      'href',
+      'https://github.com/graphql-java/graphql-java/releases/tag/v25.0',
+    );
+    expect(screen.queryByText('17.0.0-beta.1')).toBeNull();
+  });
+
   it('renders a separate "Last run" card below the reference card', async () => {
     const repo = new FakeRepository({
       impls: [
