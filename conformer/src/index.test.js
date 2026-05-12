@@ -161,6 +161,7 @@ describe('buildImpl', () => {
     assert.equal(impl.repoUrl, 'https://github.com/graphql-java/graphql-java');
     assert.equal(impl.version, '25.0');
     assert.equal(impl.versionUrl, 'https://github.com/graphql-java/graphql-java/releases/tag/v25.0');
+    assert.equal(impl.versionUrlTemplate, 'https://github.com/graphql-java/graphql-java/releases/tag/v{version}');
     assert.equal(
       impl.manifestUrl,
       'https://github.com/jbellenger/graphql-conformance/blob/master/impls/graphql-java/manifest.json',

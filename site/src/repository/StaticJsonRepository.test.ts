@@ -38,7 +38,7 @@ describe('StaticJsonRepository', () => {
         language: 'Java',
       },
     ];
-    const run: Run = {
+    const runIndexEntry: Run = {
       id: 'r1',
       timestamp: '2026-04-24T00:00:00Z',
       referenceImplId: 'graphql-js-17',
@@ -65,6 +65,15 @@ describe('StaticJsonRepository', () => {
         },
       },
     };
+    const runSummary: Run = {
+      ...runIndexEntry,
+      _conformerMeta: {
+        implMeta: {
+          'graphql-js-17': { version: '17.0.0-alpha.14' },
+          'graphql-java': { version: '25.0' },
+        },
+      },
+    };
     const javaShard: Result[] = [
       {
         id: 'result-java-1',
@@ -78,8 +87,8 @@ describe('StaticJsonRepository', () => {
     ];
     fetchSpy = makeFetch({
       'impls.json': impls,
-      'runs.json': [run],
-      'runs/r1/summary.json': run,
+      'runs.json': [runIndexEntry],
+      'runs/r1/summary.json': runSummary,
       'runs/r1/results/graphql-java.json': javaShard,
     });
   });
@@ -90,11 +99,14 @@ describe('StaticJsonRepository', () => {
     expect(impls.map((i) => i.id)).toEqual(['graphql-js-17', 'graphql-java']);
   });
 
-  it('getLatestRun pulls the first entry of runs.json', async () => {
+  it('getLatestRun loads the first run summary so run metadata is available', async () => {
     const repo = new StaticJsonRepository(baseUrl, fetchSpy);
     const run = await repo.getLatestRun();
     expect(run?.id).toBe('r1');
     expect(run?.referenceImplId).toBe('graphql-js-17');
+    expect(run?._conformerMeta?.implMeta?.['graphql-js-17']?.version).toBe(
+      '17.0.0-alpha.14',
+    );
   });
 
   it('findResult loads the per-impl shard and matches by testCaseId', async () => {

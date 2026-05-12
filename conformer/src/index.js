@@ -171,6 +171,7 @@ function buildImpl({ driver, manifest, version, rootDir }) {
     repoUrl,
     version: version || undefined,
     versionUrl,
+    versionUrlTemplate,
   };
 }
 
@@ -533,6 +534,7 @@ async function runConformance({ argv = [], createSession = createDockerSession, 
       resultsByImpl,
     };
 
+    const implsById = new Map(orderedImpls.map((impl) => [impl.id, impl]));
     const conformerMeta = {
       corpusFingerprint,
       runnableCount: fullySkipped && prior
@@ -545,6 +547,7 @@ async function runConformance({ argv = [], createSession = createDockerSession, 
         return [driver.name, {
           imageDigest: session ? session.imageDigest : null,
           version: session ? session.version : null,
+          versionUrl: implsById.get(driver.name)?.versionUrl ?? null,
         }];
       })),
     };
