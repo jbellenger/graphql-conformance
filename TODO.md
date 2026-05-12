@@ -32,6 +32,7 @@
 - [x] **lacinia**: Parse errors propagate as raw Clojure exceptions — no JSON error wrapping. Add try/catch in harness entry point.
 - [ ] **conformer** (`protocol.js:74-78` vs `159-164`): Streaming results normalize away empty `errors`/`extensions`, legacy `JSON.parse` output doesn't. A legacy reference emitting `{data, errors:[]}` fails to match a streaming conformant that dropped the empty list. Normalize both paths symmetrically.
 - [ ] **conformer** (`diff-impl.js:86`): Always exits 1 after writing diff output, regardless of `spawnSync('diff', ...).status`. If `diff` itself fails we still report "differences found". Propagate the actual status.
+- [ ] **conformer** (`index.js:13-16`): `generateRunId()` emits ISO timestamps at millisecond precision. Two runs within the same millisecond collide and the second overwrites the first, causing flaky failures in `integration.test.js:140` (`second run skips unchanged conformant and reuses prior failures`) when `assert.equal(runs.length, 2)` sees 1. Add a monotonic counter suffix or sub-millisecond precision.
 
 ## Test-coverage gaps (cross-cutting)
 

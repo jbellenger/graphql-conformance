@@ -47,7 +47,7 @@ By default the conformer skips any conformant whose image digest + the corpus fi
 
 ### Dependency updates
 
-Library versions for every implementation are updated automatically by [Renovate](https://docs.renovatebot.com/). Configuration lives in `renovate.json` at the repo root. Renovate opens a PR for each available update and — if CI passes — the PR auto-merges with no human involvement. Most impls track the latest stable release from their native package manager; `graphql-js-17` tracks the npm `alpha` dist-tag so the 17.x pre-release line stays current, while `graphql-js-16` is pinned to `<17`.
+Library versions for every implementation are updated automatically by [Renovate](https://docs.renovatebot.com/). Configuration lives in `renovate.json` at the repo root. Renovate opens a PR for each available update and — if CI passes — the PR auto-merges with no human involvement. Most impls track the latest stable release from their native package manager; `graphql-js-17` tracks the npm `beta` dist-tag so the 17.x pre-release line stays current, while `graphql-js-16` is pinned to `<17`.
 
 Installing the [Renovate GitHub App](https://github.com/apps/renovate) on the repo is a prerequisite. Branch protection must require CI success before auto-merge.
 
