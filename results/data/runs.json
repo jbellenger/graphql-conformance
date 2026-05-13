@@ -1,5 +1,175 @@
 [
   {
+    "id": "d146d4af-6bbd-4753-8b98-b669dcb4eaeb",
+    "timestamp": "2026-05-13T14:10:51.950Z",
+    "referenceImplId": "graphql-js-17",
+    "implIds": [
+      "graphql-js-17",
+      "graphql-js-16",
+      "grafast",
+      "graphql-java",
+      "viaduct",
+      "graphql-go",
+      "graphql-php",
+      "graphql-core",
+      "graphql-ruby",
+      "hot-chocolate",
+      "graphql-dotnet",
+      "async-graphql",
+      "absinthe",
+      "gqlgen",
+      "juniper",
+      "lacinia"
+    ],
+    "excluded": 0,
+    "resultsByImpl": {
+      "graphql-js-17": {
+        "implId": "graphql-js-17",
+        "total": 2233,
+        "passed": 2233,
+        "failed": 0,
+        "errored": 0,
+        "falloutAfter": null,
+        "results": []
+      },
+      "graphql-js-16": {
+        "implId": "graphql-js-16",
+        "total": 166,
+        "passed": 156,
+        "failed": 0,
+        "errored": 10,
+        "falloutAfter": 166,
+        "results": []
+      },
+      "grafast": {
+        "implId": "grafast",
+        "total": 166,
+        "passed": 156,
+        "failed": 0,
+        "errored": 10,
+        "falloutAfter": 166,
+        "results": []
+      },
+      "graphql-java": {
+        "implId": "graphql-java",
+        "total": 2233,
+        "passed": 2233,
+        "failed": 0,
+        "errored": 0,
+        "falloutAfter": null,
+        "results": []
+      },
+      "viaduct": {
+        "implId": "viaduct",
+        "total": 2233,
+        "passed": 2233,
+        "failed": 0,
+        "errored": 0,
+        "falloutAfter": null,
+        "results": []
+      },
+      "graphql-go": {
+        "implId": "graphql-go",
+        "total": 43,
+        "passed": 33,
+        "failed": 10,
+        "errored": 0,
+        "falloutAfter": 43,
+        "results": []
+      },
+      "graphql-php": {
+        "implId": "graphql-php",
+        "total": 1150,
+        "passed": 1140,
+        "failed": 0,
+        "errored": 10,
+        "falloutAfter": 1150,
+        "results": []
+      },
+      "graphql-core": {
+        "implId": "graphql-core",
+        "total": 166,
+        "passed": 156,
+        "failed": 0,
+        "errored": 10,
+        "falloutAfter": 166,
+        "results": []
+      },
+      "graphql-ruby": {
+        "implId": "graphql-ruby",
+        "total": 50,
+        "passed": 40,
+        "failed": 10,
+        "errored": 0,
+        "falloutAfter": 50,
+        "results": []
+      },
+      "hot-chocolate": {
+        "implId": "hot-chocolate",
+        "total": 2233,
+        "passed": 2230,
+        "failed": 3,
+        "errored": 0,
+        "falloutAfter": null,
+        "results": []
+      },
+      "graphql-dotnet": {
+        "implId": "graphql-dotnet",
+        "total": 78,
+        "passed": 68,
+        "failed": 1,
+        "errored": 9,
+        "falloutAfter": 78,
+        "results": []
+      },
+      "async-graphql": {
+        "implId": "async-graphql",
+        "total": 15,
+        "passed": 5,
+        "failed": 10,
+        "errored": 0,
+        "falloutAfter": 15,
+        "results": []
+      },
+      "absinthe": {
+        "implId": "absinthe",
+        "total": 44,
+        "passed": 34,
+        "failed": 0,
+        "errored": 10,
+        "falloutAfter": 44,
+        "results": []
+      },
+      "gqlgen": {
+        "implId": "gqlgen",
+        "total": 2233,
+        "passed": 2228,
+        "failed": 5,
+        "errored": 0,
+        "falloutAfter": null,
+        "results": []
+      },
+      "juniper": {
+        "implId": "juniper",
+        "total": 187,
+        "passed": 177,
+        "failed": 10,
+        "errored": 0,
+        "falloutAfter": 187,
+        "results": []
+      },
+      "lacinia": {
+        "implId": "lacinia",
+        "total": 12,
+        "passed": 2,
+        "failed": 0,
+        "errored": 10,
+        "falloutAfter": 12,
+        "results": []
+      }
+    }
+  },
+  {
     "id": "9c9f5cf8-ed85-4465-b7e3-aa837266a9ef",
     "timestamp": "2026-05-12T17:49:11.745Z",
     "referenceImplId": "graphql-js-17",
