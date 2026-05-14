@@ -104,6 +104,24 @@ describe('applyIncrementalMerge', () => {
     assert.deepEqual(merged.data.hero.friend, { name: 'str' });
   });
 
+  it('applies incremental entries that arrive on the initial part', () => {
+    const initial = {
+      data: {
+        objectField: { value: 'str' },
+        listOfObjects: [
+          { value: 'str', number: 2 },
+          { value: 'str', number: 2 },
+        ],
+      },
+      pending: [{ id: '2', path: ['objectField'] }],
+      incremental: [{ id: '2', data: { number: 2 } }],
+      completed: [{ id: '2' }],
+      hasNext: false,
+    };
+    const merged = applyIncrementalMerge(initial, []);
+    assert.deepEqual(merged.data.objectField, { value: 'str', number: 2 });
+  });
+
   it('resolves pending id → path from a subsequent part', () => {
     const initial = { data: { hero: {} }, hasNext: true };
     const parts = [

@@ -121,9 +121,8 @@ function applyIncrementalMerge(initial, parts) {
     }
   }
 
-  for (const part of parts) {
-    const body = part && part.body;
-    if (!body) continue;
+  function applyIncrementalBody(body, { collectTopLevel = true } = {}) {
+    if (!body) return;
 
     if (Array.isArray(body.pending)) {
       for (const entry of body.pending) {
@@ -133,12 +132,12 @@ function applyIncrementalMerge(initial, parts) {
       }
     }
 
-    if (Array.isArray(body.errors)) errors.push(...body.errors);
-    if (isPlainObject(body.extensions)) {
+    if (collectTopLevel && Array.isArray(body.errors)) errors.push(...body.errors);
+    if (collectTopLevel && isPlainObject(body.extensions)) {
       extensions = { ...(extensions || {}), ...body.extensions };
     }
 
-    if (!Array.isArray(body.incremental)) continue;
+    if (!Array.isArray(body.incremental)) return;
     for (const entry of body.incremental) {
       if (!entry) continue;
 
@@ -174,6 +173,11 @@ function applyIncrementalMerge(initial, parts) {
         }
       }
     }
+  }
+
+  applyIncrementalBody(initial, { collectTopLevel: false });
+  for (const part of parts) {
+    applyIncrementalBody(part && part.body);
   }
 
   if (errors.length > 0) result.errors = errors;
