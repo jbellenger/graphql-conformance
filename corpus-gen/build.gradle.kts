@@ -1,4 +1,4 @@
-val viaductVersion = "0.31.0-SNAPSHOT"
+val viaductVersion = "1.0.0"
 
 plugins {
     kotlin("jvm") version "2.3.21"
@@ -7,21 +7,17 @@ plugins {
 
 repositories {
     mavenCentral()
-    maven {
-        name = "sonatypeCentralSnapshots"
-        url = uri("https://central.sonatype.com/repository/maven-snapshots/")
-    }
 }
 
 dependencies {
-    implementation("com.airbnb.viaduct:shared-arbitrary:$viaductVersion")
-    implementation("com.airbnb.viaduct:engine-api:$viaductVersion")
-    implementation("com.graphql-java:graphql-java:25.0")
+    implementation("com.airbnb.viaduct.shared:arbitrary:$viaductVersion")
+    implementation("com.airbnb.viaduct.engine:api:$viaductVersion")
+    implementation("com.graphql-java:graphql-java:26.0")
     implementation("io.kotest:kotest-property-jvm:5.9.1")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.21.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.11.0")
 
-    testImplementation(testFixtures("com.airbnb.viaduct:shared-arbitrary:$viaductVersion"))
+    testImplementation(testFixtures("com.airbnb.viaduct.shared:arbitrary:$viaductVersion"))
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0")
     testImplementation("org.junit.jupiter:junit-jupiter:6.0.3")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")

@@ -3,8 +3,8 @@ FROM maven:3.9-eclipse-temurin-21 AS builder
 WORKDIR /src
 
 COPY pom.xml ./
-RUN mvn -B -q dependency:list -DincludeGroupIds=com.airbnb.viaduct -DincludeArtifactIds=engine-runtime -DoutputFile=/tmp/deplist.txt \
-    && awk -F: '/com\.airbnb\.viaduct:engine-runtime:/ { print $4; exit }' /tmp/deplist.txt > /impl-version
+RUN mvn -B -q dependency:list -DincludeGroupIds=com.airbnb.viaduct.engine -DincludeArtifactIds=runtime -DoutputFile=/tmp/deplist.txt \
+    && awk -F: '/com\.airbnb\.viaduct\.engine:runtime:/ { print $4; exit }' /tmp/deplist.txt > /impl-version
 COPY src ./src
 RUN mvn -B -q package -DskipTests
 

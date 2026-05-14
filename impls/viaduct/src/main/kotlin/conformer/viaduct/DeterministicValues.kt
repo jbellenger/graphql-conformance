@@ -36,7 +36,7 @@ object DeterministicValues {
                 ResolvedEngineObjectData(selectedType, emptyMap())
             }
             is GraphQLInterfaceType -> {
-                val selectedType = schema.getImplementations(type).maxByOrNull { it.name }
+                val selectedType = schema.getImplementations(type).orEmpty().maxByOrNull { it.name }
                     ?: error("Interface ${type.name} has no concrete implementors.")
                 ResolvedEngineObjectData(selectedType, emptyMap())
             }

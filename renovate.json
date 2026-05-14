@@ -20,12 +20,6 @@
       "matchFileNames": ["impls/graphql-js-16/package.json"],
       "matchPackageNames": ["graphql"],
       "allowedVersions": "<17"
-    },
-    {
-      "description": "corpus-gen tracks the graphql-java that Viaduct shared-arbitrary was compiled against (v26 moved VariablesTypesMatcher and breaks binary compat). Remove when Viaduct picks up graphql-java >=26.",
-      "matchFileNames": ["corpus-gen/build.gradle.kts"],
-      "matchPackageNames": ["com.graphql-java:graphql-java"],
-      "allowedVersions": "<26"
     }
   ]
 }
