@@ -6,7 +6,7 @@ RUN dotnet restore
 COPY Program.cs ./
 RUN dotnet publish -c Release -o /app /p:UseAppHost=false \
  && dotnet list package \
-      | awk '/> HotChocolate\.Execution/ {print $NF}' > /impl-version
+      | awk '/> HotChocolate / {print $NF}' > /impl-version
 
 FROM mcr.microsoft.com/dotnet/aspnet:10.0
 WORKDIR /app

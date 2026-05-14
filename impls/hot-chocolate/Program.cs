@@ -1,10 +1,11 @@
+using System.IO.Pipelines;
 using System.Text;
 using System.Text.Json;
 using HotChocolate;
 using HotChocolate.Execution;
-using HotChocolate.Execution.Serialization;
 using HotChocolate.Language;
 using HotChocolate.Resolvers;
+using HotChocolate.Transport.Formatters;
 using HotChocolate.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -47,9 +48,9 @@ app.MapPost("/execute", async (HttpContext ctx) =>
         {
             await WriteMultipartAsync(ctx.Response, stream);
         }
-        else if (result is IOperationResult single)
+        else if (result is OperationResult single)
         {
-            await WriteJsonAsync(ctx.Response, 200, BuildSingleOutput(single));
+            await WriteJsonAsync(ctx.Response, 200, await BuildSingleOutputAsync(single));
         }
         else
         {
@@ -96,7 +97,7 @@ static async Task WriteMultipartAsync(HttpResponse response, IResponseStream str
     {
         await using var _ = chunk;
         await response.Body.WriteAsync(headerBytes);
-        await formatter.FormatAsync(chunk, response.Body);
+        await formatter.FormatAsync(chunk, response.BodyWriter);
         await response.Body.FlushAsync();
     }
 
@@ -187,7 +188,7 @@ static async Task<IExecutionResult> ExecuteAsync(ExecuteRequest payload)
             if (parentType is UnionType union)
             {
                 var names = new List<string>();
-                foreach (var kv in union.Types) names.Add(kv.Value.Name.ToString());
+                foreach (var type in union.Types) names.Add(type.Name.ToString());
                 names.Sort(StringComparer.Ordinal);
                 return objectType.Name.ToString() == names[0];
             }
@@ -241,40 +242,26 @@ static object? ConvertJsonElement(JsonElement element)
     };
 }
 
-static object? NormalizeResultValue(object? value)
+static async Task<Dictionary<string, object?>> BuildSingleOutputAsync(OperationResult result)
 {
-    if (value is null)
+    await using var stream = new MemoryStream();
+    var writer = PipeWriter.Create(stream);
+    await JsonResultFormatter.Default.FormatAsync(result, writer);
+    await writer.FlushAsync();
+
+    stream.Position = 0;
+    using var doc = await JsonDocument.ParseAsync(stream);
+    var output = ConvertJsonElement(doc.RootElement) as Dictionary<string, object?>
+        ?? new Dictionary<string, object?> { ["data"] = null };
+
+    if (output.TryGetValue("errors", out var value) && value is List<object?> errors)
     {
-        return null;
+        output["errors"] = errors
+            .OfType<Dictionary<string, object?>>()
+            .Select(error => new { message = error.GetValueOrDefault("message")?.ToString() ?? "" })
+            .ToList();
     }
 
-    using var doc = JsonDocument.Parse(JsonSerializer.Serialize(value));
-    return ConvertJsonElement(doc.RootElement);
-}
-
-static List<object>? FormatErrors(IReadOnlyList<IError>? source)
-{
-    if (source is not { Count: > 0 })
-    {
-        return null;
-    }
-
-    var errors = new List<object>();
-    foreach (var error in source)
-    {
-        errors.Add(new { message = error.Message });
-    }
-    return errors;
-}
-
-static Dictionary<string, object?> BuildSingleOutput(IOperationResult result)
-{
-    var output = new Dictionary<string, object?> { ["data"] = NormalizeResultValue(result.Data) };
-    var errors = FormatErrors(result.Errors);
-    if (errors is { Count: > 0 })
-    {
-        output["errors"] = errors;
-    }
     return output;
 }
 
