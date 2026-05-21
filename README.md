@@ -29,7 +29,7 @@ Implementations tested:
 
 Each implementation is wrapped in a small HTTP server that accepts a schema and query over `POST /execute`, builds the schema, runs the query, and returns the result as JSON. All harnesses use the same deterministic resolvers (the [Wiring Spec](SPEC.md)) so that the only differences come from the GraphQL engine itself.
 
-Test cases are generated randomly using the [Viaduct Arbitrary toolkit](https://github.com/airbnb/viaduct/tree/main/shared/arbitrary). This produces arbitrary GraphQL schemas, documents, and variables, which are stored in [corpus](corpus).
+Test cases are generated randomly using the [Viaduct Arbitrary toolkit]([https://github.com/airbnb/viaduct/tree/main/shared/arbitrary](https://github.com/airbnb/viaduct/tree/main/core/shared/arbitrary)). This produces arbitrary GraphQL schemas, documents, and variables, which are stored in [corpus](corpus).
 
 A conformer runs every test case against the reference first. If the reference produces a result, the test is runnable and every implementation is compared against that result. If the reference crashes, times out, or emits invalid JSON, the test is excluded from scoring for that run and is not attempted on any other implementation.
 
