@@ -3,7 +3,9 @@
 // End-to-end check that Hot Chocolate's driver emits a GraphQL
 // incremental-delivery `multipart/mixed` response for @defer/@stream queries
 // (not a collapsed single-part JSON body) and that applyIncrementalMerge
-// reassembles it into the wiring-spec shape. Skips if Docker is unreachable.
+// reassembles it into the wiring-spec shape. Hot Chocolate can put incremental
+// entries on the initial part when execution completes quickly, so valid output
+// may be one or many multipart parts. Skips if Docker is unreachable.
 
 const { describe, it, before, after } = require('node:test');
 const assert = require('node:assert/strict');
@@ -90,7 +92,7 @@ describe('hot-chocolate driver: @defer/@stream multipart emission', () => {
     if (driver) await driver.stop();
   });
 
-  it('returns multipart/mixed whose parts collapse to wiring-spec data', async (t) => {
+  it('returns multipart/mixed whose payload collapses to wiring-spec data', async (t) => {
     if (skipReason) { t.skip(skipReason); return; }
 
     const response = await postJson({
@@ -107,8 +109,10 @@ describe('hot-chocolate driver: @defer/@stream multipart emission', () => {
     assert.ok(ct.params.boundary, 'boundary param present');
 
     const parts = parseMultipartMixed(response.body, ct.params.boundary);
-    assert.ok(parts.length >= 2,
-      `expected 2+ multipart parts (initial + at least one incremental), got ${parts.length}`);
+    assert.ok(parts.length >= 1,
+      `expected at least one multipart part, got ${parts.length}`);
+    assert.ok(parts.some((part) => Array.isArray(part.body.incremental) && part.body.incremental.length > 0),
+      'expected multipart response to include at least one incremental payload');
 
     const merged = applyIncrementalMerge(parts[0].body, parts.slice(1));
 
