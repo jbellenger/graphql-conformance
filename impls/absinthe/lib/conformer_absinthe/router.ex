@@ -21,9 +21,10 @@ defmodule ConformerAbsinthe.Router do
       %{"schema" => schema_text, "query" => query_text} = body
       when is_binary(schema_text) and is_binary(query_text) ->
         variables = Map.get(body, "variables")
+        operation_name = Map.get(body, "operationName")
 
         try do
-          result = ConformerAbsinthe.run(schema_text, query_text, variables)
+          result = ConformerAbsinthe.run(schema_text, query_text, variables, operation_name)
 
           conn
           |> put_resp_content_type("application/json")

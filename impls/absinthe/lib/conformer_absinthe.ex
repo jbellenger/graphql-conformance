@@ -9,7 +9,7 @@ defmodule ConformerAbsinthe do
                                               "oneOf"
                                             ])
 
-  def run(schema_text, query_text, variables \\ nil) do
+  def run(schema_text, query_text, variables \\ nil, operation_name \\ nil) do
     prime_identifier_atoms(schema_text)
     prime_identifier_atoms(query_text)
 
@@ -18,6 +18,7 @@ defmodule ConformerAbsinthe do
 
     case Absinthe.run(query_text, schema_module,
            variables: variables,
+           operation_name: operation_name,
            # Absinthe.run/3 does not automatically apply schema pipeline modifiers
            # to the document pipeline, so we forward the schema's modifier chain here.
            pipeline_modifier: fn pipeline, options ->
