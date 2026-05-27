@@ -1,0 +1,21 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    base64 (0.3.0)
+    fiber-storage (1.0.1)
+    graphql (2.6.3)
+      base64
+      fiber-storage
+      logger
+    logger (1.7.0)
+    webrick (1.9.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  graphql (= 2.6.3)
+  webrick
+
+BUNDLED WITH
+   2.7.2
