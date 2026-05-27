@@ -1,8 +1,8 @@
 defmodule ConformerAbsintheTest do
   use ExUnit.Case, async: false
 
-  defp exec(sdl, query, variables \\ nil) do
-    ConformerAbsinthe.run(sdl, query, variables)
+  defp exec(sdl, query, variables \\ nil, operation_name \\ nil) do
+    ConformerAbsinthe.run(sdl, query, variables, operation_name)
   end
 
   describe "Wiring Spec — scalars" do
@@ -275,6 +275,13 @@ defmodule ConformerAbsintheTest do
   end
 
   describe "variables" do
+    test "uses operationName to select a named operation" do
+      sdl = "type Q { x: String y: String } schema { query: Q }"
+      query = "query First { x } query Second { y }"
+
+      assert %{data: %{"y" => "str"}} = exec(sdl, query, nil, "Second")
+    end
+
     test "passes scalar variables to execution" do
       sdl = "type Q { x: String } schema { query: Q }"
       query = "query($skip: Boolean!) { x @skip(if: $skip) }"
