@@ -1,4 +1,5 @@
 import type { Impl, Run } from '../repository/types';
+import { computePassPct } from './passRate';
 
 // Derived per-impl statistics for a specific run. Shared by the dashboard
 // cards and the impl detail page.
@@ -13,7 +14,7 @@ export interface RunStats {
   total: number;
   // Tests that passed conformance.
   passed: number;
-  // 0-100, one decimal place.
+  // 0-100, one decimal place. Floored so non-perfect runs never display as 100.0%.
   passPct: number;
   // Context-aware "failed" bucket:
   //   reference → tests where the reference couldn't produce output,
@@ -46,7 +47,7 @@ export function computeRunStats(run: Run, impl: Impl): RunStats {
   const corpusExcluded = isReference ? 0 : (run.excluded ?? 0);
   const falloutAfter = implSummary?.falloutAfter ?? null;
 
-  const passPct = total > 0 ? Math.round((passed / total) * 1000) / 10 : 100;
+  const passPct = computePassPct(passed, total);
 
   return {
     isReference,

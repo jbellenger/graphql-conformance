@@ -84,7 +84,7 @@ describe('computeRunStats', () => {
     expect(stats.passed).toBe(545);
     expect(stats.implFailed).toBe(8); // run.excluded surfaces as ref's "failed"
     expect(stats.corpusExcluded).toBe(0); // concept doesn't apply to ref
-    expect(stats.passPct).toBeCloseTo(98.6, 1);
+    expect(stats.passPct).toBe(98.5);
     expect(stats.falloutAfter).toBeNull();
   });
 
@@ -105,7 +105,7 @@ describe('computeRunStats', () => {
     expect(stats.passed).toBe(521);
     expect(stats.implFailed).toBe(24); // 20 failed + 4 errored
     expect(stats.corpusExcluded).toBe(8);
-    expect(stats.passPct).toBeCloseTo(95.6, 1);
+    expect(stats.passPct).toBe(95.5);
   });
 
   it('surfaces falloutAfter and uses the impl\'s own total as denominator', () => {

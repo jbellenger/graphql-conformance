@@ -35,6 +35,17 @@ function parseMaxImplFailures(raw) {
   return Math.floor(n);
 }
 
+function computePassPct(passed, total) {
+  if (total <= 0) return 100;
+  const boundedPassed = Math.max(0, Math.min(passed, total));
+  if (boundedPassed === total) return 100;
+  return Math.floor((boundedPassed / total) * 1000) / 10;
+}
+
+function formatPassRate(passed, total) {
+  return computePassPct(passed, total).toFixed(1);
+}
+
 async function runWithConcurrency(limit, items, fn) {
   const results = new Array(items.length);
   const effective = Math.max(1, Math.min(limit, items.length));
@@ -181,7 +192,7 @@ function writeRunSummary(stderr, { reference, conformants, run, tests }) {
       total: 0, passed: 0, failed: 0, errored: 0, falloutAfter: null,
     };
     const nonPass = (b.failed || 0) + (b.errored || 0);
-    const pct = b.total > 0 ? ((b.passed / b.total) * 100).toFixed(1) : '100.0';
+    const pct = formatPassRate(b.passed || 0, b.total || 0);
     return {
       impl: impl.id,
       passed: b.passed || 0,
@@ -600,7 +611,9 @@ async function main(argv = process.argv.slice(2)) {
 module.exports = {
   buildImpl,
   buildResult,
+  computePassPct,
   computeCorpusFingerprint,
+  formatPassRate,
   generateRunId,
   parseCliArgs,
   parseConcurrency,

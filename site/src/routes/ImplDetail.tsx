@@ -19,6 +19,7 @@ import { FailureCard } from '../components/FailureCard';
 import { computeRunStats, formatRunStatsLine } from '../lib/runStats';
 import { NotFound } from './NotFound';
 import { implForRun } from '../lib/runImpl';
+import { computePassPct } from '../lib/passRate';
 
 const RECENT_RUNS_LIMIT = 20;
 
@@ -369,10 +370,7 @@ function RunsHistoryRow({
 }) {
   const navigate = useNavigate();
   const href = `/runs/${encodeURIComponent(point.runId)}/impl/${encodeURIComponent(implId)}`;
-  const passPct =
-    point.total > 0
-      ? Math.round((point.passed / point.total) * 1000) / 10
-      : 100;
+  const passPct = computePassPct(point.passed, point.total);
 
   const onClick = (e: MouseEvent<HTMLTableRowElement>) => {
     if (e.button !== 0) return;

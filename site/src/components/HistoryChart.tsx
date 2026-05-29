@@ -9,6 +9,7 @@ import {
   AreaChart,
 } from 'recharts';
 import type { ImplHistoryPoint } from '../repository/types';
+import { computePassPct } from '../lib/passRate';
 
 export interface HistoryChartProps {
   history: ImplHistoryPoint[];
@@ -27,8 +28,7 @@ interface ChartDatum {
 export function HistoryChart({ history }: HistoryChartProps) {
   const data = useMemo<ChartDatum[]>(() => {
     return history.map((h) => {
-      const passPct =
-        h.total > 0 ? Math.round((h.passed / h.total) * 1000) / 10 : 100;
+      const passPct = computePassPct(h.passed, h.total);
       return {
         timestamp: h.timestamp,
         date: formatDate(h.timestamp),

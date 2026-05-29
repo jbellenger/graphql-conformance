@@ -99,10 +99,10 @@ describe('ImplDetail', () => {
   it('renders pass rate, a failure card, and deep-link data attribute', async () => {
     const { container } = renderAt('/impl/graphql-java', makeRepo());
     expect(await screen.findByText('graphql-java')).toBeInTheDocument();
-    // 100 - 1 failed = 99 → 99.0% — match the headline rate, not the sibling
+    // 97 / 98 floors to 98.9% — match the headline rate, not the sibling
     // occurrences in the Recent runs table / chart.
     const detailRate = container.querySelector('.detail-rate');
-    expect(detailRate?.textContent).toMatch(/99\.0%/);
+    expect(detailRate?.textContent).toMatch(/98\.9%/);
     // Failure card is present with the expected test case id data attribute
     const card = await screen.findByTestId('failure-card');
     expect(card.getAttribute('data-test-case-id')).toBe('aa/bb/cc');

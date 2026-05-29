@@ -22,6 +22,7 @@ import type {
 import type { CorpusArtifact, CorpusArtifacts } from '../lib/corpusArtifacts';
 import { NotFound } from './NotFound';
 import { implForRun } from '../lib/runImpl';
+import { computePassPct } from '../lib/passRate';
 
 export function FailureDetail() {
   const { name, runId, testCaseId } = useParams();
@@ -708,7 +709,7 @@ function summarizeOutcomes(outcomes: TestCaseOutcome[]): OutcomeSummary {
     skipped,
     scored,
     unscored,
-    passPct: scored > 0 ? Math.round((passed / scored) * 1000) / 10 : null,
+    passPct: scored > 0 ? computePassPct(passed, scored) : null,
   };
 }
 
@@ -727,7 +728,7 @@ function referenceTotal(summary: OutcomeSummary): number {
 function referencePassPct(summary: OutcomeSummary): number | null {
   const total = referenceTotal(summary);
   if (total === 0) return null;
-  return Math.round((summary.passed / total) * 1000) / 10;
+  return computePassPct(summary.passed, total);
 }
 
 function formatReferenceRateSummary(summary: OutcomeSummary): string {

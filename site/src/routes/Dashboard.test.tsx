@@ -128,6 +128,43 @@ describe('Dashboard', () => {
     expect(await screen.findByText(/96\.9%/)).toBeInTheDocument();
   });
 
+  it('does not display 100.0% for a near-perfect impl with failures', async () => {
+    const repo = new FakeRepository({
+      impls: [
+        { id: 'graphql-js-17', name: 'graphql-js-17', language: 'JavaScript' },
+        { id: 'viaduct', name: 'viaduct', language: 'Kotlin' },
+      ],
+      runs: [
+        {
+          id: 'r',
+          timestamp: '2026-05-29T20:58:26Z',
+          referenceImplId: 'graphql-js-17',
+          implIds: ['graphql-js-17', 'viaduct'],
+          excluded: 0,
+          resultsByImpl: {
+            'graphql-js-17': implRunResults('graphql-js-17', {
+              total: 2816,
+              passed: 2816,
+            }),
+            viaduct: implRunResults('viaduct', {
+              total: 2816,
+              passed: 2815,
+              failed: 1,
+            }),
+          },
+        },
+      ],
+    });
+    renderWith(repo);
+
+    const row = await screen.findByTestId('dashboard-row-viaduct');
+    expect(within(row).getByText('99.9%')).toBeInTheDocument();
+    expect(within(row).queryByText('100.0%')).toBeNull();
+    expect(
+      within(row).getByText('2816 total · 0 excluded · 1 failed'),
+    ).toBeInTheDocument();
+  });
+
   it('explains that the reference\'s failures are excluded from conformance testing', async () => {
     const repo = new FakeRepository({
       impls: [

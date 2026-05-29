@@ -6,8 +6,8 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 const {
-  buildImpl, buildResult, generateRunId, parseCliArgs, parseMaxImplFailures,
-  readManifestFile, resultId,
+  buildImpl, buildResult, computePassPct, formatPassRate, generateRunId,
+  parseCliArgs, parseMaxImplFailures, readManifestFile, resultId,
 } = require('./index');
 
 describe('parseMaxImplFailures', () => {
@@ -26,6 +26,18 @@ describe('parseMaxImplFailures', () => {
   it('parses positive integers and truncates floats', () => {
     assert.equal(parseMaxImplFailures('10'), 10);
     assert.equal(parseMaxImplFailures('3.7'), 3);
+  });
+});
+
+describe('formatPassRate', () => {
+  it('does not round a near-perfect failed run up to 100.0%', () => {
+    assert.equal(computePassPct(2815, 2816), 99.9);
+    assert.equal(formatPassRate(2815, 2816), '99.9');
+  });
+
+  it('still reports perfect and empty runs as 100.0%', () => {
+    assert.equal(formatPassRate(2816, 2816), '100.0');
+    assert.equal(formatPassRate(0, 0), '100.0');
   });
 });
 
