@@ -1,0 +1,30 @@
+query M($y: Boolean!) {
+  __typename @include(if: true)
+  gS3XIm01S {
+    ...Fragment_hXpHuwsAaH
+    ...Fragment_hXpHuwsAaH
+  }
+  DKXK579: __typename
+  ... on Union_r {
+    __typename @skip(if: false)
+  }
+  ... on Object_RuHqYM0PB {
+    __typename
+  }
+  ... on Object_RuHqYM0PB {
+    ...Fragment_hXpHuwsAaH
+    ... on Union_r {
+      ... on Interface_uo {
+        l
+      }
+    }
+  }
+}
+
+fragment Fragment_uIM on Interface_uo {
+  l @skip(if: $y) @include(if: $y)
+}
+
+fragment Fragment_hXpHuwsAaH on Union_r @Directive_ZznO{
+  ...Fragment_uIM
+}

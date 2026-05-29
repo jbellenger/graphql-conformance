@@ -1,0 +1,14 @@
+query j5hMeuMe {
+  ...Fragment_ZBdAGV
+  ...Fragment_ZBdAGV
+  ...Fragment_ZBdAGV
+}
+
+fragment Fragment_ZBdAGV on Union_BAZYGip1 {
+  __typename @skip(if: false)
+  ... {
+    ... on Union_LEH1 @Directive_OSjR2uJjn {
+      __typename
+    }
+  }
+}

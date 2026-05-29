@@ -1,0 +1,34 @@
+{
+  ...Fragment_W2cWKbkR6H
+  ... on Union_uX {
+    __typename
+  }
+  ... on Object_yf6E {
+    ...Fragment_W2cWKbkR6H
+    ...Fragment_wxyody8
+    G: kAR0uZF
+  }
+}
+
+fragment Fragment_unHA on Union_dud {
+  __typename
+}
+
+fragment Fragment_W2cWKbkR6H on Object_yf6E {
+  ... on Object_yf6E {
+    ... on Object_yf6E {
+      C8689zBQ: __typename
+    }
+  }
+  ... on Union_uX {
+    ...Fragment_unHA
+    __typename
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_wxyody8 on Union_uX {
+  ...Fragment_unHA
+  __typename
+}

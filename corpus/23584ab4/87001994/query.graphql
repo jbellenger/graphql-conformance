@@ -1,0 +1,13 @@
+query ($ymGq1W: Int = 2063707722) @Directive_ki {
+  ATcY: __typename
+  r(lY: $ymGq1W) @include(if: true)
+  ... on Union_UaYapVls27 {
+    ... on Union_z1Q {
+      ...Fragment_z3YYx1iv
+    }
+  }
+}
+
+fragment Fragment_z3YYx1iv on Union_UaYapVls27 {
+  __typename
+}

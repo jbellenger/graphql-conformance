@@ -1,0 +1,22 @@
+query @Directive_hGYuZZ4 {
+  __typename
+  ... on Union_T_k {
+    __typename
+    DR3iGLiZy: __typename
+    q8uV6R: __typename
+    KEw5d: __typename
+    ... on Object_UdpW {
+      ... on Union_T_k {
+        __typename
+      }
+    }
+    ... {
+      ...Fragment_uwuXuh
+      __typename
+    }
+  }
+}
+
+fragment Fragment_uwuXuh on Object_UdpW {
+  cpcJRemTf
+}

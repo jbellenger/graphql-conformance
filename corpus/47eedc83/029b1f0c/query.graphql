@@ -1,0 +1,37 @@
+query I93g_ {
+  ...Fragment_GFY3V36L
+  ...Fragment_TKKIvmVlh
+  ...Fragment_U0ayLN
+  ... on Union_iGqwtZTrw {
+    __typename
+    ubYiV: __typename
+    ... @include(if: true) {
+      __typename
+      ... on Union_wn {
+        __typename @Directive_Z4pR
+      }
+    }
+    ... on Union_wn {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_TKKIvmVlh on Object_aDg9 {
+  __typename
+}
+
+fragment Fragment_U0ayLN on Union_wn @Directive_Z4pR{
+  ...Fragment_TKKIvmVlh
+  SoLGnI: __typename
+  __typename
+  __typename
+  ... on Union_iGqwtZTrw {
+    __typename
+  }
+}
+
+fragment Fragment_GFY3V36L on Union_wn @Directive_Z4pR{
+  ...Fragment_U0ayLN
+  __typename
+}

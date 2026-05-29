@@ -1,0 +1,13 @@
+query ($iyUZCVEg: Float = 1.4294975397031093E+308) {
+  ...Fragment_X0
+  ...Fragment_X0
+  ...Fragment_X0
+}
+
+fragment Fragment_X0 on Object_Qjq @Directive_Mf(ipUEVr: $iyUZCVEg){
+  ... on Union_yzTlm8 {
+    ... on Union_yzTlm8 {
+      __typename
+    }
+  }
+}

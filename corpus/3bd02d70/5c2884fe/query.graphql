@@ -1,0 +1,9 @@
+query V {
+  ...Fragment_G
+  ...Fragment_G
+  ...Fragment_G@defer(if: false, label: ",")
+}
+
+fragment Fragment_G on Union_hAm {
+  ZGN4pfF: __typename
+}

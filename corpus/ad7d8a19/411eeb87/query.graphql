@@ -1,0 +1,58 @@
+query nF($lWeKQTMhEJ: Enum_X!, $zaM9Zp: Boolean!@Directive_Hs01c) @Directive_Hs01c {
+  gtZVJj(bcr6uMV0: $lWeKQTMhEJ) {
+    ...Fragment_Uq
+    ...Fragment_Uq
+    ... on Object_P3Vg8xHrR {
+      ...Fragment_twHT76QUP
+      K: gtZVJj(bcr6uMV0: tXwJl) {
+        aMO {
+          __typename
+        }
+        __typename
+      }
+      ... on Object_P3Vg8xHrR {
+        lZ: __typename
+        mtk3: gtZVJj(bcr6uMV0: tXwJl) {
+          DD13: aMO {
+            __typename
+          }
+        }
+      }
+    }
+    ... on Object_P3Vg8xHrR {
+      ...Fragment_Uq
+      aMO {
+        __typename @Directive_Hs01c
+      }
+      fagYIJ8xP2: gtZVJj(bcr6uMV0: pOOdjc) {
+        _: __typename @include(if: true)
+      }
+      ... on Object_P3Vg8xHrR {
+        __typename
+      }
+    }
+  }
+  ... on Object_P3Vg8xHrR {
+    ...Fragment_twHT76QUP
+    ...Fragment_Uq
+  }
+}
+
+fragment Fragment_Uq on Object_P3Vg8xHrR {
+  ... on Object_P3Vg8xHrR @skip(if: $zaM9Zp) {
+    aMO {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_twHT76QUP on Object_P3Vg8xHrR @Directive_Hs01c{
+  lW_si8t: gtZVJj(bcr6uMV0: tXwJl) {
+    gtZVJj(bcr6uMV0: tXwJl) {
+      __typename
+    }
+  }
+  QkMplV: gtZVJj(bcr6uMV0: pOOdjc) {
+    Fl0TK8QRzh: __typename
+  }
+}

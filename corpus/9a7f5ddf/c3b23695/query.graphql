@@ -1,0 +1,33 @@
+query jB {
+  ... on Object_n2rt7 {
+    YP3: uC
+    ... on Union_DC {
+      ...Fragment_kNwE@defer(if: true)
+    }
+    ... on Object_n2rt7 {
+      ...Fragment_ptw5VS
+    }
+  }
+  ... on Object_n2rt7 {
+    ...Fragment_ptw5VS
+    uC
+    ... on Object_n2rt7 {
+      ... on Interface_zEyj85_ {
+        __typename
+      }
+    }
+    ... on Union_DC {
+      ...Fragment_kNwE
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_kNwE on Union_R9 {
+  __typename
+}
+
+fragment Fragment_ptw5VS on Object_n2rt7 {
+  gn
+}

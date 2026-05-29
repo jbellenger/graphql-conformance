@@ -1,0 +1,31 @@
+query ($dc: Boolean! = false) {
+  ...Fragment_VOHmQkk
+  __typename
+  o: __typename @include(if: $dc)
+  o3H_ @Directive_n87lnns(fHTK: true) {
+    ... on Interface_Jhhhhhhhhh_STUB {
+      sD6guhKf @skip(if: $dc) {
+        naFpb6HlN
+      }
+    }
+    ... on Interface_Jhhhhhhhhh_STUB {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_iweRN5x5_ on Union_kDmcee {
+  __typename
+}
+
+fragment Fragment_WIdkZXGuVq on Union_kDmcee {
+  ...Fragment_iweRN5x5_
+  ... on Union_O3Iaq8OeP {
+    O_8mWP_ga: __typename @Directive_n87lnns(fHTK: true)
+  }
+}
+
+fragment Fragment_VOHmQkk on Union_kDmcee {
+  ...Fragment_iweRN5x5_
+  ...Fragment_WIdkZXGuVq@skip(if: $dc)
+}

@@ -1,0 +1,51 @@
+query XHtRltGZ9 {
+  ...Fragment_Qn4oJTMr
+  __typename
+  h7RYMbwbj8 {
+    ...Fragment_l_sSz
+    ...Fragment_l_sSz
+  }
+  h7RYMbwbj8 {
+    ... on Interface_fjbgOGXQo {
+      __typename
+    }
+    ... on Object_i67WMm @Directive_iDJ6caL {
+      ...Fragment_lTEic
+      glubtZOXg {
+        __typename
+      }
+    }
+  }
+  h7RYMbwbj8 {
+    ... on Union_SqnyNRW {
+      __typename
+      __typename
+      __typename
+    }
+  }
+  ... on Union_mh2KZr0BA6 {
+    __typename
+    __typename @skip(if: false)
+  }
+}
+
+fragment Fragment_Qn4oJTMr on Union_mh2KZr0BA6 {
+  ... on Object_IGZjZI {
+    ioj {
+      __typename
+      __typename
+    }
+    J5Zyd: l
+    ... on Union_mh2KZr0BA6 {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_lTEic on Object_i67WMm {
+  __typename
+}
+
+fragment Fragment_l_sSz on Object_i67WMm {
+  ...Fragment_lTEic
+}

@@ -1,0 +1,44 @@
+{
+  ...Fragment_bfB3aw
+  ...Fragment_P44Vjp_7@Directive_Vj8RcKGF
+  __typename
+  kYQp0cff
+}
+
+fragment Fragment_d0GRW7bQCD on Object_ods2s {
+  ... {
+    __typename
+  }
+}
+
+fragment Fragment_bfB3aw on Object_ods2s {
+  ...Fragment_d0GRW7bQCD
+  ...Fragment_d0GRW7bQCD
+  ... on Object_ods2s {
+    ...Fragment_d0GRW7bQCD
+    ecvqYJ1y: kYQp0cff
+    ... @defer(if: false, label: "") {
+      d: ueOvIXc73
+    }
+  }
+  ... on Object_ods2s {
+    ... on Object_ods2s {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_wJxn7Sf on Interface_jI {
+  wZtB: __typename
+}
+
+fragment Fragment_P44Vjp_7 on Object_ods2s {
+  ueOvIXc73
+  kYQp0cff
+  bDlP9gS9(qjNSO: false) {
+    ...Fragment_wJxn7Sf
+    __typename @include(if: false)
+    __typename
+  }
+  __typename
+}

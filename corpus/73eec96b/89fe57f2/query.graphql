@@ -1,0 +1,47 @@
+query yJwM5Pg {
+  ...Fragment_A_VJk
+  ...Fragment_A_VJk
+  ...Fragment_LsomvjBPgx
+  __typename
+}
+
+fragment Fragment_X1YSyZaqV on Union_EL {
+  __typename
+  ... on Object_Y {
+    __typename
+  }
+}
+
+fragment Fragment_A_VJk on Object_GBr7f9ZVr1 {
+  ...Fragment_X1YSyZaqV
+  ... on Union_Q2tK04aR {
+    ... on Object_o {
+      __typename
+    }
+  }
+  ... on Object_GBr7f9ZVr1 {
+    __typename
+    bTL {
+      __typename
+    }
+    TBT: iUCl {
+      dav3HD6e6 {
+        __typename
+      }
+    }
+    ... on Union_UulvVx {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_LsomvjBPgx on Union_EL {
+  __typename
+  __typename
+  gn: __typename
+  ... on Union_Q2tK04aR {
+    ... on Object_GBr7f9ZVr1 {
+      __typename
+    }
+  }
+}

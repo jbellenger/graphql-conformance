@@ -1,0 +1,13 @@
+query b {
+  ...Fragment_Z7PJ
+  nXNvb_cpNq {
+    ...Fragment_Z7PJ
+  }
+}
+
+fragment Fragment_Z7PJ on Union_DI9 @Directive_X7q0dQk{
+  __typename
+  ... on Union_PYm {
+    lJY2a: __typename
+  }
+}

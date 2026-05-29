@@ -1,0 +1,38 @@
+query @Directive_SL89 @Directive_SL89 {
+  ... on Object_Z7KTACMj6y {
+    ...Fragment_Lm50SJof
+  }
+  ... on Object_Z7KTACMj6y {
+    ...Fragment_eB9
+    ...Fragment_Lm50SJof
+    gbS {
+      ...Fragment_JlKMNhQHTR
+      __typename
+    }
+  }
+  ... on Object_Z7KTACMj6y {
+    __typename
+  }
+}
+
+fragment Fragment_Lm50SJof on Object_Z7KTACMj6y {
+  ... on Union_OiaB5sf {
+    __typename
+    BBNvGid7: __typename
+  }
+}
+
+fragment Fragment_eB9 on Object_Z7KTACMj6y {
+  ...Fragment_Lm50SJof
+  t: gZlwp {
+    ctmYPIo
+  }
+  __typename
+  gZlwp {
+    R_lLUI2LZ: tgw4tURm
+  }
+}
+
+fragment Fragment_JlKMNhQHTR on Union_qI {
+  h2GNLk7: __typename
+}

@@ -1,0 +1,14 @@
+{
+  ... on Union_N5RjZ1 {
+    ...Fragment_c3xb4
+  }
+}
+
+fragment Fragment_nRJM7 on Union_DGEi {
+  S5QctnK7In: __typename
+}
+
+fragment Fragment_c3xb4 on Union_DGEi {
+  ...Fragment_nRJM7
+  __typename
+}

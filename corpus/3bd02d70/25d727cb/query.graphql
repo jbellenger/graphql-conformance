@@ -1,0 +1,19 @@
+query DvcqevZ {
+  ... on Union_cZF1 {
+    __typename
+  }
+  ... {
+    ...Fragment_jlyc5qfZ
+    ... on Union_cZF1 @defer(if: false, label: "K0#") {
+      ...Fragment_jlyc5qfZ
+      __typename
+    }
+  }
+}
+
+fragment Fragment_jlyc5qfZ on Union_cZF1 {
+  ... on Union_cZF1 {
+    __typename
+    __typename
+  }
+}

@@ -1,0 +1,41 @@
+query ($nAzelY: Boolean!) {
+  ...Fragment_pjWeF
+  ...Fragment_c6uJf@defer(if: false, label: "zBC")
+  ...Fragment_c6uJf
+}
+
+fragment Fragment_ywZOo0i3 on Union_rfffffffff @Directive_CV{
+  __typename
+}
+
+fragment Fragment_MFsDk14a on Object_iPJCV1 @Directive_UGvX2a(vY: true){
+  ...Fragment_ywZOo0i3
+  ... on Union_rfffffffff {
+    k: __typename @skip(if: true)
+    QlFtH: __typename
+  }
+}
+
+fragment Fragment_pjWeF on Object_iPJCV1 {
+  ...Fragment_MFsDk14a
+}
+
+fragment Fragment_EcQ1tIs0yu on Union_Y {
+  AK: __typename
+}
+
+fragment Fragment_c6uJf on Object_iPJCV1 {
+  d3xJKg: brfEya {
+    ...Fragment_EcQ1tIs0yu
+  }
+  ... on Object_iPJCV1 {
+    ... {
+      __typename
+    }
+  }
+  ... on Union_rfffffffff {
+    ... on Object_znNBk {
+      __typename @skip(if: $nAzelY)
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  ...Fragment_n
+}
+
+fragment Fragment_T on Union_y {
+  __typename
+}
+
+fragment Fragment_n on Union_y {
+  ... on Union_y {
+    ...Fragment_T
+    __typename
+    s: __typename
+  }
+}

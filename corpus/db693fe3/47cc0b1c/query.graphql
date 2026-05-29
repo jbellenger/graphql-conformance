@@ -1,0 +1,35 @@
+{
+  ... on Object_H {
+    __typename
+  }
+  ... on Union_Fx {
+    ...Fragment_Cmy
+  }
+  ... {
+    ...Fragment_mudhm
+    ...Fragment_Spz
+    ... on Object_H {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_Cmy on Object_H {
+  __typename
+}
+
+fragment Fragment_mudhm on Object_H {
+  ... on Union_Ma {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_Spz on Union_Ma {
+  ... on Object_ZnwFyH4A {
+    __typename
+    wpNCF {
+      __typename
+    }
+  }
+}

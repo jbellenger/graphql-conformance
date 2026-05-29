@@ -1,0 +1,35 @@
+{
+  o3H_ {
+    ...Fragment_cSsk3SY_t
+    tz4: sD6guhKf {
+      ...Fragment_vPcevr8
+      naFpb6HlN @Directive_n87lnns(fHTK: true)
+    }
+    ... on Interface_Jhhhhhhhhh_STUB {
+      ...Fragment_cSsk3SY_t
+      l3b6y {
+        __typename @include(if: true)
+      }
+      r52rj1 {
+        __typename
+      }
+    }
+  }
+  ... on Union_kDmcee {
+    __typename
+    ... on Object_ngS60zr {
+      gHe
+    }
+  }
+}
+
+fragment Fragment_cSsk3SY_t on Interface_Jhhhhhhhhh @Directive_n87lnns{
+  __typename
+  ... on Interface_Jhhhhhhhhh_STUB {
+    __typename
+  }
+}
+
+fragment Fragment_vPcevr8 on Interface_CEEe4rKlW_STUB {
+  bgnDeCVS
+}

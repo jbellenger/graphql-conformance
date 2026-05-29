@@ -1,0 +1,37 @@
+query jP {
+  ...Fragment_P62GuGC
+  ... on Object_Clhg {
+    __typename
+    mHk4rKZ6pk {
+      ...Fragment_VaNp81CO
+      qRnpaRb: __typename
+    }
+  }
+  ... on Union_p9U8HUnd {
+    ...Fragment_dvLidV
+    ...Fragment_dvLidV
+    qJM14EG: __typename
+    __typename
+  }
+  ... on Union_p9U8HUnd {
+    ... on Object_S {
+      ...Fragment_P62GuGC
+    }
+  }
+}
+
+fragment Fragment_dvLidV on Object_kUHA1 {
+  __typename
+}
+
+fragment Fragment_P62GuGC on Union_p9U8HUnd {
+  __typename
+  ... on Object_kUHA1 {
+    ...Fragment_dvLidV
+    __typename
+  }
+}
+
+fragment Fragment_VaNp81CO on Interface_Dysp3zFM_STUB {
+  h7UsfxGP
+}

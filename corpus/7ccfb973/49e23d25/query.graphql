@@ -1,0 +1,22 @@
+query P($k_39: String, $rcILJC: Boolean! = false) {
+  ... on Union_Xw7We7e {
+    ... on Object_botS {
+      __typename
+    }
+    ... on Union_Xw7We7e {
+      ...Fragment_e
+      ... on Object_WP3cI {
+        __typename
+        dd(uPwoCcW_A8: $k_39)
+      }
+    }
+  }
+  ... on Union_Xw7We7e {
+    ...Fragment_e
+    ...Fragment_e@defer(if: true, label: "oD") @skip(if: $rcILJC)
+  }
+}
+
+fragment Fragment_e on Union_Xw7We7e {
+  __typename
+}

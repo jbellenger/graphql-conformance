@@ -1,0 +1,13 @@
+query A8mCKJV {
+  ...Fragment_MfsYTDUv
+  ...Fragment_MfsYTDUv
+}
+
+fragment Fragment_LFKwb on Union_yc @Directive_le(fIDGT: "_'"){
+  __typename
+}
+
+fragment Fragment_MfsYTDUv on Union_yc {
+  ...Fragment_LFKwb
+  __typename
+}

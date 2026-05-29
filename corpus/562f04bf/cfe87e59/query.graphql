@@ -1,0 +1,25 @@
+query ($dOllwr882i: Input_CxxuDyN6i) {
+  ...Fragment_gDv@skip(if: false)
+  ...Fragment_SB
+  thArX
+  thArX
+  ... on Object_WJT7fui {
+    YST0: o7(aB0: $dOllwr882i)
+  }
+}
+
+fragment Fragment_m on Object_WJT7fui {
+  o7(aB0: {yK8 : 1.312248746455546E+308, fD6c : true})
+  thArX
+  __typename
+}
+
+fragment Fragment_gDv on Object_WJT7fui {
+  ...Fragment_m
+  __typename
+  psy: o7(aB0: {yK8 : -4.659511498634906E+307, fD6c : false})
+}
+
+fragment Fragment_SB on Object_WJT7fui {
+  thArX
+}

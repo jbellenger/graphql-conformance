@@ -1,0 +1,18 @@
+query ($e8kVZ: String) {
+  ... on Object_WP3cI {
+    dd(uPwoCcW_A8: "")
+    ... on Object_WP3cI {
+      ...Fragment_BOBH
+    }
+  }
+  ... on Object_WP3cI {
+    IMhWiIHxF: dd(uPwoCcW_A8: $e8kVZ)
+  }
+  ... on Object_WP3cI {
+    __typename
+  }
+}
+
+fragment Fragment_BOBH on Object_WP3cI {
+  fo_
+}

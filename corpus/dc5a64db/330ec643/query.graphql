@@ -1,0 +1,15 @@
+query EvjO {
+  ...Fragment_D
+  ...Fragment_D
+  ...Fragment_zWdB
+}
+
+fragment Fragment_zWdB on Object_m3Y8O3fZ {
+  t8DKHYlJx {
+    xjpG: __typename
+  }
+}
+
+fragment Fragment_D on Object_m3Y8O3fZ {
+  ...Fragment_zWdB
+}

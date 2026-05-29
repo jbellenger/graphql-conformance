@@ -1,0 +1,14 @@
+query yXCVvccY4Z($y1ED: Boolean! = true) {
+  ...Fragment_zPutROkr
+  __typename
+}
+
+fragment Fragment_A on Object_C2RYK {
+  __typename
+}
+
+fragment Fragment_zPutROkr on Union_eQg {
+  ... on Object_C2RYK @include(if: $y1ED) {
+    ...Fragment_A
+  }
+}

@@ -1,0 +1,15 @@
+query S {
+  ...Fragment_zc
+  ... on Union_yc {
+    ...Fragment_zc
+    ...Fragment_zc
+  }
+  ... on Union_EPTpY {
+    ...Fragment_zc
+    ...Fragment_zc
+  }
+}
+
+fragment Fragment_zc on Interface_Hbk8Q {
+  y3NRKw: __typename
+}

@@ -1,0 +1,30 @@
+query hN @Directive_Tr6WNDmJH {
+  ...Fragment_ycuHUrZfMX
+  t8LMU4ZH {
+    ...Fragment_swH4ItDg
+    __typename
+    __typename
+  }
+  ... on Object_niXHw_ {
+    aC41dgyO {
+      ... on Union_JU {
+        __typename @Directive_Tr6WNDmJH
+      }
+    }
+  }
+}
+
+fragment Fragment_ycuHUrZfMX on Union_JU {
+  __typename
+  awtU: __typename
+  __typename
+  __typename
+}
+
+fragment Fragment_EX on Object_N3 {
+  __typename
+}
+
+fragment Fragment_swH4ItDg on Union_R1ZQQwEMR {
+  ...Fragment_EX
+}

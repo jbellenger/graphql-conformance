@@ -1,0 +1,3 @@
+query Y3d6($rM: Boolean! = true) {
+  __typename @skip(if: $rM)
+}

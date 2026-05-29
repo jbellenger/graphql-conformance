@@ -1,0 +1,14 @@
+query vYCWHFsN @Directive_fDDDDDDDDD {
+  ...Fragment_nrPGSTHp
+  ... on Union_jy @defer(if: false, label: "c") {
+    ... on Union_V9 {
+      ... on Union_jy {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_nrPGSTHp on Union_eQg {
+  __typename
+}

@@ -1,0 +1,41 @@
+query ($fghu: Boolean!) {
+  ...Fragment_nA
+  ...Fragment_KoLNymR
+  ...Fragment_KoLNymR
+  PG: r(lY: -1824998665)
+  ... on Union_UaYapVls27 {
+    ...Fragment_V9t1ot5@include(if: $fghu)
+    ...Fragment_JH0OUg6E
+  }
+}
+
+fragment Fragment_V9t1ot5 on Object_MBqm4 {
+  ... on Object_MBqm4 {
+    __typename
+    jk(pp6: [TmpgyIKg, L5pNeoAkay]) {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_nA on Object_MBqm4 {
+  ...Fragment_V9t1ot5
+  ... on Union_d @Directive_ki {
+    X2a3rSx: __typename
+    ... on Object_MBqm4 {
+      rmS2iK: __typename @include(if: false)
+    }
+  }
+}
+
+fragment Fragment_KoLNymR on Object_MBqm4 {
+  r(lY: 85288350)
+}
+
+fragment Fragment_JH0OUg6E on Union_d {
+  __typename @Directive_ki
+  ... {
+    __typename @Directive_ki
+    fG5GtkV: __typename
+  }
+}

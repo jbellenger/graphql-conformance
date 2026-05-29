@@ -1,0 +1,35 @@
+query j {
+  ...Fragment_pXtuorD4
+  ...Fragment_pXtuorD4
+  bTL {
+    ...Fragment_Ze@skip(if: false) @Directive_ulz
+    ...Fragment_Ze
+  }
+  RaD_Zmre: iUCl {
+    ...Fragment_pXtuorD4@defer(if: false, label: "v\\")
+    ... on Union_Q2tK04aR {
+      ... on Object_o {
+        Nm: __typename
+      }
+    }
+  }
+  ... on Union_UulvVx {
+    ...Fragment_pXtuorD4@include(if: false)
+  }
+  ... on Object_GBr7f9ZVr1 {
+    ...Fragment_pXtuorD4
+    ...Fragment_pXtuorD4
+  }
+}
+
+fragment Fragment_pXtuorD4 on Union_UulvVx {
+  __typename
+}
+
+fragment Fragment_oCWEo on Object_o {
+  __typename
+}
+
+fragment Fragment_Ze on Object_o {
+  ...Fragment_oCWEo
+}

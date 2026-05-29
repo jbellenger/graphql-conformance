@@ -1,0 +1,20 @@
+{
+  ... on Object_kxm4VoU0w {
+    ...Fragment_CMA
+    __typename
+    SG: __typename
+    qOtY9m2
+  }
+}
+
+fragment Fragment_Q_0rR98K on Union_D8Ypr {
+  bRp: __typename
+}
+
+fragment Fragment_CMA on Object_kxm4VoU0w {
+  ...Fragment_Q_0rR98K
+  __typename
+  ... on Object_kxm4VoU0w {
+    Uq586sV: qOtY9m2
+  }
+}

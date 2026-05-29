@@ -1,0 +1,17 @@
+{
+  ... on Object_GBr7f9ZVr1 {
+    iUCl {
+      ... on Union_EL {
+        __typename
+      }
+    }
+  }
+  ... on Union_UulvVx {
+    ...Fragment_s
+  }
+}
+
+fragment Fragment_s on Union_Q2tK04aR {
+  __typename
+  __typename @Directive_ulz
+}

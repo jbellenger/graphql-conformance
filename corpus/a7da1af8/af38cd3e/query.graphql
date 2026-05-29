@@ -1,0 +1,25 @@
+query XGR6UIgy {
+  ...Fragment_teKYvl_Zf
+  ...Fragment_N51FPhrb
+  ... on Union_cbAvO78Go {
+    ...Fragment_N51FPhrb
+    sJt: __typename
+    ... on Union_cbAvO78Go {
+      ...Fragment_N51FPhrb
+      __typename @Directive_Wk9r
+      ... on Union_cbAvO78Go {
+        H6: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_teKYvl_Zf on Object_Uy75G {
+  ... {
+    __typename @include(if: true)
+  }
+}
+
+fragment Fragment_N51FPhrb on Union_cbAvO78Go {
+  __typename
+}

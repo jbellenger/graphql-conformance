@@ -1,0 +1,5 @@
+query t {
+  ... on Union_b {
+    __typename
+  }
+}

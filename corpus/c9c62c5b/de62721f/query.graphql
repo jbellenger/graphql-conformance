@@ -1,0 +1,22 @@
+query ($y_c: Enum_FMZH0) {
+  ...Fragment_K
+  upi1Vf: m2(t5uTLinI4b: $y_c) {
+    ...Fragment_q3PVVHWF
+    ...Fragment_K
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_q3PVVHWF on Object_hIn2FFor {
+  ... on Union_ZiMC {
+    EMWDARuT4F: __typename
+  }
+}
+
+fragment Fragment_K on Union_ZiMC {
+  ...Fragment_q3PVVHWF
+  ... on Object_hIn2FFor {
+    m8xcRC: __typename
+  }
+}

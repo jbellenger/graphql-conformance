@@ -1,0 +1,55 @@
+query jQ {
+  ...Fragment_kBsIrhsa
+  ... on Object_wMP1CgtaGU {
+    upsiYAPYWf {
+      __typename
+      __typename
+      ... on Union_h8XI0W {
+        __typename @Directive_Yg171G
+      }
+    }
+    dwtGe30QL {
+      ...Fragment_M
+      __typename
+      __typename
+      xj {
+        sqFz {
+          r: szQnnqm4
+        }
+        sqFz {
+          szQnnqm4
+        }
+      }
+      ... {
+        xj {
+          __typename
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_Dv on Union_NzDogC7Jlp {
+  AhLDa: __typename
+}
+
+fragment Fragment_kBsIrhsa on Object_wMP1CgtaGU {
+  NBV: szQnnqm4 @include(if: false)
+  upsiYAPYWf @Directive_Yg171G {
+    ...Fragment_Dv
+    cmvztzfvc {
+      __typename
+      dwtGe30QL {
+        q9uskO1R: __typename
+      }
+    }
+    o {
+      __typename
+    }
+    __typename
+  }
+}
+
+fragment Fragment_M on Interface_n8aZB6j {
+  MjxdXZp: __typename
+}

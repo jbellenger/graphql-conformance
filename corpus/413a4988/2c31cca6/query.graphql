@@ -1,0 +1,34 @@
+{
+  ...Fragment_EZKk1
+  t8LMU4ZH {
+    ...Fragment_l
+    ... on Union_R1ZQQwEMR {
+      ... on Object_N3 {
+        __typename
+      }
+    }
+  }
+  ... {
+    ...Fragment_kh3ou8j
+  }
+}
+
+fragment Fragment_Oth9 on Object_niXHw_ {
+  aC41dgyO {
+    __typename
+  }
+}
+
+fragment Fragment_EZKk1 on Union_JU {
+  ...Fragment_Oth9
+}
+
+fragment Fragment_l on Union_R1ZQQwEMR {
+  LK: __typename
+}
+
+fragment Fragment_kh3ou8j on Union_JU {
+  ... on Object_niXHw_ {
+    __typename
+  }
+}

@@ -1,0 +1,34 @@
+query sWkkhH6TR @Directive_g5R {
+  ... on Union_BAZYGip1 {
+    ...Fragment_c4jyZ
+    ...Fragment_bkcvt
+  }
+  ... on Object_JjO86tHaz {
+    ...Fragment_HLrd
+    ...Fragment_Iz4ttECnX
+    ... on Union_LEH1 {
+      gsgao1: __typename
+    }
+  }
+}
+
+fragment Fragment_yPWxiQDS on Union_BAZYGip1 {
+  __typename
+  __typename
+}
+
+fragment Fragment_c4jyZ on Union_LEH1 @Directive_OSjR2uJjn{
+  ...Fragment_yPWxiQDS
+}
+
+fragment Fragment_bkcvt on Interface_u8JmmhHM65 {
+  ...Fragment_yPWxiQDS
+}
+
+fragment Fragment_HLrd on Union_LEH1 @Directive_OSjR2uJjn{
+  __typename
+}
+
+fragment Fragment_Iz4ttECnX on Object_JjO86tHaz {
+  __typename
+}

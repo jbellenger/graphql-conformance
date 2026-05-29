@@ -1,0 +1,48 @@
+{
+  ...Fragment_NsIpDM7VLT
+  ...Fragment_NsIpDM7VLT
+  ...Fragment_NsIpDM7VLT
+  ... on Object_rOVHlBsh {
+    ...Fragment_S
+    ...Fragment_cZyyQcl
+    tilX0uQA9 {
+      ...Fragment_uy8H
+      z
+      HAU: cN6LtLGg
+      z
+      ... on Object_t_HNXdPw {
+        __typename
+      }
+    }
+    ... on Object_rOVHlBsh {
+      tilX0uQA9 @skip(if: false) {
+        qWgWXUH7H: cN6LtLGg
+      }
+    }
+  }
+}
+
+fragment Fragment_NsIpDM7VLT on Object_rOVHlBsh {
+  c8HD: __typename
+}
+
+fragment Fragment_S on Object_rOVHlBsh {
+  __typename
+}
+
+fragment Fragment_cZyyQcl on Object_rOVHlBsh {
+  __typename
+  tilX0uQA9 {
+    N: qdHRUoJcRs {
+      lta5zIY
+    }
+    z
+  }
+  ... on Object_rOVHlBsh {
+    __typename
+  }
+}
+
+fragment Fragment_uy8H on Object_t_HNXdPw {
+  __typename @Directive_sqUilw
+}

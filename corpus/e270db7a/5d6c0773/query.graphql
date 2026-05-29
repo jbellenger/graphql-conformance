@@ -1,0 +1,26 @@
+query ($cw: Enum_f5gRs71qsZ) {
+  ... on Union_yzTlm8 {
+    __typename
+  }
+  ... on Object_Qjq {
+    ... on Union_yzTlm8 {
+      __typename
+    }
+  }
+  ... on Object_Qjq {
+    ...Fragment_nZt9S9qAk7
+  }
+}
+
+fragment Fragment_W2aoRf on Union_yzTlm8 {
+  __typename
+}
+
+fragment Fragment_nZt9S9qAk7 on Union_yzTlm8 {
+  ...Fragment_W2aoRf@skip(if: true)
+  ... on Object_Wxu {
+    pO(fhGPNdR1c: $cw) {
+      __typename
+    }
+  }
+}

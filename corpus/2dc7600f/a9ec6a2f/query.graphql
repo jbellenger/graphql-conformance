@@ -1,0 +1,26 @@
+{
+  ...Fragment_jBm
+  ...Fragment_S
+}
+
+fragment Fragment_BaLf4BWgpC on Object_wGq @Directive_Nu{
+  ... on Union_DGEi {
+    __typename
+  }
+}
+
+fragment Fragment_jBm on Union_N5RjZ1 {
+  ...Fragment_BaLf4BWgpC
+}
+
+fragment Fragment_S on Object_oRp {
+  _Xcn7K6N
+  ... on Union_N5RjZ1 {
+    ...Fragment_jBm
+  }
+  ... on Object_oRp @Directive_Nu {
+    ... {
+      j02d7o: __typename
+    }
+  }
+}

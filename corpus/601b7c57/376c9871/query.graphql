@@ -1,0 +1,21 @@
+query ($l: Boolean!) {
+  y7 {
+    ...Fragment_jkH
+    ... on Union__p {
+      __typename @include(if: $l)
+      ... {
+        __typename
+      }
+    }
+  }
+  __typename
+}
+
+fragment Fragment_LvuJGSD0 on Union_Ek {
+  __typename
+  TgS: __typename @skip(if: false) @include(if: true)
+}
+
+fragment Fragment_jkH on Union_Ek {
+  ...Fragment_LvuJGSD0
+}

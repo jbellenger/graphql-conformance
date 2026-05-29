@@ -1,0 +1,22 @@
+{
+  ... on Union_Ek {
+    ...Fragment_UYDS
+    __typename
+    rn0FI: __typename
+    __typename
+    ... on Union_iyAYS {
+      ...Fragment_UYDS
+      __typename
+      ... on Union_iyAYS {
+        __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_UYDS on Union_Ek {
+  ... on Object_pasy {
+    __typename @include(if: false)
+  }
+}

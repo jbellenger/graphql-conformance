@@ -1,0 +1,15 @@
+query Hcapu {
+  ...Fragment_h@skip(if: false)
+}
+
+fragment Fragment_ic55UNl on Object_Z {
+  hZ_rvfY7i
+  __typename
+  ... on Union_eQg {
+    __typename
+  }
+}
+
+fragment Fragment_h on Union_V9 {
+  ...Fragment_ic55UNl
+}

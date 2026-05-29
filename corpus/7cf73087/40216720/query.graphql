@@ -1,0 +1,67 @@
+query ($xK3pTj4: Boolean!) {
+  ...Fragment_XubcP0
+  ... on Object_ods2s @include(if: false) @skip(if: true) {
+    ...Fragment__Df2fvrO9Y
+    ...Fragment_XubcP0
+    ... on Object_ods2s {
+      kYQp0cff @Directive_Vj8RcKGF
+    }
+  }
+  ... on Object_ods2s {
+    ...Fragment__Df2fvrO9Y
+    ... on Object_ods2s @include(if: false) {
+      ...Fragment__Df2fvrO9Y
+      FajAwi5Y: bDlP9gS9(qjNSO: true) {
+        dI8p3TJ
+      }
+    }
+    ... on Object_ods2s {
+      __typename
+      lCi: bDlP9gS9(qjNSO: $xK3pTj4) {
+        LuOFYOSr: dI8p3TJ
+      }
+      yb: kYQp0cff
+    }
+  }
+  ... on Object_ods2s {
+    __typename
+    ... on Object_ods2s @Directive_gG84_ {
+      ...Fragment_XubcP0
+    }
+  }
+}
+
+fragment Fragment_cvLSDTl42n on Interface_jI_STUB {
+  vfbSL3n {
+    n
+  }
+  YZt3x0HVh: __typename
+}
+
+fragment Fragment_SNDVyv on Interface_jI_STUB {
+  __typename
+}
+
+fragment Fragment_XubcP0 on Object_ods2s @Directive_gG84_{
+  bDlP9gS9(qjNSO: false) {
+    ...Fragment_cvLSDTl42n
+  }
+  Gvn: ueOvIXc73
+  GL6O: bDlP9gS9(qjNSO: true) {
+    dI8p3TJ
+    ... on Interface_jI {
+      dI8p3TJ
+    }
+  }
+  bDlP9gS9(qjNSO: false) {
+    ...Fragment_SNDVyv
+    RmFZcQ2jY5: __typename
+    ... on Interface_jI @include(if: true) {
+      __typename
+    }
+  }
+}
+
+fragment Fragment__Df2fvrO9Y on Object_ods2s {
+  __typename
+}

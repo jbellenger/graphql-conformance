@@ -1,0 +1,34 @@
+query ($oE: Boolean!) {
+  ...Fragment_JmAx_KJGxY
+  w_XCi @skip(if: $oE) {
+    __typename
+  }
+  ... on Interface_KVksY {
+    ...Fragment_JmAx_KJGxY
+    ...Fragment_JmAx_KJGxY
+    ... on Union__X8uMrR {
+      bJ3CYcIx3: __typename
+    }
+    ... on Union__X8uMrR {
+      ... on Union_yV {
+        cy: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_f5hmgMkq_j on Interface_KVksY {
+  tSoy
+}
+
+fragment Fragment_JmAx_KJGxY on Interface_KVksY {
+  TZwevAv5KZ: __typename
+  __typename
+  ... on Interface_H7KRAF6J_STUB {
+    xUTkjYjf3D
+  }
+  ... on Interface_H7KRAF6J {
+    ...Fragment_f5hmgMkq_j
+    HsSe3GrIr: xUTkjYjf3D
+  }
+}

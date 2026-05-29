@@ -1,0 +1,13 @@
+query ip {
+  ...Fragment_fT0@Directive_Nu
+  ...Fragment_fT0
+}
+
+fragment Fragment_Inr0 on Union_fRZYO {
+  __typename
+}
+
+fragment Fragment_fT0 on Union_N5RjZ1 {
+  ...Fragment_Inr0
+  ...Fragment_Inr0@include(if: true)
+}

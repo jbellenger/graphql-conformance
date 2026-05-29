@@ -1,0 +1,21 @@
+query O {
+  ...Fragment_KZOdw2c
+  aN1KnUdXB
+}
+
+fragment Fragment_AUSXFY on Interface_pYhK {
+  sXLbbF9ZL {
+    a85e1
+  }
+  sXLbbF9ZL {
+    a85e1
+  }
+  sI9: __typename
+  ... on Union_S @Directive_Q1ctdTZC8Y {
+    __typename
+  }
+}
+
+fragment Fragment_KZOdw2c on Union_S {
+  ...Fragment_AUSXFY
+}

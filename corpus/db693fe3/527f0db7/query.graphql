@@ -1,0 +1,19 @@
+query ebH5WHqJ4 {
+  ... on Union_iNKyUxtW @Directive_l9x {
+    ...Fragment_qrR1
+    __typename
+    ... on Union_Ma {
+      __typename @Directive_yc
+    }
+  }
+  ... on Union_Fx {
+    __typename
+  }
+  ... on Union_iNKyUxtW {
+    __typename
+  }
+}
+
+fragment Fragment_qrR1 on Object_ZnwFyH4A {
+  itIfF_4vJ3 @Directive_yc
+}

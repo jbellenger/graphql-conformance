@@ -1,0 +1,26 @@
+query ($jBn71Gug: Boolean! = false) {
+  dyiF74WyiW {
+    ...Fragment_lif@include(if: false)
+    ...Fragment_lif
+    __typename @include(if: $jBn71Gug) @skip(if: false)
+    ... on Object_KI1RIn {
+      ...Fragment_st
+    }
+  }
+}
+
+fragment Fragment_wHV7lM on Union_JzKN {
+  __typename
+}
+
+fragment Fragment_lif on Object_KI1RIn {
+  ...Fragment_wHV7lM
+  xDziaaSZnG: __typename
+  ... on Object_KI1RIn {
+    cTrs: yS1XmpX
+  }
+}
+
+fragment Fragment_st on Object_KI1RIn {
+  yS1XmpX
+}

@@ -1,0 +1,46 @@
+query UvQ9bQT($am5hUf9Zp4: Boolean!) {
+  ...Fragment_bLKmz
+  tqZn {
+    ... on Object_bosrvz3e8N {
+      ... on Object_bosrvz3e8N {
+        iHe0
+      }
+    }
+  }
+  tqZn {
+    bx7: iHe0
+    ... on Union_M_EfX2GH @include(if: $am5hUf9Zp4) @skip(if: $am5hUf9Zp4) {
+      Ea78wniJ: __typename
+    }
+    ... on Object_bosrvz3e8N {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_xL5 on Union_M_EfX2GH {
+  _: __typename
+}
+
+fragment Fragment_Br on Object_GT53t {
+  ...Fragment_xL5
+  ... on Union_EE84I_DHt {
+    __typename
+  }
+}
+
+fragment Fragment_bLKmz on Union_M_EfX2GH {
+  ...Fragment_Br@Directive_edzeWQwFjG
+  ILN: __typename
+  __typename
+  mmyH: __typename
+  ... on Object_GT53t {
+    ...Fragment_xL5
+    auGTNTy {
+      __typename
+    }
+    ... on Union_EE84I_DHt {
+      __typename
+    }
+  }
+}

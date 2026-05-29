@@ -1,0 +1,47 @@
+{
+  ...Fragment_Uo9bfinqCf
+  nXNvb_cpNq {
+    ... {
+      ...Fragment_Uo9bfinqCf
+    }
+    ... on Object_oB_nwp {
+      ...Fragment_iLyR
+      ... on Union_EGg0 {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_G0 on Object_Qy {
+  cmw2uz_a
+}
+
+fragment Fragment_Dta on Union_PYm {
+  ...Fragment_G0@include(if: true)
+  __typename
+}
+
+fragment Fragment_Uo9bfinqCf on Object_Qy {
+  ...Fragment_Dta
+  __typename
+  nXNvb_cpNq {
+    ...Fragment_Dta
+    ... on Object_oB_nwp {
+      qEHYfIS
+      __typename
+    }
+  }
+  nXNvb_cpNq {
+    __typename
+  }
+  cmw2uz_a
+  ... on Union_PYm {
+    ...Fragment_Dta
+  }
+}
+
+fragment Fragment_iLyR on Union_DI9 {
+  __typename @skip(if: false)
+  __typename
+}

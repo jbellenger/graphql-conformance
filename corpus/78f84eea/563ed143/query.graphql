@@ -1,0 +1,13 @@
+query ($i: Boolean!) {
+  __typename @include(if: $i)
+  ... on Object_Gk_8kqJ {
+    ...Fragment_QG9Y1e
+    uusae
+  }
+}
+
+fragment Fragment_QG9Y1e on Union_CP1dpD88VB {
+  ... on Union_vWjMCKWr {
+    __typename
+  }
+}

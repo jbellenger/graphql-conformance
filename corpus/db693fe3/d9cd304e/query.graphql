@@ -1,0 +1,40 @@
+query tgiob9h {
+  X5: __typename @skip(if: false)
+  ... on Object_H {
+    __typename
+  }
+  ... on Union_Ma @defer(if: true, label: " ,l") {
+    __typename
+  }
+  ... on Union_Fx {
+    ...Fragment_qJY66t@include(if: true)
+    ... on Object_H {
+      ...Fragment_qJY66t
+      c {
+        c {
+          __typename
+        }
+      }
+    }
+    ... on Union_Ma {
+      ...Fragment_jtCwrpu@defer(if: true, label: null)
+    }
+  }
+}
+
+fragment Fragment_UOzDm on Union_Fx {
+  __typename @Directive_yc
+  __typename
+}
+
+fragment Fragment_qJY66t on Union_Fx {
+  ...Fragment_UOzDm
+  ... on Union_Ma {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_jtCwrpu on Object_ZnwFyH4A {
+  __typename
+}

@@ -1,0 +1,28 @@
+query i_P($hedQG: Boolean!) {
+  ...Fragment_yo
+  ...Fragment_vX
+  ... on Union_MQYuA7pIU5 {
+    __typename @Directive_Pee_
+  }
+}
+
+fragment Fragment_OqXaJXojaS on Object_B7_rh {
+  goiLFZp5: __typename
+}
+
+fragment Fragment_vX on Object_B7_rh {
+  ...Fragment_OqXaJXojaS
+}
+
+fragment Fragment_E0qOA on Object_K1CNN8NEl3 @Directive_lPc_Ao{
+  zb(eTkvseOo1: NBT)
+  d: zb(eTkvseOo1: NBT)
+  orVIkB: zb @Directive_AYg4fg @skip(if: $hedQG)
+}
+
+fragment Fragment_yo on Union_MQYuA7pIU5 {
+  ...Fragment_vX
+  ...Fragment_E0qOA
+  Ud4: __typename
+  gq: __typename @include(if: false)
+}

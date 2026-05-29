@@ -1,0 +1,13 @@
+query tLSji5X {
+  ...Fragment_BrIdG
+  ...Fragment_BrIdG
+  ... on Union_Ah @Directive_gf {
+    ... on Union__sTUu {
+      ...Fragment_BrIdG
+    }
+  }
+}
+
+fragment Fragment_BrIdG on Object_Zuuuuuuuuu {
+  __typename
+}

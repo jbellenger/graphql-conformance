@@ -1,0 +1,43 @@
+query @Directive_Z4pR {
+  j8ION5 {
+    ...Fragment_MVxqW
+    ...Fragment_zkHETjDKr
+    ... on Interface_Dvf {
+      ...Fragment_zkHETjDKr
+    }
+  }
+  ... {
+    ... on Union_iGqwtZTrw {
+      ...Fragment_jIVoK1O8
+      ... on Union_wn {
+        __typename
+        __typename
+      }
+    }
+    ... {
+      ... on Object_aDg9 {
+        j8ION5 {
+          zc {
+            kUh3: __typename
+          }
+        }
+      }
+    }
+  }
+}
+
+fragment Fragment_MVxqW on Interface_Dvf_STUB {
+  __typename
+  dP
+}
+
+fragment Fragment_zkHETjDKr on Interface_Dvf_STUB {
+  ...Fragment_MVxqW
+  ... on Interface_Dvf {
+    dP
+  }
+}
+
+fragment Fragment_jIVoK1O8 on Union_iGqwtZTrw {
+  __typename
+}

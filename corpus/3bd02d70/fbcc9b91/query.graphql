@@ -1,0 +1,11 @@
+query r0r03xKBR {
+  F: a {
+    ...Fragment_GJgrEd
+  }
+}
+
+fragment Fragment_GJgrEd on Object_k_ZJGWKmg {
+  ... on Union_hAm {
+    __typename
+  }
+}

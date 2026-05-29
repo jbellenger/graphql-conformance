@@ -1,0 +1,18 @@
+query L9_M0t7($bceQfmN: Boolean) {
+  ...Fragment_Vg8Uoq@defer(if: true, label: "l7")
+  ... on Object_bosrvz3e8N {
+    __typename
+  }
+  ... on Object_bosrvz3e8N {
+    ...Fragment_Vg8Uoq
+  }
+  ... {
+    tqZn {
+      iHe0
+    }
+  }
+}
+
+fragment Fragment_Vg8Uoq on Object_bosrvz3e8N @Directive_AKORiX(i: $bceQfmN) @Directive_RYXGC{
+  __typename
+}

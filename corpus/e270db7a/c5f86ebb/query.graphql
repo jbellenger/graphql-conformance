@@ -1,0 +1,11 @@
+query YupXz {
+  ...Fragment_p
+  ...Fragment_p
+  ...Fragment_p
+}
+
+fragment Fragment_p on Object_Qjq {
+  ... on Union_yzTlm8 {
+    __typename
+  }
+}

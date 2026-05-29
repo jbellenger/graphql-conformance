@@ -1,0 +1,36 @@
+query ($sVb8hhmf: Boolean!@Directive_UGvX2a(vY: null)) @Directive_CV {
+  ...Fragment_bk
+  tba25N
+}
+
+fragment Fragment_v0XfBy on Object_iPJCV1 {
+  tba25N
+  __typename
+  ... on Object_iPJCV1 {
+    tba25N
+  }
+}
+
+fragment Fragment_YYk1SPod on Object_znNBk {
+  jxgp3uf {
+    ujiJ: __typename @include(if: $sVb8hhmf)
+  }
+}
+
+fragment Fragment_bk on Union_rfffffffff {
+  ...Fragment_v0XfBy
+  ... on Object_znNBk @skip(if: true) {
+    ...Fragment_YYk1SPod
+    cU3dX: jxgp3uf {
+      __typename
+    }
+    N: __typename
+    ... on Union_rfffffffff {
+      __typename
+    }
+  }
+  ... on Object_iPJCV1 {
+    ...Fragment_v0XfBy
+    __typename
+  }
+}

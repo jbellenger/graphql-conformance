@@ -1,0 +1,47 @@
+query N50eQ_F6a($sH5AQ: Boolean!) {
+  ...Fragment_tLH8df
+  ... on Union_H3CDZbw9 {
+    __typename @skip(if: true)
+  }
+  ... on Object_wMP1CgtaGU {
+    ...Fragment_JKf6ev
+    ...Fragment_tLH8df
+    szQnnqm4 @include(if: $sH5AQ)
+    ... on Union_H3CDZbw9 {
+      __typename @include(if: false)
+      __typename
+      __typename
+      ... on Object_RnY1KSEf4 @Directive_q9Jq {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_DFDAd on Union_h8XI0W {
+  __typename
+}
+
+fragment Fragment_tLH8df on Union_H3CDZbw9 {
+  ... on Object_RnY1KSEf4 {
+    ...Fragment_DFDAd
+    uor8HREkF {
+      o {
+        oARs: __typename
+      }
+      __typename
+    }
+    __typename
+    ... on Union_H3CDZbw9 {
+      OO: __typename
+    }
+  }
+}
+
+fragment Fragment_JKf6ev on Union_H3CDZbw9 @Directive_g_G4e1TsA{
+  irj5: __typename @skip(if: $sH5AQ)
+  __typename
+  ... on Union_h8XI0W @Directive_q9Jq {
+    o: __typename
+  }
+}

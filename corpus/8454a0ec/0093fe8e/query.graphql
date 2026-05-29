@@ -1,0 +1,38 @@
+query _SxcGnRMcK($hboqmcO_u: Boolean!) {
+  ...Fragment_lxVjJu
+  ...Fragment_dAqaz5s@Directive_edzeWQwFjG
+  ...Fragment_O1zQd
+  __typename
+  ... on Union_M_EfX2GH @defer(label: "b") {
+    __typename
+  }
+}
+
+fragment Fragment_VT8ZA on Object_GT53t {
+  ... on Union_M_EfX2GH {
+    __typename
+  }
+}
+
+fragment Fragment_O1zQd on Union_M_EfX2GH {
+  v: __typename
+}
+
+fragment Fragment_lxVjJu on Union_M_EfX2GH @Directive_AKORiX(i: true){
+  ...Fragment_VT8ZA
+  yM: __typename @include(if: $hboqmcO_u)
+  __typename @include(if: $hboqmcO_u)
+  ... on Object_bosrvz3e8N {
+    ...Fragment_O1zQd
+    o68k: iHe0
+  }
+}
+
+fragment Fragment_dAqaz5s on Object_bosrvz3e8N {
+  wgh8Eyjl: tqZn {
+    ...Fragment_lxVjJu
+  }
+  ... on Union_M_EfX2GH {
+    __typename
+  }
+}

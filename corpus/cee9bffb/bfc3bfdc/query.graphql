@@ -1,0 +1,38 @@
+query zl {
+  ...Fragment_s@include(if: false) @defer(if: true, label: ")s")
+  __typename
+  ... on Union_r {
+    __typename
+    __typename @Directive_ZznO
+    __typename
+  }
+  ... on Object_RuHqYM0PB {
+    ...Fragment_Y9pRkATzKC
+    gS3XIm01S {
+      ...Fragment_s
+      __typename
+    }
+    __typename
+  }
+}
+
+fragment Fragment_Xb6KtN on Union_JzKN {
+  __typename
+  Yjc: __typename
+}
+
+fragment Fragment_Y9pRkATzKC on Union_r {
+  ...Fragment_Xb6KtN
+}
+
+fragment Fragment_s on Object_RuHqYM0PB {
+  ...Fragment_Y9pRkATzKC
+  gS3XIm01S {
+    ... on Union_r {
+      __typename
+    }
+  }
+  dyiF74WyiW {
+    __typename
+  }
+}

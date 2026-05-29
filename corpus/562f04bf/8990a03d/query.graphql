@@ -1,0 +1,22 @@
+query EzszqIhm {
+  ... on Union_uumj {
+    __typename
+  }
+  ... on Union_uumj {
+    ... on Object_WJT7fui {
+      thArX
+    }
+    ... on Object_WJT7fui {
+      ...Fragment_adA4U
+      o7(aB0: {yK8 : 1495691990, fD6c : false})
+      ... on Union_uumj {
+        __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_adA4U on Union_uumj {
+  __typename
+}

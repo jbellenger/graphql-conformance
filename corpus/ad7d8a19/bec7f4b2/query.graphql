@@ -1,0 +1,28 @@
+query ($z6duCAR856: Enum_X!, $td8Gz8ssSN: Boolean!) {
+  ...Fragment_wiIEU@defer(label: "l") @Directive_Ipu1C7GPX
+}
+
+fragment Fragment_g on Object_P3Vg8xHrR {
+  gtZVJj(bcr6uMV0: pOOdjc) {
+    eJQdrUR: gtZVJj(bcr6uMV0: $z6duCAR856) {
+      __typename
+    }
+  }
+  aMO {
+    aZJiqCdf {
+      __typename @skip(if: $td8Gz8ssSN)
+    }
+  }
+}
+
+fragment Fragment_Ru on Object_P3Vg8xHrR {
+  ...Fragment_g
+}
+
+fragment Fragment_wiIEU on Object_P3Vg8xHrR {
+  ...Fragment_Ru
+  ...Fragment_g
+  ... on Object_P3Vg8xHrR {
+    ...Fragment_Ru
+  }
+}

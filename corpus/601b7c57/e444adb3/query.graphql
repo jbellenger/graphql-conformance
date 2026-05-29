@@ -1,0 +1,33 @@
+query ($exfq: Boolean! = true) {
+  ... on Union_iyAYS {
+    ...Fragment_pQg3aD
+    ...Fragment_RoFI5luU8i
+    __typename @skip(if: true)
+  }
+  ... on Union_iyAYS {
+    __typename
+    ... on Object_pasy {
+      y7 {
+        fKgTde9bb: __typename @skip(if: false)
+      }
+      om5: __typename @skip(if: $exfq)
+      ... on Union_iyAYS {
+        __typename @Directive_adOi
+      }
+    }
+  }
+  ... on Union_Ek @include(if: $exfq) {
+    TwSp48N: __typename
+  }
+}
+
+fragment Fragment_pQg3aD on Union_Ek {
+  __typename
+}
+
+fragment Fragment_RoFI5luU8i on Union_iyAYS {
+  ... on Union_Ek {
+    __typename
+    __typename @include(if: true)
+  }
+}

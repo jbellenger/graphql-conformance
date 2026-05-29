@@ -1,0 +1,3 @@
+query ($pbj2GPe: Boolean!) {
+  __typename @include(if: $pbj2GPe)
+}

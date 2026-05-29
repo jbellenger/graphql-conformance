@@ -1,0 +1,20 @@
+query HoXrLJOT4 {
+  ...Fragment_ZqnBAZ
+  ...Fragment_ZqnBAZ
+  ...Fragment_M5b7l
+  fe48lM
+}
+
+fragment Fragment_pLMa on Union_e {
+  __typename
+}
+
+fragment Fragment_ZqnBAZ on Union_RGC {
+  ...Fragment_pLMa
+}
+
+fragment Fragment_M5b7l on Union_RGC {
+  ... on Union_e {
+    __typename
+  }
+}

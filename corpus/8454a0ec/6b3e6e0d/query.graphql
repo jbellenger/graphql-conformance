@@ -1,0 +1,19 @@
+{
+  ... on Union_M_EfX2GH {
+    ...Fragment_k
+  }
+  ... {
+    __typename
+  }
+}
+
+fragment Fragment_HSex on Union_M_EfX2GH {
+  __typename
+}
+
+fragment Fragment_k on Object_bosrvz3e8N {
+  ...Fragment_HSex
+  ... on Union_M_EfX2GH {
+    W: __typename
+  }
+}

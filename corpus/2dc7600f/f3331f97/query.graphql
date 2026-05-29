@@ -1,0 +1,29 @@
+query p($i: Boolean!) {
+  ...Fragment_ji
+  ...Fragment_CR0q1VC0dl
+  ...Fragment_CR0q1VC0dl@skip(if: false)
+}
+
+fragment Fragment_CR0q1VC0dl on Union_N5RjZ1 {
+  __typename
+  __typename
+}
+
+fragment Fragment_HhqqINl on Union_fRZYO {
+  EB: __typename
+}
+
+fragment Fragment_ji on Union_N5RjZ1 {
+  ... on Union_DGEi {
+    ...Fragment_CR0q1VC0dl@include(if: $i)
+    ... on Union_fRZYO {
+      __typename
+    }
+  }
+  ... on Union_DGEi {
+    ...Fragment_HhqqINl
+    ... on Union_fRZYO {
+      __typename
+    }
+  }
+}

@@ -1,0 +1,25 @@
+query h {
+  ...Fragment_zDThvhP
+  ... {
+    __typename
+  }
+}
+
+fragment Fragment_Y2S6GZOg1f on Union_O3Iaq8OeP {
+  __typename
+  ... on Object_ngS60zr @Directive_O0JOewBqa @Directive_telvmO {
+    gHe: __typename
+  }
+}
+
+fragment Fragment_zDThvhP on Union_kDmcee {
+  ...Fragment_Y2S6GZOg1f
+  ... {
+    ...Fragment_Y2S6GZOg1f
+    __typename
+    __typename
+    ... on Union_kDmcee {
+      OQ2BS41T: __typename
+    }
+  }
+}

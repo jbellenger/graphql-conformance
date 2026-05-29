@@ -1,0 +1,21 @@
+query LKLP9JjgQ {
+  ...Fragment_dtQ_stGai
+  ...Fragment_V
+  ...Fragment_V
+}
+
+fragment Fragment_V on Union_Xw7We7e {
+  __typename
+}
+
+fragment Fragment_SL on Object_botS {
+  ...Fragment_V
+  ... on Union_vq4 {
+    aJDEdsG: __typename
+  }
+}
+
+fragment Fragment_dtQ_stGai on Union_Xw7We7e {
+  ...Fragment_SL
+  yb: __typename
+}

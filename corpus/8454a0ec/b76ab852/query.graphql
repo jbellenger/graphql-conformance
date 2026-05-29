@@ -1,0 +1,16 @@
+query vLYqTQF {
+  ...Fragment_Kj
+  ...Fragment_Kj
+}
+
+fragment Fragment_iBTF3 on Union_M_EfX2GH {
+  __typename
+}
+
+fragment Fragment_Kj on Object_bosrvz3e8N {
+  ... on Object_bosrvz3e8N {
+    ...Fragment_iBTF3
+    __typename @Directive_RYXGC
+    Q: iHe0
+  }
+}

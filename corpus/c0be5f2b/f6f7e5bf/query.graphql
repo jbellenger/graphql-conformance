@@ -1,0 +1,86 @@
+{
+  ...Fragment_dd
+  ...Fragment_W0VZAq
+  jxta9oMC {
+    __typename
+  }
+  o3H_ {
+    sD6guhKf {
+      ...Fragment_b18f4af
+    }
+    sD6guhKf {
+      ... on Interface_CEEe4rKlW {
+        naFpb6HlN
+      }
+    }
+    ... on Interface_Jhhhhhhhhh_STUB {
+      ...Fragment__2ZW
+    }
+  }
+  o3H_ {
+    sD6guhKf {
+      __typename
+    }
+    sD6guhKf {
+      ... {
+        naFpb6HlN
+      }
+    }
+    __typename
+    ... on Interface_Jhhhhhhhhh {
+      __typename
+    }
+    ... @Directive_O0JOewBqa {
+      sD6guhKf {
+        __typename
+      }
+    }
+  }
+  jpdUwfsZo
+  o3H_ {
+    ...Fragment_UsL
+  }
+}
+
+fragment Fragment_idMK9 on Object_l0oNIgRE @Directive_telvmO{
+  __typename @Directive_n87lnns(fHTK: null)
+}
+
+fragment Fragment_d0x8oHnc on Object_l0oNIgRE {
+  ...Fragment_idMK9
+  ... on Object_l0oNIgRE {
+    jpdUwfsZo
+  }
+}
+
+fragment Fragment_Wv on Object_l0oNIgRE {
+  ...Fragment_idMK9
+  ... on Object_l0oNIgRE {
+    YbX4SPQn: o3H_ {
+      __typename
+    }
+    WnwbNXNfys: __typename
+  }
+}
+
+fragment Fragment_dd on Object_l0oNIgRE {
+  ...Fragment_d0x8oHnc
+  ...Fragment_Wv
+}
+
+fragment Fragment_W0VZAq on Object_l0oNIgRE {
+  jpdUwfsZo
+}
+
+fragment Fragment_b18f4af on Interface_CEEe4rKlW_STUB {
+  bgnDeCVS
+  naFpb6HlN
+}
+
+fragment Fragment__2ZW on Interface_Jhhhhhhhhh {
+  __typename
+}
+
+fragment Fragment_UsL on Interface_Jhhhhhhhhh {
+  __typename @Directive_n87lnns(fHTK: true)
+}

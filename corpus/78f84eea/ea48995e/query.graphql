@@ -1,0 +1,12 @@
+query SO_w {
+  ...Fragment_Cipo
+  ... on Object_Gk_8kqJ {
+    ...Fragment_Cipo
+    ...Fragment_Cipo
+    __typename
+  }
+}
+
+fragment Fragment_Cipo on Union_CP1dpD88VB @Directive_WkChJ5edX{
+  __typename
+}

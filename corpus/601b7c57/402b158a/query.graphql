@@ -1,0 +1,21 @@
+query GqU($gKwOQ: Boolean!) {
+  ... on Object_pasy {
+    ...Fragment_Oy0Vj2z1p
+    ...Fragment_Oy0Vj2z1p
+    __typename
+    ... on Union_iyAYS {
+      __typename @Directive_adOi
+    }
+  }
+}
+
+fragment Fragment_eFeq5 on Interface_YcSss {
+  eZsJsd {
+    hU7fZ: oSjHwm_I
+  }
+}
+
+fragment Fragment_Oy0Vj2z1p on Union_Ek {
+  ...Fragment_eFeq5@include(if: $gKwOQ)
+  __typename
+}

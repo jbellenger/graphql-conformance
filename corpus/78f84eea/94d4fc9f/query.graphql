@@ -1,0 +1,18 @@
+query eF3 {
+  ...Fragment_g013obUE
+}
+
+fragment Fragment_lP18E on Object_Gk_8kqJ @Directive_WkChJ5edX{
+  __typename @include(if: true)
+}
+
+fragment Fragment_v63Gnio on Object_Gk_8kqJ {
+  _UAyJP: uusae
+}
+
+fragment Fragment_g013obUE on Union_CP1dpD88VB {
+  ...Fragment_lP18E
+  ... on Object_Gk_8kqJ {
+    ...Fragment_v63Gnio
+  }
+}

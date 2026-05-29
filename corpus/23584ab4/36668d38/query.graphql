@@ -1,0 +1,7 @@
+query ($g0W3Z: Input_O88qrKUIJ) {
+  ...Fragment_VoWA4jC6OX@skip(if: true)
+}
+
+fragment Fragment_VoWA4jC6OX on Union_d @Directive_M(c1GGaTkjzC: $g0W3Z){
+  __typename
+}

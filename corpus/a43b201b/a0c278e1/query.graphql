@@ -1,0 +1,44 @@
+query ($nZ: Boolean!) {
+  __typename
+  cihRX6hEM: xLm
+  ... on Union_y {
+    NHV1rqRxqZ: __typename
+    __typename
+  }
+  ... on Object_v1QC {
+    xLm
+  }
+  ... on Object_v1QC @skip(if: true) {
+    ...Fragment_Fhcis3H
+    SO: seW8gUmhvv @Directive_gEni {
+      ... {
+        gUbZIvk: __typename
+      }
+    }
+    ... on Union_oZNLbt3jV_ {
+      ...Fragment_VIT@include(if: true)
+      ... on Object_BVU {
+        _
+      }
+    }
+  }
+}
+
+fragment Fragment_D2igIYe on Union_y {
+  __typename
+}
+
+fragment Fragment_Fhcis3H on Object_v1QC {
+  ...Fragment_D2igIYe
+  sl0RWe7: seW8gUmhvv {
+    __typename @include(if: $nZ)
+  }
+  xLm
+  xLm
+}
+
+fragment Fragment_VIT on Object_v1QC {
+  seW8gUmhvv {
+    __typename
+  }
+}

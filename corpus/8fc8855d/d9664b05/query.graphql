@@ -1,0 +1,19 @@
+query ($rzMc0cG: Boolean!) {
+  ...Fragment_Z
+  ...Fragment_wuZcAUD6
+  ... on Union_GXXXXXXXXX {
+    aiXYYmC: __typename @include(if: $rzMc0cG)
+  }
+}
+
+fragment Fragment_hos on Object_P5wBEaXy {
+  __typename
+}
+
+fragment Fragment_wuZcAUD6 on Union_fP2gKk2 {
+  ...Fragment_hos
+}
+
+fragment Fragment_Z on Union_fP2gKk2 {
+  ...Fragment_wuZcAUD6
+}

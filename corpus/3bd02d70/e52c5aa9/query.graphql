@@ -1,0 +1,8 @@
+query ($cwlqJ7BVam: Boolean!) {
+  ... on Union_hAm {
+    __typename @skip(if: true)
+  }
+  ... on Union_cZF1 {
+    __typename @include(if: $cwlqJ7BVam)
+  }
+}

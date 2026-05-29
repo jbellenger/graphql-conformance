@@ -1,0 +1,25 @@
+query HvbWW58 {
+  ... on Union_V9 {
+    ...Fragment_HnNjD6Dw
+    ...Fragment_HnNjD6Dw
+    LqQY: __typename
+    __typename
+    __typename
+    ... on Union_V9 {
+      ...Fragment_Z0o1EMj0Ra
+      __typename
+    }
+  }
+}
+
+fragment Fragment__ on Union_jy {
+  __typename
+}
+
+fragment Fragment_HnNjD6Dw on Union_jy {
+  ...Fragment__
+}
+
+fragment Fragment_Z0o1EMj0Ra on Object_Z {
+  hZ_rvfY7i
+}

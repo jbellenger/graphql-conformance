@@ -1,0 +1,23 @@
+{
+  ...Fragment__rE6b
+  ...Fragment__rE6b
+  ...Fragment_c5rwb0K
+  __typename
+  a: xLm
+  ... on Union_y {
+    ...Fragment_c5rwb0K
+  }
+  ... on Union_oZNLbt3jV_ {
+    __typename @Directive_wDOFy1A @include(if: true)
+  }
+}
+
+fragment Fragment_c5rwb0K on Union_oZNLbt3jV_ {
+  x6Bb5bPK_j: __typename
+}
+
+fragment Fragment__rE6b on Union_y {
+  ...Fragment_c5rwb0K
+  __typename
+  fDtVQ5msa: __typename
+}

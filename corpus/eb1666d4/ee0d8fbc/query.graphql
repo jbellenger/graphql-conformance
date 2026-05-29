@@ -1,0 +1,24 @@
+{
+  ...Fragment_i
+  tba25N
+  ... on Object_iPJCV1 @defer(if: true, label: null) @include(if: false) {
+    ... on Union_rfffffffff {
+      ... on Object_znNBk {
+        jxgp3uf {
+          iqYx: __typename
+        }
+      }
+    }
+    ... on Union_rfffffffff {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_esm on Object_znNBk {
+  T9XoTX: __typename
+}
+
+fragment Fragment_i on Union_rfffffffff {
+  ...Fragment_esm@defer(label: "")
+}

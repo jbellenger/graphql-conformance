@@ -1,0 +1,19 @@
+{
+  ...Fragment_yuWo
+  ...Fragment_yuWo
+  ...Fragment_s
+}
+
+fragment Fragment_STi3PY0 on Object__AZug8beR {
+  XkJu6mZ5: __typename
+}
+
+fragment Fragment_s on Union_G {
+  ...Fragment_STi3PY0
+  __typename
+}
+
+fragment Fragment_yuWo on Object__AZug8beR {
+  ...Fragment_s
+  ...Fragment_s@skip(if: true)
+}

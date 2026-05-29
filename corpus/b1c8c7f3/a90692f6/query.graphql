@@ -1,0 +1,31 @@
+{
+  y {
+    ...Fragment_WmLzzFmFq2
+    ...Fragment_WmLzzFmFq2
+  }
+  ... on Object_yf6E {
+    ... on Union_uX {
+      ... on Union_uX {
+        FBQ_5LFK: __typename
+        jG5s85_J4L: __typename
+      }
+    }
+    ... on Union_uX {
+      ...Fragment_LTQ2
+      __typename @skip(if: false)
+      ... on Object_TX3 {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_WmLzzFmFq2 on Object_vCQm {
+  ... on Object_vCQm {
+    __typename
+  }
+}
+
+fragment Fragment_LTQ2 on Object_TX3 {
+  n1B: __typename
+}

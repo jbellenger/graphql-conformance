@@ -1,0 +1,53 @@
+query AVDWCvsIa0 {
+  ...Fragment_H
+  ...Fragment_YA
+  q_U7 {
+    AjdMWTK17: vH {
+      ...Fragment_H
+      __typename
+      __typename
+      __typename
+      ... on Object_YPb {
+        __typename
+      }
+    }
+    ckBi7Yykm {
+      ...Fragment_YA@defer(if: true, label: "")
+      nt4x0k1N {
+        yHK1
+      }
+      ... on Object_YPb {
+        tDXZeZJzX
+        tDXZeZJzX
+      }
+    }
+    xDKEN: __typename
+    vH {
+      ... on Interface_u8JmmhHM65 @skip(if: false) {
+        YL: __typename
+      }
+    }
+  }
+  V: yHK1
+}
+
+fragment Fragment_wKpD4AfRz on Union_BAZYGip1 {
+  __typename
+  __typename
+  ... on Object_YPb {
+    __typename
+  }
+}
+
+fragment Fragment_YA on Union_BAZYGip1 {
+  ...Fragment_wKpD4AfRz
+  __typename
+  ... on Union_LEH1 {
+    __typename
+  }
+}
+
+fragment Fragment_H on Union_LEH1 {
+  ...Fragment_wKpD4AfRz
+  ...Fragment_YA
+}

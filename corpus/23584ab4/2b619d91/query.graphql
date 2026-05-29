@@ -1,0 +1,45 @@
+query UC9($m: [Enum_w68zhGKo!], $aIOnOm: Boolean!) @Directive_ki {
+  ...Fragment_KukFPwt
+  ...Fragment_Wmqpj
+  __typename
+}
+
+fragment Fragment_lBHwI8 on Union_UaYapVls27 {
+  __typename
+}
+
+fragment Fragment_KukFPwt on Object_MBqm4 {
+  jk(pp6: $m) @Directive_ki {
+    ...Fragment_lBHwI8
+    ... on Union_UaYapVls27 {
+      __typename @skip(if: $aIOnOm)
+    }
+  }
+  a: jk {
+    ...Fragment_lBHwI8
+  }
+  zb: jk(pp6: []) {
+    ...Fragment_lBHwI8
+    __typename
+  }
+  ... on Union_UaYapVls27 @Directive_ki {
+    ... on Object_h {
+      d5V57ni7: gYKJc {
+        __typename
+      }
+      EJ1Y: gYKJc {
+        r(lY: 1772293229)
+      }
+    }
+  }
+  ... on Union_d {
+    ... on Union_z1Q {
+      lz2: __typename
+    }
+  }
+}
+
+fragment Fragment_Wmqpj on Union_z1Q {
+  __typename
+  __typename @skip(if: $aIOnOm)
+}

@@ -1,0 +1,25 @@
+query jvJ {
+  ...Fragment_fqTO@Directive_kN8(utrqL: 122012267, v1x: 1.2489529029007149E+308)
+  ... on Object_Qjq {
+    ...Fragment_VIHdxKX4Wh
+    ...Fragment_VIHdxKX4Wh
+  }
+}
+
+fragment Fragment_B7uYXX6d on Union_V5esa9 {
+  QOiB: __typename
+  ... on Object_d {
+    yv
+    witLtK4 {
+      qmJZofgBP
+    }
+  }
+}
+
+fragment Fragment_fqTO on Union_yzTlm8 {
+  ...Fragment_B7uYXX6d
+}
+
+fragment Fragment_VIHdxKX4Wh on Union_yzTlm8 {
+  __typename
+}
