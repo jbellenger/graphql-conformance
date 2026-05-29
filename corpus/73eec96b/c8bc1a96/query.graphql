@@ -1,0 +1,20 @@
+query qDw {
+  ... on Union_EL {
+    __typename
+    ... on Union_Q2tK04aR {
+      ... on Union_UulvVx {
+        __typename
+      }
+    }
+    ... on Object_Y {
+      ...Fragment_Y0py
+      q7hEas {
+        RBse_r: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Y0py on Union_Q2tK04aR @Directive_ulz{
+  w2sFR1Vt: __typename
+}

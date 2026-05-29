@@ -1,0 +1,21 @@
+query F {
+  ...Fragment_KgR8
+  __typename
+  a {
+    __typename @Directive_L6CX
+  }
+}
+
+fragment Fragment_Aqk6Hd on Union_hAm {
+  __typename
+}
+
+fragment Fragment_KgR8 on Union_cZF1 {
+  ...Fragment_Aqk6Hd
+  ... on Union_cZF1 @include(if: false) @defer(if: false, label: "]") {
+    pEloG_V: __typename @Directive_L6CX
+  }
+  ... on Union_hAm {
+    ...Fragment_Aqk6Hd
+  }
+}

@@ -1,0 +1,55 @@
+query ($kXRVMeU: Boolean!) {
+  ...Fragment_HuIkbWeEP
+  aN1KnUdXB @skip(if: $kXRVMeU)
+  ... on Object_JZOQzg {
+    __typename
+  }
+}
+
+fragment Fragment_isB7A4L on Union_S {
+  __typename
+  ... on Object_JZOQzg @include(if: false) {
+    lgAJ3jc: aN1KnUdXB
+  }
+}
+
+fragment Fragment_r2kVDk on Interface_V_STUB {
+  a85e1
+  c17x {
+    __typename
+  }
+}
+
+fragment Fragment_HuIkbWeEP on Object_JZOQzg {
+  ...Fragment_isB7A4L
+  sXLbbF9ZL {
+    ...Fragment_r2kVDk
+    FId10TrjJJ: nMIy {
+      aN1KnUdXB
+    }
+    ... on Interface_V_STUB {
+      nMIy {
+        aN1KnUdXB
+      }
+    }
+  }
+  ... on Interface_pYhK {
+    ... {
+      H: sXLbbF9ZL {
+        a85e1
+      }
+      __typename
+    }
+  }
+  ... on Interface_pYhK {
+    sXLbbF9ZL {
+      __typename
+      RG8wuvW: c17x @include(if: true) {
+        __typename
+      }
+    }
+    ... {
+      aN1KnUdXB
+    }
+  }
+}

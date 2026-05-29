@@ -1,0 +1,12 @@
+query cqLs {
+  ... on Union_Q2tK04aR {
+    ... on Union_Q2tK04aR @defer(if: false, label: "") {
+      ...Fragment_c6svNWi
+      __typename
+    }
+  }
+}
+
+fragment Fragment_c6svNWi on Union_UulvVx {
+  __typename
+}

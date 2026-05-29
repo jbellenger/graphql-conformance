@@ -1,0 +1,11 @@
+query CdP {
+  ...Fragment_KpK
+}
+
+fragment Fragment_hAq on Object_Bbwr7R_1M {
+  Tk2L6tCL9: __typename
+}
+
+fragment Fragment_KpK on Union_cZF1 {
+  ...Fragment_hAq
+}

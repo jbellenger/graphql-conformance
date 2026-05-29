@@ -1,0 +1,15 @@
+query TVA7c {
+  ... on Union_iGqwtZTrw {
+    ...Fragment_HjG7fO
+    ... on Object_aDg9 {
+      __typename
+    }
+    ... on Union_iGqwtZTrw {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_HjG7fO on Union_iGqwtZTrw {
+  __typename
+}

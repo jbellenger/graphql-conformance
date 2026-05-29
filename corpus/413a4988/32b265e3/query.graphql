@@ -1,0 +1,14 @@
+query _rExM_QtJ {
+  ...Fragment_cpM
+}
+
+fragment Fragment_Zd7NBr on Object_niXHw_ {
+  ... {
+    __typename
+  }
+}
+
+fragment Fragment_cpM on Object_niXHw_ {
+  ...Fragment_Zd7NBr
+  ...Fragment_Zd7NBr
+}

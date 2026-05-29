@@ -1,0 +1,30 @@
+query WOLBm($yJyTeDq0: Boolean!) {
+  ...Fragment_JJYk
+  ...Fragment_Gr
+  hI_ @skip(if: $yJyTeDq0)
+}
+
+fragment Fragment_ZESwo on Union_I {
+  MmALFsx: __typename
+}
+
+fragment Fragment_Gr on Object_Omho @Directive_MJQEQheah{
+  ...Fragment_ZESwo
+}
+
+fragment Fragment_TD on Object_W7HuuP_nyP {
+  __typename
+}
+
+fragment Fragment_X on Object_W7HuuP_nyP @Directive_V{
+  ...Fragment_TD
+  ... on Union_gBP {
+    __typename
+  }
+}
+
+fragment Fragment_JJYk on Union_I {
+  ...Fragment_Gr
+  ...Fragment_X
+  __typename
+}

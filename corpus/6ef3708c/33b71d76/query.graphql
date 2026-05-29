@@ -1,0 +1,20 @@
+query v2cKGK {
+  ... on Union_RGC {
+    ...Fragment_hjD1A4hpg@Directive_FjcBN3
+    __typename
+    ... {
+      V4D: __typename
+      aT: __typename
+      ... on Union_RGC {
+        __typename
+      }
+    }
+    ... on Object_MQl {
+      GXyCtXa_: __typename @skip(if: true)
+    }
+  }
+}
+
+fragment Fragment_hjD1A4hpg on Object_frOeM {
+  fe48lM @skip(if: true)
+}

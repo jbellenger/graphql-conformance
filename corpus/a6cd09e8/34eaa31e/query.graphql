@@ -1,0 +1,23 @@
+query Yus($l7al: Boolean!) {
+  ...Fragment_m6QhU
+  ...Fragment_OZZ2CFtK
+  __typename
+  hTM: zEW(jchY8Cedu: true)
+  PiPNcQqoLx: __typename
+  __typename
+  Upx: __typename
+}
+
+fragment Fragment_m6QhU on Object_uflae {
+  ... on Object_uflae {
+    zEW(jchY8Cedu: $l7al)
+    __typename
+    ... on Object_uflae {
+      __typename @skip(if: false) @include(if: false)
+    }
+  }
+}
+
+fragment Fragment_OZZ2CFtK on Object_uflae {
+  __typename
+}

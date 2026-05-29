@@ -1,0 +1,14 @@
+query ($ervcJ_ngz: Boolean!) {
+  ...Fragment_oMZW
+  qOtY9m2
+  ... on Object_kxm4VoU0w {
+    __typename @include(if: $ervcJ_ngz)
+  }
+  ... on Object_kxm4VoU0w {
+    __typename
+  }
+}
+
+fragment Fragment_oMZW on Object_kxm4VoU0w {
+  fedWIg4f: __typename
+}

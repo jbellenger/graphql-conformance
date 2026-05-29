@@ -1,0 +1,18 @@
+query ($l_n0JJGu: Boolean! = true) {
+  bTL {
+    ...Fragment_Ibh1ZAcM
+    ...Fragment_Ibh1ZAcM
+  }
+  ... on Union_Q2tK04aR {
+    uK0XLMC: __typename @include(if: $l_n0JJGu)
+  }
+}
+
+fragment Fragment_SpGI49k on Union_UulvVx {
+  r17VL5a: __typename
+  u6p: __typename
+}
+
+fragment Fragment_Ibh1ZAcM on Union_Q2tK04aR {
+  ...Fragment_SpGI49k
+}

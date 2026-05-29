@@ -1,0 +1,21 @@
+query To89mG {
+  ... on Object_a @Directive_TeBhLeWPHY @skip(if: false) {
+    ...Fragment_ByTRuvJ
+    ... on Union__ {
+      __typename
+      __typename
+      ... on Union_i {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_FNwcC9ne on Union__ {
+  __typename @skip(if: true)
+}
+
+fragment Fragment_ByTRuvJ on Union__ {
+  ...Fragment_FNwcC9ne
+  lNdMd9lE6D: __typename
+}

@@ -1,0 +1,14 @@
+query g4Jd {
+  ... on Union__5HO {
+    ... on Union__5HO {
+      __typename
+    }
+  }
+  ... on Union__5HO @Directive_ivjsJhoi {
+    ...Fragment_cpUXwfdJ81@include(if: true)
+  }
+}
+
+fragment Fragment_cpUXwfdJ81 on Object_WexLm {
+  __typename
+}

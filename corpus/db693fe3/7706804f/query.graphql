@@ -1,0 +1,25 @@
+{
+  c {
+    ... on Union_Fx {
+      ...Fragment_dR
+    }
+  }
+  c {
+    Vk: __typename @include(if: false)
+  }
+  c @Directive_yc {
+    __typename
+  }
+  c {
+    ... on Union_iNKyUxtW {
+      ...Fragment_dR
+      ... on Union_iNKyUxtW {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_dR on Union_Ma {
+  __typename
+}

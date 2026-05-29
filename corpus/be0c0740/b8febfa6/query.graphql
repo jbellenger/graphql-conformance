@@ -1,0 +1,27 @@
+{
+  __typename
+  ... on Union_jy {
+    ...Fragment_Z3LoqiKINg
+    ...Fragment_tx
+  }
+}
+
+fragment Fragment_v76EzXING9 on Object_C2RYK {
+  __typename
+}
+
+fragment Fragment_Z3LoqiKINg on Object_C2RYK {
+  ...Fragment_v76EzXING9
+  ... on Union_jy {
+    __typename
+  }
+}
+
+fragment Fragment_cHImcLlCs on Object_Z {
+  __typename
+}
+
+fragment Fragment_tx on Union_jy {
+  ...Fragment_cHImcLlCs
+  __typename @include(if: false)
+}

@@ -1,0 +1,39 @@
+query rZBI($zbjJ: Enum_T9Ndm7mh) {
+  ...Fragment_b
+  g {
+    __typename
+    ... on Interface_qhQjpgyb_STUB {
+      ...Fragment_SRU
+      xAyP3JzQ {
+        BN: __typename
+      }
+    }
+  }
+  __typename @Directive_Pee_
+  ... on Object_B7_rh {
+    __typename
+  }
+}
+
+fragment Fragment_T on Object_K1CNN8NEl3 {
+  zb(eTkvseOo1: $zbjJ)
+}
+
+fragment Fragment_AmcKGVP on Union_MQYuA7pIU5 {
+  ...Fragment_T
+  ... on Object_K1CNN8NEl3 {
+    wTNGRlc: zb(eTkvseOo1: $zbjJ)
+  }
+}
+
+fragment Fragment_b on Union_MQYuA7pIU5 {
+  ...Fragment_AmcKGVP@skip(if: false)
+  ... on Union_MQYuA7pIU5 {
+    __typename @Directive_Pee_
+  }
+}
+
+fragment Fragment_SRU on Interface_qhQjpgyb {
+  __typename
+  __typename
+}

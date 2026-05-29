@@ -1,0 +1,26 @@
+query rI($u2ssHnf: Boolean!) {
+  ...Fragment_Q4R_rEsS
+}
+
+fragment Fragment_BT4Z5l on Object_m3Y8O3fZ {
+  __typename
+}
+
+fragment Fragment_wXm on Object_m3Y8O3fZ {
+  ...Fragment_BT4Z5l@skip(if: $u2ssHnf)
+  ... on Object_m3Y8O3fZ {
+    fs
+  }
+}
+
+fragment Fragment_Q4R_rEsS on Object_m3Y8O3fZ @Directive_j{
+  ...Fragment_wXm
+  ... on Object_m3Y8O3fZ {
+    fs
+  }
+  ... on Object_m3Y8O3fZ {
+    t8DKHYlJx {
+      zM: __typename
+    }
+  }
+}

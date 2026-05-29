@@ -1,0 +1,36 @@
+{
+  ...Fragment_yj
+  ...Fragment_yj
+  ...Fragment_yj
+  ... on Union_Ek {
+    __typename
+    ... on Union__p {
+      ...Fragment_gY3x7RAHGr
+      ... on Object_mHjb {
+        jX: __typename @Directive_adOi
+      }
+    }
+  }
+  ... on Union_iyAYS {
+    __typename @skip(if: false)
+    __typename
+    TYdrLoS: __typename
+    ... on Object_pasy {
+      y7 {
+        __typename
+      }
+    }
+    ... on Union_iyAYS @Directive_adOi @skip(if: true) {
+      ...Fragment_yj@include(if: true)
+      __typename
+    }
+  }
+}
+
+fragment Fragment_yj on Object_pasy {
+  aPco: __typename
+}
+
+fragment Fragment_gY3x7RAHGr on Object_mHjb {
+  w1GGXZ2Lj
+}

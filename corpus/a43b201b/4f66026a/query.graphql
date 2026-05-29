@@ -1,0 +1,16 @@
+query mj47 {
+  ... on Object_v1QC {
+    xLm
+    ... on Union_oZNLbt3jV_ {
+      ...Fragment_CCgEPdxOF
+      ... on Union_otj_u {
+        __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_CCgEPdxOF on Union_y @Directive_wDOFy1A{
+  Esjd8: __typename
+}

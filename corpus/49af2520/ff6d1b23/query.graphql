@@ -1,0 +1,23 @@
+query RW9ux {
+  ... on Union_ulgViTFW {
+    ...Fragment_t
+    RZ6r5: __typename
+    ... on Object_kuUE1 {
+      xGEA(l: {qK7K3 : mg, rrDhd : {qK7K3 : mg, rrDhd : null}})
+    }
+    ... on Union_WK4 {
+      ...Fragment_EKK04agtu@defer(if: true)
+    }
+  }
+}
+
+fragment Fragment_t on Union_ulgViTFW {
+  __typename
+  ... on Union_ulgViTFW {
+    __typename
+  }
+}
+
+fragment Fragment_EKK04agtu on Object_kuUE1 {
+  __typename
+}

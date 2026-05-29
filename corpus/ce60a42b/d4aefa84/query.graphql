@@ -1,0 +1,35 @@
+query ($zVHl: Input_z) @Directive_OlBef(dsF: $zVHl) {
+  ... on Union_cUl @defer(if: true) @Directive_OlBef(dsF: $zVHl) {
+    __typename
+    __typename
+    ... on Object_pCbPArR1O {
+      __typename
+    }
+    ... on Object_pCbPArR1O {
+      ... on Union_YYMsGGtNk {
+        __typename
+      }
+    }
+  }
+  ... on Union_cUl {
+    ...Fragment_SSSUp
+    __typename
+    ... on Union_YYMsGGtNk {
+      LUet: __typename
+      ... on Object_oNPD {
+        kwahXIRw
+      }
+    }
+    ... on Union_cUl {
+      ...Fragment_SSSUp@defer(if: true, label: "SU")
+      __typename @skip(if: true)
+    }
+  }
+  ... on Union_cUl @Directive_OlBef(dsF: {qGWSi : 41799073}) {
+    __typename
+  }
+}
+
+fragment Fragment_SSSUp on Object_pCbPArR1O {
+  __typename
+}

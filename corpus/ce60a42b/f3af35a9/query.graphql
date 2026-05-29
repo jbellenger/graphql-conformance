@@ -1,0 +1,36 @@
+query vG {
+  ...Fragment_yyylINSe
+  d9SwsUP @Directive_mFY1nsN8Z
+  ... on Union_cUl {
+    ... {
+      __typename
+    }
+    ... on Object_pCbPArR1O {
+      ...Fragment_hflXAaRRd
+      dz {
+        d9SwsUP
+      }
+    }
+  }
+}
+
+fragment Fragment_RxZMqQ on Object_oNPD {
+  kwahXIRw
+}
+
+fragment Fragment_hflXAaRRd on Union_YYMsGGtNk {
+  ...Fragment_RxZMqQ
+  __typename
+  ... on Union_YYMsGGtNk {
+    __typename
+  }
+}
+
+fragment Fragment_yyylINSe on Union_cUl {
+  ...Fragment_hflXAaRRd
+  ... on Object_pCbPArR1O {
+    ... on Union_cUl {
+      __typename
+    }
+  }
+}

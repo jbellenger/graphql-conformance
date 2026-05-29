@@ -1,0 +1,37 @@
+{
+  ...Fragment_yF
+  ...Fragment_yF
+  ...Fragment_uIxA0oligr
+}
+
+fragment Fragment_C4N7N on Union_uumj {
+  __typename
+}
+
+fragment Fragment_yF on Object_WJT7fui {
+  ... on Object_WJT7fui {
+    ...Fragment_C4N7N
+  }
+}
+
+fragment Fragment_Ao on Object_wVA {
+  ...Fragment_C4N7N
+  uC @include(if: true) {
+    vSHqkEljk {
+      __typename
+    }
+  }
+  __typename
+  cuihPD5 @Directive_ySXNR2zK
+}
+
+fragment Fragment_Ig on Union_uumj {
+  ... on Object_wVA {
+    f05rWWD9(mMy4: {rSQRQQEKQ : {fy7zEL7PJ : {fy7zEL7PJ : null}}})
+  }
+}
+
+fragment Fragment_uIxA0oligr on Union_uumj {
+  ...Fragment_Ao
+  ...Fragment_Ig
+}

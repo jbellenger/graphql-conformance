@@ -1,0 +1,39 @@
+{
+  ... on Object_Z {
+    ...Fragment_Y@defer(if: true)
+    ... on Union_eQg {
+      ...Fragment_Y
+    }
+    ... on Object_Z {
+      ...Fragment_ZYEh29hrn@defer(if: false)
+      hZ_rvfY7i
+      __typename
+      TVZM3x: __typename
+      ... on Union_eQg {
+        __typename
+        __typename
+      }
+    }
+  }
+  ... on Union_V9 {
+    ...Fragment_Y@include(if: false)
+    ... on Object_Z {
+      ...Fragment_ZYEh29hrn
+    }
+    ... on Union_eQg @include(if: true) {
+      ...Fragment_ZYEh29hrn
+    }
+  }
+}
+
+fragment Fragment_Y on Union_eQg {
+  __typename @include(if: false)
+  __typename
+  ... on Union_eQg @Directive_kmk {
+    __typename
+  }
+}
+
+fragment Fragment_ZYEh29hrn on Union_eQg {
+  __typename
+}

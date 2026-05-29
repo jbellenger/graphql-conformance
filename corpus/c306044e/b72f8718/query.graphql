@@ -1,0 +1,45 @@
+query Sd {
+  ...Fragment_g2IWDO6D
+  ...Fragment_q25m
+  ...Fragment_g2IWDO6D
+  ... on Object_rOVHlBsh {
+    __typename
+    tilX0uQA9 {
+      ... on Union_da29ywMO3 @defer(if: false, label: "") {
+        __typename
+      }
+    }
+    ... on Object_rOVHlBsh {
+      __typename
+    }
+  }
+  ... on Object_rOVHlBsh {
+    __typename
+  }
+}
+
+fragment Fragment_q25m on Object_rOVHlBsh {
+  __typename
+}
+
+fragment Fragment_g2IWDO6D on Object_rOVHlBsh {
+  ... on Object_rOVHlBsh {
+    ...Fragment_q25m
+    __typename
+    tilX0uQA9 {
+      __typename
+      qdHRUoJcRs @include(if: false) {
+        me
+      }
+    }
+    ... {
+      tilX0uQA9 {
+        rIgRIA1Fx: z
+      }
+      __typename @Directive_iW
+    }
+  }
+  ... {
+    __typename
+  }
+}

@@ -1,0 +1,23 @@
+query lWfyAwfc4($kd75n: Boolean!) {
+  ...Fragment_WpcnX5LW
+  ...Fragment_l6CmOh
+  ...Fragment_l6CmOh
+  ... on Union_IzW87EuGY {
+    ...Fragment_l6CmOh
+    ...Fragment_l6CmOh
+  }
+}
+
+fragment Fragment_WpcnX5LW on Union__ {
+  ... on Union_IzW87EuGY @skip(if: $kd75n) {
+    __typename
+  }
+  ... on Union__ {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_l6CmOh on Union_i {
+  __typename
+}

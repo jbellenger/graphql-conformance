@@ -1,0 +1,23 @@
+{
+  ...Fragment_vq_2@Directive_UjdRsBJl
+}
+
+fragment Fragment_UF5XGiSM on Interface_WOvMkXKz {
+  gmZUPIbw
+  e70Xc_HKm8(hTq: true)
+  __typename
+  ... on Union_WK4 {
+    __typename
+  }
+}
+
+fragment Fragment_vq_2 on Union_WK4 @Directive_UHYr{
+  ...Fragment_UF5XGiSM
+  __typename @include(if: false)
+  __typename
+  ... on Union_pmx {
+    b7dv0U: __typename
+    t8lbcK: __typename
+    __typename
+  }
+}

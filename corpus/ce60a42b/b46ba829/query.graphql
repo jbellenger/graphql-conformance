@@ -1,0 +1,21 @@
+{
+  ...Fragment_PK
+  ... on Union_YYMsGGtNk {
+    ...Fragment_PK
+    __typename
+  }
+}
+
+fragment Fragment_y on Union_YYMsGGtNk {
+  ... on Object_pCbPArR1O {
+    d9SwsUP
+  }
+}
+
+fragment Fragment_PK on Object_pCbPArR1O {
+  ...Fragment_y
+  ...Fragment_y@skip(if: false)
+  ... on Union_YYMsGGtNk {
+    __typename @include(if: false)
+  }
+}

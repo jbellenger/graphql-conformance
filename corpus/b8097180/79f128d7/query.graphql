@@ -1,0 +1,38 @@
+query is($wQ6: Boolean!) {
+  ...Fragment_pOhQS
+  ...Fragment_Jf
+  ...Fragment_yUWds@Directive_Ms
+}
+
+fragment Fragment_Yp7F7fF2 on Union_p9U8HUnd {
+  ... on Object_Clhg {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_rT on Union_p9U8HUnd {
+  __typename
+}
+
+fragment Fragment_yUWds on Object_Clhg {
+  ...Fragment_rT
+  ... on Union_p9U8HUnd {
+    __typename
+  }
+}
+
+fragment Fragment_pOhQS on Union_t0DkI {
+  ...Fragment_Yp7F7fF2
+  ...Fragment_yUWds
+}
+
+fragment Fragment_Jf on Object_Clhg {
+  ...Fragment_yUWds@include(if: false) @skip(if: $wQ6) @Directive_Ms
+  ...Fragment_pOhQS
+  ... on Union_t0DkI {
+    ... on Union_t0DkI {
+      lbePD: __typename @Directive_Ms
+    }
+  }
+}

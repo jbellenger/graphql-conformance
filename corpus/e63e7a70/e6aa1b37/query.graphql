@@ -1,0 +1,14 @@
+{
+  ...Fragment_ga@include(if: true)
+  ...Fragment_ga
+}
+
+fragment Fragment_b on Union_p4A68l {
+  ... on Union_H @include(if: true) {
+    __typename
+  }
+}
+
+fragment Fragment_ga on Union_es7SInjXGd {
+  ...Fragment_b
+}

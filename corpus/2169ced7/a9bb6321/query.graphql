@@ -1,0 +1,26 @@
+{
+  ... on Union_EPTpY {
+    __typename @include(if: true)
+  }
+  ... on Union_yc {
+    ... on Union_EPTpY {
+      ...Fragment_L5lKDHq
+      __typename
+      __typename
+      ... on Union_b @Directive_jmE {
+        __typename @Directive_jmE
+        __typename
+      }
+    }
+    ... on Union_EPTpY {
+      ...Fragment_L5lKDHq
+    }
+  }
+}
+
+fragment Fragment_L5lKDHq on Interface_Hbk8Q {
+  hx {
+    bmsb0AZg: __typename
+  }
+  __typename
+}

@@ -1,0 +1,25 @@
+{
+  ...Fragment_GPcpk72HO
+  ...Fragment_GPcpk72HO
+  ...Fragment_GPcpk72HO
+}
+
+fragment Fragment_f on Union_U16xI2rR_ @Directive_S7H4b2B{
+  __typename @Directive_xM
+}
+
+fragment Fragment_xBRgc7v0 on Union__L {
+  ...Fragment_f
+  __typename
+}
+
+fragment Fragment_GPcpk72HO on Union_graLRa8 @Directive_S7H4b2B{
+  ...Fragment_xBRgc7v0@Directive_F_h
+  __typename
+  ... on Object_XzMWY {
+    p0Mgbit99L @Directive_S7H4b2B
+  }
+  ... on Object_XzMWY {
+    QZLcsonQ3: __typename
+  }
+}

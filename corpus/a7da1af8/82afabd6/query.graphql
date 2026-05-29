@@ -1,0 +1,14 @@
+query FtkQ {
+  ... on Object_Uy75G {
+    fK
+    ... on Object_Uy75G {
+      ...Fragment_KoQ
+      __typename
+      fK
+    }
+  }
+}
+
+fragment Fragment_KoQ on Union_cbAvO78Go {
+  __typename
+}

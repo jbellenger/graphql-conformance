@@ -1,0 +1,39 @@
+query j {
+  ...Fragment_VsRIwy0
+  __typename
+  mPWXq: __typename
+  mHk4rKZ6pk {
+    ...Fragment_LXmwWdz
+    ...Fragment_LXmwWdz
+    qRnpaRb {
+      ...Fragment_VsRIwy0
+      __typename
+    }
+  }
+  y: __typename
+  __typename
+}
+
+fragment Fragment_FsOS7 on Object_Clhg {
+  ... on Object_Clhg {
+    mHk4rKZ6pk {
+      qRnpaRb {
+        i9X0L: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_VsRIwy0 on Union_p9U8HUnd @Directive_vPPJ0eN @Directive_Ms{
+  ...Fragment_FsOS7
+  ...Fragment_FsOS7
+  P: __typename
+  __typename
+  __typename
+  __typename
+}
+
+fragment Fragment_LXmwWdz on Interface_Dysp3zFM {
+  __typename
+  __typename
+}

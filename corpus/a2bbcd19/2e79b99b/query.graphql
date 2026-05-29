@@ -1,0 +1,14 @@
+{
+  ... on Union_G {
+    ...Fragment_T2Oq
+    __typename
+  }
+}
+
+fragment Fragment_F1n2io3G on Object__AZug8beR {
+  Kd4pi: q7
+}
+
+fragment Fragment_T2Oq on Union_G {
+  ...Fragment_F1n2io3G@include(if: true)
+}

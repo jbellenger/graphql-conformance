@@ -1,0 +1,26 @@
+query o($kAFw: Boolean!) {
+  ...Fragment_yJMJWtMmU1
+  ... on Object_Clhg {
+    ...Fragment_zjI3zZzv
+    __typename @Directive_vPPJ0eN
+  }
+}
+
+fragment Fragment_zjI3zZzv on Object_Clhg {
+  __typename
+}
+
+fragment Fragment_yJMJWtMmU1 on Union_p9U8HUnd {
+  ...Fragment_zjI3zZzv
+  __typename
+  __typename @skip(if: $kAFw) @include(if: $kAFw)
+  __typename
+  ... on Union_p9U8HUnd {
+    ...Fragment_zjI3zZzv
+    __typename
+    __typename
+  }
+  ... on Union_TkyzX {
+    RyHPA3SaV: __typename @skip(if: $kAFw)
+  }
+}

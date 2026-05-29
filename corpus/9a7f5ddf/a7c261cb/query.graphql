@@ -1,0 +1,34 @@
+query @Directive_xYCyz66 @Directive_mTOJX(mAF_h: 1668049953) {
+  ... on Union_DC {
+    ...Fragment_eZc
+  }
+  ... on Interface_zEyj85_ {
+    ... on Object_n2rt7 {
+      __typename
+    }
+    ... on Union_DC {
+      ...Fragment_eZc
+      __typename @Directive_ss9Di
+      ... on Union_BSNPcUbn {
+        __typename
+      }
+    }
+  }
+  ... on Union_DC {
+    __typename
+  }
+}
+
+fragment Fragment_I on Union_R9 {
+  __typename
+}
+
+fragment Fragment_eZc on Object_hDuaq9 {
+  ...Fragment_I
+  __typename
+  qL0LfbR2ds
+  __typename
+  ... on Object_hDuaq9 {
+    qL0LfbR2ds @Directive_xYCyz66
+  }
+}

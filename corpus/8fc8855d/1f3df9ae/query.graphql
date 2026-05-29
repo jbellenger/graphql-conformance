@@ -1,0 +1,27 @@
+query Z9j($idAKd: Boolean!, $vd: ID) {
+  ...Fragment_yBmvMBVbJb
+  yL7XTu(yLaKCfz: true, wpWgLZwUbc: "k") {
+    ... on Interface_VNCZ {
+      __typename
+    }
+    ... on Interface_nHe2MA4ah_STUB {
+      aYwLuk {
+        __typename @Directive_m(p_N: [[{upF : EgkSA}, {upF : EgkSA}], [{upF : EgkSA}, {upF : EgkSA}, {upF : EgkSA}], [{upF : EgkSA}]])
+      }
+    }
+  }
+  MWvfotV82: yL7XTu(yLaKCfz: $idAKd, wpWgLZwUbc: $vd) {
+    ... on Interface_VNCZ {
+      NFJj4kWs: __typename
+    }
+  }
+}
+
+fragment Fragment_yBmvMBVbJb on Union_GXXXXXXXXX {
+  __typename
+  __typename
+  ... on Union_fP2gKk2 {
+    __typename
+    __typename @skip(if: $idAKd)
+  }
+}

@@ -1,0 +1,36 @@
+query g {
+  ...Fragment_lzA193
+  ...Fragment_lzA193
+  ...Fragment_lzA193
+  gJes9: b {
+    ... on Union_R {
+      __typename
+    }
+  }
+}
+
+fragment Fragment__jL on Union_R @Directive_j{
+  __typename
+  __typename
+}
+
+fragment Fragment_gNvIc on Union_N {
+  __typename
+}
+
+fragment Fragment_lzA193 on Object_m3Y8O3fZ {
+  hObN1kTC: b {
+    ...Fragment__jL
+  }
+  t8DKHYlJx {
+    ...Fragment_gNvIc
+    ... on Object_pb_LpCDyV {
+      v6Es {
+        __typename
+      }
+      TV5Y: v6Es {
+        __typename
+      }
+    }
+  }
+}

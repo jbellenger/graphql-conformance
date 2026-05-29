@@ -1,0 +1,28 @@
+query ($iOW: Input_uUMyflo4i = {xJW : GPdY, g_sUQ0dr : c222222222, zxfdh : {bj6uXWO0k : null}}) @Directive_gG84_ {
+  ...Fragment_Ros
+  ... on Object_ods2s {
+    ... on Object_ods2s {
+      ...Fragment_GKcwXm5k@Directive_Vj8RcKGF
+    }
+  }
+}
+
+fragment Fragment_Mb5 on Interface_jI_STUB {
+  dI8p3TJ
+}
+
+fragment Fragment_Ros on Object_ods2s {
+  __typename
+  n: bDlP9gS9(qjNSO: false) {
+    ...Fragment_Mb5
+    oZ0Ia3VD(rc70JPhnL_: $iOW) {
+      ZBIgGtAi: __typename
+    }
+    __typename
+    dI8p3TJ
+  }
+}
+
+fragment Fragment_GKcwXm5k on Object_ods2s {
+  kYQp0cff
+}

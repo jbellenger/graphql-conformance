@@ -1,0 +1,8 @@
+{
+  __typename
+  ... on Object_H {
+    ... on Object_H @include(if: false) {
+      __typename
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  ...Fragment_k
+  ...Fragment_k
+  ...Fragment_eqrnnn
+  w_XCi {
+    ... on Union__X8uMrR {
+      ... on Union_yV {
+        __typename
+      }
+    }
+    ... on Union__X8uMrR @defer(if: false, label: "") {
+      ... on Object_uXJH5i0VPq {
+        fcdBFss(fModu58SKF: {xav_yGCUgZ : null, a : oPW}, fzywOi7Dm: oPW)
+      }
+    }
+  }
+}
+
+fragment Fragment_M38dEY9s on Union_S9vWv {
+  __typename
+}
+
+fragment Fragment_g on Union__X8uMrR {
+  ...Fragment_M38dEY9s
+}
+
+fragment Fragment_k on Interface_KVksY {
+  ...Fragment_g
+  ... on Interface_H7KRAF6J {
+    UOjE1: tSoy
+  }
+  ... on Interface_H7KRAF6J {
+    yNThVZ5Z {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_eqrnnn on Union_yV {
+  ...Fragment_g
+  __typename @skip(if: true)
+}

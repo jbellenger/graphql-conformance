@@ -1,0 +1,9 @@
+query QTOqFORm {
+  ...Fragment_ZW64
+  ...Fragment_ZW64
+  ...Fragment_ZW64@defer(if: false, label: "!b")
+}
+
+fragment Fragment_ZW64 on Object_v1QC {
+  srlMkRB37: __typename @Directive_gEni
+}

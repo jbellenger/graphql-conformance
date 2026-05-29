@@ -1,0 +1,22 @@
+query xcGl {
+  ...Fragment_QGv8M
+  ...Fragment_QGv8M
+  ...Fragment_QGv8M
+  __typename
+}
+
+fragment Fragment_jj on Object_KI1RIn {
+  qCLtJ: __typename
+}
+
+fragment Fragment_BDqBR2A on Union_JzKN {
+  ...Fragment_jj
+  ... on Union_r {
+    qIN98: __typename
+  }
+}
+
+fragment Fragment_QGv8M on Union_r @Directive_Fs1e{
+  ...Fragment_BDqBR2A
+  __typename
+}

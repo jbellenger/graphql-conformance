@@ -1,0 +1,9 @@
+query Q {
+  ...Fragment_bBpm
+}
+
+fragment Fragment_bBpm on Union__X8uMrR {
+  ... on Interface_uRU {
+    S_U9G6: __typename
+  }
+}

@@ -1,0 +1,39 @@
+query ($gq_ZP9v2H0: Boolean!) @Directive_ZznO {
+  ...Fragment_vBzC5
+  ... on Union_r {
+    ... on Union_JzKN {
+      KudsZO68P: __typename
+    }
+    ... on Union_SSRN2 @Directive_ZznO {
+      ...Fragment_MogUnQv
+    }
+  }
+  ... on Object_RuHqYM0PB {
+    ...Fragment_vBzC5
+    ...Fragment_b@skip(if: $gq_ZP9v2H0)
+  }
+}
+
+fragment Fragment_OX9eqp8 on Object_RuHqYM0PB {
+  dyiF74WyiW {
+    kji7pe: __typename
+  }
+}
+
+fragment Fragment_dEG1oOt1g on Union_r {
+  ...Fragment_OX9eqp8
+  __typename
+  __typename
+}
+
+fragment Fragment_vBzC5 on Object_RuHqYM0PB {
+  ...Fragment_dEG1oOt1g
+}
+
+fragment Fragment_MogUnQv on Union_r {
+  __typename
+}
+
+fragment Fragment_b on Object_RuHqYM0PB {
+  __typename
+}

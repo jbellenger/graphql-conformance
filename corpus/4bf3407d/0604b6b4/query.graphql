@@ -1,0 +1,13 @@
+query z {
+  ...Fragment_aoio
+  __typename
+}
+
+fragment Fragment_H on Union_S {
+  __typename
+}
+
+fragment Fragment_aoio on Object_JZOQzg {
+  ...Fragment_H
+  ...Fragment_H
+}

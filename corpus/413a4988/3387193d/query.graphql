@@ -1,0 +1,44 @@
+query mRsNZBCT {
+  sRl6OOQ {
+    ... on Union_Qi @Directive_Tr6WNDmJH {
+      ... on Interface_w3Bc {
+        i0u: t8LMU4ZH {
+          __typename
+        }
+      }
+    }
+    ... on Interface_w3Bc @skip(if: false) {
+      ...Fragment_xyZg_i
+      t8LMU4ZH {
+        __typename
+      }
+      t8LMU4ZH {
+        c: rjn2mq
+      }
+    }
+  }
+  ... on Union_JU {
+    ...Fragment_xyZg_i
+    ...Fragment_xyZg_i
+    ... on Union_JU {
+      __typename
+    }
+  }
+  ... on Interface_w3Bc {
+    yUN1zycO: vndtk {
+      __typename
+    }
+    NXpj0s7M: t8LMU4ZH {
+      __typename
+    }
+  }
+  ... on Union_JU {
+    __typename
+    __typename @Directive_E
+    __typename
+  }
+}
+
+fragment Fragment_xyZg_i on Object_niXHw_ {
+  __typename
+}

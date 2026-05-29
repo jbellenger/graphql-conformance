@@ -1,0 +1,13 @@
+query DVhMAIRj {
+  r(lY: -1445570717)
+  ... on Union_UaYapVls27 {
+    ... on Object_MBqm4 @defer(label: null) {
+      ...Fragment_jpwyP
+    }
+  }
+}
+
+fragment Fragment_jpwyP on Union_UaYapVls27 {
+  __typename
+  __typename
+}

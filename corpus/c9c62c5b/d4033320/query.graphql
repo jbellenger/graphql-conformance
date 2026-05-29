@@ -1,0 +1,25 @@
+query ZCm8 {
+  ...Fragment_LMEng
+  ...Fragment_LMEng
+  ... on Union_AOBd6 @defer(if: true, label: "4") {
+    ... on Union_ZiMC {
+      ...Fragment_CBnlZYyCM
+      __typename
+      kSE: __typename
+    }
+  }
+}
+
+fragment Fragment_CBnlZYyCM on Object_dOlPP_ {
+  __typename
+}
+
+fragment Fragment_LMEng on Union_AOBd6 {
+  FETiRflF6: __typename
+  ... on Object_dOlPP_ {
+    ...Fragment_CBnlZYyCM
+    ... on Object_dOlPP_ {
+      __typename
+    }
+  }
+}

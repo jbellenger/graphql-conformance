@@ -1,0 +1,11 @@
+query ($rnkb8HG6p: Boolean!) {
+  ...Fragment_wunJE@include(if: $rnkb8HG6p)
+  ... on Union_IzW87EuGY {
+    ...Fragment_wunJE@skip(if: true)
+    __typename
+  }
+}
+
+fragment Fragment_wunJE on Union_i {
+  __typename
+}

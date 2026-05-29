@@ -1,0 +1,19 @@
+query HX {
+  __typename
+  ... on Object_RuHqYM0PB {
+    ...Fragment_QBdXON_
+    ...Fragment_QBdXON_
+    ... on Union_r @defer(if: true, label: "ehf") {
+      ... on Interface_uo {
+        l
+      }
+    }
+  }
+  ... on Union_r {
+    __typename
+  }
+}
+
+fragment Fragment_QBdXON_ on Object_RuHqYM0PB {
+  __typename
+}

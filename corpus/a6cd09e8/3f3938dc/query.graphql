@@ -1,0 +1,30 @@
+query ($aaminGMyJ: Boolean!) {
+  __typename
+  ... on Object_uflae {
+    ...Fragment_GyL
+    AdS2: __typename
+    A5Ejdc: zEW(jchY8Cedu: false)
+  }
+  ... {
+    ... on Object_uflae {
+      zEW(jchY8Cedu: true)
+      zEW(jchY8Cedu: true)
+    }
+    ... on Object_uflae {
+      ... {
+        H: zEW(jchY8Cedu: $aaminGMyJ)
+      }
+    }
+  }
+}
+
+fragment Fragment_P on Object_uflae {
+  zEW(jchY8Cedu: true)
+}
+
+fragment Fragment_GyL on Object_uflae {
+  ...Fragment_P
+  ... on Object_uflae {
+    __typename
+  }
+}

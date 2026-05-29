@@ -1,0 +1,38 @@
+{
+  ...Fragment_CNWGOl
+  ... on Union_y {
+    __typename
+    __typename
+    sG8bvFSRy: __typename
+    __typename
+    ... on Union_y {
+      ...Fragment_R7EnPFdv
+    }
+  }
+  ... on Union_oZNLbt3jV_ {
+    __typename
+    __typename
+    ... on Object_v1QC {
+      mBeX: __typename @Directive_gEni
+    }
+  }
+}
+
+fragment Fragment_DlhL on Interface_VEdEs {
+  ... on Object_JLWa {
+    cdH60Ab
+  }
+}
+
+fragment Fragment_CNWGOl on Union_y {
+  ...Fragment_DlhL
+  ... on Object_JLWa {
+    ... on Union_y {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_R7EnPFdv on Union_y {
+  __typename
+}

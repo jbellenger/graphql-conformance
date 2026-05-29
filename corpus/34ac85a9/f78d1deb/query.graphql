@@ -1,0 +1,5 @@
+query QlJpTQJ($o0miZST: Boolean! = false) {
+  ... on Union_BAZYGip1 {
+    __typename @include(if: $o0miZST)
+  }
+}

@@ -1,0 +1,16 @@
+query xM7BB @Directive_vO7Z3U {
+  ... @include(if: true) {
+    ...Fragment_YBkbkHc_w
+    ...Fragment_YBkbkHc_w@include(if: false)
+    _XPWsJds
+    __typename
+  }
+}
+
+fragment Fragment_YBkbkHc_w on Union_es7SInjXGd {
+  ... on Object_foWu8npJF {
+    qVi4Zdr2lf {
+      vk: __typename
+    }
+  }
+}

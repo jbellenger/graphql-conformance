@@ -1,0 +1,20 @@
+query eer {
+  ... on Union_M_EfX2GH {
+    ...Fragment_JT41j8qZw4
+    ...Fragment_ry1a
+    __typename
+    __typename
+    __typename
+    ... on Union_M_EfX2GH {
+      ...Fragment_JT41j8qZw4
+    }
+  }
+}
+
+fragment Fragment_ry1a on Object_GT53t {
+  __typename
+}
+
+fragment Fragment_JT41j8qZw4 on Object_GT53t {
+  ...Fragment_ry1a
+}

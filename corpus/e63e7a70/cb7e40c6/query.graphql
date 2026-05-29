@@ -1,0 +1,16 @@
+query oJHIiV($ai: Boolean!@Directive_Tf) {
+  ... on Union_es7SInjXGd {
+    ...Fragment_WsUDhk
+  }
+  ... on Object_TKyCBK {
+    ...Fragment_UbnINr
+  }
+}
+
+fragment Fragment_UbnINr on Union_es7SInjXGd {
+  om9Yz: __typename @include(if: $ai)
+}
+
+fragment Fragment_WsUDhk on Object_DL9JCHx {
+  ...Fragment_UbnINr
+}

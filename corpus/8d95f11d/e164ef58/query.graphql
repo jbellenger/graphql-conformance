@@ -1,0 +1,20 @@
+query hrfZN {
+  ...Fragment_GJQ
+  ...Fragment_GJQ@Directive_U8sd6wv2
+  ...Fragment_GJQ
+  ... on Object_WexLm {
+    ulUIpFv4Gk: __typename
+  }
+  ... {
+    ...Fragment_GJQ
+    ...Fragment_GJQ
+    nHNVrcgk
+    nHNVrcgk
+  }
+}
+
+fragment Fragment_GJQ on Object_WexLm {
+  ... on Union__5HO {
+    __typename
+  }
+}

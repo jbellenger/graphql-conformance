@@ -1,0 +1,30 @@
+query ev {
+  ...Fragment_UKgayNEaiD@Directive_j
+  __typename
+}
+
+fragment Fragment_Na on Object_m3Y8O3fZ {
+  hX: t8DKHYlJx @Directive_uuIs {
+    zn7Fu: __typename
+  }
+}
+
+fragment Fragment_UKgayNEaiD on Object_m3Y8O3fZ {
+  t8DKHYlJx: t8DKHYlJx {
+    __typename
+  }
+  ... on Object_m3Y8O3fZ @skip(if: false) {
+    vGiFKp8: __typename
+    ... on Object_m3Y8O3fZ {
+      sJTg0s: b {
+        __typename
+      }
+      fs
+    }
+  }
+  ... on Object_m3Y8O3fZ {
+    ...Fragment_Na
+    fs
+    fs
+  }
+}

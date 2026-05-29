@@ -1,0 +1,139 @@
+schema {
+  query: Object_Qjq
+}
+
+directive @Directive_Mf(ipUEVr: Float) on QUERY | MUTATION | SUBSCRIPTION | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCHEMA | SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+directive @Directive_WwvdHn on UNION | INPUT_OBJECT
+
+directive @Directive_kN8(utrqL: Int, v1x: Float) on QUERY | MUTATION | FIELD | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | INLINE_FRAGMENT | VARIABLE_DEFINITION | OBJECT | ARGUMENT_DEFINITION | UNION | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+"This directive allows results to be deferred during execution"
+directive @defer(
+    "Deferred behaviour is controlled by this argument"
+    if: Boolean! = true,
+    "A unique label that represents the fragment being deferred"
+    label: String
+  ) on FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Marks the field, argument, input field or enum value as deprecated"
+directive @deprecated(
+    "The reason for the deprecation"
+    reason: String! = "No longer supported"
+  ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+"This directive disables error propagation when a non nullable field returns null for the given operation."
+directive @experimental_disableErrorPropagation on QUERY | MUTATION | SUBSCRIPTION
+
+"Directs the executor to include this field or fragment only when the `if` argument is true"
+directive @include(
+    "Included when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Indicates an Input Object is a OneOf Input Object."
+directive @oneOf on INPUT_OBJECT
+
+"Directs the executor to skip this field or fragment when the `if` argument is true."
+directive @skip(
+    "Skipped when true."
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+"Exposes a URL that specifies the behaviour of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behaviour of this scalar."
+    url: String!
+  ) on SCALAR
+
+interface Interface_DzqfGte {
+  aJZyvK5: Object_d
+  aUNVpmX0(qXx0jMb: Enum__iAO_Pjp = P0g): Object_d!
+  sk: String
+}
+
+interface Interface_LMpiYs8AH5 @Directive_Mf(ipUEVr : -1.5835079499408942E+308) {
+  n3YZ1EF_G: Boolean @Directive_Mf(ipUEVr : -4.2591333967964317E+307)
+}
+
+interface Interface_mTEZF {
+  hMWgQV(b: Input_W7ZydrFCc = {eMY : 6.796346144492055E+307, s8r5TWXV8l : P0g, dCHq3 : D}): [Enum_iLR]
+  uXxhfoDG1: ID
+  yK_cyVT(nSyboCYvkW: Enum_iLR @Directive_kN8(utrqL : 911202938, v1x : null) @deprecated(reason : "^")): Interface_mTEZF
+}
+
+union Union_HIjqQtb = Object_d
+
+union Union_V5esa9 = Object_Wxu | Object_d
+
+union Union_yzTlm8 = Object_Qjq | Object_Wxu
+
+type Interface_DzqfGte_STUB implements Interface_DzqfGte {
+  aJZyvK5: Object_d
+  aUNVpmX0(qXx0jMb: Enum__iAO_Pjp = P0g): Object_d!
+  kGh: String
+  sk: String
+}
+
+type Interface_LMpiYs8AH5_STUB implements Interface_LMpiYs8AH5 {
+  n3YZ1EF_G: Boolean @Directive_Mf(ipUEVr : -4.2591333967964317E+307)
+  nurF2NLsKp: Union_yzTlm8
+  pYJ: Boolean
+  spm5: Union_yzTlm8
+}
+
+type Interface_mTEZF_STUB implements Interface_mTEZF {
+  fgfC7luqRf: Enum__iAO_Pjp
+  hMWgQV(b: Input_W7ZydrFCc = {eMY : 6.796346144492055E+307, s8r5TWXV8l : P0g, dCHq3 : D}): [Enum_iLR]
+  is8F: ID @Directive_Mf(ipUEVr : 6.909874408035865E+307)
+  iurg57XFI(v: ID!): Object_d
+  uXxhfoDG1: ID
+  yK_cyVT(nSyboCYvkW: Enum_iLR @Directive_kN8(utrqL : 911202938, v1x : null) @deprecated(reason : "^")): Interface_mTEZF
+}
+
+type Object_Qjq {
+  evMro1tq: Object_Qjq @deprecated(reason : "Td")
+}
+
+type Object_Wxu {
+  osSUste: Union_V5esa9
+  pO(fhGPNdR1c: Enum_f5gRs71qsZ): Union_HIjqQtb @deprecated(reason : "N")
+  qmJZofgBP: [Boolean]!
+}
+
+type Object_d {
+  witLtK4(wMjti: ID = "|"): Object_Wxu
+  ysSzz: ID
+  yv: Int
+}
+
+enum Enum__iAO_Pjp {
+  D
+  P0g
+  k_eQfPj3
+}
+
+enum Enum_f5gRs71qsZ {
+  y51cJcl5A
+}
+
+enum Enum_iLR {
+  CeQ5FyZ
+  XIlh
+  gssUjKJ
+}
+
+input Input_Fcw @Directive_WwvdHn @oneOf {
+  jS0_kjaKZ: String
+}
+
+input Input_GYLcDb0xO {
+  dMpdQ9: Input_Fcw
+  kltX: Input_GYLcDb0xO
+}
+
+input Input_W7ZydrFCc {
+  dCHq3: Enum__iAO_Pjp
+  eMY: Float!
+  s8r5TWXV8l: Enum__iAO_Pjp
+}

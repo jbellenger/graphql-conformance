@@ -1,0 +1,19 @@
+query tRAw {
+  ...Fragment_BdmA4aV0
+  ...Fragment_k4I3Wm
+  ...Fragment_BdmA4aV0
+  ... on Object_kuUE1 {
+    ...Fragment_k4I3Wm
+  }
+  ... on Union_ulgViTFW {
+    __typename
+  }
+}
+
+fragment Fragment_k4I3Wm on Union_ulgViTFW {
+  __typename @Directive_UHYr
+}
+
+fragment Fragment_BdmA4aV0 on Object_kuUE1 {
+  ...Fragment_k4I3Wm
+}

@@ -1,0 +1,23 @@
+query jiE {
+  ...Fragment_o6NF7uF0
+  ... {
+    __typename
+  }
+  ... on Union_graLRa8 {
+    NaTj: __typename
+  }
+  ... on Union_graLRa8 {
+    __typename
+  }
+}
+
+fragment Fragment_Av on Union_graLRa8 @Directive_xM{
+  ... on Union_U16xI2rR_ {
+    __typename
+  }
+}
+
+fragment Fragment_o6NF7uF0 on Object_bd {
+  ...Fragment_Av
+  ...Fragment_Av
+}

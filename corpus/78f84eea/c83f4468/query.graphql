@@ -1,0 +1,18 @@
+{
+  ...Fragment_k7Ud8B
+  ...Fragment_k7Ud8B
+  __typename
+  __typename
+  ... on Object_Gk_8kqJ {
+    ... on Union_CP1dpD88VB @defer(if: true, label: "") {
+      ...Fragment_k7Ud8B
+      ... on Union_vWjMCKWr {
+        __typename @include(if: false) @Directive_TtWq1me1
+      }
+    }
+  }
+}
+
+fragment Fragment_k7Ud8B on Union_vWjMCKWr {
+  __typename
+}

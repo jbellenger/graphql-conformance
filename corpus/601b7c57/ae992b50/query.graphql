@@ -1,0 +1,22 @@
+query bgLHZO {
+  ...Fragment_CLpz4L
+}
+
+fragment Fragment_FghlQh on Object_pasy {
+  __typename
+}
+
+fragment Fragment_CLpz4L on Union_iyAYS {
+  __typename
+  ... on Object_pasy {
+    ...Fragment_FghlQh@include(if: true)
+    ... on Union_Ek {
+      XWOwNG8JP: __typename
+    }
+  }
+  ... on Union_Ek {
+    ... on Object_mHjb {
+      w1GGXZ2Lj
+    }
+  }
+}

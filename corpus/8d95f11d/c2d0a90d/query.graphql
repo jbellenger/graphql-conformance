@@ -1,0 +1,22 @@
+{
+  ...Fragment_UZgPL
+  __typename
+}
+
+fragment Fragment_VbMvPc on Union__5HO {
+  __typename
+}
+
+fragment Fragment_saB on Union__5HO {
+  ...Fragment_VbMvPc
+  ... on Object_WexLm {
+    __typename
+  }
+}
+
+fragment Fragment_UZgPL on Object_WexLm {
+  ...Fragment_saB@include(if: true)
+  ... on Object_WexLm {
+    nHNVrcgk
+  }
+}

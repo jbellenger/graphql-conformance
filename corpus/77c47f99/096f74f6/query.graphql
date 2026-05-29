@@ -1,0 +1,18 @@
+query _8tuFH($k5uwEWq: Boolean! = false) {
+  nXNvb_cpNq {
+    ...Fragment_YR8S8
+    j: __typename
+    __typename
+    __typename
+  }
+  ... @include(if: $k5uwEWq) {
+    ...Fragment_YR8S8
+  }
+}
+
+fragment Fragment_YR8S8 on Union_PYm {
+  __typename
+  ... on Object_gpzA1j6aw @Directive_CV {
+    y: hyGCymn
+  }
+}

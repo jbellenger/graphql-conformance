@@ -1,0 +1,56 @@
+query MzbtBN7LI($zNekT: String! = "k") {
+  lpr0BSUn {
+    ... on Interface_pnRuR_STUB @Directive_n {
+      JHbeC: vnbRxM2 {
+        __typename
+      }
+      wNhOWZdbF {
+        __typename
+        vAZUBLBTQ {
+          yFy3mxCQS
+        }
+      }
+    }
+  }
+  cMQf0yk {
+    yRO(v: "")
+    ... on Object_EuE6T9Yvn {
+      ...Fragment_lga
+    }
+  }
+  lpr0BSUn {
+    dE9aXq {
+      ...Fragment_pv6RM
+    }
+    ... on Interface_pnRuR {
+      ...Fragment_E2dSIbb
+      dE9aXq {
+        yRO(v: $zNekT)
+        L6V2VxkJK: __typename @skip(if: true)
+      }
+      ... on Interface_pnRuR_STUB {
+        nDhp: dE9aXq {
+          yRO(v: "M")
+        }
+      }
+    }
+    ... on Interface_pnRuR_STUB @Directive_n {
+      ...Fragment_E2dSIbb
+      ... @Directive_n {
+        pc: __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_lga on Interface_hlnhcAbIi {
+  __typename
+}
+
+fragment Fragment_pv6RM on Object_EuE6T9Yvn {
+  MVI: yRO(v: $zNekT)
+}
+
+fragment Fragment_E2dSIbb on Interface_pnRuR_STUB {
+  __typename
+}

@@ -1,0 +1,10 @@
+query uJ8cHuh($dsja: Boolean!) {
+  ...Fragment_o_tmTA
+  __typename
+  __typename
+  k: __typename @skip(if: false)
+}
+
+fragment Fragment_o_tmTA on Union_FywMy8tS {
+  __typename @include(if: $dsja)
+}

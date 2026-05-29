@@ -1,0 +1,16 @@
+{
+  ...Fragment_Hoo5z
+  ...Fragment_Hoo5z
+}
+
+fragment Fragment_HAC on Union_fP2gKk2 {
+  __typename
+}
+
+fragment Fragment_Hoo5z on Union_GXXXXXXXXX {
+  ...Fragment_HAC
+  ...Fragment_HAC
+  ... on Union_GXXXXXXXXX {
+    __typename
+  }
+}

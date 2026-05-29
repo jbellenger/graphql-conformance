@@ -1,0 +1,22 @@
+query ($yk: Boolean!) {
+  ...Fragment_j
+  __typename
+  ... on Object_yf6E {
+    ... on Object_yf6E {
+      ...Fragment_j
+      ... on Object_yf6E {
+        kAR0uZF
+      }
+    }
+    ... on Union_uX {
+      __typename @skip(if: $yk)
+    }
+  }
+  ... on Union_uX @Directive_LlbbEdsNY {
+    __typename
+  }
+}
+
+fragment Fragment_j on Union_uX {
+  __typename
+}

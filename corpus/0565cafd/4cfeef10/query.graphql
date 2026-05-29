@@ -1,0 +1,30 @@
+query zqd41vQ5 {
+  ... on Union_graLRa8 {
+    ...Fragment_oKabPkvM8
+    ... on Object_bd {
+      ...Fragment_XD4Z2ow
+      ... on Union_graLRa8 {
+        XTh: __typename
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_oKabPkvM8 on Object_XzMWY {
+  ghu8AoERda {
+    bLz6vO7: __typename
+  }
+  ... on Object_XzMWY {
+    ghu8AoERda {
+      HQoha7S: __typename
+    }
+    ghu8AoERda {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_XD4Z2ow on Union_graLRa8 {
+  __typename
+}

@@ -1,0 +1,10 @@
+query Q7h0 {
+  __typename
+  ... on Union__ {
+    ...Fragment_HrASnPT19
+  }
+}
+
+fragment Fragment_HrASnPT19 on Union_IzW87EuGY {
+  xPkn: __typename
+}

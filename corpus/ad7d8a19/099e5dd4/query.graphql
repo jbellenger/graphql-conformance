@@ -1,0 +1,34 @@
+query ($m: Enum_X!, $cx: Boolean!) {
+  ...Fragment__mcd
+  ... on Object_P3Vg8xHrR {
+    gtZVJj(bcr6uMV0: LX) {
+      nMeg2p: gtZVJj(bcr6uMV0: $m) {
+        __typename @skip(if: true)
+      }
+      ... on Object_P3Vg8xHrR {
+        P17qT: __typename
+      }
+    }
+    As: gtZVJj(bcr6uMV0: pOOdjc) {
+      __typename
+    }
+    __typename
+    uOnP: gtZVJj(bcr6uMV0: $m) {
+      ... on Object_P3Vg8xHrR {
+        gtZVJj(bcr6uMV0: LX) {
+          __typename
+        }
+      }
+    }
+    ... on Object_P3Vg8xHrR {
+      ...Fragment__mcd
+    }
+    ... on Object_P3Vg8xHrR @include(if: $cx) {
+      __typename
+    }
+  }
+}
+
+fragment Fragment__mcd on Object_P3Vg8xHrR {
+  __typename
+}

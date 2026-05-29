@@ -1,0 +1,23 @@
+{
+  ...Fragment_A0DM3@include(if: true)
+  ...Fragment_B
+  nHNVrcgk
+  cEum @include(if: true)
+  ... on Object_WexLm @include(if: false) {
+    cEum @include(if: false) @skip(if: true)
+    nHNVrcgk
+  }
+}
+
+fragment Fragment_YpLS8 on Object_WexLm {
+  cEum
+}
+
+fragment Fragment_B on Union__5HO {
+  ...Fragment_YpLS8
+}
+
+fragment Fragment_A0DM3 on Object_WexLm {
+  ...Fragment_B
+  ...Fragment_YpLS8
+}

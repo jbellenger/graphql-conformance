@@ -1,0 +1,25 @@
+{
+  ...Fragment_o18xgGO
+  g {
+    __typename
+    __typename @Directive_lPc_Ao
+    MBsqX: zmKd0 {
+      zb(eTkvseOo1: NBT)
+    }
+  }
+}
+
+fragment Fragment_s744zu7mS on Union_MQYuA7pIU5 @Directive_lPc_Ao{
+  ... on Union_MQYuA7pIU5 {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_o18xgGO on Object_B7_rh @Directive_lPc_Ao{
+  ...Fragment_s744zu7mS@Directive_Pee_
+  ...Fragment_s744zu7mS
+  ... on Object_B7_rh {
+    l1nTM: __typename
+  }
+}

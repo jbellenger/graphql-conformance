@@ -1,0 +1,28 @@
+query McGZw @Directive_tFRj {
+  ...Fragment_skMhX2H
+  ... on Object_MOOM1W8z {
+    h7RYMbwbj8 {
+      __typename
+    }
+    h7RYMbwbj8 {
+      ...Fragment_l2GGXP_7nG
+    }
+    ... on Union__F7c8FrH {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_Pqmb0MVVeL on Object_MOOM1W8z {
+  ... on Union__F7c8FrH {
+    __typename
+  }
+}
+
+fragment Fragment_skMhX2H on Union__F7c8FrH {
+  ...Fragment_Pqmb0MVVeL
+}
+
+fragment Fragment_l2GGXP_7nG on Union_SqnyNRW {
+  __typename
+}

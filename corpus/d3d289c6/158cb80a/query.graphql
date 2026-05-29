@@ -1,0 +1,42 @@
+{
+  ...Fragment_SvLg2B
+  ... on Object_B7_rh {
+    __typename
+    g {
+      ...Fragment_OWCPdbiI_
+      __typename
+    }
+    NW41sD58: g {
+      ...Fragment_OWCPdbiI_
+    }
+  }
+  ... on Object_B7_rh {
+    ...Fragment_SvLg2B
+    ...Fragment_VPzg
+  }
+}
+
+fragment Fragment_TD on Object_B7_rh {
+  a1FUQgL: __typename
+}
+
+fragment Fragment_SvLg2B on Object_B7_rh {
+  __typename
+  ... on Union_MQYuA7pIU5 {
+    ...Fragment_TD
+    __typename
+    ... on Object_K1CNN8NEl3 {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_OWCPdbiI_ on Interface_qhQjpgyb_STUB {
+  __typename @Directive_lPc_Ao
+}
+
+fragment Fragment_VPzg on Union_MQYuA7pIU5 {
+  ... on Union_MQYuA7pIU5 @Directive_Pee_ {
+    __typename
+  }
+}

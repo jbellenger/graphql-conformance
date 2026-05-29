@@ -1,0 +1,30 @@
+{
+  ...Fragment_Xyc
+  wy41oxP8t @Directive_WGKDcY9St {
+    l
+    __typename
+  }
+  JG: wy41oxP8t {
+    ...Fragment_sN83s
+  }
+}
+
+fragment Fragment_SZl_dIxVT on Object__AZug8beR {
+  __typename @Directive_Rs6
+}
+
+fragment Fragment_Xyc on Union_G {
+  __typename @Directive_WGKDcY9St
+  ... on Union_G {
+    ...Fragment_SZl_dIxVT
+  }
+  ... on Object__AZug8beR @defer(if: false, label: "~ h") {
+    HhnVtGn: __typename
+  }
+}
+
+fragment Fragment_sN83s on Union_G {
+  ... {
+    __typename
+  }
+}

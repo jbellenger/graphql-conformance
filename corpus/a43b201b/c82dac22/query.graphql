@@ -1,0 +1,21 @@
+query hWtD0($lddHwJp9r: Boolean! = false) {
+  Uu5Qpz5P9: __typename
+  ... on Union_oZNLbt3jV_ @skip(if: false) {
+    ...Fragment_ZCwgA3Jy
+    ...Fragment_KqWKrfbmcR
+    ... on Union_y {
+      __typename @skip(if: false)
+    }
+  }
+  ... on Union_y {
+    __typename @skip(if: $lddHwJp9r) @Directive_wDOFy1A
+  }
+}
+
+fragment Fragment_ZCwgA3Jy on Union_otj_u {
+  __typename
+}
+
+fragment Fragment_KqWKrfbmcR on Union_otj_u {
+  __typename
+}

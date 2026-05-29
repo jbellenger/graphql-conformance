@@ -1,0 +1,22 @@
+query p60v($rQBMsj: Float) {
+  ...Fragment_g4Mfqo
+  ... on Union_yzTlm8 {
+    __typename @include(if: false)
+  }
+  ... on Object_Qjq {
+    ...Fragment_g4Mfqo
+    ...Fragment_yN1Wcnd
+  }
+}
+
+fragment Fragment_hE_ynFd on Object_Qjq @Directive_Mf(ipUEVr: $rQBMsj) @Directive_kN8(v1x: 9.21761835135629E+307){
+  __typename @include(if: false)
+}
+
+fragment Fragment_yN1Wcnd on Object_Qjq {
+  ...Fragment_hE_ynFd
+}
+
+fragment Fragment_g4Mfqo on Union_yzTlm8 {
+  ...Fragment_yN1Wcnd
+}

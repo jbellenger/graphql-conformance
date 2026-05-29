@@ -1,0 +1,21 @@
+{
+  ...Fragment_SEc
+  ...Fragment_mO
+  fs
+}
+
+fragment Fragment_mO on Object_m3Y8O3fZ {
+  __typename
+}
+
+fragment Fragment_SEc on Object_m3Y8O3fZ {
+  ... on Object_m3Y8O3fZ {
+    ...Fragment_mO
+    ... {
+      fs
+      b {
+        C5Z54zPe: __typename
+      }
+    }
+  }
+}

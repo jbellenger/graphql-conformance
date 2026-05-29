@@ -1,0 +1,32 @@
+{
+  ...Fragment_P@defer(if: false, label: "Phf")
+}
+
+fragment Fragment_HKj_sb7x on Object_frOeM {
+  fe48lM @Directive_FjcBN3
+  fe48lM
+}
+
+fragment Fragment_iSli on Union_RGC {
+  ...Fragment_HKj_sb7x
+}
+
+fragment Fragment_j8uEOjR on Object_MQl {
+  __typename
+}
+
+fragment Fragment_P on Object_frOeM {
+  ...Fragment_iSli@Directive_FjcBN3
+  ...Fragment_iSli
+  fe48lM
+  ... on Union_RGC {
+    ...Fragment_j8uEOjR
+    __typename
+  }
+  ... {
+    O: __typename
+    ... on Union_RGC {
+      __typename
+    }
+  }
+}

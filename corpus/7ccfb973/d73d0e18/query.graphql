@@ -1,0 +1,39 @@
+query NLSi0e($l: String) {
+  ...Fragment_r@defer(if: false, label: "2u5")
+  fo_
+  D0WRmh: dd(uPwoCcW_A8: null)
+  kWSmv: dd(uPwoCcW_A8: $l)
+}
+
+fragment Fragment_uMLojKSJG on Union_Xw7We7e {
+  __typename
+}
+
+fragment Fragment_eHjTFftao on Object_WP3cI {
+  ...Fragment_uMLojKSJG
+  __typename
+  m8I7: __typename
+}
+
+fragment Fragment_RtABK on Union_Xw7We7e {
+  ...Fragment_uMLojKSJG
+  __typename @Directive_q9c1D
+}
+
+fragment Fragment_r on Object_WP3cI {
+  ...Fragment_eHjTFftao
+  ...Fragment_RtABK
+  dd
+  ... on Object_WP3cI {
+    ...Fragment_eHjTFftao
+    Y0: dd(uPwoCcW_A8: ",E")
+    r: dd(uPwoCcW_A8: ".")
+    ov4yv06C3: __typename
+    ... on Union_Xw7We7e {
+      __typename
+    }
+  }
+  ... on Object_WP3cI {
+    fo_
+  }
+}

@@ -1,0 +1,22 @@
+{
+  ...Fragment_azrgGD9Vn_
+  __typename
+}
+
+fragment Fragment_OtYpS_u on Object_bosrvz3e8N {
+  __typename
+}
+
+fragment Fragment_TuA on Object_bosrvz3e8N {
+  ...Fragment_OtYpS_u
+  lxlPpaK8: __typename
+  sziK: __typename
+}
+
+fragment Fragment_azrgGD9Vn_ on Object_bosrvz3e8N {
+  ...Fragment_TuA
+  ... on Union_M_EfX2GH {
+    ...Fragment_OtYpS_u
+    __typename
+  }
+}

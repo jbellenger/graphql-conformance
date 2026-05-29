@@ -1,0 +1,38 @@
+query ($t: Boolean!) {
+  ...Fragment_CJ
+  ...Fragment_CJ
+  nhAe
+  VsdKtlGRi: wYqM2v {
+    ... on Object_aDg9 {
+      __typename
+    }
+    ... on Union_iGqwtZTrw @skip(if: $t) {
+      __typename
+      ... on Object_aDg9 {
+        nhAe @include(if: true)
+      }
+    }
+  }
+  nhAe
+  ... on Union_wn {
+    __typename
+  }
+}
+
+fragment Fragment_R on Object_aDg9 @Directive_Z4pR{
+  j8ION5 {
+    __typename
+  }
+  wYqM2v {
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_CJ on Union_wn {
+  ...Fragment_R
+  ...Fragment_R
+  __typename
+  S5AR: __typename @include(if: true)
+  __typename
+}

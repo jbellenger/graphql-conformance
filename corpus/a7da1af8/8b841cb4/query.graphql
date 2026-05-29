@@ -1,0 +1,39 @@
+query TJPM($s99: Boolean!) {
+  ...Fragment_qdjbh
+  ... on Object_Uy75G {
+    dNDX6ru: b5yJSjLy {
+      __typename
+    }
+    ... @defer(if: true, label: "r~") {
+      ... on Union_cbAvO78Go {
+        __typename
+        qFi_mG: __typename
+      }
+    }
+    ... on Union_cbAvO78Go @include(if: true) {
+      ...Fragment_tlCfV
+      ... on Union_LfC @include(if: $s99) {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_tlCfV on Union_cbAvO78Go {
+  __typename
+  __typename
+}
+
+fragment Fragment_EjVkz8Ds on Object_Uy75G {
+  ...Fragment_tlCfV
+  Cc: fK
+  ... on Object_Uy75G {
+    fK
+  }
+}
+
+fragment Fragment_qdjbh on Object_Uy75G {
+  ...Fragment_EjVkz8Ds
+  ...Fragment_tlCfV
+  __typename
+}

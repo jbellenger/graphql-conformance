@@ -1,0 +1,21 @@
+query YdEdFr3 {
+  ...Fragment_qJj7hl@defer(if: false, label: null)
+  ... on Union_AOBd6 {
+    ... on Union_ZiMC {
+      ...Fragment_qJj7hl
+      __typename
+      ... on Union_ZiMC {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Odc on Union_o {
+  __typename @Directive_x6(_VF3e3W3L: null)
+}
+
+fragment Fragment_qJj7hl on Union_o {
+  ...Fragment_Odc
+  __typename
+}

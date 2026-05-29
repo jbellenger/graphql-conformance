@@ -1,0 +1,22 @@
+query ($wMoxzl: Input_CxxuDyN6i) {
+  ...Fragment__TZAR1If
+  ... on Object_WJT7fui {
+    ... on Union_uumj {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_xxDg on Object_WJT7fui {
+  o7(aB0: $wMoxzl)
+}
+
+fragment Fragment__TZAR1If on Object_WJT7fui {
+  ...Fragment_xxDg
+  ... on Union_uumj {
+    __typename
+    ... on Union_uumj {
+      __typename
+    }
+  }
+}

@@ -1,0 +1,8 @@
+query ML7BC_($w: Boolean! = false@Directive_gf @Directive_iqy) {
+  ...Fragment_Kkxa
+}
+
+fragment Fragment_Kkxa on Union_EqV {
+  __typename
+  __typename @include(if: $w) @Directive_gf
+}

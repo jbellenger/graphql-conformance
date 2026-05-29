@@ -1,0 +1,30 @@
+{
+  ... on Union_es7SInjXGd {
+    ... {
+      ... on Object_foWu8npJF {
+        __typename
+      }
+    }
+    ... on Union_p4A68l {
+      mrNd: __typename
+      __typename
+    }
+  }
+  ... on Object_TKyCBK {
+    ...Fragment_PST3z
+    ... on Union_es7SInjXGd {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_myMnOQS on Object_foWu8npJF {
+  _VJiZ9nf3V: __typename
+  dgOM1 {
+    __typename @skip(if: false)
+  }
+}
+
+fragment Fragment_PST3z on Union_es7SInjXGd {
+  ...Fragment_myMnOQS
+}

@@ -1,0 +1,29 @@
+query oQ_ @Directive_gG84_ {
+  ...Fragment_C4LmCMLlc
+  __typename @include(if: true)
+}
+
+fragment Fragment_TwDznCmpy3 on Object_ods2s {
+  kYQp0cff
+}
+
+fragment Fragment_t7R on Object_ods2s {
+  ...Fragment_TwDznCmpy3
+  ... on Object_ods2s @include(if: true) {
+    bDlP9gS9(qjNSO: false) {
+      Q7eUCoWh: __typename
+    }
+  }
+}
+
+fragment Fragment_C4LmCMLlc on Object_ods2s {
+  ...Fragment_t7R
+  ... on Object_ods2s {
+    ... on Object_ods2s {
+      __typename
+    }
+  }
+  ... on Object_ods2s {
+    H: __typename
+  }
+}

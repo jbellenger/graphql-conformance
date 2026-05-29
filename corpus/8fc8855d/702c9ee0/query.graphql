@@ -1,0 +1,14 @@
+query ln8wzpEwmm {
+  ...Fragment_M_8NZlC
+  ...Fragment_M_8NZlC@include(if: true)
+  ...Fragment_M_8NZlC
+  z
+  ... on Object_W {
+    ...Fragment_M_8NZlC
+    ...Fragment_M_8NZlC@defer(if: false)
+  }
+}
+
+fragment Fragment_M_8NZlC on Object_W {
+  __typename
+}

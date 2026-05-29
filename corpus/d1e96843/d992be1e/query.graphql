@@ -1,0 +1,12 @@
+query SNiWJlS($pXBsP: Boolean!) {
+  ...Fragment_eX
+  __typename
+  L: __typename @skip(if: true)
+  hI_
+  __typename @skip(if: $pXBsP)
+  __typename
+}
+
+fragment Fragment_eX on Object_Omho {
+  hI_
+}

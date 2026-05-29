@@ -1,0 +1,37 @@
+{
+  ... on Object_rOVHlBsh {
+    tilX0uQA9 {
+      cN6LtLGg @include(if: false)
+    }
+    ... on Object_rOVHlBsh {
+      ...Fragment_tg0
+      ... {
+        __typename
+      }
+    }
+  }
+  ... {
+    __typename
+    __typename @Directive_sqUilw
+    ... on Object_rOVHlBsh {
+      tilX0uQA9 {
+        z
+      }
+    }
+  }
+  ... on Object_rOVHlBsh @defer(if: false) {
+    ...Fragment_tg0
+    tilX0uQA9 @Directive_iW {
+      ...Fragment_cFz
+      z
+    }
+  }
+}
+
+fragment Fragment_tg0 on Object_rOVHlBsh {
+  __typename @Directive_iW
+}
+
+fragment Fragment_cFz on Union_mqZUp {
+  _OPig9Suzq: __typename
+}

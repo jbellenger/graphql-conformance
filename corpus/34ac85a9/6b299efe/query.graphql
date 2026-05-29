@@ -1,0 +1,14 @@
+query d {
+  ... on Union_LEH1 {
+    ... on Object_JjO86tHaz {
+      ...Fragment_AetQ4dm5ad@defer(if: false, label: "Jp")
+      ... on Union_LEH1 {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_AetQ4dm5ad on Union_TBPBM {
+  __typename
+}

@@ -1,0 +1,33 @@
+query hCI {
+  ...Fragment_KZlsBt2
+  ... on Object_Clhg {
+    ...Fragment_LZX0
+    ...Fragment_dZfPIZ
+    __typename
+    Ol2ND: mHk4rKZ6pk {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_bIj on Union_t0DkI {
+  kp_P: __typename
+}
+
+fragment Fragment_KZlsBt2 on Union_p9U8HUnd {
+  __typename
+  __typename
+  ... on Union_TkyzX {
+    ...Fragment_bIj
+    __typename
+    __typename
+  }
+}
+
+fragment Fragment_LZX0 on Union_t0DkI {
+  iYPuqg: __typename
+}
+
+fragment Fragment_dZfPIZ on Union_t0DkI {
+  aXc: __typename
+}

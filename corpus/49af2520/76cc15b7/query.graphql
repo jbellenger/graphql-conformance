@@ -1,0 +1,52 @@
+query R {
+  ...Fragment_g_Obi2
+  ...Fragment_t4
+  ...Fragment_CtcwE6yj
+  ... on Object_kuUE1 {
+    ...Fragment_s
+    ... on Union_ulgViTFW {
+      __typename
+    }
+    ... on Union_ulgViTFW {
+      __typename
+    }
+  }
+}
+
+fragment Fragment_MoocFxIN1 on Union_WK4 {
+  rptw4FDl: __typename
+}
+
+fragment Fragment_g_Obi2 on Object_kuUE1 @Directive_rFmBly{
+  ... on Object_kuUE1 {
+    ...Fragment_MoocFxIN1
+  }
+}
+
+fragment Fragment_t4 on Union_WK4 {
+  ...Fragment_g_Obi2
+  ... on Object_M8F {
+    ...Fragment_MoocFxIN1
+  }
+}
+
+fragment Fragment_EXzhMezE on Union_ulgViTFW {
+  __typename
+}
+
+fragment Fragment_CtcwE6yj on Union_ulgViTFW {
+  ... on Object_BXyMNOF_d {
+    ...Fragment_EXzhMezE
+    ... on Union_ulgViTFW @skip(if: false) {
+      __typename @skip(if: true)
+    }
+  }
+}
+
+fragment Fragment_DgXlQ74lv on Union_WK4 {
+  WLnWMW3FPw: __typename
+}
+
+fragment Fragment_s on Union_ulgViTFW {
+  ...Fragment_DgXlQ74lv
+}

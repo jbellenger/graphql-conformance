@@ -1,0 +1,31 @@
+query ($t76jG5hUyG: Boolean!) @Directive_alKQ @Directive_jmE @Directive_jmE {
+  slsbbJc(ee1o: {u1EVOQmLVQ : [[], []]}) {
+    ...Fragment_k65
+    ...Fragment_X1bj
+  }
+  ... on Union_EPTpY {
+    ...Fragment_X1bj@include(if: $t76jG5hUyG)
+    __typename
+    ... on Interface_Hbk8Q {
+      ...Fragment_k65@skip(if: true) @Directive_jmE
+      __typename
+      ... on Union_b {
+        MzWi4nm: __typename @skip(if: $t76jG5hUyG)
+      }
+    }
+    ... on Interface_Hbk8Q {
+      __typename @skip(if: true)
+    }
+  }
+}
+
+fragment Fragment_X1bj on Union_EPTpY {
+  __typename
+}
+
+fragment Fragment_k65 on Union_b {
+  ...Fragment_X1bj
+  ... on Union_EPTpY {
+    __typename
+  }
+}

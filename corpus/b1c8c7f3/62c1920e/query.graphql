@@ -1,0 +1,54 @@
+query ($wCVafjPU: ID) {
+  ...Fragment_s
+  y {
+    ...Fragment_s
+  }
+  __typename @include(if: true)
+  ... on Union_uX {
+    ...Fragment_Ruyv5Pb3q
+    ...Fragment_s
+    ... on Union_dud @include(if: true) {
+      ...Fragment_jaTNJ
+      __typename
+    }
+    ... on Union_dud {
+      ... on Union_dud {
+        __typename
+      }
+    }
+  }
+  ... on Union_uX @defer(if: true, label: "^;z") {
+    __typename
+  }
+}
+
+fragment Fragment_s on Union_uX {
+  __typename
+  ... on Union_uX {
+    ... on Union_dud {
+      __typename
+      __typename
+    }
+  }
+}
+
+fragment Fragment_Ruyv5Pb3q on Object_yf6E {
+  y {
+    UjQL: __typename @include(if: true)
+  }
+  ... on Object_yf6E {
+    y {
+      __typename
+    }
+    kAR0uZF
+  }
+}
+
+fragment Fragment_jaTNJ on Object_TX3 {
+  sG9Uj: mWOcVThGw3 {
+    hmsIW
+  }
+  mWOcVThGw3(rPW0bIJrq: $wCVafjPU) {
+    __typename
+  }
+}

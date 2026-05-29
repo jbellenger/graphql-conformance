@@ -1,0 +1,15 @@
+query Przmovf {
+  ...Fragment_ZXHCPK0ZT2
+  vwlTKLdQz: __typename
+}
+
+fragment Fragment_ZXHCPK0ZT2 on Union_PYm {
+  ... on Union_PYm {
+    __typename
+  }
+  ... on Object_Qy {
+    ... on Union_PYm {
+      __typename
+    }
+  }
+}

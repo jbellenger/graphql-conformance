@@ -1,0 +1,25 @@
+query FG3j {
+  ...Fragment_N87
+}
+
+fragment Fragment_ciJ on Object_kxm4VoU0w {
+  qOtY9m2
+}
+
+fragment Fragment_TRXn_YzDH1 on Object_kxm4VoU0w {
+  ...Fragment_ciJ
+  qOtY9m2
+  z7rwk4: __typename
+}
+
+fragment Fragment_N87 on Union_D8Ypr {
+  ...Fragment_TRXn_YzDH1@include(if: false)
+  __typename
+  SEU718dt: __typename
+  ... on Union_D8Ypr {
+    ...Fragment_ciJ
+    ... on Object_uuxeWDPr {
+      DqqAeIJ: rpaDCO
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  ... on Object_niXHw_ {
+    A: __typename
+    sRl6OOQ {
+      ...Fragment_jIX
+    }
+    vndtk {
+      ...Fragment_jIX
+      sRl6OOQ {
+        Exqi: vndtk {
+          __typename
+        }
+      }
+    }
+    ... on Union_JU {
+      ... on Union_Qi {
+        In5Ka6DG: __typename
+        __typename
+      }
+    }
+    ... on Object_niXHw_ @Directive_dZ {
+      vndtk {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_jIX on Interface_w3Bc {
+  __typename @Directive_Tr6WNDmJH
+}

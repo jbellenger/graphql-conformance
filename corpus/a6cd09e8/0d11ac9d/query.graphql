@@ -1,0 +1,34 @@
+query ($phjWvT: Boolean!) {
+  ...Fragment_M8ihiZLuQs
+  ...Fragment_M8ihiZLuQs
+  __typename
+  ... @include(if: false) {
+    ...Fragment_M8ihiZLuQs
+    ...Fragment_mlYme2v3
+    tSk: zEW(jchY8Cedu: $phjWvT)
+  }
+  ... on Object_uflae {
+    ...Fragment_M8ihiZLuQs
+  }
+  ... on Object_uflae {
+    ...Fragment_a3U9
+    UZJkQ: zEW(jchY8Cedu: false)
+  }
+}
+
+fragment Fragment_M8ihiZLuQs on Object_uflae {
+  __typename
+}
+
+fragment Fragment_mlYme2v3 on Object_uflae {
+  __typename
+  __typename
+  zEW(jchY8Cedu: true)
+}
+
+fragment Fragment_a3U9 on Object_uflae {
+  ... on Object_uflae {
+    __typename
+    __typename
+  }
+}

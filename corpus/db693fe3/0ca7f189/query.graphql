@@ -1,0 +1,16 @@
+{
+  ...Fragment_pmfCR
+  ...Fragment_pmfCR
+}
+
+fragment Fragment_Hc0C1nO_sc on Union_Ma {
+  __typename
+  ... on Union_Ma {
+    nGls: __typename
+  }
+}
+
+fragment Fragment_pmfCR on Union_Ma {
+  ...Fragment_Hc0C1nO_sc
+  ...Fragment_Hc0C1nO_sc
+}

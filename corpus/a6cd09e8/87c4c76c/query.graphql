@@ -1,0 +1,14 @@
+{
+  ...Fragment_Vi
+  ...Fragment_RMJhcDBFyJ
+}
+
+fragment Fragment_RMJhcDBFyJ on Object_uflae @Directive_j2eP{
+  _530CrpAeT: __typename
+}
+
+fragment Fragment_Vi on Object_uflae {
+  ... on Object_uflae {
+    ...Fragment_RMJhcDBFyJ
+  }
+}

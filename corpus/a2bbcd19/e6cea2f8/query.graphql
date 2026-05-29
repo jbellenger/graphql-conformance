@@ -1,0 +1,26 @@
+{
+  l
+  q7
+  ... on Union_G {
+    __typename
+  }
+  ... on Union_G {
+    ... {
+      ...Fragment_Wu43
+      ... @defer(if: false) {
+        IUwhRG: __typename
+        M_SeR_B: __typename
+      }
+    }
+    ... {
+      ...Fragment_Wu43
+      ... on Object__AZug8beR {
+        __typename
+      }
+    }
+  }
+}
+
+fragment Fragment_Wu43 on Union_G {
+  __typename
+}
