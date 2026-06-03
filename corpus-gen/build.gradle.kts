@@ -1,7 +1,7 @@
 val viaductVersion = "1.1.0"
 
 plugins {
-    kotlin("jvm") version "2.3.21"
+    kotlin("jvm") version "2.4.0"
     id("com.gradleup.shadow") version "9.4.2"
 }
 
@@ -14,7 +14,7 @@ dependencies {
     implementation("com.airbnb.viaduct.engine:api:$viaductVersion")
     implementation("com.graphql-java:graphql-java:26.0")
     implementation("io.kotest:kotest-property-jvm:5.9.1")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.21.4")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.22.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.11.0")
 
     testImplementation(testFixtures("com.airbnb.viaduct.shared:arbitrary:$viaductVersion"))
