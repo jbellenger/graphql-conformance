@@ -1,4 +1,4 @@
-FROM elixir:1.19-otp-27-slim
+FROM elixir:1.20-otp-27-slim
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends git ca-certificates build-essential \
