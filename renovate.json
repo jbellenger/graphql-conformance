@@ -10,10 +10,12 @@
   "timezone": "America/Los_Angeles",
   "packageRules": [
     {
-      "description": "graphql-js-17 tracks the npm `beta` dist-tag (17.x pre-release line)",
+      "description": "graphql-js-17 tracks the latest 17.x release, including official alpha/beta/rc pre-releases",
       "matchFileNames": ["impls/graphql-js-17/package.json"],
       "matchPackageNames": ["graphql"],
-      "followTag": "beta"
+      "allowedVersions": "/^17\\.[0-9]+\\.[0-9]+(?:-(?:alpha|beta|rc)\\.[0-9]+)?$/",
+      "ignoreUnstable": false,
+      "respectLatest": false
     },
     {
       "description": "graphql-js-16 stays on the 16.x stable line",
