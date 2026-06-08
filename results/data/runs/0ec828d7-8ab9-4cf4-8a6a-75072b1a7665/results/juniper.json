@@ -1,0 +1,235 @@
+[
+  {
+    "id": "22959cd4-8417-40aa-8830-c4e3fd512a34",
+    "runId": "0ec828d7-8ab9-4cf4-8a6a-75072b1a7665",
+    "implId": "juniper",
+    "testCaseId": "03573f34/2e32a08b/08277c86",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_lpJFn",
+        "H3Nl_": "Object_lpJFn",
+        "puaq39dlg": {
+          "deWZL": "XtCw_c"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 28, line: 0, col: 28 }], message: \"Argument \\\"kJ8hrxR\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "43d5eb1f-7c0e-4896-8343-d522579a54a6",
+    "runId": "0ec828d7-8ab9-4cf4-8a6a-75072b1a7665",
+    "implId": "juniper",
+    "testCaseId": "03573f34/2e32a08b/179ab86c",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_lpJFn",
+        "H3Nl_": "Object_lpJFn",
+        "puaq39dlg": {
+          "deWZL": "XtCw_c"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 28, line: 0, col: 28 }], message: \"Argument \\\"kJ8hrxR\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "f77e9532-bf8b-41a6-8d27-b00cfa0fa202",
+    "runId": "0ec828d7-8ab9-4cf4-8a6a-75072b1a7665",
+    "implId": "juniper",
+    "testCaseId": "03573f34/db6ebcb1/457e9b63",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "P": "Object_lpJFn",
+        "oM": "Object_lpJFn"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 35, line: 0, col: 35 }], message: \"Argument \\\"rbEuY2\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "0d532d38-5c02-4258-8ae9-e2fb13d420f4",
+    "runId": "0ec828d7-8ab9-4cf4-8a6a-75072b1a7665",
+    "implId": "juniper",
+    "testCaseId": "03573f34/db6ebcb1/b116a709",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "P": "Object_lpJFn"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 35, line: 0, col: 35 }], message: \"Argument \\\"rbEuY2\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "f305cb0a-1323-4c54-845b-8592ee84b510",
+    "runId": "0ec828d7-8ab9-4cf4-8a6a-75072b1a7665",
+    "implId": "juniper",
+    "testCaseId": "0899731f/9a5daa04/7d1ec464",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "k": "iS",
+        "sn6N8tbgL": "id",
+        "__typename": "Object_ARs"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 27, line: 0, col: 27 }], message: \"Argument \\\"b\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "64eefafb-ee89-42e3-8c09-b3f9ad4019f8",
+    "runId": "0ec828d7-8ab9-4cf4-8a6a-75072b1a7665",
+    "implId": "juniper",
+    "testCaseId": "0899731f/9a5daa04/fc0f22db",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "k": "iS",
+        "sn6N8tbgL": "id",
+        "__typename": "Object_ARs"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 27, line: 0, col: 27 }], message: \"Argument \\\"b\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "53695df4-2e79-4ab0-8966-ea5295f7373b",
+    "runId": "0ec828d7-8ab9-4cf4-8a6a-75072b1a7665",
+    "implId": "juniper",
+    "testCaseId": "0d5cbb16/46b60c5e/19de0fe7",
+    "status": "fail",
+    "expected": {
+      "data": {}
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 25, line: 0, col: 25 }], message: \"Argument \\\"r_1T\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "78034f74-cb09-45a3-859f-fcb807f2e7d0",
+    "runId": "0ec828d7-8ab9-4cf4-8a6a-75072b1a7665",
+    "implId": "juniper",
+    "testCaseId": "0d5cbb16/46b60c5e/c9e8ed04",
+    "status": "fail",
+    "expected": {
+      "data": {}
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 25, line: 0, col: 25 }], message: \"Argument \\\"r_1T\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "d161e73c-3236-46e6-8436-dcb78cf25f54",
+    "runId": "0ec828d7-8ab9-4cf4-8a6a-75072b1a7665",
+    "implId": "juniper",
+    "testCaseId": "15e18fa2/d15b7a55/fc962535",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_ivbme4MRt"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 14, line: 0, col: 14 }], message: \"Variable \\\"$vjo3\\\" is not used by operation \\\"eCk0o4m\\\"\" }])"
+        }
+      ]
+    }
+  },
+  {
+    "id": "c981570b-7f20-4704-8548-8ed27f0265dc",
+    "runId": "0ec828d7-8ab9-4cf4-8a6a-75072b1a7665",
+    "implId": "juniper",
+    "testCaseId": "1790a98f/f9b9f6bf/02bb3985",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_SE",
+        "h2hpA": [
+          {
+            "__typename": "Object_qIcsq7M",
+            "RXy": [
+              {
+                "u5AJ72UL": "RIq727Xz"
+              },
+              {
+                "u5AJ72UL": "RIq727Xz"
+              }
+            ]
+          },
+          {
+            "__typename": "Object_qIcsq7M",
+            "RXy": [
+              {
+                "u5AJ72UL": "RIq727Xz"
+              },
+              {
+                "u5AJ72UL": "RIq727Xz"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "ValidationError([RuleError { locations: [SourcePosition { index: 28, line: 0, col: 28 }], message: \"Argument \\\"tA\\\" has type \\\"Boolean!\\\" and is not nullable, so it can't have a default value\" }])"
+        }
+      ]
+    }
+  }
+]
