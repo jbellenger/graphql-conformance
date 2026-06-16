@@ -198,6 +198,59 @@ describe('FailureDetail', () => {
     expect(screen.getByText('2 of 4 implementations passed.')).toBeInTheDocument();
   });
 
+  it('redirects unpinned retired impl failure URLs to the newest historical run', async () => {
+    const repo = new FakeRepository({
+      impls: [
+        { id: 'graphql-js-17', name: 'graphql-js-17', language: 'JavaScript' },
+        { id: 'graphql-js-16', name: 'graphql-js-16', language: 'JavaScript' },
+      ],
+      runs: [
+        {
+          id: 'latest-run',
+          timestamp: '2026-06-16T12:00:00Z',
+          referenceImplId: 'graphql-js-17',
+          implIds: ['graphql-js-17'],
+          excluded: 0,
+          resultsByImpl: {
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 2, passed: 2 }),
+          },
+        },
+        {
+          id: 'historical-run',
+          timestamp: '2026-06-15T12:00:00Z',
+          referenceImplId: 'graphql-js-17',
+          implIds: ['graphql-js-17', 'graphql-js-16'],
+          excluded: 0,
+          resultsByImpl: {
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 2, passed: 2 }),
+            'graphql-js-16': implRunResults('graphql-js-16', { total: 2, passed: 1, failed: 1 }),
+          },
+        },
+      ],
+      results: [
+        {
+          id: 'old-js-16-fail',
+          runId: 'historical-run',
+          implId: 'graphql-js-16',
+          testCaseId,
+          status: 'fail',
+          expected: { data: { x: 1 } },
+          actual: { data: { x: 2 } },
+        },
+      ],
+    });
+
+    renderAt(
+      `/impl/graphql-js-16/failures/${encodeURIComponent(testCaseId)}`,
+      repo,
+    );
+
+    expect(
+      await screen.findByRole('heading', { name: 'graphql-js-16', level: 2 }),
+    ).toBeInTheDocument();
+    expect(await screen.findByText('historical-run')).toBeInTheDocument();
+  });
+
   it('links peer failures to their own failure detail page', async () => {
     renderAt(
       '/runs/run-1/impl/graphql-java/failures/schema%2Fquery%2Fvars',

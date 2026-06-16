@@ -46,10 +46,17 @@ function writeRegistry(drivers, reference = 'ref') {
   fs.writeFileSync(tmpRegistryPath, JSON.stringify({
     registryVersion: 1,
     reference,
-    drivers: drivers.map((name) => {
+    drivers: drivers.map((driver) => {
+      const entry = typeof driver === 'string' ? { name: driver } : driver;
+      const { name } = entry;
       const implDir = path.join(tmpDir, name);
       writeStubManifest(implDir);
-      return { name, source: 'in-tree', manifestPath: path.relative(tmpDir, path.join(implDir, 'manifest.json')) };
+      return {
+        ...entry,
+        name,
+        source: entry.source || 'in-tree',
+        manifestPath: entry.manifestPath || path.relative(tmpDir, path.join(implDir, 'manifest.json')),
+      };
     }),
   }));
 }
@@ -229,6 +236,34 @@ describe('integration: self-comparison', () => {
     assert.equal(latest.run.resultsByImpl.conformant.errored, 0);
     assert.equal(latest.run.resultsByImpl.conformant.falloutAfter, null);
     assert.deepStrictEqual(latest.resultsByImpl.conformant, []);
+  });
+});
+
+describe('integration: disabled registry drivers', () => {
+  it('skips disabled conformants by default', async () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    writeCorpusCase(corpusDir, 'ok-test', 'ok-query', 'type Query { ok: String }', '{ ok }');
+    writeRegistry(['ref', 'enabled', { name: 'disabled', enabled: false }]);
+
+    const handler = () => ({ result: { data: { ok: 'value' } } });
+    await runInTmp({ ref: handler, enabled: handler }, corpusDir);
+
+    const latest = loadLatest();
+    assert.deepStrictEqual(latest.run.implIds, ['ref', 'enabled']);
+    assert.ok(!latest.run.resultsByImpl.disabled);
+  });
+
+  it('runs a disabled conformant when explicitly requested', async () => {
+    const corpusDir = path.join(tmpDir, 'corpus');
+    writeCorpusCase(corpusDir, 'ok-test', 'ok-query', 'type Query { ok: String }', '{ ok }');
+    writeRegistry(['ref', { name: 'disabled', enabled: false }]);
+
+    const handler = () => ({ result: { data: { ok: 'value' } } });
+    await runInTmp({ ref: handler, disabled: handler }, corpusDir, ['--drivers', 'disabled']);
+
+    const latest = loadLatest();
+    assert.deepStrictEqual(latest.run.implIds, ['ref', 'disabled']);
+    assert.equal(latest.run.resultsByImpl.disabled.total, 1);
   });
 });
 

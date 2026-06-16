@@ -3,7 +3,7 @@
   "reference": "graphql-js-17",
   "drivers": [
     { "name": "graphql-js-17", "source": "in-tree", "manifestPath": "./impls/graphql-js-17/manifest.json" },
-    { "name": "graphql-js-16", "source": "in-tree", "manifestPath": "./impls/graphql-js-16/manifest.json" },
+    { "name": "graphql-js-16", "source": "in-tree", "manifestPath": "./impls/graphql-js-16/manifest.json", "enabled": false },
     { "name": "grafast", "source": "in-tree", "manifestPath": "./impls/grafast/manifest.json" },
     { "name": "graphql-java", "source": "in-tree", "manifestPath": "./impls/graphql-java/manifest.json" },
     { "name": "viaduct", "source": "in-tree", "manifestPath": "./impls/viaduct/manifest.json" },

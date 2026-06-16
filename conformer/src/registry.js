@@ -10,6 +10,14 @@ function loadJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
 }
 
+function parseEnabled(entry) {
+  if (!Object.prototype.hasOwnProperty.call(entry, 'enabled')) return true;
+  if (typeof entry.enabled !== 'boolean') {
+    throw new Error(`driver ${entry.name || '<unnamed>'}: "enabled" must be boolean when present`);
+  }
+  return entry.enabled;
+}
+
 function externalCacheDir() {
   return process.env.EXTERNAL_DRIVER_CACHE
     || path.join(os.tmpdir(), 'conformer-external-drivers');
@@ -40,6 +48,7 @@ function cloneExternalDriver(entry) {
 }
 
 function resolveInTreeEntry(entry, rootDir) {
+  const enabled = parseEnabled(entry);
   const manifestRel = entry.manifestPath || `./impls/${entry.name}/manifest.json`;
   const manifestFile = path.resolve(rootDir, manifestRel);
   const implDir = path.dirname(manifestFile);
@@ -54,10 +63,12 @@ function resolveInTreeEntry(entry, rootDir) {
     transport: 'http',
     implDir,
     manifestPath: manifestFile,
+    enabled,
   };
 }
 
 function resolveExternalEntry(entry) {
+  const enabled = parseEnabled(entry);
   const checkoutDir = cloneExternalDriver(entry);
   const manifestRel = entry.manifestPath || 'manifest.json';
   const manifestFile = path.resolve(checkoutDir, manifestRel);
@@ -72,6 +83,7 @@ function resolveExternalEntry(entry) {
     manifestPath: manifestFile,
     repoUrl: entry.repoUrl,
     ref: entry.ref || 'main',
+    enabled,
   };
 }
 
@@ -101,6 +113,9 @@ function loadRegistry({ registryPath, rootDir } = {}) {
       `registry at ${registryPath}: reference "${registry.reference}" is not in drivers list`,
     );
   }
+  if (byName.get(registry.reference).enabled === false) {
+    throw new Error(`registry at ${registryPath}: reference "${registry.reference}" is disabled`);
+  }
 
   return { reference: registry.reference, drivers, byName };
 }
@@ -117,6 +132,7 @@ function filterDrivers(registry, { only, exclude }) {
     }
     if (excludeSet.has(driver.name)) continue;
     if (onlySet && !onlySet.has(driver.name)) continue;
+    if (!onlySet && driver.enabled === false) continue;
     kept.push(driver);
   }
 

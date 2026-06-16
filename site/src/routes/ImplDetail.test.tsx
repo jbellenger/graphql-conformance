@@ -169,6 +169,96 @@ describe('ImplDetail', () => {
     expect(detailRate?.textContent).not.toMatch(/99\.0%/);
   });
 
+  it('redirects unpinned retired impl URLs to the newest historical run', async () => {
+    const repo = new FakeRepository({
+      impls: [
+        { id: 'graphql-js-17', name: 'graphql-js-17', language: 'JavaScript' },
+        { id: 'graphql-js-16', name: 'graphql-js-16', language: 'JavaScript' },
+      ],
+      runs: [
+        {
+          id: 'latest-run',
+          timestamp: '2026-06-16T12:00:00Z',
+          referenceImplId: 'graphql-js-17',
+          implIds: ['graphql-js-17'],
+          excluded: 0,
+          resultsByImpl: {
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 10, passed: 10 }),
+          },
+        },
+        {
+          id: 'historical-run',
+          timestamp: '2026-06-15T12:00:00Z',
+          referenceImplId: 'graphql-js-17',
+          implIds: ['graphql-js-17', 'graphql-js-16'],
+          excluded: 0,
+          resultsByImpl: {
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 10, passed: 10 }),
+            'graphql-js-16': implRunResults('graphql-js-16', { total: 10, passed: 8, failed: 2 }),
+          },
+        },
+      ],
+      history: {
+        'graphql-js-16': [
+          {
+            runId: 'historical-run',
+            timestamp: '2026-06-15T12:00:00Z',
+            total: 10,
+            passed: 8,
+            failed: 2,
+            errored: 0,
+            falloutAfter: null,
+          },
+        ],
+      },
+    });
+
+    renderAt('/impl/graphql-js-16', repo);
+
+    expect(await screen.findByText('graphql-js-16')).toBeInTheDocument();
+    expect(await screen.findByText('80.0%')).toBeInTheDocument();
+  });
+
+  it('renders NotFound for a pinned run that does not contain the impl', async () => {
+    const repo = new FakeRepository({
+      impls: [
+        { id: 'graphql-js-17', name: 'graphql-js-17', language: 'JavaScript' },
+        { id: 'graphql-js-16', name: 'graphql-js-16', language: 'JavaScript' },
+      ],
+      runs: [
+        {
+          id: 'latest-run',
+          timestamp: '2026-06-16T12:00:00Z',
+          referenceImplId: 'graphql-js-17',
+          implIds: ['graphql-js-17'],
+          excluded: 0,
+          resultsByImpl: {
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 10, passed: 10 }),
+          },
+        },
+      ],
+      history: {
+        'graphql-js-16': [
+          {
+            runId: 'historical-run',
+            timestamp: '2026-06-15T12:00:00Z',
+            total: 10,
+            passed: 8,
+            failed: 2,
+            errored: 0,
+            falloutAfter: null,
+          },
+        ],
+      },
+    });
+
+    renderAt('/runs/latest-run/impl/graphql-js-16', repo);
+
+    expect(
+      await screen.findByText(/that implementation is not in this run/i),
+    ).toBeInTheDocument();
+  });
+
   it('renders the implementation version recorded for the pinned run', async () => {
     const oldRunId = 'older-run';
     const repo = new FakeRepository({
