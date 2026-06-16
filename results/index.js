@@ -22,6 +22,26 @@ class FileData {
   }
 }
 
+function mergeImplCatalog(currentImpls, existingImpls) {
+  const current = currentImpls ?? [];
+  const existing = existingImpls ?? [];
+  const seen = new Set();
+  const merged = [];
+
+  for (const impl of current) {
+    if (!impl || !impl.id || seen.has(impl.id)) continue;
+    seen.add(impl.id);
+    merged.push(impl);
+  }
+  for (const impl of existing) {
+    if (!impl || !impl.id || seen.has(impl.id)) continue;
+    seen.add(impl.id);
+    merged.push(impl);
+  }
+
+  return merged;
+}
+
 // ResultsStore owns the on-disk Repository-shaped layout that the site reads
 // directly. The writer is the sole producer of these files; `site/` never
 // reshapes them at build time.
@@ -57,7 +77,8 @@ class ResultsStore {
   //   resultsByImpl    — Record<implId, Result[]> of non-pass results.
   //   conformerMeta    — { corpusFingerprint,
   //                        implMeta: { [implId]: { imageDigest, version, versionUrl } } }
-  //   impls            — Impl[] (current, ordered; reference first).
+  //   impls            — Impl[] (current, ordered; reference first). Merged
+  //                      into the historical impl catalog.
   writeRun({ run, resultsByImpl, conformerMeta, impls }) {
     if (!run || !run.id) throw new Error('writeRun: run.id is required');
 
@@ -76,9 +97,10 @@ class ResultsStore {
     runs.sort((a, b) => b.timestamp.localeCompare(a.timestamp));
     this._data.put('runs', runs);
 
-    this._data.put('impls', impls ?? []);
+    const implCatalog = mergeImplCatalog(impls, this._data.get('impls') || []);
+    this._data.put('impls', implCatalog);
 
-    for (const impl of impls ?? []) {
+    for (const impl of implCatalog) {
       const history = this._computeImplHistory(impl.id, runs);
       this._data.put(`impls/${impl.id}/history`, history);
     }

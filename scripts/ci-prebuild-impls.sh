@@ -63,7 +63,7 @@ build_one() {
 DRIVERS=()
 while IFS= read -r line; do
   [[ -n "$line" ]] && DRIVERS+=("$line")
-done < <(jq -r '.drivers[].name' "$REGISTRY_JSON")
+done < <(jq -r '.drivers[] | select(.enabled != false) | .name' "$REGISTRY_JSON")
 
 if (( ${#DRIVERS[@]} == 0 )); then
   echo "no drivers in $REGISTRY_JSON" >&2

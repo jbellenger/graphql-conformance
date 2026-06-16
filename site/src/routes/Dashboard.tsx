@@ -43,7 +43,11 @@ export function Dashboard() {
 
   const run = runQuery.data;
   const isPinned = runId != null;
-  const runImpls = impls.data.map((i) => implForRun(i, run));
+  const implById = new Map(impls.data.map((i) => [i.id, i]));
+  const runImpls = run.implIds
+    .map((id) => implById.get(id))
+    .filter((i): i is Impl => i != null)
+    .map((i) => implForRun(i, run));
   const reference = runImpls.find((i) => i.id === run.referenceImplId) ?? null;
   // Sort non-reference impls by pass rate descending; fall back to impl name
   // so the order is stable for ties.

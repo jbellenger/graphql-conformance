@@ -1,4 +1,5 @@
 import type { KeyboardEvent, MouseEvent, ReactNode } from 'react';
+import { useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { TestCaseHistoryChart } from '../components/TestCaseHistoryChart';
 import { CopyButton } from '../components/CopyButton';
@@ -26,12 +27,33 @@ import { computePassPct } from '../lib/passRate';
 
 export function FailureDetail() {
   const { name, runId, testCaseId } = useParams();
+  const navigate = useNavigate();
   const impls = useImpls();
   const impl = useImpl(name ?? '');
   const runQuery = useRunOrLatest(runId);
   const result = useResultLookup(runQuery.data?.id, name, testCaseId);
   const history = useTestCaseHistory(name, testCaseId);
   const runOutcomes = useRunTestCaseOutcomes(runQuery.data, testCaseId);
+  const runHasImpl =
+    name != null && runQuery.data != null
+      ? runQuery.data.resultsByImpl[name] != null
+      : false;
+  const latestHistoricalRunId = history.data?.[0]?.runId;
+  const historicalRedirectTarget =
+    !runId &&
+    name &&
+    testCaseId &&
+    runQuery.data &&
+    !runHasImpl &&
+    latestHistoricalRunId
+      ? historicalFailureHref(latestHistoricalRunId, name, testCaseId)
+      : null;
+
+  useEffect(() => {
+    if (historicalRedirectTarget) {
+      navigate(historicalRedirectTarget, { replace: true });
+    }
+  }, [historicalRedirectTarget, navigate]);
 
   if (!name) {
     return <NotFound message="Missing impl name." />;
@@ -84,6 +106,12 @@ export function FailureDetail() {
     return <NotFound message="No data for this impl." />;
   }
 
+  if (historicalRedirectTarget) return <div className="loading">Loading…</div>;
+
+  if (!runHasImpl) {
+    return <NotFound message="That implementation is not in this run." />;
+  }
+
   if (!result.data) {
     return (
       <NotFound
@@ -117,6 +145,16 @@ export function FailureDetail() {
       testCaseId={testCaseId}
     />
   );
+}
+
+function historicalFailureHref(
+  runId: string,
+  implId: string,
+  testCaseId: string,
+): string {
+  return `/runs/${encodeURIComponent(runId)}/impl/${encodeURIComponent(
+    implId,
+  )}/failures/${encodeURIComponent(testCaseId)}`;
 }
 
 interface FailureDetailViewProps {

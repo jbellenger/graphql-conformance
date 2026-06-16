@@ -109,6 +109,57 @@ describe('ResultsStore', () => {
       });
       assert.deepStrictEqual(store._data.get('impls'), impls);
     });
+
+    it('keeps omitted historical impls in the catalog and history', () => {
+      const store = ResultsStore.inMemory();
+      const firstImpls = [
+        { id: 'graphql-js', name: 'graphql-js', language: 'JavaScript', version: 'v1' },
+        { id: 'retired', name: 'retired', language: 'JavaScript', version: 'old' },
+      ];
+      store.writeRun({
+        run: makeRun({
+          id: 'r1',
+          timestamp: '2026-03-15T00:00:00Z',
+          implIds: ['graphql-js', 'retired'],
+          resultsByImpl: {
+            'graphql-js': bucket('graphql-js', { total: 3, passed: 3 }),
+            retired: bucket('retired', { total: 3, passed: 2, failed: 1 }),
+          },
+        }),
+        resultsByImpl: {},
+        conformerMeta: makeMeta(),
+        impls: firstImpls,
+      });
+
+      const secondImpls = [
+        { id: 'graphql-js', name: 'graphql-js', language: 'JavaScript', version: 'v2' },
+        { id: 'active', name: 'active', language: 'Java' },
+      ];
+      store.writeRun({
+        run: makeRun({
+          id: 'r2',
+          timestamp: '2026-03-16T00:00:00Z',
+          implIds: ['graphql-js', 'active'],
+          resultsByImpl: {
+            'graphql-js': bucket('graphql-js', { total: 3, passed: 3 }),
+            active: bucket('active', { total: 3, passed: 3 }),
+          },
+        }),
+        resultsByImpl: {},
+        conformerMeta: makeMeta(),
+        impls: secondImpls,
+      });
+
+      assert.deepStrictEqual(
+        store._data.get('impls').map((impl) => [impl.id, impl.version]),
+        [['graphql-js', 'v2'], ['active', undefined], ['retired', 'old']],
+      );
+
+      const retiredHistory = store._data.get('impls/retired/history');
+      assert.equal(retiredHistory.length, 1);
+      assert.equal(retiredHistory[0].runId, 'r1');
+      assert.equal(retiredHistory[0].failed, 1);
+    });
   });
 
   describe('impl history', () => {

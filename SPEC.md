@@ -178,6 +178,7 @@ dashboard displays `"unknown"` without a link, and all other harness behavior
       "reference": "graphql-js-17",
       "drivers": [
         { "name": "graphql-js-17", "source": "in-tree",  "manifestPath": "./impls/graphql-js-17/manifest.json" },
+        { "name": "graphql-js-16", "source": "in-tree",  "manifestPath": "./impls/graphql-js-16/manifest.json", "enabled": false },
         { "name": "my-engine",      "source": "external", "repoUrl": "https://github.com/acme/my-engine", "ref": "main", "manifestPath": "manifest.json" }
       ]
     }
@@ -186,6 +187,10 @@ dashboard displays `"unknown"` without a link, and all other harness behavior
 - `source: "in-tree"` — manifest lives in this repo at `manifestPath`.
 - `source: "external"` — the conformer clones `repoUrl@ref` into a scratch dir
   and reads `manifestPath` from the checkout.
+- `enabled` is optional and defaults to `true`. `enabled: false` excludes a
+  conformant from default runs, while keeping it available for explicit
+  `--drivers <name>` runs and historical dashboard links. The reference driver
+  must be enabled.
 
 Adding a driver is a PR against `registry.json`; merge = endorsement.
 
@@ -193,7 +198,8 @@ Adding a driver is a PR against `registry.json`; merge = endorsement.
 
 The conformer entrypoint accepts:
 
-- `--drivers <csv>` — run only the named drivers (reference is always included).
+- `--drivers <csv>` — run only the named drivers (reference is always included);
+  explicitly named disabled drivers are included.
 - `--exclude <csv>` — exclude named drivers.
 - `--registry <path>` — override `registry.json` location.
 - `--build-from-source` — force local build even if `repository` is set.

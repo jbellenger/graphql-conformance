@@ -128,6 +128,36 @@ describe('Dashboard', () => {
     expect(await screen.findByText(/96\.9%/)).toBeInTheDocument();
   });
 
+  it('omits catalog impls that are absent from the selected run', async () => {
+    const repo = new FakeRepository({
+      impls: [
+        { id: 'graphql-js-17', name: 'graphql-js-17', language: 'JavaScript' },
+        { id: 'graphql-java', name: 'graphql-java', language: 'Java' },
+        { id: 'graphql-js-16', name: 'graphql-js-16', language: 'JavaScript' },
+      ],
+      runs: [
+        {
+          id: 'latest',
+          timestamp: '2026-06-16T12:00:00Z',
+          referenceImplId: 'graphql-js-17',
+          implIds: ['graphql-js-17', 'graphql-java'],
+          excluded: 0,
+          resultsByImpl: {
+            'graphql-js-17': implRunResults('graphql-js-17', { total: 10, passed: 10 }),
+            'graphql-java': implRunResults('graphql-java', { total: 10, passed: 9, failed: 1 }),
+          },
+        },
+      ],
+    });
+
+    renderWith(repo);
+
+    expect(
+      await screen.findByTestId('dashboard-row-graphql-java'),
+    ).toBeInTheDocument();
+    expect(screen.queryByTestId('dashboard-row-graphql-js-16')).toBeNull();
+  });
+
   it('does not display 100.0% for a near-perfect impl with failures', async () => {
     const repo = new FakeRepository({
       impls: [

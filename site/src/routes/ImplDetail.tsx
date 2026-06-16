@@ -1,6 +1,6 @@
 import type { KeyboardEvent, MouseEvent } from 'react';
 import { useEffect, useMemo } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import {
   useImpl,
   useImplHistory,
@@ -25,6 +25,8 @@ const RECENT_RUNS_LIMIT = 20;
 
 export function ImplDetail() {
   const { name, testCaseId, runId } = useParams();
+  const location = useLocation();
+  const navigate = useNavigate();
   const impls = useImpls();
   const impl = useImpl(name ?? '');
   const runQuery = useRunOrLatest(runId);
@@ -33,6 +35,21 @@ export function ImplDetail() {
     runId: runQuery.data?.id,
     implId: name,
   });
+  const runHasImpl =
+    name != null && runQuery.data != null
+      ? runQuery.data.resultsByImpl[name] != null
+      : false;
+  const latestHistoricalRunId = history.data?.[0]?.runId;
+  const historicalRedirectTarget =
+    !runId && name && runQuery.data && !runHasImpl && latestHistoricalRunId
+      ? historicalImplHref(latestHistoricalRunId, name, location.pathname)
+      : null;
+
+  useEffect(() => {
+    if (historicalRedirectTarget) {
+      navigate(historicalRedirectTarget, { replace: true });
+    }
+  }, [historicalRedirectTarget, navigate]);
 
   // Deep links to a specific failing test (/failures/:testCaseId) scroll
   // that card into view once the data is ready. The bare /failures route is
@@ -100,6 +117,12 @@ export function ImplDetail() {
     return <NotFound message="No data for this impl." />;
   }
 
+  if (historicalRedirectTarget) return <div className="loading">Loading…</div>;
+
+  if (!runHasImpl) {
+    return <NotFound message="That implementation is not in this run." />;
+  }
+
   const runImpl = implForRun(impl.data, runQuery.data);
 
   return (
@@ -128,6 +151,15 @@ interface ImplDetailViewProps {
 // user reading a permalinked run stays on that run as they click around.
 function runPrefix(runId: string | undefined): string {
   return runId ? `/runs/${encodeURIComponent(runId)}` : '';
+}
+
+function historicalImplHref(
+  runId: string,
+  implId: string,
+  pathname: string,
+): string {
+  const suffix = pathname.endsWith('/failures') ? '/failures' : '';
+  return `${runPrefix(runId)}/impl/${encodeURIComponent(implId)}${suffix}`;
 }
 
 function failureDetailHref(

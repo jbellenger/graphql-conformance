@@ -33,6 +33,27 @@ test('loadRegistry resolves in-tree HTTP driver via manifest.json', () => {
   assert.strictEqual(reg.drivers.length, 1);
   assert.strictEqual(reg.drivers[0].transport, 'http');
   assert.strictEqual(reg.drivers[0].implDir, path.join(rootDir, 'impls/demo'));
+  assert.strictEqual(reg.drivers[0].enabled, true);
+});
+
+test('loadRegistry preserves explicit enabled false', () => {
+  const rootDir = mkdtemp();
+  writeFile(path.join(rootDir, 'impls/ref/manifest.json'), '{}');
+  writeFile(path.join(rootDir, 'impls/old/manifest.json'), '{}');
+  writeFile(path.join(rootDir, 'registry.json'), JSON.stringify({
+    registryVersion: 1,
+    reference: 'ref',
+    drivers: [
+      { name: 'ref', source: 'in-tree', manifestPath: './impls/ref/manifest.json' },
+      { name: 'old', source: 'in-tree', manifestPath: './impls/old/manifest.json', enabled: false },
+    ],
+  }));
+
+  const reg = loadRegistry({
+    registryPath: path.join(rootDir, 'registry.json'),
+    rootDir,
+  });
+  assert.strictEqual(reg.byName.get('old').enabled, false);
 });
 
 test('loadRegistry throws when manifest is missing for an in-tree driver', () => {
@@ -76,6 +97,34 @@ test('loadRegistry throws when reference is missing from drivers list', () => {
   );
 });
 
+test('loadRegistry throws when enabled is not boolean', () => {
+  const rootDir = mkdtemp();
+  writeFile(path.join(rootDir, 'impls/ref/manifest.json'), '{}');
+  writeFile(path.join(rootDir, 'registry.json'), JSON.stringify({
+    registryVersion: 1,
+    reference: 'ref',
+    drivers: [{ name: 'ref', source: 'in-tree', manifestPath: './impls/ref/manifest.json', enabled: 'false' }],
+  }));
+  assert.throws(
+    () => loadRegistry({ registryPath: path.join(rootDir, 'registry.json'), rootDir }),
+    /"enabled" must be boolean/,
+  );
+});
+
+test('loadRegistry throws when reference is disabled', () => {
+  const rootDir = mkdtemp();
+  writeFile(path.join(rootDir, 'impls/ref/manifest.json'), '{}');
+  writeFile(path.join(rootDir, 'registry.json'), JSON.stringify({
+    registryVersion: 1,
+    reference: 'ref',
+    drivers: [{ name: 'ref', source: 'in-tree', manifestPath: './impls/ref/manifest.json', enabled: false }],
+  }));
+  assert.throws(
+    () => loadRegistry({ registryPath: path.join(rootDir, 'registry.json'), rootDir }),
+    /reference "ref" is disabled/,
+  );
+});
+
 test('filterDrivers keeps reference even if not in only-list', () => {
   const reg = {
     reference: 'ref',
@@ -97,6 +146,24 @@ test('filterDrivers exclude removes named conformants', () => {
   };
   const filtered = filterDrivers(reg, { exclude: ['a'] });
   assert.deepStrictEqual(filtered.drivers.map((d) => d.name), ['ref', 'b']);
+});
+
+test('filterDrivers skips disabled conformants by default', () => {
+  const reg = {
+    reference: 'ref',
+    drivers: [{ name: 'ref' }, { name: 'active' }, { name: 'old', enabled: false }],
+  };
+  const filtered = filterDrivers(reg, {});
+  assert.deepStrictEqual(filtered.drivers.map((d) => d.name), ['ref', 'active']);
+});
+
+test('filterDrivers includes disabled conformants when explicitly named', () => {
+  const reg = {
+    reference: 'ref',
+    drivers: [{ name: 'ref' }, { name: 'active' }, { name: 'old', enabled: false }],
+  };
+  const filtered = filterDrivers(reg, { only: ['old'] });
+  assert.deepStrictEqual(filtered.drivers.map((d) => d.name), ['ref', 'old']);
 });
 
 test('loadRegistry resolves an external driver by cloning a local git repo', () => {
