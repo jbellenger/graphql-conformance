@@ -49,6 +49,9 @@ jobs:
           cache-from: type=gha,scope=conformance
           cache-to: type=gha,mode=max,scope=conformance
 
+      - name: Pin graphql-js-17 to latest stable 17.x
+        run: node scripts/graphql-js-17-version.js --write
+
       - name: Pre-build impl images
         run: bash scripts/ci-prebuild-impls.sh
 
@@ -67,7 +70,7 @@ jobs:
           BOT_USER_ID=$(gh api "/users/${APP_SLUG}[bot]" --jq .id)
           git config user.name  "${APP_SLUG}[bot]"
           git config user.email "${BOT_USER_ID}+${APP_SLUG}[bot]@users.noreply.github.com"
-          git add results/data
+          git add impls/graphql-js-17/package.json results/data
           if git diff --cached --quiet; then
             echo "No result changes to commit."
             exit 0

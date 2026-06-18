@@ -49,6 +49,8 @@ By default the conformer skips any conformant whose image digest + the corpus fi
 
 Library versions for every implementation are updated automatically by [Renovate](https://docs.renovatebot.com/). Configuration lives in `renovate.json` at the repo root. Renovate opens a PR for each available update and — if CI passes — the PR auto-merges with no human involvement. Most impls track the latest stable release from their native package manager; `graphql-js-17` tracks the latest stable 17.x release, while `graphql-js-16` is pinned to `<17`.
 
+The daily conformance workflow also runs `scripts/graphql-js-17-version.js --write` before building implementation images. That step resolves the latest stable `17.x.y` package from npm, rejects prerelease channels such as alpha/beta/rc/canary, and commits any updated `impls/graphql-js-17/package.json` pin alongside the run results. CI runs the same script in local-check mode so prerelease pins fail before they can merge.
+
 Installing the [Renovate GitHub App](https://github.com/apps/renovate) on the repo is a prerequisite. Branch protection must require CI success before auto-merge.
 
 The version displayed next to each implementation on the dashboard is resolved at image build time (via `npm ls`, `mvn dependency:list`, `go list -m`, `cargo tree`, etc.) and written to `/impl-version` inside the image. The conformer reads that file over the Docker API — so there is no separate place in the repo where a version string is mirrored. See [SPEC.md](SPEC.md) for the driver-side contract.

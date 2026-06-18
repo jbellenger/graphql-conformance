@@ -14,6 +14,7 @@
       "matchFileNames": ["impls/graphql-js-17/package.json"],
       "matchPackageNames": ["graphql"],
       "allowedVersions": "/^17\\.[0-9]+\\.[0-9]+$/",
+      "ignoreUnstable": true,
       "respectLatest": false
     },
     {

@@ -149,7 +149,8 @@ _test:
 	$(MAKE) -C results test
 	$(MAKE) -C corpus-gen test
 	$(MAKE) -C conformer test
-	node --test scripts/copy-site-data.test.js
+	node scripts/graphql-js-17-version.js --check-local
+	node --test scripts/*.test.js
 
 _test-core: _test
 
