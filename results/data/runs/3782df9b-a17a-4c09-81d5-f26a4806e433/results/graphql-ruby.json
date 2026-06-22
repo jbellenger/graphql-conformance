@@ -1,0 +1,590 @@
+[
+  {
+    "id": "1a2ab9cc-3c09-42bc-8be6-f3821a06bfc7",
+    "runId": "3782df9b-a17a-4c09-81d5-f26a4806e433",
+    "implId": "graphql-ruby",
+    "testCaseId": "034907e7/5f421a36/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "lPfrwoN": "Object_jGekrLP4U"
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_jGekrLP4U",
+        "lPfrwoN": "Object_jGekrLP4U"
+      }
+    }
+  },
+  {
+    "id": "7eaaea1a-dfff-479c-8e1a-19be18837d81",
+    "runId": "3782df9b-a17a-4c09-81d5-f26a4806e433",
+    "implId": "graphql-ruby",
+    "testCaseId": "03573f34/1a4227c3/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_lpJFn",
+        "xunqtFHE": "Object_lpJFn",
+        "x4cbu6cZ": {
+          "__typename": "Interface_j4AUR_STUB",
+          "R5Ldbv_": {
+            "gf": true
+          },
+          "wvF": "Interface_j4AUR_STUB",
+          "deWZL": "XtCw_c",
+          "zhKE": {
+            "ITX": "Interface_D_STUB"
+          }
+        },
+        "msiDCGEKr": "Object_lpJFn"
+      }
+    },
+    "actual": {
+      "data": {
+        "__typename": "Object_lpJFn",
+        "Gjxk": "Object_lpJFn",
+        "xunqtFHE": "Object_lpJFn",
+        "x4cbu6cZ": {
+          "__typename": "Interface_j4AUR_STUB",
+          "R5Ldbv_": {
+            "gf": true
+          },
+          "wvF": "Interface_j4AUR_STUB",
+          "deWZL": "XtCw_c",
+          "zhKE": {
+            "ITX": "Interface_D_STUB"
+          }
+        },
+        "msiDCGEKr": "Object_lpJFn"
+      }
+    }
+  },
+  {
+    "id": "43896957-4208-4f33-81e0-2b168e407e33",
+    "runId": "3782df9b-a17a-4c09-81d5-f26a4806e433",
+    "implId": "graphql-ruby",
+    "testCaseId": "03573f34/db6ebcb1/b116a709",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "P": "Object_lpJFn"
+      }
+    },
+    "actual": {
+      "data": {
+        "P": "Object_lpJFn",
+        "oM": "Object_lpJFn"
+      }
+    }
+  },
+  {
+    "id": "092105ec-7965-4483-82eb-2ab6e4738d61",
+    "runId": "3782df9b-a17a-4c09-81d5-f26a4806e433",
+    "implId": "graphql-ruby",
+    "testCaseId": "055faeb7/2ff881b7/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "nAc": "Object_e",
+        "__typename": "Object_e",
+        "jNIpPj4J": 3.14
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_s7PEnFz, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 3,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query",
+            "... on Union_s7PEnFz"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_s7PEnFz"
+          }
+        },
+        {
+          "message": "No such type Union_s7PEnFz, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 18,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_t"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_s7PEnFz"
+          }
+        },
+        {
+          "message": "Fragment Fragment_MzXUVMo1z was defined, but not used",
+          "locations": [
+            {
+              "line": 23,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_MzXUVMo1z"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_MzXUVMo1z"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "940fb005-b511-4b61-8630-958b2a02a872",
+    "runId": "3782df9b-a17a-4c09-81d5-f26a4806e433",
+    "implId": "graphql-ruby",
+    "testCaseId": "055faeb7/afa2f5d4/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "m1ztytiyt": {
+          "gyXxrD": 3.14,
+          "__typename": "Object_hdAAgA",
+          "jG5miIo6": "Object_hdAAgA"
+        }
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_s7PEnFz, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 12,
+              "column": 5
+            }
+          ],
+          "path": [
+            "query joNpF0z9",
+            "m1ztytiyt",
+            "... on Union_s7PEnFz"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_s7PEnFz"
+          }
+        },
+        {
+          "message": "No such type Union_s7PEnFz, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 16,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query joNpF0z9",
+            "... on Union_s7PEnFz"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_s7PEnFz"
+          }
+        },
+        {
+          "message": "No such type Union_s7PEnFz, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 28,
+              "column": 3
+            }
+          ],
+          "path": [
+            "fragment Fragment_aDeOLhb1",
+            "... on Union_s7PEnFz"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_s7PEnFz"
+          }
+        },
+        {
+          "message": "Fragment Fragment_aDeOLhb1 was defined, but not used",
+          "locations": [
+            {
+              "line": 26,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_aDeOLhb1"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_aDeOLhb1"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "c49a61f6-2497-4ea1-83f5-5ebc685848fe",
+    "runId": "3782df9b-a17a-4c09-81d5-f26a4806e433",
+    "implId": "graphql-ruby",
+    "testCaseId": "055faeb7/c1995219/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "YEtImzl8d": "Object_e"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_viUg1, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 10,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_Yl"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_viUg1"
+          }
+        },
+        {
+          "message": "Fragment Fragment_Yw was defined, but not used",
+          "locations": [
+            {
+              "line": 6,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_Yw"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_Yw"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "94e6c7ad-78a8-4414-8207-7c3de5c47617",
+    "runId": "3782df9b-a17a-4c09-81d5-f26a4806e433",
+    "implId": "graphql-ruby",
+    "testCaseId": "055faeb7/f8b82a40/945f38ab",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "m1ztytiyt": {}
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_s7PEnFz, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 4,
+              "column": 7
+            }
+          ],
+          "path": [
+            "query W2",
+            "... on Object_e",
+            "m1ztytiyt",
+            "... on Union_s7PEnFz"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_s7PEnFz"
+          }
+        },
+        {
+          "message": "Variable $q28WC0tFl is declared by W2 but not used",
+          "locations": [
+            {
+              "line": 1,
+              "column": 1
+            }
+          ],
+          "path": [
+            "query W2"
+          ],
+          "extensions": {
+            "code": "variableNotUsed",
+            "variableName": "q28WC0tFl"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "132cb8f0-811e-460f-897e-f24cc4c09b5c",
+    "runId": "3782df9b-a17a-4c09-81d5-f26a4806e433",
+    "implId": "graphql-ruby",
+    "testCaseId": "0565cafd/4cfeef10/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_bd",
+        "XTh": "Object_bd"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_graLRa8, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 2,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query zqd41vQ5",
+            "... on Union_graLRa8"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_graLRa8"
+          }
+        },
+        {
+          "message": "No such type Union_graLRa8, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 28,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_XD4Z2ow"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_graLRa8"
+          }
+        },
+        {
+          "message": "Fragment Fragment_oKabPkvM8 was defined, but not used",
+          "locations": [
+            {
+              "line": 14,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_oKabPkvM8"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_oKabPkvM8"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "0123ff70-90cf-4ee2-89d1-b0bd7eeb3d32",
+    "runId": "3782df9b-a17a-4c09-81d5-f26a4806e433",
+    "implId": "graphql-ruby",
+    "testCaseId": "0565cafd/6f196a73/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_bd"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_graLRa8, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 16,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_GPcpk72HO"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_graLRa8"
+          }
+        },
+        {
+          "message": "Fragment Fragment_xBRgc7v0 was defined, but not used",
+          "locations": [
+            {
+              "line": 11,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_xBRgc7v0"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_xBRgc7v0"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "id": "d672a1b7-6ce2-4bac-8a21-e161f4561cac",
+    "runId": "3782df9b-a17a-4c09-81d5-f26a4806e433",
+    "implId": "graphql-ruby",
+    "testCaseId": "0565cafd/8a20c5f6/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "HQxxb9z": [
+          {
+            "f8": [
+              true,
+              true
+            ]
+          },
+          {
+            "f8": [
+              true,
+              true
+            ]
+          }
+        ],
+        "J518": [
+          {
+            "__typename": "Interface_U61e_STUB"
+          },
+          {
+            "__typename": "Interface_U61e_STUB"
+          }
+        ],
+        "__typename": "Object_bd"
+      }
+    },
+    "actual": {
+      "errors": [
+        {
+          "message": "No such type Union_graLRa8, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 15,
+              "column": 5
+            }
+          ],
+          "path": [
+            "query",
+            "...",
+            "... on Union_graLRa8"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_graLRa8"
+          }
+        },
+        {
+          "message": "No such type Union_graLRa8, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 21,
+              "column": 5
+            }
+          ],
+          "path": [
+            "query",
+            "...",
+            "... on Union_graLRa8"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_graLRa8"
+          }
+        },
+        {
+          "message": "No such type Union_graLRa8, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 29,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query",
+            "... on Union_graLRa8"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_graLRa8"
+          }
+        },
+        {
+          "message": "No such type Union_graLRa8, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 33,
+              "column": 3
+            }
+          ],
+          "path": [
+            "query",
+            "... on Union_graLRa8"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_graLRa8"
+          }
+        },
+        {
+          "message": "No such type Union_graLRa8, so it can't be a fragment condition",
+          "locations": [
+            {
+              "line": 50,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_Jgj"
+          ],
+          "extensions": {
+            "code": "undefinedType",
+            "typeName": "Union_graLRa8"
+          }
+        },
+        {
+          "message": "Fragment Fragment_ZBQ was defined, but not used",
+          "locations": [
+            {
+              "line": 46,
+              "column": 1
+            }
+          ],
+          "path": [
+            "fragment Fragment_ZBQ"
+          ],
+          "extensions": {
+            "code": "useAndDefineFragment",
+            "fragmentName": "Fragment_ZBQ"
+          }
+        }
+      ]
+    }
+  }
+]
