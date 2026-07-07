@@ -3,7 +3,7 @@ GEM
   specs:
     base64 (0.3.0)
     fiber-storage (1.0.1)
-    graphql (2.6.3)
+    graphql (2.6.5)
       base64
       fiber-storage
       logger
@@ -14,7 +14,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  graphql (= 2.6.3)
+  graphql (= 2.6.5)
   webrick
 
 BUNDLED WITH
