@@ -1,0 +1,320 @@
+[
+  {
+    "id": "713f82e0-e97e-4bb2-8c15-033a89158ad1",
+    "runId": "fdd54bc7-d50f-4b26-9f0a-f666caba9cad",
+    "implId": "graphql-go",
+    "testCaseId": "03573f34/2e32a08b/08277c86",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_lpJFn",
+        "H3Nl_": "Object_lpJFn",
+        "puaq39dlg": {
+          "deWZL": "XtCw_c"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Syntax Error GraphQL request (1:33) Expected $, found @\n\n1: query ($kJ8hrxR: Boolean! = true@Directive_RtXxkf) {\n                                   ^\n2:   ...Fragment_Q\n",
+          "locations": [
+            {
+              "line": 1,
+              "column": 33
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "6cc07b4c-1f22-4ac3-86c3-d6c6ecaa464c",
+    "runId": "fdd54bc7-d50f-4b26-9f0a-f666caba9cad",
+    "implId": "graphql-go",
+    "testCaseId": "03573f34/2e32a08b/179ab86c",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_lpJFn",
+        "H3Nl_": "Object_lpJFn",
+        "puaq39dlg": {
+          "deWZL": "XtCw_c"
+        }
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Syntax Error GraphQL request (1:33) Expected $, found @\n\n1: query ($kJ8hrxR: Boolean! = true@Directive_RtXxkf) {\n                                   ^\n2:   ...Fragment_Q\n",
+          "locations": [
+            {
+              "line": 1,
+              "column": 33
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "fce0fc03-ae1a-484c-8515-abebbd1e7c6e",
+    "runId": "fdd54bc7-d50f-4b26-9f0a-f666caba9cad",
+    "implId": "graphql-go",
+    "testCaseId": "03573f34/844439df/3cbd2fee",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_lpJFn"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Syntax Error GraphQL request (1:36) Expected $, found @\n\n1: query y90y6ZiH9($u4jGeH6z: Boolean!@Directive_RtXxkf) {\n                                      ^\n2:   ... on Object_lpJFn {\n",
+          "locations": [
+            {
+              "line": 1,
+              "column": 36
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "1f166de6-ab92-480e-841c-f3ef2fe285a4",
+    "runId": "fdd54bc7-d50f-4b26-9f0a-f666caba9cad",
+    "implId": "graphql-go",
+    "testCaseId": "03573f34/844439df/64d17f61",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_lpJFn"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Syntax Error GraphQL request (1:36) Expected $, found @\n\n1: query y90y6ZiH9($u4jGeH6z: Boolean!@Directive_RtXxkf) {\n                                      ^\n2:   ... on Object_lpJFn {\n",
+          "locations": [
+            {
+              "line": 1,
+              "column": 36
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "3e0997e9-ecd6-4edb-8e31-955b58bde22c",
+    "runId": "fdd54bc7-d50f-4b26-9f0a-f666caba9cad",
+    "implId": "graphql-go",
+    "testCaseId": "03573f34/db6ebcb1/457e9b63",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "P": "Object_lpJFn",
+        "oM": "Object_lpJFn"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Variable \"$rbEuY2\" of type \"Boolean!\" is required and will not use the default value. Perhaps you meant to use type \"Boolean\".",
+          "locations": [
+            {
+              "line": 1,
+              "column": 36
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "d072dfbb-abc1-4d89-8ae5-74911055be35",
+    "runId": "fdd54bc7-d50f-4b26-9f0a-f666caba9cad",
+    "implId": "graphql-go",
+    "testCaseId": "03573f34/db6ebcb1/b116a709",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "P": "Object_lpJFn"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Variable \"$rbEuY2\" of type \"Boolean!\" is required and will not use the default value. Perhaps you meant to use type \"Boolean\".",
+          "locations": [
+            {
+              "line": 1,
+              "column": 36
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "4aa859e3-cb14-416e-809c-489b31db8700",
+    "runId": "fdd54bc7-d50f-4b26-9f0a-f666caba9cad",
+    "implId": "graphql-go",
+    "testCaseId": "0565cafd/e841846b/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_bd",
+        "j": [
+          {
+            "__typename": "Interface_U61e_STUB"
+          },
+          {
+            "__typename": "Interface_U61e_STUB"
+          }
+        ],
+        "jrWn": true,
+        "ikBVofJQ": true
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Syntax Error GraphQL request (8:14) Unexpected Name \"null\"\n\n7:   ... on Object_bd {\n8:     jrWn(au: null)\n                ^\n9:   }\n",
+          "locations": [
+            {
+              "line": 8,
+              "column": 14
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "7b4d7db9-46e3-427f-8dfa-f8b372bdc0c2",
+    "runId": "fdd54bc7-d50f-4b26-9f0a-f666caba9cad",
+    "implId": "graphql-go",
+    "testCaseId": "0565cafd/e841846b/6dfb7769",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_bd",
+        "j": [
+          {
+            "__typename": "Interface_U61e_STUB"
+          },
+          {
+            "__typename": "Interface_U61e_STUB"
+          }
+        ],
+        "jrWn": true,
+        "ikBVofJQ": true
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Syntax Error GraphQL request (8:14) Unexpected Name \"null\"\n\n7:   ... on Object_bd {\n8:     jrWn(au: null)\n                ^\n9:   }\n",
+          "locations": [
+            {
+              "line": 8,
+              "column": 14
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "b09313fd-1c83-490f-8471-e15ca1a714fc",
+    "runId": "fdd54bc7-d50f-4b26-9f0a-f666caba9cad",
+    "implId": "graphql-go",
+    "testCaseId": "0565cafd/e841846b/852980e1",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "__typename": "Object_bd",
+        "j": [
+          {
+            "__typename": "Interface_U61e_STUB"
+          },
+          {
+            "__typename": "Interface_U61e_STUB"
+          }
+        ],
+        "jrWn": true,
+        "ikBVofJQ": true
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Syntax Error GraphQL request (8:14) Unexpected Name \"null\"\n\n7:   ... on Object_bd {\n8:     jrWn(au: null)\n                ^\n9:   }\n",
+          "locations": [
+            {
+              "line": 8,
+              "column": 14
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "ba0106a5-b325-4af1-8372-5e5f794a17e9",
+    "runId": "fdd54bc7-d50f-4b26-9f0a-f666caba9cad",
+    "implId": "graphql-go",
+    "testCaseId": "0565cafd/eac9c424/44136fa3",
+    "status": "fail",
+    "expected": {
+      "data": {
+        "UnXJTyzQ": [
+          {
+            "wjZ8": "Interface_U61e_STUB",
+            "__typename": "Interface_U61e_STUB",
+            "gi6VAY": [
+              true,
+              true
+            ]
+          },
+          {
+            "wjZ8": "Interface_U61e_STUB",
+            "__typename": "Interface_U61e_STUB",
+            "gi6VAY": [
+              true,
+              true
+            ]
+          }
+        ],
+        "jrWn": true,
+        "__typename": "Object_bd"
+      }
+    },
+    "actual": {
+      "data": null,
+      "errors": [
+        {
+          "message": "Fragment cannot be spread here as objects of type \"Interface_U61e\" can never be of type \"[Interface_U61e]!\".",
+          "locations": [
+            {
+              "line": 3,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
