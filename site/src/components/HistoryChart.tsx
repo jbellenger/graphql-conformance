@@ -27,18 +27,20 @@ interface ChartDatum {
 
 export function HistoryChart({ history }: HistoryChartProps) {
   const data = useMemo<ChartDatum[]>(() => {
-    return history.map((h) => {
-      const passPct = computePassPct(h.passed, h.total);
-      return {
-        timestamp: h.timestamp,
-        date: formatDate(h.timestamp),
-        passPct,
-        failed: h.failed,
-        errored: h.errored,
-        total: h.total,
-        falloutAfter: h.falloutAfter,
-      };
-    });
+    return [...history]
+      .sort((a, b) => a.timestamp.localeCompare(b.timestamp))
+      .map((h) => {
+        const passPct = computePassPct(h.passed, h.total);
+        return {
+          timestamp: h.timestamp,
+          date: formatDate(h.timestamp),
+          passPct,
+          failed: h.failed,
+          errored: h.errored,
+          total: h.total,
+          falloutAfter: h.falloutAfter,
+        };
+      });
   }, [history]);
 
   if (data.length < 2) return null;
