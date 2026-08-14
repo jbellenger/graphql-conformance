@@ -20,8 +20,8 @@ import viaduct.engine.api.ExecutionInput
 import viaduct.engine.api.ViaductSchema
 import viaduct.engine.api.spi.NoOpCheckerExecutorFactoryImpl
 import viaduct.engine.runtime.execution.DefaultCoroutineInterop
-import viaduct.engine.runtime.tenantloading.DispatcherRegistryFactory
 import viaduct.engine.runtime.tenantloading.ExecutorValidator
+import viaduct.engine.runtime.tenantloading.TenantAPIBootstrapperDispatcherRegistryFactory
 
 object ViaductHarness {
     private val mapper = ObjectMapper()
@@ -64,7 +64,7 @@ object ViaductHarness {
         variables: Map<String, Any?> = emptyMap(),
     ): Map<String, Any?> {
         val schema = executeForTest(schemaText)
-        val registry = DispatcherRegistryFactory(
+        val registry = TenantAPIBootstrapperDispatcherRegistryFactory(
             DeterministicTenantAPIBootstrapper(),
             ExecutorValidator(schema),
             NoOpCheckerExecutorFactoryImpl(),
