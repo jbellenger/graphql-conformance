@@ -16,7 +16,7 @@
         <kotlinx.coroutines.version>1.11.0</kotlinx.coroutines.version>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <viaduct.version>1.1.0</viaduct.version>
+        <viaduct.version>2.0.0</viaduct.version>
     </properties>
 
     <dependencyManagement>
@@ -33,18 +33,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.airbnb.viaduct.engine</groupId>
+            <groupId>com.airbnb.viaduct</groupId>
             <artifactId>api</artifactId>
             <version>${viaduct.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.airbnb.viaduct.engine</groupId>
+            <groupId>com.airbnb.viaduct</groupId>
             <artifactId>runtime</artifactId>
-            <version>${viaduct.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.airbnb.viaduct.engine</groupId>
-            <artifactId>wiring</artifactId>
             <version>${viaduct.version}</version>
         </dependency>
         <dependency>
