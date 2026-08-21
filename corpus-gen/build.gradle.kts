@@ -12,7 +12,7 @@ repositories {
 dependencies {
     implementation("com.airbnb.viaduct:test-fixtures:$viaductVersion")
     implementation("com.graphql-java:graphql-java:26.0")
-    implementation("io.kotest:kotest-property-jvm:5.9.1")
+    implementation("io.kotest:kotest-property-jvm:6.2.4")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.22.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.11.0")
 
