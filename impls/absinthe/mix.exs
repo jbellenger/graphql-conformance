@@ -22,7 +22,7 @@ defmodule ConformerAbsinthe.MixProject do
     [
       {:absinthe,
        git: "https://github.com/absinthe-graphql/absinthe.git",
-       tag: "v1.11.0"},
+       tag: "v1.12.0"},
       {:jason, "~> 1.4"},
       {:plug_cowboy, "~> 2.7"}
     ]
