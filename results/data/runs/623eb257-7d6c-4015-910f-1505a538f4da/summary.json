@@ -1,0 +1,241 @@
+{
+  "id": "623eb257-7d6c-4015-910f-1505a538f4da",
+  "timestamp": "2026-10-19T18:06:33.585Z",
+  "referenceImplId": "graphql-js-17",
+  "implIds": [
+    "graphql-js-17",
+    "grafast",
+    "graphql-java",
+    "viaduct",
+    "graphql-go",
+    "graphql-php",
+    "graphql-core",
+    "graphql-ruby",
+    "hot-chocolate",
+    "graphql-dotnet",
+    "async-graphql",
+    "absinthe",
+    "gqlgen",
+    "juniper",
+    "lacinia"
+  ],
+  "excluded": 0,
+  "resultsByImpl": {
+    "graphql-js-17": {
+      "implId": "graphql-js-17",
+      "total": 2816,
+      "passed": 2816,
+      "failed": 0,
+      "errored": 0,
+      "falloutAfter": null,
+      "results": []
+    },
+    "grafast": {
+      "implId": "grafast",
+      "total": 180,
+      "passed": 170,
+      "failed": 0,
+      "errored": 10,
+      "falloutAfter": 180,
+      "results": []
+    },
+    "graphql-java": {
+      "implId": "graphql-java",
+      "total": 2816,
+      "passed": 2816,
+      "failed": 0,
+      "errored": 0,
+      "falloutAfter": null,
+      "results": []
+    },
+    "viaduct": {
+      "implId": "viaduct",
+      "total": 2816,
+      "passed": 2816,
+      "failed": 0,
+      "errored": 0,
+      "falloutAfter": null,
+      "results": []
+    },
+    "graphql-go": {
+      "implId": "graphql-go",
+      "total": 47,
+      "passed": 37,
+      "failed": 10,
+      "errored": 0,
+      "falloutAfter": 47,
+      "results": []
+    },
+    "graphql-php": {
+      "implId": "graphql-php",
+      "total": 710,
+      "passed": 700,
+      "failed": 0,
+      "errored": 10,
+      "falloutAfter": 710,
+      "results": []
+    },
+    "graphql-core": {
+      "implId": "graphql-core",
+      "total": 180,
+      "passed": 170,
+      "failed": 0,
+      "errored": 10,
+      "falloutAfter": 180,
+      "results": []
+    },
+    "graphql-ruby": {
+      "implId": "graphql-ruby",
+      "total": 40,
+      "passed": 30,
+      "failed": 10,
+      "errored": 0,
+      "falloutAfter": 40,
+      "results": []
+    },
+    "hot-chocolate": {
+      "implId": "hot-chocolate",
+      "total": 2816,
+      "passed": 2816,
+      "failed": 0,
+      "errored": 0,
+      "falloutAfter": null,
+      "results": []
+    },
+    "graphql-dotnet": {
+      "implId": "graphql-dotnet",
+      "total": 2816,
+      "passed": 2816,
+      "failed": 0,
+      "errored": 0,
+      "falloutAfter": null,
+      "results": []
+    },
+    "async-graphql": {
+      "implId": "async-graphql",
+      "total": 15,
+      "passed": 5,
+      "failed": 10,
+      "errored": 0,
+      "falloutAfter": 15,
+      "results": []
+    },
+    "absinthe": {
+      "implId": "absinthe",
+      "total": 2816,
+      "passed": 2810,
+      "failed": 3,
+      "errored": 3,
+      "falloutAfter": null,
+      "results": []
+    },
+    "gqlgen": {
+      "implId": "gqlgen",
+      "total": 2816,
+      "passed": 2816,
+      "failed": 0,
+      "errored": 0,
+      "falloutAfter": null,
+      "results": []
+    },
+    "juniper": {
+      "implId": "juniper",
+      "total": 201,
+      "passed": 191,
+      "failed": 10,
+      "errored": 0,
+      "falloutAfter": 201,
+      "results": []
+    },
+    "lacinia": {
+      "implId": "lacinia",
+      "total": 12,
+      "passed": 2,
+      "failed": 0,
+      "errored": 10,
+      "falloutAfter": 12,
+      "results": []
+    }
+  },
+  "_conformerMeta": {
+    "corpusFingerprint": "20ae5ba3342a209dc60cfc51ffcc2621ba0111fdb31a88d11ec716011e61cb0b",
+    "runnableCount": 2816,
+    "implMeta": {
+      "graphql-js-17": {
+        "imageDigest": "sha256:c84bceb6d1314d153fcb3a1fadb19137c73070cb74b7b604cf782601e84186b3",
+        "version": "17.0.2",
+        "versionUrl": "https://github.com/graphql/graphql-js/releases/tag/v17.0.2"
+      },
+      "grafast": {
+        "imageDigest": "sha256:ac0a261ed6debb30704eb8ccef8113ebe7f0f78b156b74b00d17cd83d86486c0",
+        "version": "1.1.4",
+        "versionUrl": "https://github.com/graphile/crystal/releases/tag/grafast@1.1.4"
+      },
+      "graphql-java": {
+        "imageDigest": "sha256:acac77eceefac6c883b1857dbb47266c20b3286408295c8450a63e503cfe5254",
+        "version": "26.1",
+        "versionUrl": "https://github.com/graphql-java/graphql-java/releases/tag/v26.1"
+      },
+      "viaduct": {
+        "imageDigest": "sha256:8728b904ed011f2d7e560c95fb3c2d97bdbe7726a579c9606e9be6553a5ec440",
+        "version": "2.0.0",
+        "versionUrl": "https://github.com/airbnb/viaduct/releases/tag/v2.0.0"
+      },
+      "graphql-go": {
+        "imageDigest": "sha256:5eb6d1b415a80c938aa08eec95eee17f8396b1dfc3f00a7def36dd38ca48ffea",
+        "version": "0.8.1",
+        "versionUrl": "https://github.com/graphql-go/graphql/releases/tag/v0.8.1"
+      },
+      "graphql-php": {
+        "imageDigest": "sha256:7faeed506469e40c3509e9d9d2def23894da70c248daefd76267481c1dea8bec",
+        "version": "15.37.2",
+        "versionUrl": "https://github.com/webonyx/graphql-php/releases/tag/v15.37.2"
+      },
+      "graphql-core": {
+        "imageDigest": "sha256:b7caf868bebd79d1c897fb2ee2cd6520f1767bfdff06beaf54484d422729d725",
+        "version": "3.2.13",
+        "versionUrl": "https://github.com/graphql-python/graphql-core/releases/tag/v3.2.13"
+      },
+      "graphql-ruby": {
+        "imageDigest": "sha256:69d86f05f4a68996070a0c937aaab69279832f0fde623cf5e596e00a9001c0da",
+        "version": "2.6.11",
+        "versionUrl": "https://github.com/rmosolgo/graphql-ruby/releases/tag/v2.6.11"
+      },
+      "hot-chocolate": {
+        "imageDigest": "sha256:f0b164fe1355f9ce5535abb5c147906955fb723f344b38a949c968e7c43f6c15",
+        "version": "16.6.7",
+        "versionUrl": "https://github.com/ChilliCream/graphql-platform/releases/tag/16.6.7"
+      },
+      "graphql-dotnet": {
+        "imageDigest": "sha256:5e79f9c367ce3944aa0fa7d8b25396ae495d47fb20c03756e87c38bc4539314e",
+        "version": "8.8.5",
+        "versionUrl": "https://github.com/graphql-dotnet/graphql-dotnet/releases/tag/8.8.5"
+      },
+      "async-graphql": {
+        "imageDigest": "sha256:641d18ba94b52dc170514a3b8a8f833b4a97b14a20339a011aed01d16be52b77",
+        "version": "8.0.0-rc.5",
+        "versionUrl": "https://crates.io/crates/async-graphql/8.0.0-rc.5"
+      },
+      "absinthe": {
+        "imageDigest": "sha256:54ea4b5f54628882cec0a7b8b8f242c624272fd2c8544d1176c974e9ad21e7ff",
+        "version": "1.12.0",
+        "versionUrl": "https://github.com/absinthe-graphql/absinthe/releases/tag/v1.12.0"
+      },
+      "gqlgen": {
+        "imageDigest": "sha256:e34a52cf0437bbd14abcce0c6172c6941359fc73f7e01abb4910c66fd25a9bb9",
+        "version": "0.17.95",
+        "versionUrl": "https://github.com/99designs/gqlgen/releases/tag/v0.17.95"
+      },
+      "juniper": {
+        "imageDigest": "sha256:a1dc1b76ac8206225cdf3b8cefd125e11a56ab66455bf34f62895739cf6bca9c",
+        "version": "0.17.1",
+        "versionUrl": "https://github.com/graphql-rust/juniper/releases/tag/juniper-v0.17.1"
+      },
+      "lacinia": {
+        "imageDigest": "sha256:0ed4e32e88938baf9fef87c35974d140321a3801ef0cc5c5efdab12d86a8b52f",
+        "version": "1.3.0",
+        "versionUrl": "https://github.com/walmartlabs/lacinia/releases/tag/1.3.0"
+      }
+    }
+  }
+}
