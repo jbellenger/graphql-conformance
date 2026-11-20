@@ -1,4 +1,4 @@
-FROM php:8.5-cli AS base
+FROM php:8.6-cli AS base
 
 # Keep Composer's platform checks and the driver runtime on the same PHP setup.
 RUN apt-get update \
